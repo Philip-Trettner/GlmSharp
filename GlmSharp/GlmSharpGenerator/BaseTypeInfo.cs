@@ -39,27 +39,37 @@ namespace GlmSharpGenerator
         public static readonly BaseTypeInfo TypeDouble = new BaseTypeInfo
         {
             Name = "double",
-            Prefix = "d"
+            Prefix = "d",
+            LengthType = "double"
         };
         public static readonly BaseTypeInfo TypeLong = new BaseTypeInfo
         {
             Name = "long",
-            Prefix = "l"
+            Prefix = "l",
+            LengthType = "double"
         };
         public static readonly BaseTypeInfo TypeBool = new BaseTypeInfo
         {
             Name = "bool",
-            Prefix = "b"
+            Prefix = "b",
+            Arithmetics = false,
+            HashCodeMultiplier = 2
         };
         public static readonly BaseTypeInfo TypeGeneric = new BaseTypeInfo
         {
             Name = "T",
             Prefix = "g",
-            Generic = true
+            Generic = true,
+            Arithmetics = false
         };
 
         public string Name { get; set; }
         public string Prefix { get; set; }
         public bool Generic { get; set; }
+
+        public bool Arithmetics { get; set; } = true;
+        public string LengthType { get; set; } = "float";
+
+        public int HashCodeMultiplier { get; set; } = 397;
     }
 }

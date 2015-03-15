@@ -19,6 +19,7 @@ namespace GlmSharpGenerator
             get
             {
                 yield return string.Format("IReadOnlyList<{0}>", BaseType);
+                yield return string.Format("IEquatable<{0}>", ClassNameThat);
             }
         }
 
@@ -30,12 +31,20 @@ namespace GlmSharpGenerator
 
         public string DefaultValue => "default(" + BaseType + ")";
 
+        public char ArgOf(int c) => "xyzw"[c];
+
         public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseType + " " + c);
         public string SubCompParameterString(int start, int end) => SubCompParameters(start, end).CommaSeparated();
         public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
         public string SubCompArgString(int start, int end) => SubCompArgs(start, end).CommaSeparated();
 
         public SwizzleType SwizzleType => new SwizzleType { BaseType = BaseType, BaseName = Name, Components = Components, Name = "swizzle_" + Name, BaseTypeInfo = BaseTypeInfo };
+
+        public string Comparer(string val) => IsGeneric ?
+            string.Format("EqualityComparer<T>.Default.Equals({0}, rhs.{0})", val) :
+            string.Format("{0}.Equals(rhs.{0})", val);
+
+        public string HashCodeOf(string val) => IsGeneric ? string.Format("EqualityComparer<T>.Default.GetHashCode({0})", val) : string.Format("{0}.GetHashCode()", val);
 
         private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
         {
@@ -48,6 +57,8 @@ namespace GlmSharpGenerator
                 yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : DefaultValue).Indent();
             yield return "}";
         }
+
+        public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseTypeInfo.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
 
         protected override IEnumerable<string> Body
         {
@@ -121,6 +132,32 @@ namespace GlmSharpGenerator
                     yield return string.Format("            case {0}: this.{1} = value; break;", c, "xyzw"[c]);
                 yield return "            default: throw new ArgumentOutOfRangeException(\"index\");";
                 yield return "        }";
+                yield return "    }";
+                yield return "}";
+
+                // Equality comparisons
+                foreach (var line in "Returns true iff this equals rhs component-wise.".AsComment()) yield return line;
+                yield return string.Format("public bool Equals({0} rhs) => {1};", ClassNameThat, CompString.Select(c => Comparer(c.ToString())).Aggregated(" && "));
+
+                foreach (var line in "Returns true iff this equals rhs type- and component-wise.".AsComment()) yield return line;
+                yield return "public override bool Equals(object obj)";
+                yield return "{";
+                yield return "    if (ReferenceEquals(null, obj)) return false;";
+                yield return string.Format("    return obj is {0} && Equals(({0}) obj);", ClassNameThat);
+                yield return "}";
+
+                foreach (var line in "Returns true iff this equals rhs component-wise.".AsComment()) yield return line;
+                yield return string.Format("public static bool operator ==({0} lhs, {0} rhs) => lhs.Equals(rhs);", ClassNameThat);
+
+                foreach (var line in "Returns true iff this does not equal rhs (component-wise).".AsComment()) yield return line;
+                yield return string.Format("public static bool operator !=({0} lhs, {0} rhs) => !lhs.Equals(rhs);", ClassNameThat);
+
+                foreach (var line in "Returns a hash code for this instance.".AsComment()) yield return line;
+                yield return "public override int GetHashCode()";
+                yield return "{";
+                yield return "    unchecked";
+                yield return "    {";
+                yield return "        return " + HashCodeFor(Components - 1) + ";";
                 yield return "    }";
                 yield return "}";
             }

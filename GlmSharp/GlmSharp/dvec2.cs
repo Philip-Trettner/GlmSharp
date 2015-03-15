@@ -6,7 +6,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct dvec2 : IReadOnlyList<double>
+    public struct dvec2 : IReadOnlyList<double>, IEquatable<dvec2>
     {
         
         /// <summary>
@@ -115,6 +115,41 @@ namespace GlmSharp
                     case 1: this.y = value; break;
                     default: throw new ArgumentOutOfRangeException("index");
                 }
+            }
+        }
+        
+        /// <summary>
+        /// Returns true iff this equals rhs component-wise.
+        /// </summary>
+        public bool Equals(dvec2 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y);
+        
+        /// <summary>
+        /// Returns true iff this equals rhs type- and component-wise.
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is dvec2 && Equals((dvec2) obj);
+        }
+        
+        /// <summary>
+        /// Returns true iff this equals rhs component-wise.
+        /// </summary>
+        public static bool operator ==(dvec2 lhs, dvec2 rhs) => lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns true iff this does not equal rhs (component-wise).
+        /// </summary>
+        public static bool operator !=(dvec2 lhs, dvec2 rhs) => !lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((x.GetHashCode()) * 397) ^ y.GetHashCode();
             }
         }
     }

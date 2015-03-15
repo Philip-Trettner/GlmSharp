@@ -6,7 +6,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct gvec2<T> : IReadOnlyList<T>
+    public struct gvec2<T> : IReadOnlyList<T>, IEquatable<gvec2<T>>
     {
         
         /// <summary>
@@ -115,6 +115,41 @@ namespace GlmSharp
                     case 1: this.y = value; break;
                     default: throw new ArgumentOutOfRangeException("index");
                 }
+            }
+        }
+        
+        /// <summary>
+        /// Returns true iff this equals rhs component-wise.
+        /// </summary>
+        public bool Equals(gvec2<T> rhs) => EqualityComparer<T>.Default.Equals(x, rhs.x) && EqualityComparer<T>.Default.Equals(y, rhs.y);
+        
+        /// <summary>
+        /// Returns true iff this equals rhs type- and component-wise.
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is gvec2<T> && Equals((gvec2<T>) obj);
+        }
+        
+        /// <summary>
+        /// Returns true iff this equals rhs component-wise.
+        /// </summary>
+        public static bool operator ==(gvec2<T> lhs, gvec2<T> rhs) => lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns true iff this does not equal rhs (component-wise).
+        /// </summary>
+        public static bool operator !=(gvec2<T> lhs, gvec2<T> rhs) => !lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((EqualityComparer<T>.Default.GetHashCode(x)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(y);
             }
         }
     }

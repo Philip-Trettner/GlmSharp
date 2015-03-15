@@ -25,6 +25,12 @@ namespace GlmSharpGenerator
             return cc.Length == 0 ? "" : cc.Aggregate((s1, s2) => s1 + ", " + s2);
         }
 
+        public static string Aggregated<T>(this IEnumerable<T> coll, string seperator)
+        {
+            var cc = coll.Select(c => c.ToString()).ToArray();
+            return cc.Length == 0 ? "" : cc.Aggregate((s1, s2) => s1 + seperator + s2);
+        }
+
         public static IEnumerable<string> AsComment(this string s, bool withTrailingEmptyLine = true)
         {
             if (withTrailingEmptyLine)

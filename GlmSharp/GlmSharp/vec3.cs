@@ -6,7 +6,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct vec3 : IReadOnlyList<float>
+    public struct vec3 : IReadOnlyList<float>, IEquatable<vec3>
     {
         
         /// <summary>
@@ -138,6 +138,41 @@ namespace GlmSharp
                     case 2: this.z = value; break;
                     default: throw new ArgumentOutOfRangeException("index");
                 }
+            }
+        }
+        
+        /// <summary>
+        /// Returns true iff this equals rhs component-wise.
+        /// </summary>
+        public bool Equals(vec3 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y) && z.Equals(rhs.z);
+        
+        /// <summary>
+        /// Returns true iff this equals rhs type- and component-wise.
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            return obj is vec3 && Equals((vec3) obj);
+        }
+        
+        /// <summary>
+        /// Returns true iff this equals rhs component-wise.
+        /// </summary>
+        public static bool operator ==(vec3 lhs, vec3 rhs) => lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns true iff this does not equal rhs (component-wise).
+        /// </summary>
+        public static bool operator !=(vec3 lhs, vec3 rhs) => !lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns a hash code for this instance.
+        /// </summary>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode();
             }
         }
     }
