@@ -82,5 +82,7 @@ namespace GlmSharpGenerator
         public string OneValue { get; set; } = "1";
 
         public int HashCodeMultiplier { get; set; } = 397;
+
+        public string ZeroValue => "default(" + Name + ")";
     }
 }

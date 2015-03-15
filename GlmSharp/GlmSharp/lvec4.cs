@@ -158,6 +158,91 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Explicitly converts this to a ivec2.
+        /// </summary>
+        public static explicit operator ivec2(lvec4 v) => new ivec2((int)v.x, (int)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a ivec3.
+        /// </summary>
+        public static explicit operator ivec3(lvec4 v) => new ivec3((int)v.x, (int)v.y, (int)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a ivec4.
+        /// </summary>
+        public static explicit operator ivec4(lvec4 v) => new ivec4((int)v.x, (int)v.y, (int)v.z, (int)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec2.
+        /// </summary>
+        public static explicit operator uvec2(lvec4 v) => new uvec2((uint)v.x, (uint)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec3.
+        /// </summary>
+        public static explicit operator uvec3(lvec4 v) => new uvec3((uint)v.x, (uint)v.y, (uint)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec4.
+        /// </summary>
+        public static explicit operator uvec4(lvec4 v) => new uvec4((uint)v.x, (uint)v.y, (uint)v.z, (uint)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a vec2.
+        /// </summary>
+        public static explicit operator vec2(lvec4 v) => new vec2((float)v.x, (float)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a vec3.
+        /// </summary>
+        public static explicit operator vec3(lvec4 v) => new vec3((float)v.x, (float)v.y, (float)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a vec4.
+        /// </summary>
+        public static explicit operator vec4(lvec4 v) => new vec4((float)v.x, (float)v.y, (float)v.z, (float)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec2.
+        /// </summary>
+        public static explicit operator dvec2(lvec4 v) => new dvec2((double)v.x, (double)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec3.
+        /// </summary>
+        public static explicit operator dvec3(lvec4 v) => new dvec3((double)v.x, (double)v.y, (double)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec4.
+        /// </summary>
+        public static explicit operator dvec4(lvec4 v) => new dvec4((double)v.x, (double)v.y, (double)v.z, (double)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec2.
+        /// </summary>
+        public static explicit operator lvec2(lvec4 v) => new lvec2((long)v.x, (long)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec3.
+        /// </summary>
+        public static explicit operator lvec3(lvec4 v) => new lvec3((long)v.x, (long)v.y, (long)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec2.
+        /// </summary>
+        public static explicit operator bvec2(lvec4 v) => new bvec2(v.x == default(long) ? false : true, v.y == default(long) ? false : true);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec3.
+        /// </summary>
+        public static explicit operator bvec3(lvec4 v) => new bvec3(v.x == default(long) ? false : true, v.y == default(long) ? false : true, v.z == default(long) ? false : true);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec4.
+        /// </summary>
+        public static explicit operator bvec4(lvec4 v) => new bvec4(v.x == default(long) ? false : true, v.y == default(long) ? false : true, v.z == default(long) ? false : true, v.w == default(long) ? false : true);
+        
+        /// <summary>
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         public IEnumerator<long> GetEnumerator()

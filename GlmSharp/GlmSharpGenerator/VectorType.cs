@@ -66,6 +66,17 @@ namespace GlmSharpGenerator
 
         public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
 
+        public string TypeCast(BaseTypeInfo otherType, string c)
+        {
+            if (otherType.HasArithmetics && BaseTypeInfo.HasLogicOps)
+                return string.Format("{0} ? {1} : {2}", c, otherType.OneValue, otherType.ZeroValue);
+
+            if (otherType.HasLogicOps && BaseTypeInfo.HasArithmetics)
+                return string.Format("{0} == {1} ? false : true", c, BaseTypeInfo.ZeroValue);
+
+            return string.Format("({0}){1}", otherType.Name, c);
+        }
+
         protected override IEnumerable<string> Body
         {
             get
@@ -108,16 +119,39 @@ namespace GlmSharpGenerator
                 for (var comps = 2; comps <= 4; ++comps)
                 {
                     foreach (var line in Constructor("from-vector constructor (empty fields are zero/false)",
-                        Name + comps + GenericSuffic + " v",
+                        Name + comps + GenericSuffix + " v",
                         "v".DotComp(comps)))
                         yield return line;
 
                     for (var ucomps = comps; ucomps < Components; ++ucomps)
                         foreach (var line in Constructor("from-vector-and-value constructor (empty fields are zero/false)",
-                            Name + comps + GenericSuffic + " v, " + SubCompParameterString(comps, ucomps),
+                            Name + comps + GenericSuffix + " v, " + SubCompParameterString(comps, ucomps),
                             "v".DotComp(comps).Concat(SubCompArgs(comps, ucomps))))
                             yield return line;
                 }
+
+                // explicit casts
+                foreach (var oType in BaseTypeInfo.Types)
+                {
+                    var otherType = oType;
+                    if (otherType.Generic != BaseTypeInfo.Generic)
+                        continue; // cannot mix generic/non-generic
+
+                    for (var comps = 2; comps <= 4; ++comps)
+                    {
+                        if (otherType == BaseTypeInfo && comps == Components)
+                            continue; // same type and comps not useful
+
+                        var commentAppendix = "";
+                        if (comps > Components)
+                            commentAppendix = " (Higher components are zeroed)";
+                        var targetType = otherType.Prefix + "vec" + comps;
+                        var targetTypeThat = otherType.Prefix + "vec" + comps + GenericSuffix;
+                        foreach (var line in string.Format("Explicitly converts this to a {0}.{1}", targetType, commentAppendix).AsComment()) yield return line;
+                        yield return string.Format("public static explicit operator {0}({1} v) => new {0}({2});", targetTypeThat, ClassNameThat, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(comps, otherType.ZeroValue).CommaSeparated());
+                    }
+                }
+
 
                 // IEnumerable
                 foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;

@@ -120,6 +120,91 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Explicitly converts this to a ivec2.
+        /// </summary>
+        public static explicit operator ivec2(vec3 v) => new ivec2((int)v.x, (int)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a ivec3.
+        /// </summary>
+        public static explicit operator ivec3(vec3 v) => new ivec3((int)v.x, (int)v.y, (int)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a ivec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator ivec4(vec3 v) => new ivec4((int)v.x, (int)v.y, (int)v.z, default(int));
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec2.
+        /// </summary>
+        public static explicit operator uvec2(vec3 v) => new uvec2((uint)v.x, (uint)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec3.
+        /// </summary>
+        public static explicit operator uvec3(vec3 v) => new uvec3((uint)v.x, (uint)v.y, (uint)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator uvec4(vec3 v) => new uvec4((uint)v.x, (uint)v.y, (uint)v.z, default(uint));
+        
+        /// <summary>
+        /// Explicitly converts this to a vec2.
+        /// </summary>
+        public static explicit operator vec2(vec3 v) => new vec2((float)v.x, (float)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a vec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator vec4(vec3 v) => new vec4((float)v.x, (float)v.y, (float)v.z, default(float));
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec2.
+        /// </summary>
+        public static explicit operator dvec2(vec3 v) => new dvec2((double)v.x, (double)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec3.
+        /// </summary>
+        public static explicit operator dvec3(vec3 v) => new dvec3((double)v.x, (double)v.y, (double)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator dvec4(vec3 v) => new dvec4((double)v.x, (double)v.y, (double)v.z, default(double));
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec2.
+        /// </summary>
+        public static explicit operator lvec2(vec3 v) => new lvec2((long)v.x, (long)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec3.
+        /// </summary>
+        public static explicit operator lvec3(vec3 v) => new lvec3((long)v.x, (long)v.y, (long)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator lvec4(vec3 v) => new lvec4((long)v.x, (long)v.y, (long)v.z, default(long));
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec2.
+        /// </summary>
+        public static explicit operator bvec2(vec3 v) => new bvec2(v.x == default(float) ? false : true, v.y == default(float) ? false : true);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec3.
+        /// </summary>
+        public static explicit operator bvec3(vec3 v) => new bvec3(v.x == default(float) ? false : true, v.y == default(float) ? false : true, v.z == default(float) ? false : true);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator bvec4(vec3 v) => new bvec4(v.x == default(float) ? false : true, v.y == default(float) ? false : true, v.z == default(float) ? false : true, default(bool));
+        
+        /// <summary>
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         public IEnumerator<float> GetEnumerator()

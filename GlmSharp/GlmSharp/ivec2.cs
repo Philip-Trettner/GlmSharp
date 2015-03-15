@@ -95,6 +95,91 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Explicitly converts this to a ivec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator ivec3(ivec2 v) => new ivec3((int)v.x, (int)v.y, default(int));
+        
+        /// <summary>
+        /// Explicitly converts this to a ivec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator ivec4(ivec2 v) => new ivec4((int)v.x, (int)v.y, default(int), default(int));
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec2.
+        /// </summary>
+        public static explicit operator uvec2(ivec2 v) => new uvec2((uint)v.x, (uint)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator uvec3(ivec2 v) => new uvec3((uint)v.x, (uint)v.y, default(uint));
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator uvec4(ivec2 v) => new uvec4((uint)v.x, (uint)v.y, default(uint), default(uint));
+        
+        /// <summary>
+        /// Explicitly converts this to a vec2.
+        /// </summary>
+        public static explicit operator vec2(ivec2 v) => new vec2((float)v.x, (float)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a vec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator vec3(ivec2 v) => new vec3((float)v.x, (float)v.y, default(float));
+        
+        /// <summary>
+        /// Explicitly converts this to a vec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator vec4(ivec2 v) => new vec4((float)v.x, (float)v.y, default(float), default(float));
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec2.
+        /// </summary>
+        public static explicit operator dvec2(ivec2 v) => new dvec2((double)v.x, (double)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator dvec3(ivec2 v) => new dvec3((double)v.x, (double)v.y, default(double));
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator dvec4(ivec2 v) => new dvec4((double)v.x, (double)v.y, default(double), default(double));
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec2.
+        /// </summary>
+        public static explicit operator lvec2(ivec2 v) => new lvec2((long)v.x, (long)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator lvec3(ivec2 v) => new lvec3((long)v.x, (long)v.y, default(long));
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator lvec4(ivec2 v) => new lvec4((long)v.x, (long)v.y, default(long), default(long));
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec2.
+        /// </summary>
+        public static explicit operator bvec2(ivec2 v) => new bvec2(v.x == default(int) ? false : true, v.y == default(int) ? false : true);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator bvec3(ivec2 v) => new bvec3(v.x == default(int) ? false : true, v.y == default(int) ? false : true, default(bool));
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator bvec4(ivec2 v) => new bvec4(v.x == default(int) ? false : true, v.y == default(int) ? false : true, default(bool), default(bool));
+        
+        /// <summary>
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         public IEnumerator<int> GetEnumerator()

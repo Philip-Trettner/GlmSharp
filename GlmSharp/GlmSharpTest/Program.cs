@@ -14,6 +14,7 @@ namespace GlmSharpTest
             vec4 v = new vec4();
             vec3 vv = v.swizzle.zxy;
             vv = vv.swizzle.bgr;
+            ivec2 iv = (ivec2) v;
         }
     }
 }

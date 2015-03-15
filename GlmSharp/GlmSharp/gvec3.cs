@@ -100,6 +100,16 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Explicitly converts this to a gvec2.
+        /// </summary>
+        public static explicit operator gvec2<T>(gvec3<T> v) => new gvec2<T>((T)v.x, (T)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a gvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator gvec4<T>(gvec3<T> v) => new gvec4<T>((T)v.x, (T)v.y, (T)v.z, default(T));
+        
+        /// <summary>
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         public IEnumerator<T> GetEnumerator()

@@ -56,6 +56,13 @@ namespace GlmSharpGenerator
         {
             for (var i = 0; i < maxComp; ++i)
                 yield return i == arg ? imp : nonimp;
-        } 
+        }
+
+        public static IEnumerable<T> ExactlyN<T>(this IEnumerable<T> coll, int n, T obj)
+        {
+            var it = coll.GetEnumerator();
+            for (var i = 0; i < n; ++i)
+                yield return it.MoveNext() ? it.Current : obj;
+        }
     }
 }
