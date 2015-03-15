@@ -200,5 +200,50 @@ namespace GlmSharp
                 return ((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the minimal component of this vector.
+        /// </summary>
+        public int MinElement => Math.Min(Math.Min(x, y), z);
+        
+        /// <summary>
+        /// Returns the maximal component of this vector.
+        /// </summary>
+        public int MaxElement => Math.Max(Math.Max(x, y), z);
+        
+        /// <summary>
+        /// Returns the euclidean length of this vector.
+        /// </summary>
+        public float Length => (float)Math.Sqrt(x*x + y*y + z*z);
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this vector.
+        /// </summary>
+        public float LengthSqr => x*x + y*y + z*z;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this vector.
+        /// </summary>
+        public float Norm => (float)Math.Sqrt(x*x + y*y + z*z);
+        
+        /// <summary>
+        /// Returns the one-norm of this vector.
+        /// </summary>
+        public float Norm1 => Math.Abs(x) + Math.Abs(y) + Math.Abs(z);
+        
+        /// <summary>
+        /// Returns the two-norm of this vector.
+        /// </summary>
+        public float Norm2 => (float)Math.Sqrt(x*x + y*y + z*z);
+        
+        /// <summary>
+        /// Returns the max-norm of this vector.
+        /// </summary>
+        public int NormMax => Math.Max(Math.Max(Math.Abs(x), Math.Abs(y)), Math.Abs(z));
+        
+        /// <summary>
+        /// Returns the p-norm of this vector.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow(Math.Abs(x), p) + Math.Pow(Math.Abs(y), p) + Math.Pow(Math.Abs(z), p), 1 / p);
     }
 }

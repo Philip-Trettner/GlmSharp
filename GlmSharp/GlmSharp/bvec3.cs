@@ -200,5 +200,15 @@ namespace GlmSharp
                 return ((((x.GetHashCode()) * 2) ^ y.GetHashCode()) * 2) ^ z.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the minimal component of this vector.
+        /// </summary>
+        public bool MinElement => x && y && z;
+        
+        /// <summary>
+        /// Returns the maximal component of this vector.
+        /// </summary>
+        public bool MaxElement => x || y || z;
     }
 }

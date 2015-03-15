@@ -30,7 +30,8 @@ namespace GlmSharpGenerator
         public static readonly BaseTypeInfo TypeUint = new BaseTypeInfo
         {
             Name = "uint",
-            Prefix = "u"
+            Prefix = "u",
+            RequiredAbs = false
         };
         public static readonly BaseTypeInfo TypeFloat = new BaseTypeInfo
         {
@@ -54,16 +55,17 @@ namespace GlmSharpGenerator
         {
             Name = "bool",
             Prefix = "b",
-            Arithmetics = false,
+            HasArithmetics = false,
             HashCodeMultiplier = 2,
-            OneValue = "true"
+            OneValue = "true",
+            HasLogicOps = true
         };
         public static readonly BaseTypeInfo TypeGeneric = new BaseTypeInfo
         {
             Name = "T",
             Prefix = "g",
             Generic = true,
-            Arithmetics = false,
+            HasArithmetics = false,
             OneValue = null
         };
 
@@ -71,8 +73,11 @@ namespace GlmSharpGenerator
         public string Prefix { get; set; }
         public bool Generic { get; set; }
 
-        public bool Arithmetics { get; set; } = true;
+        public bool HasArithmetics { get; set; } = true;
         public string LengthType { get; set; } = "float";
+        public bool RequiredAbs { get; set; } = true;
+
+        public bool HasLogicOps { get; set; }
 
         public string OneValue { get; set; } = "1";
 

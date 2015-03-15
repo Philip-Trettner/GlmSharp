@@ -32,6 +32,10 @@ namespace GlmSharpGenerator
         public string DefaultValue => "default(" + BaseType + ")";
 
         public char ArgOf(int c) => "xyzw"[c];
+        public string ArgOfs(int c) => "xyzw"[c].ToString();
+
+        public string AbsString(string s) => BaseTypeInfo.RequiredAbs ? string.Format("Math.Abs({0})", s) : s;
+        public string AbsString(char s) => BaseTypeInfo.RequiredAbs ? string.Format("Math.Abs({0})", s) : s.ToString();
 
         public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseType + " " + c);
         public string SubCompParameterString(int start, int end) => SubCompParameters(start, end).CommaSeparated();
@@ -59,6 +63,8 @@ namespace GlmSharpGenerator
         }
 
         public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseTypeInfo.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
+
+        public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
 
         protected override IEnumerable<string> Body
         {
@@ -176,6 +182,49 @@ namespace GlmSharpGenerator
                 yield return "        return " + HashCodeFor(Components - 1) + ";";
                 yield return "    }";
                 yield return "}";
+
+                // Logicals
+                if (BaseTypeInfo.HasLogicOps)
+                {
+                    foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} MinElement => {1};", BaseType, CompString.Aggregated(" && "));
+
+                    foreach (var line in "Returns the maximal component of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} MaxElement => {1};", BaseType, CompString.Aggregated(" || "));
+                }
+
+                // Arithmetics
+                if (BaseTypeInfo.HasArithmetics)
+                {
+                    var lengthType = BaseTypeInfo.LengthType;
+
+                    foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} MinElement => {1};", BaseType, NestedBiFuncFor("Math.Min({0}, {1})", Components - 1, ArgOfs));
+
+                    foreach (var line in "Returns the maximal component of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} MaxElement => {1};", BaseType, NestedBiFuncFor("Math.Max({0}, {1})", Components - 1, ArgOfs));
+
+                    foreach (var line in "Returns the euclidean length of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Length => ({0})Math.Sqrt({1});", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+
+                    foreach (var line in "Returns the squared euclidean length of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} LengthSqr => {1};", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+
+                    foreach (var line in "Returns the euclidean norm of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Norm => ({0})Math.Sqrt({1});", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+
+                    foreach (var line in "Returns the one-norm of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Norm1 => {1};", lengthType, CompString.Select(AbsString).Aggregated(" + "));
+
+                    foreach (var line in "Returns the two-norm of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Norm2 => ({0})Math.Sqrt({1});", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+
+                    foreach (var line in "Returns the max-norm of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public {0} NormMax => {1};", BaseType, NestedBiFuncFor("Math.Max({0}, {1})", Components - 1, c => AbsString(ArgOfs(c))));
+
+                    foreach (var line in "Returns the p-norm of this vector.".AsComment()) yield return line;
+                    yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", CompString.Select(c => string.Format("Math.Pow({0}, p)", AbsString(c))).Aggregated(" + "));
+                }
             }
         }
 

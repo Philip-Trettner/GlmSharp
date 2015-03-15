@@ -241,5 +241,50 @@ namespace GlmSharp
                 return ((((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode()) * 397) ^ w.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the minimal component of this vector.
+        /// </summary>
+        public long MinElement => Math.Min(Math.Min(Math.Min(x, y), z), w);
+        
+        /// <summary>
+        /// Returns the maximal component of this vector.
+        /// </summary>
+        public long MaxElement => Math.Max(Math.Max(Math.Max(x, y), z), w);
+        
+        /// <summary>
+        /// Returns the euclidean length of this vector.
+        /// </summary>
+        public double Length => (double)Math.Sqrt(x*x + y*y + z*z + w*w);
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this vector.
+        /// </summary>
+        public double LengthSqr => x*x + y*y + z*z + w*w;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this vector.
+        /// </summary>
+        public double Norm => (double)Math.Sqrt(x*x + y*y + z*z + w*w);
+        
+        /// <summary>
+        /// Returns the one-norm of this vector.
+        /// </summary>
+        public double Norm1 => Math.Abs(x) + Math.Abs(y) + Math.Abs(z) + Math.Abs(w);
+        
+        /// <summary>
+        /// Returns the two-norm of this vector.
+        /// </summary>
+        public double Norm2 => (double)Math.Sqrt(x*x + y*y + z*z + w*w);
+        
+        /// <summary>
+        /// Returns the max-norm of this vector.
+        /// </summary>
+        public long NormMax => Math.Max(Math.Max(Math.Max(Math.Abs(x), Math.Abs(y)), Math.Abs(z)), Math.Abs(w));
+        
+        /// <summary>
+        /// Returns the p-norm of this vector.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow(Math.Abs(x), p) + Math.Pow(Math.Abs(y), p) + Math.Pow(Math.Abs(z), p) + Math.Pow(Math.Abs(w), p), 1 / p);
     }
 }
