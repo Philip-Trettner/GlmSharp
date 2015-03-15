@@ -13,8 +13,9 @@ namespace GlmSharpGenerator
         public abstract string ClassName { get; }
         public string ClassNameThat => ClassName + GenericSuffic;
         public string GenericSuffic => IsGeneric ? "<T>" : "";
+        public BaseTypeInfo BaseTypeInfo { get; set; }
 
-        public bool IsGeneric { get; set; }
+        public bool IsGeneric => BaseTypeInfo.Generic;
 
         public virtual IEnumerable<string> BaseClasses { get { yield break; } }
 

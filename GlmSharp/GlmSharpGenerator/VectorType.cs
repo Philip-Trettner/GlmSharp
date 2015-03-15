@@ -35,7 +35,7 @@ namespace GlmSharpGenerator
         public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
         public string SubCompArgString(int start, int end) => SubCompArgs(start, end).CommaSeparated();
 
-        public SwizzleType SwizzleType => new SwizzleType { BaseType = BaseType, BaseName = Name, Components = Components, Name = "swizzle_" + Name, IsGeneric = IsGeneric };
+        public SwizzleType SwizzleType => new SwizzleType { BaseType = BaseType, BaseName = Name, Components = Components, Name = "swizzle_" + Name, BaseTypeInfo = BaseTypeInfo };
 
         private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
         {
@@ -125,5 +125,6 @@ namespace GlmSharpGenerator
                 yield return "}";
             }
         }
+
     }
 }

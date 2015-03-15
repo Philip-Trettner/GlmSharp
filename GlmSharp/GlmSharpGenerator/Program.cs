@@ -11,20 +11,6 @@ namespace GlmSharpGenerator
     {
         public static readonly Dictionary<string, TypeBase> Types = new Dictionary<string, TypeBase>();
 
-        static IEnumerable<string> SupportedTypes
-        {
-            get
-            {
-                yield return "int";
-                yield return "uint";
-                yield return "float";
-                yield return "bool";
-                yield return "double";
-                yield return "long";
-                yield return "T";
-            }
-        }
-
         static void Main(string[] args)
         {
             if (args.Length != 1)
@@ -35,18 +21,15 @@ namespace GlmSharpGenerator
             var path = args[0];
 
             Console.WriteLine("GlmSharp Generator");
-            foreach (var type in SupportedTypes)
+            foreach (var type in BaseTypeInfo.Types)
                 for (var comp = 2; comp <= 4; ++comp)
                 {
-                    var name = type.StartsWith("f") ? "vec" : type[0] + "vec";
-                    if (type == "T")
-                        name = "gvec";
                     var vect = new VectorType
                     {
-                        Name = name,
+                        Name = type.Prefix + "vec",
                         Components = comp,
-                        BaseType = type,
-                        IsGeneric = type == "T"
+                        BaseTypeInfo = type,
+                        BaseType = type.Name
                     };
                     var swizzler = vect.SwizzleType;
                     Types.Add(vect.ClassName, vect);

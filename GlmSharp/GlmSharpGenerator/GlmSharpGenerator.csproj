@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTypeInfo.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="SwizzleType.cs" />
     <Compile Include="TypeBase.cs" />
