@@ -4,70 +4,64 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct vec3
+    public struct lvec2
     {
-        public float x;
-        public float y;
-        public float z;
+        public long x;
+        public long y;
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
         /// </summary>
-        public swizzle_vec3 swizzle => new swizzle_vec3(x, y, z);
+        public swizzle_lvec2 swizzle => new swizzle_lvec2(x, y);
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
-        public float[] Values => new[] { x, y, z };
+        public long[] Values => new[] { x, y };
         
         /// <summary>
         /// Component-wise constructor
         /// </summary>
-        public vec3(float x, float y, float z)
+        public lvec2(long x, long y)
         {
             this.x = x;
             this.y = y;
-            this.z = z;
         }
         
         /// <summary>
         /// all-same-value constructor
         /// </summary>
-        public vec3(float v)
+        public lvec2(long v)
         {
             this.x = v;
             this.y = v;
-            this.z = v;
         }
         
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public vec3(vec2 v)
+        public lvec2(lvec2 v)
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(float);
         }
         
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public vec3(vec3 v)
+        public lvec2(lvec3 v)
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = v.z;
         }
         
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public vec3(vec4 v)
+        public lvec2(lvec4 v)
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = v.z;
         }
     }
 }

@@ -4,26 +4,26 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct vec3
+    public struct lvec3
     {
-        public float x;
-        public float y;
-        public float z;
+        public long x;
+        public long y;
+        public long z;
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
         /// </summary>
-        public swizzle_vec3 swizzle => new swizzle_vec3(x, y, z);
+        public swizzle_lvec3 swizzle => new swizzle_lvec3(x, y, z);
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
-        public float[] Values => new[] { x, y, z };
+        public long[] Values => new[] { x, y, z };
         
         /// <summary>
         /// Component-wise constructor
         /// </summary>
-        public vec3(float x, float y, float z)
+        public lvec3(long x, long y, long z)
         {
             this.x = x;
             this.y = y;
@@ -33,7 +33,7 @@ namespace GlmSharp
         /// <summary>
         /// all-same-value constructor
         /// </summary>
-        public vec3(float v)
+        public lvec3(long v)
         {
             this.x = v;
             this.y = v;
@@ -43,17 +43,17 @@ namespace GlmSharp
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public vec3(vec2 v)
+        public lvec3(lvec2 v)
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(float);
+            this.z = default(long);
         }
         
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public vec3(vec3 v)
+        public lvec3(lvec3 v)
         {
             this.x = v.x;
             this.y = v.y;
@@ -63,7 +63,7 @@ namespace GlmSharp
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public vec3(vec4 v)
+        public lvec3(lvec4 v)
         {
             this.x = v.x;
             this.y = v.y;

@@ -9,12 +9,59 @@ namespace GlmSharp
         public uint x;
         public uint y;
         
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
         public swizzle_uvec2 swizzle => new swizzle_uvec2(x, y);
         
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public uint[] Values => new[] { x, y };
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
         public uvec2(uint x, uint y)
         {
             this.x = x;
             this.y = y;
+        }
+        
+        /// <summary>
+        /// all-same-value constructor
+        /// </summary>
+        public uvec2(uint v)
+        {
+            this.x = v;
+            this.y = v;
+        }
+        
+        /// <summary>
+        /// from-vector constructor (empty fields are zero/false)
+        /// </summary>
+        public uvec2(uvec2 v)
+        {
+            this.x = v.x;
+            this.y = v.y;
+        }
+        
+        /// <summary>
+        /// from-vector constructor (empty fields are zero/false)
+        /// </summary>
+        public uvec2(uvec3 v)
+        {
+            this.x = v.x;
+            this.y = v.y;
+        }
+        
+        /// <summary>
+        /// from-vector constructor (empty fields are zero/false)
+        /// </summary>
+        public uvec2(uvec4 v)
+        {
+            this.x = v.x;
+            this.y = v.y;
         }
     }
 }

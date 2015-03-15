@@ -20,6 +20,7 @@ namespace GlmSharpGenerator
                 yield return "float";
                 yield return "bool";
                 yield return "double";
+                yield return "long";
             }
         }
 
