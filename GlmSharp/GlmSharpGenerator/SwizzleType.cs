@@ -17,18 +17,34 @@ namespace GlmSharpGenerator
 
         private IEnumerable<string> Swizzle(int i)
         {
-            if (i >= Components)
+            if (i >= 4)
             {
                 yield return "";
                 yield break;
             }
+            
+            if (i > 1)
+                yield return "";
 
             for (var a = 0; a < Components; ++a)
                 foreach (var sw in Swizzle(i + 1))
                     yield return "xyzw"[a] + sw;
+        }
 
-            if (i > 1)
-                yield return "";
+        private static string ToRgba(string xyzw)
+        {
+            var s = "";
+            foreach (var c in xyzw)
+            {
+                switch (c)
+                {
+                    case 'x': s += 'r'; break;
+                    case 'y': s += 'g'; break;
+                    case 'z': s += 'b'; break;
+                    case 'w': s += 'a'; break;
+                }
+            }
+            return s;
         }
 
         protected override IEnumerable<string> Body
@@ -49,8 +65,13 @@ namespace GlmSharpGenerator
 
                 // swizzle
                 yield return "";
+                yield return "// XYZW Versions";
                 foreach (var swizzle in Swizzle(0))
                     yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", BaseName, swizzle.Length + GenericSuffic, swizzle, swizzle.CommaSeparated());
+                yield return "";
+                yield return "// RGBA Versions";
+                foreach (var swizzle in Swizzle(0))
+                    yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", BaseName, swizzle.Length + GenericSuffic, ToRgba(swizzle), swizzle.CommaSeparated());
             }
         }
     }
