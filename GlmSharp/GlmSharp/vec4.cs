@@ -159,6 +159,16 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Implicitly converts this to a dvec4.
+        /// </summary>
+        public static implicit operator dvec4(vec4 v) => new dvec4((double)v.x, (double)v.y, (double)v.z, (double)v.w);
+        
+        /// <summary>
+        /// Implicitly converts this to a cvec4.
+        /// </summary>
+        public static implicit operator cvec4(vec4 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, (Complex)v.w);
+        
+        /// <summary>
         /// Explicitly converts this to a ivec2.
         /// </summary>
         public static explicit operator ivec2(vec4 v) => new ivec2((int)v.x, (int)v.y);
@@ -209,11 +219,6 @@ namespace GlmSharp
         public static explicit operator dvec3(vec4 v) => new dvec3((double)v.x, (double)v.y, (double)v.z);
         
         /// <summary>
-        /// Explicitly converts this to a dvec4.
-        /// </summary>
-        public static explicit operator dvec4(vec4 v) => new dvec4((double)v.x, (double)v.y, (double)v.z, (double)v.w);
-        
-        /// <summary>
         /// Explicitly converts this to a decvec2.
         /// </summary>
         public static explicit operator decvec2(vec4 v) => new decvec2((decimal)v.x, (decimal)v.y);
@@ -237,11 +242,6 @@ namespace GlmSharp
         /// Explicitly converts this to a cvec3.
         /// </summary>
         public static explicit operator cvec3(vec4 v) => new cvec3((Complex)v.x, (Complex)v.y, (Complex)v.z);
-        
-        /// <summary>
-        /// Explicitly converts this to a cvec4.
-        /// </summary>
-        public static explicit operator cvec4(vec4 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, (Complex)v.w);
         
         /// <summary>
         /// Explicitly converts this to a lvec2.
@@ -424,6 +424,46 @@ namespace GlmSharp
         public static vec4 operator+(float lhs, vec4 rhs) => new vec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
         
         /// <summary>
+        /// Executes a component-wise + (add) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator+(vec4 lhs, dvec4 rhs) => new dvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator+(dvec4 lhs, vec4 rhs) => new dvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator+(vec4 lhs, double rhs) => new dvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator+(double lhs, vec4 rhs) => new dvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator+(vec4 lhs, cvec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator+(cvec4 lhs, vec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator+(vec4 lhs, Complex rhs) => new cvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator+(Complex lhs, vec4 rhs) => new cvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
         /// Executes a component-wise - (subtract).
         /// </summary>
         public static vec4 operator-(vec4 lhs, vec4 rhs) => new vec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
@@ -437,6 +477,46 @@ namespace GlmSharp
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static vec4 operator-(float lhs, vec4 rhs) => new vec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator-(vec4 lhs, dvec4 rhs) => new dvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator-(dvec4 lhs, vec4 rhs) => new dvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator-(vec4 lhs, double rhs) => new dvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator-(double lhs, vec4 rhs) => new dvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator-(vec4 lhs, cvec4 rhs) => new cvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator-(cvec4 lhs, vec4 rhs) => new cvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator-(vec4 lhs, Complex rhs) => new cvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator-(Complex lhs, vec4 rhs) => new cvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
         
         /// <summary>
         /// Executes a component-wise / (divide).
@@ -454,6 +534,46 @@ namespace GlmSharp
         public static vec4 operator/(float lhs, vec4 rhs) => new vec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
         
         /// <summary>
+        /// Executes a component-wise / (divide) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator/(vec4 lhs, dvec4 rhs) => new dvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator/(dvec4 lhs, vec4 rhs) => new dvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator/(vec4 lhs, double rhs) => new dvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator/(double lhs, vec4 rhs) => new dvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator/(vec4 lhs, cvec4 rhs) => new cvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator/(cvec4 lhs, vec4 rhs) => new cvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator/(vec4 lhs, Complex rhs) => new cvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator/(Complex lhs, vec4 rhs) => new cvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
         /// Executes a component-wise * (multiply).
         /// </summary>
         public static vec4 operator*(vec4 lhs, vec4 rhs) => new vec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
@@ -467,6 +587,46 @@ namespace GlmSharp
         /// Executes a component-wise * (multiply) with a scalar.
         /// </summary>
         public static vec4 operator*(float lhs, vec4 rhs) => new vec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator*(vec4 lhs, dvec4 rhs) => new dvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator*(dvec4 lhs, vec4 rhs) => new dvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator*(vec4 lhs, double rhs) => new dvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar (upcast to dvec4).
+        /// </summary>
+        public static dvec4 operator*(double lhs, vec4 rhs) => new dvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator*(vec4 lhs, cvec4 rhs) => new cvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator*(cvec4 lhs, vec4 rhs) => new cvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator*(vec4 lhs, Complex rhs) => new cvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar (upcast to cvec4).
+        /// </summary>
+        public static cvec4 operator*(Complex lhs, vec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
         
         /// <summary>
         /// Executes a component-wise lesser-than comparison.

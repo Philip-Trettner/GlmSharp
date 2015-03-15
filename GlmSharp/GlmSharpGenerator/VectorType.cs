@@ -99,6 +99,21 @@ namespace GlmSharpGenerator
             => string.Format("public static {0} operator{2}({3} lhs, {0} rhs) => new {0}({1});", ClassNameThat,
                     CompString.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, scalarType);
 
+        public string ComponentWiseOperatorForeign(string op, string returnType)
+            => string.Format("public static {3} operator{2}({0} lhs, {3} rhs) => new {3}({1});", ClassNameThat,
+                    CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, returnType);
+        public string ComponentWiseOperatorForeignL(string op, string returnType)
+            => string.Format("public static {3} operator{2}({3} lhs, {0} rhs) => new {3}({1});", ClassNameThat,
+                    CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, returnType);
+
+        public string ComponentWiseOperatorForeignScalar(string op, string scalarType, string returnType)
+            => string.Format("public static {4} operator{2}({0} lhs, {3} rhs) => new {4}({1});", ClassNameThat,
+                    CompString.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, scalarType, returnType);
+
+        public string ComponentWiseOperatorForeignScalarL(string op, string scalarType, string returnType)
+            => string.Format("public static {4} operator{2}({3} lhs, {0} rhs) => new {4}({1});", ClassNameThat,
+                    CompString.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, scalarType, returnType);
+
         public string ComparisonOperator(string op)
             => string.Format("public static bvec{3} operator{2}({0} lhs, {0} rhs) => new bvec{3}({1});", ClassNameThat,
                     CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, Components);
@@ -164,6 +179,20 @@ namespace GlmSharpGenerator
                             yield return line;
                 }
 
+                // implicit upcasts
+                var implicits = new HashSet<BaseTypeInfo>();
+                var upcasts = BaseTypeInfo.Upcasts;
+                foreach (var ukvp in upcasts.Where(k => k.Key == BaseTypeInfo))
+                {
+                    var otherType = ukvp.Value;
+                    implicits.Add(otherType);
+
+                    var targetType = otherType.Prefix + "vec" + Components;
+                    var targetTypeThat = otherType.Prefix + "vec" + Components + GenericSuffix;
+                    foreach (var line in string.Format("Implicitly converts this to a {0}.", targetType).AsComment()) yield return line;
+                    yield return string.Format("public static implicit operator {0}({1} v) => new {0}({2});", targetTypeThat, ClassNameThat, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(Components, otherType.ZeroValue).CommaSeparated());
+                }
+
                 // explicit casts
                 foreach (var oType in BaseTypeInfo.Types)
                 {
@@ -178,6 +207,9 @@ namespace GlmSharpGenerator
                         if (otherType == BaseTypeInfo && comps == Components)
                             continue; // same type and comps not useful
 
+                        if (comps == Components && implicits.Contains(otherType))
+                            continue; // already has an implicit conversion
+
                         var commentAppendix = "";
                         if (comps > Components)
                             commentAppendix = " (Higher components are zeroed)";
@@ -187,7 +219,6 @@ namespace GlmSharpGenerator
                         yield return string.Format("public static explicit operator {0}({1} v) => new {0}({2});", targetTypeThat, ClassNameThat, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(comps, otherType.ZeroValue).CommaSeparated());
                     }
                 }
-
 
                 // IEnumerable
                 foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
@@ -313,8 +344,6 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns the p-norm of this vector.".AsComment()) yield return line;
                     yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", CompString.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
 
-                    var upcasts = BaseTypeInfo.Upcasts;
-
                     // arithmetic operators
                     foreach (var kvp in new Dictionary<string, string>
                     {
@@ -337,8 +366,17 @@ namespace GlmSharpGenerator
                         // upcasts
                         foreach (var ukvp in upcasts.Where(k => k.Key == BaseTypeInfo))
                         {
-                            var upType = kvp.Value;
-                            // TODO
+                            var upType = ukvp.Value;
+                            var foreignType = upType.Prefix + "vec" + Components + GenericSuffix;
+
+                            foreach (var line in string.Format("Executes a component-wise {0} (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorForeign(op, foreignType);
+                            foreach (var line in string.Format("Executes a component-wise {0} (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorForeignL(op, foreignType);
+                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorForeignScalar(op, upType.Name, foreignType);
+                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorForeignScalarL(op, upType.Name, foreignType);
                         }
                     }
 

@@ -96,6 +96,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Implicitly converts this to a decvec2.
+        /// </summary>
+        public static implicit operator decvec2(lvec2 v) => new decvec2((decimal)v.x, (decimal)v.y);
+        
+        /// <summary>
         /// Explicitly converts this to a ivec2.
         /// </summary>
         public static explicit operator ivec2(lvec2 v) => new ivec2((int)v.x, (int)v.y);
@@ -154,11 +159,6 @@ namespace GlmSharp
         /// Explicitly converts this to a dvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator dvec4(lvec2 v) => new dvec4((double)v.x, (double)v.y, default(double), default(double));
-        
-        /// <summary>
-        /// Explicitly converts this to a decvec2.
-        /// </summary>
-        public static explicit operator decvec2(lvec2 v) => new decvec2((decimal)v.x, (decimal)v.y);
         
         /// <summary>
         /// Explicitly converts this to a decvec3. (Higher components are zeroed)
@@ -355,6 +355,26 @@ namespace GlmSharp
         public static lvec2 operator+(long lhs, lvec2 rhs) => new lvec2(lhs + rhs.x, lhs + rhs.y);
         
         /// <summary>
+        /// Executes a component-wise + (add) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator+(lvec2 lhs, decvec2 rhs) => new decvec2(lhs.x + rhs.x, lhs.y + rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator+(decvec2 lhs, lvec2 rhs) => new decvec2(lhs.x + rhs.x, lhs.y + rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator+(lvec2 lhs, decimal rhs) => new decvec2(lhs.x + rhs, lhs.y + rhs);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator+(decimal lhs, lvec2 rhs) => new decvec2(lhs + rhs.x, lhs + rhs.y);
+        
+        /// <summary>
         /// Executes a component-wise - (subtract).
         /// </summary>
         public static lvec2 operator-(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x - rhs.x, lhs.y - rhs.y);
@@ -368,6 +388,26 @@ namespace GlmSharp
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static lvec2 operator-(long lhs, lvec2 rhs) => new lvec2(lhs - rhs.x, lhs - rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator-(lvec2 lhs, decvec2 rhs) => new decvec2(lhs.x - rhs.x, lhs.y - rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator-(decvec2 lhs, lvec2 rhs) => new decvec2(lhs.x - rhs.x, lhs.y - rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator-(lvec2 lhs, decimal rhs) => new decvec2(lhs.x - rhs, lhs.y - rhs);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator-(decimal lhs, lvec2 rhs) => new decvec2(lhs - rhs.x, lhs - rhs.y);
         
         /// <summary>
         /// Executes a component-wise / (divide).
@@ -385,6 +425,26 @@ namespace GlmSharp
         public static lvec2 operator/(long lhs, lvec2 rhs) => new lvec2(lhs / rhs.x, lhs / rhs.y);
         
         /// <summary>
+        /// Executes a component-wise / (divide) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator/(lvec2 lhs, decvec2 rhs) => new decvec2(lhs.x / rhs.x, lhs.y / rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator/(decvec2 lhs, lvec2 rhs) => new decvec2(lhs.x / rhs.x, lhs.y / rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator/(lvec2 lhs, decimal rhs) => new decvec2(lhs.x / rhs, lhs.y / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator/(decimal lhs, lvec2 rhs) => new decvec2(lhs / rhs.x, lhs / rhs.y);
+        
+        /// <summary>
         /// Executes a component-wise * (multiply).
         /// </summary>
         public static lvec2 operator*(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x * rhs.x, lhs.y * rhs.y);
@@ -398,6 +458,26 @@ namespace GlmSharp
         /// Executes a component-wise * (multiply) with a scalar.
         /// </summary>
         public static lvec2 operator*(long lhs, lvec2 rhs) => new lvec2(lhs * rhs.x, lhs * rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator*(lvec2 lhs, decvec2 rhs) => new decvec2(lhs.x * rhs.x, lhs.y * rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator*(decvec2 lhs, lvec2 rhs) => new decvec2(lhs.x * rhs.x, lhs.y * rhs.y);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator*(lvec2 lhs, decimal rhs) => new decvec2(lhs.x * rhs, lhs.y * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar (upcast to decvec2).
+        /// </summary>
+        public static decvec2 operator*(decimal lhs, lvec2 rhs) => new decvec2(lhs * rhs.x, lhs * rhs.y);
         
         /// <summary>
         /// Executes a component-wise % (modulo).
