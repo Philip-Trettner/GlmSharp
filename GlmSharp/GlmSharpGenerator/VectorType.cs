@@ -18,7 +18,7 @@ namespace GlmSharpGenerator
         {
             get
             {
-                yield return string.Format("IEnumerable<{0}>", BaseType);
+                yield return string.Format("IReadOnlyList<{0}>", BaseType);
             }
         }
 
@@ -93,6 +93,33 @@ namespace GlmSharpGenerator
 
                 foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
                 yield return "IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();";
+
+                // IReadOnlyList
+                foreach (var line in string.Format("Returns the number of components ({0}).", Components).AsComment()) yield return line;
+                yield return string.Format("public int Count => {0};", Components);
+
+                foreach (var line in "Gets/Sets a specific indexed component (a bit slower than direct access).".AsComment()) yield return line;
+                yield return string.Format("public {0} this[int index]", BaseType);
+                yield return "{";
+                yield return "    get";
+                yield return "    {";
+                yield return "        switch (index)";
+                yield return "        {";
+                for (var c = 0; c < Components; ++c)
+                    yield return string.Format("            case {0}: return {1};", c, "xyzw"[c]);
+                yield return "            default: throw new ArgumentOutOfRangeException(\"index\");";
+                yield return "        }";
+                yield return "    }";
+                yield return "    set";
+                yield return "    {";
+                yield return "        switch (index)";
+                yield return "        {";
+                for (var c = 0; c < Components; ++c)
+                    yield return string.Format("            case {0}: this.{1} = value; break;", c, "xyzw"[c]);
+                yield return "            default: throw new ArgumentOutOfRangeException(\"index\");";
+                yield return "        }";
+                yield return "    }";
+                yield return "}";
             }
         }
     }

@@ -5,7 +5,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct dvec3 : IEnumerable<double>
+    public struct dvec3 : IReadOnlyList<double>
     {
         public double x;
         public double y;
@@ -95,5 +95,37 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        
+        /// <summary>
+        /// Returns the number of components (3).
+        /// </summary>
+        public int Count => 3;
+        
+        /// <summary>
+        /// Gets/Sets a specific indexed component (a bit slower than direct access).
+        /// </summary>
+        public double this[int index]
+        {
+            get
+            {
+                switch (index)
+                {
+                    case 0: return x;
+                    case 1: return y;
+                    case 2: return z;
+                    default: throw new ArgumentOutOfRangeException("index");
+                }
+            }
+            set
+            {
+                switch (index)
+                {
+                    case 0: this.x = value; break;
+                    case 1: this.y = value; break;
+                    case 2: this.z = value; break;
+                    default: throw new ArgumentOutOfRangeException("index");
+                }
+            }
+        }
     }
 }

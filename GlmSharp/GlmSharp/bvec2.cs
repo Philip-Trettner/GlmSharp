@@ -5,7 +5,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct bvec2 : IEnumerable<bool>
+    public struct bvec2 : IReadOnlyList<bool>
     {
         public bool x;
         public bool y;
@@ -78,5 +78,35 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        
+        /// <summary>
+        /// Returns the number of components (2).
+        /// </summary>
+        public int Count => 2;
+        
+        /// <summary>
+        /// Gets/Sets a specific indexed component (a bit slower than direct access).
+        /// </summary>
+        public bool this[int index]
+        {
+            get
+            {
+                switch (index)
+                {
+                    case 0: return x;
+                    case 1: return y;
+                    default: throw new ArgumentOutOfRangeException("index");
+                }
+            }
+            set
+            {
+                switch (index)
+                {
+                    case 0: this.x = value; break;
+                    case 1: this.y = value; break;
+                    default: throw new ArgumentOutOfRangeException("index");
+                }
+            }
+        }
     }
 }
