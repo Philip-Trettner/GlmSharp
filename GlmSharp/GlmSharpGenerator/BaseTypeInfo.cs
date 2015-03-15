@@ -34,13 +34,15 @@ namespace GlmSharpGenerator
         };
         public static readonly BaseTypeInfo TypeFloat = new BaseTypeInfo
         {
-            Name = "float"
+            Name = "float",
+            OneValue = "1f"
         };
         public static readonly BaseTypeInfo TypeDouble = new BaseTypeInfo
         {
             Name = "double",
             Prefix = "d",
-            LengthType = "double"
+            LengthType = "double",
+            OneValue = "1.0"
         };
         public static readonly BaseTypeInfo TypeLong = new BaseTypeInfo
         {
@@ -53,14 +55,16 @@ namespace GlmSharpGenerator
             Name = "bool",
             Prefix = "b",
             Arithmetics = false,
-            HashCodeMultiplier = 2
+            HashCodeMultiplier = 2,
+            OneValue = "true"
         };
         public static readonly BaseTypeInfo TypeGeneric = new BaseTypeInfo
         {
             Name = "T",
             Prefix = "g",
             Generic = true,
-            Arithmetics = false
+            Arithmetics = false,
+            OneValue = null
         };
 
         public string Name { get; set; }
@@ -69,6 +73,8 @@ namespace GlmSharpGenerator
 
         public bool Arithmetics { get; set; } = true;
         public string LengthType { get; set; } = "float";
+
+        public string OneValue { get; set; } = "1";
 
         public int HashCodeMultiplier { get; set; } = 397;
     }

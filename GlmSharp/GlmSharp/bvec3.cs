@@ -30,6 +30,31 @@ namespace GlmSharp
         public swizzle_bvec3 swizzle => new swizzle_bvec3(x, y, z);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec3 Zero = new bvec3(default(bool), default(bool), default(bool));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec3 Ones = new bvec3(true, true, true);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec3 UnitX = new bvec3(true, default(bool), default(bool));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec3 UnitY = new bvec3(default(bool), true, default(bool));
+        
+        /// <summary>
+        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec3 UnitZ = new bvec3(default(bool), default(bool), true);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public bool[] Values => new[] { x, y, z };

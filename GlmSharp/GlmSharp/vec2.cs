@@ -25,6 +25,26 @@ namespace GlmSharp
         public swizzle_vec2 swizzle => new swizzle_vec2(x, y);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec2 Zero = new vec2(default(float), default(float));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec2 Ones = new vec2(1f, 1f);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec2 UnitX = new vec2(1f, default(float));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec2 UnitY = new vec2(default(float), 1f);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public float[] Values => new[] { x, y };

@@ -75,6 +75,22 @@ namespace GlmSharpGenerator
                 foreach (var line in "Returns an object that can be used for swizzling (e.g. swizzle.zy)".AsComment()) yield return line;
                 yield return string.Format("public swizzle_{0} swizzle => new swizzle_{0}({1});", ClassNameThat, CompArgString);
 
+                // predefs
+                foreach (var line in "Predefined all-zero vector (DO NOT MODIFY)".AsComment()) yield return line;
+                yield return string.Format("public static readonly {0} Zero = new {0}({1});", ClassNameThat, DefaultValue.RepeatTimes(Components).CommaSeparated());
+
+                if (!string.IsNullOrEmpty(BaseTypeInfo.OneValue))
+                {
+                    foreach (var line in "Predefined all-ones vector (DO NOT MODIFY)".AsComment()) yield return line;
+                    yield return string.Format("public static readonly {0} Ones = new {0}({1});", ClassNameThat, BaseTypeInfo.OneValue.RepeatTimes(Components).CommaSeparated());
+
+                    for (var c = 0; c < Components; ++c)
+                    {
+                        foreach (var line in string.Format("Predefined unit-{0} vector (DO NOT MODIFY)", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
+                        yield return string.Format("public static readonly {0} Unit{1} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString(BaseTypeInfo.OneValue, DefaultValue, Components).CommaSeparated());
+                    }
+                }
+
                 // values
                 foreach (var line in "Returns an array with all values".AsComment()) yield return line;
                 yield return string.Format("public {0}[] Values => new[] {{ {1} }};", BaseType, CompArgString);

@@ -30,6 +30,31 @@ namespace GlmSharp
         public swizzle_ivec3 swizzle => new swizzle_ivec3(x, y, z);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly ivec3 Zero = new ivec3(default(int), default(int), default(int));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly ivec3 Ones = new ivec3(1, 1, 1);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly ivec3 UnitX = new ivec3(1, default(int), default(int));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly ivec3 UnitY = new ivec3(default(int), 1, default(int));
+        
+        /// <summary>
+        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly ivec3 UnitZ = new ivec3(default(int), default(int), 1);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public int[] Values => new[] { x, y, z };

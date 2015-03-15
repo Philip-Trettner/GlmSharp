@@ -35,6 +35,36 @@ namespace GlmSharp
         public swizzle_dvec4 swizzle => new swizzle_dvec4(x, y, z, w);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 Zero = new dvec4(default(double), default(double), default(double), default(double));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 Ones = new dvec4(1.0, 1.0, 1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 UnitX = new dvec4(1.0, default(double), default(double), default(double));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 UnitY = new dvec4(default(double), 1.0, default(double), default(double));
+        
+        /// <summary>
+        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 UnitZ = new dvec4(default(double), default(double), 1.0, default(double));
+        
+        /// <summary>
+        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 UnitW = new dvec4(default(double), default(double), default(double), 1.0);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public double[] Values => new[] { x, y, z, w };

@@ -35,6 +35,36 @@ namespace GlmSharp
         public swizzle_vec4 swizzle => new swizzle_vec4(x, y, z, w);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 Zero = new vec4(default(float), default(float), default(float), default(float));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 Ones = new vec4(1f, 1f, 1f, 1f);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 UnitX = new vec4(1f, default(float), default(float), default(float));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 UnitY = new vec4(default(float), 1f, default(float), default(float));
+        
+        /// <summary>
+        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 UnitZ = new vec4(default(float), default(float), 1f, default(float));
+        
+        /// <summary>
+        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 UnitW = new vec4(default(float), default(float), default(float), 1f);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public float[] Values => new[] { x, y, z, w };

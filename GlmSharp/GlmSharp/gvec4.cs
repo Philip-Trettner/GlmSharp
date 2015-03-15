@@ -35,6 +35,11 @@ namespace GlmSharp
         public swizzle_gvec4<T> swizzle => new swizzle_gvec4<T>(x, y, z, w);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly gvec4<T> Zero = new gvec4<T>(default(T), default(T), default(T), default(T));
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public T[] Values => new[] { x, y, z, w };

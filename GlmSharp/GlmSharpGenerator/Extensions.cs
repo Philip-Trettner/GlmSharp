@@ -51,5 +51,11 @@ namespace GlmSharpGenerator
             for (var i = 0; i < maxComp; ++i)
                 yield return s + "." + "xyzw"[i];
         }
+
+        public static IEnumerable<string> ImpulseString(this int arg, string imp, string nonimp, int maxComp = 4)
+        {
+            for (var i = 0; i < maxComp; ++i)
+                yield return i == arg ? imp : nonimp;
+        } 
     }
 }

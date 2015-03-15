@@ -35,6 +35,36 @@ namespace GlmSharp
         public swizzle_lvec4 swizzle => new swizzle_lvec4(x, y, z, w);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly lvec4 Zero = new lvec4(default(long), default(long), default(long), default(long));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly lvec4 Ones = new lvec4(1, 1, 1, 1);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly lvec4 UnitX = new lvec4(1, default(long), default(long), default(long));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly lvec4 UnitY = new lvec4(default(long), 1, default(long), default(long));
+        
+        /// <summary>
+        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly lvec4 UnitZ = new lvec4(default(long), default(long), 1, default(long));
+        
+        /// <summary>
+        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly lvec4 UnitW = new lvec4(default(long), default(long), default(long), 1);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public long[] Values => new[] { x, y, z, w };

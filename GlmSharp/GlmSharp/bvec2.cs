@@ -25,6 +25,26 @@ namespace GlmSharp
         public swizzle_bvec2 swizzle => new swizzle_bvec2(x, y);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec2 Zero = new bvec2(default(bool), default(bool));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec2 Ones = new bvec2(true, true);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec2 UnitX = new bvec2(true, default(bool));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly bvec2 UnitY = new bvec2(default(bool), true);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public bool[] Values => new[] { x, y };

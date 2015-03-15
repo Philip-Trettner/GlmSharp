@@ -30,6 +30,11 @@ namespace GlmSharp
         public swizzle_gvec3<T> swizzle => new swizzle_gvec3<T>(x, y, z);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly gvec3<T> Zero = new gvec3<T>(default(T), default(T), default(T));
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public T[] Values => new[] { x, y, z };

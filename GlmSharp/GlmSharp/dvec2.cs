@@ -25,6 +25,26 @@ namespace GlmSharp
         public swizzle_dvec2 swizzle => new swizzle_dvec2(x, y);
         
         /// <summary>
+        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec2 Zero = new dvec2(default(double), default(double));
+        
+        /// <summary>
+        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec2 Ones = new dvec2(1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec2 UnitX = new dvec2(1.0, default(double));
+        
+        /// <summary>
+        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec2 UnitY = new dvec2(default(double), 1.0);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public double[] Values => new[] { x, y };
