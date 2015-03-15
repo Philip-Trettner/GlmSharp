@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct dvec4
+    public struct dvec4 : IEnumerable<double>
     {
         public double x;
         public double y;
@@ -108,5 +109,21 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+        
+        /// <summary>
+        /// Returns an enumerator that iterates through all components.
+        /// </summary>
+        public IEnumerator<double> GetEnumerator()
+        {
+            yield return x;
+            yield return y;
+            yield return z;
+            yield return w;
+        }
+        
+        /// <summary>
+        /// Returns an enumerator that iterates through all components.
+        /// </summary>
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

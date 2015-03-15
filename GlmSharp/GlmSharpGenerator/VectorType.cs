@@ -14,6 +14,14 @@ namespace GlmSharpGenerator
 
         public string CompString => "xyzw".Substring(0, Components);
 
+        public override IEnumerable<string> BaseClasses
+        {
+            get
+            {
+                yield return string.Format("IEnumerable<{0}>", BaseType);
+            }
+        }
+
         public string CompParameterString => CompString.Select(c => BaseType + " " + c).CommaSeparated();
         public IEnumerable<string> CompParameters => CompString.Select(c => BaseType + " " + c);
 
@@ -31,7 +39,6 @@ namespace GlmSharpGenerator
 
         private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
         {
-            yield return "";
             foreach (var line in comment.AsComment())
                 yield return line;
             yield return string.Format("public {0}({1})", ClassName, args);
@@ -51,12 +58,10 @@ namespace GlmSharpGenerator
                     yield return string.Format("public {0} {1};", BaseType, "xyzw"[i]);
 
                 // swizzle
-                yield return "";
                 foreach (var line in "Returns an object that can be used for swizzling (e.g. swizzle.zy)".AsComment()) yield return line;
                 yield return string.Format("public swizzle_{0} swizzle => new swizzle_{0}({1});", ClassName, CompArgString);
 
                 // values
-                yield return "";
                 foreach (var line in "Returns an array with all values".AsComment()) yield return line;
                 yield return string.Format("public {0}[] Values => new[] {{ {1} }};", BaseType, CompArgString);
 
@@ -77,6 +82,17 @@ namespace GlmSharpGenerator
                             "v".DotComp(comps).Concat(SubCompArgs(comps, ucomps))))
                             yield return line;
                 }
+
+                // IEnumerable
+                foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
+                yield return string.Format("public IEnumerator<{0}> GetEnumerator()", BaseType);
+                yield return "{";
+                foreach (var c in CompString)
+                    yield return string.Format("yield return {0};", c).Indent();
+                yield return "}";
+
+                foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
+                yield return "IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();";
             }
         }
     }

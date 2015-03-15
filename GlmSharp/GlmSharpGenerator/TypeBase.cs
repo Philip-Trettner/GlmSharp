@@ -12,17 +12,21 @@ namespace GlmSharpGenerator
         public string BaseType { get; set; } = "float";
         public abstract string ClassName { get; }
 
+        public virtual IEnumerable<string> BaseClasses { get { yield break; } }
+
         public IEnumerable<string> CSharpFile
         {
             get
             {
+                var baseclasses = BaseClasses.ToArray();
                 yield return "using System;";
+                yield return "using System.Collections;";
                 yield return "using System.Collections.Generic;";
                 yield return "using System.Linq;";
                 yield return "namespace GlmSharp";
                 yield return "{";
                 yield return "    [Serializable]";
-                yield return "    public struct " + ClassName;
+                yield return "    public struct " + ClassName + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";
                 foreach (var line in Body)
                     yield return line.Indent(2);

@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct lvec3
+    public struct lvec3 : IEnumerable<long>
     {
         public long x;
         public long y;
@@ -79,5 +80,20 @@ namespace GlmSharp
             this.y = v.y;
             this.z = v.z;
         }
+        
+        /// <summary>
+        /// Returns an enumerator that iterates through all components.
+        /// </summary>
+        public IEnumerator<long> GetEnumerator()
+        {
+            yield return x;
+            yield return y;
+            yield return z;
+        }
+        
+        /// <summary>
+        /// Returns an enumerator that iterates through all components.
+        /// </summary>
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }

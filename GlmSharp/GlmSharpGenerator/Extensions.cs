@@ -25,8 +25,10 @@ namespace GlmSharpGenerator
             return cc.Length == 0 ? "" : cc.Aggregate((s1, s2) => s1 + ", " + s2);
         }
 
-        public static IEnumerable<string> AsComment(this string s)
+        public static IEnumerable<string> AsComment(this string s, bool withTrailingEmptyLine = true)
         {
+            if (withTrailingEmptyLine)
+                yield return "";
             yield return "/// <summary>";
             yield return "/// " + s;
             yield return "/// </summary>";
