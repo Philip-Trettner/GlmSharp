@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Linq;
 
 namespace GlmSharp
@@ -175,6 +176,36 @@ namespace GlmSharp
         public static explicit operator dvec4(dvec3 v) => new dvec4((double)v.x, (double)v.y, (double)v.z, default(double));
         
         /// <summary>
+        /// Explicitly converts this to a decvec2.
+        /// </summary>
+        public static explicit operator decvec2(dvec3 v) => new decvec2((decimal)v.x, (decimal)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a decvec3.
+        /// </summary>
+        public static explicit operator decvec3(dvec3 v) => new decvec3((decimal)v.x, (decimal)v.y, (decimal)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a decvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator decvec4(dvec3 v) => new decvec4((decimal)v.x, (decimal)v.y, (decimal)v.z, default(decimal));
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec2.
+        /// </summary>
+        public static explicit operator cvec2(dvec3 v) => new cvec2((Complex)v.x, (Complex)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec3.
+        /// </summary>
+        public static explicit operator cvec3(dvec3 v) => new cvec3((Complex)v.x, (Complex)v.y, (Complex)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator cvec4(dvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, default(Complex));
+        
+        /// <summary>
         /// Explicitly converts this to a lvec2.
         /// </summary>
         public static explicit operator lvec2(dvec3 v) => new lvec2((long)v.x, (long)v.y);
@@ -334,125 +365,125 @@ namespace GlmSharp
         /// <summary>
         /// Returns the p-norm of this vector.
         /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow(Math.Abs(x), p) + Math.Pow(Math.Abs(y), p) + Math.Pow(Math.Abs(z), p), 1 / p);
+        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p), 1 / p);
         
         /// <summary>
-        /// Executed a component-wise + (add).
+        /// Executes a component-wise + (add).
         /// </summary>
         public static dvec3 operator+(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
         
         /// <summary>
-        /// Executed a component-wise + (add) with a scalar.
+        /// Executes a component-wise + (add) with a scalar.
         /// </summary>
         public static dvec3 operator+(dvec3 lhs, double rhs) => new dvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
         
         /// <summary>
-        /// Executed a component-wise + (add) with a scalar.
+        /// Executes a component-wise + (add) with a scalar.
         /// </summary>
         public static dvec3 operator+(double lhs, dvec3 rhs) => new dvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
         
         /// <summary>
-        /// Executed a component-wise - (subtract).
+        /// Executes a component-wise - (subtract).
         /// </summary>
         public static dvec3 operator-(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
         
         /// <summary>
-        /// Executed a component-wise - (subtract) with a scalar.
+        /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static dvec3 operator-(dvec3 lhs, double rhs) => new dvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
         
         /// <summary>
-        /// Executed a component-wise - (subtract) with a scalar.
+        /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static dvec3 operator-(double lhs, dvec3 rhs) => new dvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
         
         /// <summary>
-        /// Executed a component-wise / (divide).
+        /// Executes a component-wise / (divide).
         /// </summary>
         public static dvec3 operator/(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
         
         /// <summary>
-        /// Executed a component-wise / (divide) with a scalar.
+        /// Executes a component-wise / (divide) with a scalar.
         /// </summary>
         public static dvec3 operator/(dvec3 lhs, double rhs) => new dvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
         
         /// <summary>
-        /// Executed a component-wise / (divide) with a scalar.
+        /// Executes a component-wise / (divide) with a scalar.
         /// </summary>
         public static dvec3 operator/(double lhs, dvec3 rhs) => new dvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
         
         /// <summary>
-        /// Executed a component-wise * (multiply).
+        /// Executes a component-wise * (multiply).
         /// </summary>
         public static dvec3 operator*(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
         
         /// <summary>
-        /// Executed a component-wise * (multiply) with a scalar.
+        /// Executes a component-wise * (multiply) with a scalar.
         /// </summary>
         public static dvec3 operator*(dvec3 lhs, double rhs) => new dvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
         
         /// <summary>
-        /// Executed a component-wise * (multiply) with a scalar.
+        /// Executes a component-wise * (multiply) with a scalar.
         /// </summary>
         public static dvec3 operator*(double lhs, dvec3 rhs) => new dvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
         
         /// <summary>
-        /// Executed a component-wise lesser-than comparison.
+        /// Executes a component-wise lesser-than comparison.
         /// </summary>
         public static bvec3 operator<(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z);
         
         /// <summary>
-        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// Executes a component-wise lesser-than comparison with a scalar.
         /// </summary>
         public static bvec3 operator<(dvec3 lhs, double rhs) => new bvec3(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs);
         
         /// <summary>
-        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// Executes a component-wise lesser-than comparison with a scalar.
         /// </summary>
         public static bvec3 operator<(double lhs, dvec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
         
         /// <summary>
-        /// Executed a component-wise lesser-or-equal comparison.
+        /// Executes a component-wise lesser-or-equal comparison.
         /// </summary>
         public static bvec3 operator<=(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z);
         
         /// <summary>
-        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
         /// </summary>
         public static bvec3 operator<=(dvec3 lhs, double rhs) => new bvec3(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs);
         
         /// <summary>
-        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
         /// </summary>
         public static bvec3 operator<=(double lhs, dvec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
         
         /// <summary>
-        /// Executed a component-wise greater-than comparison.
+        /// Executes a component-wise greater-than comparison.
         /// </summary>
         public static bvec3 operator>(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z);
         
         /// <summary>
-        /// Executed a component-wise greater-than comparison with a scalar.
+        /// Executes a component-wise greater-than comparison with a scalar.
         /// </summary>
         public static bvec3 operator>(dvec3 lhs, double rhs) => new bvec3(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs);
         
         /// <summary>
-        /// Executed a component-wise greater-than comparison with a scalar.
+        /// Executes a component-wise greater-than comparison with a scalar.
         /// </summary>
         public static bvec3 operator>(double lhs, dvec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
         
         /// <summary>
-        /// Executed a component-wise greater-or-equal comparison.
+        /// Executes a component-wise greater-or-equal comparison.
         /// </summary>
         public static bvec3 operator>=(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z);
         
         /// <summary>
-        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
         /// </summary>
         public static bvec3 operator>=(dvec3 lhs, double rhs) => new bvec3(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs);
         
         /// <summary>
-        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
         /// </summary>
         public static bvec3 operator>=(double lhs, dvec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
         

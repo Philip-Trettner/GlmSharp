@@ -34,8 +34,8 @@ namespace GlmSharpGenerator
         public char ArgOf(int c) => "xyzw"[c];
         public string ArgOfs(int c) => "xyzw"[c].ToString();
 
-        public string AbsString(string s) => BaseTypeInfo.RequiredAbs ? string.Format("Math.Abs({0})", s) : s;
-        public string AbsString(char s) => BaseTypeInfo.RequiredAbs ? string.Format("Math.Abs({0})", s) : s.ToString();
+        public string AbsString(string s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
+        public string AbsString(char s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();
 
         public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseType + " " + c);
         public string SubCompParameterString(int start, int end) => SubCompParameters(start, end).CommaSeparated();
@@ -61,6 +61,12 @@ namespace GlmSharpGenerator
                 yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : DefaultValue).Indent();
             yield return "}";
         }
+
+        public string SqrOf(string s) => BaseTypeInfo.Complex ? s + ".LengthSqr()" : s + "*" + s;
+        public string SqrOf(char s) => SqrOf(s.ToString());
+
+        public string SqrtOf(string s) => BaseTypeInfo.Decimal ? s + ".Sqrt()" : string.Format("Math.Sqrt({0})", s);
+        public string SqrtOf(char s) => SqrOf(s.ToString());
 
         public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseTypeInfo.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
 
@@ -164,6 +170,8 @@ namespace GlmSharpGenerator
                     var otherType = oType;
                     if (otherType.Generic != BaseTypeInfo.Generic)
                         continue; // cannot mix generic/non-generic
+                    if (BaseTypeInfo.Complex && !otherType.Complex)
+                        continue; // cannot "downcast" complex type
 
                     for (var comps = 2; comps <= 4; ++comps)
                     {
@@ -260,10 +268,10 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns true if any component is true.".AsComment()) yield return line;
                     yield return string.Format("public {0} Any => {1};", BaseType, CompString.Aggregated(" || "));
 
-                    foreach (var line in "Executed a component-wise &&. (sorry for different overload but && cannot be overloaded directly)".AsComment()) yield return line;
+                    foreach (var line in "Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)".AsComment()) yield return line;
                     yield return ComponentWiseOperator("&", "&&");
 
-                    foreach (var line in "Executed a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
+                    foreach (var line in "Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
                     yield return ComponentWiseOperator("|", "||");
                 }
 
@@ -272,137 +280,119 @@ namespace GlmSharpGenerator
                 {
                     var lengthType = BaseTypeInfo.LengthType;
 
-                    foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} MinElement => {1};", BaseType, NestedBiFuncFor("Math.Min({0}, {1})", Components - 1, ArgOfs));
+                    if (!BaseTypeInfo.Complex)
+                    {
+                        foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
+                        yield return string.Format("public {0} MinElement => {1};", BaseType, NestedBiFuncFor("Math.Min({0}, {1})", Components - 1, ArgOfs));
 
-                    foreach (var line in "Returns the maximal component of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} MaxElement => {1};", BaseType, NestedBiFuncFor("Math.Max({0}, {1})", Components - 1, ArgOfs));
+                        foreach (var line in "Returns the maximal component of this vector.".AsComment()) yield return line;
+                        yield return string.Format("public {0} MaxElement => {1};", BaseType, NestedBiFuncFor("Math.Max({0}, {1})", Components - 1, ArgOfs));
+                    }
 
                     foreach (var line in "Returns the euclidean length of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Length => ({0})Math.Sqrt({1});", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+                    yield return string.Format("public {0} Length => ({0}){1};", lengthType, SqrtOf(CompString.Select(SqrOf).Aggregated(" + ")));
 
                     foreach (var line in "Returns the squared euclidean length of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} LengthSqr => {1};", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+                    yield return string.Format("public {0} LengthSqr => {1};", lengthType, CompString.Select(SqrOf).Aggregated(" + "));
 
                     foreach (var line in "Returns the sum of all components.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Sum => {1};", lengthType, CompString.Aggregated(" + "));
+                    yield return string.Format("public {0} Sum => {1};", BaseType, CompString.Aggregated(" + "));
 
                     foreach (var line in "Returns the euclidean norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Norm => ({0})Math.Sqrt({1});", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+                    yield return string.Format("public {0} Norm => ({0}){1};", lengthType, SqrtOf(CompString.Select(SqrOf).Aggregated(" + ")));
 
                     foreach (var line in "Returns the one-norm of this vector.".AsComment()) yield return line;
                     yield return string.Format("public {0} Norm1 => {1};", lengthType, CompString.Select(AbsString).Aggregated(" + "));
 
                     foreach (var line in "Returns the two-norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Norm2 => ({0})Math.Sqrt({1});", lengthType, CompString.Select(c => c + "*" + c).Aggregated(" + "));
+                    yield return string.Format("public {0} Norm2 => ({0}){1};", lengthType, SqrtOf(CompString.Select(SqrOf).Aggregated(" + ")));
 
                     foreach (var line in "Returns the max-norm of this vector.".AsComment()) yield return line;
                     yield return string.Format("public {0} NormMax => {1};", BaseType, NestedBiFuncFor("Math.Max({0}, {1})", Components - 1, c => AbsString(ArgOfs(c))));
 
                     foreach (var line in "Returns the p-norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", CompString.Select(c => string.Format("Math.Pow({0}, p)", AbsString(c))).Aggregated(" + "));
+                    yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", CompString.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
 
-                    /*var opDic = new Dictionary<string, string>();
-                    opDic.Add("+", "+ (add)");
-                    opDic.Add("-", "- (subtract)");
-                    foreach (var kvp in opDic)
+                    var upcasts = BaseTypeInfo.Upcasts;
+
+                    // arithmetic operators
+                    foreach (var kvp in new Dictionary<string, string>
+                    {
+                        {"+", "+ (add)"},
+                        {"-", "- (subtract)"},
+                        {"/", "/ (divide)"},
+                        {"*", "* (multiply)"}
+                    })
                     {
                         var op = kvp.Key;
                         var opComment = kvp.Value;
-                    }*/
 
-                    foreach (var line in "Executed a component-wise + (add).".AsComment()) yield return line;
-                    yield return ComponentWiseOperator("+");
-                    foreach (var line in "Executed a component-wise + (add) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalar("+", BaseType);
-                    foreach (var line in "Executed a component-wise + (add) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalarL("+", BaseType);
+                        foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
+                        yield return ComponentWiseOperator(op);
+                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                        yield return ComponentWiseOperatorScalar(op, BaseType);
+                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                        yield return ComponentWiseOperatorScalarL(op, BaseType);
 
-                    foreach (var line in "Executed a component-wise - (subtract).".AsComment()) yield return line;
-                    yield return ComponentWiseOperator("-");
-                    foreach (var line in "Executed a component-wise - (subtract) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalar("-", BaseType);
-                    foreach (var line in "Executed a component-wise - (subtract) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalarL("-", BaseType);
+                        // upcasts
+                        foreach (var ukvp in upcasts.Where(k => k.Key == BaseTypeInfo))
+                        {
+                            var upType = kvp.Value;
+                            // TODO
+                        }
+                    }
 
-                    foreach (var line in "Executed a component-wise / (divide).".AsComment()) yield return line;
-                    yield return ComponentWiseOperator("/");
-                    foreach (var line in "Executed a component-wise / (divide) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalar("/", BaseType);
-                    foreach (var line in "Executed a component-wise / (divide) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalarL("/", BaseType);
-
-                    foreach (var line in "Executed a component-wise * (multiply).".AsComment()) yield return line;
-                    yield return ComponentWiseOperator("*");
-                    foreach (var line in "Executed a component-wise * (multiply) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalar("*", BaseType);
-                    foreach (var line in "Executed a component-wise * (multiply) with a scalar.".AsComment()) yield return line;
-                    yield return ComponentWiseOperatorScalarL("*", BaseType);
-
+                    // integer-only operators
                     if (BaseTypeInfo.IsInteger)
                     {
-                        foreach (var line in "Executed a component-wise % (mod).".AsComment()) yield return line;
-                        yield return ComponentWiseOperator("%");
-                        foreach (var line in "Executed a component-wise % (mod) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalar("%", BaseType);
-                        foreach (var line in "Executed a component-wise % (mod) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalarL("%", BaseType);
+                        foreach (var kvp in new Dictionary<string, string>
+                        {
+                            {"%", "% (modulo)"},
+                            {"^", "^ (xor)"},
+                            {"|", "| (bitwise-or)"},
+                            {"&", "& (bitwise-and)"}
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opComment = kvp.Value;
 
-                        foreach (var line in "Executed a component-wise ^ (xor).".AsComment()) yield return line;
-                        yield return ComponentWiseOperator("^");
-                        foreach (var line in "Executed a component-wise ^ (xor) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalar("^", BaseType);
-                        foreach (var line in "Executed a component-wise ^ (xor) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalarL("^", BaseType);
+                            foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
+                            yield return ComponentWiseOperator(op);
+                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorScalar(op, BaseType);
+                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorScalarL(op, BaseType);
+                        }
 
-                        foreach (var line in "Executed a component-wise | (bitwise-or).".AsComment()) yield return line;
-                        yield return ComponentWiseOperator("|");
-                        foreach (var line in "Executed a component-wise | (bitwise-or) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalar("|", BaseType);
-                        foreach (var line in "Executed a component-wise | (bitwise-or) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalarL("|", BaseType);
-
-                        foreach (var line in "Executed a component-wise & (bitwise-or).".AsComment()) yield return line;
-                        yield return ComponentWiseOperator("&");
-                        foreach (var line in "Executed a component-wise | (bitwise-or) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalar("&", BaseType);
-                        foreach (var line in "Executed a component-wise | (bitwise-or) with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalarL("&", BaseType);
-
-                        foreach (var line in "Executed a component-wise left-shift with a scalar.".AsComment()) yield return line;
+                        foreach (var line in "Executes a component-wise left-shift with a scalar.".AsComment()) yield return line;
                         yield return ComponentWiseOperatorScalar("<<", "int");
 
-                        foreach (var line in "Executed a component-wise right-shift with a scalar.".AsComment()) yield return line;
+                        foreach (var line in "Executes a component-wise right-shift with a scalar.".AsComment()) yield return line;
                         yield return ComponentWiseOperatorScalar(">>", "int");
                     }
 
-                    foreach (var line in "Executed a component-wise lesser-than comparison.".AsComment()) yield return line;
-                    yield return ComparisonOperator("<");
-                    foreach (var line in "Executed a component-wise lesser-than comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalar("<", BaseType);
-                    foreach (var line in "Executed a component-wise lesser-than comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalarL("<", BaseType);
+                    // comparisons
+                    if (!BaseTypeInfo.Complex)
+                    {
+                        foreach (var kvp in new Dictionary<string, string>
+                        {
+                            {"<", "lesser-than"},
+                            {"<=", "lesser-or-equal"},
+                            {">", "greater-than"},
+                            {">=", "greater-or-equal"}
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opComment = kvp.Value;
 
-                    foreach (var line in "Executed a component-wise lesser-or-equal comparison.".AsComment()) yield return line;
-                    yield return ComparisonOperator("<=");
-                    foreach (var line in "Executed a component-wise lesser-or-equal comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalar("<=", BaseType);
-                    foreach (var line in "Executed a component-wise lesser-or-equal comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalarL("<=", BaseType);
-
-                    foreach (var line in "Executed a component-wise greater-than comparison.".AsComment()) yield return line;
-                    yield return ComparisonOperator(">");
-                    foreach (var line in "Executed a component-wise greater-than comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalar(">", BaseType);
-                    foreach (var line in "Executed a component-wise greater-than comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalarL(">", BaseType);
-
-                    foreach (var line in "Executed a component-wise greater-or-equal comparison.".AsComment()) yield return line;
-                    yield return ComparisonOperator(">=");
-                    foreach (var line in "Executed a component-wise greater-or-equal comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalar(">=", BaseType);
-                    foreach (var line in "Executed a component-wise greater-or-equal comparison with a scalar.".AsComment()) yield return line;
-                    yield return ComparisonOperatorScalarL(">=", BaseType);
+                            foreach (var line in string.Format("Executes a component-wise {0} comparison.", opComment).AsComment()) yield return line;
+                            yield return ComparisonOperator(op);
+                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComparisonOperatorScalar(op, BaseType);
+                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComparisonOperatorScalarL(op, BaseType);
+                        }
+                    }
 
                     if (!BaseTypeInfo.IsInteger)
                     {

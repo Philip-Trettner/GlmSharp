@@ -7,53 +7,53 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct dvec2 : IReadOnlyList<double>, IEquatable<dvec2>
+    public struct decvec2 : IReadOnlyList<decimal>, IEquatable<decvec2>
     {
         
         /// <summary>
         /// x-component
         /// </summary>
-        public double x;
+        public decimal x;
         
         /// <summary>
         /// y-component
         /// </summary>
-        public double y;
+        public decimal y;
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
         /// </summary>
-        public swizzle_dvec2 swizzle => new swizzle_dvec2(x, y);
+        public swizzle_decvec2 swizzle => new swizzle_decvec2(x, y);
         
         /// <summary>
         /// Predefined all-zero vector (DO NOT MODIFY)
         /// </summary>
-        public static readonly dvec2 Zero = new dvec2(default(double), default(double));
+        public static readonly decvec2 Zero = new decvec2(default(decimal), default(decimal));
         
         /// <summary>
         /// Predefined all-ones vector (DO NOT MODIFY)
         /// </summary>
-        public static readonly dvec2 Ones = new dvec2(1.0, 1.0);
+        public static readonly decvec2 Ones = new decvec2(1m, 1m);
         
         /// <summary>
         /// Predefined unit-X vector (DO NOT MODIFY)
         /// </summary>
-        public static readonly dvec2 UnitX = new dvec2(1.0, default(double));
+        public static readonly decvec2 UnitX = new decvec2(1m, default(decimal));
         
         /// <summary>
         /// Predefined unit-Y vector (DO NOT MODIFY)
         /// </summary>
-        public static readonly dvec2 UnitY = new dvec2(default(double), 1.0);
+        public static readonly decvec2 UnitY = new decvec2(default(decimal), 1m);
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
-        public double[] Values => new[] { x, y };
+        public decimal[] Values => new[] { x, y };
         
         /// <summary>
         /// Component-wise constructor
         /// </summary>
-        public dvec2(double x, double y)
+        public decvec2(decimal x, decimal y)
         {
             this.x = x;
             this.y = y;
@@ -62,7 +62,7 @@ namespace GlmSharp
         /// <summary>
         /// all-same-value constructor
         /// </summary>
-        public dvec2(double v)
+        public decvec2(decimal v)
         {
             this.x = v;
             this.y = v;
@@ -71,7 +71,7 @@ namespace GlmSharp
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public dvec2(dvec2 v)
+        public decvec2(decvec2 v)
         {
             this.x = v.x;
             this.y = v.y;
@@ -80,7 +80,7 @@ namespace GlmSharp
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public dvec2(dvec3 v)
+        public decvec2(decvec3 v)
         {
             this.x = v.x;
             this.y = v.y;
@@ -89,7 +89,7 @@ namespace GlmSharp
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public dvec2(dvec4 v)
+        public decvec2(decvec4 v)
         {
             this.x = v.x;
             this.y = v.y;
@@ -98,122 +98,122 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a ivec2.
         /// </summary>
-        public static explicit operator ivec2(dvec2 v) => new ivec2((int)v.x, (int)v.y);
+        public static explicit operator ivec2(decvec2 v) => new ivec2((int)v.x, (int)v.y);
         
         /// <summary>
         /// Explicitly converts this to a ivec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator ivec3(dvec2 v) => new ivec3((int)v.x, (int)v.y, default(int));
+        public static explicit operator ivec3(decvec2 v) => new ivec3((int)v.x, (int)v.y, default(int));
         
         /// <summary>
         /// Explicitly converts this to a ivec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator ivec4(dvec2 v) => new ivec4((int)v.x, (int)v.y, default(int), default(int));
+        public static explicit operator ivec4(decvec2 v) => new ivec4((int)v.x, (int)v.y, default(int), default(int));
         
         /// <summary>
         /// Explicitly converts this to a uvec2.
         /// </summary>
-        public static explicit operator uvec2(dvec2 v) => new uvec2((uint)v.x, (uint)v.y);
+        public static explicit operator uvec2(decvec2 v) => new uvec2((uint)v.x, (uint)v.y);
         
         /// <summary>
         /// Explicitly converts this to a uvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator uvec3(dvec2 v) => new uvec3((uint)v.x, (uint)v.y, default(uint));
+        public static explicit operator uvec3(decvec2 v) => new uvec3((uint)v.x, (uint)v.y, default(uint));
         
         /// <summary>
         /// Explicitly converts this to a uvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator uvec4(dvec2 v) => new uvec4((uint)v.x, (uint)v.y, default(uint), default(uint));
+        public static explicit operator uvec4(decvec2 v) => new uvec4((uint)v.x, (uint)v.y, default(uint), default(uint));
         
         /// <summary>
         /// Explicitly converts this to a vec2.
         /// </summary>
-        public static explicit operator vec2(dvec2 v) => new vec2((float)v.x, (float)v.y);
+        public static explicit operator vec2(decvec2 v) => new vec2((float)v.x, (float)v.y);
         
         /// <summary>
         /// Explicitly converts this to a vec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator vec3(dvec2 v) => new vec3((float)v.x, (float)v.y, default(float));
+        public static explicit operator vec3(decvec2 v) => new vec3((float)v.x, (float)v.y, default(float));
         
         /// <summary>
         /// Explicitly converts this to a vec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator vec4(dvec2 v) => new vec4((float)v.x, (float)v.y, default(float), default(float));
+        public static explicit operator vec4(decvec2 v) => new vec4((float)v.x, (float)v.y, default(float), default(float));
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec2.
+        /// </summary>
+        public static explicit operator dvec2(decvec2 v) => new dvec2((double)v.x, (double)v.y);
         
         /// <summary>
         /// Explicitly converts this to a dvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator dvec3(dvec2 v) => new dvec3((double)v.x, (double)v.y, default(double));
+        public static explicit operator dvec3(decvec2 v) => new dvec3((double)v.x, (double)v.y, default(double));
         
         /// <summary>
         /// Explicitly converts this to a dvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator dvec4(dvec2 v) => new dvec4((double)v.x, (double)v.y, default(double), default(double));
-        
-        /// <summary>
-        /// Explicitly converts this to a decvec2.
-        /// </summary>
-        public static explicit operator decvec2(dvec2 v) => new decvec2((decimal)v.x, (decimal)v.y);
+        public static explicit operator dvec4(decvec2 v) => new dvec4((double)v.x, (double)v.y, default(double), default(double));
         
         /// <summary>
         /// Explicitly converts this to a decvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator decvec3(dvec2 v) => new decvec3((decimal)v.x, (decimal)v.y, default(decimal));
+        public static explicit operator decvec3(decvec2 v) => new decvec3((decimal)v.x, (decimal)v.y, default(decimal));
         
         /// <summary>
         /// Explicitly converts this to a decvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator decvec4(dvec2 v) => new decvec4((decimal)v.x, (decimal)v.y, default(decimal), default(decimal));
+        public static explicit operator decvec4(decvec2 v) => new decvec4((decimal)v.x, (decimal)v.y, default(decimal), default(decimal));
         
         /// <summary>
         /// Explicitly converts this to a cvec2.
         /// </summary>
-        public static explicit operator cvec2(dvec2 v) => new cvec2((Complex)v.x, (Complex)v.y);
+        public static explicit operator cvec2(decvec2 v) => new cvec2((Complex)v.x, (Complex)v.y);
         
         /// <summary>
         /// Explicitly converts this to a cvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec3(dvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, default(Complex));
+        public static explicit operator cvec3(decvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, default(Complex));
         
         /// <summary>
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec4(dvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, default(Complex), default(Complex));
+        public static explicit operator cvec4(decvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, default(Complex), default(Complex));
         
         /// <summary>
         /// Explicitly converts this to a lvec2.
         /// </summary>
-        public static explicit operator lvec2(dvec2 v) => new lvec2((long)v.x, (long)v.y);
+        public static explicit operator lvec2(decvec2 v) => new lvec2((long)v.x, (long)v.y);
         
         /// <summary>
         /// Explicitly converts this to a lvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator lvec3(dvec2 v) => new lvec3((long)v.x, (long)v.y, default(long));
+        public static explicit operator lvec3(decvec2 v) => new lvec3((long)v.x, (long)v.y, default(long));
         
         /// <summary>
         /// Explicitly converts this to a lvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator lvec4(dvec2 v) => new lvec4((long)v.x, (long)v.y, default(long), default(long));
+        public static explicit operator lvec4(decvec2 v) => new lvec4((long)v.x, (long)v.y, default(long), default(long));
         
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(dvec2 v) => new bvec2(v.x != default(double), v.y != default(double));
+        public static explicit operator bvec2(decvec2 v) => new bvec2(v.x != default(decimal), v.y != default(decimal));
         
         /// <summary>
         /// Explicitly converts this to a bvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec3(dvec2 v) => new bvec3(v.x != default(double), v.y != default(double), default(bool));
+        public static explicit operator bvec3(decvec2 v) => new bvec3(v.x != default(decimal), v.y != default(decimal), default(bool));
         
         /// <summary>
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec4(dvec2 v) => new bvec4(v.x != default(double), v.y != default(double), default(bool), default(bool));
+        public static explicit operator bvec4(decvec2 v) => new bvec4(v.x != default(decimal), v.y != default(decimal), default(bool), default(bool));
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
         /// </summary>
-        public IEnumerator<double> GetEnumerator()
+        public IEnumerator<decimal> GetEnumerator()
         {
             yield return x;
             yield return y;
@@ -232,7 +232,7 @@ namespace GlmSharp
         /// <summary>
         /// Gets/Sets a specific indexed component (a bit slower than direct access).
         /// </summary>
-        public double this[int index]
+        public decimal this[int index]
         {
             get
             {
@@ -257,7 +257,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(dvec2 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y);
+        public bool Equals(decvec2 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y);
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -265,18 +265,18 @@ namespace GlmSharp
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
-            return obj is dvec2 && Equals((dvec2) obj);
+            return obj is decvec2 && Equals((decvec2) obj);
         }
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public static bool operator ==(dvec2 lhs, dvec2 rhs) => lhs.Equals(rhs);
+        public static bool operator ==(decvec2 lhs, decvec2 rhs) => lhs.Equals(rhs);
         
         /// <summary>
         /// Returns true iff this does not equal rhs (component-wise).
         /// </summary>
-        public static bool operator !=(dvec2 lhs, dvec2 rhs) => !lhs.Equals(rhs);
+        public static bool operator !=(decvec2 lhs, decvec2 rhs) => !lhs.Equals(rhs);
         
         /// <summary>
         /// Returns a hash code for this instance.
@@ -292,47 +292,47 @@ namespace GlmSharp
         /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
-        public double MinElement => Math.Min(x, y);
+        public decimal MinElement => Math.Min(x, y);
         
         /// <summary>
         /// Returns the maximal component of this vector.
         /// </summary>
-        public double MaxElement => Math.Max(x, y);
+        public decimal MaxElement => Math.Max(x, y);
         
         /// <summary>
         /// Returns the euclidean length of this vector.
         /// </summary>
-        public double Length => (double)Math.Sqrt(x*x + y*y);
+        public decimal Length => (decimal)x*x + y*y.Sqrt();
         
         /// <summary>
         /// Returns the squared euclidean length of this vector.
         /// </summary>
-        public double LengthSqr => x*x + y*y;
+        public decimal LengthSqr => x*x + y*y;
         
         /// <summary>
         /// Returns the sum of all components.
         /// </summary>
-        public double Sum => x + y;
+        public decimal Sum => x + y;
         
         /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
-        public double Norm => (double)Math.Sqrt(x*x + y*y);
+        public decimal Norm => (decimal)x*x + y*y.Sqrt();
         
         /// <summary>
         /// Returns the one-norm of this vector.
         /// </summary>
-        public double Norm1 => Math.Abs(x) + Math.Abs(y);
+        public decimal Norm1 => Math.Abs(x) + Math.Abs(y);
         
         /// <summary>
         /// Returns the two-norm of this vector.
         /// </summary>
-        public double Norm2 => (double)Math.Sqrt(x*x + y*y);
+        public decimal Norm2 => (decimal)x*x + y*y.Sqrt();
         
         /// <summary>
         /// Returns the max-norm of this vector.
         /// </summary>
-        public double NormMax => Math.Max(Math.Abs(x), Math.Abs(y));
+        public decimal NormMax => Math.Max(Math.Abs(x), Math.Abs(y));
         
         /// <summary>
         /// Returns the p-norm of this vector.
@@ -342,131 +342,131 @@ namespace GlmSharp
         /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
-        public static dvec2 operator+(dvec2 lhs, dvec2 rhs) => new dvec2(lhs.x + rhs.x, lhs.y + rhs.y);
+        public static decvec2 operator+(decvec2 lhs, decvec2 rhs) => new decvec2(lhs.x + rhs.x, lhs.y + rhs.y);
         
         /// <summary>
         /// Executes a component-wise + (add) with a scalar.
         /// </summary>
-        public static dvec2 operator+(dvec2 lhs, double rhs) => new dvec2(lhs.x + rhs, lhs.y + rhs);
+        public static decvec2 operator+(decvec2 lhs, decimal rhs) => new decvec2(lhs.x + rhs, lhs.y + rhs);
         
         /// <summary>
         /// Executes a component-wise + (add) with a scalar.
         /// </summary>
-        public static dvec2 operator+(double lhs, dvec2 rhs) => new dvec2(lhs + rhs.x, lhs + rhs.y);
+        public static decvec2 operator+(decimal lhs, decvec2 rhs) => new decvec2(lhs + rhs.x, lhs + rhs.y);
         
         /// <summary>
         /// Executes a component-wise - (subtract).
         /// </summary>
-        public static dvec2 operator-(dvec2 lhs, dvec2 rhs) => new dvec2(lhs.x - rhs.x, lhs.y - rhs.y);
+        public static decvec2 operator-(decvec2 lhs, decvec2 rhs) => new decvec2(lhs.x - rhs.x, lhs.y - rhs.y);
         
         /// <summary>
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
-        public static dvec2 operator-(dvec2 lhs, double rhs) => new dvec2(lhs.x - rhs, lhs.y - rhs);
+        public static decvec2 operator-(decvec2 lhs, decimal rhs) => new decvec2(lhs.x - rhs, lhs.y - rhs);
         
         /// <summary>
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
-        public static dvec2 operator-(double lhs, dvec2 rhs) => new dvec2(lhs - rhs.x, lhs - rhs.y);
+        public static decvec2 operator-(decimal lhs, decvec2 rhs) => new decvec2(lhs - rhs.x, lhs - rhs.y);
         
         /// <summary>
         /// Executes a component-wise / (divide).
         /// </summary>
-        public static dvec2 operator/(dvec2 lhs, dvec2 rhs) => new dvec2(lhs.x / rhs.x, lhs.y / rhs.y);
+        public static decvec2 operator/(decvec2 lhs, decvec2 rhs) => new decvec2(lhs.x / rhs.x, lhs.y / rhs.y);
         
         /// <summary>
         /// Executes a component-wise / (divide) with a scalar.
         /// </summary>
-        public static dvec2 operator/(dvec2 lhs, double rhs) => new dvec2(lhs.x / rhs, lhs.y / rhs);
+        public static decvec2 operator/(decvec2 lhs, decimal rhs) => new decvec2(lhs.x / rhs, lhs.y / rhs);
         
         /// <summary>
         /// Executes a component-wise / (divide) with a scalar.
         /// </summary>
-        public static dvec2 operator/(double lhs, dvec2 rhs) => new dvec2(lhs / rhs.x, lhs / rhs.y);
+        public static decvec2 operator/(decimal lhs, decvec2 rhs) => new decvec2(lhs / rhs.x, lhs / rhs.y);
         
         /// <summary>
         /// Executes a component-wise * (multiply).
         /// </summary>
-        public static dvec2 operator*(dvec2 lhs, dvec2 rhs) => new dvec2(lhs.x * rhs.x, lhs.y * rhs.y);
+        public static decvec2 operator*(decvec2 lhs, decvec2 rhs) => new decvec2(lhs.x * rhs.x, lhs.y * rhs.y);
         
         /// <summary>
         /// Executes a component-wise * (multiply) with a scalar.
         /// </summary>
-        public static dvec2 operator*(dvec2 lhs, double rhs) => new dvec2(lhs.x * rhs, lhs.y * rhs);
+        public static decvec2 operator*(decvec2 lhs, decimal rhs) => new decvec2(lhs.x * rhs, lhs.y * rhs);
         
         /// <summary>
         /// Executes a component-wise * (multiply) with a scalar.
         /// </summary>
-        public static dvec2 operator*(double lhs, dvec2 rhs) => new dvec2(lhs * rhs.x, lhs * rhs.y);
+        public static decvec2 operator*(decimal lhs, decvec2 rhs) => new decvec2(lhs * rhs.x, lhs * rhs.y);
         
         /// <summary>
         /// Executes a component-wise lesser-than comparison.
         /// </summary>
-        public static bvec2 operator<(dvec2 lhs, dvec2 rhs) => new bvec2(lhs.x < rhs.x, lhs.y < rhs.y);
+        public static bvec2 operator<(decvec2 lhs, decvec2 rhs) => new bvec2(lhs.x < rhs.x, lhs.y < rhs.y);
         
         /// <summary>
         /// Executes a component-wise lesser-than comparison with a scalar.
         /// </summary>
-        public static bvec2 operator<(dvec2 lhs, double rhs) => new bvec2(lhs.x < rhs, lhs.y < rhs);
+        public static bvec2 operator<(decvec2 lhs, decimal rhs) => new bvec2(lhs.x < rhs, lhs.y < rhs);
         
         /// <summary>
         /// Executes a component-wise lesser-than comparison with a scalar.
         /// </summary>
-        public static bvec2 operator<(double lhs, dvec2 rhs) => new bvec2(lhs < rhs.x, lhs < rhs.y);
+        public static bvec2 operator<(decimal lhs, decvec2 rhs) => new bvec2(lhs < rhs.x, lhs < rhs.y);
         
         /// <summary>
         /// Executes a component-wise lesser-or-equal comparison.
         /// </summary>
-        public static bvec2 operator<=(dvec2 lhs, dvec2 rhs) => new bvec2(lhs.x <= rhs.x, lhs.y <= rhs.y);
+        public static bvec2 operator<=(decvec2 lhs, decvec2 rhs) => new bvec2(lhs.x <= rhs.x, lhs.y <= rhs.y);
         
         /// <summary>
         /// Executes a component-wise lesser-or-equal comparison with a scalar.
         /// </summary>
-        public static bvec2 operator<=(dvec2 lhs, double rhs) => new bvec2(lhs.x <= rhs, lhs.y <= rhs);
+        public static bvec2 operator<=(decvec2 lhs, decimal rhs) => new bvec2(lhs.x <= rhs, lhs.y <= rhs);
         
         /// <summary>
         /// Executes a component-wise lesser-or-equal comparison with a scalar.
         /// </summary>
-        public static bvec2 operator<=(double lhs, dvec2 rhs) => new bvec2(lhs <= rhs.x, lhs <= rhs.y);
+        public static bvec2 operator<=(decimal lhs, decvec2 rhs) => new bvec2(lhs <= rhs.x, lhs <= rhs.y);
         
         /// <summary>
         /// Executes a component-wise greater-than comparison.
         /// </summary>
-        public static bvec2 operator>(dvec2 lhs, dvec2 rhs) => new bvec2(lhs.x > rhs.x, lhs.y > rhs.y);
+        public static bvec2 operator>(decvec2 lhs, decvec2 rhs) => new bvec2(lhs.x > rhs.x, lhs.y > rhs.y);
         
         /// <summary>
         /// Executes a component-wise greater-than comparison with a scalar.
         /// </summary>
-        public static bvec2 operator>(dvec2 lhs, double rhs) => new bvec2(lhs.x > rhs, lhs.y > rhs);
+        public static bvec2 operator>(decvec2 lhs, decimal rhs) => new bvec2(lhs.x > rhs, lhs.y > rhs);
         
         /// <summary>
         /// Executes a component-wise greater-than comparison with a scalar.
         /// </summary>
-        public static bvec2 operator>(double lhs, dvec2 rhs) => new bvec2(lhs > rhs.x, lhs > rhs.y);
+        public static bvec2 operator>(decimal lhs, decvec2 rhs) => new bvec2(lhs > rhs.x, lhs > rhs.y);
         
         /// <summary>
         /// Executes a component-wise greater-or-equal comparison.
         /// </summary>
-        public static bvec2 operator>=(dvec2 lhs, dvec2 rhs) => new bvec2(lhs.x >= rhs.x, lhs.y >= rhs.y);
+        public static bvec2 operator>=(decvec2 lhs, decvec2 rhs) => new bvec2(lhs.x >= rhs.x, lhs.y >= rhs.y);
         
         /// <summary>
         /// Executes a component-wise greater-or-equal comparison with a scalar.
         /// </summary>
-        public static bvec2 operator>=(dvec2 lhs, double rhs) => new bvec2(lhs.x >= rhs, lhs.y >= rhs);
+        public static bvec2 operator>=(decvec2 lhs, decimal rhs) => new bvec2(lhs.x >= rhs, lhs.y >= rhs);
         
         /// <summary>
         /// Executes a component-wise greater-or-equal comparison with a scalar.
         /// </summary>
-        public static bvec2 operator>=(double lhs, dvec2 rhs) => new bvec2(lhs >= rhs.x, lhs >= rhs.y);
+        public static bvec2 operator>=(decimal lhs, decvec2 rhs) => new bvec2(lhs >= rhs.x, lhs >= rhs.y);
         
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).
         /// </summary>
-        public dvec2 Normalized => this / Length;
+        public decvec2 Normalized => this / Length;
         
         /// <summary>
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
-        public dvec2 NormalizedSafe => this == Zero ? Zero : this / Length;
+        public decvec2 NormalizedSafe => this == Zero ? Zero : this / Length;
     }
 }

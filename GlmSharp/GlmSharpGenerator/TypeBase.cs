@@ -27,6 +27,7 @@ namespace GlmSharpGenerator
                 yield return "using System;";
                 yield return "using System.Collections;";
                 yield return "using System.Collections.Generic;";
+                yield return "using System.Numerics;";
                 yield return "using System.Linq;";
                 yield return "";
                 yield return "namespace GlmSharp";

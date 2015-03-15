@@ -16,29 +16,39 @@ namespace GlmSharpGenerator
                 yield return TypeUint;
                 yield return TypeFloat;
                 yield return TypeDouble;
+                yield return TypeDecimal;
+                yield return TypeComplex;
                 yield return TypeLong;
                 yield return TypeBool;
                 yield return TypeGeneric;
             }
         }
-        public static Dictionary<BaseTypeInfo, BaseTypeInfo> Upcasts
+        public static List<KeyValuePair<BaseTypeInfo, BaseTypeInfo>> Upcasts
         {
             get
             {
                 // from -> to
-                var dic = new Dictionary<BaseTypeInfo, BaseTypeInfo>
+                var dic = new List<KeyValuePair<BaseTypeInfo, BaseTypeInfo>>
                 {
-                    {TypeInt, TypeLong},
-                    {TypeInt, TypeFloat},
-                    {TypeInt, TypeDouble},
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeLong),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeFloat),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeDouble),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeDecimal),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeComplex),
 
-                    {TypeUint, TypeLong},
-                    {TypeUint, TypeFloat},
-                    {TypeUint, TypeDouble},
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeLong),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeFloat),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeDouble),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeDecimal),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeComplex),
 
-                    {TypeFloat, TypeDouble}
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeFloat, TypeDouble),
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeFloat, TypeComplex),
+
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeDouble, TypeComplex),
+
+                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeLong, TypeDecimal)
                 };
-
                 return dic;
             }
         }
@@ -68,6 +78,22 @@ namespace GlmSharpGenerator
             LengthType = "double",
             OneValue = "1.0"
         };
+        public static readonly BaseTypeInfo TypeDecimal = new BaseTypeInfo
+        {
+            Name = "decimal",
+            Prefix = "dec",
+            LengthType = "decimal",
+            OneValue = "1m",
+            Decimal = true
+        };
+        public static readonly BaseTypeInfo TypeComplex = new BaseTypeInfo
+        {
+            Name = "Complex",
+            Prefix = "c",
+            LengthType = "double",
+            OneValue = "1.0",
+            Complex = true
+        };
         public static readonly BaseTypeInfo TypeLong = new BaseTypeInfo
         {
             Name = "long",
@@ -96,6 +122,8 @@ namespace GlmSharpGenerator
         public string Name { get; set; }
         public string Prefix { get; set; }
         public bool Generic { get; set; }
+        public bool Complex { get; set; }
+        public bool Decimal { get; set; }
 
         public bool HasArithmetics { get; set; } = true;
         public string LengthType { get; set; } = "float";

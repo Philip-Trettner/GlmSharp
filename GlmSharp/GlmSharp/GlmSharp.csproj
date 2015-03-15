@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,9 +43,16 @@
     <Compile Include="bvec2.cs" />
     <Compile Include="bvec3.cs" />
     <Compile Include="bvec4.cs" />
+    <Compile Include="cvec2.cs" />
+    <Compile Include="cvec3.cs" />
+    <Compile Include="cvec4.cs" />
+    <Compile Include="decvec2.cs" />
+    <Compile Include="decvec3.cs" />
+    <Compile Include="decvec4.cs" />
     <Compile Include="dvec2.cs" />
     <Compile Include="dvec3.cs" />
     <Compile Include="dvec4.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="glm.cs" />
     <Compile Include="gvec2.cs" />
     <Compile Include="gvec3.cs" />
@@ -59,6 +67,12 @@
     <Compile Include="swizzle_bvec2.cs" />
     <Compile Include="swizzle_bvec3.cs" />
     <Compile Include="swizzle_bvec4.cs" />
+    <Compile Include="swizzle_cvec2.cs" />
+    <Compile Include="swizzle_cvec3.cs" />
+    <Compile Include="swizzle_cvec4.cs" />
+    <Compile Include="swizzle_decvec2.cs" />
+    <Compile Include="swizzle_decvec3.cs" />
+    <Compile Include="swizzle_decvec4.cs" />
     <Compile Include="swizzle_dvec2.cs" />
     <Compile Include="swizzle_dvec3.cs" />
     <Compile Include="swizzle_dvec4.cs" />

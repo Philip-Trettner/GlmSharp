@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Linq;
 
 namespace GlmSharp
@@ -180,6 +181,36 @@ namespace GlmSharp
         public static explicit operator dvec4(bvec3 v) => new dvec4(v.x ? 1.0 : default(double), v.y ? 1.0 : default(double), v.z ? 1.0 : default(double), default(double));
         
         /// <summary>
+        /// Explicitly converts this to a decvec2.
+        /// </summary>
+        public static explicit operator decvec2(bvec3 v) => new decvec2(v.x ? 1m : default(decimal), v.y ? 1m : default(decimal));
+        
+        /// <summary>
+        /// Explicitly converts this to a decvec3.
+        /// </summary>
+        public static explicit operator decvec3(bvec3 v) => new decvec3(v.x ? 1m : default(decimal), v.y ? 1m : default(decimal), v.z ? 1m : default(decimal));
+        
+        /// <summary>
+        /// Explicitly converts this to a decvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator decvec4(bvec3 v) => new decvec4(v.x ? 1m : default(decimal), v.y ? 1m : default(decimal), v.z ? 1m : default(decimal), default(decimal));
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec2.
+        /// </summary>
+        public static explicit operator cvec2(bvec3 v) => new cvec2(v.x ? 1.0 : default(Complex), v.y ? 1.0 : default(Complex));
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec3.
+        /// </summary>
+        public static explicit operator cvec3(bvec3 v) => new cvec3(v.x ? 1.0 : default(Complex), v.y ? 1.0 : default(Complex), v.z ? 1.0 : default(Complex));
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator cvec4(bvec3 v) => new cvec4(v.x ? 1.0 : default(Complex), v.y ? 1.0 : default(Complex), v.z ? 1.0 : default(Complex), default(Complex));
+        
+        /// <summary>
         /// Explicitly converts this to a lvec2.
         /// </summary>
         public static explicit operator lvec2(bvec3 v) => new lvec2(v.x ? 1 : default(long), v.y ? 1 : default(long));
@@ -307,12 +338,12 @@ namespace GlmSharp
         public bool Any => x || y || z;
         
         /// <summary>
-        /// Executed a component-wise &&. (sorry for different overload but && cannot be overloaded directly)
+        /// Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)
         /// </summary>
         public static bvec3 operator&(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x && rhs.x, lhs.y && rhs.y, lhs.z && rhs.z);
         
         /// <summary>
-        /// Executed a component-wise ||. (sorry for different overload but || cannot be overloaded directly)
+        /// Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)
         /// </summary>
         public static bvec3 operator|(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x || rhs.x, lhs.y || rhs.y, lhs.z || rhs.z);
     }
