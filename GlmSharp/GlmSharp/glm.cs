@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GlmSharp
 {
-    public class Class1
+    public class glm
     {
     }
 }

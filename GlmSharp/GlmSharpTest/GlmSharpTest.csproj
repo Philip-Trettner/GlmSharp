@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A5F19443-DD85-4398-AD24-A2B00C816771}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{9760B071-A070-4992-A4F0-780FF31E2FE6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GlmSharp</RootNamespace>
-    <AssemblyName>GlmSharp</AssemblyName>
+    <RootNamespace>GlmSharpTest</RootNamespace>
+    <AssemblyName>GlmSharpTest</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,38 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bvec2.cs" />
-    <Compile Include="bvec3.cs" />
-    <Compile Include="bvec4.cs" />
-    <Compile Include="dvec2.cs" />
-    <Compile Include="dvec3.cs" />
-    <Compile Include="dvec4.cs" />
-    <Compile Include="glm.cs" />
-    <Compile Include="ivec2.cs" />
-    <Compile Include="ivec3.cs" />
-    <Compile Include="ivec4.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="swizzle_bvec2.cs" />
-    <Compile Include="swizzle_bvec3.cs" />
-    <Compile Include="swizzle_bvec4.cs" />
-    <Compile Include="swizzle_dvec2.cs" />
-    <Compile Include="swizzle_dvec3.cs" />
-    <Compile Include="swizzle_dvec4.cs" />
-    <Compile Include="swizzle_ivec2.cs" />
-    <Compile Include="swizzle_ivec3.cs" />
-    <Compile Include="swizzle_ivec4.cs" />
-    <Compile Include="swizzle_uvec2.cs" />
-    <Compile Include="swizzle_uvec3.cs" />
-    <Compile Include="swizzle_uvec4.cs" />
-    <Compile Include="swizzle_vec2.cs" />
-    <Compile Include="swizzle_vec3.cs" />
-    <Compile Include="swizzle_vec4.cs" />
-    <Compile Include="uvec2.cs" />
-    <Compile Include="uvec3.cs" />
-    <Compile Include="uvec4.cs" />
-    <Compile Include="vec2.cs" />
-    <Compile Include="vec3.cs" />
-    <Compile Include="vec4.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GlmSharp\GlmSharp.csproj">
+      <Project>{a5f19443-dd85-4398-ad24-a2b00c816771}</Project>
+      <Name>GlmSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

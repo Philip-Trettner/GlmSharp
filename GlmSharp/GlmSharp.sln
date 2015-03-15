@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.22609.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharp", "GlmSharp\GlmSharp.csproj", "{A5F19443-DD85-4398-AD24-A2B00C816771}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharpGenerator", "GlmSharpGenerator\GlmSharpGenerator.csproj", "{B3D61E66-23B3-44E3-8B13-0674634C6944}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharpTest", "GlmSharpTest\GlmSharpTest.csproj", "{9760B071-A070-4992-A4F0-780FF31E2FE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A5F19443-DD85-4398-AD24-A2B00C816771}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5F19443-DD85-4398-AD24-A2B00C816771}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5F19443-DD85-4398-AD24-A2B00C816771}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D61E66-23B3-44E3-8B13-0674634C6944}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D61E66-23B3-44E3-8B13-0674634C6944}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D61E66-23B3-44E3-8B13-0674634C6944}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D61E66-23B3-44E3-8B13-0674634C6944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9760B071-A070-4992-A4F0-780FF31E2FE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9760B071-A070-4992-A4F0-780FF31E2FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9760B071-A070-4992-A4F0-780FF31E2FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9760B071-A070-4992-A4F0-780FF31E2FE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
