@@ -22,6 +22,11 @@ namespace GlmSharpGenerator
 
         public string DefaultValue => "default(" + BaseType + ")";
 
+        public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseType + " " + c);
+        public string SubCompParameterString(int start, int end) => SubCompParameters(start, end).CommaSeparated();
+        public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
+        public string SubCompArgString(int start, int end) => SubCompArgs(start, end).CommaSeparated();
+
         public SwizzleType SwizzleType => new SwizzleType { BaseType = BaseType, BaseName = Name, Components = Components, Name = "swizzle_" + Name };
 
         private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
@@ -60,7 +65,18 @@ namespace GlmSharpGenerator
                 foreach (var line in Constructor("all-same-value constructor", BaseType + " v", "v".RepeatTimes(Components))) yield return line;
 
                 for (var comps = 2; comps <= 4; ++comps)
-                    foreach (var line in Constructor("from-vector constructor (empty fields are zero/false)", Name + comps + " v", "v".DotComp(comps))) yield return line;
+                {
+                    foreach (var line in Constructor("from-vector constructor (empty fields are zero/false)",
+                        Name + comps + " v",
+                        "v".DotComp(comps)))
+                        yield return line;
+
+                    for (var ucomps = comps; ucomps < Components; ++ucomps)
+                        foreach (var line in Constructor("from-vector-and-value constructor (empty fields are zero/false)",
+                            Name + comps + " v, " + SubCompParameterString(comps, ucomps),
+                            "v".DotComp(comps).Concat(SubCompArgs(comps, ucomps))))
+                            yield return line;
+                }
             }
         }
     }

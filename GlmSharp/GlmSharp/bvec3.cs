@@ -51,6 +51,16 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// </summary>
+        public bvec3(bvec2 v, bool z)
+        {
+            this.x = v.x;
+            this.y = v.y;
+            this.z = z;
+        }
+        
+        /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
         public bvec3(bvec3 v)

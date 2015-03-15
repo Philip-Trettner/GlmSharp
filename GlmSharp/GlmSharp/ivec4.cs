@@ -55,6 +55,28 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// </summary>
+        public ivec4(ivec2 v, int z)
+        {
+            this.x = v.x;
+            this.y = v.y;
+            this.z = z;
+            this.w = default(int);
+        }
+        
+        /// <summary>
+        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// </summary>
+        public ivec4(ivec2 v, int z, int w)
+        {
+            this.x = v.x;
+            this.y = v.y;
+            this.z = z;
+            this.w = w;
+        }
+        
+        /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
         public ivec4(ivec3 v)
@@ -63,6 +85,17 @@ namespace GlmSharp
             this.y = v.y;
             this.z = v.z;
             this.w = default(int);
+        }
+        
+        /// <summary>
+        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// </summary>
+        public ivec4(ivec3 v, int w)
+        {
+            this.x = v.x;
+            this.y = v.y;
+            this.z = v.z;
+            this.w = w;
         }
         
         /// <summary>
