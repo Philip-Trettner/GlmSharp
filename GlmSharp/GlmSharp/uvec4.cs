@@ -997,5 +997,20 @@ namespace GlmSharp
         /// Executes a component-wise greater-or-equal comparison with a scalar.
         /// </summary>
         public static bvec4 operator>=(uint lhs, uvec4 rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static uint Dot(uvec4 lhs, uvec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static float Distance(uvec4 lhs, uvec4 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static float DistanceSqr(uvec4 lhs, uvec4 rhs) => (lhs - rhs).LengthSqr;
     }
 }

@@ -496,5 +496,25 @@ namespace GlmSharp
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
         public decvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static decimal Dot(decvec3 lhs, decvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static decimal Distance(decvec3 lhs, decvec3 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static decimal DistanceSqr(decvec3 lhs, decvec3 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Returns the outer product (cross product, vector product) of the two vectors.
+        /// </summary>
+        public static decvec3 Cross(decvec3 l, decvec3 r) => new decvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
     }
 }

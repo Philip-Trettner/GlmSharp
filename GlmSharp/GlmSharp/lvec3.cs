@@ -636,5 +636,25 @@ namespace GlmSharp
         /// Executes a component-wise greater-or-equal comparison with a scalar.
         /// </summary>
         public static bvec3 operator>=(long lhs, lvec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static long Dot(lvec3 lhs, lvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static double Distance(lvec3 lhs, lvec3 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static double DistanceSqr(lvec3 lhs, lvec3 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Returns the outer product (cross product, vector product) of the two vectors.
+        /// </summary>
+        public static lvec3 Cross(lvec3 l, lvec3 r) => new lvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
     }
 }

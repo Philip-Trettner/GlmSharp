@@ -83,6 +83,7 @@ namespace GlmSharpGenerator
             return string.Format("({0}){1}", otherType.Name, c);
         }
 
+
         public string ComponentWiseOperator(string op)
             => string.Format("public static {0} operator{2}({0} lhs, {0} rhs) => new {0}({1});", ClassNameThat,
                     CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op);
@@ -432,6 +433,7 @@ namespace GlmSharpGenerator
                         }
                     }
 
+                    // normalized
                     if (!BaseTypeInfo.IsInteger)
                     {
                         foreach (var line in "Returns a copy of this vector with length one (undefined if this has zero length).".AsComment()) yield return line;
@@ -439,6 +441,29 @@ namespace GlmSharpGenerator
 
                         foreach (var line in "Returns a copy of this vector with length one (returns zero if length is zero).".AsComment()) yield return line;
                         yield return string.Format("public {0} NormalizedSafe => this == Zero ? Zero : this / Length;", ClassNameThat);
+                    }
+
+                    // dot
+                    foreach (var line in "Returns the inner product (dot product, scalar product) of the two vectors.".AsComment()) yield return line;
+                    yield return string.Format("public static {0} Dot({1} lhs, {1} rhs) => {2};", BaseType, ClassNameThat, CompString.Select(c => string.Format("lhs.{0} * rhs.{0}", c)).Aggregated(" + "));
+
+                    // distance
+                    foreach (var line in "Returns the euclidean distance between the two vectors.".AsComment()) yield return line;
+                    yield return string.Format("public static {0} Distance({1} lhs, {1} rhs) => (lhs - rhs).Length;", lengthType, ClassNameThat);
+
+                    foreach (var line in "Returns the squared euclidean distance between the two vectors.".AsComment()) yield return line;
+                    yield return string.Format("public static {0} DistanceSqr({1} lhs, {1} rhs) => (lhs - rhs).LengthSqr;", lengthType, ClassNameThat);
+
+                    // cross
+                    if (Components == 3)
+                    {
+                        foreach (var line in "Returns the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Cross({0} l, {0} r) => new {0}(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);", ClassNameThat);
+                    }
+                    else if (Components == 2)
+                    {
+                        foreach (var line in "Returns the length of the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
+                        yield return string.Format("public static {1} Cross({0} l, {0} r) => l.x * r.y - l.y * r.x;", ClassNameThat, BaseType);
                     }
                 }
             }
