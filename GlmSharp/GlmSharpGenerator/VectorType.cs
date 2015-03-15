@@ -455,15 +455,26 @@ namespace GlmSharpGenerator
                     yield return string.Format("public static {0} DistanceSqr({1} lhs, {1} rhs) => (lhs - rhs).LengthSqr;", lengthType, ClassNameThat);
 
                     // cross
-                    if (Components == 3)
+                    switch (Components)
                     {
-                        foreach (var line in "Returns the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Cross({0} l, {0} r) => new {0}(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);", ClassNameThat);
+                        case 3:
+                            foreach (var line in "Returns the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
+                            yield return string.Format("public static {0} Cross({0} l, {0} r) => new {0}(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);", ClassNameThat);
+                            break;
+                        case 2:
+                            foreach (var line in "Returns the length of the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
+                            yield return string.Format("public static {1} Cross({0} l, {0} r) => l.x * r.y - l.y * r.x;", ClassNameThat, BaseType);
+                            break;
                     }
-                    else if (Components == 2)
+
+                    // angle 
+                    if (Components == 2 && !BaseTypeInfo.Complex)
                     {
-                        foreach (var line in "Returns the length of the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
-                        yield return string.Format("public static {1} Cross({0} l, {0} r) => l.x * r.y - l.y * r.x;", ClassNameThat, BaseType);
+                        foreach (var line in "Returns the vector angle (atan2(y, x)) in radians.".AsComment()) yield return line;
+                        yield return string.Format("public double Angle => Math.Atan2((double)y, (double)x);");
+
+                        foreach (var line in "Returns a 2D vector with a given angle in radians.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} FromAngle(double angleInRad) => new {0}(({1})Math.Cos(angleInRad), ({1})Math.Sin(angleInRad));", ClassNameThat, BaseType);
                     }
                 }
             }
