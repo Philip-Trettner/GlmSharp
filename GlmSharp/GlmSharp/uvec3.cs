@@ -192,17 +192,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(uvec3 v) => new bvec2(v.x == default(uint) ? false : true, v.y == default(uint) ? false : true);
+        public static explicit operator bvec2(uvec3 v) => new bvec2(v.x != default(uint), v.y != default(uint));
         
         /// <summary>
         /// Explicitly converts this to a bvec3.
         /// </summary>
-        public static explicit operator bvec3(uvec3 v) => new bvec3(v.x == default(uint) ? false : true, v.y == default(uint) ? false : true, v.z == default(uint) ? false : true);
+        public static explicit operator bvec3(uvec3 v) => new bvec3(v.x != default(uint), v.y != default(uint), v.z != default(uint));
         
         /// <summary>
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec4(uvec3 v) => new bvec4(v.x == default(uint) ? false : true, v.y == default(uint) ? false : true, v.z == default(uint) ? false : true, default(bool));
+        public static explicit operator bvec4(uvec3 v) => new bvec4(v.x != default(uint), v.y != default(uint), v.z != default(uint), default(bool));
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -307,6 +307,11 @@ namespace GlmSharp
         public float LengthSqr => x*x + y*y + z*z;
         
         /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public float Sum => x + y + z;
+        
+        /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
         public float Norm => (float)Math.Sqrt(x*x + y*y + z*z);
@@ -330,5 +335,195 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow(x, p) + Math.Pow(y, p) + Math.Pow(z, p), 1 / p);
+        
+        /// <summary>
+        /// Executed a component-wise + (add).
+        /// </summary>
+        public static uvec3 operator+(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static uvec3 operator+(uvec3 lhs, uint rhs) => new uvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static uvec3 operator+(uint lhs, uvec3 rhs) => new uvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract).
+        /// </summary>
+        public static uvec3 operator-(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static uvec3 operator-(uvec3 lhs, uint rhs) => new uvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static uvec3 operator-(uint lhs, uvec3 rhs) => new uvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide).
+        /// </summary>
+        public static uvec3 operator/(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static uvec3 operator/(uvec3 lhs, uint rhs) => new uvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static uvec3 operator/(uint lhs, uvec3 rhs) => new uvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply).
+        /// </summary>
+        public static uvec3 operator*(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static uvec3 operator*(uvec3 lhs, uint rhs) => new uvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static uvec3 operator*(uint lhs, uvec3 rhs) => new uvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise % (mod).
+        /// </summary>
+        public static uvec3 operator%(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise % (mod) with a scalar.
+        /// </summary>
+        public static uvec3 operator%(uvec3 lhs, uint rhs) => new uvec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        
+        /// <summary>
+        /// Executed a component-wise % (mod) with a scalar.
+        /// </summary>
+        public static uvec3 operator%(uint lhs, uvec3 rhs) => new uvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise ^ (xor).
+        /// </summary>
+        public static uvec3 operator^(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static uvec3 operator^(uvec3 lhs, uint rhs) => new uvec3(lhs.x ^ rhs, lhs.y ^ rhs, lhs.z ^ rhs);
+        
+        /// <summary>
+        /// Executed a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static uvec3 operator^(uint lhs, uvec3 rhs) => new uvec3(lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or).
+        /// </summary>
+        public static uvec3 operator|(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static uvec3 operator|(uvec3 lhs, uint rhs) => new uvec3(lhs.x | rhs, lhs.y | rhs, lhs.z | rhs);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static uvec3 operator|(uint lhs, uvec3 rhs) => new uvec3(lhs | rhs.x, lhs | rhs.y, lhs | rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise & (bitwise-or).
+        /// </summary>
+        public static uvec3 operator&(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static uvec3 operator&(uvec3 lhs, uint rhs) => new uvec3(lhs.x & rhs, lhs.y & rhs, lhs.z & rhs);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static uvec3 operator&(uint lhs, uvec3 rhs) => new uvec3(lhs & rhs.x, lhs & rhs.y, lhs & rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise left-shift with a scalar.
+        /// </summary>
+        public static uvec3 operator<<(uvec3 lhs, int rhs) => new uvec3(lhs.x << rhs, lhs.y << rhs, lhs.z << rhs);
+        
+        /// <summary>
+        /// Executed a component-wise right-shift with a scalar.
+        /// </summary>
+        public static uvec3 operator>>(uvec3 lhs, int rhs) => new uvec3(lhs.x >> rhs, lhs.y >> rhs, lhs.z >> rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison.
+        /// </summary>
+        public static bvec3 operator<(uvec3 lhs, uvec3 rhs) => new bvec3(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<(uvec3 lhs, uint rhs) => new bvec3(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<(uint lhs, uvec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison.
+        /// </summary>
+        public static bvec3 operator<=(uvec3 lhs, uvec3 rhs) => new bvec3(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<=(uvec3 lhs, uint rhs) => new bvec3(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<=(uint lhs, uvec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison.
+        /// </summary>
+        public static bvec3 operator>(uvec3 lhs, uvec3 rhs) => new bvec3(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>(uvec3 lhs, uint rhs) => new bvec3(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>(uint lhs, uvec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison.
+        /// </summary>
+        public static bvec3 operator>=(uvec3 lhs, uvec3 rhs) => new bvec3(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>=(uvec3 lhs, uint rhs) => new bvec3(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>=(uint lhs, uvec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
     }
 }

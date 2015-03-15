@@ -21,17 +21,40 @@ namespace GlmSharpGenerator
                 yield return TypeGeneric;
             }
         }
+        public static Dictionary<BaseTypeInfo, BaseTypeInfo> Upcasts
+        {
+            get
+            {
+                // from -> to
+                var dic = new Dictionary<BaseTypeInfo, BaseTypeInfo>
+                {
+                    {TypeInt, TypeLong},
+                    {TypeInt, TypeFloat},
+                    {TypeInt, TypeDouble},
+
+                    {TypeUint, TypeLong},
+                    {TypeUint, TypeFloat},
+                    {TypeUint, TypeDouble},
+
+                    {TypeFloat, TypeDouble}
+                };
+
+                return dic;
+            }
+        }
 
         public static readonly BaseTypeInfo TypeInt = new BaseTypeInfo
         {
             Name = "int",
-            Prefix = "i"
+            Prefix = "i",
+            IsInteger = true
         };
         public static readonly BaseTypeInfo TypeUint = new BaseTypeInfo
         {
             Name = "uint",
             Prefix = "u",
-            RequiredAbs = false
+            RequiredAbs = false,
+            IsInteger = true
         };
         public static readonly BaseTypeInfo TypeFloat = new BaseTypeInfo
         {
@@ -49,7 +72,8 @@ namespace GlmSharpGenerator
         {
             Name = "long",
             Prefix = "l",
-            LengthType = "double"
+            LengthType = "double",
+            IsInteger = true
         };
         public static readonly BaseTypeInfo TypeBool = new BaseTypeInfo
         {
@@ -76,6 +100,7 @@ namespace GlmSharpGenerator
         public bool HasArithmetics { get; set; } = true;
         public string LengthType { get; set; } = "float";
         public bool RequiredAbs { get; set; } = true;
+        public bool IsInteger { get; set; } = false;
 
         public bool HasLogicOps { get; set; }
 

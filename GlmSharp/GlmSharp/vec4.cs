@@ -230,17 +230,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(vec4 v) => new bvec2(v.x == default(float) ? false : true, v.y == default(float) ? false : true);
+        public static explicit operator bvec2(vec4 v) => new bvec2(v.x != default(float), v.y != default(float));
         
         /// <summary>
         /// Explicitly converts this to a bvec3.
         /// </summary>
-        public static explicit operator bvec3(vec4 v) => new bvec3(v.x == default(float) ? false : true, v.y == default(float) ? false : true, v.z == default(float) ? false : true);
+        public static explicit operator bvec3(vec4 v) => new bvec3(v.x != default(float), v.y != default(float), v.z != default(float));
         
         /// <summary>
         /// Explicitly converts this to a bvec4.
         /// </summary>
-        public static explicit operator bvec4(vec4 v) => new bvec4(v.x == default(float) ? false : true, v.y == default(float) ? false : true, v.z == default(float) ? false : true, v.w == default(float) ? false : true);
+        public static explicit operator bvec4(vec4 v) => new bvec4(v.x != default(float), v.y != default(float), v.z != default(float), v.w != default(float));
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -348,6 +348,11 @@ namespace GlmSharp
         public float LengthSqr => x*x + y*y + z*z + w*w;
         
         /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public float Sum => x + y + z + w;
+        
+        /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
         public float Norm => (float)Math.Sqrt(x*x + y*y + z*z + w*w);
@@ -371,5 +376,135 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow(Math.Abs(x), p) + Math.Pow(Math.Abs(y), p) + Math.Pow(Math.Abs(z), p) + Math.Pow(Math.Abs(w), p), 1 / p);
+        
+        /// <summary>
+        /// Executed a component-wise + (add).
+        /// </summary>
+        public static vec4 operator+(vec4 lhs, vec4 rhs) => new vec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static vec4 operator+(vec4 lhs, float rhs) => new vec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static vec4 operator+(float lhs, vec4 rhs) => new vec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract).
+        /// </summary>
+        public static vec4 operator-(vec4 lhs, vec4 rhs) => new vec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static vec4 operator-(vec4 lhs, float rhs) => new vec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static vec4 operator-(float lhs, vec4 rhs) => new vec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide).
+        /// </summary>
+        public static vec4 operator/(vec4 lhs, vec4 rhs) => new vec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static vec4 operator/(vec4 lhs, float rhs) => new vec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static vec4 operator/(float lhs, vec4 rhs) => new vec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply).
+        /// </summary>
+        public static vec4 operator*(vec4 lhs, vec4 rhs) => new vec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static vec4 operator*(vec4 lhs, float rhs) => new vec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static vec4 operator*(float lhs, vec4 rhs) => new vec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison.
+        /// </summary>
+        public static bvec4 operator<(vec4 lhs, vec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator<(vec4 lhs, float rhs) => new bvec4(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator<(float lhs, vec4 rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison.
+        /// </summary>
+        public static bvec4 operator<=(vec4 lhs, vec4 rhs) => new bvec4(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator<=(vec4 lhs, float rhs) => new bvec4(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator<=(float lhs, vec4 rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison.
+        /// </summary>
+        public static bvec4 operator>(vec4 lhs, vec4 rhs) => new bvec4(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator>(vec4 lhs, float rhs) => new bvec4(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator>(float lhs, vec4 rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison.
+        /// </summary>
+        public static bvec4 operator>=(vec4 lhs, vec4 rhs) => new bvec4(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator>=(vec4 lhs, float rhs) => new bvec4(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec4 operator>=(float lhs, vec4 rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (undefined if this has zero length).
+        /// </summary>
+        public vec4 Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (returns zero if length is zero).
+        /// </summary>
+        public vec4 NormalizedSafe => this == Zero ? Zero : this / Length;
     }
 }

@@ -267,5 +267,25 @@ namespace GlmSharp
         /// Returns the maximal component of this vector.
         /// </summary>
         public bool MaxElement => x || y;
+        
+        /// <summary>
+        /// Returns true if all component are true.
+        /// </summary>
+        public bool All => x && y;
+        
+        /// <summary>
+        /// Returns true if any component is true.
+        /// </summary>
+        public bool Any => x || y;
+        
+        /// <summary>
+        /// Executed a component-wise &&. (sorry for different overload but && cannot be overloaded directly)
+        /// </summary>
+        public static bvec2 operator&(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x && rhs.x, lhs.y && rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise ||. (sorry for different overload but || cannot be overloaded directly)
+        /// </summary>
+        public static bvec2 operator|(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x || rhs.x, lhs.y || rhs.y);
     }
 }

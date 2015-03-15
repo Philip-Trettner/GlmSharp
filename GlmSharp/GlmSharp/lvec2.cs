@@ -167,17 +167,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(lvec2 v) => new bvec2(v.x == default(long) ? false : true, v.y == default(long) ? false : true);
+        public static explicit operator bvec2(lvec2 v) => new bvec2(v.x != default(long), v.y != default(long));
         
         /// <summary>
         /// Explicitly converts this to a bvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec3(lvec2 v) => new bvec3(v.x == default(long) ? false : true, v.y == default(long) ? false : true, default(bool));
+        public static explicit operator bvec3(lvec2 v) => new bvec3(v.x != default(long), v.y != default(long), default(bool));
         
         /// <summary>
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec4(lvec2 v) => new bvec4(v.x == default(long) ? false : true, v.y == default(long) ? false : true, default(bool), default(bool));
+        public static explicit operator bvec4(lvec2 v) => new bvec4(v.x != default(long), v.y != default(long), default(bool), default(bool));
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -279,6 +279,11 @@ namespace GlmSharp
         public double LengthSqr => x*x + y*y;
         
         /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public double Sum => x + y;
+        
+        /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
         public double Norm => (double)Math.Sqrt(x*x + y*y);
@@ -302,5 +307,195 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow(Math.Abs(x), p) + Math.Pow(Math.Abs(y), p), 1 / p);
+        
+        /// <summary>
+        /// Executed a component-wise + (add).
+        /// </summary>
+        public static lvec2 operator+(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x + rhs.x, lhs.y + rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static lvec2 operator+(lvec2 lhs, long rhs) => new lvec2(lhs.x + rhs, lhs.y + rhs);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static lvec2 operator+(long lhs, lvec2 rhs) => new lvec2(lhs + rhs.x, lhs + rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract).
+        /// </summary>
+        public static lvec2 operator-(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x - rhs.x, lhs.y - rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static lvec2 operator-(lvec2 lhs, long rhs) => new lvec2(lhs.x - rhs, lhs.y - rhs);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static lvec2 operator-(long lhs, lvec2 rhs) => new lvec2(lhs - rhs.x, lhs - rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide).
+        /// </summary>
+        public static lvec2 operator/(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x / rhs.x, lhs.y / rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static lvec2 operator/(lvec2 lhs, long rhs) => new lvec2(lhs.x / rhs, lhs.y / rhs);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static lvec2 operator/(long lhs, lvec2 rhs) => new lvec2(lhs / rhs.x, lhs / rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply).
+        /// </summary>
+        public static lvec2 operator*(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x * rhs.x, lhs.y * rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static lvec2 operator*(lvec2 lhs, long rhs) => new lvec2(lhs.x * rhs, lhs.y * rhs);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static lvec2 operator*(long lhs, lvec2 rhs) => new lvec2(lhs * rhs.x, lhs * rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise % (mod).
+        /// </summary>
+        public static lvec2 operator%(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x % rhs.x, lhs.y % rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise % (mod) with a scalar.
+        /// </summary>
+        public static lvec2 operator%(lvec2 lhs, long rhs) => new lvec2(lhs.x % rhs, lhs.y % rhs);
+        
+        /// <summary>
+        /// Executed a component-wise % (mod) with a scalar.
+        /// </summary>
+        public static lvec2 operator%(long lhs, lvec2 rhs) => new lvec2(lhs % rhs.x, lhs % rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise ^ (xor).
+        /// </summary>
+        public static lvec2 operator^(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x ^ rhs.x, lhs.y ^ rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static lvec2 operator^(lvec2 lhs, long rhs) => new lvec2(lhs.x ^ rhs, lhs.y ^ rhs);
+        
+        /// <summary>
+        /// Executed a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static lvec2 operator^(long lhs, lvec2 rhs) => new lvec2(lhs ^ rhs.x, lhs ^ rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or).
+        /// </summary>
+        public static lvec2 operator|(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x | rhs.x, lhs.y | rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static lvec2 operator|(lvec2 lhs, long rhs) => new lvec2(lhs.x | rhs, lhs.y | rhs);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static lvec2 operator|(long lhs, lvec2 rhs) => new lvec2(lhs | rhs.x, lhs | rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise & (bitwise-or).
+        /// </summary>
+        public static lvec2 operator&(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x & rhs.x, lhs.y & rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static lvec2 operator&(lvec2 lhs, long rhs) => new lvec2(lhs.x & rhs, lhs.y & rhs);
+        
+        /// <summary>
+        /// Executed a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static lvec2 operator&(long lhs, lvec2 rhs) => new lvec2(lhs & rhs.x, lhs & rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise left-shift with a scalar.
+        /// </summary>
+        public static lvec2 operator<<(lvec2 lhs, int rhs) => new lvec2(lhs.x << rhs, lhs.y << rhs);
+        
+        /// <summary>
+        /// Executed a component-wise right-shift with a scalar.
+        /// </summary>
+        public static lvec2 operator>>(lvec2 lhs, int rhs) => new lvec2(lhs.x >> rhs, lhs.y >> rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison.
+        /// </summary>
+        public static bvec2 operator<(lvec2 lhs, lvec2 rhs) => new bvec2(lhs.x < rhs.x, lhs.y < rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator<(lvec2 lhs, long rhs) => new bvec2(lhs.x < rhs, lhs.y < rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator<(long lhs, lvec2 rhs) => new bvec2(lhs < rhs.x, lhs < rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison.
+        /// </summary>
+        public static bvec2 operator<=(lvec2 lhs, lvec2 rhs) => new bvec2(lhs.x <= rhs.x, lhs.y <= rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator<=(lvec2 lhs, long rhs) => new bvec2(lhs.x <= rhs, lhs.y <= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator<=(long lhs, lvec2 rhs) => new bvec2(lhs <= rhs.x, lhs <= rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison.
+        /// </summary>
+        public static bvec2 operator>(lvec2 lhs, lvec2 rhs) => new bvec2(lhs.x > rhs.x, lhs.y > rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator>(lvec2 lhs, long rhs) => new bvec2(lhs.x > rhs, lhs.y > rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator>(long lhs, lvec2 rhs) => new bvec2(lhs > rhs.x, lhs > rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison.
+        /// </summary>
+        public static bvec2 operator>=(lvec2 lhs, lvec2 rhs) => new bvec2(lhs.x >= rhs.x, lhs.y >= rhs.y);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator>=(lvec2 lhs, long rhs) => new bvec2(lhs.x >= rhs, lhs.y >= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec2 operator>=(long lhs, lvec2 rhs) => new bvec2(lhs >= rhs.x, lhs >= rhs.y);
     }
 }

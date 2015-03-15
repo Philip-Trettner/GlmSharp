@@ -192,17 +192,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(dvec3 v) => new bvec2(v.x == default(double) ? false : true, v.y == default(double) ? false : true);
+        public static explicit operator bvec2(dvec3 v) => new bvec2(v.x != default(double), v.y != default(double));
         
         /// <summary>
         /// Explicitly converts this to a bvec3.
         /// </summary>
-        public static explicit operator bvec3(dvec3 v) => new bvec3(v.x == default(double) ? false : true, v.y == default(double) ? false : true, v.z == default(double) ? false : true);
+        public static explicit operator bvec3(dvec3 v) => new bvec3(v.x != default(double), v.y != default(double), v.z != default(double));
         
         /// <summary>
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec4(dvec3 v) => new bvec4(v.x == default(double) ? false : true, v.y == default(double) ? false : true, v.z == default(double) ? false : true, default(bool));
+        public static explicit operator bvec4(dvec3 v) => new bvec4(v.x != default(double), v.y != default(double), v.z != default(double), default(bool));
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -307,6 +307,11 @@ namespace GlmSharp
         public double LengthSqr => x*x + y*y + z*z;
         
         /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public double Sum => x + y + z;
+        
+        /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
         public double Norm => (double)Math.Sqrt(x*x + y*y + z*z);
@@ -330,5 +335,135 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow(Math.Abs(x), p) + Math.Pow(Math.Abs(y), p) + Math.Pow(Math.Abs(z), p), 1 / p);
+        
+        /// <summary>
+        /// Executed a component-wise + (add).
+        /// </summary>
+        public static dvec3 operator+(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static dvec3 operator+(dvec3 lhs, double rhs) => new dvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
+        
+        /// <summary>
+        /// Executed a component-wise + (add) with a scalar.
+        /// </summary>
+        public static dvec3 operator+(double lhs, dvec3 rhs) => new dvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract).
+        /// </summary>
+        public static dvec3 operator-(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static dvec3 operator-(dvec3 lhs, double rhs) => new dvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
+        
+        /// <summary>
+        /// Executed a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static dvec3 operator-(double lhs, dvec3 rhs) => new dvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide).
+        /// </summary>
+        public static dvec3 operator/(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static dvec3 operator/(dvec3 lhs, double rhs) => new dvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+        
+        /// <summary>
+        /// Executed a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static dvec3 operator/(double lhs, dvec3 rhs) => new dvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply).
+        /// </summary>
+        public static dvec3 operator*(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static dvec3 operator*(dvec3 lhs, double rhs) => new dvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+        
+        /// <summary>
+        /// Executed a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static dvec3 operator*(double lhs, dvec3 rhs) => new dvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison.
+        /// </summary>
+        public static bvec3 operator<(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<(dvec3 lhs, double rhs) => new bvec3(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<(double lhs, dvec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison.
+        /// </summary>
+        public static bvec3 operator<=(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<=(dvec3 lhs, double rhs) => new bvec3(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator<=(double lhs, dvec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison.
+        /// </summary>
+        public static bvec3 operator>(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>(dvec3 lhs, double rhs) => new bvec3(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>(double lhs, dvec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison.
+        /// </summary>
+        public static bvec3 operator>=(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>=(dvec3 lhs, double rhs) => new bvec3(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs);
+        
+        /// <summary>
+        /// Executed a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bvec3 operator>=(double lhs, dvec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (undefined if this has zero length).
+        /// </summary>
+        public dvec3 Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (returns zero if length is zero).
+        /// </summary>
+        public dvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
     }
 }
