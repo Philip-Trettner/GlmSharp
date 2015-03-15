@@ -467,14 +467,17 @@ namespace GlmSharpGenerator
                             break;
                     }
 
-                    // angle 
+                    // angle
                     if (Components == 2 && !BaseTypeInfo.Complex)
                     {
                         foreach (var line in "Returns the vector angle (atan2(y, x)) in radians.".AsComment()) yield return line;
                         yield return string.Format("public double Angle => Math.Atan2((double)y, (double)x);");
 
-                        foreach (var line in "Returns a 2D vector with a given angle in radians.".AsComment()) yield return line;
+                        foreach (var line in "Returns a unit 2D vector with a given angle in radians.".AsComment()) yield return line;
                         yield return string.Format("public static {0} FromAngle(double angleInRad) => new {0}(({1})Math.Cos(angleInRad), ({1})Math.Sin(angleInRad));", ClassNameThat, BaseType);
+
+                        foreach (var line in "Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).".AsComment()) yield return line;
+                        yield return string.Format("public {0} Rotated(double angleInRad) => ({0})(dvec2.FromAngle(Angle) * (double)Length);", ClassNameThat);
                     }
                 }
             }

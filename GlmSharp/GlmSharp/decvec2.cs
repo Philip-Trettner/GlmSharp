@@ -495,8 +495,13 @@ namespace GlmSharp
         public double Angle => Math.Atan2((double)y, (double)x);
         
         /// <summary>
-        /// Returns a 2D vector with a given angle in radians.
+        /// Returns a unit 2D vector with a given angle in radians.
         /// </summary>
         public static decvec2 FromAngle(double angleInRad) => new decvec2((decimal)Math.Cos(angleInRad), (decimal)Math.Sin(angleInRad));
+        
+        /// <summary>
+        /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
+        /// </summary>
+        public decvec2 Rotated(double angleInRad) => (decvec2)(dvec2.FromAngle(Angle) * (double)Length);
     }
 }
