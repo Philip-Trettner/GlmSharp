@@ -35,7 +35,7 @@ namespace GlmSharpGenerator
         public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
         public string SubCompArgString(int start, int end) => SubCompArgs(start, end).CommaSeparated();
 
-        public SwizzleType SwizzleType => new SwizzleType { BaseType = BaseType, BaseName = Name, Components = Components, Name = "swizzle_" + Name };
+        public SwizzleType SwizzleType => new SwizzleType { BaseType = BaseType, BaseName = Name, Components = Components, Name = "swizzle_" + Name, IsGeneric = IsGeneric };
 
         private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
         {
@@ -59,7 +59,7 @@ namespace GlmSharpGenerator
 
                 // swizzle
                 foreach (var line in "Returns an object that can be used for swizzling (e.g. swizzle.zy)".AsComment()) yield return line;
-                yield return string.Format("public swizzle_{0} swizzle => new swizzle_{0}({1});", ClassName, CompArgString);
+                yield return string.Format("public swizzle_{0} swizzle => new swizzle_{0}({1});", ClassNameThat, CompArgString);
 
                 // values
                 foreach (var line in "Returns an array with all values".AsComment()) yield return line;
@@ -72,13 +72,13 @@ namespace GlmSharpGenerator
                 for (var comps = 2; comps <= 4; ++comps)
                 {
                     foreach (var line in Constructor("from-vector constructor (empty fields are zero/false)",
-                        Name + comps + " v",
+                        Name + comps + GenericSuffic + " v",
                         "v".DotComp(comps)))
                         yield return line;
 
                     for (var ucomps = comps; ucomps < Components; ++ucomps)
                         foreach (var line in Constructor("from-vector-and-value constructor (empty fields are zero/false)",
-                            Name + comps + " v, " + SubCompParameterString(comps, ucomps),
+                            Name + comps + GenericSuffic + " v, " + SubCompParameterString(comps, ucomps),
                             "v".DotComp(comps).Concat(SubCompArgs(comps, ucomps))))
                             yield return line;
                 }

@@ -6,90 +6,73 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct bvec3 : IReadOnlyList<bool>
+    public struct gvec2<T> : IReadOnlyList<T>
     {
-        public bool x;
-        public bool y;
-        public bool z;
+        public T x;
+        public T y;
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
         /// </summary>
-        public swizzle_bvec3 swizzle => new swizzle_bvec3(x, y, z);
+        public swizzle_gvec2<T> swizzle => new swizzle_gvec2<T>(x, y);
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
-        public bool[] Values => new[] { x, y, z };
+        public T[] Values => new[] { x, y };
         
         /// <summary>
         /// Component-wise constructor
         /// </summary>
-        public bvec3(bool x, bool y, bool z)
+        public gvec2(T x, T y)
         {
             this.x = x;
             this.y = y;
-            this.z = z;
         }
         
         /// <summary>
         /// all-same-value constructor
         /// </summary>
-        public bvec3(bool v)
+        public gvec2(T v)
         {
             this.x = v;
             this.y = v;
-            this.z = v;
         }
         
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public bvec3(bvec2 v)
+        public gvec2(gvec2<T> v)
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(bool);
-        }
-        
-        /// <summary>
-        /// from-vector-and-value constructor (empty fields are zero/false)
-        /// </summary>
-        public bvec3(bvec2 v, bool z)
-        {
-            this.x = v.x;
-            this.y = v.y;
-            this.z = z;
         }
         
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public bvec3(bvec3 v)
+        public gvec2(gvec3<T> v)
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = v.z;
         }
         
         /// <summary>
         /// from-vector constructor (empty fields are zero/false)
         /// </summary>
-        public bvec3(bvec4 v)
+        public gvec2(gvec4<T> v)
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = v.z;
         }
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
         /// </summary>
-        public IEnumerator<bool> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             yield return x;
             yield return y;
-            yield return z;
         }
         
         /// <summary>
@@ -98,14 +81,14 @@ namespace GlmSharp
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
-        /// Returns the number of components (3).
+        /// Returns the number of components (2).
         /// </summary>
-        public int Count => 3;
+        public int Count => 2;
         
         /// <summary>
         /// Gets/Sets a specific indexed component (a bit slower than direct access).
         /// </summary>
-        public bool this[int index]
+        public T this[int index]
         {
             get
             {
@@ -113,7 +96,6 @@ namespace GlmSharp
                 {
                     case 0: return x;
                     case 1: return y;
-                    case 2: return z;
                     default: throw new ArgumentOutOfRangeException("index");
                 }
             }
@@ -123,7 +105,6 @@ namespace GlmSharp
                 {
                     case 0: this.x = value; break;
                     case 1: this.y = value; break;
-                    case 2: this.z = value; break;
                     default: throw new ArgumentOutOfRangeException("index");
                 }
             }

@@ -46,6 +46,9 @@
     <Compile Include="dvec3.cs" />
     <Compile Include="dvec4.cs" />
     <Compile Include="glm.cs" />
+    <Compile Include="gvec2.cs" />
+    <Compile Include="gvec3.cs" />
+    <Compile Include="gvec4.cs" />
     <Compile Include="ivec2.cs" />
     <Compile Include="ivec3.cs" />
     <Compile Include="ivec4.cs" />
@@ -59,6 +62,9 @@
     <Compile Include="swizzle_dvec2.cs" />
     <Compile Include="swizzle_dvec3.cs" />
     <Compile Include="swizzle_dvec4.cs" />
+    <Compile Include="swizzle_gvec2.cs" />
+    <Compile Include="swizzle_gvec3.cs" />
+    <Compile Include="swizzle_gvec4.cs" />
     <Compile Include="swizzle_ivec2.cs" />
     <Compile Include="swizzle_ivec3.cs" />
     <Compile Include="swizzle_ivec4.cs" />

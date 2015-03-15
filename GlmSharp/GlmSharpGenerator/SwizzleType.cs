@@ -50,7 +50,7 @@ namespace GlmSharpGenerator
                 // swizzle
                 yield return "";
                 foreach (var swizzle in Swizzle(0))
-                    yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", BaseName, swizzle.Length, swizzle, swizzle.CommaSeparated());
+                    yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", BaseName, swizzle.Length + GenericSuffic, swizzle, swizzle.CommaSeparated());
             }
         }
     }

@@ -21,6 +21,7 @@ namespace GlmSharpGenerator
                 yield return "bool";
                 yield return "double";
                 yield return "long";
+                yield return "T";
             }
         }
 
@@ -37,11 +38,15 @@ namespace GlmSharpGenerator
             foreach (var type in SupportedTypes)
                 for (var comp = 2; comp <= 4; ++comp)
                 {
+                    var name = type.StartsWith("f") ? "vec" : type[0] + "vec";
+                    if (type == "T")
+                        name = "gvec";
                     var vect = new VectorType
                     {
-                        Name = type.StartsWith("f") ? "vec" : type[0] + "vec",
+                        Name = name,
                         Components = comp,
-                        BaseType = type
+                        BaseType = type,
+                        IsGeneric = type == "T"
                     };
                     var swizzler = vect.SwizzleType;
                     Types.Add(vect.ClassName, vect);

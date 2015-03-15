@@ -11,6 +11,10 @@ namespace GlmSharpGenerator
         public string Name { get; set; } = "vec";
         public string BaseType { get; set; } = "float";
         public abstract string ClassName { get; }
+        public string ClassNameThat => ClassName + GenericSuffic;
+        public string GenericSuffic => IsGeneric ? "<T>" : "";
+
+        public bool IsGeneric { get; set; }
 
         public virtual IEnumerable<string> BaseClasses { get { yield break; } }
 
@@ -23,10 +27,11 @@ namespace GlmSharpGenerator
                 yield return "using System.Collections;";
                 yield return "using System.Collections.Generic;";
                 yield return "using System.Linq;";
+                yield return "";
                 yield return "namespace GlmSharp";
                 yield return "{";
                 yield return "    [Serializable]";
-                yield return "    public struct " + ClassName + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
+                yield return "    public struct " + ClassName + GenericSuffic + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";
                 foreach (var line in Body)
                     yield return line.Indent(2);
