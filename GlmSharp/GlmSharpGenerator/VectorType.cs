@@ -57,25 +57,10 @@ namespace GlmSharpGenerator
 
                 // ctors
                 foreach (var line in Constructor("Component-wise constructor", CompParameterString, CompArgs)) yield return line;
-
-                yield return "";
-                foreach (var line in "all-same-value constructor".AsComment()) yield return line;
-                yield return string.Format("public {0}({1} v)", ClassName, BaseType);
-                yield return "{";
-                foreach (var c in CompString)
-                    yield return string.Format("this.{0} = v;", c).Indent();
-                yield return "}";
+                foreach (var line in Constructor("all-same-value constructor", BaseType + " v", "v".RepeatTimes(Components))) yield return line;
 
                 for (var comps = 2; comps <= 4; ++comps)
-                {
-                    yield return "";
-                    foreach (var line in "from-vector constructor (empty fields are zero/false)".AsComment()) yield return line;
-                    yield return string.Format("public {0}({1}{2} v)", ClassName, Name, comps);
-                    yield return "{";
-                    for (var c = 0; c < Components; ++c)
-                        yield return string.Format("this.{0} = {1};", "xyzw"[c], c < comps ? "v." + "xyzw"[c] : DefaultValue).Indent();
-                    yield return "}";
-                }
+                    foreach (var line in Constructor("from-vector constructor (empty fields are zero/false)", Name + comps + " v", "v".DotComp(comps))) yield return line;
             }
         }
     }
