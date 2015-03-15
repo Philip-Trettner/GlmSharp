@@ -8,7 +8,15 @@ namespace GlmSharp
     [Serializable]
     public struct gvec2<T> : IReadOnlyList<T>
     {
+        
+        /// <summary>
+        /// x-component
+        /// </summary>
         public T x;
+        
+        /// <summary>
+        /// y-component
+        /// </summary>
         public T y;
         
         /// <summary>

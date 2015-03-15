@@ -8,8 +8,20 @@ namespace GlmSharp
     [Serializable]
     public struct ivec3 : IReadOnlyList<int>
     {
+        
+        /// <summary>
+        /// x-component
+        /// </summary>
         public int x;
+        
+        /// <summary>
+        /// y-component
+        /// </summary>
         public int y;
+        
+        /// <summary>
+        /// z-component
+        /// </summary>
         public int z;
         
         /// <summary>

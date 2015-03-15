@@ -8,7 +8,15 @@ namespace GlmSharp
     [Serializable]
     public struct vec2 : IReadOnlyList<float>
     {
+        
+        /// <summary>
+        /// x-component
+        /// </summary>
         public float x;
+        
+        /// <summary>
+        /// y-component
+        /// </summary>
         public float y;
         
         /// <summary>

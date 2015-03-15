@@ -55,7 +55,10 @@ namespace GlmSharpGenerator
             {
                 // components
                 for (var i = 0; i < Components; ++i)
+                {
+                    foreach (var line in string.Format("{0}-component", "xyzw"[i]).AsComment()) yield return line;
                     yield return string.Format("public {0} {1};", BaseType, "xyzw"[i]);
+                }
 
                 // swizzle
                 foreach (var line in "Returns an object that can be used for swizzling (e.g. swizzle.zy)".AsComment()) yield return line;

@@ -8,8 +8,20 @@ namespace GlmSharp
     [Serializable]
     public struct dvec3 : IReadOnlyList<double>
     {
+        
+        /// <summary>
+        /// x-component
+        /// </summary>
         public double x;
+        
+        /// <summary>
+        /// y-component
+        /// </summary>
         public double y;
+        
+        /// <summary>
+        /// z-component
+        /// </summary>
         public double z;
         
         /// <summary>

@@ -8,9 +8,25 @@ namespace GlmSharp
     [Serializable]
     public struct bvec4 : IReadOnlyList<bool>
     {
+        
+        /// <summary>
+        /// x-component
+        /// </summary>
         public bool x;
+        
+        /// <summary>
+        /// y-component
+        /// </summary>
         public bool y;
+        
+        /// <summary>
+        /// z-component
+        /// </summary>
         public bool z;
+        
+        /// <summary>
+        /// w-component
+        /// </summary>
         public bool w;
         
         /// <summary>

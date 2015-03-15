@@ -8,9 +8,25 @@ namespace GlmSharp
     [Serializable]
     public struct vec4 : IReadOnlyList<float>
     {
+        
+        /// <summary>
+        /// x-component
+        /// </summary>
         public float x;
+        
+        /// <summary>
+        /// y-component
+        /// </summary>
         public float y;
+        
+        /// <summary>
+        /// z-component
+        /// </summary>
         public float z;
+        
+        /// <summary>
+        /// w-component
+        /// </summary>
         public float w;
         
         /// <summary>

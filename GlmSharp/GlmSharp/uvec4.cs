@@ -8,9 +8,25 @@ namespace GlmSharp
     [Serializable]
     public struct uvec4 : IReadOnlyList<uint>
     {
+        
+        /// <summary>
+        /// x-component
+        /// </summary>
         public uint x;
+        
+        /// <summary>
+        /// y-component
+        /// </summary>
         public uint y;
+        
+        /// <summary>
+        /// z-component
+        /// </summary>
         public uint z;
+        
+        /// <summary>
+        /// w-component
+        /// </summary>
         public uint w;
         
         /// <summary>
