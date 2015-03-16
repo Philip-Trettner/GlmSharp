@@ -573,6 +573,18 @@ namespace GlmSharpGenerator
                         yield return "    m.m32 = - (zFar + zNear)/(zFar - zNear);";
                         yield return "    return m;";
                         yield return "}";
+
+                        foreach (var line in "Creates a matrix for projecting two-dimensional coordinates onto the screen.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Ortho({1} left, {1} right, {1} bottom, {1} top)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    var m = Identity;";
+                        yield return "    m.m00 = 2/(right - left);";
+                        yield return "    m.m11 = 2/(top - bottom);";
+                        yield return "    m.m22 = - 1;";
+                        yield return "    m.m30 = - (right + left)/(right - left);";
+                        yield return "    m.m31 = - (top + bottom)/(top - bottom);";
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }
