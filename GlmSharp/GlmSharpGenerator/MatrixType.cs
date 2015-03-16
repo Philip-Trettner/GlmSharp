@@ -559,6 +559,20 @@ namespace GlmSharpGenerator
                         yield return string.Format("    m.m32 = {0}.Dot(f, eye);", BaseTypeInfo.Prefix + "vec3");
                         yield return "    return m;";
                         yield return "}";
+
+                        // ortho
+                        foreach (var line in "Creates a matrix for an orthographic parallel viewing volume.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Ortho({1} left, {1} right, {1} bottom, {1} top, {1} zNear, {1} zFar)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    var m = Identity;";
+                        yield return "    m.m00 = 2/(right - left);";
+                        yield return "    m.m11 = 2/(top - bottom);";
+                        yield return "    m.m22 = - 2/(zFar - zNear);";
+                        yield return "    m.m30 = - (right + left)/(right - left);";
+                        yield return "    m.m31 = - (top + bottom)/(top - bottom);";
+                        yield return "    m.m32 = - (zFar + zNear)/(zFar - zNear);";
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }

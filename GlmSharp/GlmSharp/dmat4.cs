@@ -566,5 +566,20 @@ namespace GlmSharp
             m.m32 = dvec3.Dot(f, eye);
             return m;
         }
+        
+        /// <summary>
+        /// Creates a matrix for an orthographic parallel viewing volume.
+        /// </summary>
+        public static dmat4 Ortho(double left, double right, double bottom, double top, double zNear, double zFar)
+        {
+            var m = Identity;
+            m.m00 = 2/(right - left);
+            m.m11 = 2/(top - bottom);
+            m.m22 = - 2/(zFar - zNear);
+            m.m30 = - (right + left)/(right - left);
+            m.m31 = - (top + bottom)/(top - bottom);
+            m.m32 = - (zFar + zNear)/(zFar - zNear);
+            return m;
+        }
     }
 }
