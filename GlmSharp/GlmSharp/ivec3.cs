@@ -1289,6 +1289,41 @@ namespace GlmSharp
         public static ivec3 Mix(int min, ivec3 max, int a) => new ivec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
         
         /// <summary>
+        /// Returns a component-wise executed Lerp.
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, ivec3 max, ivec3 a) => new ivec3(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static ivec3 Lerp(int min, ivec3 max, ivec3 a) => new ivec3(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, int max, ivec3 a) => new ivec3(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, ivec3 max, int a) => new ivec3(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static ivec3 Lerp(int min, int max, ivec3 a) => new ivec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, int max, int a) => new ivec3(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static ivec3 Lerp(int min, ivec3 max, int a) => new ivec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
+        
+        /// <summary>
         /// Returns a component-wise executed Smoothstep.
         /// </summary>
         public static ivec3 Smoothstep(ivec3 edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3());

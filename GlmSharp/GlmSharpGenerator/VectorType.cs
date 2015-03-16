@@ -841,6 +841,7 @@ namespace GlmSharpGenerator
                     {
                         {new []{"Clamp", "v", "min", "max"}, (s1, s2, s3) => string.Format("Math.Min(Math.Max({0}, {1}), {2})", s1, s2, s3)},
                         {new []{"Mix", "min", "max", "a"}, (s1, s2, s3) => string.Format("{0} * (1-{2}) + {1} * {2}", s1, s2, s3)},
+                        {new []{"Lerp", "min", "max", "a"}, (s1, s2, s3) => string.Format("{0} * (1-{2}) + {1} * {2}", s1, s2, s3)},
                         {new []{"Smoothstep", "edge0", "edge1", "v"}, (s1, s2, s3) => string.Format("(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder3()", s1, s2, s3)},
                         {new []{"Smootherstep", "edge0", "edge1", "v"}, (s1, s2, s3) => string.Format("(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()", s1, s2, s3)},
                     })

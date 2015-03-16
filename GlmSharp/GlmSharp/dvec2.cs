@@ -1041,6 +1041,41 @@ namespace GlmSharp
         public static dvec2 Mix(double min, dvec2 max, double a) => new dvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
         
         /// <summary>
+        /// Returns a component-wise executed Lerp.
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, dvec2 max, dvec2 a) => new dvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static dvec2 Lerp(double min, dvec2 max, dvec2 a) => new dvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, double max, dvec2 a) => new dvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, dvec2 max, double a) => new dvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static dvec2 Lerp(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, double max, double a) => new dvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static dvec2 Lerp(double min, dvec2 max, double a) => new dvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
         /// Returns a component-wise executed Smoothstep.
         /// </summary>
         public static dvec2 Smoothstep(dvec2 edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());

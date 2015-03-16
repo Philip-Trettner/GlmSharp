@@ -1134,6 +1134,41 @@ namespace GlmSharp
         public static vec3 Mix(float min, vec3 max, float a) => new vec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
         
         /// <summary>
+        /// Returns a component-wise executed Lerp.
+        /// </summary>
+        public static vec3 Lerp(vec3 min, vec3 max, vec3 a) => new vec3(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec3 Lerp(float min, vec3 max, vec3 a) => new vec3(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec3 Lerp(vec3 min, float max, vec3 a) => new vec3(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec3 Lerp(vec3 min, vec3 max, float a) => new vec3(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec3 Lerp(float min, float max, vec3 a) => new vec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec3 Lerp(vec3 min, float max, float a) => new vec3(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec3 Lerp(float min, vec3 max, float a) => new vec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
+        
+        /// <summary>
         /// Returns a component-wise executed Smoothstep.
         /// </summary>
         public static vec3 Smoothstep(vec3 edge0, vec3 edge1, vec3 v) => new vec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3());

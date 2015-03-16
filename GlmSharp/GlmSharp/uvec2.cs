@@ -1271,6 +1271,41 @@ namespace GlmSharp
         public static uvec2 Mix(uint min, uvec2 max, uint a) => new uvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
         
         /// <summary>
+        /// Returns a component-wise executed Lerp.
+        /// </summary>
+        public static uvec2 Lerp(uvec2 min, uvec2 max, uvec2 a) => new uvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static uvec2 Lerp(uint min, uvec2 max, uvec2 a) => new uvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static uvec2 Lerp(uvec2 min, uint max, uvec2 a) => new uvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static uvec2 Lerp(uvec2 min, uvec2 max, uint a) => new uvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static uvec2 Lerp(uint min, uint max, uvec2 a) => new uvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static uvec2 Lerp(uvec2 min, uint max, uint a) => new uvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static uvec2 Lerp(uint min, uvec2 max, uint a) => new uvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
         /// Returns a component-wise executed Smoothstep.
         /// </summary>
         public static uvec2 Smoothstep(uvec2 edge0, uvec2 edge1, uvec2 v) => new uvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());

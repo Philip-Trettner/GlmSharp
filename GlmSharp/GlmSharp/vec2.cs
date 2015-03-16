@@ -1121,6 +1121,41 @@ namespace GlmSharp
         public static vec2 Mix(float min, vec2 max, float a) => new vec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
         
         /// <summary>
+        /// Returns a component-wise executed Lerp.
+        /// </summary>
+        public static vec2 Lerp(vec2 min, vec2 max, vec2 a) => new vec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec2 Lerp(float min, vec2 max, vec2 a) => new vec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec2 Lerp(vec2 min, float max, vec2 a) => new vec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec2 Lerp(vec2 min, vec2 max, float a) => new vec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec2 Lerp(float min, float max, vec2 a) => new vec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec2 Lerp(vec2 min, float max, float a) => new vec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static vec2 Lerp(float min, vec2 max, float a) => new vec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
         /// Returns a component-wise executed Smoothstep.
         /// </summary>
         public static vec2 Smoothstep(vec2 edge0, vec2 edge1, vec2 v) => new vec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());

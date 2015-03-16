@@ -921,6 +921,41 @@ namespace GlmSharp
         public static decvec2 Mix(decimal min, decvec2 max, decimal a) => new decvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
         
         /// <summary>
+        /// Returns a component-wise executed Lerp.
+        /// </summary>
+        public static decvec2 Lerp(decvec2 min, decvec2 max, decvec2 a) => new decvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static decvec2 Lerp(decimal min, decvec2 max, decvec2 a) => new decvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static decvec2 Lerp(decvec2 min, decimal max, decvec2 a) => new decvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static decvec2 Lerp(decvec2 min, decvec2 max, decimal a) => new decvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static decvec2 Lerp(decimal min, decimal max, decvec2 a) => new decvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static decvec2 Lerp(decvec2 min, decimal max, decimal a) => new decvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static decvec2 Lerp(decimal min, decvec2 max, decimal a) => new decvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
         /// Returns a component-wise executed Smoothstep.
         /// </summary>
         public static decvec2 Smoothstep(decvec2 edge0, decvec2 edge1, decvec2 v) => new decvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
