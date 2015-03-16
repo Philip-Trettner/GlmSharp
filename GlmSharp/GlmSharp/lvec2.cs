@@ -480,6 +480,16 @@ namespace GlmSharp
         public static decvec2 operator*(decimal lhs, lvec2 rhs) => new decvec2(lhs * rhs.x, lhs * rhs.y);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static lvec2 operator+(lvec2 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static lvec2 operator-(lvec2 v) => new lvec2(-v.x, -v.y);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static lvec2 operator%(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x % rhs.x, lhs.y % rhs.y);

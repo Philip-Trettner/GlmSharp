@@ -285,6 +285,16 @@ namespace GlmSharp
         public static cvec2 operator*(Complex lhs, cvec2 rhs) => new cvec2(lhs * rhs.x, lhs * rhs.y);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static cvec2 operator+(cvec2 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static cvec2 operator-(cvec2 v) => new cvec2(-v.x, -v.y);
+        
+        /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).
         /// </summary>
         public cvec2 Normalized => this / Length;

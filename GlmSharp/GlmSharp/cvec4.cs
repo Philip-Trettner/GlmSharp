@@ -354,6 +354,16 @@ namespace GlmSharp
         public static cvec4 operator*(Complex lhs, cvec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static cvec4 operator+(cvec4 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static cvec4 operator-(cvec4 v) => new cvec4(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).
         /// </summary>
         public cvec4 Normalized => this / Length;

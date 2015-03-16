@@ -869,6 +869,16 @@ namespace GlmSharp
         public static cvec4 operator*(Complex lhs, ivec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static ivec4 operator+(ivec4 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static ivec4 operator-(ivec4 v) => new ivec4(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static ivec4 operator%(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);

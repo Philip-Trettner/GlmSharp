@@ -313,6 +313,16 @@ namespace GlmSharp
         public static cvec3 operator*(Complex lhs, cvec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static cvec3 operator+(cvec3 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static cvec3 operator-(cvec3 v) => new cvec3(-v.x, -v.y, -v.z);
+        
+        /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).
         /// </summary>
         public cvec3 Normalized => this / Length;

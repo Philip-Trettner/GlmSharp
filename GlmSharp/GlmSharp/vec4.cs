@@ -629,6 +629,16 @@ namespace GlmSharp
         public static cvec4 operator*(Complex lhs, vec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static vec4 operator+(vec4 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static vec4 operator-(vec4 v) => new vec4(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
         /// Executes a component-wise lesser-than comparison.
         /// </summary>
         public static bvec4 operator<(vec4 lhs, vec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);

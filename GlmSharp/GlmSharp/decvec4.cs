@@ -469,6 +469,16 @@ namespace GlmSharp
         public static decvec4 operator*(decimal lhs, decvec4 rhs) => new decvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static decvec4 operator+(decvec4 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static decvec4 operator-(decvec4 v) => new decvec4(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
         /// Executes a component-wise lesser-than comparison.
         /// </summary>
         public static bvec4 operator<(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);

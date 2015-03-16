@@ -508,6 +508,16 @@ namespace GlmSharp
         public static cvec3 operator*(Complex lhs, dvec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static dvec3 operator+(dvec3 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static dvec3 operator-(dvec3 v) => new dvec3(-v.x, -v.y, -v.z);
+        
+        /// <summary>
         /// Executes a component-wise lesser-than comparison.
         /// </summary>
         public static bvec3 operator<(dvec3 lhs, dvec3 rhs) => new bvec3(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z);

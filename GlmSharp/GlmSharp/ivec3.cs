@@ -828,6 +828,16 @@ namespace GlmSharp
         public static cvec3 operator*(Complex lhs, ivec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static ivec3 operator+(ivec3 v) => v;
+        
+        /// <summary>
+        /// Executes a component-wise unary - (subtract).
+        /// </summary>
+        public static ivec3 operator-(ivec3 v) => new ivec3(-v.x, -v.y, -v.z);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static ivec3 operator%(ivec3 lhs, ivec3 rhs) => new ivec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);

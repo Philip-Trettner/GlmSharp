@@ -800,6 +800,11 @@ namespace GlmSharp
         public static cvec2 operator*(Complex lhs, uvec2 rhs) => new cvec2(lhs * rhs.x, lhs * rhs.y);
         
         /// <summary>
+        /// Executes a component-wise unary + (add).
+        /// </summary>
+        public static uvec2 operator+(uvec2 v) => v;
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static uvec2 operator%(uvec2 lhs, uvec2 rhs) => new uvec2(lhs.x % rhs.x, lhs.y % rhs.y);

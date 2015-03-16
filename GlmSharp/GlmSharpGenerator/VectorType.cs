@@ -330,7 +330,7 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns the p-norm of this vector.".AsComment()) yield return line;
                     yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", CompString.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
 
-                    // arithmetic operators
+                    // binary arithmetic operators
                     foreach (var kvp in new Dictionary<string, string>
                     {
                         {"+", "+ (add)"},
@@ -364,6 +364,26 @@ namespace GlmSharpGenerator
                             foreach (var line in string.Format("Executes a component-wise {0} with a scalar (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
                             yield return ComponentWiseOperatorForeignScalarL(op, upType.Name, foreignType);
                         }
+                    }
+
+                    // unary arithmetic operators
+                    foreach (var kvp in new Dictionary<string, string>
+                    {
+                        {"+", "+ (add)"},
+                        {"-", "- (subtract)"},
+                    })
+                    {
+                        var op = kvp.Key;
+                        var opComment = kvp.Value;
+
+                        if (op == "-" && !BaseTypeInfo.RequiredAbs)
+                            continue; // unsigned
+
+                        foreach (var line in string.Format("Executes a component-wise unary {0}.", opComment).AsComment()) yield return line;
+                        if (op == "+")
+                            yield return string.Format("public static {0} operator{1}({0} v) => v;", ClassNameThat, op);
+                        else
+                            yield return string.Format("public static {0} operator{1}({0} v) => new {0}({2});", ClassNameThat, op, CompString.Select(c => op + "v." + c).CommaSeparated());
                     }
 
                     // integer-only operators
