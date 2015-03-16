@@ -444,6 +444,41 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out vec3 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out vec3 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) return false;
+            float x = default(float), y = default(float), z = default(float);
+            var ok = float.TryParse(kvp[0].Trim(), out x) && float.TryParse(kvp[1].Trim(), out y) && float.TryParse(kvp[2].Trim(), out z);
+            result = ok ? new vec3(x, y, z) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out vec3 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) return false;
+            float x = default(float), y = default(float), z = default(float);
+            var ok = float.TryParse(kvp[0].Trim(), style, provider, out x) && float.TryParse(kvp[1].Trim(), style, provider, out y) && float.TryParse(kvp[2].Trim(), style, provider, out z);
+            result = ok ? new vec3(x, y, z) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
         public float MinElement => Math.Min(Math.Min(x, y), z);

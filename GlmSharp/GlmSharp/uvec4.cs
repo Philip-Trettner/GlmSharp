@@ -440,6 +440,41 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out uvec4 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out uvec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            uint x = default(uint), y = default(uint), z = default(uint), w = default(uint);
+            var ok = uint.TryParse(kvp[0].Trim(), out x) && uint.TryParse(kvp[1].Trim(), out y) && uint.TryParse(kvp[2].Trim(), out z) && uint.TryParse(kvp[3].Trim(), out w);
+            result = ok ? new uvec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out uvec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            uint x = default(uint), y = default(uint), z = default(uint), w = default(uint);
+            var ok = uint.TryParse(kvp[0].Trim(), style, provider, out x) && uint.TryParse(kvp[1].Trim(), style, provider, out y) && uint.TryParse(kvp[2].Trim(), style, provider, out z) && uint.TryParse(kvp[3].Trim(), style, provider, out w);
+            result = ok ? new uvec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
         public uint MinElement => Math.Min(Math.Min(Math.Min(x, y), z), w);

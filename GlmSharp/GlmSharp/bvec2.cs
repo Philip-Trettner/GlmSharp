@@ -321,6 +321,26 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out bvec2 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out bvec2 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) return false;
+            bool x = default(bool), y = default(bool);
+            var ok = bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y);
+            result = ok ? new bvec2(x, y) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
         public bool MinElement => x && y;

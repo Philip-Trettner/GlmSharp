@@ -445,6 +445,41 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out decvec4 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out decvec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            decimal x = default(decimal), y = default(decimal), z = default(decimal), w = default(decimal);
+            var ok = decimal.TryParse(kvp[0].Trim(), out x) && decimal.TryParse(kvp[1].Trim(), out y) && decimal.TryParse(kvp[2].Trim(), out z) && decimal.TryParse(kvp[3].Trim(), out w);
+            result = ok ? new decvec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out decvec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            decimal x = default(decimal), y = default(decimal), z = default(decimal), w = default(decimal);
+            var ok = decimal.TryParse(kvp[0].Trim(), style, provider, out x) && decimal.TryParse(kvp[1].Trim(), style, provider, out y) && decimal.TryParse(kvp[2].Trim(), style, provider, out z) && decimal.TryParse(kvp[3].Trim(), style, provider, out w);
+            result = ok ? new decvec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
         public decimal MinElement => Math.Min(Math.Min(Math.Min(x, y), z), w);

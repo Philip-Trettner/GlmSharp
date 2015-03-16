@@ -324,6 +324,7 @@ namespace GlmSharpGenerator
                 // Parsing
                 if (!BaseTypeInfo.Complex && !BaseTypeInfo.Generic)
                 {
+                    // Parse
                     foreach (var line in "Converts the string representation of the vector into a vector representation (using ', ' as a separator).".AsComment()) yield return line;
                     yield return string.Format("public static {0} Parse(string s) => Parse(s, \", \");", ClassNameThat);
 
@@ -361,8 +362,41 @@ namespace GlmSharpGenerator
                         yield return string.Format("    return new {0}({1});", ClassNameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style, provider)", BaseType, i)).CommaSeparated());
                         yield return "}";
                     }
+
+                    // TryParse
+                    foreach (var line in "Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.".AsComment()) yield return line;
+                    yield return string.Format("public static bool TryParse(string s, out {0} result) => TryParse(s, \", \", out result);", ClassNameThat);
+
+                    foreach (var line in "Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.".AsComment()) yield return line;
+                    yield return string.Format("public static bool TryParse(string s, string sep, out {0} result)", ClassNameThat);
+                    yield return "{";
+                    yield return "    result = Zero;";
+                    yield return "    if (string.IsNullOrEmpty(s)) return false;";
+                    yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
+                    yield return string.Format("    if (kvp.Length != {0}) return false;", Components);
+                    yield return string.Format("    {0} {1};", BaseType, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated());
+                    yield return string.Format("    var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), out {2})", BaseType, i, ArgOf(i))).Aggregated(" && "));
+                    yield return string.Format("    result = ok ? new {0}({1}) : Zero;", ClassNameThat, CompArgString);
+                    yield return "    return ok;";
+                    yield return "}";
+
+                    if (BaseTypeInfo.Name != "bool")
+                    {
+                        foreach (var line in "Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.".AsComment()) yield return line;
+                        yield return string.Format("public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out {0} result)", ClassNameThat);
+                        yield return "{";
+                        yield return "    result = Zero;";
+                        yield return "    if (string.IsNullOrEmpty(s)) return false;";
+                        yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
+                        yield return string.Format("    if (kvp.Length != {0}) return false;", Components);
+                        yield return string.Format("    {0} {1};", BaseType, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated());
+                        yield return string.Format("    var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), style, provider, out {2})", BaseType, i, ArgOf(i))).Aggregated(" && "));
+                        yield return string.Format("    result = ok ? new {0}({1}) : Zero;", ClassNameThat, CompArgString);
+                        yield return "    return ok;";
+                        yield return "}";
+                    }
                 }
-                
+
 
                 // Complex properties
                 if (BaseTypeInfo.Complex)

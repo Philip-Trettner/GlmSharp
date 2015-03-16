@@ -38,6 +38,11 @@ namespace GlmSharpTest
 
             dvec4 acv = cvec4.Abs(cv);
             acv = dvec4.Tanh(acv);
+
+            bvec2.Parse("true, false");
+
+            double d;
+            double.TryParse("1", out d);
         }
     }
 }
