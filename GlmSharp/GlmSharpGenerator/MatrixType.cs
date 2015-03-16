@@ -16,7 +16,7 @@ namespace GlmSharpGenerator
         {
             get
             {
-                yield return string.Format("IEnumerable<{0}>", BaseType);
+                yield return string.Format("IReadOnlyList<{0}>", BaseType);
                 yield return string.Format("IEquatable<{0}>", ClassNameThat);
             }
         }
@@ -136,6 +136,47 @@ namespace GlmSharpGenerator
 
                 foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
                 yield return "IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();";
+
+
+                // Indexer
+                foreach (var line in string.Format("Returns the number of components ({0}).", FieldCount).AsComment()) yield return line;
+                yield return string.Format("public int Count => {0};", FieldCount);
+
+                foreach (var line in "Gets/Sets a specific indexed component (a bit slower than direct access).".AsComment()) yield return line;
+                yield return string.Format("public {0} this[int fieldIndex]", BaseType);
+                yield return "{";
+                yield return "    get";
+                yield return "    {";
+                yield return "        switch (fieldIndex)";
+                yield return "        {";
+                for (var c = 0; c < FieldCount; ++c)
+                    yield return string.Format("            case {0}: return {1};", c, FieldFor(c));
+                yield return "            default: throw new ArgumentOutOfRangeException(\"fieldIndex\");";
+                yield return "        }";
+                yield return "    }";
+                yield return "    set";
+                yield return "    {";
+                yield return "        switch (fieldIndex)";
+                yield return "        {";
+                for (var c = 0; c < FieldCount; ++c)
+                    yield return string.Format("            case {0}: this.{1} = value; break;", c, FieldFor(c));
+                yield return "            default: throw new ArgumentOutOfRangeException(\"fieldIndex\");";
+                yield return "        }";
+                yield return "    }";
+                yield return "}";
+
+                foreach (var line in "Gets/Sets a specific 2D-indexed component (a bit slower than direct access).".AsComment()) yield return line;
+                yield return string.Format("public {0} this[int col, int row]", BaseType);
+                yield return "{";
+                yield return "    get";
+                yield return "    {";
+                yield return string.Format("        return this[col * {0} + row];", Rows);
+                yield return "    }";
+                yield return "    set";
+                yield return "    {";
+                yield return string.Format("        this[col * {0} + row] = value;", Rows);
+                yield return "    }";
+                yield return "}";
 
 
                 // Equality comparisons

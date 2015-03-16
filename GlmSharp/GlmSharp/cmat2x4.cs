@@ -7,7 +7,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct cmat2x4 : IEnumerable<Complex>, IEquatable<cmat2x4>
+    public struct cmat2x4 : IReadOnlyList<Complex>, IEquatable<cmat2x4>
     {
         // Matrix fields mXY
         public Complex m00, m01, m02, m03; // Column 0
@@ -132,6 +132,63 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        
+        /// <summary>
+        /// Returns the number of components (8).
+        /// </summary>
+        public int Count => 8;
+        
+        /// <summary>
+        /// Gets/Sets a specific indexed component (a bit slower than direct access).
+        /// </summary>
+        public Complex this[int fieldIndex]
+        {
+            get
+            {
+                switch (fieldIndex)
+                {
+                    case 0: return m00;
+                    case 1: return m01;
+                    case 2: return m02;
+                    case 3: return m03;
+                    case 4: return m10;
+                    case 5: return m11;
+                    case 6: return m12;
+                    case 7: return m13;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+            set
+            {
+                switch (fieldIndex)
+                {
+                    case 0: this.m00 = value; break;
+                    case 1: this.m01 = value; break;
+                    case 2: this.m02 = value; break;
+                    case 3: this.m03 = value; break;
+                    case 4: this.m10 = value; break;
+                    case 5: this.m11 = value; break;
+                    case 6: this.m12 = value; break;
+                    case 7: this.m13 = value; break;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Gets/Sets a specific 2D-indexed component (a bit slower than direct access).
+        /// </summary>
+        public Complex this[int col, int row]
+        {
+            get
+            {
+                return this[col * 4 + row];
+            }
+            set
+            {
+                this[col * 4 + row] = value;
+            }
+        }
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.

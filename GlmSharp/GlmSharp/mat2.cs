@@ -7,7 +7,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct mat2 : IEnumerable<float>, IEquatable<mat2>
+    public struct mat2 : IReadOnlyList<float>, IEquatable<mat2>
     {
         // Matrix fields mXY
         public float m00, m01; // Column 0
@@ -106,6 +106,55 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        
+        /// <summary>
+        /// Returns the number of components (4).
+        /// </summary>
+        public int Count => 4;
+        
+        /// <summary>
+        /// Gets/Sets a specific indexed component (a bit slower than direct access).
+        /// </summary>
+        public float this[int fieldIndex]
+        {
+            get
+            {
+                switch (fieldIndex)
+                {
+                    case 0: return m00;
+                    case 1: return m01;
+                    case 2: return m10;
+                    case 3: return m11;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+            set
+            {
+                switch (fieldIndex)
+                {
+                    case 0: this.m00 = value; break;
+                    case 1: this.m01 = value; break;
+                    case 2: this.m10 = value; break;
+                    case 3: this.m11 = value; break;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Gets/Sets a specific 2D-indexed component (a bit slower than direct access).
+        /// </summary>
+        public float this[int col, int row]
+        {
+            get
+            {
+                return this[col * 2 + row];
+            }
+            set
+            {
+                this[col * 2 + row] = value;
+            }
+        }
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.

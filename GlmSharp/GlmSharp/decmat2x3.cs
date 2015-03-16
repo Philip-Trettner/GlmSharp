@@ -7,7 +7,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct decmat2x3 : IEnumerable<decimal>, IEquatable<decmat2x3>
+    public struct decmat2x3 : IReadOnlyList<decimal>, IEquatable<decmat2x3>
     {
         // Matrix fields mXY
         public decimal m00, m01, m02; // Column 0
@@ -119,6 +119,59 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        
+        /// <summary>
+        /// Returns the number of components (6).
+        /// </summary>
+        public int Count => 6;
+        
+        /// <summary>
+        /// Gets/Sets a specific indexed component (a bit slower than direct access).
+        /// </summary>
+        public decimal this[int fieldIndex]
+        {
+            get
+            {
+                switch (fieldIndex)
+                {
+                    case 0: return m00;
+                    case 1: return m01;
+                    case 2: return m02;
+                    case 3: return m10;
+                    case 4: return m11;
+                    case 5: return m12;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+            set
+            {
+                switch (fieldIndex)
+                {
+                    case 0: this.m00 = value; break;
+                    case 1: this.m01 = value; break;
+                    case 2: this.m02 = value; break;
+                    case 3: this.m10 = value; break;
+                    case 4: this.m11 = value; break;
+                    case 5: this.m12 = value; break;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Gets/Sets a specific 2D-indexed component (a bit slower than direct access).
+        /// </summary>
+        public decimal this[int col, int row]
+        {
+            get
+            {
+                return this[col * 3 + row];
+            }
+            set
+            {
+                this[col * 3 + row] = value;
+            }
+        }
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.

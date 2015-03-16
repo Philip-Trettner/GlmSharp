@@ -7,7 +7,7 @@ using System.Linq;
 namespace GlmSharp
 {
     [Serializable]
-    public struct umat4x3 : IEnumerable<uint>, IEquatable<umat4x3>
+    public struct umat4x3 : IReadOnlyList<uint>, IEquatable<umat4x3>
     {
         // Matrix fields mXY
         public uint m00, m01, m02; // Column 0
@@ -155,6 +155,71 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        
+        /// <summary>
+        /// Returns the number of components (12).
+        /// </summary>
+        public int Count => 12;
+        
+        /// <summary>
+        /// Gets/Sets a specific indexed component (a bit slower than direct access).
+        /// </summary>
+        public uint this[int fieldIndex]
+        {
+            get
+            {
+                switch (fieldIndex)
+                {
+                    case 0: return m00;
+                    case 1: return m01;
+                    case 2: return m02;
+                    case 3: return m10;
+                    case 4: return m11;
+                    case 5: return m12;
+                    case 6: return m20;
+                    case 7: return m21;
+                    case 8: return m22;
+                    case 9: return m30;
+                    case 10: return m31;
+                    case 11: return m32;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+            set
+            {
+                switch (fieldIndex)
+                {
+                    case 0: this.m00 = value; break;
+                    case 1: this.m01 = value; break;
+                    case 2: this.m02 = value; break;
+                    case 3: this.m10 = value; break;
+                    case 4: this.m11 = value; break;
+                    case 5: this.m12 = value; break;
+                    case 6: this.m20 = value; break;
+                    case 7: this.m21 = value; break;
+                    case 8: this.m22 = value; break;
+                    case 9: this.m30 = value; break;
+                    case 10: this.m31 = value; break;
+                    case 11: this.m32 = value; break;
+                    default: throw new ArgumentOutOfRangeException("fieldIndex");
+                }
+            }
+        }
+        
+        /// <summary>
+        /// Gets/Sets a specific 2D-indexed component (a bit slower than direct access).
+        /// </summary>
+        public uint this[int col, int row]
+        {
+            get
+            {
+                return this[col * 3 + row];
+            }
+            set
+            {
+                this[col * 3 + row] = value;
+            }
+        }
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
