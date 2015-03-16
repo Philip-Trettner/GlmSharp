@@ -714,6 +714,8 @@ namespace GlmSharpGenerator
 
                     if (BaseTypeInfo.IsFloatingPoint)
                     {
+                        // TODO: Acosh, Asinh, Atanh
+
                         foreach (var kvp in new Dictionary<string, Func<string, string>>
                         {
                             {"Step", s => string.Format("{0} >= {1} ? {2} : {1}", s, ZeroValue, OneValue)},
