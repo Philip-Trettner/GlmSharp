@@ -647,5 +647,31 @@ namespace GlmSharp
             tmp.y = tmp.y * viewport.w + viewport.y;
             return tmp.swizzle.xyz;
         }
+        
+        /// <summary>
+        /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle.
+        /// </summary>
+        public static decmat4 Rotate(decimal angle, decvec3 v)
+        {
+            var c = (decimal)Math.Cos((double)angle);
+            var s = (decimal)Math.Sin((double)angle);
+        
+            var axis = v.Normalized;
+            var temp = (1 - c) * axis;
+        
+            var m = Identity;
+            m.m00 = c + temp.x * axis.x;
+            m.m01 = 0 + temp.x * axis.y + s * axis.z;
+            m.m02 = 0 + temp.x * axis.z - s * axis.y;
+        
+            m.m10 = 0 + temp.y * axis.x - s * axis.z;
+            m.m11 = c + temp.y * axis.y;
+            m.m12 = 0 + temp.y * axis.z + s * axis.x;
+        
+            m.m20 = 0 + temp.z * axis.x + s * axis.y;
+            m.m21 = 0 + temp.z * axis.y - s * axis.x;
+            m.m22 = c + temp.z * axis.z;
+            return m;
+        }
     }
 }

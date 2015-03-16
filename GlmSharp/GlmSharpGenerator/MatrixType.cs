@@ -636,6 +636,31 @@ namespace GlmSharpGenerator
                         yield return "    tmp.y = tmp.y * viewport.w + viewport.y;";
                         yield return "    return tmp.swizzle.xyz;";
                         yield return "}";
+
+                        // rotate
+                        foreach (var line in "Builds a rotation 4 * 4 matrix created from an axis vector and an angle.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Rotate({1} angle, {2} v)", ClassNameThat, BaseType, BaseTypeInfo.Prefix + "vec3");
+                        yield return "{";
+                        yield return string.Format("    var c = ({0})Math.Cos((double)angle);", BaseType);
+                        yield return string.Format("    var s = ({0})Math.Sin((double)angle);", BaseType);
+                        yield return "";
+                        yield return "    var axis = v.Normalized;";
+                        yield return "    var temp = (1 - c) * axis;";
+                        yield return "";
+                        yield return "    var m = Identity;";
+                        yield return "    m.m00 = c + temp.x * axis.x;";
+                        yield return "    m.m01 = 0 + temp.x * axis.y + s * axis.z;";
+                        yield return "    m.m02 = 0 + temp.x * axis.z - s * axis.y;";
+                        yield return "";
+                        yield return "    m.m10 = 0 + temp.y * axis.x - s * axis.z;";
+                        yield return "    m.m11 = c + temp.y * axis.y;";
+                        yield return "    m.m12 = 0 + temp.y * axis.z + s * axis.x;";
+                        yield return "";
+                        yield return "    m.m20 = 0 + temp.z * axis.x + s * axis.y;";
+                        yield return "    m.m21 = 0 + temp.z * axis.y - s * axis.x;";
+                        yield return "    m.m22 = c + temp.z * axis.z;";
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }
