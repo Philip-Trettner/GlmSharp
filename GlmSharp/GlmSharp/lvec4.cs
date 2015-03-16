@@ -855,6 +855,16 @@ namespace GlmSharp
         public static lvec4 Abs(lvec4 v) => new lvec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3.
+        /// </summary>
+        public static lvec4 HermiteInterpolationOrder3(lvec4 v) => new lvec4((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z, (3 - 2 * v.w) * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5.
+        /// </summary>
+        public static lvec4 HermiteInterpolationOrder5(lvec4 v) => new lvec4(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z, ((6 * v.w - 15) * v.w + 10) * v.w * v.w * v.w);
+        
+        /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static lvec4 Sqr(lvec4 v) => new lvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
@@ -923,5 +933,145 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static lvec4 Log(long s, lvec4 v) => new lvec4((long)Math.Log((double)s, (double)v.x), (long)Math.Log((double)s, (double)v.y), (long)Math.Log((double)s, (double)v.z), (long)Math.Log((double)s, (double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp.
+        /// </summary>
+        public static lvec4 Clamp(lvec4 v, lvec4 min, lvec4 max) => new lvec4(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y), Math.Min(Math.Max(v.z, min.z), max.z), Math.Min(Math.Max(v.w, min.w), max.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static lvec4 Clamp(long v, lvec4 min, lvec4 max) => new lvec4(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y), Math.Min(Math.Max(v, min.z), max.z), Math.Min(Math.Max(v, min.w), max.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static lvec4 Clamp(lvec4 v, long min, lvec4 max) => new lvec4(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y), Math.Min(Math.Max(v.z, min), max.z), Math.Min(Math.Max(v.w, min), max.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static lvec4 Clamp(lvec4 v, lvec4 min, long max) => new lvec4(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max), Math.Min(Math.Max(v.z, min.z), max), Math.Min(Math.Max(v.w, min.w), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static lvec4 Clamp(long v, long min, lvec4 max) => new lvec4(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z), Math.Min(Math.Max(v, min), max.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static lvec4 Clamp(lvec4 v, long min, long max) => new lvec4(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max), Math.Min(Math.Max(v.z, min), max), Math.Min(Math.Max(v.w, min), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static lvec4 Clamp(long v, lvec4 min, long max) => new lvec4(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max), Math.Min(Math.Max(v, min.w), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix.
+        /// </summary>
+        public static lvec4 Mix(lvec4 min, lvec4 max, lvec4 a) => new lvec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static lvec4 Mix(long min, lvec4 max, lvec4 a) => new lvec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static lvec4 Mix(lvec4 min, long max, lvec4 a) => new lvec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static lvec4 Mix(lvec4 min, lvec4 max, long a) => new lvec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static lvec4 Mix(long min, long max, lvec4 a) => new lvec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static lvec4 Mix(lvec4 min, long max, long a) => new lvec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static lvec4 Mix(long min, lvec4 max, long a) => new lvec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep.
+        /// </summary>
+        public static lvec4 Smoothstep(lvec4 edge0, lvec4 edge1, lvec4 v) => new lvec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static lvec4 Smoothstep(long edge0, lvec4 edge1, lvec4 v) => new lvec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static lvec4 Smoothstep(lvec4 edge0, long edge1, lvec4 v) => new lvec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static lvec4 Smoothstep(lvec4 edge0, lvec4 edge1, long v) => new lvec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static lvec4 Smoothstep(long edge0, long edge1, lvec4 v) => new lvec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static lvec4 Smoothstep(lvec4 edge0, long edge1, long v) => new lvec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static lvec4 Smoothstep(long edge0, lvec4 edge1, long v) => new lvec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep.
+        /// </summary>
+        public static lvec4 Smootherstep(lvec4 edge0, lvec4 edge1, lvec4 v) => new lvec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static lvec4 Smootherstep(long edge0, lvec4 edge1, lvec4 v) => new lvec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static lvec4 Smootherstep(lvec4 edge0, long edge1, lvec4 v) => new lvec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static lvec4 Smootherstep(lvec4 edge0, lvec4 edge1, long v) => new lvec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static lvec4 Smootherstep(long edge0, long edge1, lvec4 v) => new lvec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static lvec4 Smootherstep(lvec4 edge0, long edge1, long v) => new lvec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static lvec4 Smootherstep(long edge0, lvec4 edge1, long v) => new lvec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

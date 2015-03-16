@@ -791,6 +791,16 @@ namespace GlmSharp
         public static dvec2 Abs(dvec2 v) => new dvec2(Math.Abs(v.x), Math.Abs(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3.
+        /// </summary>
+        public static dvec2 HermiteInterpolationOrder3(dvec2 v) => new dvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5.
+        /// </summary>
+        public static dvec2 HermiteInterpolationOrder5(dvec2 v) => new dvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
+        
+        /// <summary>
         /// Returns a component-wise executed Step.
         /// </summary>
         public static dvec2 Step(dvec2 v) => new dvec2(v.x >= default(double) ? 1.0 : default(double), v.y >= default(double) ? 1.0 : default(double));
@@ -959,5 +969,145 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static dvec2 Log(double s, dvec2 v) => new dvec2((double)Math.Log((double)s, (double)v.x), (double)Math.Log((double)s, (double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp.
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, dvec2 min, dvec2 max) => new dvec2(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static dvec2 Clamp(double v, dvec2 min, dvec2 max) => new dvec2(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, double min, dvec2 max) => new dvec2(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, dvec2 min, double max) => new dvec2(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static dvec2 Clamp(double v, double min, dvec2 max) => new dvec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, double min, double max) => new dvec2(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static dvec2 Clamp(double v, dvec2 min, double max) => new dvec2(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix.
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, dvec2 max, dvec2 a) => new dvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static dvec2 Mix(double min, dvec2 max, dvec2 a) => new dvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, double max, dvec2 a) => new dvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, dvec2 max, double a) => new dvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static dvec2 Mix(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, double max, double a) => new dvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static dvec2 Mix(double min, dvec2 max, double a) => new dvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep.
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static dvec2 Smoothstep(double edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, dvec2 edge1, double v) => new dvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static dvec2 Smoothstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, double edge1, double v) => new dvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static dvec2 Smoothstep(double edge0, dvec2 edge1, double v) => new dvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep.
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static dvec2 Smootherstep(double edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, dvec2 edge1, double v) => new dvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static dvec2 Smootherstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, double edge1, double v) => new dvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static dvec2 Smootherstep(double edge0, dvec2 edge1, double v) => new dvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

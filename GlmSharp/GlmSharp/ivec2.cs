@@ -1126,6 +1126,16 @@ namespace GlmSharp
         public static ivec2 Abs(ivec2 v) => new ivec2(Math.Abs(v.x), Math.Abs(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3.
+        /// </summary>
+        public static ivec2 HermiteInterpolationOrder3(ivec2 v) => new ivec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5.
+        /// </summary>
+        public static ivec2 HermiteInterpolationOrder5(ivec2 v) => new ivec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
+        
+        /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static ivec2 Sqr(ivec2 v) => new ivec2(v.x * v.x, v.y * v.y);
@@ -1194,5 +1204,145 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static ivec2 Log(int s, ivec2 v) => new ivec2((int)Math.Log((double)s, (double)v.x), (int)Math.Log((double)s, (double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp.
+        /// </summary>
+        public static ivec2 Clamp(ivec2 v, ivec2 min, ivec2 max) => new ivec2(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static ivec2 Clamp(int v, ivec2 min, ivec2 max) => new ivec2(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static ivec2 Clamp(ivec2 v, int min, ivec2 max) => new ivec2(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static ivec2 Clamp(ivec2 v, ivec2 min, int max) => new ivec2(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static ivec2 Clamp(int v, int min, ivec2 max) => new ivec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static ivec2 Clamp(ivec2 v, int min, int max) => new ivec2(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static ivec2 Clamp(int v, ivec2 min, int max) => new ivec2(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max));
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix.
+        /// </summary>
+        public static ivec2 Mix(ivec2 min, ivec2 max, ivec2 a) => new ivec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static ivec2 Mix(int min, ivec2 max, ivec2 a) => new ivec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static ivec2 Mix(ivec2 min, int max, ivec2 a) => new ivec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static ivec2 Mix(ivec2 min, ivec2 max, int a) => new ivec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static ivec2 Mix(int min, int max, ivec2 a) => new ivec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static ivec2 Mix(ivec2 min, int max, int a) => new ivec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static ivec2 Mix(int min, ivec2 max, int a) => new ivec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep.
+        /// </summary>
+        public static ivec2 Smoothstep(ivec2 edge0, ivec2 edge1, ivec2 v) => new ivec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static ivec2 Smoothstep(int edge0, ivec2 edge1, ivec2 v) => new ivec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static ivec2 Smoothstep(ivec2 edge0, int edge1, ivec2 v) => new ivec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static ivec2 Smoothstep(ivec2 edge0, ivec2 edge1, int v) => new ivec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static ivec2 Smoothstep(int edge0, int edge1, ivec2 v) => new ivec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static ivec2 Smoothstep(ivec2 edge0, int edge1, int v) => new ivec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static ivec2 Smoothstep(int edge0, ivec2 edge1, int v) => new ivec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep.
+        /// </summary>
+        public static ivec2 Smootherstep(ivec2 edge0, ivec2 edge1, ivec2 v) => new ivec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static ivec2 Smootherstep(int edge0, ivec2 edge1, ivec2 v) => new ivec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static ivec2 Smootherstep(ivec2 edge0, int edge1, ivec2 v) => new ivec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static ivec2 Smootherstep(ivec2 edge0, ivec2 edge1, int v) => new ivec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static ivec2 Smootherstep(int edge0, int edge1, ivec2 v) => new ivec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static ivec2 Smootherstep(ivec2 edge0, int edge1, int v) => new ivec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static ivec2 Smootherstep(int edge0, ivec2 edge1, int v) => new ivec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

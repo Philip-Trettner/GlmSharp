@@ -391,6 +391,16 @@ namespace GlmSharp
         public static dvec2 Abs(cvec2 v) => new dvec2(v.x.Magnitude, v.y.Magnitude);
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3.
+        /// </summary>
+        public static cvec2 HermiteInterpolationOrder3(cvec2 v) => new cvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5.
+        /// </summary>
+        public static cvec2 HermiteInterpolationOrder5(cvec2 v) => new cvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
+        
+        /// <summary>
         /// Returns a component-wise executed complex Acos.
         /// </summary>
         public static cvec2 Acos(cvec2 v) => new cvec2(Complex.Acos(v.x), Complex.Acos(v.y));
@@ -534,5 +544,40 @@ namespace GlmSharp
         /// Returns a component-wise executed Pow2.
         /// </summary>
         public static cvec2 Pow2(cvec2 v) => new cvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix.
+        /// </summary>
+        public static cvec2 Mix(cvec2 min, cvec2 max, cvec2 a) => new cvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static cvec2 Mix(Complex min, cvec2 max, cvec2 a) => new cvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static cvec2 Mix(cvec2 min, Complex max, cvec2 a) => new cvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static cvec2 Mix(cvec2 min, cvec2 max, Complex a) => new cvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static cvec2 Mix(Complex min, Complex max, cvec2 a) => new cvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static cvec2 Mix(cvec2 min, Complex max, Complex a) => new cvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static cvec2 Mix(Complex min, cvec2 max, Complex a) => new cvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
     }
 }

@@ -666,6 +666,21 @@ namespace GlmSharpGenerator
                         foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
                         yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
                     }
+                    
+                    foreach (var kvp in new Dictionary<string, Func<string, string>>
+                    {
+                        {"HermiteInterpolationOrder3", s => string.Format("(3 - 2 * {0}) * {0} * {0}", s)},
+                        {"HermiteInterpolationOrder5", s => string.Format("((6 * {0} - 15) * {0} + 10) * {0} * {0} * {0}", s)},
+                    })
+                    {
+                        var op = kvp.Key;
+                        var opFunc = kvp.Value;
+
+                        var retType = ClassNameThat;
+
+                        foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+                    }
 
                     if (BaseTypeInfo.IsFloatingPoint)
                         foreach (var kvp in new Dictionary<string, Func<string, string>>
@@ -821,6 +836,48 @@ namespace GlmSharpGenerator
                             foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
                             yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), BaseType);
                         }
+
+                    foreach (var kvp in new Dictionary<string[], Func<string, string, string, string>>
+                    {
+                        {new []{"Clamp", "v", "min", "max"}, (s1, s2, s3) => string.Format("Math.Min(Math.Max({0}, {1}), {2})", s1, s2, s3)},
+                        {new []{"Mix", "min", "max", "a"}, (s1, s2, s3) => string.Format("{0} * (1-{2}) + {1} * {2}", s1, s2, s3)},
+                        {new []{"Smoothstep", "edge0", "edge1", "v"}, (s1, s2, s3) => string.Format("(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder3()", s1, s2, s3)},
+                        {new []{"Smootherstep", "edge0", "edge1", "v"}, (s1, s2, s3) => string.Format("(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()", s1, s2, s3)},
+                    })
+                    {
+                        var op = kvp.Key;
+                        var opFunc = kvp.Value;
+
+                        if (BaseTypeInfo.Complex && op[0] != "Mix")
+                            continue; // no clamp for complex
+
+                        var retType = ClassNameThat;
+
+                        foreach (var scalars in new[]
+                        {
+                            new[] { false, false, false }, // no scalar
+                            new[] { true, false, false },
+                            new[] { false, true, false },
+                            new[] { false, false, true },
+                            new[] { true, true, false },
+                            new[] { false, true, true },
+                            new[] { true, false, true },
+                        })
+                        {
+                            var opt0 = scalars[0] ? BaseType : ClassNameThat;
+                            var opt1 = scalars[1] ? BaseType : ClassNameThat;
+                            var opt2 = scalars[2] ? BaseType : ClassNameThat;
+
+                            Func<char, string> op0 = c => scalars[0] ? op[1] : op[1] + "." + c;
+                            Func<char, string> op1 = c => scalars[1] ? op[2] : op[2] + "." + c;
+                            Func<char, string> op2 = c => scalars[2] ? op[3] : op[3] + "." + c;
+
+                            var comm = scalars.All(b => !b) ? "" : " with scalars";
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0}{1}.", op[0], comm).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} {6}, {3} {7}, {4} {8}) => new {0}({5});", retType, op[0], opt0, opt1, opt2, CompString.Select(c => opFunc(op0(c), op1(c), op2(c))).CommaSeparated(), op[1], op[2], op[3]);
+                        }
+                    }
 
 
                     /*
