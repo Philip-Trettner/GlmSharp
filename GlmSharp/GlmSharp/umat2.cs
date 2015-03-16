@@ -270,6 +270,26 @@ namespace GlmSharp
         public static umat4x2 operator*(umat2 lhs, umat4x2 rhs) => new umat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31);
         
         /// <summary>
+        /// Executes a component-wise * (multiply).
+        /// </summary>
+        public static umat2 CompMul(umat2 A, umat2 B) => new umat2(A.m00 * B.m00, A.m01 * B.m01, A.m10 * B.m10, A.m11 * B.m11);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide).
+        /// </summary>
+        public static umat2 CompDiv(umat2 A, umat2 B) => new umat2(A.m00 / B.m00, A.m01 / B.m01, A.m10 / B.m10, A.m11 / B.m11);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static umat2 CompAdd(umat2 A, umat2 B) => new umat2(A.m00 + B.m00, A.m01 + B.m01, A.m10 + B.m10, A.m11 + B.m11);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static umat2 CompSub(umat2 A, umat2 B) => new umat2(A.m00 - B.m00, A.m01 - B.m01, A.m10 - B.m10, A.m11 - B.m11);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static umat2 operator+(umat2 lhs, umat2 rhs) => new umat2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11);

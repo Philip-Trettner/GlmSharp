@@ -411,6 +411,19 @@ namespace GlmSharpGenerator
                         yield return string.Format("public static {0} operator/({0} A, {0} B) => A * B.Inverse;", ClassNameThat);
                     }
 
+                    // component-wise ops
+                    foreach (var line in "Executes a component-wise * (multiply).".AsComment()) yield return line;
+                    yield return string.Format("public static {0} CompMul({0} A, {0} B) => new {0}({1});", ClassNameThat, Fields.Select(f => string.Format("A.{0} * B.{0}", f)).CommaSeparated());
+
+                    foreach (var line in "Executes a component-wise / (divide).".AsComment()) yield return line;
+                    yield return string.Format("public static {0} CompDiv({0} A, {0} B) => new {0}({1});", ClassNameThat, Fields.Select(f => string.Format("A.{0} / B.{0}", f)).CommaSeparated());
+
+                    foreach (var line in "Executes a component-wise + (add).".AsComment()) yield return line;
+                    yield return string.Format("public static {0} CompAdd({0} A, {0} B) => new {0}({1});", ClassNameThat, Fields.Select(f => string.Format("A.{0} + B.{0}", f)).CommaSeparated());
+
+                    foreach (var line in "Executes a component-wise - (subtract).".AsComment()) yield return line;
+                    yield return string.Format("public static {0} CompSub({0} A, {0} B) => new {0}({1});", ClassNameThat, Fields.Select(f => string.Format("A.{0} - B.{0}", f)).CommaSeparated());
+
                     // arithmetic operators
                     foreach (var kvp in new Dictionary<string, string>
                     {

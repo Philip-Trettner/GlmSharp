@@ -283,6 +283,26 @@ namespace GlmSharp
         public static lmat4x2 operator*(lmat3x2 lhs, lmat4x3 rhs) => new lmat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21 + lhs.m20 * rhs.m22, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31 + lhs.m20 * rhs.m32, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21 + lhs.m21 * rhs.m22, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31 + lhs.m21 * rhs.m32);
         
         /// <summary>
+        /// Executes a component-wise * (multiply).
+        /// </summary>
+        public static lmat3x2 CompMul(lmat3x2 A, lmat3x2 B) => new lmat3x2(A.m00 * B.m00, A.m01 * B.m01, A.m10 * B.m10, A.m11 * B.m11, A.m20 * B.m20, A.m21 * B.m21);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide).
+        /// </summary>
+        public static lmat3x2 CompDiv(lmat3x2 A, lmat3x2 B) => new lmat3x2(A.m00 / B.m00, A.m01 / B.m01, A.m10 / B.m10, A.m11 / B.m11, A.m20 / B.m20, A.m21 / B.m21);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static lmat3x2 CompAdd(lmat3x2 A, lmat3x2 B) => new lmat3x2(A.m00 + B.m00, A.m01 + B.m01, A.m10 + B.m10, A.m11 + B.m11, A.m20 + B.m20, A.m21 + B.m21);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static lmat3x2 CompSub(lmat3x2 A, lmat3x2 B) => new lmat3x2(A.m00 - B.m00, A.m01 - B.m01, A.m10 - B.m10, A.m11 - B.m11, A.m20 - B.m20, A.m21 - B.m21);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static lmat3x2 operator+(lmat3x2 lhs, lmat3x2 rhs) => new lmat3x2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m20 + rhs.m20, lhs.m21 + rhs.m21);

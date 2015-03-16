@@ -326,6 +326,26 @@ namespace GlmSharp
         public static dmat3 operator/(dmat3 A, dmat3 B) => A * B.Inverse;
         
         /// <summary>
+        /// Executes a component-wise * (multiply).
+        /// </summary>
+        public static dmat3 CompMul(dmat3 A, dmat3 B) => new dmat3(A.m00 * B.m00, A.m01 * B.m01, A.m02 * B.m02, A.m10 * B.m10, A.m11 * B.m11, A.m12 * B.m12, A.m20 * B.m20, A.m21 * B.m21, A.m22 * B.m22);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide).
+        /// </summary>
+        public static dmat3 CompDiv(dmat3 A, dmat3 B) => new dmat3(A.m00 / B.m00, A.m01 / B.m01, A.m02 / B.m02, A.m10 / B.m10, A.m11 / B.m11, A.m12 / B.m12, A.m20 / B.m20, A.m21 / B.m21, A.m22 / B.m22);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static dmat3 CompAdd(dmat3 A, dmat3 B) => new dmat3(A.m00 + B.m00, A.m01 + B.m01, A.m02 + B.m02, A.m10 + B.m10, A.m11 + B.m11, A.m12 + B.m12, A.m20 + B.m20, A.m21 + B.m21, A.m22 + B.m22);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static dmat3 CompSub(dmat3 A, dmat3 B) => new dmat3(A.m00 - B.m00, A.m01 - B.m01, A.m02 - B.m02, A.m10 - B.m10, A.m11 - B.m11, A.m12 - B.m12, A.m20 - B.m20, A.m21 - B.m21, A.m22 - B.m22);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static dmat3 operator+(dmat3 lhs, dmat3 rhs) => new dmat3(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m02 + rhs.m02, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m12 + rhs.m12, lhs.m20 + rhs.m20, lhs.m21 + rhs.m21, lhs.m22 + rhs.m22);

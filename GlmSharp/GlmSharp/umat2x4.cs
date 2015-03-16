@@ -299,6 +299,26 @@ namespace GlmSharp
         public static umat4 operator*(umat2x4 lhs, umat4x2 rhs) => new umat4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21, lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11, lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21, lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31);
         
         /// <summary>
+        /// Executes a component-wise * (multiply).
+        /// </summary>
+        public static umat2x4 CompMul(umat2x4 A, umat2x4 B) => new umat2x4(A.m00 * B.m00, A.m01 * B.m01, A.m02 * B.m02, A.m03 * B.m03, A.m10 * B.m10, A.m11 * B.m11, A.m12 * B.m12, A.m13 * B.m13);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide).
+        /// </summary>
+        public static umat2x4 CompDiv(umat2x4 A, umat2x4 B) => new umat2x4(A.m00 / B.m00, A.m01 / B.m01, A.m02 / B.m02, A.m03 / B.m03, A.m10 / B.m10, A.m11 / B.m11, A.m12 / B.m12, A.m13 / B.m13);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static umat2x4 CompAdd(umat2x4 A, umat2x4 B) => new umat2x4(A.m00 + B.m00, A.m01 + B.m01, A.m02 + B.m02, A.m03 + B.m03, A.m10 + B.m10, A.m11 + B.m11, A.m12 + B.m12, A.m13 + B.m13);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static umat2x4 CompSub(umat2x4 A, umat2x4 B) => new umat2x4(A.m00 - B.m00, A.m01 - B.m01, A.m02 - B.m02, A.m03 - B.m03, A.m10 - B.m10, A.m11 - B.m11, A.m12 - B.m12, A.m13 - B.m13);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static umat2x4 operator+(umat2x4 lhs, umat2x4 rhs) => new umat2x4(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m02 + rhs.m02, lhs.m03 + rhs.m03, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m12 + rhs.m12, lhs.m13 + rhs.m13);

@@ -285,6 +285,26 @@ namespace GlmSharp
         public static dmat2 operator/(dmat2 A, dmat2 B) => A * B.Inverse;
         
         /// <summary>
+        /// Executes a component-wise * (multiply).
+        /// </summary>
+        public static dmat2 CompMul(dmat2 A, dmat2 B) => new dmat2(A.m00 * B.m00, A.m01 * B.m01, A.m10 * B.m10, A.m11 * B.m11);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide).
+        /// </summary>
+        public static dmat2 CompDiv(dmat2 A, dmat2 B) => new dmat2(A.m00 / B.m00, A.m01 / B.m01, A.m10 / B.m10, A.m11 / B.m11);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static dmat2 CompAdd(dmat2 A, dmat2 B) => new dmat2(A.m00 + B.m00, A.m01 + B.m01, A.m10 + B.m10, A.m11 + B.m11);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static dmat2 CompSub(dmat2 A, dmat2 B) => new dmat2(A.m00 - B.m00, A.m01 - B.m01, A.m10 - B.m10, A.m11 - B.m11);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static dmat2 operator+(dmat2 lhs, dmat2 rhs) => new dmat2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11);
