@@ -719,5 +719,22 @@ namespace GlmSharp
         /// Builds a scale matrix by uniform scaling s.
         /// </summary>
         public static mat4 Scale(float s) => Scale(s, s, s);
+        
+        /// <summary>
+        /// Builds a translation matrix by components x, y, z.
+        /// </summary>
+        public static mat4 Translate(float x, float y, float z)
+        {
+            var m = Identity;
+            m.m30 = x;
+            m.m31 = y;
+            m.m32 = z;
+            return m;
+        }
+        
+        /// <summary>
+        /// Builds a translation matrix by vector v.
+        /// </summary>
+        public static mat4 Translate(vec3 v) => Translate(v.x, v.y, v.z);
     }
 }

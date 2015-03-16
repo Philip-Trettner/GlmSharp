@@ -637,6 +637,8 @@ namespace GlmSharpGenerator
                         yield return "    return tmp.swizzle.xyz;";
                         yield return "}";
 
+                        // TODO: unproject
+
                         // rotate
                         foreach (var line in "Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.".AsComment()) yield return line;
                         yield return string.Format("public static {0} Rotate({1} angle, {2} v)", ClassNameThat, BaseType, BaseTypeInfo.Prefix + "vec3");
@@ -682,11 +684,25 @@ namespace GlmSharpGenerator
                         yield return "    m.m22 = z;";
                         yield return "    return m;";
                         yield return "}";
-                        
+
                         foreach (var line in "Builds a scale matrix by vector v.".AsComment()) yield return line;
                         yield return string.Format("public static {0} Scale({1} v) => Scale(v.x, v.y, v.z);", ClassNameThat, BaseTypeInfo.Prefix + "vec3");
                         foreach (var line in "Builds a scale matrix by uniform scaling s.".AsComment()) yield return line;
                         yield return string.Format("public static {0} Scale({1} s) => Scale(s, s, s);", ClassNameThat, BaseType);
+
+                        // translation
+                        foreach (var line in "Builds a translation matrix by components x, y, z.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Translate({1} x, {1} y, {1} z)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    var m = Identity;";
+                        yield return "    m.m30 = x;";
+                        yield return "    m.m31 = y;";
+                        yield return "    m.m32 = z;";
+                        yield return "    return m;";
+                        yield return "}";
+
+                        foreach (var line in "Builds a translation matrix by vector v.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Translate({1} v) => Translate(v.x, v.y, v.z);", ClassNameThat, BaseTypeInfo.Prefix + "vec3");
                     }
                 }
             }
