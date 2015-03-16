@@ -4,11 +4,13 @@ Open-source MIT-licensed C#/.NET math library for small vectors and matrices.
 
 The naming and behavior is inspired by the excellent [http://glm.g-truc.net/](OpenGL Mathematics) lib by Christophe Riccio.
 
-## Overview
+## NuGet
 
 Install via [NuGet](https://www.nuget.org/):
 
 > PM> Install-Package GlmSharp
+
+## Overview
 
 Supported types: 
 * `vec2`
@@ -17,19 +19,19 @@ Supported types:
 * `mat2`
 * `mat3`
 * `mat4`
-* other mats (2x3, 2x4, 3x4, 3x2, 4x2, 4x3)
+* non-quadratic mats (`mat2x3`, `mat2x4`, `mat3x4`, `mat3x2`, `mat4x2`, `mat4x3`)
 
 Supported base types:
-* `int`
-* `uint`
-* `long`
-* `float`
-* `double`
-* `decimal`
-* `complex`
-* `long`
-* `bool`
-* generic `T`
+* `int` (`ivec`)
+* `uint` (`uvec`)
+* `long` (`lvec`)
+* `float` (`vec`)
+* `double` (`dvec`)
+* `decimal` (`decvec`)
+* `complex` (`cvec`)
+* `long` (`lvec`)
+* `bool` (`bvec`)
+* generic `T` (`gvec<T>`)
 
 (Currently a total of 108 types)
 
@@ -49,18 +51,18 @@ The code itself is written using C# 6 features, the NuGet package however only r
 
 ## Features
 
-* Arithmetic type support: int, uint, long, float, double, decimal
+* Arithmetic type support: `int`, `uint`, `long`, `float`, `double`, `decimal`
 * Boolean vectors, matrices
 * `System.Numerics.Complex` support
 * Generic `gvec<T>, gmat<T>` support
 * Swizzling
-* Basetype constants are propagated (double.Epsilon => dvec3.Epsilon)
+* Basetype constants are propagated (`double.Epsilon` => `dvec3.Epsilon`)
 * Basetype functions are propagated
 * Performance considerations
 * Extensive operator overloading
-* Proper ToString, Parse, TryParse for vectors (including format providers)
-* Most `Math` and basetype functions work component-wise for vectors (e.g. float.IsInfinite(v) => vec3.IsInfinite(v))
-* Vectors and matrices implement IReadOnlyList<> and IEquatable<>
+* Proper `ToString`, `Parse`, `TryParse` for vectors (including format providers)
+* Most `Math` and basetype functions work component-wise for vectors (e.g. `float.IsInfinite(v)` => `vec3.IsInfinite(v)`)
+* Vectors and matrices implement `IReadOnlyList<>` and `IEquatable<>`
 * Various constructors and explicit casts for vectors
 * Implicit casts for vectors where base types can be casted implicitly
 * Most GLSL functions
@@ -100,5 +102,5 @@ This library is MIT-licensed.
 * test generation
 * basetype functions (e.g. Smoothstep on floats)
 * ToString, Parse, TryParse for matrices
-* More constructors and casts for matrices
-* Some GLU functions (e.g. PickMatrix)
+* more constructors and casts for matrices
+* some GLU functions (e.g. PickMatrix)
