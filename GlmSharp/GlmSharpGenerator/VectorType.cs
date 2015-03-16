@@ -641,6 +641,10 @@ namespace GlmSharpGenerator
                             yield return "    if (k < 0) return Zero;";
                             yield return string.Format("    return eta * I - (eta * dNI + ({1}){0}) * N;", BaseTypeInfo.Complex ? "Complex.Sqrt(k)" : SqrtOf("k"), BaseType);
                             yield return "}";
+
+                            // faceforward
+                            foreach (var line in "Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).".AsComment()) yield return line;
+                            yield return string.Format("public static {0} FaceForward({0} N, {0} I, {0} Nref) => Dot(Nref, I) < 0 ? N : -N;", ClassNameThat);
                         }
                     }
 

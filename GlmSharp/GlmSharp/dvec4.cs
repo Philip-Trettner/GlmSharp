@@ -853,6 +853,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
+        /// </summary>
+        public static dvec4 FaceForward(dvec4 N, dvec4 I, dvec4 Nref) => Dot(Nref, I) < 0 ? N : -N;
+        
+        /// <summary>
         /// Returns a component-wise executed Abs.
         /// </summary>
         public static dvec4 Abs(dvec4 v) => new dvec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));

@@ -827,6 +827,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
+        /// </summary>
+        public static lvec3 FaceForward(lvec3 N, lvec3 I, lvec3 Nref) => Dot(Nref, I) < 0 ? N : -N;
+        
+        /// <summary>
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static lvec3 Cross(lvec3 l, lvec3 r) => new lvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
