@@ -2,17 +2,21 @@
 <package >
   <metadata>
     <id>GlmSharp</id>
-    <version>0.0.1</version>
+    <version>0.9.1</version>
     <authors>Philip Trettner</authors>
     <owners>Philip Trettner</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/Philip-Trettner/GlmSharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>semi-generated GLM-flavored math library for .NET/C#</description>
-    <releaseNotes>Initial release, no real functionality yet.</releaseNotes>
+    <releaseNotes>Initial working version at around 25k LOC, several supported types, quite extensive functionality. Includes XML documentation.</releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>glm C# math .NET linear algebra glsl opengl</tags>
     <dependencies>
     </dependencies>
   </metadata>
+  <files>
+    <file src="..\GlmSharp\GlmSharp\bin\Release\GlmSharp.dll" target="lib\Net45" />
+    <file src="..\GlmSharp\GlmSharp\bin\Release\GlmSharp.xml" target="lib\Net45" />
+  </files>
 </package>
