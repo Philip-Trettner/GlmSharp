@@ -240,6 +240,11 @@ namespace GlmSharp
         public double NormP(double p) => Math.Pow(Math.Pow((double)m00.Magnitude, p) + Math.Pow((double)m01.Magnitude, p) + Math.Pow((double)m10.Magnitude, p) + Math.Pow((double)m11.Magnitude, p), 1 / p);
         
         /// <summary>
+        /// Returns determinant of this matrix.
+        /// </summary>
+        public Complex Determinant => m00 * m11 - m10 * m01;
+        
+        /// <summary>
         /// Executes a matrix-matrix-multiplication cmat2 * cmat2 -> cmat2.
         /// </summary>
         public static cmat2 operator*(cmat2 lhs, cmat2 rhs) => new cmat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11);

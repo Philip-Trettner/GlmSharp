@@ -250,6 +250,11 @@ namespace GlmSharp
         public double NormP(double p) => Math.Pow(Math.Pow((double)m00, p) + Math.Pow((double)m01, p) + Math.Pow((double)m10, p) + Math.Pow((double)m11, p), 1 / p);
         
         /// <summary>
+        /// Returns determinant of this matrix.
+        /// </summary>
+        public uint Determinant => m00 * m11 - m10 * m01;
+        
+        /// <summary>
         /// Executes a matrix-matrix-multiplication umat2 * umat2 -> umat2.
         /// </summary>
         public static umat2 operator*(umat2 lhs, umat2 rhs) => new umat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11);

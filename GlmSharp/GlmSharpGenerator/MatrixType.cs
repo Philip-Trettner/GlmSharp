@@ -21,6 +21,42 @@ namespace GlmSharpGenerator
             }
         }
 
+        public static string[,] HelperFieldsOf(int s)
+        {
+            var f = new string[s, s];
+            for (var x = 0; x < s; ++x)
+                for (var y = 0; y < s; ++y)
+                    f[x, y] = "m" + x + y;
+            return f;
+        }
+
+        public static string[,] HelperSubmatrix(string[,] old, int tx, int ty)
+        {
+            var s = old.GetLength(0) - 1;
+            var f = new string[s, s];
+            for (var x = 0; x < s; ++x)
+                for (var y = 0; y < s; ++y)
+                    f[x, y] = old[x + (x >= tx ? 1 : 0), y + (y >= ty ? 1 : 0)];
+            return f;
+        }
+
+        public static string HelperDet(string[,] f)
+        {
+            var s = f.GetLength(0);
+            if (s <= 2)
+                return string.Format("{0} * {1} - {2} * {3}", f[0, 0], f[1, 1], f[1, 0], f[0, 1]);
+
+            var res = "";
+            for (var i = 0; i < s; ++i)
+            {
+                if (res.Length > 0)
+                    res += i % 2 == 1 ? " - " : " + ";
+                res += f[i, 0] + " * (" + HelperDet(HelperSubmatrix(f, i, 0)) + ")";
+            }
+
+            return res;
+        }
+
         public override string ClassName => Name + (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows);
         public string ClassNameTransposed => Name + (Rows == Columns ? Columns.ToString() : Rows + "x" + Columns) + GenericSuffix;
 
@@ -334,6 +370,13 @@ namespace GlmSharpGenerator
 
                     foreach (var line in "Returns the p-norm of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", Fields.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
+
+                    // determinant
+                    if (Rows == Columns)
+                    {
+                        foreach (var line in "Returns determinant of this matrix.".AsComment()) yield return line;
+                        yield return string.Format("public {0} Determinant => {1};", BaseType, HelperDet(HelperFieldsOf(Rows)));
+                    }
 
                     // matrix-matrix-multiplication
                     for (var rcols = 2; rcols <= 4; ++rcols)
