@@ -2,7 +2,7 @@
 
 Open-source MIT-licensed C#/.NET math library for small vectors and matrices.
 
-The naming and behavior is inspired by the excellent [http://glm.g-truc.net/](OpenGL Mathematics) lib by Christophe Riccio.
+The naming and behavior is inspired by the excellent [OpenGL Mathematics](http://glm.g-truc.net/) lib by Christophe Riccio.
 
 ## NuGet
 
@@ -35,7 +35,7 @@ Supported base types:
 
 (Currently a total of 108 types in about 25k LOC)
 
-Supports swizzling `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
+Supports swizzling, e.g. `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
 
 
 ## Syntax, Usage
