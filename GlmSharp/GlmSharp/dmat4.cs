@@ -634,5 +634,18 @@ namespace GlmSharp
             m.m32 = - (2*zFar*zNear)/(zFar - zNear);
             return m;
         }
+        
+        /// <summary>
+        /// Map the specified object coordinates (obj.x, obj.y, obj.z) into window coordinates.
+        /// </summary>
+        public static dvec3 Project(dvec3 obj, dmat4 model, dmat4 proj, dvec4 viewport)
+        {
+            var tmp = proj * (model * new dvec4(obj, 1));
+            tmp /= tmp.w;
+            tmp = tmp * 0.5d + 0.5d;
+            tmp.x = tmp.x * viewport.z + viewport.x;
+            tmp.y = tmp.y * viewport.w + viewport.y;
+            return tmp.swizzle.xyz;
+        }
     }
 }

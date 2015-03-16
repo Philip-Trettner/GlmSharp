@@ -626,11 +626,16 @@ namespace GlmSharpGenerator
                         // TODO: Pick matrix
 
                         // project
-                        /*foreach (var line in "Map the specified object coordinates (obj.x, obj.y, obj.z) into window coordinates..".AsComment()) yield return line;
-                        yield return string.Format("public static {1} project({1} obj, {0} model, {0} proj, {2} viewport)", ClassNameThat, BaseTypeInfo.Prefix + "vec3", BaseTypeInfo.Prefix + "vec4");
+                        foreach (var line in "Map the specified object coordinates (obj.x, obj.y, obj.z) into window coordinates.".AsComment()) yield return line;
+                        yield return string.Format("public static {1} Project({1} obj, {0} model, {0} proj, {2} viewport)", ClassNameThat, BaseTypeInfo.Prefix + "vec3", BaseTypeInfo.Prefix + "vec4");
                         yield return "{";
-                        yield return "    var tmp = new ";
-                        yield return "}";*/
+                        yield return string.Format("    var tmp = proj * (model * new {0}vec4(obj, 1));", BaseTypeInfo.Prefix);
+                        yield return "    tmp /= tmp.w;";
+                        yield return string.Format("    tmp = tmp * {0} + {0};", ConstantSuffixFor("0.5"));
+                        yield return "    tmp.x = tmp.x * viewport.z + viewport.x;";
+                        yield return "    tmp.y = tmp.y * viewport.w + viewport.y;";
+                        yield return "    return tmp.swizzle.xyz;";
+                        yield return "}";
                     }
                 }
             }
