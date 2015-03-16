@@ -595,5 +595,20 @@ namespace GlmSharp
             m.m31 = - (top + bottom)/(top - bottom);
             return m;
         }
+        
+        /// <summary>
+        /// Creates a perspective transformation matrix.
+        /// </summary>
+        public static dmat4 Perspective(double fovy, double aspect, double zNear, double zFar)
+        {
+            var tanHalfFovy = Math.Tan((double)fovy / 2.0);
+            var m = Identity;
+            m.m00 = (double)( 1 / ((double)aspect * tanHalfFovy) );
+            m.m11 = (double)( 1 / (tanHalfFovy) );
+            m.m22 = (double)( -(zFar + zNear) / (zFar - zNear) );
+            m.m23 = (double)( -1 );
+            m.m32 = (double)( -(2 * zFar * zNear) / (zFar - zNear) );
+            return m;
+        }
     }
 }

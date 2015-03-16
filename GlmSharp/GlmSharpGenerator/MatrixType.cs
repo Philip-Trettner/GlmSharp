@@ -585,6 +585,20 @@ namespace GlmSharpGenerator
                         yield return "    m.m31 = - (top + bottom)/(top - bottom);";
                         yield return "    return m;";
                         yield return "}";
+
+                        // perspective
+                        foreach (var line in "Creates a perspective transformation matrix.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Perspective({1} fovy, {1} aspect, {1} zNear, {1} zFar)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    var tanHalfFovy = Math.Tan((double)fovy / 2.0);";
+                        yield return "    var m = Identity;";
+                        yield return string.Format("    m.m00 = ({0})( 1 / ((double)aspect * tanHalfFovy) );", BaseType);
+                        yield return string.Format("    m.m11 = ({0})( 1 / (tanHalfFovy) );", BaseType);
+                        yield return string.Format("    m.m22 = ({0})( -(zFar + zNear) / (zFar - zNear) );", BaseType);
+                        yield return string.Format("    m.m23 = ({0})( -1 );", BaseType);
+                        yield return string.Format("    m.m32 = ({0})( -(2 * zFar * zNear) / (zFar - zNear) );", BaseType);
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }
