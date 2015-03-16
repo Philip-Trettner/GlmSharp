@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
@@ -341,6 +342,106 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec3 MaxValue = new dvec3(double.MaxValue, double.MaxValue, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec3 MinValue = new dvec3(double.MinValue, double.MinValue, double.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec3 Epsilon = new dvec3(double.Epsilon, double.Epsilon, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec3 NaN = new dvec3(double.NaN, double.NaN, double.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec3 NegativeInfinity = new dvec3(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec3 PositiveInfinity = new dvec3(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        
+        /// <summary>
+        /// Executes a component-wise IsInfinity
+        /// </summary>
+        public static bvec3 IsInfinity(dvec3 v) => new bvec3(double.IsInfinity(v.x), double.IsInfinity(v.y), double.IsInfinity(v.z));
+        
+        /// <summary>
+        /// Executes a component-wise IsFinite
+        /// </summary>
+        public static bvec3 IsFinite(dvec3 v) => new bvec3(!double.IsNaN(v.x) && !double.IsInfinity(v.x), !double.IsNaN(v.y) && !double.IsInfinity(v.y), !double.IsNaN(v.z) && !double.IsInfinity(v.z));
+        
+        /// <summary>
+        /// Executes a component-wise IsNaN
+        /// </summary>
+        public static bvec3 IsNaN(dvec3 v) => new bvec3(double.IsNaN(v.x), double.IsNaN(v.y), double.IsNaN(v.z));
+        
+        /// <summary>
+        /// Executes a component-wise IsNegativeInfinity
+        /// </summary>
+        public static bvec3 IsNegativeInfinity(dvec3 v) => new bvec3(double.IsNegativeInfinity(v.x), double.IsNegativeInfinity(v.y), double.IsNegativeInfinity(v.z));
+        
+        /// <summary>
+        /// Executes a component-wise IsPositiveInfinity
+        /// </summary>
+        public static bvec3 IsPositiveInfinity(dvec3 v) => new bvec3(double.IsPositiveInfinity(v.x), double.IsPositiveInfinity(v.y), double.IsPositiveInfinity(v.z));
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static dvec3 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim()), double.Parse(kvp[1].Trim()), double.Parse(kvp[2].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim(), provider), double.Parse(kvp[1].Trim(), provider), double.Parse(kvp[2].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim(), style), double.Parse(kvp[1].Trim(), style), double.Parse(kvp[2].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim(), style, provider), double.Parse(kvp[1].Trim(), style, provider), double.Parse(kvp[2].Trim(), style, provider));
+        }
         
         /// <summary>
         /// Returns the minimal component of this vector.

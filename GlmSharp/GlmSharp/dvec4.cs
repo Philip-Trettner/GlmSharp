@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
@@ -382,6 +383,106 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 MaxValue = new dvec4(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 MinValue = new dvec4(double.MinValue, double.MinValue, double.MinValue, double.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 Epsilon = new dvec4(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 NaN = new dvec4(double.NaN, double.NaN, double.NaN, double.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 NegativeInfinity = new dvec4(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly dvec4 PositiveInfinity = new dvec4(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        
+        /// <summary>
+        /// Executes a component-wise IsInfinity
+        /// </summary>
+        public static bvec4 IsInfinity(dvec4 v) => new bvec4(double.IsInfinity(v.x), double.IsInfinity(v.y), double.IsInfinity(v.z), double.IsInfinity(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsFinite
+        /// </summary>
+        public static bvec4 IsFinite(dvec4 v) => new bvec4(!double.IsNaN(v.x) && !double.IsInfinity(v.x), !double.IsNaN(v.y) && !double.IsInfinity(v.y), !double.IsNaN(v.z) && !double.IsInfinity(v.z), !double.IsNaN(v.w) && !double.IsInfinity(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsNaN
+        /// </summary>
+        public static bvec4 IsNaN(dvec4 v) => new bvec4(double.IsNaN(v.x), double.IsNaN(v.y), double.IsNaN(v.z), double.IsNaN(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsNegativeInfinity
+        /// </summary>
+        public static bvec4 IsNegativeInfinity(dvec4 v) => new bvec4(double.IsNegativeInfinity(v.x), double.IsNegativeInfinity(v.y), double.IsNegativeInfinity(v.z), double.IsNegativeInfinity(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsPositiveInfinity
+        /// </summary>
+        public static bvec4 IsPositiveInfinity(dvec4 v) => new bvec4(double.IsPositiveInfinity(v.x), double.IsPositiveInfinity(v.y), double.IsPositiveInfinity(v.z), double.IsPositiveInfinity(v.w));
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static dvec4 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static dvec4 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new dvec4(double.Parse(kvp[0].Trim()), double.Parse(kvp[1].Trim()), double.Parse(kvp[2].Trim()), double.Parse(kvp[3].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static dvec4 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new dvec4(double.Parse(kvp[0].Trim(), provider), double.Parse(kvp[1].Trim(), provider), double.Parse(kvp[2].Trim(), provider), double.Parse(kvp[3].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static dvec4 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new dvec4(double.Parse(kvp[0].Trim(), style), double.Parse(kvp[1].Trim(), style), double.Parse(kvp[2].Trim(), style), double.Parse(kvp[3].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static dvec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new dvec4(double.Parse(kvp[0].Trim(), style, provider), double.Parse(kvp[1].Trim(), style, provider), double.Parse(kvp[2].Trim(), style, provider), double.Parse(kvp[3].Trim(), style, provider));
+        }
         
         /// <summary>
         /// Returns the minimal component of this vector.

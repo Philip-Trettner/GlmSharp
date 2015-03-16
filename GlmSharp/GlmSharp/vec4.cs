@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
@@ -382,6 +383,106 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 MaxValue = new vec4(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 MinValue = new vec4(float.MinValue, float.MinValue, float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 Epsilon = new vec4(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 NaN = new vec4(float.NaN, float.NaN, float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 NegativeInfinity = new vec4(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly vec4 PositiveInfinity = new vec4(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        
+        /// <summary>
+        /// Executes a component-wise IsInfinity
+        /// </summary>
+        public static bvec4 IsInfinity(vec4 v) => new bvec4(float.IsInfinity(v.x), float.IsInfinity(v.y), float.IsInfinity(v.z), float.IsInfinity(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsFinite
+        /// </summary>
+        public static bvec4 IsFinite(vec4 v) => new bvec4(!float.IsNaN(v.x) && !float.IsInfinity(v.x), !float.IsNaN(v.y) && !float.IsInfinity(v.y), !float.IsNaN(v.z) && !float.IsInfinity(v.z), !float.IsNaN(v.w) && !float.IsInfinity(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsNaN
+        /// </summary>
+        public static bvec4 IsNaN(vec4 v) => new bvec4(float.IsNaN(v.x), float.IsNaN(v.y), float.IsNaN(v.z), float.IsNaN(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsNegativeInfinity
+        /// </summary>
+        public static bvec4 IsNegativeInfinity(vec4 v) => new bvec4(float.IsNegativeInfinity(v.x), float.IsNegativeInfinity(v.y), float.IsNegativeInfinity(v.z), float.IsNegativeInfinity(v.w));
+        
+        /// <summary>
+        /// Executes a component-wise IsPositiveInfinity
+        /// </summary>
+        public static bvec4 IsPositiveInfinity(vec4 v) => new bvec4(float.IsPositiveInfinity(v.x), float.IsPositiveInfinity(v.y), float.IsPositiveInfinity(v.z), float.IsPositiveInfinity(v.w));
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static vec4 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static vec4 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim()), float.Parse(kvp[1].Trim()), float.Parse(kvp[2].Trim()), float.Parse(kvp[3].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static vec4 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim(), provider), float.Parse(kvp[1].Trim(), provider), float.Parse(kvp[2].Trim(), provider), float.Parse(kvp[3].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static vec4 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim(), style), float.Parse(kvp[1].Trim(), style), float.Parse(kvp[2].Trim(), style), float.Parse(kvp[3].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static vec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim(), style, provider), float.Parse(kvp[1].Trim(), style, provider), float.Parse(kvp[2].Trim(), style, provider), float.Parse(kvp[3].Trim(), style, provider));
+        }
         
         /// <summary>
         /// Returns the minimal component of this vector.

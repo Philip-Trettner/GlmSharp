@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
@@ -303,6 +304,21 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
         /// </summary>
         public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider);
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static bvec2 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static bvec2 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) throw new FormatException("input has not exactly 2 parts");
+            return new bvec2(bool.Parse(kvp[0].Trim()), bool.Parse(kvp[1].Trim()));
+        }
         
         /// <summary>
         /// Returns the minimal component of this vector.

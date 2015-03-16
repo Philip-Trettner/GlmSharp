@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
@@ -313,6 +314,61 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly ivec2 MaxValue = new ivec2(int.MaxValue, int.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly ivec2 MinValue = new ivec2(int.MinValue, int.MinValue);
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static ivec2 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static ivec2 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) throw new FormatException("input has not exactly 2 parts");
+            return new ivec2(int.Parse(kvp[0].Trim()), int.Parse(kvp[1].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static ivec2 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) throw new FormatException("input has not exactly 2 parts");
+            return new ivec2(int.Parse(kvp[0].Trim(), provider), int.Parse(kvp[1].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static ivec2 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) throw new FormatException("input has not exactly 2 parts");
+            return new ivec2(int.Parse(kvp[0].Trim(), style), int.Parse(kvp[1].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static ivec2 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) throw new FormatException("input has not exactly 2 parts");
+            return new ivec2(int.Parse(kvp[0].Trim(), style, provider), int.Parse(kvp[1].Trim(), style, provider));
+        }
         
         /// <summary>
         /// Returns the minimal component of this vector.

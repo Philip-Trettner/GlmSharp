@@ -57,20 +57,31 @@ namespace GlmSharpGenerator
         {
             Name = "int",
             Prefix = "i",
-            IsInteger = true
+            IsInteger = true,
+            TypeConstants = new[] { "MaxValue", "MinValue" }
         };
         public static readonly BaseTypeInfo TypeUint = new BaseTypeInfo
         {
             Name = "uint",
             Prefix = "u",
             RequiredAbs = false,
-            IsInteger = true
+            IsInteger = true,
+            TypeConstants = new[] { "MaxValue", "MinValue" }
         };
         public static readonly BaseTypeInfo TypeFloat = new BaseTypeInfo
         {
             Name = "float",
             OneValue = "1f",
-            IsFloatingPoint = true
+            IsFloatingPoint = true,
+            TypeConstants = new[] { "MaxValue", "MinValue", "Epsilon", "NaN", "NegativeInfinity", "PositiveInfinity" },
+            TypeTestFuncs = new Dictionary<string, string>
+            {
+                { "IsInfinity", "float.IsInfinity({0})" },
+                { "IsFinite", "!float.IsNaN({0}) && !float.IsInfinity({0})" },
+                { "IsNaN", "float.IsNaN({0})" },
+                { "IsNegativeInfinity", "float.IsNegativeInfinity({0})" },
+                { "IsPositiveInfinity", "float.IsPositiveInfinity({0})" }
+            }
         };
         public static readonly BaseTypeInfo TypeDouble = new BaseTypeInfo
         {
@@ -78,7 +89,16 @@ namespace GlmSharpGenerator
             Prefix = "d",
             LengthType = "double",
             OneValue = "1.0",
-            IsFloatingPoint = true
+            IsFloatingPoint = true,
+            TypeConstants = new[] { "MaxValue", "MinValue", "Epsilon", "NaN", "NegativeInfinity", "PositiveInfinity" },
+            TypeTestFuncs = new Dictionary<string, string>
+            {
+                { "IsInfinity", "double.IsInfinity({0})" },
+                { "IsFinite", "!double.IsNaN({0}) && !double.IsInfinity({0})" },
+                { "IsNaN", "double.IsNaN({0})" },
+                { "IsNegativeInfinity", "double.IsNegativeInfinity({0})" },
+                { "IsPositiveInfinity", "double.IsPositiveInfinity({0})" }
+            }
         };
         public static readonly BaseTypeInfo TypeDecimal = new BaseTypeInfo
         {
@@ -87,7 +107,8 @@ namespace GlmSharpGenerator
             LengthType = "decimal",
             OneValue = "1m",
             Decimal = true,
-            IsFloatingPoint = true
+            IsFloatingPoint = true,
+            TypeConstants = new[] { "MaxValue", "MinValue", "MinusOne" }
         };
         public static readonly BaseTypeInfo TypeComplex = new BaseTypeInfo
         {
@@ -104,7 +125,8 @@ namespace GlmSharpGenerator
             Name = "long",
             Prefix = "l",
             LengthType = "double",
-            IsInteger = true
+            IsInteger = true,
+            TypeConstants = new[] { "MaxValue", "MinValue" }
         };
         public static readonly BaseTypeInfo TypeBool = new BaseTypeInfo
         {
@@ -148,5 +170,9 @@ namespace GlmSharpGenerator
         public int HashCodeMultiplier { get; set; } = 397;
 
         public string ZeroValue => "default(" + Name + ")";
+
+        public string[] TypeConstants { get; set; } = new string[] { };
+
+        public Dictionary<string, string> TypeTestFuncs { get; set; } = new Dictionary<string, string>();
     }
 }
