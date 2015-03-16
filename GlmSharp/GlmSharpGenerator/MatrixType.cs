@@ -51,7 +51,7 @@ namespace GlmSharpGenerator
             var res = initialSign % 2 == 1 ? "-" : "";
             for (var i = 0; i < s; ++i)
             {
-                if (res.Length > 0)
+                if (res.Length > 1)
                     res += (i + initialSign) % 2 == 1 ? " - " : " + ";
                 res += f[i, 0] + " * (" + HelperDet(HelperSubmatrix(f, i, 0)) + ")";
             }
