@@ -973,7 +973,7 @@ namespace GlmSharp
         public static vec4 Step(vec4 v) => new vec4(v.x >= default(float) ? 1f : default(float), v.y >= default(float) ? 1f : default(float), v.z >= default(float) ? 1f : default(float), v.w >= default(float) ? 1f : default(float));
         
         /// <summary>
-        /// Returns a component-wise executed Step.
+        /// Returns a component-wise executed Step with a scalar.
         /// </summary>
         public static vec4 Step(float v) => new vec4(v >= default(float) ? 1f : default(float));
         
@@ -983,7 +983,7 @@ namespace GlmSharp
         public static vec4 Acos(vec4 v) => new vec4((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y), (float)Math.Acos((double)v.z), (float)Math.Acos((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Acos.
+        /// Returns a component-wise executed Acos with a scalar.
         /// </summary>
         public static vec4 Acos(float v) => new vec4((float)Math.Acos((double)v));
         
@@ -993,7 +993,7 @@ namespace GlmSharp
         public static vec4 Asin(vec4 v) => new vec4((float)Math.Asin((double)v.x), (float)Math.Asin((double)v.y), (float)Math.Asin((double)v.z), (float)Math.Asin((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Asin.
+        /// Returns a component-wise executed Asin with a scalar.
         /// </summary>
         public static vec4 Asin(float v) => new vec4((float)Math.Asin((double)v));
         
@@ -1003,7 +1003,7 @@ namespace GlmSharp
         public static vec4 Atan(vec4 v) => new vec4((float)Math.Atan((double)v.x), (float)Math.Atan((double)v.y), (float)Math.Atan((double)v.z), (float)Math.Atan((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Atan.
+        /// Returns a component-wise executed Atan with a scalar.
         /// </summary>
         public static vec4 Atan(float v) => new vec4((float)Math.Atan((double)v));
         
@@ -1013,7 +1013,7 @@ namespace GlmSharp
         public static vec4 Cos(vec4 v) => new vec4((float)Math.Cos((double)v.x), (float)Math.Cos((double)v.y), (float)Math.Cos((double)v.z), (float)Math.Cos((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Cos.
+        /// Returns a component-wise executed Cos with a scalar.
         /// </summary>
         public static vec4 Cos(float v) => new vec4((float)Math.Cos((double)v));
         
@@ -1023,7 +1023,7 @@ namespace GlmSharp
         public static vec4 Cosh(vec4 v) => new vec4((float)Math.Cosh((double)v.x), (float)Math.Cosh((double)v.y), (float)Math.Cosh((double)v.z), (float)Math.Cosh((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Cosh.
+        /// Returns a component-wise executed Cosh with a scalar.
         /// </summary>
         public static vec4 Cosh(float v) => new vec4((float)Math.Cosh((double)v));
         
@@ -1033,7 +1033,7 @@ namespace GlmSharp
         public static vec4 Exp(vec4 v) => new vec4((float)Math.Exp((double)v.x), (float)Math.Exp((double)v.y), (float)Math.Exp((double)v.z), (float)Math.Exp((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Exp.
+        /// Returns a component-wise executed Exp with a scalar.
         /// </summary>
         public static vec4 Exp(float v) => new vec4((float)Math.Exp((double)v));
         
@@ -1043,7 +1043,7 @@ namespace GlmSharp
         public static vec4 Log(vec4 v) => new vec4((float)Math.Log((double)v.x), (float)Math.Log((double)v.y), (float)Math.Log((double)v.z), (float)Math.Log((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Log.
+        /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static vec4 Log(float v) => new vec4((float)Math.Log((double)v));
         
@@ -1053,7 +1053,7 @@ namespace GlmSharp
         public static vec4 Log2(vec4 v) => new vec4((float)Math.Log((double)v.x, 2), (float)Math.Log((double)v.y, 2), (float)Math.Log((double)v.z, 2), (float)Math.Log((double)v.w, 2));
         
         /// <summary>
-        /// Returns a component-wise executed Log2.
+        /// Returns a component-wise executed Log2 with a scalar.
         /// </summary>
         public static vec4 Log2(float v) => new vec4((float)Math.Log((double)v, 2));
         
@@ -1063,7 +1063,7 @@ namespace GlmSharp
         public static vec4 Log10(vec4 v) => new vec4((float)Math.Log10((double)v.x), (float)Math.Log10((double)v.y), (float)Math.Log10((double)v.z), (float)Math.Log10((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Log10.
+        /// Returns a component-wise executed Log10 with a scalar.
         /// </summary>
         public static vec4 Log10(float v) => new vec4((float)Math.Log10((double)v));
         
@@ -1073,7 +1073,7 @@ namespace GlmSharp
         public static vec4 Floor(vec4 v) => new vec4((float)Math.Floor(v.x), (float)Math.Floor(v.y), (float)Math.Floor(v.z), (float)Math.Floor(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Floor.
+        /// Returns a component-wise executed Floor with a scalar.
         /// </summary>
         public static vec4 Floor(float v) => new vec4((float)Math.Floor(v));
         
@@ -1083,7 +1083,7 @@ namespace GlmSharp
         public static vec4 Ceiling(vec4 v) => new vec4((float)Math.Ceiling(v.x), (float)Math.Ceiling(v.y), (float)Math.Ceiling(v.z), (float)Math.Ceiling(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Ceiling.
+        /// Returns a component-wise executed Ceiling with a scalar.
         /// </summary>
         public static vec4 Ceiling(float v) => new vec4((float)Math.Ceiling(v));
         
@@ -1093,7 +1093,7 @@ namespace GlmSharp
         public static vec4 Round(vec4 v) => new vec4((float)Math.Round(v.x), (float)Math.Round(v.y), (float)Math.Round(v.z), (float)Math.Round(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Round.
+        /// Returns a component-wise executed Round with a scalar.
         /// </summary>
         public static vec4 Round(float v) => new vec4((float)Math.Round(v));
         
@@ -1103,7 +1103,7 @@ namespace GlmSharp
         public static vec4 Sin(vec4 v) => new vec4((float)Math.Sin((double)v.x), (float)Math.Sin((double)v.y), (float)Math.Sin((double)v.z), (float)Math.Sin((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sin.
+        /// Returns a component-wise executed Sin with a scalar.
         /// </summary>
         public static vec4 Sin(float v) => new vec4((float)Math.Sin((double)v));
         
@@ -1113,7 +1113,7 @@ namespace GlmSharp
         public static vec4 Sinh(vec4 v) => new vec4((float)Math.Sinh((double)v.x), (float)Math.Sinh((double)v.y), (float)Math.Sinh((double)v.z), (float)Math.Sinh((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sinh.
+        /// Returns a component-wise executed Sinh with a scalar.
         /// </summary>
         public static vec4 Sinh(float v) => new vec4((float)Math.Sinh((double)v));
         
@@ -1123,7 +1123,7 @@ namespace GlmSharp
         public static vec4 Sqrt(vec4 v) => new vec4((float)Math.Sqrt((double)v.x), (float)Math.Sqrt((double)v.y), (float)Math.Sqrt((double)v.z), (float)Math.Sqrt((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sqrt.
+        /// Returns a component-wise executed Sqrt with a scalar.
         /// </summary>
         public static vec4 Sqrt(float v) => new vec4((float)Math.Sqrt((double)v));
         
@@ -1133,7 +1133,7 @@ namespace GlmSharp
         public static vec4 Tan(vec4 v) => new vec4((float)Math.Tan((double)v.x), (float)Math.Tan((double)v.y), (float)Math.Tan((double)v.z), (float)Math.Tan((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Tan.
+        /// Returns a component-wise executed Tan with a scalar.
         /// </summary>
         public static vec4 Tan(float v) => new vec4((float)Math.Tan((double)v));
         
@@ -1143,7 +1143,7 @@ namespace GlmSharp
         public static vec4 Tanh(vec4 v) => new vec4((float)Math.Tanh((double)v.x), (float)Math.Tanh((double)v.y), (float)Math.Tanh((double)v.z), (float)Math.Tanh((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Tanh.
+        /// Returns a component-wise executed Tanh with a scalar.
         /// </summary>
         public static vec4 Tanh(float v) => new vec4((float)Math.Tanh((double)v));
         
@@ -1153,7 +1153,7 @@ namespace GlmSharp
         public static vec4 Truncate(vec4 v) => new vec4((float)Math.Truncate((double)v.x), (float)Math.Truncate((double)v.y), (float)Math.Truncate((double)v.z), (float)Math.Truncate((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Truncate.
+        /// Returns a component-wise executed Truncate with a scalar.
         /// </summary>
         public static vec4 Truncate(float v) => new vec4((float)Math.Truncate((double)v));
         
@@ -1163,9 +1163,29 @@ namespace GlmSharp
         public static ivec4 Sign(vec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sign.
+        /// Returns a component-wise executed Sign with a scalar.
         /// </summary>
         public static ivec4 Sign(float v) => new ivec4(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion.
+        /// </summary>
+        public static vec4 Degrees(vec4 v) => v * 57.295779513082320876798154814105170332405472466564321f;
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
+        /// </summary>
+        public static vec4 Degrees(float v) => new vec4(v * 57.295779513082320876798154814105170332405472466564321f);
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion.
+        /// </summary>
+        public static vec4 Radians(vec4 v) => v * 0.0174532925199432957692369076848861271344287188854172f;
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
+        /// </summary>
+        public static vec4 Radians(float v) => new vec4(v * 0.0174532925199432957692369076848861271344287188854172f);
         
         /// <summary>
         /// Returns a component-wise executed Sqr.

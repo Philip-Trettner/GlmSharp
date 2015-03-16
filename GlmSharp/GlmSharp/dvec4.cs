@@ -893,7 +893,7 @@ namespace GlmSharp
         public static dvec4 Step(dvec4 v) => new dvec4(v.x >= default(double) ? 1.0 : default(double), v.y >= default(double) ? 1.0 : default(double), v.z >= default(double) ? 1.0 : default(double), v.w >= default(double) ? 1.0 : default(double));
         
         /// <summary>
-        /// Returns a component-wise executed Step.
+        /// Returns a component-wise executed Step with a scalar.
         /// </summary>
         public static dvec4 Step(double v) => new dvec4(v >= default(double) ? 1.0 : default(double));
         
@@ -903,7 +903,7 @@ namespace GlmSharp
         public static dvec4 Acos(dvec4 v) => new dvec4((double)Math.Acos((double)v.x), (double)Math.Acos((double)v.y), (double)Math.Acos((double)v.z), (double)Math.Acos((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Acos.
+        /// Returns a component-wise executed Acos with a scalar.
         /// </summary>
         public static dvec4 Acos(double v) => new dvec4((double)Math.Acos((double)v));
         
@@ -913,7 +913,7 @@ namespace GlmSharp
         public static dvec4 Asin(dvec4 v) => new dvec4((double)Math.Asin((double)v.x), (double)Math.Asin((double)v.y), (double)Math.Asin((double)v.z), (double)Math.Asin((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Asin.
+        /// Returns a component-wise executed Asin with a scalar.
         /// </summary>
         public static dvec4 Asin(double v) => new dvec4((double)Math.Asin((double)v));
         
@@ -923,7 +923,7 @@ namespace GlmSharp
         public static dvec4 Atan(dvec4 v) => new dvec4((double)Math.Atan((double)v.x), (double)Math.Atan((double)v.y), (double)Math.Atan((double)v.z), (double)Math.Atan((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Atan.
+        /// Returns a component-wise executed Atan with a scalar.
         /// </summary>
         public static dvec4 Atan(double v) => new dvec4((double)Math.Atan((double)v));
         
@@ -933,7 +933,7 @@ namespace GlmSharp
         public static dvec4 Cos(dvec4 v) => new dvec4((double)Math.Cos((double)v.x), (double)Math.Cos((double)v.y), (double)Math.Cos((double)v.z), (double)Math.Cos((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Cos.
+        /// Returns a component-wise executed Cos with a scalar.
         /// </summary>
         public static dvec4 Cos(double v) => new dvec4((double)Math.Cos((double)v));
         
@@ -943,7 +943,7 @@ namespace GlmSharp
         public static dvec4 Cosh(dvec4 v) => new dvec4((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y), (double)Math.Cosh((double)v.z), (double)Math.Cosh((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Cosh.
+        /// Returns a component-wise executed Cosh with a scalar.
         /// </summary>
         public static dvec4 Cosh(double v) => new dvec4((double)Math.Cosh((double)v));
         
@@ -953,7 +953,7 @@ namespace GlmSharp
         public static dvec4 Exp(dvec4 v) => new dvec4((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y), (double)Math.Exp((double)v.z), (double)Math.Exp((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Exp.
+        /// Returns a component-wise executed Exp with a scalar.
         /// </summary>
         public static dvec4 Exp(double v) => new dvec4((double)Math.Exp((double)v));
         
@@ -963,7 +963,7 @@ namespace GlmSharp
         public static dvec4 Log(dvec4 v) => new dvec4((double)Math.Log((double)v.x), (double)Math.Log((double)v.y), (double)Math.Log((double)v.z), (double)Math.Log((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Log.
+        /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static dvec4 Log(double v) => new dvec4((double)Math.Log((double)v));
         
@@ -973,7 +973,7 @@ namespace GlmSharp
         public static dvec4 Log2(dvec4 v) => new dvec4((double)Math.Log((double)v.x, 2), (double)Math.Log((double)v.y, 2), (double)Math.Log((double)v.z, 2), (double)Math.Log((double)v.w, 2));
         
         /// <summary>
-        /// Returns a component-wise executed Log2.
+        /// Returns a component-wise executed Log2 with a scalar.
         /// </summary>
         public static dvec4 Log2(double v) => new dvec4((double)Math.Log((double)v, 2));
         
@@ -983,7 +983,7 @@ namespace GlmSharp
         public static dvec4 Log10(dvec4 v) => new dvec4((double)Math.Log10((double)v.x), (double)Math.Log10((double)v.y), (double)Math.Log10((double)v.z), (double)Math.Log10((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Log10.
+        /// Returns a component-wise executed Log10 with a scalar.
         /// </summary>
         public static dvec4 Log10(double v) => new dvec4((double)Math.Log10((double)v));
         
@@ -993,7 +993,7 @@ namespace GlmSharp
         public static dvec4 Floor(dvec4 v) => new dvec4((double)Math.Floor(v.x), (double)Math.Floor(v.y), (double)Math.Floor(v.z), (double)Math.Floor(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Floor.
+        /// Returns a component-wise executed Floor with a scalar.
         /// </summary>
         public static dvec4 Floor(double v) => new dvec4((double)Math.Floor(v));
         
@@ -1003,7 +1003,7 @@ namespace GlmSharp
         public static dvec4 Ceiling(dvec4 v) => new dvec4((double)Math.Ceiling(v.x), (double)Math.Ceiling(v.y), (double)Math.Ceiling(v.z), (double)Math.Ceiling(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Ceiling.
+        /// Returns a component-wise executed Ceiling with a scalar.
         /// </summary>
         public static dvec4 Ceiling(double v) => new dvec4((double)Math.Ceiling(v));
         
@@ -1013,7 +1013,7 @@ namespace GlmSharp
         public static dvec4 Round(dvec4 v) => new dvec4((double)Math.Round(v.x), (double)Math.Round(v.y), (double)Math.Round(v.z), (double)Math.Round(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Round.
+        /// Returns a component-wise executed Round with a scalar.
         /// </summary>
         public static dvec4 Round(double v) => new dvec4((double)Math.Round(v));
         
@@ -1023,7 +1023,7 @@ namespace GlmSharp
         public static dvec4 Sin(dvec4 v) => new dvec4((double)Math.Sin((double)v.x), (double)Math.Sin((double)v.y), (double)Math.Sin((double)v.z), (double)Math.Sin((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sin.
+        /// Returns a component-wise executed Sin with a scalar.
         /// </summary>
         public static dvec4 Sin(double v) => new dvec4((double)Math.Sin((double)v));
         
@@ -1033,7 +1033,7 @@ namespace GlmSharp
         public static dvec4 Sinh(dvec4 v) => new dvec4((double)Math.Sinh((double)v.x), (double)Math.Sinh((double)v.y), (double)Math.Sinh((double)v.z), (double)Math.Sinh((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sinh.
+        /// Returns a component-wise executed Sinh with a scalar.
         /// </summary>
         public static dvec4 Sinh(double v) => new dvec4((double)Math.Sinh((double)v));
         
@@ -1043,7 +1043,7 @@ namespace GlmSharp
         public static dvec4 Sqrt(dvec4 v) => new dvec4((double)Math.Sqrt((double)v.x), (double)Math.Sqrt((double)v.y), (double)Math.Sqrt((double)v.z), (double)Math.Sqrt((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sqrt.
+        /// Returns a component-wise executed Sqrt with a scalar.
         /// </summary>
         public static dvec4 Sqrt(double v) => new dvec4((double)Math.Sqrt((double)v));
         
@@ -1053,7 +1053,7 @@ namespace GlmSharp
         public static dvec4 Tan(dvec4 v) => new dvec4((double)Math.Tan((double)v.x), (double)Math.Tan((double)v.y), (double)Math.Tan((double)v.z), (double)Math.Tan((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Tan.
+        /// Returns a component-wise executed Tan with a scalar.
         /// </summary>
         public static dvec4 Tan(double v) => new dvec4((double)Math.Tan((double)v));
         
@@ -1063,7 +1063,7 @@ namespace GlmSharp
         public static dvec4 Tanh(dvec4 v) => new dvec4((double)Math.Tanh((double)v.x), (double)Math.Tanh((double)v.y), (double)Math.Tanh((double)v.z), (double)Math.Tanh((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Tanh.
+        /// Returns a component-wise executed Tanh with a scalar.
         /// </summary>
         public static dvec4 Tanh(double v) => new dvec4((double)Math.Tanh((double)v));
         
@@ -1073,7 +1073,7 @@ namespace GlmSharp
         public static dvec4 Truncate(dvec4 v) => new dvec4((double)Math.Truncate((double)v.x), (double)Math.Truncate((double)v.y), (double)Math.Truncate((double)v.z), (double)Math.Truncate((double)v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Truncate.
+        /// Returns a component-wise executed Truncate with a scalar.
         /// </summary>
         public static dvec4 Truncate(double v) => new dvec4((double)Math.Truncate((double)v));
         
@@ -1083,9 +1083,29 @@ namespace GlmSharp
         public static ivec4 Sign(dvec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));
         
         /// <summary>
-        /// Returns a component-wise executed Sign.
+        /// Returns a component-wise executed Sign with a scalar.
         /// </summary>
         public static ivec4 Sign(double v) => new ivec4(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion.
+        /// </summary>
+        public static dvec4 Degrees(dvec4 v) => v * 57.295779513082320876798154814105170332405472466564321d;
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
+        /// </summary>
+        public static dvec4 Degrees(double v) => new dvec4(v * 57.295779513082320876798154814105170332405472466564321d);
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion.
+        /// </summary>
+        public static dvec4 Radians(dvec4 v) => v * 0.0174532925199432957692369076848861271344287188854172d;
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
+        /// </summary>
+        public static dvec4 Radians(double v) => new dvec4(v * 0.0174532925199432957692369076848861271344287188854172d);
         
         /// <summary>
         /// Returns a component-wise executed Sqr.

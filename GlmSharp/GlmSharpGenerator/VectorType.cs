@@ -713,6 +713,7 @@ namespace GlmSharpGenerator
                     }
 
                     if (BaseTypeInfo.IsFloatingPoint)
+                    {
                         foreach (var kvp in new Dictionary<string, Func<string, string>>
                         {
                             {"Step", s => string.Format("{0} >= {1} ? {2} : {1}", s, ZeroValue, OneValue)},
@@ -748,9 +749,22 @@ namespace GlmSharpGenerator
                             foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
                             yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
 
-                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
                             yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseType, opFunc("v"));
                         }
+
+                        foreach (var line in "Returns a component-wise executed radians-to-degrees conversion.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => v * {3};", ClassNameThat, "Degrees", ClassNameThat, ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321"));
+
+                        foreach (var line in "Returns a component-wise executed radians-to-degrees conversion with a scalar.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}(v * {3});", ClassNameThat, "Degrees", BaseType, ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321"));
+
+                        foreach (var line in "Returns a component-wise executed degrees-to-radians conversion.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => v * {3};", ClassNameThat, "Radians", ClassNameThat, ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172"));
+
+                        foreach (var line in "Returns a component-wise executed degrees-to-radians conversion with a scalar.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}(v * {3});", ClassNameThat, "Radians", BaseType, ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172"));
+                    }
 
                     if (BaseTypeInfo.Complex)
                     {

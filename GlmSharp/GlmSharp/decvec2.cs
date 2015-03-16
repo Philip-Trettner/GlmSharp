@@ -724,7 +724,7 @@ namespace GlmSharp
         public static decvec2 Step(decvec2 v) => new decvec2(v.x >= default(decimal) ? 1m : default(decimal), v.y >= default(decimal) ? 1m : default(decimal));
         
         /// <summary>
-        /// Returns a component-wise executed Step.
+        /// Returns a component-wise executed Step with a scalar.
         /// </summary>
         public static decvec2 Step(decimal v) => new decvec2(v >= default(decimal) ? 1m : default(decimal));
         
@@ -734,7 +734,7 @@ namespace GlmSharp
         public static decvec2 Acos(decvec2 v) => new decvec2((decimal)Math.Acos((double)v.x), (decimal)Math.Acos((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Acos.
+        /// Returns a component-wise executed Acos with a scalar.
         /// </summary>
         public static decvec2 Acos(decimal v) => new decvec2((decimal)Math.Acos((double)v));
         
@@ -744,7 +744,7 @@ namespace GlmSharp
         public static decvec2 Asin(decvec2 v) => new decvec2((decimal)Math.Asin((double)v.x), (decimal)Math.Asin((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Asin.
+        /// Returns a component-wise executed Asin with a scalar.
         /// </summary>
         public static decvec2 Asin(decimal v) => new decvec2((decimal)Math.Asin((double)v));
         
@@ -754,7 +754,7 @@ namespace GlmSharp
         public static decvec2 Atan(decvec2 v) => new decvec2((decimal)Math.Atan((double)v.x), (decimal)Math.Atan((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Atan.
+        /// Returns a component-wise executed Atan with a scalar.
         /// </summary>
         public static decvec2 Atan(decimal v) => new decvec2((decimal)Math.Atan((double)v));
         
@@ -764,7 +764,7 @@ namespace GlmSharp
         public static decvec2 Cos(decvec2 v) => new decvec2((decimal)Math.Cos((double)v.x), (decimal)Math.Cos((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Cos.
+        /// Returns a component-wise executed Cos with a scalar.
         /// </summary>
         public static decvec2 Cos(decimal v) => new decvec2((decimal)Math.Cos((double)v));
         
@@ -774,7 +774,7 @@ namespace GlmSharp
         public static decvec2 Cosh(decvec2 v) => new decvec2((decimal)Math.Cosh((double)v.x), (decimal)Math.Cosh((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Cosh.
+        /// Returns a component-wise executed Cosh with a scalar.
         /// </summary>
         public static decvec2 Cosh(decimal v) => new decvec2((decimal)Math.Cosh((double)v));
         
@@ -784,7 +784,7 @@ namespace GlmSharp
         public static decvec2 Exp(decvec2 v) => new decvec2((decimal)Math.Exp((double)v.x), (decimal)Math.Exp((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Exp.
+        /// Returns a component-wise executed Exp with a scalar.
         /// </summary>
         public static decvec2 Exp(decimal v) => new decvec2((decimal)Math.Exp((double)v));
         
@@ -794,7 +794,7 @@ namespace GlmSharp
         public static decvec2 Log(decvec2 v) => new decvec2((decimal)Math.Log((double)v.x), (decimal)Math.Log((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Log.
+        /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static decvec2 Log(decimal v) => new decvec2((decimal)Math.Log((double)v));
         
@@ -804,7 +804,7 @@ namespace GlmSharp
         public static decvec2 Log2(decvec2 v) => new decvec2((decimal)Math.Log((double)v.x, 2), (decimal)Math.Log((double)v.y, 2));
         
         /// <summary>
-        /// Returns a component-wise executed Log2.
+        /// Returns a component-wise executed Log2 with a scalar.
         /// </summary>
         public static decvec2 Log2(decimal v) => new decvec2((decimal)Math.Log((double)v, 2));
         
@@ -814,7 +814,7 @@ namespace GlmSharp
         public static decvec2 Log10(decvec2 v) => new decvec2((decimal)Math.Log10((double)v.x), (decimal)Math.Log10((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Log10.
+        /// Returns a component-wise executed Log10 with a scalar.
         /// </summary>
         public static decvec2 Log10(decimal v) => new decvec2((decimal)Math.Log10((double)v));
         
@@ -824,7 +824,7 @@ namespace GlmSharp
         public static decvec2 Floor(decvec2 v) => new decvec2((decimal)Math.Floor(v.x), (decimal)Math.Floor(v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Floor.
+        /// Returns a component-wise executed Floor with a scalar.
         /// </summary>
         public static decvec2 Floor(decimal v) => new decvec2((decimal)Math.Floor(v));
         
@@ -834,7 +834,7 @@ namespace GlmSharp
         public static decvec2 Ceiling(decvec2 v) => new decvec2((decimal)Math.Ceiling(v.x), (decimal)Math.Ceiling(v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Ceiling.
+        /// Returns a component-wise executed Ceiling with a scalar.
         /// </summary>
         public static decvec2 Ceiling(decimal v) => new decvec2((decimal)Math.Ceiling(v));
         
@@ -844,7 +844,7 @@ namespace GlmSharp
         public static decvec2 Round(decvec2 v) => new decvec2((decimal)Math.Round(v.x), (decimal)Math.Round(v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Round.
+        /// Returns a component-wise executed Round with a scalar.
         /// </summary>
         public static decvec2 Round(decimal v) => new decvec2((decimal)Math.Round(v));
         
@@ -854,7 +854,7 @@ namespace GlmSharp
         public static decvec2 Sin(decvec2 v) => new decvec2((decimal)Math.Sin((double)v.x), (decimal)Math.Sin((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Sin.
+        /// Returns a component-wise executed Sin with a scalar.
         /// </summary>
         public static decvec2 Sin(decimal v) => new decvec2((decimal)Math.Sin((double)v));
         
@@ -864,7 +864,7 @@ namespace GlmSharp
         public static decvec2 Sinh(decvec2 v) => new decvec2((decimal)Math.Sinh((double)v.x), (decimal)Math.Sinh((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Sinh.
+        /// Returns a component-wise executed Sinh with a scalar.
         /// </summary>
         public static decvec2 Sinh(decimal v) => new decvec2((decimal)Math.Sinh((double)v));
         
@@ -874,7 +874,7 @@ namespace GlmSharp
         public static decvec2 Sqrt(decvec2 v) => new decvec2((decimal)Math.Sqrt((double)v.x), (decimal)Math.Sqrt((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Sqrt.
+        /// Returns a component-wise executed Sqrt with a scalar.
         /// </summary>
         public static decvec2 Sqrt(decimal v) => new decvec2((decimal)Math.Sqrt((double)v));
         
@@ -884,7 +884,7 @@ namespace GlmSharp
         public static decvec2 Tan(decvec2 v) => new decvec2((decimal)Math.Tan((double)v.x), (decimal)Math.Tan((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Tan.
+        /// Returns a component-wise executed Tan with a scalar.
         /// </summary>
         public static decvec2 Tan(decimal v) => new decvec2((decimal)Math.Tan((double)v));
         
@@ -894,7 +894,7 @@ namespace GlmSharp
         public static decvec2 Tanh(decvec2 v) => new decvec2((decimal)Math.Tanh((double)v.x), (decimal)Math.Tanh((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Tanh.
+        /// Returns a component-wise executed Tanh with a scalar.
         /// </summary>
         public static decvec2 Tanh(decimal v) => new decvec2((decimal)Math.Tanh((double)v));
         
@@ -904,7 +904,7 @@ namespace GlmSharp
         public static decvec2 Truncate(decvec2 v) => new decvec2((decimal)Math.Truncate((double)v.x), (decimal)Math.Truncate((double)v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Truncate.
+        /// Returns a component-wise executed Truncate with a scalar.
         /// </summary>
         public static decvec2 Truncate(decimal v) => new decvec2((decimal)Math.Truncate((double)v));
         
@@ -914,9 +914,29 @@ namespace GlmSharp
         public static ivec2 Sign(decvec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
         
         /// <summary>
-        /// Returns a component-wise executed Sign.
+        /// Returns a component-wise executed Sign with a scalar.
         /// </summary>
         public static ivec2 Sign(decimal v) => new ivec2(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion.
+        /// </summary>
+        public static decvec2 Degrees(decvec2 v) => v * 57.295779513082320876798154814105170332405472466564321m;
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
+        /// </summary>
+        public static decvec2 Degrees(decimal v) => new decvec2(v * 57.295779513082320876798154814105170332405472466564321m);
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion.
+        /// </summary>
+        public static decvec2 Radians(decvec2 v) => v * 0.0174532925199432957692369076848861271344287188854172m;
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
+        /// </summary>
+        public static decvec2 Radians(decimal v) => new decvec2(v * 0.0174532925199432957692369076848861271344287188854172m);
         
         /// <summary>
         /// Returns a component-wise executed Sqr.

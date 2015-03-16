@@ -66,5 +66,19 @@ namespace GlmSharpGenerator
 
         public string AbsString(string s) => BaseTypeInfo.IsSigned ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
         public string AbsString(char s) => BaseTypeInfo.IsSigned ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();
+
+        public string ConstantSuffixFor(string s)
+        {
+            if (BaseTypeInfo == BaseTypeInfo.TypeFloat)
+                return s + "f";
+
+            if (BaseTypeInfo == BaseTypeInfo.TypeDouble)
+                return s + "d";
+
+            if (BaseTypeInfo == BaseTypeInfo.TypeDecimal)
+                return s + "m";
+
+            throw new InvalidOperationException("unknown type");
+        }
     }
 }

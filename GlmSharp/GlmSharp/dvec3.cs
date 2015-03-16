@@ -857,7 +857,7 @@ namespace GlmSharp
         public static dvec3 Step(dvec3 v) => new dvec3(v.x >= default(double) ? 1.0 : default(double), v.y >= default(double) ? 1.0 : default(double), v.z >= default(double) ? 1.0 : default(double));
         
         /// <summary>
-        /// Returns a component-wise executed Step.
+        /// Returns a component-wise executed Step with a scalar.
         /// </summary>
         public static dvec3 Step(double v) => new dvec3(v >= default(double) ? 1.0 : default(double));
         
@@ -867,7 +867,7 @@ namespace GlmSharp
         public static dvec3 Acos(dvec3 v) => new dvec3((double)Math.Acos((double)v.x), (double)Math.Acos((double)v.y), (double)Math.Acos((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Acos.
+        /// Returns a component-wise executed Acos with a scalar.
         /// </summary>
         public static dvec3 Acos(double v) => new dvec3((double)Math.Acos((double)v));
         
@@ -877,7 +877,7 @@ namespace GlmSharp
         public static dvec3 Asin(dvec3 v) => new dvec3((double)Math.Asin((double)v.x), (double)Math.Asin((double)v.y), (double)Math.Asin((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Asin.
+        /// Returns a component-wise executed Asin with a scalar.
         /// </summary>
         public static dvec3 Asin(double v) => new dvec3((double)Math.Asin((double)v));
         
@@ -887,7 +887,7 @@ namespace GlmSharp
         public static dvec3 Atan(dvec3 v) => new dvec3((double)Math.Atan((double)v.x), (double)Math.Atan((double)v.y), (double)Math.Atan((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Atan.
+        /// Returns a component-wise executed Atan with a scalar.
         /// </summary>
         public static dvec3 Atan(double v) => new dvec3((double)Math.Atan((double)v));
         
@@ -897,7 +897,7 @@ namespace GlmSharp
         public static dvec3 Cos(dvec3 v) => new dvec3((double)Math.Cos((double)v.x), (double)Math.Cos((double)v.y), (double)Math.Cos((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Cos.
+        /// Returns a component-wise executed Cos with a scalar.
         /// </summary>
         public static dvec3 Cos(double v) => new dvec3((double)Math.Cos((double)v));
         
@@ -907,7 +907,7 @@ namespace GlmSharp
         public static dvec3 Cosh(dvec3 v) => new dvec3((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y), (double)Math.Cosh((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Cosh.
+        /// Returns a component-wise executed Cosh with a scalar.
         /// </summary>
         public static dvec3 Cosh(double v) => new dvec3((double)Math.Cosh((double)v));
         
@@ -917,7 +917,7 @@ namespace GlmSharp
         public static dvec3 Exp(dvec3 v) => new dvec3((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y), (double)Math.Exp((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Exp.
+        /// Returns a component-wise executed Exp with a scalar.
         /// </summary>
         public static dvec3 Exp(double v) => new dvec3((double)Math.Exp((double)v));
         
@@ -927,7 +927,7 @@ namespace GlmSharp
         public static dvec3 Log(dvec3 v) => new dvec3((double)Math.Log((double)v.x), (double)Math.Log((double)v.y), (double)Math.Log((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Log.
+        /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static dvec3 Log(double v) => new dvec3((double)Math.Log((double)v));
         
@@ -937,7 +937,7 @@ namespace GlmSharp
         public static dvec3 Log2(dvec3 v) => new dvec3((double)Math.Log((double)v.x, 2), (double)Math.Log((double)v.y, 2), (double)Math.Log((double)v.z, 2));
         
         /// <summary>
-        /// Returns a component-wise executed Log2.
+        /// Returns a component-wise executed Log2 with a scalar.
         /// </summary>
         public static dvec3 Log2(double v) => new dvec3((double)Math.Log((double)v, 2));
         
@@ -947,7 +947,7 @@ namespace GlmSharp
         public static dvec3 Log10(dvec3 v) => new dvec3((double)Math.Log10((double)v.x), (double)Math.Log10((double)v.y), (double)Math.Log10((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Log10.
+        /// Returns a component-wise executed Log10 with a scalar.
         /// </summary>
         public static dvec3 Log10(double v) => new dvec3((double)Math.Log10((double)v));
         
@@ -957,7 +957,7 @@ namespace GlmSharp
         public static dvec3 Floor(dvec3 v) => new dvec3((double)Math.Floor(v.x), (double)Math.Floor(v.y), (double)Math.Floor(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Floor.
+        /// Returns a component-wise executed Floor with a scalar.
         /// </summary>
         public static dvec3 Floor(double v) => new dvec3((double)Math.Floor(v));
         
@@ -967,7 +967,7 @@ namespace GlmSharp
         public static dvec3 Ceiling(dvec3 v) => new dvec3((double)Math.Ceiling(v.x), (double)Math.Ceiling(v.y), (double)Math.Ceiling(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Ceiling.
+        /// Returns a component-wise executed Ceiling with a scalar.
         /// </summary>
         public static dvec3 Ceiling(double v) => new dvec3((double)Math.Ceiling(v));
         
@@ -977,7 +977,7 @@ namespace GlmSharp
         public static dvec3 Round(dvec3 v) => new dvec3((double)Math.Round(v.x), (double)Math.Round(v.y), (double)Math.Round(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Round.
+        /// Returns a component-wise executed Round with a scalar.
         /// </summary>
         public static dvec3 Round(double v) => new dvec3((double)Math.Round(v));
         
@@ -987,7 +987,7 @@ namespace GlmSharp
         public static dvec3 Sin(dvec3 v) => new dvec3((double)Math.Sin((double)v.x), (double)Math.Sin((double)v.y), (double)Math.Sin((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sin.
+        /// Returns a component-wise executed Sin with a scalar.
         /// </summary>
         public static dvec3 Sin(double v) => new dvec3((double)Math.Sin((double)v));
         
@@ -997,7 +997,7 @@ namespace GlmSharp
         public static dvec3 Sinh(dvec3 v) => new dvec3((double)Math.Sinh((double)v.x), (double)Math.Sinh((double)v.y), (double)Math.Sinh((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sinh.
+        /// Returns a component-wise executed Sinh with a scalar.
         /// </summary>
         public static dvec3 Sinh(double v) => new dvec3((double)Math.Sinh((double)v));
         
@@ -1007,7 +1007,7 @@ namespace GlmSharp
         public static dvec3 Sqrt(dvec3 v) => new dvec3((double)Math.Sqrt((double)v.x), (double)Math.Sqrt((double)v.y), (double)Math.Sqrt((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sqrt.
+        /// Returns a component-wise executed Sqrt with a scalar.
         /// </summary>
         public static dvec3 Sqrt(double v) => new dvec3((double)Math.Sqrt((double)v));
         
@@ -1017,7 +1017,7 @@ namespace GlmSharp
         public static dvec3 Tan(dvec3 v) => new dvec3((double)Math.Tan((double)v.x), (double)Math.Tan((double)v.y), (double)Math.Tan((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Tan.
+        /// Returns a component-wise executed Tan with a scalar.
         /// </summary>
         public static dvec3 Tan(double v) => new dvec3((double)Math.Tan((double)v));
         
@@ -1027,7 +1027,7 @@ namespace GlmSharp
         public static dvec3 Tanh(dvec3 v) => new dvec3((double)Math.Tanh((double)v.x), (double)Math.Tanh((double)v.y), (double)Math.Tanh((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Tanh.
+        /// Returns a component-wise executed Tanh with a scalar.
         /// </summary>
         public static dvec3 Tanh(double v) => new dvec3((double)Math.Tanh((double)v));
         
@@ -1037,7 +1037,7 @@ namespace GlmSharp
         public static dvec3 Truncate(dvec3 v) => new dvec3((double)Math.Truncate((double)v.x), (double)Math.Truncate((double)v.y), (double)Math.Truncate((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Truncate.
+        /// Returns a component-wise executed Truncate with a scalar.
         /// </summary>
         public static dvec3 Truncate(double v) => new dvec3((double)Math.Truncate((double)v));
         
@@ -1047,9 +1047,29 @@ namespace GlmSharp
         public static ivec3 Sign(dvec3 v) => new ivec3(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sign.
+        /// Returns a component-wise executed Sign with a scalar.
         /// </summary>
         public static ivec3 Sign(double v) => new ivec3(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion.
+        /// </summary>
+        public static dvec3 Degrees(dvec3 v) => v * 57.295779513082320876798154814105170332405472466564321d;
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
+        /// </summary>
+        public static dvec3 Degrees(double v) => new dvec3(v * 57.295779513082320876798154814105170332405472466564321d);
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion.
+        /// </summary>
+        public static dvec3 Radians(dvec3 v) => v * 0.0174532925199432957692369076848861271344287188854172d;
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
+        /// </summary>
+        public static dvec3 Radians(double v) => new dvec3(v * 0.0174532925199432957692369076848861271344287188854172d);
         
         /// <summary>
         /// Returns a component-wise executed Sqr.

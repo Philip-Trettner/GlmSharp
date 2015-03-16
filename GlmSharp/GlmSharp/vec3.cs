@@ -937,7 +937,7 @@ namespace GlmSharp
         public static vec3 Step(vec3 v) => new vec3(v.x >= default(float) ? 1f : default(float), v.y >= default(float) ? 1f : default(float), v.z >= default(float) ? 1f : default(float));
         
         /// <summary>
-        /// Returns a component-wise executed Step.
+        /// Returns a component-wise executed Step with a scalar.
         /// </summary>
         public static vec3 Step(float v) => new vec3(v >= default(float) ? 1f : default(float));
         
@@ -947,7 +947,7 @@ namespace GlmSharp
         public static vec3 Acos(vec3 v) => new vec3((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y), (float)Math.Acos((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Acos.
+        /// Returns a component-wise executed Acos with a scalar.
         /// </summary>
         public static vec3 Acos(float v) => new vec3((float)Math.Acos((double)v));
         
@@ -957,7 +957,7 @@ namespace GlmSharp
         public static vec3 Asin(vec3 v) => new vec3((float)Math.Asin((double)v.x), (float)Math.Asin((double)v.y), (float)Math.Asin((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Asin.
+        /// Returns a component-wise executed Asin with a scalar.
         /// </summary>
         public static vec3 Asin(float v) => new vec3((float)Math.Asin((double)v));
         
@@ -967,7 +967,7 @@ namespace GlmSharp
         public static vec3 Atan(vec3 v) => new vec3((float)Math.Atan((double)v.x), (float)Math.Atan((double)v.y), (float)Math.Atan((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Atan.
+        /// Returns a component-wise executed Atan with a scalar.
         /// </summary>
         public static vec3 Atan(float v) => new vec3((float)Math.Atan((double)v));
         
@@ -977,7 +977,7 @@ namespace GlmSharp
         public static vec3 Cos(vec3 v) => new vec3((float)Math.Cos((double)v.x), (float)Math.Cos((double)v.y), (float)Math.Cos((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Cos.
+        /// Returns a component-wise executed Cos with a scalar.
         /// </summary>
         public static vec3 Cos(float v) => new vec3((float)Math.Cos((double)v));
         
@@ -987,7 +987,7 @@ namespace GlmSharp
         public static vec3 Cosh(vec3 v) => new vec3((float)Math.Cosh((double)v.x), (float)Math.Cosh((double)v.y), (float)Math.Cosh((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Cosh.
+        /// Returns a component-wise executed Cosh with a scalar.
         /// </summary>
         public static vec3 Cosh(float v) => new vec3((float)Math.Cosh((double)v));
         
@@ -997,7 +997,7 @@ namespace GlmSharp
         public static vec3 Exp(vec3 v) => new vec3((float)Math.Exp((double)v.x), (float)Math.Exp((double)v.y), (float)Math.Exp((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Exp.
+        /// Returns a component-wise executed Exp with a scalar.
         /// </summary>
         public static vec3 Exp(float v) => new vec3((float)Math.Exp((double)v));
         
@@ -1007,7 +1007,7 @@ namespace GlmSharp
         public static vec3 Log(vec3 v) => new vec3((float)Math.Log((double)v.x), (float)Math.Log((double)v.y), (float)Math.Log((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Log.
+        /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static vec3 Log(float v) => new vec3((float)Math.Log((double)v));
         
@@ -1017,7 +1017,7 @@ namespace GlmSharp
         public static vec3 Log2(vec3 v) => new vec3((float)Math.Log((double)v.x, 2), (float)Math.Log((double)v.y, 2), (float)Math.Log((double)v.z, 2));
         
         /// <summary>
-        /// Returns a component-wise executed Log2.
+        /// Returns a component-wise executed Log2 with a scalar.
         /// </summary>
         public static vec3 Log2(float v) => new vec3((float)Math.Log((double)v, 2));
         
@@ -1027,7 +1027,7 @@ namespace GlmSharp
         public static vec3 Log10(vec3 v) => new vec3((float)Math.Log10((double)v.x), (float)Math.Log10((double)v.y), (float)Math.Log10((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Log10.
+        /// Returns a component-wise executed Log10 with a scalar.
         /// </summary>
         public static vec3 Log10(float v) => new vec3((float)Math.Log10((double)v));
         
@@ -1037,7 +1037,7 @@ namespace GlmSharp
         public static vec3 Floor(vec3 v) => new vec3((float)Math.Floor(v.x), (float)Math.Floor(v.y), (float)Math.Floor(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Floor.
+        /// Returns a component-wise executed Floor with a scalar.
         /// </summary>
         public static vec3 Floor(float v) => new vec3((float)Math.Floor(v));
         
@@ -1047,7 +1047,7 @@ namespace GlmSharp
         public static vec3 Ceiling(vec3 v) => new vec3((float)Math.Ceiling(v.x), (float)Math.Ceiling(v.y), (float)Math.Ceiling(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Ceiling.
+        /// Returns a component-wise executed Ceiling with a scalar.
         /// </summary>
         public static vec3 Ceiling(float v) => new vec3((float)Math.Ceiling(v));
         
@@ -1057,7 +1057,7 @@ namespace GlmSharp
         public static vec3 Round(vec3 v) => new vec3((float)Math.Round(v.x), (float)Math.Round(v.y), (float)Math.Round(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Round.
+        /// Returns a component-wise executed Round with a scalar.
         /// </summary>
         public static vec3 Round(float v) => new vec3((float)Math.Round(v));
         
@@ -1067,7 +1067,7 @@ namespace GlmSharp
         public static vec3 Sin(vec3 v) => new vec3((float)Math.Sin((double)v.x), (float)Math.Sin((double)v.y), (float)Math.Sin((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sin.
+        /// Returns a component-wise executed Sin with a scalar.
         /// </summary>
         public static vec3 Sin(float v) => new vec3((float)Math.Sin((double)v));
         
@@ -1077,7 +1077,7 @@ namespace GlmSharp
         public static vec3 Sinh(vec3 v) => new vec3((float)Math.Sinh((double)v.x), (float)Math.Sinh((double)v.y), (float)Math.Sinh((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sinh.
+        /// Returns a component-wise executed Sinh with a scalar.
         /// </summary>
         public static vec3 Sinh(float v) => new vec3((float)Math.Sinh((double)v));
         
@@ -1087,7 +1087,7 @@ namespace GlmSharp
         public static vec3 Sqrt(vec3 v) => new vec3((float)Math.Sqrt((double)v.x), (float)Math.Sqrt((double)v.y), (float)Math.Sqrt((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sqrt.
+        /// Returns a component-wise executed Sqrt with a scalar.
         /// </summary>
         public static vec3 Sqrt(float v) => new vec3((float)Math.Sqrt((double)v));
         
@@ -1097,7 +1097,7 @@ namespace GlmSharp
         public static vec3 Tan(vec3 v) => new vec3((float)Math.Tan((double)v.x), (float)Math.Tan((double)v.y), (float)Math.Tan((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Tan.
+        /// Returns a component-wise executed Tan with a scalar.
         /// </summary>
         public static vec3 Tan(float v) => new vec3((float)Math.Tan((double)v));
         
@@ -1107,7 +1107,7 @@ namespace GlmSharp
         public static vec3 Tanh(vec3 v) => new vec3((float)Math.Tanh((double)v.x), (float)Math.Tanh((double)v.y), (float)Math.Tanh((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Tanh.
+        /// Returns a component-wise executed Tanh with a scalar.
         /// </summary>
         public static vec3 Tanh(float v) => new vec3((float)Math.Tanh((double)v));
         
@@ -1117,7 +1117,7 @@ namespace GlmSharp
         public static vec3 Truncate(vec3 v) => new vec3((float)Math.Truncate((double)v.x), (float)Math.Truncate((double)v.y), (float)Math.Truncate((double)v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Truncate.
+        /// Returns a component-wise executed Truncate with a scalar.
         /// </summary>
         public static vec3 Truncate(float v) => new vec3((float)Math.Truncate((double)v));
         
@@ -1127,9 +1127,29 @@ namespace GlmSharp
         public static ivec3 Sign(vec3 v) => new ivec3(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z));
         
         /// <summary>
-        /// Returns a component-wise executed Sign.
+        /// Returns a component-wise executed Sign with a scalar.
         /// </summary>
         public static ivec3 Sign(float v) => new ivec3(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion.
+        /// </summary>
+        public static vec3 Degrees(vec3 v) => v * 57.295779513082320876798154814105170332405472466564321f;
+        
+        /// <summary>
+        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
+        /// </summary>
+        public static vec3 Degrees(float v) => new vec3(v * 57.295779513082320876798154814105170332405472466564321f);
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion.
+        /// </summary>
+        public static vec3 Radians(vec3 v) => v * 0.0174532925199432957692369076848861271344287188854172f;
+        
+        /// <summary>
+        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
+        /// </summary>
+        public static vec3 Radians(float v) => new vec3(v * 0.0174532925199432957692369076848861271344287188854172f);
         
         /// <summary>
         /// Returns a component-wise executed Sqr.
