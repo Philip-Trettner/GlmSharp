@@ -227,5 +227,15 @@ namespace GlmSharp
                 return ((((((EqualityComparer<T>.Default.GetHashCode(x)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(y)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(z)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(w);
             }
         }
+        
+        /// <summary>
+        /// Returns a string representation of this vector using ', ' as a seperator.
+        /// </summary>
+        public override string ToString() => ToString(", ");
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator.
+        /// </summary>
+        public string ToString(string sep) => x + sep + y + sep + z + sep + w;
     }
 }

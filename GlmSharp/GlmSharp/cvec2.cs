@@ -200,6 +200,31 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a string representation of this vector using ', ' as a seperator.
+        /// </summary>
+        public override string ToString() => ToString(", ");
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator.
+        /// </summary>
+        public string ToString(string sep) => x + sep + y;
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
+        /// </summary>
+        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format for each component.
+        /// </summary>
+        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
+        /// </summary>
+        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
+        
+        /// <summary>
         /// Returns a vector containing component-wise magnitudes.
         /// </summary>
         public dvec2 Magnitude => new dvec2(x.Magnitude, y.Magnitude);
@@ -503,5 +528,10 @@ namespace GlmSharp
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static cvec2 Sqr(cvec2 v) => new cvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2.
+        /// </summary>
+        public static cvec2 Pow2(cvec2 v) => new cvec2(v.x * v.x, v.y * v.y);
     }
 }

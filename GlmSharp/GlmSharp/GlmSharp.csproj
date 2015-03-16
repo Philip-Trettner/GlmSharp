@@ -90,7 +90,6 @@
     <Compile Include="dvec3.cs" />
     <Compile Include="dvec4.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="glm.cs" />
     <Compile Include="gmat2.cs" />
     <Compile Include="gmat2x3.cs" />
     <Compile Include="gmat2x4.cs" />

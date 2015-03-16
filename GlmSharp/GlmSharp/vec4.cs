@@ -359,6 +359,31 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a string representation of this vector using ', ' as a seperator.
+        /// </summary>
+        public override string ToString() => ToString(", ");
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator.
+        /// </summary>
+        public string ToString(string sep) => x + sep + y + sep + z + sep + w;
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
+        /// </summary>
+        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider) + sep + z.ToString(provider) + sep + w.ToString(provider);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format for each component.
+        /// </summary>
+        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format) + sep + z.ToString(format) + sep + w.ToString(format);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
+        /// </summary>
+        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
+        
+        /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
         public float MinElement => Math.Min(Math.Min(Math.Min(x, y), z), w);
@@ -729,6 +754,11 @@ namespace GlmSharp
         public static vec4 Abs(vec4 v) => new vec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed Step.
+        /// </summary>
+        public static vec4 Step(vec4 v) => new vec4(v.x >= default(float) ? 1f : default(float), v.y >= default(float) ? 1f : default(float), v.z >= default(float) ? 1f : default(float), v.w >= default(float) ? 1f : default(float));
+        
+        /// <summary>
         /// Returns a component-wise executed Acos.
         /// </summary>
         public static vec4 Acos(vec4 v) => new vec4((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y), (float)Math.Acos((double)v.z), (float)Math.Acos((double)v.w));
@@ -827,6 +857,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static vec4 Sqr(vec4 v) => new vec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2.
+        /// </summary>
+        public static vec4 Pow2(vec4 v) => new vec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
         
         /// <summary>
         /// Returns a component-wise executed Max.

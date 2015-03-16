@@ -282,7 +282,27 @@ namespace GlmSharpGenerator
                 yield return "    }";
                 yield return "}";
 
-                // TODO: ToString
+                // ToString
+                foreach (var line in "Returns a string representation of this vector using ', ' as a seperator.".AsComment()) yield return line;
+                yield return string.Format("public override string ToString() => ToString(\", \");");
+
+                foreach (var line in "Returns a string representation of this vector using a provided seperator.".AsComment()) yield return line;
+                yield return string.Format("public string ToString(string sep) => {0};", CompString.Aggregated(" + sep + "));
+
+                if (!BaseTypeInfo.Generic)
+                {
+                    foreach (var line in "Returns a string representation of this vector using a provided seperator and a format provider for each component.".AsComment()) yield return line;
+                    yield return string.Format("public string ToString(string sep, IFormatProvider provider) => {0};", CompString.Select(c => c + ".ToString(provider)").Aggregated(" + sep + "));
+
+                    if (BaseTypeInfo.HasFormatString)
+                    {
+                        foreach (var line in "Returns a string representation of this vector using a provided seperator and a format for each component.".AsComment()) yield return line;
+                        yield return string.Format("public string ToString(string sep, string format) => {0};", CompString.Select(c => c + ".ToString(format)").Aggregated(" + sep + "));
+
+                        foreach (var line in "Returns a string representation of this vector using a provided seperator and a format and format provider for each component.".AsComment()) yield return line;
+                        yield return string.Format("public string ToString(string sep, string format, IFormatProvider provider) => {0};", CompString.Select(c => c + ".ToString(format, provider)").Aggregated(" + sep + "));
+                    }
+                }
 
                 // TODO: BaseType stuff
 
@@ -537,6 +557,7 @@ namespace GlmSharpGenerator
                     if (BaseTypeInfo.IsFloatingPoint)
                         foreach (var kvp in new Dictionary<string, Func<string, string>>
                         {
+                            {"Step", s => string.Format("{0} >= {1} ? {2} : {1}", s, ZeroValue, OneValue)},
                             {"Acos", s => string.Format("({1})Math.Acos((double){0})", s, BaseType)},
                             {"Asin", s => string.Format("({1})Math.Asin((double){0})", s, BaseType)},
                             {"Atan", s => string.Format("({1})Math.Atan((double){0})", s, BaseType)},
@@ -652,6 +673,7 @@ namespace GlmSharpGenerator
                     foreach (var kvp in new Dictionary<string, Func<string, string>>
                     {
                         {"Sqr", s => string.Format("{0} * {0}", s)},
+                        {"Pow2", s => string.Format("{0} * {0}", s)},
                     })
                     {
                         var op = kvp.Key;
@@ -689,53 +711,11 @@ namespace GlmSharpGenerator
 
 
                     /*
-                    
-
-//   = component-wise
-inline vec3 pow2(vec3 const& v) { return vec3(pow2(v.x), pow2(v.y), pow2(v.z)); }
-inline vec3 sqrt(vec3 const& v) { return vec3(sqrt(v.x), sqrt(v.y), sqrt(v.z)); }
-inline vec3 sin(vec3 const& v) { return vec3(sin(v.x), sin(v.y), sin(v.z)); }
-inline vec3 cos(vec3 const& v) { return vec3(cos(v.x), cos(v.y), cos(v.z)); }
-inline vec3 tan(vec3 const& v) { return vec3(tan(v.x), tan(v.y), tan(v.z)); }
-inline vec3 asin(vec3 const& v) { return vec3(asin(v.x), asin(v.y), asin(v.z)); }
-inline vec3 acos(vec3 const& v) { return vec3(acos(v.x), acos(v.y), acos(v.z)); }
-inline vec3 atan(vec3 const& v) { return vec3(atan(v.x), atan(v.y), atan(v.z)); }
-inline vec3 abs(vec3 const& v) { return vec3(abs(v.x), abs(v.y), abs(v.z)); }
-inline vec3 floor(vec3 const& v) { return vec3(floor(v.x), floor(v.y), floor(v.z)); }
-inline vec3 ceil(vec3 const& v) { return vec3(ceil(v.x), ceil(v.y), ceil(v.z)); }
-inline vec3 round(vec3 const& v) { return vec3(round(v.x), round(v.y), round(v.z)); }
-inline vec3 step(vec3 const& v) { return vec3(step(v.x), step(v.y), step(v.z)); }
-inline vec3 sign(vec3 const& v) { return vec3(sign(v.x), sign(v.y), sign(v.z)); }
-inline vec3 log(vec3 const& v) { return vec3(log(v.x), log(v.y), log(v.z)); }
-inline vec3 log2(vec3 const& v) { return vec3(log2(v.x), log2(v.y), log2(v.z)); }
-inline vec3 log10(vec3 const& v) { return vec3(log10(v.x), log10(v.y), log10(v.z)); }
-inline vec3 exp(vec3 const& v) { return vec3(exp(v.x), exp(v.y), exp(v.z)); }
-
-inline vec3 pow(vec3 const& v1, vec3 const& v2) { return vec3(pow(v1.x, v2.x), pow(v1.y, v2.y), pow(v1.z, v2.z)); }
-inline vec3 min(vec3 const& v1, vec3 const& v2) { return vec3(min(v1.x, v2.x), min(v1.y, v2.y), min(v1.z, v2.z)); }
-inline vec3 max(vec3 const& v1, vec3 const& v2) { return vec3(max(v1.x, v2.x), max(v1.y, v2.y), max(v1.z, v2.z)); }
-inline vec3 atan(vec3 const& v1, vec3 const& v2) { return vec3(atan(v1.x, v2.x), atan(v1.y, v2.y), atan(v1.z, v2.z)); }
 
 inline vec3 clamp(vec3 const& v, vec3 const& mi, vec3 const& ma) { return vec3(clamp(v.x, mi.x, ma.x), clamp(v.y, mi.y, ma.y), clamp(v.z, mi.z, ma.z)); }
 inline vec3 mix(vec3 const& mi, vec3 const& ma, vec3 const& a) { return vec3(mix(mi.x, ma.x, a.x), mix(mi.y, ma.y, a.y), mix(mi.z, ma.z, a.z)); }
 inline vec3 mix(vec3 const& mi, vec3 const& ma, float a) { return vec3(mix(mi.x, ma.x, a), mix(mi.y, ma.y, a), mix(mi.z, ma.z, a)); }
 inline vec3 smoothstep(vec3 const& edge0, vec3 const& edge1, vec3 const& v) { return vec3(smoothstep(edge0.x, edge1.x, v.x), smoothstep(edge0.y, edge1.y, v.y), smoothstep(edge0.z, edge1.z, v.z)); }
-
-
-//   = special
-inline vec3 normalize(vec3 const& v) { return v / length(v); }
-
-inline vec3 cross(vec3 const& v1, vec3 const& v2)
-{
-    return vec3(
-                v1.y * v2.z - v1.z * v2.y,
-                v1.z * v2.x - v1.x * v2.z,
-                v1.x * v2.y - v1.y * v2.x
-                );
-}
-
-inline float *value_ptr(vec3 & v) { return &v.x; }
-inline const float *value_ptr(vec3 const& v) { return &v.x; }
 
 // bool vectors
 inline bvec3 isfinite(vec3 const& v) { return bvec3(isfinite(v.x), isfinite(v.y), isfinite(v.z)); }

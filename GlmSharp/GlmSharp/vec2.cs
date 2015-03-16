@@ -290,6 +290,31 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a string representation of this vector using ', ' as a seperator.
+        /// </summary>
+        public override string ToString() => ToString(", ");
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator.
+        /// </summary>
+        public string ToString(string sep) => x + sep + y;
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
+        /// </summary>
+        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format for each component.
+        /// </summary>
+        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
+        /// </summary>
+        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
+        
+        /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
         public float MinElement => Math.Min(x, y);
@@ -680,6 +705,11 @@ namespace GlmSharp
         public static vec2 Abs(vec2 v) => new vec2(Math.Abs(v.x), Math.Abs(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed Step.
+        /// </summary>
+        public static vec2 Step(vec2 v) => new vec2(v.x >= default(float) ? 1f : default(float), v.y >= default(float) ? 1f : default(float));
+        
+        /// <summary>
         /// Returns a component-wise executed Acos.
         /// </summary>
         public static vec2 Acos(vec2 v) => new vec2((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y));
@@ -778,6 +808,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static vec2 Sqr(vec2 v) => new vec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2.
+        /// </summary>
+        public static vec2 Pow2(vec2 v) => new vec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
         /// Returns a component-wise executed Max.

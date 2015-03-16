@@ -113,7 +113,8 @@ namespace GlmSharpGenerator
             HasArithmetics = false,
             HashCodeMultiplier = 2,
             OneValue = "true",
-            HasLogicOps = true
+            HasLogicOps = true,
+            HasFormatString = false
         };
         public static readonly BaseTypeInfo TypeGeneric = new BaseTypeInfo
         {
@@ -137,6 +138,8 @@ namespace GlmSharpGenerator
         public bool RequiredAbs { get; set; } = true;
         public bool IsInteger { get; set; } = false;
         public bool IsFloatingPoint { get; set; }
+
+        public bool HasFormatString { get; set; } = true;
 
         public bool HasLogicOps { get; set; }
 

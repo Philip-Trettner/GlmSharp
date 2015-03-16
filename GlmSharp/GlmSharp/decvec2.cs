@@ -290,6 +290,31 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a string representation of this vector using ', ' as a seperator.
+        /// </summary>
+        public override string ToString() => ToString(", ");
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator.
+        /// </summary>
+        public string ToString(string sep) => x + sep + y;
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
+        /// </summary>
+        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format for each component.
+        /// </summary>
+        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
+        /// </summary>
+        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
+        
+        /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
         public decimal MinElement => Math.Min(x, y);
@@ -520,6 +545,11 @@ namespace GlmSharp
         public static decvec2 Abs(decvec2 v) => new decvec2(Math.Abs(v.x), Math.Abs(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed Step.
+        /// </summary>
+        public static decvec2 Step(decvec2 v) => new decvec2(v.x >= default(decimal) ? 1m : default(decimal), v.y >= default(decimal) ? 1m : default(decimal));
+        
+        /// <summary>
         /// Returns a component-wise executed Acos.
         /// </summary>
         public static decvec2 Acos(decvec2 v) => new decvec2((decimal)Math.Acos((double)v.x), (decimal)Math.Acos((double)v.y));
@@ -618,6 +648,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static decvec2 Sqr(decvec2 v) => new decvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2.
+        /// </summary>
+        public static decvec2 Pow2(decvec2 v) => new decvec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
         /// Returns a component-wise executed Max.
