@@ -280,6 +280,11 @@ namespace GlmSharp
         public static lmat4x2 operator*(lmat2 lhs, lmat4x2 rhs) => new lmat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31);
         
         /// <summary>
+        /// Executes a matrix-vector-multiplication.
+        /// </summary>
+        public static lvec2 operator*(lmat2 m, lvec2 v) => new lvec2(m.m00 * v.x + m.m10 * v.y, m.m01 * v.x + m.m11 * v.y);
+        
+        /// <summary>
         /// Executes a matrix-matrix-divison A / B == A * B^-1 (use with caution).
         /// </summary>
         public static lmat2 operator/(lmat2 A, lmat2 B) => A * B.Inverse;

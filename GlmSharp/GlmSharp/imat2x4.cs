@@ -299,6 +299,11 @@ namespace GlmSharp
         public static imat4 operator*(imat2x4 lhs, imat4x2 rhs) => new imat4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21, lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11, lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21, lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31);
         
         /// <summary>
+        /// Executes a matrix-vector-multiplication.
+        /// </summary>
+        public static ivec4 operator*(imat2x4 m, ivec2 v) => new ivec4(m.m00 * v.x + m.m10 * v.y, m.m01 * v.x + m.m11 * v.y, m.m02 * v.x + m.m12 * v.y, m.m03 * v.x + m.m13 * v.y);
+        
+        /// <summary>
         /// Executes a component-wise * (multiply).
         /// </summary>
         public static imat2x4 CompMul(imat2x4 A, imat2x4 B) => new imat2x4(A.m00 * B.m00, A.m01 * B.m01, A.m02 * B.m02, A.m03 * B.m03, A.m10 * B.m10, A.m11 * B.m11, A.m12 * B.m12, A.m13 * B.m13);

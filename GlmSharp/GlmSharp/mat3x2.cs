@@ -283,6 +283,11 @@ namespace GlmSharp
         public static mat4x2 operator*(mat3x2 lhs, mat4x3 rhs) => new mat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21 + lhs.m20 * rhs.m22, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31 + lhs.m20 * rhs.m32, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21 + lhs.m21 * rhs.m22, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31 + lhs.m21 * rhs.m32);
         
         /// <summary>
+        /// Executes a matrix-vector-multiplication.
+        /// </summary>
+        public static vec2 operator*(mat3x2 m, vec3 v) => new vec2(m.m00 * v.x + m.m10 * v.y + m.m20 * v.z, m.m01 * v.x + m.m11 * v.y + m.m21 * v.z);
+        
+        /// <summary>
         /// Executes a component-wise * (multiply).
         /// </summary>
         public static mat3x2 CompMul(mat3x2 A, mat3x2 B) => new mat3x2(A.m00 * B.m00, A.m01 * B.m01, A.m10 * B.m10, A.m11 * B.m11, A.m20 * B.m20, A.m21 * B.m21);

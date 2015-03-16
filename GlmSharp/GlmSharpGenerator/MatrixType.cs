@@ -404,6 +404,11 @@ namespace GlmSharpGenerator
                             FieldsHelper(lhsRows, rhsColumns).Select(f => lhsCols.ForIndexUpTo(i => string.Format("lhs.m{1}{0} * rhs.m{2}{1}", f[1], i, f[2])).Aggregated(" + ")).CommaSeparated());
                     }
 
+                    // matrix-vector-multiplication
+                    foreach (var line in "Executes a matrix-vector-multiplication.".AsComment()) yield return line;
+                    yield return string.Format("public static {0} operator*({1} m, {2} v) => new {0}({3});", BaseTypeInfo.Prefix + "vec" + Rows, ClassNameThat, BaseTypeInfo.Prefix + "vec" + Columns, 
+                        Rows.ForIndexUpTo(r => Columns.ForIndexUpTo(c => "m.m" + c + r + " * v." + "xyzw"[c]).Aggregated(" + ")).CommaSeparated());
+
                     // matrix-matrix-division
                     if (Rows == Columns && BaseTypeInfo.IsSigned)
                     {
@@ -617,6 +622,15 @@ namespace GlmSharpGenerator
                         yield return "    m.m32 = - (2*zFar*zNear)/(zFar - zNear);";
                         yield return "    return m;";
                         yield return "}";
+
+                        // TODO: Pick matrix
+
+                        // project
+                        /*foreach (var line in "Map the specified object coordinates (obj.x, obj.y, obj.z) into window coordinates..".AsComment()) yield return line;
+                        yield return string.Format("public static {1} project({1} obj, {0} model, {0} proj, {2} viewport)", ClassNameThat, BaseTypeInfo.Prefix + "vec3", BaseTypeInfo.Prefix + "vec4");
+                        yield return "{";
+                        yield return "    var tmp = new ";
+                        yield return "}";*/
                     }
                 }
             }

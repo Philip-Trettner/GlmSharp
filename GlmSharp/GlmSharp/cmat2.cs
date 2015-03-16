@@ -270,6 +270,11 @@ namespace GlmSharp
         public static cmat4x2 operator*(cmat2 lhs, cmat4x2 rhs) => new cmat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31);
         
         /// <summary>
+        /// Executes a matrix-vector-multiplication.
+        /// </summary>
+        public static cvec2 operator*(cmat2 m, cvec2 v) => new cvec2(m.m00 * v.x + m.m10 * v.y, m.m01 * v.x + m.m11 * v.y);
+        
+        /// <summary>
         /// Executes a matrix-matrix-divison A / B == A * B^-1 (use with caution).
         /// </summary>
         public static cmat2 operator/(cmat2 A, cmat2 B) => A * B.Inverse;

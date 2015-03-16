@@ -282,6 +282,11 @@ namespace GlmSharp
         public static lmat4x3 operator*(lmat2x3 lhs, lmat4x2 rhs) => new lmat4x3(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21, lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31);
         
         /// <summary>
+        /// Executes a matrix-vector-multiplication.
+        /// </summary>
+        public static lvec3 operator*(lmat2x3 m, lvec2 v) => new lvec3(m.m00 * v.x + m.m10 * v.y, m.m01 * v.x + m.m11 * v.y, m.m02 * v.x + m.m12 * v.y);
+        
+        /// <summary>
         /// Executes a component-wise * (multiply).
         /// </summary>
         public static lmat2x3 CompMul(lmat2x3 A, lmat2x3 B) => new lmat2x3(A.m00 * B.m00, A.m01 * B.m01, A.m02 * B.m02, A.m10 * B.m10, A.m11 * B.m11, A.m12 * B.m12);
