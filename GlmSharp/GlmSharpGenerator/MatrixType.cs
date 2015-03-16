@@ -181,7 +181,7 @@ namespace GlmSharpGenerator
                 for (var x = 0; x < Columns; ++x)
                 {
                     foreach (var line in string.Format("Column {0}", x).AsComment()) yield return line;
-                    yield return string.Format("public {0} {1}; // ", BaseType, Column(x).CommaSeparated());
+                    yield return string.Format("public {0} {1};", BaseType, Column(x).CommaSeparated());
                 }
 
 

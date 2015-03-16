@@ -15,6 +15,8 @@ namespace GlmSharpGenerator
         public string GenericSuffix => IsGeneric ? "<T>" : "";
         public BaseTypeInfo BaseTypeInfo { get; set; }
 
+        public virtual string Namespace { get; } = "GlmSharp";
+
         public bool IsGeneric => BaseTypeInfo.Generic;
 
         public abstract string StructComment { get; }
@@ -32,10 +34,11 @@ namespace GlmSharpGenerator
                 yield return "using System.Globalization;";
                 yield return "using System.Numerics;";
                 yield return "using System.Linq;";
+                yield return "using GlmSharp.Swizzle;";
                 yield return "";
                 yield return "// ReSharper disable InconsistentNaming";
                 yield return "";
-                yield return "namespace GlmSharp";
+                yield return "namespace " + Namespace;
                 yield return "{";
                 foreach (var line in StructComment.AsComment()) yield return line.Indent();
                 yield return "    [Serializable]";

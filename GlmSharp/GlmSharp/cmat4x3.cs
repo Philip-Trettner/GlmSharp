@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
 using System.Linq;
+using GlmSharp.Swizzle;
 
 // ReSharper disable InconsistentNaming
 
@@ -21,22 +22,22 @@ namespace GlmSharp
         /// <summary>
         /// Column 0
         /// </summary>
-        public Complex m00, m01, m02; // 
+        public Complex m00, m01, m02;
         
         /// <summary>
         /// Column 1
         /// </summary>
-        public Complex m10, m11, m12; // 
+        public Complex m10, m11, m12;
         
         /// <summary>
         /// Column 2
         /// </summary>
-        public Complex m20, m21, m22; // 
+        public Complex m20, m21, m22;
         
         /// <summary>
         /// Column 3
         /// </summary>
-        public Complex m30, m31, m32; // 
+        public Complex m30, m31, m32;
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
