@@ -518,6 +518,24 @@ namespace GlmSharpGenerator
                         yield return "    m.m32 = -(2 * farVal * nearVal) / (farVal - nearVal);";
                         yield return "    return m;";
                         yield return "}";
+
+                        // infinite perspective
+                        foreach (var line in "Creates a matrix for a symmetric perspective-view frustum with far plane at infinite.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} InfinitePerspective({1} fovy, {1} aspect, {1} zNear)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    var range = Math.Tan((double)fovy / 2.0) * (double)zNear;";
+                        yield return "    var l = -range * (double)aspect;";
+                        yield return "    var r = range * (double)aspect;";
+                        yield return "    var b = -range;";
+                        yield return "    var t = range;";
+                        yield return "    var m = Identity;";
+                        yield return string.Format("    m.m00 = ({0})( ((2.0)*(double)zNear)/(r - l) );", BaseType);
+                        yield return string.Format("    m.m11 = ({0})( ((2.0)*(double)zNear)/(t - b) );", BaseType);
+                        yield return string.Format("    m.m22 = ({0})( - (1.0) );", BaseType);
+                        yield return string.Format("    m.m23 = ({0})( - (1.0) );", BaseType);
+                        yield return string.Format("    m.m32 = ({0})( - (2.0)*(double)zNear );", BaseType);
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }

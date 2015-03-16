@@ -523,5 +523,24 @@ namespace GlmSharp
             m.m32 = -(2 * farVal * nearVal) / (farVal - nearVal);
             return m;
         }
+        
+        /// <summary>
+        /// Creates a matrix for a symmetric perspective-view frustum with far plane at infinite.
+        /// </summary>
+        public static mat4 InfinitePerspective(float fovy, float aspect, float zNear)
+        {
+            var range = Math.Tan((double)fovy / 2.0) * (double)zNear;
+            var l = -range * (double)aspect;
+            var r = range * (double)aspect;
+            var b = -range;
+            var t = range;
+            var m = Identity;
+            m.m00 = (float)( ((2.0)*(double)zNear)/(r - l) );
+            m.m11 = (float)( ((2.0)*(double)zNear)/(t - b) );
+            m.m22 = (float)( - (1.0) );
+            m.m23 = (float)( - (1.0) );
+            m.m32 = (float)( - (2.0)*(double)zNear );
+            return m;
+        }
     }
 }
