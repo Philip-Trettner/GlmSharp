@@ -129,30 +129,30 @@ namespace GlmSharpGenerator
                 yield return string.Format("public swizzle_{0} swizzle => new swizzle_{0}({1});", ClassNameThat, CompArgString);
 
                 // predefs
-                foreach (var line in "Predefined all-zero vector (DO NOT MODIFY)".AsComment()) yield return line;
-                yield return string.Format("public static readonly {0} Zero = new {0}({1});", ClassNameThat, ZeroValue.RepeatTimes(Components).CommaSeparated());
+                foreach (var line in "Predefined all-zero vector".AsComment()) yield return line;
+                yield return string.Format("public static {0} Zero {{ get; }} = new {0}({1});", ClassNameThat, ZeroValue.RepeatTimes(Components).CommaSeparated());
 
                 if (!string.IsNullOrEmpty(BaseTypeInfo.OneValue))
                 {
-                    foreach (var line in "Predefined all-ones vector (DO NOT MODIFY)".AsComment()) yield return line;
-                    yield return string.Format("public static readonly {0} Ones = new {0}({1});", ClassNameThat, BaseTypeInfo.OneValue.RepeatTimes(Components).CommaSeparated());
+                    foreach (var line in "Predefined all-ones vector".AsComment()) yield return line;
+                    yield return string.Format("public static {0} Ones {{ get; }} = new {0}({1});", ClassNameThat, BaseTypeInfo.OneValue.RepeatTimes(Components).CommaSeparated());
 
                     for (var c = 0; c < Components; ++c)
                     {
-                        foreach (var line in string.Format("Predefined unit-{0} vector (DO NOT MODIFY)", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
-                        yield return string.Format("public static readonly {0} Unit{1} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString(BaseTypeInfo.OneValue, ZeroValue, Components).CommaSeparated());
+                        foreach (var line in string.Format("Predefined unit-{0} vector", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
+                        yield return string.Format("public static {0} Unit{1} {{ get; }} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString(BaseTypeInfo.OneValue, ZeroValue, Components).CommaSeparated());
                     }
                 }
 
                 if (BaseTypeInfo.Complex)
                 {
-                    foreach (var line in "Predefined all-imaginary-ones vector (DO NOT MODIFY)".AsComment()) yield return line;
-                    yield return string.Format("public static readonly {0} ImaginaryOnes = new {0}({1});", ClassNameThat, "Complex.ImaginaryOne".RepeatTimes(Components).CommaSeparated());
+                    foreach (var line in "Predefined all-imaginary-ones vector".AsComment()) yield return line;
+                    yield return string.Format("public static {0} ImaginaryOnes {{ get; }} = new {0}({1});", ClassNameThat, "Complex.ImaginaryOne".RepeatTimes(Components).CommaSeparated());
 
                     for (var c = 0; c < Components; ++c)
                     {
-                        foreach (var line in string.Format("Predefined unit-imaginary-{0} vector (DO NOT MODIFY)", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
-                        yield return string.Format("public static readonly {0} ImaginaryUnit{1} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString("Complex.ImaginaryOne", ZeroValue, Components).CommaSeparated());
+                        foreach (var line in string.Format("Predefined unit-imaginary-{0} vector", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
+                        yield return string.Format("public static {0} ImaginaryUnit{1} {{ get; }} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString("Complex.ImaginaryOne", ZeroValue, Components).CommaSeparated());
                     }
                 }
 
@@ -329,8 +329,8 @@ namespace GlmSharpGenerator
                 // Basetype constants
                 foreach (var constant in BaseTypeInfo.TypeConstants)
                 {
-                    foreach (var line in string.Format("Predefined all-{0} vector (DO NOT MODIFY)", constant).AsComment()) yield return line;
-                    yield return string.Format("public static readonly {0} {2} = new {0}({1});", ClassNameThat, string.Format("{0}.{1}", BaseType, constant).RepeatTimes(Components).CommaSeparated(), constant);
+                    foreach (var line in string.Format("Predefined all-{0} vector", constant).AsComment()) yield return line;
+                    yield return string.Format("public static {0} {2} {{ get; }} = new {0}({1});", ClassNameThat, string.Format("{0}.{1}", BaseType, constant).RepeatTimes(Components).CommaSeparated(), constant);
                 }
 
                 // Basetype test functions

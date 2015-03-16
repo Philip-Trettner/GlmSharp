@@ -32,29 +32,29 @@ namespace GlmSharp
         public swizzle_dvec3 swizzle => new swizzle_dvec3(x, y, z);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly dvec3 Zero = new dvec3(default(double), default(double), default(double));
+        public static dvec3 Zero { get; } = new dvec3(default(double), default(double), default(double));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly dvec3 Ones = new dvec3(1.0, 1.0, 1.0);
+        public static dvec3 Ones { get; } = new dvec3(1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly dvec3 UnitX = new dvec3(1.0, default(double), default(double));
+        public static dvec3 UnitX { get; } = new dvec3(1.0, default(double), default(double));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly dvec3 UnitY = new dvec3(default(double), 1.0, default(double));
+        public static dvec3 UnitY { get; } = new dvec3(default(double), 1.0, default(double));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly dvec3 UnitZ = new dvec3(default(double), default(double), 1.0);
+        public static dvec3 UnitZ { get; } = new dvec3(default(double), default(double), 1.0);
         
         /// <summary>
         /// Returns an array with all values
@@ -374,34 +374,34 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly dvec3 MaxValue = new dvec3(double.MaxValue, double.MaxValue, double.MaxValue);
+        public static dvec3 MaxValue { get; } = new dvec3(double.MaxValue, double.MaxValue, double.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly dvec3 MinValue = new dvec3(double.MinValue, double.MinValue, double.MinValue);
+        public static dvec3 MinValue { get; } = new dvec3(double.MinValue, double.MinValue, double.MinValue);
         
         /// <summary>
-        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// Predefined all-Epsilon vector
         /// </summary>
-        public static readonly dvec3 Epsilon = new dvec3(double.Epsilon, double.Epsilon, double.Epsilon);
+        public static dvec3 Epsilon { get; } = new dvec3(double.Epsilon, double.Epsilon, double.Epsilon);
         
         /// <summary>
-        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// Predefined all-NaN vector
         /// </summary>
-        public static readonly dvec3 NaN = new dvec3(double.NaN, double.NaN, double.NaN);
+        public static dvec3 NaN { get; } = new dvec3(double.NaN, double.NaN, double.NaN);
         
         /// <summary>
-        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// Predefined all-NegativeInfinity vector
         /// </summary>
-        public static readonly dvec3 NegativeInfinity = new dvec3(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        public static dvec3 NegativeInfinity { get; } = new dvec3(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
         
         /// <summary>
-        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// Predefined all-PositiveInfinity vector
         /// </summary>
-        public static readonly dvec3 PositiveInfinity = new dvec3(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        public static dvec3 PositiveInfinity { get; } = new dvec3(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

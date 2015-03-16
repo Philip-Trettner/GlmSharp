@@ -37,34 +37,34 @@ namespace GlmSharp
         public swizzle_decvec4 swizzle => new swizzle_decvec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly decvec4 Zero = new decvec4(default(decimal), default(decimal), default(decimal), default(decimal));
+        public static decvec4 Zero { get; } = new decvec4(default(decimal), default(decimal), default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly decvec4 Ones = new decvec4(1m, 1m, 1m, 1m);
+        public static decvec4 Ones { get; } = new decvec4(1m, 1m, 1m, 1m);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly decvec4 UnitX = new decvec4(1m, default(decimal), default(decimal), default(decimal));
+        public static decvec4 UnitX { get; } = new decvec4(1m, default(decimal), default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly decvec4 UnitY = new decvec4(default(decimal), 1m, default(decimal), default(decimal));
+        public static decvec4 UnitY { get; } = new decvec4(default(decimal), 1m, default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly decvec4 UnitZ = new decvec4(default(decimal), default(decimal), 1m, default(decimal));
+        public static decvec4 UnitZ { get; } = new decvec4(default(decimal), default(decimal), 1m, default(decimal));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly decvec4 UnitW = new decvec4(default(decimal), default(decimal), default(decimal), 1m);
+        public static decvec4 UnitW { get; } = new decvec4(default(decimal), default(decimal), default(decimal), 1m);
         
         /// <summary>
         /// Returns an array with all values
@@ -415,19 +415,19 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly decvec4 MaxValue = new decvec4(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
+        public static decvec4 MaxValue { get; } = new decvec4(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly decvec4 MinValue = new decvec4(decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue);
+        public static decvec4 MinValue { get; } = new decvec4(decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue);
         
         /// <summary>
-        /// Predefined all-MinusOne vector (DO NOT MODIFY)
+        /// Predefined all-MinusOne vector
         /// </summary>
-        public static readonly decvec4 MinusOne = new decvec4(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
+        public static decvec4 MinusOne { get; } = new decvec4(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

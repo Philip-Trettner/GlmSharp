@@ -27,24 +27,24 @@ namespace GlmSharp
         public swizzle_dvec2 swizzle => new swizzle_dvec2(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly dvec2 Zero = new dvec2(default(double), default(double));
+        public static dvec2 Zero { get; } = new dvec2(default(double), default(double));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly dvec2 Ones = new dvec2(1.0, 1.0);
+        public static dvec2 Ones { get; } = new dvec2(1.0, 1.0);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly dvec2 UnitX = new dvec2(1.0, default(double));
+        public static dvec2 UnitX { get; } = new dvec2(1.0, default(double));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly dvec2 UnitY = new dvec2(default(double), 1.0);
+        public static dvec2 UnitY { get; } = new dvec2(default(double), 1.0);
         
         /// <summary>
         /// Returns an array with all values
@@ -346,34 +346,34 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly dvec2 MaxValue = new dvec2(double.MaxValue, double.MaxValue);
+        public static dvec2 MaxValue { get; } = new dvec2(double.MaxValue, double.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly dvec2 MinValue = new dvec2(double.MinValue, double.MinValue);
+        public static dvec2 MinValue { get; } = new dvec2(double.MinValue, double.MinValue);
         
         /// <summary>
-        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// Predefined all-Epsilon vector
         /// </summary>
-        public static readonly dvec2 Epsilon = new dvec2(double.Epsilon, double.Epsilon);
+        public static dvec2 Epsilon { get; } = new dvec2(double.Epsilon, double.Epsilon);
         
         /// <summary>
-        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// Predefined all-NaN vector
         /// </summary>
-        public static readonly dvec2 NaN = new dvec2(double.NaN, double.NaN);
+        public static dvec2 NaN { get; } = new dvec2(double.NaN, double.NaN);
         
         /// <summary>
-        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// Predefined all-NegativeInfinity vector
         /// </summary>
-        public static readonly dvec2 NegativeInfinity = new dvec2(double.NegativeInfinity, double.NegativeInfinity);
+        public static dvec2 NegativeInfinity { get; } = new dvec2(double.NegativeInfinity, double.NegativeInfinity);
         
         /// <summary>
-        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// Predefined all-PositiveInfinity vector
         /// </summary>
-        public static readonly dvec2 PositiveInfinity = new dvec2(double.PositiveInfinity, double.PositiveInfinity);
+        public static dvec2 PositiveInfinity { get; } = new dvec2(double.PositiveInfinity, double.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

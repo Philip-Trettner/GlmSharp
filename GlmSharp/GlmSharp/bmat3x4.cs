@@ -61,19 +61,19 @@ namespace GlmSharp
         public bvec3 Row3 => new bvec3(m03, m13, m23);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly bmat3x4 Zero = new bmat3x4(default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool));
+        public static bmat3x4 Zero { get; } = new bmat3x4(default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly bmat3x4 Ones = new bmat3x4(true, true, true, true, true, true, true, true, true, true, true, true);
+        public static bmat3x4 Ones { get; } = new bmat3x4(true, true, true, true, true, true, true, true, true, true, true, true);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly bmat3x4 Identity = new bmat3x4(true, default(bool), default(bool), default(bool), default(bool), true, default(bool), default(bool), default(bool), default(bool), true, default(bool));
+        public static bmat3x4 Identity { get; } = new bmat3x4(true, default(bool), default(bool), default(bool), default(bool), true, default(bool), default(bool), default(bool), default(bool), true, default(bool));
         
         /// <summary>
         /// Component-wise constructor

@@ -67,19 +67,19 @@ namespace GlmSharp
         public dvec4 Row3 => new dvec4(m03, m13, m23, m33);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly dmat4 Zero = new dmat4(default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double));
+        public static dmat4 Zero { get; } = new dmat4(default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly dmat4 Ones = new dmat4(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        public static dmat4 Ones { get; } = new dmat4(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly dmat4 Identity = new dmat4(1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double), default(double), default(double), 1.0);
+        public static dmat4 Identity { get; } = new dmat4(1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double), default(double), default(double), 1.0);
         
         /// <summary>
         /// Component-wise constructor

@@ -27,24 +27,24 @@ namespace GlmSharp
         public swizzle_uvec2 swizzle => new swizzle_uvec2(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly uvec2 Zero = new uvec2(default(uint), default(uint));
+        public static uvec2 Zero { get; } = new uvec2(default(uint), default(uint));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly uvec2 Ones = new uvec2(1, 1);
+        public static uvec2 Ones { get; } = new uvec2(1, 1);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly uvec2 UnitX = new uvec2(1, default(uint));
+        public static uvec2 UnitX { get; } = new uvec2(1, default(uint));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly uvec2 UnitY = new uvec2(default(uint), 1);
+        public static uvec2 UnitY { get; } = new uvec2(default(uint), 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -346,14 +346,14 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly uvec2 MaxValue = new uvec2(uint.MaxValue, uint.MaxValue);
+        public static uvec2 MaxValue { get; } = new uvec2(uint.MaxValue, uint.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly uvec2 MinValue = new uvec2(uint.MinValue, uint.MinValue);
+        public static uvec2 MinValue { get; } = new uvec2(uint.MinValue, uint.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

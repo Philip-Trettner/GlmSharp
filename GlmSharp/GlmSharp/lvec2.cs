@@ -27,24 +27,24 @@ namespace GlmSharp
         public swizzle_lvec2 swizzle => new swizzle_lvec2(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly lvec2 Zero = new lvec2(default(long), default(long));
+        public static lvec2 Zero { get; } = new lvec2(default(long), default(long));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly lvec2 Ones = new lvec2(1, 1);
+        public static lvec2 Ones { get; } = new lvec2(1, 1);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly lvec2 UnitX = new lvec2(1, default(long));
+        public static lvec2 UnitX { get; } = new lvec2(1, default(long));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly lvec2 UnitY = new lvec2(default(long), 1);
+        public static lvec2 UnitY { get; } = new lvec2(default(long), 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -346,14 +346,14 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly lvec2 MaxValue = new lvec2(long.MaxValue, long.MaxValue);
+        public static lvec2 MaxValue { get; } = new lvec2(long.MaxValue, long.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly lvec2 MinValue = new lvec2(long.MinValue, long.MinValue);
+        public static lvec2 MinValue { get; } = new lvec2(long.MinValue, long.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

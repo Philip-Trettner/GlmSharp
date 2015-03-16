@@ -45,19 +45,19 @@ namespace GlmSharp
         public lvec2 Row1 => new lvec2(m01, m11);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly lmat2 Zero = new lmat2(default(long), default(long), default(long), default(long));
+        public static lmat2 Zero { get; } = new lmat2(default(long), default(long), default(long), default(long));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly lmat2 Ones = new lmat2(1, 1, 1, 1);
+        public static lmat2 Ones { get; } = new lmat2(1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly lmat2 Identity = new lmat2(1, default(long), default(long), 1);
+        public static lmat2 Identity { get; } = new lmat2(1, default(long), default(long), 1);
         
         /// <summary>
         /// Component-wise constructor

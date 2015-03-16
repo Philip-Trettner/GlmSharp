@@ -32,29 +32,29 @@ namespace GlmSharp
         public swizzle_vec3 swizzle => new swizzle_vec3(x, y, z);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly vec3 Zero = new vec3(default(float), default(float), default(float));
+        public static vec3 Zero { get; } = new vec3(default(float), default(float), default(float));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly vec3 Ones = new vec3(1f, 1f, 1f);
+        public static vec3 Ones { get; } = new vec3(1f, 1f, 1f);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly vec3 UnitX = new vec3(1f, default(float), default(float));
+        public static vec3 UnitX { get; } = new vec3(1f, default(float), default(float));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly vec3 UnitY = new vec3(default(float), 1f, default(float));
+        public static vec3 UnitY { get; } = new vec3(default(float), 1f, default(float));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly vec3 UnitZ = new vec3(default(float), default(float), 1f);
+        public static vec3 UnitZ { get; } = new vec3(default(float), default(float), 1f);
         
         /// <summary>
         /// Returns an array with all values
@@ -374,34 +374,34 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly vec3 MaxValue = new vec3(float.MaxValue, float.MaxValue, float.MaxValue);
+        public static vec3 MaxValue { get; } = new vec3(float.MaxValue, float.MaxValue, float.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly vec3 MinValue = new vec3(float.MinValue, float.MinValue, float.MinValue);
+        public static vec3 MinValue { get; } = new vec3(float.MinValue, float.MinValue, float.MinValue);
         
         /// <summary>
-        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// Predefined all-Epsilon vector
         /// </summary>
-        public static readonly vec3 Epsilon = new vec3(float.Epsilon, float.Epsilon, float.Epsilon);
+        public static vec3 Epsilon { get; } = new vec3(float.Epsilon, float.Epsilon, float.Epsilon);
         
         /// <summary>
-        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// Predefined all-NaN vector
         /// </summary>
-        public static readonly vec3 NaN = new vec3(float.NaN, float.NaN, float.NaN);
+        public static vec3 NaN { get; } = new vec3(float.NaN, float.NaN, float.NaN);
         
         /// <summary>
-        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// Predefined all-NegativeInfinity vector
         /// </summary>
-        public static readonly vec3 NegativeInfinity = new vec3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        public static vec3 NegativeInfinity { get; } = new vec3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
         
         /// <summary>
-        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// Predefined all-PositiveInfinity vector
         /// </summary>
-        public static readonly vec3 PositiveInfinity = new vec3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        public static vec3 PositiveInfinity { get; } = new vec3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

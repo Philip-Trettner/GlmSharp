@@ -62,19 +62,19 @@ namespace GlmSharp
         public cvec4 Row2 => new cvec4(m02, m12, m22, m32);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly cmat4x3 Zero = new cmat4x3(default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex));
+        public static cmat4x3 Zero { get; } = new cmat4x3(default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly cmat4x3 Ones = new cmat4x3(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        public static cmat4x3 Ones { get; } = new cmat4x3(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly cmat4x3 Identity = new cmat4x3(1.0, default(Complex), default(Complex), default(Complex), 1.0, default(Complex), default(Complex), default(Complex), 1.0, default(Complex), default(Complex), default(Complex));
+        public static cmat4x3 Identity { get; } = new cmat4x3(1.0, default(Complex), default(Complex), default(Complex), 1.0, default(Complex), default(Complex), default(Complex), 1.0, default(Complex), default(Complex), default(Complex));
         
         /// <summary>
         /// Component-wise constructor

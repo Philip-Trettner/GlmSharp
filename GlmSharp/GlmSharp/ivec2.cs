@@ -27,24 +27,24 @@ namespace GlmSharp
         public swizzle_ivec2 swizzle => new swizzle_ivec2(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly ivec2 Zero = new ivec2(default(int), default(int));
+        public static ivec2 Zero { get; } = new ivec2(default(int), default(int));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly ivec2 Ones = new ivec2(1, 1);
+        public static ivec2 Ones { get; } = new ivec2(1, 1);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly ivec2 UnitX = new ivec2(1, default(int));
+        public static ivec2 UnitX { get; } = new ivec2(1, default(int));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly ivec2 UnitY = new ivec2(default(int), 1);
+        public static ivec2 UnitY { get; } = new ivec2(default(int), 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -346,14 +346,14 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly ivec2 MaxValue = new ivec2(int.MaxValue, int.MaxValue);
+        public static ivec2 MaxValue { get; } = new ivec2(int.MaxValue, int.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly ivec2 MinValue = new ivec2(int.MinValue, int.MinValue);
+        public static ivec2 MinValue { get; } = new ivec2(int.MinValue, int.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

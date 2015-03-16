@@ -27,24 +27,24 @@ namespace GlmSharp
         public swizzle_vec2 swizzle => new swizzle_vec2(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly vec2 Zero = new vec2(default(float), default(float));
+        public static vec2 Zero { get; } = new vec2(default(float), default(float));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly vec2 Ones = new vec2(1f, 1f);
+        public static vec2 Ones { get; } = new vec2(1f, 1f);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly vec2 UnitX = new vec2(1f, default(float));
+        public static vec2 UnitX { get; } = new vec2(1f, default(float));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly vec2 UnitY = new vec2(default(float), 1f);
+        public static vec2 UnitY { get; } = new vec2(default(float), 1f);
         
         /// <summary>
         /// Returns an array with all values
@@ -346,34 +346,34 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly vec2 MaxValue = new vec2(float.MaxValue, float.MaxValue);
+        public static vec2 MaxValue { get; } = new vec2(float.MaxValue, float.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly vec2 MinValue = new vec2(float.MinValue, float.MinValue);
+        public static vec2 MinValue { get; } = new vec2(float.MinValue, float.MinValue);
         
         /// <summary>
-        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// Predefined all-Epsilon vector
         /// </summary>
-        public static readonly vec2 Epsilon = new vec2(float.Epsilon, float.Epsilon);
+        public static vec2 Epsilon { get; } = new vec2(float.Epsilon, float.Epsilon);
         
         /// <summary>
-        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// Predefined all-NaN vector
         /// </summary>
-        public static readonly vec2 NaN = new vec2(float.NaN, float.NaN);
+        public static vec2 NaN { get; } = new vec2(float.NaN, float.NaN);
         
         /// <summary>
-        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// Predefined all-NegativeInfinity vector
         /// </summary>
-        public static readonly vec2 NegativeInfinity = new vec2(float.NegativeInfinity, float.NegativeInfinity);
+        public static vec2 NegativeInfinity { get; } = new vec2(float.NegativeInfinity, float.NegativeInfinity);
         
         /// <summary>
-        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// Predefined all-PositiveInfinity vector
         /// </summary>
-        public static readonly vec2 PositiveInfinity = new vec2(float.PositiveInfinity, float.PositiveInfinity);
+        public static vec2 PositiveInfinity { get; } = new vec2(float.PositiveInfinity, float.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

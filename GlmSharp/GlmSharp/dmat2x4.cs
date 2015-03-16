@@ -55,19 +55,19 @@ namespace GlmSharp
         public dvec2 Row3 => new dvec2(m03, m13);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly dmat2x4 Zero = new dmat2x4(default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double));
+        public static dmat2x4 Zero { get; } = new dmat2x4(default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly dmat2x4 Ones = new dmat2x4(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        public static dmat2x4 Ones { get; } = new dmat2x4(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly dmat2x4 Identity = new dmat2x4(1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double));
+        public static dmat2x4 Identity { get; } = new dmat2x4(1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double));
         
         /// <summary>
         /// Component-wise constructor

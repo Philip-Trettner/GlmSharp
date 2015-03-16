@@ -167,16 +167,16 @@ namespace GlmSharpGenerator
 
 
                 // predefs
-                foreach (var line in "Predefined all-zero matrix (DO NOT MODIFY)".AsComment()) yield return line;
-                yield return string.Format("public static readonly {0} Zero = new {0}({1});", ClassNameThat, ZeroValue.RepeatTimes(FieldCount).CommaSeparated());
+                foreach (var line in "Predefined all-zero matrix".AsComment()) yield return line;
+                yield return string.Format("public static {0} Zero {{ get; }} = new {0}({1});", ClassNameThat, ZeroValue.RepeatTimes(FieldCount).CommaSeparated());
 
                 if (!string.IsNullOrEmpty(BaseTypeInfo.OneValue))
                 {
-                    foreach (var line in "Predefined all-ones matrix (DO NOT MODIFY)".AsComment()) yield return line;
-                    yield return string.Format("public static readonly {0} Ones = new {0}({1});", ClassNameThat, OneValue.RepeatTimes(FieldCount).CommaSeparated());
+                    foreach (var line in "Predefined all-ones matrix".AsComment()) yield return line;
+                    yield return string.Format("public static {0} Ones {{ get; }} = new {0}({1});", ClassNameThat, OneValue.RepeatTimes(FieldCount).CommaSeparated());
 
-                    foreach (var line in "Predefined identity matrix (DO NOT MODIFY)".AsComment()) yield return line;
-                    yield return string.Format("public static readonly {0} Identity = new {0}({1});", ClassNameThat, Fields.Select(f => IsDiagonal(f) ? OneValue : ZeroValue).CommaSeparated());
+                    foreach (var line in "Predefined identity matrix".AsComment()) yield return line;
+                    yield return string.Format("public static {0} Identity {{ get; }} = new {0}({1});", ClassNameThat, Fields.Select(f => IsDiagonal(f) ? OneValue : ZeroValue).CommaSeparated());
                 }
 
 

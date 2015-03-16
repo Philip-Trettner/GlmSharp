@@ -27,39 +27,39 @@ namespace GlmSharp
         public swizzle_cvec2 swizzle => new swizzle_cvec2(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly cvec2 Zero = new cvec2(default(Complex), default(Complex));
+        public static cvec2 Zero { get; } = new cvec2(default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly cvec2 Ones = new cvec2(1.0, 1.0);
+        public static cvec2 Ones { get; } = new cvec2(1.0, 1.0);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly cvec2 UnitX = new cvec2(1.0, default(Complex));
+        public static cvec2 UnitX { get; } = new cvec2(1.0, default(Complex));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly cvec2 UnitY = new cvec2(default(Complex), 1.0);
+        public static cvec2 UnitY { get; } = new cvec2(default(Complex), 1.0);
         
         /// <summary>
-        /// Predefined all-imaginary-ones vector (DO NOT MODIFY)
+        /// Predefined all-imaginary-ones vector
         /// </summary>
-        public static readonly cvec2 ImaginaryOnes = new cvec2(Complex.ImaginaryOne, Complex.ImaginaryOne);
+        public static cvec2 ImaginaryOnes { get; } = new cvec2(Complex.ImaginaryOne, Complex.ImaginaryOne);
         
         /// <summary>
-        /// Predefined unit-imaginary-X vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static readonly cvec2 ImaginaryUnitX = new cvec2(Complex.ImaginaryOne, default(Complex));
+        public static cvec2 ImaginaryUnitX { get; } = new cvec2(Complex.ImaginaryOne, default(Complex));
         
         /// <summary>
-        /// Predefined unit-imaginary-Y vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static readonly cvec2 ImaginaryUnitY = new cvec2(default(Complex), Complex.ImaginaryOne);
+        public static cvec2 ImaginaryUnitY { get; } = new cvec2(default(Complex), Complex.ImaginaryOne);
         
         /// <summary>
         /// Returns an array with all values

@@ -37,34 +37,34 @@ namespace GlmSharp
         public swizzle_uvec4 swizzle => new swizzle_uvec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly uvec4 Zero = new uvec4(default(uint), default(uint), default(uint), default(uint));
+        public static uvec4 Zero { get; } = new uvec4(default(uint), default(uint), default(uint), default(uint));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly uvec4 Ones = new uvec4(1, 1, 1, 1);
+        public static uvec4 Ones { get; } = new uvec4(1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly uvec4 UnitX = new uvec4(1, default(uint), default(uint), default(uint));
+        public static uvec4 UnitX { get; } = new uvec4(1, default(uint), default(uint), default(uint));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly uvec4 UnitY = new uvec4(default(uint), 1, default(uint), default(uint));
+        public static uvec4 UnitY { get; } = new uvec4(default(uint), 1, default(uint), default(uint));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly uvec4 UnitZ = new uvec4(default(uint), default(uint), 1, default(uint));
+        public static uvec4 UnitZ { get; } = new uvec4(default(uint), default(uint), 1, default(uint));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly uvec4 UnitW = new uvec4(default(uint), default(uint), default(uint), 1);
+        public static uvec4 UnitW { get; } = new uvec4(default(uint), default(uint), default(uint), 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -415,14 +415,14 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly uvec4 MaxValue = new uvec4(uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue);
+        public static uvec4 MaxValue { get; } = new uvec4(uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly uvec4 MinValue = new uvec4(uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue);
+        public static uvec4 MinValue { get; } = new uvec4(uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

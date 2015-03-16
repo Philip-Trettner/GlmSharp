@@ -37,34 +37,34 @@ namespace GlmSharp
         public swizzle_dvec4 swizzle => new swizzle_dvec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly dvec4 Zero = new dvec4(default(double), default(double), default(double), default(double));
+        public static dvec4 Zero { get; } = new dvec4(default(double), default(double), default(double), default(double));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly dvec4 Ones = new dvec4(1.0, 1.0, 1.0, 1.0);
+        public static dvec4 Ones { get; } = new dvec4(1.0, 1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly dvec4 UnitX = new dvec4(1.0, default(double), default(double), default(double));
+        public static dvec4 UnitX { get; } = new dvec4(1.0, default(double), default(double), default(double));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly dvec4 UnitY = new dvec4(default(double), 1.0, default(double), default(double));
+        public static dvec4 UnitY { get; } = new dvec4(default(double), 1.0, default(double), default(double));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly dvec4 UnitZ = new dvec4(default(double), default(double), 1.0, default(double));
+        public static dvec4 UnitZ { get; } = new dvec4(default(double), default(double), 1.0, default(double));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly dvec4 UnitW = new dvec4(default(double), default(double), default(double), 1.0);
+        public static dvec4 UnitW { get; } = new dvec4(default(double), default(double), default(double), 1.0);
         
         /// <summary>
         /// Returns an array with all values
@@ -415,34 +415,34 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly dvec4 MaxValue = new dvec4(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
+        public static dvec4 MaxValue { get; } = new dvec4(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly dvec4 MinValue = new dvec4(double.MinValue, double.MinValue, double.MinValue, double.MinValue);
+        public static dvec4 MinValue { get; } = new dvec4(double.MinValue, double.MinValue, double.MinValue, double.MinValue);
         
         /// <summary>
-        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// Predefined all-Epsilon vector
         /// </summary>
-        public static readonly dvec4 Epsilon = new dvec4(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
+        public static dvec4 Epsilon { get; } = new dvec4(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
         
         /// <summary>
-        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// Predefined all-NaN vector
         /// </summary>
-        public static readonly dvec4 NaN = new dvec4(double.NaN, double.NaN, double.NaN, double.NaN);
+        public static dvec4 NaN { get; } = new dvec4(double.NaN, double.NaN, double.NaN, double.NaN);
         
         /// <summary>
-        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// Predefined all-NegativeInfinity vector
         /// </summary>
-        public static readonly dvec4 NegativeInfinity = new dvec4(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        public static dvec4 NegativeInfinity { get; } = new dvec4(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
         
         /// <summary>
-        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// Predefined all-PositiveInfinity vector
         /// </summary>
-        public static readonly dvec4 PositiveInfinity = new dvec4(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        public static dvec4 PositiveInfinity { get; } = new dvec4(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

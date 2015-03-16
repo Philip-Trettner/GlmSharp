@@ -57,19 +57,19 @@ namespace GlmSharp
         public bvec4 Row1 => new bvec4(m01, m11, m21, m31);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly bmat4x2 Zero = new bmat4x2(default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool));
+        public static bmat4x2 Zero { get; } = new bmat4x2(default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly bmat4x2 Ones = new bmat4x2(true, true, true, true, true, true, true, true);
+        public static bmat4x2 Ones { get; } = new bmat4x2(true, true, true, true, true, true, true, true);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly bmat4x2 Identity = new bmat4x2(true, default(bool), default(bool), true, default(bool), default(bool), default(bool), default(bool));
+        public static bmat4x2 Identity { get; } = new bmat4x2(true, default(bool), default(bool), true, default(bool), default(bool), default(bool), default(bool));
         
         /// <summary>
         /// Component-wise constructor

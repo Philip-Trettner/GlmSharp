@@ -37,34 +37,34 @@ namespace GlmSharp
         public swizzle_bvec4 swizzle => new swizzle_bvec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly bvec4 Zero = new bvec4(default(bool), default(bool), default(bool), default(bool));
+        public static bvec4 Zero { get; } = new bvec4(default(bool), default(bool), default(bool), default(bool));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly bvec4 Ones = new bvec4(true, true, true, true);
+        public static bvec4 Ones { get; } = new bvec4(true, true, true, true);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly bvec4 UnitX = new bvec4(true, default(bool), default(bool), default(bool));
+        public static bvec4 UnitX { get; } = new bvec4(true, default(bool), default(bool), default(bool));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly bvec4 UnitY = new bvec4(default(bool), true, default(bool), default(bool));
+        public static bvec4 UnitY { get; } = new bvec4(default(bool), true, default(bool), default(bool));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly bvec4 UnitZ = new bvec4(default(bool), default(bool), true, default(bool));
+        public static bvec4 UnitZ { get; } = new bvec4(default(bool), default(bool), true, default(bool));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly bvec4 UnitW = new bvec4(default(bool), default(bool), default(bool), true);
+        public static bvec4 UnitW { get; } = new bvec4(default(bool), default(bool), default(bool), true);
         
         /// <summary>
         /// Returns an array with all values

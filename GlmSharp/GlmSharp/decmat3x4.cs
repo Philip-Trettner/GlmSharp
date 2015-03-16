@@ -61,19 +61,19 @@ namespace GlmSharp
         public decvec3 Row3 => new decvec3(m03, m13, m23);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly decmat3x4 Zero = new decmat3x4(default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal));
+        public static decmat3x4 Zero { get; } = new decmat3x4(default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly decmat3x4 Ones = new decmat3x4(1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m);
+        public static decmat3x4 Ones { get; } = new decmat3x4(1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly decmat3x4 Identity = new decmat3x4(1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal));
+        public static decmat3x4 Identity { get; } = new decmat3x4(1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal));
         
         /// <summary>
         /// Component-wise constructor

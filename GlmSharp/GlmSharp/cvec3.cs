@@ -32,49 +32,49 @@ namespace GlmSharp
         public swizzle_cvec3 swizzle => new swizzle_cvec3(x, y, z);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly cvec3 Zero = new cvec3(default(Complex), default(Complex), default(Complex));
+        public static cvec3 Zero { get; } = new cvec3(default(Complex), default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly cvec3 Ones = new cvec3(1.0, 1.0, 1.0);
+        public static cvec3 Ones { get; } = new cvec3(1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly cvec3 UnitX = new cvec3(1.0, default(Complex), default(Complex));
+        public static cvec3 UnitX { get; } = new cvec3(1.0, default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly cvec3 UnitY = new cvec3(default(Complex), 1.0, default(Complex));
+        public static cvec3 UnitY { get; } = new cvec3(default(Complex), 1.0, default(Complex));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly cvec3 UnitZ = new cvec3(default(Complex), default(Complex), 1.0);
+        public static cvec3 UnitZ { get; } = new cvec3(default(Complex), default(Complex), 1.0);
         
         /// <summary>
-        /// Predefined all-imaginary-ones vector (DO NOT MODIFY)
+        /// Predefined all-imaginary-ones vector
         /// </summary>
-        public static readonly cvec3 ImaginaryOnes = new cvec3(Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne);
+        public static cvec3 ImaginaryOnes { get; } = new cvec3(Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne);
         
         /// <summary>
-        /// Predefined unit-imaginary-X vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static readonly cvec3 ImaginaryUnitX = new cvec3(Complex.ImaginaryOne, default(Complex), default(Complex));
+        public static cvec3 ImaginaryUnitX { get; } = new cvec3(Complex.ImaginaryOne, default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined unit-imaginary-Y vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static readonly cvec3 ImaginaryUnitY = new cvec3(default(Complex), Complex.ImaginaryOne, default(Complex));
+        public static cvec3 ImaginaryUnitY { get; } = new cvec3(default(Complex), Complex.ImaginaryOne, default(Complex));
         
         /// <summary>
-        /// Predefined unit-imaginary-Z vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-Z vector
         /// </summary>
-        public static readonly cvec3 ImaginaryUnitZ = new cvec3(default(Complex), default(Complex), Complex.ImaginaryOne);
+        public static cvec3 ImaginaryUnitZ { get; } = new cvec3(default(Complex), default(Complex), Complex.ImaginaryOne);
         
         /// <summary>
         /// Returns an array with all values

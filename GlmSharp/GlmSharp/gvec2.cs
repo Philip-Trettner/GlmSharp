@@ -27,9 +27,9 @@ namespace GlmSharp
         public swizzle_gvec2<T> swizzle => new swizzle_gvec2<T>(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly gvec2<T> Zero = new gvec2<T>(default(T), default(T));
+        public static gvec2<T> Zero { get; } = new gvec2<T>(default(T), default(T));
         
         /// <summary>
         /// Returns an array with all values

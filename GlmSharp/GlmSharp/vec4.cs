@@ -37,34 +37,34 @@ namespace GlmSharp
         public swizzle_vec4 swizzle => new swizzle_vec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly vec4 Zero = new vec4(default(float), default(float), default(float), default(float));
+        public static vec4 Zero { get; } = new vec4(default(float), default(float), default(float), default(float));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly vec4 Ones = new vec4(1f, 1f, 1f, 1f);
+        public static vec4 Ones { get; } = new vec4(1f, 1f, 1f, 1f);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly vec4 UnitX = new vec4(1f, default(float), default(float), default(float));
+        public static vec4 UnitX { get; } = new vec4(1f, default(float), default(float), default(float));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly vec4 UnitY = new vec4(default(float), 1f, default(float), default(float));
+        public static vec4 UnitY { get; } = new vec4(default(float), 1f, default(float), default(float));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly vec4 UnitZ = new vec4(default(float), default(float), 1f, default(float));
+        public static vec4 UnitZ { get; } = new vec4(default(float), default(float), 1f, default(float));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly vec4 UnitW = new vec4(default(float), default(float), default(float), 1f);
+        public static vec4 UnitW { get; } = new vec4(default(float), default(float), default(float), 1f);
         
         /// <summary>
         /// Returns an array with all values
@@ -415,34 +415,34 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly vec4 MaxValue = new vec4(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
+        public static vec4 MaxValue { get; } = new vec4(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly vec4 MinValue = new vec4(float.MinValue, float.MinValue, float.MinValue, float.MinValue);
+        public static vec4 MinValue { get; } = new vec4(float.MinValue, float.MinValue, float.MinValue, float.MinValue);
         
         /// <summary>
-        /// Predefined all-Epsilon vector (DO NOT MODIFY)
+        /// Predefined all-Epsilon vector
         /// </summary>
-        public static readonly vec4 Epsilon = new vec4(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
+        public static vec4 Epsilon { get; } = new vec4(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
         
         /// <summary>
-        /// Predefined all-NaN vector (DO NOT MODIFY)
+        /// Predefined all-NaN vector
         /// </summary>
-        public static readonly vec4 NaN = new vec4(float.NaN, float.NaN, float.NaN, float.NaN);
+        public static vec4 NaN { get; } = new vec4(float.NaN, float.NaN, float.NaN, float.NaN);
         
         /// <summary>
-        /// Predefined all-NegativeInfinity vector (DO NOT MODIFY)
+        /// Predefined all-NegativeInfinity vector
         /// </summary>
-        public static readonly vec4 NegativeInfinity = new vec4(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        public static vec4 NegativeInfinity { get; } = new vec4(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
         
         /// <summary>
-        /// Predefined all-PositiveInfinity vector (DO NOT MODIFY)
+        /// Predefined all-PositiveInfinity vector
         /// </summary>
-        public static readonly vec4 PositiveInfinity = new vec4(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        public static vec4 PositiveInfinity { get; } = new vec4(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

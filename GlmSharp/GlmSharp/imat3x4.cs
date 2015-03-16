@@ -61,19 +61,19 @@ namespace GlmSharp
         public ivec3 Row3 => new ivec3(m03, m13, m23);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly imat3x4 Zero = new imat3x4(default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int));
+        public static imat3x4 Zero { get; } = new imat3x4(default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly imat3x4 Ones = new imat3x4(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+        public static imat3x4 Ones { get; } = new imat3x4(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly imat3x4 Identity = new imat3x4(1, default(int), default(int), default(int), default(int), 1, default(int), default(int), default(int), default(int), 1, default(int));
+        public static imat3x4 Identity { get; } = new imat3x4(1, default(int), default(int), default(int), default(int), 1, default(int), default(int), default(int), default(int), 1, default(int));
         
         /// <summary>
         /// Component-wise constructor

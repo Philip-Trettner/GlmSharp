@@ -32,29 +32,29 @@ namespace GlmSharp
         public swizzle_decvec3 swizzle => new swizzle_decvec3(x, y, z);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly decvec3 Zero = new decvec3(default(decimal), default(decimal), default(decimal));
+        public static decvec3 Zero { get; } = new decvec3(default(decimal), default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly decvec3 Ones = new decvec3(1m, 1m, 1m);
+        public static decvec3 Ones { get; } = new decvec3(1m, 1m, 1m);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly decvec3 UnitX = new decvec3(1m, default(decimal), default(decimal));
+        public static decvec3 UnitX { get; } = new decvec3(1m, default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly decvec3 UnitY = new decvec3(default(decimal), 1m, default(decimal));
+        public static decvec3 UnitY { get; } = new decvec3(default(decimal), 1m, default(decimal));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly decvec3 UnitZ = new decvec3(default(decimal), default(decimal), 1m);
+        public static decvec3 UnitZ { get; } = new decvec3(default(decimal), default(decimal), 1m);
         
         /// <summary>
         /// Returns an array with all values
@@ -374,19 +374,19 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly decvec3 MaxValue = new decvec3(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
+        public static decvec3 MaxValue { get; } = new decvec3(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly decvec3 MinValue = new decvec3(decimal.MinValue, decimal.MinValue, decimal.MinValue);
+        public static decvec3 MinValue { get; } = new decvec3(decimal.MinValue, decimal.MinValue, decimal.MinValue);
         
         /// <summary>
-        /// Predefined all-MinusOne vector (DO NOT MODIFY)
+        /// Predefined all-MinusOne vector
         /// </summary>
-        public static readonly decvec3 MinusOne = new decvec3(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
+        public static decvec3 MinusOne { get; } = new decvec3(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

@@ -27,24 +27,24 @@ namespace GlmSharp
         public swizzle_decvec2 swizzle => new swizzle_decvec2(x, y);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly decvec2 Zero = new decvec2(default(decimal), default(decimal));
+        public static decvec2 Zero { get; } = new decvec2(default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly decvec2 Ones = new decvec2(1m, 1m);
+        public static decvec2 Ones { get; } = new decvec2(1m, 1m);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly decvec2 UnitX = new decvec2(1m, default(decimal));
+        public static decvec2 UnitX { get; } = new decvec2(1m, default(decimal));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly decvec2 UnitY = new decvec2(default(decimal), 1m);
+        public static decvec2 UnitY { get; } = new decvec2(default(decimal), 1m);
         
         /// <summary>
         /// Returns an array with all values
@@ -346,19 +346,19 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly decvec2 MaxValue = new decvec2(decimal.MaxValue, decimal.MaxValue);
+        public static decvec2 MaxValue { get; } = new decvec2(decimal.MaxValue, decimal.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly decvec2 MinValue = new decvec2(decimal.MinValue, decimal.MinValue);
+        public static decvec2 MinValue { get; } = new decvec2(decimal.MinValue, decimal.MinValue);
         
         /// <summary>
-        /// Predefined all-MinusOne vector (DO NOT MODIFY)
+        /// Predefined all-MinusOne vector
         /// </summary>
-        public static readonly decvec2 MinusOne = new decvec2(decimal.MinusOne, decimal.MinusOne);
+        public static decvec2 MinusOne { get; } = new decvec2(decimal.MinusOne, decimal.MinusOne);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

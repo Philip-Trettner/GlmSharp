@@ -51,19 +51,19 @@ namespace GlmSharp
         public cvec3 Row1 => new cvec3(m01, m11, m21);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly cmat3x2 Zero = new cmat3x2(default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex));
+        public static cmat3x2 Zero { get; } = new cmat3x2(default(Complex), default(Complex), default(Complex), default(Complex), default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly cmat3x2 Ones = new cmat3x2(1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        public static cmat3x2 Ones { get; } = new cmat3x2(1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly cmat3x2 Identity = new cmat3x2(1.0, default(Complex), default(Complex), 1.0, default(Complex), default(Complex));
+        public static cmat3x2 Identity { get; } = new cmat3x2(1.0, default(Complex), default(Complex), 1.0, default(Complex), default(Complex));
         
         /// <summary>
         /// Component-wise constructor

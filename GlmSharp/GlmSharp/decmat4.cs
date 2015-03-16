@@ -67,19 +67,19 @@ namespace GlmSharp
         public decvec4 Row3 => new decvec4(m03, m13, m23, m33);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly decmat4 Zero = new decmat4(default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal));
+        public static decmat4 Zero { get; } = new decmat4(default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly decmat4 Ones = new decmat4(1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m);
+        public static decmat4 Ones { get; } = new decmat4(1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m, 1m);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly decmat4 Identity = new decmat4(1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m);
+        public static decmat4 Identity { get; } = new decmat4(1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m);
         
         /// <summary>
         /// Component-wise constructor

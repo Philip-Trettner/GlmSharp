@@ -37,59 +37,59 @@ namespace GlmSharp
         public swizzle_cvec4 swizzle => new swizzle_cvec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly cvec4 Zero = new cvec4(default(Complex), default(Complex), default(Complex), default(Complex));
+        public static cvec4 Zero { get; } = new cvec4(default(Complex), default(Complex), default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly cvec4 Ones = new cvec4(1.0, 1.0, 1.0, 1.0);
+        public static cvec4 Ones { get; } = new cvec4(1.0, 1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly cvec4 UnitX = new cvec4(1.0, default(Complex), default(Complex), default(Complex));
+        public static cvec4 UnitX { get; } = new cvec4(1.0, default(Complex), default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly cvec4 UnitY = new cvec4(default(Complex), 1.0, default(Complex), default(Complex));
+        public static cvec4 UnitY { get; } = new cvec4(default(Complex), 1.0, default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly cvec4 UnitZ = new cvec4(default(Complex), default(Complex), 1.0, default(Complex));
+        public static cvec4 UnitZ { get; } = new cvec4(default(Complex), default(Complex), 1.0, default(Complex));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly cvec4 UnitW = new cvec4(default(Complex), default(Complex), default(Complex), 1.0);
+        public static cvec4 UnitW { get; } = new cvec4(default(Complex), default(Complex), default(Complex), 1.0);
         
         /// <summary>
-        /// Predefined all-imaginary-ones vector (DO NOT MODIFY)
+        /// Predefined all-imaginary-ones vector
         /// </summary>
-        public static readonly cvec4 ImaginaryOnes = new cvec4(Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne);
+        public static cvec4 ImaginaryOnes { get; } = new cvec4(Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne);
         
         /// <summary>
-        /// Predefined unit-imaginary-X vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static readonly cvec4 ImaginaryUnitX = new cvec4(Complex.ImaginaryOne, default(Complex), default(Complex), default(Complex));
+        public static cvec4 ImaginaryUnitX { get; } = new cvec4(Complex.ImaginaryOne, default(Complex), default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined unit-imaginary-Y vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static readonly cvec4 ImaginaryUnitY = new cvec4(default(Complex), Complex.ImaginaryOne, default(Complex), default(Complex));
+        public static cvec4 ImaginaryUnitY { get; } = new cvec4(default(Complex), Complex.ImaginaryOne, default(Complex), default(Complex));
         
         /// <summary>
-        /// Predefined unit-imaginary-Z vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-Z vector
         /// </summary>
-        public static readonly cvec4 ImaginaryUnitZ = new cvec4(default(Complex), default(Complex), Complex.ImaginaryOne, default(Complex));
+        public static cvec4 ImaginaryUnitZ { get; } = new cvec4(default(Complex), default(Complex), Complex.ImaginaryOne, default(Complex));
         
         /// <summary>
-        /// Predefined unit-imaginary-W vector (DO NOT MODIFY)
+        /// Predefined unit-imaginary-W vector
         /// </summary>
-        public static readonly cvec4 ImaginaryUnitW = new cvec4(default(Complex), default(Complex), default(Complex), Complex.ImaginaryOne);
+        public static cvec4 ImaginaryUnitW { get; } = new cvec4(default(Complex), default(Complex), default(Complex), Complex.ImaginaryOne);
         
         /// <summary>
         /// Returns an array with all values

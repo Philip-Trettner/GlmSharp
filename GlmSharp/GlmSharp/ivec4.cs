@@ -37,34 +37,34 @@ namespace GlmSharp
         public swizzle_ivec4 swizzle => new swizzle_ivec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly ivec4 Zero = new ivec4(default(int), default(int), default(int), default(int));
+        public static ivec4 Zero { get; } = new ivec4(default(int), default(int), default(int), default(int));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly ivec4 Ones = new ivec4(1, 1, 1, 1);
+        public static ivec4 Ones { get; } = new ivec4(1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly ivec4 UnitX = new ivec4(1, default(int), default(int), default(int));
+        public static ivec4 UnitX { get; } = new ivec4(1, default(int), default(int), default(int));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly ivec4 UnitY = new ivec4(default(int), 1, default(int), default(int));
+        public static ivec4 UnitY { get; } = new ivec4(default(int), 1, default(int), default(int));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly ivec4 UnitZ = new ivec4(default(int), default(int), 1, default(int));
+        public static ivec4 UnitZ { get; } = new ivec4(default(int), default(int), 1, default(int));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly ivec4 UnitW = new ivec4(default(int), default(int), default(int), 1);
+        public static ivec4 UnitW { get; } = new ivec4(default(int), default(int), default(int), 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -415,14 +415,14 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly ivec4 MaxValue = new ivec4(int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue);
+        public static ivec4 MaxValue { get; } = new ivec4(int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly ivec4 MinValue = new ivec4(int.MinValue, int.MinValue, int.MinValue, int.MinValue);
+        public static ivec4 MinValue { get; } = new ivec4(int.MinValue, int.MinValue, int.MinValue, int.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

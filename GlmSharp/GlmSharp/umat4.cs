@@ -67,19 +67,19 @@ namespace GlmSharp
         public uvec4 Row3 => new uvec4(m03, m13, m23, m33);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly umat4 Zero = new umat4(default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint));
+        public static umat4 Zero { get; } = new umat4(default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly umat4 Ones = new umat4(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+        public static umat4 Ones { get; } = new umat4(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly umat4 Identity = new umat4(1, default(uint), default(uint), default(uint), default(uint), 1, default(uint), default(uint), default(uint), default(uint), 1, default(uint), default(uint), default(uint), default(uint), 1);
+        public static umat4 Identity { get; } = new umat4(1, default(uint), default(uint), default(uint), default(uint), 1, default(uint), default(uint), default(uint), default(uint), 1, default(uint), default(uint), default(uint), default(uint), 1);
         
         /// <summary>
         /// Component-wise constructor

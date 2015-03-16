@@ -67,19 +67,19 @@ namespace GlmSharp
         public vec4 Row3 => new vec4(m03, m13, m23, m33);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly mat4 Zero = new mat4(default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float));
+        public static mat4 Zero { get; } = new mat4(default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly mat4 Ones = new mat4(1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f);
+        public static mat4 Ones { get; } = new mat4(1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly mat4 Identity = new mat4(1f, default(float), default(float), default(float), default(float), 1f, default(float), default(float), default(float), default(float), 1f, default(float), default(float), default(float), default(float), 1f);
+        public static mat4 Identity { get; } = new mat4(1f, default(float), default(float), default(float), default(float), 1f, default(float), default(float), default(float), default(float), 1f, default(float), default(float), default(float), default(float), 1f);
         
         /// <summary>
         /// Component-wise constructor

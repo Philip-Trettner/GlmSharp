@@ -45,9 +45,9 @@ namespace GlmSharp
         public gvec2<T> Row1 => new gvec2<T>(m01, m11);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly gmat2<T> Zero = new gmat2<T>(default(T), default(T), default(T), default(T));
+        public static gmat2<T> Zero { get; } = new gmat2<T>(default(T), default(T), default(T), default(T));
         
         /// <summary>
         /// Component-wise constructor

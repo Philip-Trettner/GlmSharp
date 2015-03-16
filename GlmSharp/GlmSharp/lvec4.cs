@@ -37,34 +37,34 @@ namespace GlmSharp
         public swizzle_lvec4 swizzle => new swizzle_lvec4(x, y, z, w);
         
         /// <summary>
-        /// Predefined all-zero vector (DO NOT MODIFY)
+        /// Predefined all-zero vector
         /// </summary>
-        public static readonly lvec4 Zero = new lvec4(default(long), default(long), default(long), default(long));
+        public static lvec4 Zero { get; } = new lvec4(default(long), default(long), default(long), default(long));
         
         /// <summary>
-        /// Predefined all-ones vector (DO NOT MODIFY)
+        /// Predefined all-ones vector
         /// </summary>
-        public static readonly lvec4 Ones = new lvec4(1, 1, 1, 1);
+        public static lvec4 Ones { get; } = new lvec4(1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined unit-X vector (DO NOT MODIFY)
+        /// Predefined unit-X vector
         /// </summary>
-        public static readonly lvec4 UnitX = new lvec4(1, default(long), default(long), default(long));
+        public static lvec4 UnitX { get; } = new lvec4(1, default(long), default(long), default(long));
         
         /// <summary>
-        /// Predefined unit-Y vector (DO NOT MODIFY)
+        /// Predefined unit-Y vector
         /// </summary>
-        public static readonly lvec4 UnitY = new lvec4(default(long), 1, default(long), default(long));
+        public static lvec4 UnitY { get; } = new lvec4(default(long), 1, default(long), default(long));
         
         /// <summary>
-        /// Predefined unit-Z vector (DO NOT MODIFY)
+        /// Predefined unit-Z vector
         /// </summary>
-        public static readonly lvec4 UnitZ = new lvec4(default(long), default(long), 1, default(long));
+        public static lvec4 UnitZ { get; } = new lvec4(default(long), default(long), 1, default(long));
         
         /// <summary>
-        /// Predefined unit-W vector (DO NOT MODIFY)
+        /// Predefined unit-W vector
         /// </summary>
-        public static readonly lvec4 UnitW = new lvec4(default(long), default(long), default(long), 1);
+        public static lvec4 UnitW { get; } = new lvec4(default(long), default(long), default(long), 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -415,14 +415,14 @@ namespace GlmSharp
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
         
         /// <summary>
-        /// Predefined all-MaxValue vector (DO NOT MODIFY)
+        /// Predefined all-MaxValue vector
         /// </summary>
-        public static readonly lvec4 MaxValue = new lvec4(long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue);
+        public static lvec4 MaxValue { get; } = new lvec4(long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue);
         
         /// <summary>
-        /// Predefined all-MinValue vector (DO NOT MODIFY)
+        /// Predefined all-MinValue vector
         /// </summary>
-        public static readonly lvec4 MinValue = new lvec4(long.MinValue, long.MinValue, long.MinValue, long.MinValue);
+        public static lvec4 MinValue { get; } = new lvec4(long.MinValue, long.MinValue, long.MinValue, long.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

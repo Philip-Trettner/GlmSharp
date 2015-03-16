@@ -55,19 +55,19 @@ namespace GlmSharp
         public uvec2 Row3 => new uvec2(m03, m13);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly umat2x4 Zero = new umat2x4(default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint));
+        public static umat2x4 Zero { get; } = new umat2x4(default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly umat2x4 Ones = new umat2x4(1, 1, 1, 1, 1, 1, 1, 1);
+        public static umat2x4 Ones { get; } = new umat2x4(1, 1, 1, 1, 1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly umat2x4 Identity = new umat2x4(1, default(uint), default(uint), default(uint), default(uint), 1, default(uint), default(uint));
+        public static umat2x4 Identity { get; } = new umat2x4(1, default(uint), default(uint), default(uint), default(uint), 1, default(uint), default(uint));
         
         /// <summary>
         /// Component-wise constructor

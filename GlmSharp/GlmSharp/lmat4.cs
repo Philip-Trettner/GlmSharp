@@ -67,19 +67,19 @@ namespace GlmSharp
         public lvec4 Row3 => new lvec4(m03, m13, m23, m33);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly lmat4 Zero = new lmat4(default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long));
+        public static lmat4 Zero { get; } = new lmat4(default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly lmat4 Ones = new lmat4(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+        public static lmat4 Ones { get; } = new lmat4(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly lmat4 Identity = new lmat4(1, default(long), default(long), default(long), default(long), 1, default(long), default(long), default(long), default(long), 1, default(long), default(long), default(long), default(long), 1);
+        public static lmat4 Identity { get; } = new lmat4(1, default(long), default(long), default(long), default(long), 1, default(long), default(long), default(long), default(long), 1, default(long), default(long), default(long), default(long), 1);
         
         /// <summary>
         /// Component-wise constructor

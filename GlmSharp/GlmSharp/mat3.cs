@@ -56,19 +56,19 @@ namespace GlmSharp
         public vec3 Row2 => new vec3(m02, m12, m22);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly mat3 Zero = new mat3(default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float));
+        public static mat3 Zero { get; } = new mat3(default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly mat3 Ones = new mat3(1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f);
+        public static mat3 Ones { get; } = new mat3(1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly mat3 Identity = new mat3(1f, default(float), default(float), default(float), 1f, default(float), default(float), default(float), 1f);
+        public static mat3 Identity { get; } = new mat3(1f, default(float), default(float), default(float), 1f, default(float), default(float), default(float), 1f);
         
         /// <summary>
         /// Component-wise constructor

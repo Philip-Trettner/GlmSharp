@@ -61,19 +61,19 @@ namespace GlmSharp
         public dvec3 Row3 => new dvec3(m03, m13, m23);
         
         /// <summary>
-        /// Predefined all-zero matrix (DO NOT MODIFY)
+        /// Predefined all-zero matrix
         /// </summary>
-        public static readonly dmat3x4 Zero = new dmat3x4(default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double));
+        public static dmat3x4 Zero { get; } = new dmat3x4(default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double), default(double));
         
         /// <summary>
-        /// Predefined all-ones matrix (DO NOT MODIFY)
+        /// Predefined all-ones matrix
         /// </summary>
-        public static readonly dmat3x4 Ones = new dmat3x4(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        public static dmat3x4 Ones { get; } = new dmat3x4(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
         
         /// <summary>
-        /// Predefined identity matrix (DO NOT MODIFY)
+        /// Predefined identity matrix
         /// </summary>
-        public static readonly dmat3x4 Identity = new dmat3x4(1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double), default(double), default(double), 1.0, default(double));
+        public static dmat3x4 Identity { get; } = new dmat3x4(1.0, default(double), default(double), default(double), default(double), 1.0, default(double), default(double), default(double), default(double), 1.0, default(double));
         
         /// <summary>
         /// Component-wise constructor
