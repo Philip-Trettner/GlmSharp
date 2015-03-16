@@ -649,7 +649,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle.
+        /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.
         /// </summary>
         public static decmat4 Rotate(decimal angle, decvec3 v)
         {
@@ -672,6 +672,30 @@ namespace GlmSharp
             m.m21 = 0 + temp.z * axis.y - s * axis.x;
             m.m22 = c + temp.z * axis.z;
             return m;
+        }
+        
+        /// <summary>
+        /// Builds a rotation matrix around UnitX and an angle in radians.
+        /// </summary>
+        public static decmat4 RotateX(decimal angle)
+        {
+            return Rotate(angle, decvec3.UnitX);
+        }
+        
+        /// <summary>
+        /// Builds a rotation matrix around UnitY and an angle in radians.
+        /// </summary>
+        public static decmat4 RotateY(decimal angle)
+        {
+            return Rotate(angle, decvec3.UnitY);
+        }
+        
+        /// <summary>
+        /// Builds a rotation matrix around UnitZ and an angle in radians.
+        /// </summary>
+        public static decmat4 RotateZ(decimal angle)
+        {
+            return Rotate(angle, decvec3.UnitZ);
         }
     }
 }

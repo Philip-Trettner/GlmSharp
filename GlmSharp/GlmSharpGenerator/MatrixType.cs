@@ -406,7 +406,7 @@ namespace GlmSharpGenerator
 
                     // matrix-vector-multiplication
                     foreach (var line in "Executes a matrix-vector-multiplication.".AsComment()) yield return line;
-                    yield return string.Format("public static {0} operator*({1} m, {2} v) => new {0}({3});", BaseTypeInfo.Prefix + "vec" + Rows, ClassNameThat, BaseTypeInfo.Prefix + "vec" + Columns, 
+                    yield return string.Format("public static {0} operator*({1} m, {2} v) => new {0}({3});", BaseTypeInfo.Prefix + "vec" + Rows, ClassNameThat, BaseTypeInfo.Prefix + "vec" + Columns,
                         Rows.ForIndexUpTo(r => Columns.ForIndexUpTo(c => "m.m" + c + r + " * v." + "xyzw"[c]).Aggregated(" + ")).CommaSeparated());
 
                     // matrix-matrix-division
@@ -638,7 +638,7 @@ namespace GlmSharpGenerator
                         yield return "}";
 
                         // rotate
-                        foreach (var line in "Builds a rotation 4 * 4 matrix created from an axis vector and an angle.".AsComment()) yield return line;
+                        foreach (var line in "Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.".AsComment()) yield return line;
                         yield return string.Format("public static {0} Rotate({1} angle, {2} v)", ClassNameThat, BaseType, BaseTypeInfo.Prefix + "vec3");
                         yield return "{";
                         yield return string.Format("    var c = ({0})Math.Cos((double)angle);", BaseType);
@@ -661,6 +661,16 @@ namespace GlmSharpGenerator
                         yield return "    m.m22 = c + temp.z * axis.z;";
                         yield return "    return m;";
                         yield return "}";
+
+                        for (var axis = 0; axis < 3; ++axis)
+                        {
+                            foreach (var line in string.Format("Builds a rotation matrix around Unit{0} and an angle in radians.", "XYZ"[axis]).AsComment()) yield return line;
+                            yield return string.Format("public static {0} Rotate{1}({2} angle)", ClassNameThat, "XYZ"[axis], BaseType);
+                            yield return "{";
+                            // TODO: more performant
+                            yield return string.Format("    return Rotate(angle, {0}.Unit{1});", BaseTypeInfo.Prefix + "vec3", "XYZ"[axis]);
+                            yield return "}";
+                        }
                     }
                 }
             }

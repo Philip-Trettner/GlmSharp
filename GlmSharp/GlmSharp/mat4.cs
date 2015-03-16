@@ -649,7 +649,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle.
+        /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.
         /// </summary>
         public static mat4 Rotate(float angle, vec3 v)
         {
@@ -672,6 +672,30 @@ namespace GlmSharp
             m.m21 = 0 + temp.z * axis.y - s * axis.x;
             m.m22 = c + temp.z * axis.z;
             return m;
+        }
+        
+        /// <summary>
+        /// Builds a rotation matrix around UnitX and an angle in radians.
+        /// </summary>
+        public static mat4 RotateX(float angle)
+        {
+            return Rotate(angle, vec3.UnitX);
+        }
+        
+        /// <summary>
+        /// Builds a rotation matrix around UnitY and an angle in radians.
+        /// </summary>
+        public static mat4 RotateY(float angle)
+        {
+            return Rotate(angle, vec3.UnitY);
+        }
+        
+        /// <summary>
+        /// Builds a rotation matrix around UnitZ and an angle in radians.
+        /// </summary>
+        public static mat4 RotateZ(float angle)
+        {
+            return Rotate(angle, vec3.UnitZ);
         }
     }
 }
