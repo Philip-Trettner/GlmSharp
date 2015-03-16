@@ -31,6 +31,8 @@ namespace GlmSharpGenerator
                 yield return "using System.Numerics;";
                 yield return "using System.Linq;";
                 yield return "";
+                yield return "// ReSharper disable InconsistentNaming";
+                yield return "";
                 yield return "namespace GlmSharp";
                 yield return "{";
                 yield return "    [Serializable]";
