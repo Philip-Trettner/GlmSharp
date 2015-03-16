@@ -33,9 +33,9 @@ Supported base types:
 * `bool` (`bvec`)
 * generic `T` (`gvec<T>`)
 
-(Currently a total of 108 types)
+(Currently a total of 108 types in about 25k LOC)
 
-Supports swizzling `v.swizzle.bgr`.
+Supports swizzling `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
 
 
 ## Syntax, Usage
