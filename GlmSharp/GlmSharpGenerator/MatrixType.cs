@@ -536,6 +536,29 @@ namespace GlmSharpGenerator
                         yield return string.Format("    m.m32 = ({0})( - (2.0)*(double)zNear );", BaseType);
                         yield return "    return m;";
                         yield return "}";
+
+                        // look at
+                        foreach (var line in "Build a look at view matrix.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} LookAt({1} eye, {1} center, {1} up)", ClassNameThat, BaseTypeInfo.Prefix + "vec3");
+                        yield return "{";
+                        yield return "    var f = (center - eye).Normalized;";
+                        yield return string.Format("    var s = {0}.Cross(f, up).Normalized;", BaseTypeInfo.Prefix + "vec3");
+                        yield return string.Format("    var u = {0}.Cross(s, f);", BaseTypeInfo.Prefix + "vec3");
+                        yield return "    var m = Identity;";
+                        yield return "    m.m00 = s.x;";
+                        yield return "    m.m10 = s.y;";
+                        yield return "    m.m20 = s.z;";
+                        yield return "    m.m01 = u.x;";
+                        yield return "    m.m11 = u.y;";
+                        yield return "    m.m21 = u.z;";
+                        yield return "    m.m02 = -f.x;";
+                        yield return "    m.m12 = -f.y;";
+                        yield return "    m.m22 = -f.z;";
+                        yield return string.Format("    m.m30 = -{0}.Dot(s, eye);", BaseTypeInfo.Prefix + "vec3");
+                        yield return string.Format("    m.m31 = -{0}.Dot(u, eye);", BaseTypeInfo.Prefix + "vec3");
+                        yield return string.Format("    m.m32 = {0}.Dot(f, eye);", BaseTypeInfo.Prefix + "vec3");
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }

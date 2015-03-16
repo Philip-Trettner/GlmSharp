@@ -542,5 +542,29 @@ namespace GlmSharp
             m.m32 = (float)( - (2.0)*(double)zNear );
             return m;
         }
+        
+        /// <summary>
+        /// Build a look at view matrix.
+        /// </summary>
+        public static mat4 LookAt(vec3 eye, vec3 center, vec3 up)
+        {
+            var f = (center - eye).Normalized;
+            var s = vec3.Cross(f, up).Normalized;
+            var u = vec3.Cross(s, f);
+            var m = Identity;
+            m.m00 = s.x;
+            m.m10 = s.y;
+            m.m20 = s.z;
+            m.m01 = u.x;
+            m.m11 = u.y;
+            m.m21 = u.z;
+            m.m02 = -f.x;
+            m.m12 = -f.y;
+            m.m22 = -f.z;
+            m.m30 = -vec3.Dot(s, eye);
+            m.m31 = -vec3.Dot(u, eye);
+            m.m32 = vec3.Dot(f, eye);
+            return m;
+        }
     }
 }
