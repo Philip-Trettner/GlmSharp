@@ -671,6 +671,22 @@ namespace GlmSharpGenerator
                             yield return string.Format("    return Rotate(angle, {0}.Unit{1});", BaseTypeInfo.Prefix + "vec3", "XYZ"[axis]);
                             yield return "}";
                         }
+
+                        // scale
+                        foreach (var line in "Builds a scale matrix by components x, y, z.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Scale({1} x, {1} y, {1} z)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    var m = Identity;";
+                        yield return "    m.m00 = x;";
+                        yield return "    m.m11 = y;";
+                        yield return "    m.m22 = z;";
+                        yield return "    return m;";
+                        yield return "}";
+                        
+                        foreach (var line in "Builds a scale matrix by vector v.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Scale({1} v) => Scale(v.x, v.y, v.z);", ClassNameThat, BaseTypeInfo.Prefix + "vec3");
+                        foreach (var line in "Builds a scale matrix by uniform scaling s.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Scale({1} s) => Scale(s, s, s);", ClassNameThat, BaseType);
                     }
                 }
             }

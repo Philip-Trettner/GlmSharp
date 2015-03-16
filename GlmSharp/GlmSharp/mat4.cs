@@ -697,5 +697,27 @@ namespace GlmSharp
         {
             return Rotate(angle, vec3.UnitZ);
         }
+        
+        /// <summary>
+        /// Builds a scale matrix by components x, y, z.
+        /// </summary>
+        public static mat4 Scale(float x, float y, float z)
+        {
+            var m = Identity;
+            m.m00 = x;
+            m.m11 = y;
+            m.m22 = z;
+            return m;
+        }
+        
+        /// <summary>
+        /// Builds a scale matrix by vector v.
+        /// </summary>
+        public static mat4 Scale(vec3 v) => Scale(v.x, v.y, v.z);
+        
+        /// <summary>
+        /// Builds a scale matrix by uniform scaling s.
+        /// </summary>
+        public static mat4 Scale(float s) => Scale(s, s, s);
     }
 }

@@ -697,5 +697,27 @@ namespace GlmSharp
         {
             return Rotate(angle, dvec3.UnitZ);
         }
+        
+        /// <summary>
+        /// Builds a scale matrix by components x, y, z.
+        /// </summary>
+        public static dmat4 Scale(double x, double y, double z)
+        {
+            var m = Identity;
+            m.m00 = x;
+            m.m11 = y;
+            m.m22 = z;
+            return m;
+        }
+        
+        /// <summary>
+        /// Builds a scale matrix by vector v.
+        /// </summary>
+        public static dmat4 Scale(dvec3 v) => Scale(v.x, v.y, v.z);
+        
+        /// <summary>
+        /// Builds a scale matrix by uniform scaling s.
+        /// </summary>
+        public static dmat4 Scale(double s) => Scale(s, s, s);
     }
 }
