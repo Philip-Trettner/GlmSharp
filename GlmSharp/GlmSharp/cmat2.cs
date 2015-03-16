@@ -92,7 +92,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         public IEnumerator<Complex> GetEnumerator()
         {
@@ -103,12 +103,12 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
-        /// Returns the number of components (4).
+        /// Returns the number of FieldCount (4).
         /// </summary>
         public int Count => 4;
         
@@ -190,5 +190,75 @@ namespace GlmSharp
                 return ((((((m00.GetHashCode()) * 397) ^ m01.GetHashCode()) * 397) ^ m10.GetHashCode()) * 397) ^ m11.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the euclidean length of this matrix.
+        /// </summary>
+        public double Length => (double)Math.Sqrt(m00.LengthSqr() + m01.LengthSqr() + m10.LengthSqr() + m11.LengthSqr());
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this matrix.
+        /// </summary>
+        public double LengthSqr => m00.LengthSqr() + m01.LengthSqr() + m10.LengthSqr() + m11.LengthSqr();
+        
+        /// <summary>
+        /// Returns the sum of all FieldCount.
+        /// </summary>
+        public Complex Sum => m00 + m01 + m10 + m11;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this matrix.
+        /// </summary>
+        public double Norm => (double)Math.Sqrt(m00.LengthSqr() + m01.LengthSqr() + m10.LengthSqr() + m11.LengthSqr());
+        
+        /// <summary>
+        /// Returns the one-norm of this matrix.
+        /// </summary>
+        public double Norm1 => m00.Magnitude + m01.Magnitude + m10.Magnitude + m11.Magnitude;
+        
+        /// <summary>
+        /// Returns the two-norm of this matrix.
+        /// </summary>
+        public double Norm2 => (double)Math.Sqrt(m00.LengthSqr() + m01.LengthSqr() + m10.LengthSqr() + m11.LengthSqr());
+        
+        /// <summary>
+        /// Returns the max-norm of this matrix.
+        /// </summary>
+        public Complex NormMax => Math.Max(Math.Max(Math.Max(m00.Magnitude, m01.Magnitude), m10.Magnitude), m11.Magnitude);
+        
+        /// <summary>
+        /// Returns the p-norm of this matrix.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)m00.Magnitude, p) + Math.Pow((double)m01.Magnitude, p) + Math.Pow((double)m10.Magnitude, p) + Math.Pow((double)m11.Magnitude, p), 1 / p);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static cmat2 operator+(cmat2 lhs, cmat2 rhs) => new cmat2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static cmat2 operator+(cmat2 lhs, Complex rhs) => new cmat2(lhs.m00 + rhs, lhs.m01 + rhs, lhs.m10 + rhs, lhs.m11 + rhs);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static cmat2 operator+(Complex lhs, cmat2 rhs) => new cmat2(lhs + rhs.m00, lhs + rhs.m01, lhs + rhs.m10, lhs + rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static cmat2 operator-(cmat2 lhs, cmat2 rhs) => new cmat2(lhs.m00 - rhs.m00, lhs.m01 - rhs.m01, lhs.m10 - rhs.m10, lhs.m11 - rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static cmat2 operator-(cmat2 lhs, Complex rhs) => new cmat2(lhs.m00 - rhs, lhs.m01 - rhs, lhs.m10 - rhs, lhs.m11 - rhs);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static cmat2 operator-(Complex lhs, cmat2 rhs) => new cmat2(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m10, lhs - rhs.m11);
     }
 }

@@ -33,9 +33,6 @@ namespace GlmSharpGenerator
         public char ArgOf(int c) => "xyzw"[c];
         public string ArgOfs(int c) => "xyzw"[c].ToString();
 
-        public string AbsString(string s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
-        public string AbsString(char s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();
-
         public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseType + " " + c);
         public string SubCompParameterString(int start, int end) => SubCompParameters(start, end).CommaSeparated();
         public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
@@ -55,12 +52,6 @@ namespace GlmSharpGenerator
                 yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : ZeroValue).Indent();
             yield return "}";
         }
-
-        public string SqrOf(string s) => BaseTypeInfo.Complex ? s + ".LengthSqr()" : s + "*" + s;
-        public string SqrOf(char s) => SqrOf(s.ToString());
-
-        public string SqrtOf(string s) => BaseTypeInfo.Decimal ? s + ".Sqrt()" : string.Format("Math.Sqrt({0})", s);
-        public string SqrtOf(char s) => SqrOf(s.ToString());
 
         public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseTypeInfo.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
 

@@ -103,7 +103,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         public IEnumerator<bool> GetEnumerator()
         {
@@ -116,12 +116,12 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
-        /// Returns the number of components (6).
+        /// Returns the number of FieldCount (6).
         /// </summary>
         public int Count => 6;
         
@@ -207,5 +207,35 @@ namespace GlmSharp
                 return ((((((((((m00.GetHashCode()) * 2) ^ m01.GetHashCode()) * 2) ^ m02.GetHashCode()) * 2) ^ m10.GetHashCode()) * 2) ^ m11.GetHashCode()) * 2) ^ m12.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the minimal component of this matrix.
+        /// </summary>
+        public bool MinElement => m00 && m01 && m02 && m10 && m11 && m12;
+        
+        /// <summary>
+        /// Returns the maximal component of this matrix.
+        /// </summary>
+        public bool MaxElement => m00 || m01 || m02 || m10 || m11 || m12;
+        
+        /// <summary>
+        /// Returns true if all component are true.
+        /// </summary>
+        public bool All => m00 && m01 && m02 && m10 && m11 && m12;
+        
+        /// <summary>
+        /// Returns true if any component is true.
+        /// </summary>
+        public bool Any => m00 || m01 || m02 || m10 || m11 || m12;
+        
+        /// <summary>
+        /// Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)
+        /// </summary>
+        public static bmat2x3 operator&(bmat2x3 lhs, bmat2x3 rhs) => new bmat2x3(lhs.m00 && rhs.m00, lhs.m01 && rhs.m01, lhs.m02 && rhs.m02, lhs.m10 && rhs.m10, lhs.m11 && rhs.m11, lhs.m12 && rhs.m12);
+        
+        /// <summary>
+        /// Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)
+        /// </summary>
+        public static bmat2x3 operator|(bmat2x3 lhs, bmat2x3 rhs) => new bmat2x3(lhs.m00 || rhs.m00, lhs.m01 || rhs.m01, lhs.m02 || rhs.m02, lhs.m10 || rhs.m10, lhs.m11 || rhs.m11, lhs.m12 || rhs.m12);
     }
 }

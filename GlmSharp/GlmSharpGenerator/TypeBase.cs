@@ -52,5 +52,16 @@ namespace GlmSharpGenerator
         public string OneValue => BaseTypeInfo.OneValue;
 
         public string HashCodeOf(string val) => IsGeneric ? string.Format("EqualityComparer<T>.Default.GetHashCode({0})", val) : string.Format("{0}.GetHashCode()", val);
+
+
+        public string SqrOf(string s) => BaseTypeInfo.Complex ? s + ".LengthSqr()" : s + "*" + s;
+        public string SqrOf(char s) => SqrOf(s.ToString());
+
+        public string SqrtOf(string s) => BaseTypeInfo.Decimal ? s + ".Sqrt()" : string.Format("Math.Sqrt({0})", s);
+        public string SqrtOf(char s) => SqrOf(s.ToString());
+
+
+        public string AbsString(string s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
+        public string AbsString(char s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();
     }
 }

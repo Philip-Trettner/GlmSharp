@@ -133,7 +133,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         public IEnumerator<decimal> GetEnumerator()
         {
@@ -152,12 +152,12 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
-        /// Returns the number of components (12).
+        /// Returns the number of FieldCount (12).
         /// </summary>
         public int Count => 12;
         
@@ -255,5 +255,145 @@ namespace GlmSharp
                 return ((((((((((((((((((((((m00.GetHashCode()) * 397) ^ m01.GetHashCode()) * 397) ^ m02.GetHashCode()) * 397) ^ m10.GetHashCode()) * 397) ^ m11.GetHashCode()) * 397) ^ m12.GetHashCode()) * 397) ^ m20.GetHashCode()) * 397) ^ m21.GetHashCode()) * 397) ^ m22.GetHashCode()) * 397) ^ m30.GetHashCode()) * 397) ^ m31.GetHashCode()) * 397) ^ m32.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the minimal component of this matrix.
+        /// </summary>
+        public decimal MinElement => Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(m00, m01), m02), m10), m11), m12), m20), m21), m22), m30), m31), m32);
+        
+        /// <summary>
+        /// Returns the maximal component of this matrix.
+        /// </summary>
+        public decimal MaxElement => Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(m00, m01), m02), m10), m11), m12), m20), m21), m22), m30), m31), m32);
+        
+        /// <summary>
+        /// Returns the euclidean length of this matrix.
+        /// </summary>
+        public decimal Length => (decimal)m00*m00 + m01*m01 + m02*m02 + m10*m10 + m11*m11 + m12*m12 + m20*m20 + m21*m21 + m22*m22 + m30*m30 + m31*m31 + m32*m32.Sqrt();
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this matrix.
+        /// </summary>
+        public decimal LengthSqr => m00*m00 + m01*m01 + m02*m02 + m10*m10 + m11*m11 + m12*m12 + m20*m20 + m21*m21 + m22*m22 + m30*m30 + m31*m31 + m32*m32;
+        
+        /// <summary>
+        /// Returns the sum of all FieldCount.
+        /// </summary>
+        public decimal Sum => m00 + m01 + m02 + m10 + m11 + m12 + m20 + m21 + m22 + m30 + m31 + m32;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this matrix.
+        /// </summary>
+        public decimal Norm => (decimal)m00*m00 + m01*m01 + m02*m02 + m10*m10 + m11*m11 + m12*m12 + m20*m20 + m21*m21 + m22*m22 + m30*m30 + m31*m31 + m32*m32.Sqrt();
+        
+        /// <summary>
+        /// Returns the one-norm of this matrix.
+        /// </summary>
+        public decimal Norm1 => Math.Abs(m00) + Math.Abs(m01) + Math.Abs(m02) + Math.Abs(m10) + Math.Abs(m11) + Math.Abs(m12) + Math.Abs(m20) + Math.Abs(m21) + Math.Abs(m22) + Math.Abs(m30) + Math.Abs(m31) + Math.Abs(m32);
+        
+        /// <summary>
+        /// Returns the two-norm of this matrix.
+        /// </summary>
+        public decimal Norm2 => (decimal)m00*m00 + m01*m01 + m02*m02 + m10*m10 + m11*m11 + m12*m12 + m20*m20 + m21*m21 + m22*m22 + m30*m30 + m31*m31 + m32*m32.Sqrt();
+        
+        /// <summary>
+        /// Returns the max-norm of this matrix.
+        /// </summary>
+        public decimal NormMax => Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Abs(m00), Math.Abs(m01)), Math.Abs(m02)), Math.Abs(m10)), Math.Abs(m11)), Math.Abs(m12)), Math.Abs(m20)), Math.Abs(m21)), Math.Abs(m22)), Math.Abs(m30)), Math.Abs(m31)), Math.Abs(m32));
+        
+        /// <summary>
+        /// Returns the p-norm of this matrix.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(m00), p) + Math.Pow((double)Math.Abs(m01), p) + Math.Pow((double)Math.Abs(m02), p) + Math.Pow((double)Math.Abs(m10), p) + Math.Pow((double)Math.Abs(m11), p) + Math.Pow((double)Math.Abs(m12), p) + Math.Pow((double)Math.Abs(m20), p) + Math.Pow((double)Math.Abs(m21), p) + Math.Pow((double)Math.Abs(m22), p) + Math.Pow((double)Math.Abs(m30), p) + Math.Pow((double)Math.Abs(m31), p) + Math.Pow((double)Math.Abs(m32), p), 1 / p);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static decmat4x3 operator+(decmat4x3 lhs, decmat4x3 rhs) => new decmat4x3(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m02 + rhs.m02, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m12 + rhs.m12, lhs.m20 + rhs.m20, lhs.m21 + rhs.m21, lhs.m22 + rhs.m22, lhs.m30 + rhs.m30, lhs.m31 + rhs.m31, lhs.m32 + rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static decmat4x3 operator+(decmat4x3 lhs, decimal rhs) => new decmat4x3(lhs.m00 + rhs, lhs.m01 + rhs, lhs.m02 + rhs, lhs.m10 + rhs, lhs.m11 + rhs, lhs.m12 + rhs, lhs.m20 + rhs, lhs.m21 + rhs, lhs.m22 + rhs, lhs.m30 + rhs, lhs.m31 + rhs, lhs.m32 + rhs);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static decmat4x3 operator+(decimal lhs, decmat4x3 rhs) => new decmat4x3(lhs + rhs.m00, lhs + rhs.m01, lhs + rhs.m02, lhs + rhs.m10, lhs + rhs.m11, lhs + rhs.m12, lhs + rhs.m20, lhs + rhs.m21, lhs + rhs.m22, lhs + rhs.m30, lhs + rhs.m31, lhs + rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static decmat4x3 operator-(decmat4x3 lhs, decmat4x3 rhs) => new decmat4x3(lhs.m00 - rhs.m00, lhs.m01 - rhs.m01, lhs.m02 - rhs.m02, lhs.m10 - rhs.m10, lhs.m11 - rhs.m11, lhs.m12 - rhs.m12, lhs.m20 - rhs.m20, lhs.m21 - rhs.m21, lhs.m22 - rhs.m22, lhs.m30 - rhs.m30, lhs.m31 - rhs.m31, lhs.m32 - rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static decmat4x3 operator-(decmat4x3 lhs, decimal rhs) => new decmat4x3(lhs.m00 - rhs, lhs.m01 - rhs, lhs.m02 - rhs, lhs.m10 - rhs, lhs.m11 - rhs, lhs.m12 - rhs, lhs.m20 - rhs, lhs.m21 - rhs, lhs.m22 - rhs, lhs.m30 - rhs, lhs.m31 - rhs, lhs.m32 - rhs);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static decmat4x3 operator-(decimal lhs, decmat4x3 rhs) => new decmat4x3(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m02, lhs - rhs.m10, lhs - rhs.m11, lhs - rhs.m12, lhs - rhs.m20, lhs - rhs.m21, lhs - rhs.m22, lhs - rhs.m30, lhs - rhs.m31, lhs - rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison.
+        /// </summary>
+        public static bmat4x3 operator<(decmat4x3 lhs, decmat4x3 rhs) => new bmat4x3(lhs.m00 < rhs.m00, lhs.m01 < rhs.m01, lhs.m02 < rhs.m02, lhs.m10 < rhs.m10, lhs.m11 < rhs.m11, lhs.m12 < rhs.m12, lhs.m20 < rhs.m20, lhs.m21 < rhs.m21, lhs.m22 < rhs.m22, lhs.m30 < rhs.m30, lhs.m31 < rhs.m31, lhs.m32 < rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator<(decmat4x3 lhs, decimal rhs) => new bmat4x3(lhs.m00 < rhs, lhs.m01 < rhs, lhs.m02 < rhs, lhs.m10 < rhs, lhs.m11 < rhs, lhs.m12 < rhs, lhs.m20 < rhs, lhs.m21 < rhs, lhs.m22 < rhs, lhs.m30 < rhs, lhs.m31 < rhs, lhs.m32 < rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator<(decimal lhs, decmat4x3 rhs) => new bmat4x3(lhs < rhs.m00, lhs < rhs.m01, lhs < rhs.m02, lhs < rhs.m10, lhs < rhs.m11, lhs < rhs.m12, lhs < rhs.m20, lhs < rhs.m21, lhs < rhs.m22, lhs < rhs.m30, lhs < rhs.m31, lhs < rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison.
+        /// </summary>
+        public static bmat4x3 operator<=(decmat4x3 lhs, decmat4x3 rhs) => new bmat4x3(lhs.m00 <= rhs.m00, lhs.m01 <= rhs.m01, lhs.m02 <= rhs.m02, lhs.m10 <= rhs.m10, lhs.m11 <= rhs.m11, lhs.m12 <= rhs.m12, lhs.m20 <= rhs.m20, lhs.m21 <= rhs.m21, lhs.m22 <= rhs.m22, lhs.m30 <= rhs.m30, lhs.m31 <= rhs.m31, lhs.m32 <= rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator<=(decmat4x3 lhs, decimal rhs) => new bmat4x3(lhs.m00 <= rhs, lhs.m01 <= rhs, lhs.m02 <= rhs, lhs.m10 <= rhs, lhs.m11 <= rhs, lhs.m12 <= rhs, lhs.m20 <= rhs, lhs.m21 <= rhs, lhs.m22 <= rhs, lhs.m30 <= rhs, lhs.m31 <= rhs, lhs.m32 <= rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator<=(decimal lhs, decmat4x3 rhs) => new bmat4x3(lhs <= rhs.m00, lhs <= rhs.m01, lhs <= rhs.m02, lhs <= rhs.m10, lhs <= rhs.m11, lhs <= rhs.m12, lhs <= rhs.m20, lhs <= rhs.m21, lhs <= rhs.m22, lhs <= rhs.m30, lhs <= rhs.m31, lhs <= rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison.
+        /// </summary>
+        public static bmat4x3 operator>(decmat4x3 lhs, decmat4x3 rhs) => new bmat4x3(lhs.m00 > rhs.m00, lhs.m01 > rhs.m01, lhs.m02 > rhs.m02, lhs.m10 > rhs.m10, lhs.m11 > rhs.m11, lhs.m12 > rhs.m12, lhs.m20 > rhs.m20, lhs.m21 > rhs.m21, lhs.m22 > rhs.m22, lhs.m30 > rhs.m30, lhs.m31 > rhs.m31, lhs.m32 > rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator>(decmat4x3 lhs, decimal rhs) => new bmat4x3(lhs.m00 > rhs, lhs.m01 > rhs, lhs.m02 > rhs, lhs.m10 > rhs, lhs.m11 > rhs, lhs.m12 > rhs, lhs.m20 > rhs, lhs.m21 > rhs, lhs.m22 > rhs, lhs.m30 > rhs, lhs.m31 > rhs, lhs.m32 > rhs);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator>(decimal lhs, decmat4x3 rhs) => new bmat4x3(lhs > rhs.m00, lhs > rhs.m01, lhs > rhs.m02, lhs > rhs.m10, lhs > rhs.m11, lhs > rhs.m12, lhs > rhs.m20, lhs > rhs.m21, lhs > rhs.m22, lhs > rhs.m30, lhs > rhs.m31, lhs > rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison.
+        /// </summary>
+        public static bmat4x3 operator>=(decmat4x3 lhs, decmat4x3 rhs) => new bmat4x3(lhs.m00 >= rhs.m00, lhs.m01 >= rhs.m01, lhs.m02 >= rhs.m02, lhs.m10 >= rhs.m10, lhs.m11 >= rhs.m11, lhs.m12 >= rhs.m12, lhs.m20 >= rhs.m20, lhs.m21 >= rhs.m21, lhs.m22 >= rhs.m22, lhs.m30 >= rhs.m30, lhs.m31 >= rhs.m31, lhs.m32 >= rhs.m32);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator>=(decmat4x3 lhs, decimal rhs) => new bmat4x3(lhs.m00 >= rhs, lhs.m01 >= rhs, lhs.m02 >= rhs, lhs.m10 >= rhs, lhs.m11 >= rhs, lhs.m12 >= rhs, lhs.m20 >= rhs, lhs.m21 >= rhs, lhs.m22 >= rhs, lhs.m30 >= rhs, lhs.m31 >= rhs, lhs.m32 >= rhs);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4x3 operator>=(decimal lhs, decmat4x3 rhs) => new bmat4x3(lhs >= rhs.m00, lhs >= rhs.m01, lhs >= rhs.m02, lhs >= rhs.m10, lhs >= rhs.m11, lhs >= rhs.m12, lhs >= rhs.m20, lhs >= rhs.m21, lhs >= rhs.m22, lhs >= rhs.m30, lhs >= rhs.m31, lhs >= rhs.m32);
     }
 }

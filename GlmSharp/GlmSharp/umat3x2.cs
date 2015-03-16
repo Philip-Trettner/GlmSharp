@@ -104,7 +104,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         public IEnumerator<uint> GetEnumerator()
         {
@@ -117,12 +117,12 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
-        /// Returns the number of components (6).
+        /// Returns the number of FieldCount (6).
         /// </summary>
         public int Count => 6;
         
@@ -208,5 +208,215 @@ namespace GlmSharp
                 return ((((((((((m00.GetHashCode()) * 397) ^ m01.GetHashCode()) * 397) ^ m10.GetHashCode()) * 397) ^ m11.GetHashCode()) * 397) ^ m20.GetHashCode()) * 397) ^ m21.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the minimal component of this matrix.
+        /// </summary>
+        public uint MinElement => Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(m00, m01), m10), m11), m20), m21);
+        
+        /// <summary>
+        /// Returns the maximal component of this matrix.
+        /// </summary>
+        public uint MaxElement => Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(m00, m01), m10), m11), m20), m21);
+        
+        /// <summary>
+        /// Returns the euclidean length of this matrix.
+        /// </summary>
+        public float Length => (float)Math.Sqrt(m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21);
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this matrix.
+        /// </summary>
+        public float LengthSqr => m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21;
+        
+        /// <summary>
+        /// Returns the sum of all FieldCount.
+        /// </summary>
+        public uint Sum => m00 + m01 + m10 + m11 + m20 + m21;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this matrix.
+        /// </summary>
+        public float Norm => (float)Math.Sqrt(m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21);
+        
+        /// <summary>
+        /// Returns the one-norm of this matrix.
+        /// </summary>
+        public float Norm1 => m00 + m01 + m10 + m11 + m20 + m21;
+        
+        /// <summary>
+        /// Returns the two-norm of this matrix.
+        /// </summary>
+        public float Norm2 => (float)Math.Sqrt(m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21);
+        
+        /// <summary>
+        /// Returns the max-norm of this matrix.
+        /// </summary>
+        public uint NormMax => Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(m00, m01), m10), m11), m20), m21);
+        
+        /// <summary>
+        /// Returns the p-norm of this matrix.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)m00, p) + Math.Pow((double)m01, p) + Math.Pow((double)m10, p) + Math.Pow((double)m11, p) + Math.Pow((double)m20, p) + Math.Pow((double)m21, p), 1 / p);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static umat3x2 operator+(umat3x2 lhs, umat3x2 rhs) => new umat3x2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m20 + rhs.m20, lhs.m21 + rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static umat3x2 operator+(umat3x2 lhs, uint rhs) => new umat3x2(lhs.m00 + rhs, lhs.m01 + rhs, lhs.m10 + rhs, lhs.m11 + rhs, lhs.m20 + rhs, lhs.m21 + rhs);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static umat3x2 operator+(uint lhs, umat3x2 rhs) => new umat3x2(lhs + rhs.m00, lhs + rhs.m01, lhs + rhs.m10, lhs + rhs.m11, lhs + rhs.m20, lhs + rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static umat3x2 operator-(umat3x2 lhs, umat3x2 rhs) => new umat3x2(lhs.m00 - rhs.m00, lhs.m01 - rhs.m01, lhs.m10 - rhs.m10, lhs.m11 - rhs.m11, lhs.m20 - rhs.m20, lhs.m21 - rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static umat3x2 operator-(umat3x2 lhs, uint rhs) => new umat3x2(lhs.m00 - rhs, lhs.m01 - rhs, lhs.m10 - rhs, lhs.m11 - rhs, lhs.m20 - rhs, lhs.m21 - rhs);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static umat3x2 operator-(uint lhs, umat3x2 rhs) => new umat3x2(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m10, lhs - rhs.m11, lhs - rhs.m20, lhs - rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise % (modulo).
+        /// </summary>
+        public static umat3x2 operator%(umat3x2 lhs, umat3x2 rhs) => new umat3x2(lhs.m00 % rhs.m00, lhs.m01 % rhs.m01, lhs.m10 % rhs.m10, lhs.m11 % rhs.m11, lhs.m20 % rhs.m20, lhs.m21 % rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise % (modulo) with a scalar.
+        /// </summary>
+        public static umat3x2 operator%(umat3x2 lhs, uint rhs) => new umat3x2(lhs.m00 % rhs, lhs.m01 % rhs, lhs.m10 % rhs, lhs.m11 % rhs, lhs.m20 % rhs, lhs.m21 % rhs);
+        
+        /// <summary>
+        /// Executes a component-wise % (modulo) with a scalar.
+        /// </summary>
+        public static umat3x2 operator%(uint lhs, umat3x2 rhs) => new umat3x2(lhs % rhs.m00, lhs % rhs.m01, lhs % rhs.m10, lhs % rhs.m11, lhs % rhs.m20, lhs % rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise ^ (xor).
+        /// </summary>
+        public static umat3x2 operator^(umat3x2 lhs, umat3x2 rhs) => new umat3x2(lhs.m00 ^ rhs.m00, lhs.m01 ^ rhs.m01, lhs.m10 ^ rhs.m10, lhs.m11 ^ rhs.m11, lhs.m20 ^ rhs.m20, lhs.m21 ^ rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static umat3x2 operator^(umat3x2 lhs, uint rhs) => new umat3x2(lhs.m00 ^ rhs, lhs.m01 ^ rhs, lhs.m10 ^ rhs, lhs.m11 ^ rhs, lhs.m20 ^ rhs, lhs.m21 ^ rhs);
+        
+        /// <summary>
+        /// Executes a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static umat3x2 operator^(uint lhs, umat3x2 rhs) => new umat3x2(lhs ^ rhs.m00, lhs ^ rhs.m01, lhs ^ rhs.m10, lhs ^ rhs.m11, lhs ^ rhs.m20, lhs ^ rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise | (bitwise-or).
+        /// </summary>
+        public static umat3x2 operator|(umat3x2 lhs, umat3x2 rhs) => new umat3x2(lhs.m00 | rhs.m00, lhs.m01 | rhs.m01, lhs.m10 | rhs.m10, lhs.m11 | rhs.m11, lhs.m20 | rhs.m20, lhs.m21 | rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static umat3x2 operator|(umat3x2 lhs, uint rhs) => new umat3x2(lhs.m00 | rhs, lhs.m01 | rhs, lhs.m10 | rhs, lhs.m11 | rhs, lhs.m20 | rhs, lhs.m21 | rhs);
+        
+        /// <summary>
+        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static umat3x2 operator|(uint lhs, umat3x2 rhs) => new umat3x2(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m20, lhs | rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise & (bitwise-and).
+        /// </summary>
+        public static umat3x2 operator&(umat3x2 lhs, umat3x2 rhs) => new umat3x2(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m20 & rhs.m20, lhs.m21 & rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// </summary>
+        public static umat3x2 operator&(umat3x2 lhs, uint rhs) => new umat3x2(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m20 & rhs, lhs.m21 & rhs);
+        
+        /// <summary>
+        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// </summary>
+        public static umat3x2 operator&(uint lhs, umat3x2 rhs) => new umat3x2(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m20, lhs & rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise left-shift with a scalar.
+        /// </summary>
+        public static umat3x2 operator<<(umat3x2 lhs, int rhs) => new umat3x2(lhs.m00 << rhs, lhs.m01 << rhs, lhs.m10 << rhs, lhs.m11 << rhs, lhs.m20 << rhs, lhs.m21 << rhs);
+        
+        /// <summary>
+        /// Executes a component-wise right-shift with a scalar.
+        /// </summary>
+        public static umat3x2 operator>>(umat3x2 lhs, int rhs) => new umat3x2(lhs.m00 >> rhs, lhs.m01 >> rhs, lhs.m10 >> rhs, lhs.m11 >> rhs, lhs.m20 >> rhs, lhs.m21 >> rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison.
+        /// </summary>
+        public static bmat3x2 operator<(umat3x2 lhs, umat3x2 rhs) => new bmat3x2(lhs.m00 < rhs.m00, lhs.m01 < rhs.m01, lhs.m10 < rhs.m10, lhs.m11 < rhs.m11, lhs.m20 < rhs.m20, lhs.m21 < rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator<(umat3x2 lhs, uint rhs) => new bmat3x2(lhs.m00 < rhs, lhs.m01 < rhs, lhs.m10 < rhs, lhs.m11 < rhs, lhs.m20 < rhs, lhs.m21 < rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator<(uint lhs, umat3x2 rhs) => new bmat3x2(lhs < rhs.m00, lhs < rhs.m01, lhs < rhs.m10, lhs < rhs.m11, lhs < rhs.m20, lhs < rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison.
+        /// </summary>
+        public static bmat3x2 operator<=(umat3x2 lhs, umat3x2 rhs) => new bmat3x2(lhs.m00 <= rhs.m00, lhs.m01 <= rhs.m01, lhs.m10 <= rhs.m10, lhs.m11 <= rhs.m11, lhs.m20 <= rhs.m20, lhs.m21 <= rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator<=(umat3x2 lhs, uint rhs) => new bmat3x2(lhs.m00 <= rhs, lhs.m01 <= rhs, lhs.m10 <= rhs, lhs.m11 <= rhs, lhs.m20 <= rhs, lhs.m21 <= rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator<=(uint lhs, umat3x2 rhs) => new bmat3x2(lhs <= rhs.m00, lhs <= rhs.m01, lhs <= rhs.m10, lhs <= rhs.m11, lhs <= rhs.m20, lhs <= rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison.
+        /// </summary>
+        public static bmat3x2 operator>(umat3x2 lhs, umat3x2 rhs) => new bmat3x2(lhs.m00 > rhs.m00, lhs.m01 > rhs.m01, lhs.m10 > rhs.m10, lhs.m11 > rhs.m11, lhs.m20 > rhs.m20, lhs.m21 > rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator>(umat3x2 lhs, uint rhs) => new bmat3x2(lhs.m00 > rhs, lhs.m01 > rhs, lhs.m10 > rhs, lhs.m11 > rhs, lhs.m20 > rhs, lhs.m21 > rhs);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator>(uint lhs, umat3x2 rhs) => new bmat3x2(lhs > rhs.m00, lhs > rhs.m01, lhs > rhs.m10, lhs > rhs.m11, lhs > rhs.m20, lhs > rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison.
+        /// </summary>
+        public static bmat3x2 operator>=(umat3x2 lhs, umat3x2 rhs) => new bmat3x2(lhs.m00 >= rhs.m00, lhs.m01 >= rhs.m01, lhs.m10 >= rhs.m10, lhs.m11 >= rhs.m11, lhs.m20 >= rhs.m20, lhs.m21 >= rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator>=(umat3x2 lhs, uint rhs) => new bmat3x2(lhs.m00 >= rhs, lhs.m01 >= rhs, lhs.m10 >= rhs, lhs.m11 >= rhs, lhs.m20 >= rhs, lhs.m21 >= rhs);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat3x2 operator>=(uint lhs, umat3x2 rhs) => new bmat3x2(lhs >= rhs.m00, lhs >= rhs.m01, lhs >= rhs.m10, lhs >= rhs.m11, lhs >= rhs.m20, lhs >= rhs.m21);
     }
 }

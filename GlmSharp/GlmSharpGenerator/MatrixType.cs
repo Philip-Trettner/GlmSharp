@@ -69,6 +69,52 @@ namespace GlmSharpGenerator
 
         public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseTypeInfo.HashCodeMultiplier)) + HashCodeOf(FieldFor(c));
 
+
+        public string ComponentWiseOperator(string op)
+            => string.Format("public static {0} operator{2}({0} lhs, {0} rhs) => new {0}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op);
+
+        public string ComponentWiseOperator(string op, string internalOp)
+            => string.Format("public static {0} operator{2}({0} lhs, {0} rhs) => new {0}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, internalOp)).CommaSeparated(), op);
+
+        public string ComponentWiseOperatorScalar(string op, string scalarType)
+            => string.Format("public static {0} operator{2}({0} lhs, {3} rhs) => new {0}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, scalarType);
+
+        public string ComponentWiseOperatorScalarL(string op, string scalarType)
+            => string.Format("public static {0} operator{2}({3} lhs, {0} rhs) => new {0}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, scalarType);
+
+        public string ComponentWiseOperatorForeign(string op, string returnType)
+            => string.Format("public static {3} operator{2}({0} lhs, {3} rhs) => new {3}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, returnType);
+        public string ComponentWiseOperatorForeignL(string op, string returnType)
+            => string.Format("public static {3} operator{2}({3} lhs, {0} rhs) => new {3}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, returnType);
+
+        public string ComponentWiseOperatorForeignScalar(string op, string scalarType, string returnType)
+            => string.Format("public static {4} operator{2}({0} lhs, {3} rhs) => new {4}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, scalarType, returnType);
+
+        public string ComponentWiseOperatorForeignScalarL(string op, string scalarType, string returnType)
+            => string.Format("public static {4} operator{2}({3} lhs, {0} rhs) => new {4}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, scalarType, returnType);
+
+        public string ComparisonOperator(string op)
+            => string.Format("public static bmat{3} operator{2}({0} lhs, {0} rhs) => new bmat{3}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows));
+
+        public string ComparisonOperatorScalar(string op, string scalarType)
+            => string.Format("public static bmat{3} operator{2}({0} lhs, {4} rhs) => new bmat{3}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows), scalarType);
+
+        public string ComparisonOperatorScalarL(string op, string scalarType)
+            => string.Format("public static bmat{3} operator{2}({4} lhs, {0} rhs) => new bmat{3}({1});", ClassNameThat,
+                    Fields.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows), scalarType);
+
+        public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
+
         protected override IEnumerable<string> Body
         {
             get
@@ -127,19 +173,19 @@ namespace GlmSharpGenerator
 
 
                 // IEnumerable
-                foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
+                foreach (var line in "Returns an enumerator that iterates through all FieldCount.".AsComment()) yield return line;
                 yield return string.Format("public IEnumerator<{0}> GetEnumerator()", BaseType);
                 yield return "{";
                 foreach (var c in Fields)
                     yield return string.Format("yield return {0};", c).Indent();
                 yield return "}";
 
-                foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
+                foreach (var line in "Returns an enumerator that iterates through all FieldCount.".AsComment()) yield return line;
                 yield return "IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();";
 
 
                 // Indexer
-                foreach (var line in string.Format("Returns the number of components ({0}).", FieldCount).AsComment()) yield return line;
+                foreach (var line in string.Format("Returns the number of FieldCount ({0}).", FieldCount).AsComment()) yield return line;
                 yield return string.Format("public int Count => {0};", FieldCount);
 
                 foreach (var line in "Gets/Sets a specific indexed component (a bit slower than direct access).".AsComment()) yield return line;
@@ -204,6 +250,141 @@ namespace GlmSharpGenerator
                 yield return "        return " + HashCodeFor(FieldCount - 1) + ";";
                 yield return "    }";
                 yield return "}";
+
+
+                // Logicals
+                if (BaseTypeInfo.HasLogicOps)
+                {
+                    foreach (var line in "Returns the minimal component of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} MinElement => {1};", BaseType, Fields.Aggregated(" && "));
+
+                    foreach (var line in "Returns the maximal component of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} MaxElement => {1};", BaseType, Fields.Aggregated(" || "));
+
+                    foreach (var line in "Returns true if all component are true.".AsComment()) yield return line;
+                    yield return string.Format("public {0} All => {1};", BaseType, Fields.Aggregated(" && "));
+
+                    foreach (var line in "Returns true if any component is true.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Any => {1};", BaseType, Fields.Aggregated(" || "));
+
+                    foreach (var line in "Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)".AsComment()) yield return line;
+                    yield return ComponentWiseOperator("&", "&&");
+
+                    foreach (var line in "Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
+                    yield return ComponentWiseOperator("|", "||");
+                }
+
+
+                // Arithmetics
+                if (BaseTypeInfo.HasArithmetics)
+                {
+                    var lengthType = BaseTypeInfo.LengthType;
+
+                    if (!BaseTypeInfo.Complex)
+                    {
+                        foreach (var line in "Returns the minimal component of this matrix.".AsComment()) yield return line;
+                        yield return string.Format("public {0} MinElement => {1};", BaseType, NestedBiFuncFor("Math.Min({0}, {1})", FieldCount - 1, FieldFor));
+
+                        foreach (var line in "Returns the maximal component of this matrix.".AsComment()) yield return line;
+                        yield return string.Format("public {0} MaxElement => {1};", BaseType, NestedBiFuncFor("Math.Max({0}, {1})", FieldCount - 1, FieldFor));
+                    }
+
+                    foreach (var line in "Returns the euclidean length of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Length => ({0}){1};", lengthType, SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")));
+
+                    foreach (var line in "Returns the squared euclidean length of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} LengthSqr => {1};", lengthType, Fields.Select(SqrOf).Aggregated(" + "));
+
+                    foreach (var line in "Returns the sum of all FieldCount.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Sum => {1};", BaseType, Fields.Aggregated(" + "));
+
+                    foreach (var line in "Returns the euclidean norm of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Norm => ({0}){1};", lengthType, SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")));
+
+                    foreach (var line in "Returns the one-norm of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Norm1 => {1};", lengthType, Fields.Select(AbsString).Aggregated(" + "));
+
+                    foreach (var line in "Returns the two-norm of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} Norm2 => ({0}){1};", lengthType, SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")));
+
+                    foreach (var line in "Returns the max-norm of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public {0} NormMax => {1};", BaseType, NestedBiFuncFor("Math.Max({0}, {1})", FieldCount - 1, c => AbsString(FieldFor(c))));
+
+                    foreach (var line in "Returns the p-norm of this matrix.".AsComment()) yield return line;
+                    yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", Fields.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
+
+                    // arithmetic operators
+                    foreach (var kvp in new Dictionary<string, string>
+                    {
+                        {"+", "+ (add)"},
+                        {"-", "- (subtract)"},
+                        //{"/", "/ (divide)"}, not natural
+                        //{"*", "* (multiply)"} not natural
+                    })
+                    {
+                        var op = kvp.Key;
+                        var opComment = kvp.Value;
+
+                        foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
+                        yield return ComponentWiseOperator(op);
+                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                        yield return ComponentWiseOperatorScalar(op, BaseType);
+                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                        yield return ComponentWiseOperatorScalarL(op, BaseType);
+                    }
+
+                    // integer-only operators
+                    if (BaseTypeInfo.IsInteger)
+                    {
+                        foreach (var kvp in new Dictionary<string, string>
+                        {
+                            {"%", "% (modulo)"},
+                            {"^", "^ (xor)"},
+                            {"|", "| (bitwise-or)"},
+                            {"&", "& (bitwise-and)"}
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opComment = kvp.Value;
+
+                            foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
+                            yield return ComponentWiseOperator(op);
+                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorScalar(op, BaseType);
+                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComponentWiseOperatorScalarL(op, BaseType);
+                        }
+
+                        foreach (var line in "Executes a component-wise left-shift with a scalar.".AsComment()) yield return line;
+                        yield return ComponentWiseOperatorScalar("<<", "int");
+
+                        foreach (var line in "Executes a component-wise right-shift with a scalar.".AsComment()) yield return line;
+                        yield return ComponentWiseOperatorScalar(">>", "int");
+                    }
+
+                    // comparisons
+                    if (!BaseTypeInfo.Complex)
+                    {
+                        foreach (var kvp in new Dictionary<string, string>
+                        {
+                            {"<", "lesser-than"},
+                            {"<=", "lesser-or-equal"},
+                            {">", "greater-than"},
+                            {">=", "greater-or-equal"}
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opComment = kvp.Value;
+
+                            foreach (var line in string.Format("Executes a component-wise {0} comparison.", opComment).AsComment()) yield return line;
+                            yield return ComparisonOperator(op);
+                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComparisonOperatorScalar(op, BaseType);
+                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
+                            yield return ComparisonOperatorScalarL(op, BaseType);
+                        }
+                    }
+                }
             }
         }
     }

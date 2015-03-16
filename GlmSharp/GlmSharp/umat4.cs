@@ -150,7 +150,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         public IEnumerator<uint> GetEnumerator()
         {
@@ -173,12 +173,12 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns an enumerator that iterates through all components.
+        /// Returns an enumerator that iterates through all FieldCount.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
-        /// Returns the number of components (16).
+        /// Returns the number of FieldCount (16).
         /// </summary>
         public int Count => 16;
         
@@ -284,5 +284,215 @@ namespace GlmSharp
                 return ((((((((((((((((((((((((((((((m00.GetHashCode()) * 397) ^ m01.GetHashCode()) * 397) ^ m02.GetHashCode()) * 397) ^ m03.GetHashCode()) * 397) ^ m10.GetHashCode()) * 397) ^ m11.GetHashCode()) * 397) ^ m12.GetHashCode()) * 397) ^ m13.GetHashCode()) * 397) ^ m20.GetHashCode()) * 397) ^ m21.GetHashCode()) * 397) ^ m22.GetHashCode()) * 397) ^ m23.GetHashCode()) * 397) ^ m30.GetHashCode()) * 397) ^ m31.GetHashCode()) * 397) ^ m32.GetHashCode()) * 397) ^ m33.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the minimal component of this matrix.
+        /// </summary>
+        public uint MinElement => Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(m00, m01), m02), m03), m10), m11), m12), m13), m20), m21), m22), m23), m30), m31), m32), m33);
+        
+        /// <summary>
+        /// Returns the maximal component of this matrix.
+        /// </summary>
+        public uint MaxElement => Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(m00, m01), m02), m03), m10), m11), m12), m13), m20), m21), m22), m23), m30), m31), m32), m33);
+        
+        /// <summary>
+        /// Returns the euclidean length of this matrix.
+        /// </summary>
+        public float Length => (float)Math.Sqrt(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23 + m30*m30 + m31*m31 + m32*m32 + m33*m33);
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this matrix.
+        /// </summary>
+        public float LengthSqr => m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23 + m30*m30 + m31*m31 + m32*m32 + m33*m33;
+        
+        /// <summary>
+        /// Returns the sum of all FieldCount.
+        /// </summary>
+        public uint Sum => m00 + m01 + m02 + m03 + m10 + m11 + m12 + m13 + m20 + m21 + m22 + m23 + m30 + m31 + m32 + m33;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this matrix.
+        /// </summary>
+        public float Norm => (float)Math.Sqrt(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23 + m30*m30 + m31*m31 + m32*m32 + m33*m33);
+        
+        /// <summary>
+        /// Returns the one-norm of this matrix.
+        /// </summary>
+        public float Norm1 => m00 + m01 + m02 + m03 + m10 + m11 + m12 + m13 + m20 + m21 + m22 + m23 + m30 + m31 + m32 + m33;
+        
+        /// <summary>
+        /// Returns the two-norm of this matrix.
+        /// </summary>
+        public float Norm2 => (float)Math.Sqrt(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23 + m30*m30 + m31*m31 + m32*m32 + m33*m33);
+        
+        /// <summary>
+        /// Returns the max-norm of this matrix.
+        /// </summary>
+        public uint NormMax => Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(Math.Max(m00, m01), m02), m03), m10), m11), m12), m13), m20), m21), m22), m23), m30), m31), m32), m33);
+        
+        /// <summary>
+        /// Returns the p-norm of this matrix.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)m00, p) + Math.Pow((double)m01, p) + Math.Pow((double)m02, p) + Math.Pow((double)m03, p) + Math.Pow((double)m10, p) + Math.Pow((double)m11, p) + Math.Pow((double)m12, p) + Math.Pow((double)m13, p) + Math.Pow((double)m20, p) + Math.Pow((double)m21, p) + Math.Pow((double)m22, p) + Math.Pow((double)m23, p) + Math.Pow((double)m30, p) + Math.Pow((double)m31, p) + Math.Pow((double)m32, p) + Math.Pow((double)m33, p), 1 / p);
+        
+        /// <summary>
+        /// Executes a component-wise + (add).
+        /// </summary>
+        public static umat4 operator+(umat4 lhs, umat4 rhs) => new umat4(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m02 + rhs.m02, lhs.m03 + rhs.m03, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m12 + rhs.m12, lhs.m13 + rhs.m13, lhs.m20 + rhs.m20, lhs.m21 + rhs.m21, lhs.m22 + rhs.m22, lhs.m23 + rhs.m23, lhs.m30 + rhs.m30, lhs.m31 + rhs.m31, lhs.m32 + rhs.m32, lhs.m33 + rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static umat4 operator+(umat4 lhs, uint rhs) => new umat4(lhs.m00 + rhs, lhs.m01 + rhs, lhs.m02 + rhs, lhs.m03 + rhs, lhs.m10 + rhs, lhs.m11 + rhs, lhs.m12 + rhs, lhs.m13 + rhs, lhs.m20 + rhs, lhs.m21 + rhs, lhs.m22 + rhs, lhs.m23 + rhs, lhs.m30 + rhs, lhs.m31 + rhs, lhs.m32 + rhs, lhs.m33 + rhs);
+        
+        /// <summary>
+        /// Executes a component-wise + (add) with a scalar.
+        /// </summary>
+        public static umat4 operator+(uint lhs, umat4 rhs) => new umat4(lhs + rhs.m00, lhs + rhs.m01, lhs + rhs.m02, lhs + rhs.m03, lhs + rhs.m10, lhs + rhs.m11, lhs + rhs.m12, lhs + rhs.m13, lhs + rhs.m20, lhs + rhs.m21, lhs + rhs.m22, lhs + rhs.m23, lhs + rhs.m30, lhs + rhs.m31, lhs + rhs.m32, lhs + rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract).
+        /// </summary>
+        public static umat4 operator-(umat4 lhs, umat4 rhs) => new umat4(lhs.m00 - rhs.m00, lhs.m01 - rhs.m01, lhs.m02 - rhs.m02, lhs.m03 - rhs.m03, lhs.m10 - rhs.m10, lhs.m11 - rhs.m11, lhs.m12 - rhs.m12, lhs.m13 - rhs.m13, lhs.m20 - rhs.m20, lhs.m21 - rhs.m21, lhs.m22 - rhs.m22, lhs.m23 - rhs.m23, lhs.m30 - rhs.m30, lhs.m31 - rhs.m31, lhs.m32 - rhs.m32, lhs.m33 - rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static umat4 operator-(umat4 lhs, uint rhs) => new umat4(lhs.m00 - rhs, lhs.m01 - rhs, lhs.m02 - rhs, lhs.m03 - rhs, lhs.m10 - rhs, lhs.m11 - rhs, lhs.m12 - rhs, lhs.m13 - rhs, lhs.m20 - rhs, lhs.m21 - rhs, lhs.m22 - rhs, lhs.m23 - rhs, lhs.m30 - rhs, lhs.m31 - rhs, lhs.m32 - rhs, lhs.m33 - rhs);
+        
+        /// <summary>
+        /// Executes a component-wise - (subtract) with a scalar.
+        /// </summary>
+        public static umat4 operator-(uint lhs, umat4 rhs) => new umat4(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m02, lhs - rhs.m03, lhs - rhs.m10, lhs - rhs.m11, lhs - rhs.m12, lhs - rhs.m13, lhs - rhs.m20, lhs - rhs.m21, lhs - rhs.m22, lhs - rhs.m23, lhs - rhs.m30, lhs - rhs.m31, lhs - rhs.m32, lhs - rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise % (modulo).
+        /// </summary>
+        public static umat4 operator%(umat4 lhs, umat4 rhs) => new umat4(lhs.m00 % rhs.m00, lhs.m01 % rhs.m01, lhs.m02 % rhs.m02, lhs.m03 % rhs.m03, lhs.m10 % rhs.m10, lhs.m11 % rhs.m11, lhs.m12 % rhs.m12, lhs.m13 % rhs.m13, lhs.m20 % rhs.m20, lhs.m21 % rhs.m21, lhs.m22 % rhs.m22, lhs.m23 % rhs.m23, lhs.m30 % rhs.m30, lhs.m31 % rhs.m31, lhs.m32 % rhs.m32, lhs.m33 % rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise % (modulo) with a scalar.
+        /// </summary>
+        public static umat4 operator%(umat4 lhs, uint rhs) => new umat4(lhs.m00 % rhs, lhs.m01 % rhs, lhs.m02 % rhs, lhs.m03 % rhs, lhs.m10 % rhs, lhs.m11 % rhs, lhs.m12 % rhs, lhs.m13 % rhs, lhs.m20 % rhs, lhs.m21 % rhs, lhs.m22 % rhs, lhs.m23 % rhs, lhs.m30 % rhs, lhs.m31 % rhs, lhs.m32 % rhs, lhs.m33 % rhs);
+        
+        /// <summary>
+        /// Executes a component-wise % (modulo) with a scalar.
+        /// </summary>
+        public static umat4 operator%(uint lhs, umat4 rhs) => new umat4(lhs % rhs.m00, lhs % rhs.m01, lhs % rhs.m02, lhs % rhs.m03, lhs % rhs.m10, lhs % rhs.m11, lhs % rhs.m12, lhs % rhs.m13, lhs % rhs.m20, lhs % rhs.m21, lhs % rhs.m22, lhs % rhs.m23, lhs % rhs.m30, lhs % rhs.m31, lhs % rhs.m32, lhs % rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise ^ (xor).
+        /// </summary>
+        public static umat4 operator^(umat4 lhs, umat4 rhs) => new umat4(lhs.m00 ^ rhs.m00, lhs.m01 ^ rhs.m01, lhs.m02 ^ rhs.m02, lhs.m03 ^ rhs.m03, lhs.m10 ^ rhs.m10, lhs.m11 ^ rhs.m11, lhs.m12 ^ rhs.m12, lhs.m13 ^ rhs.m13, lhs.m20 ^ rhs.m20, lhs.m21 ^ rhs.m21, lhs.m22 ^ rhs.m22, lhs.m23 ^ rhs.m23, lhs.m30 ^ rhs.m30, lhs.m31 ^ rhs.m31, lhs.m32 ^ rhs.m32, lhs.m33 ^ rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static umat4 operator^(umat4 lhs, uint rhs) => new umat4(lhs.m00 ^ rhs, lhs.m01 ^ rhs, lhs.m02 ^ rhs, lhs.m03 ^ rhs, lhs.m10 ^ rhs, lhs.m11 ^ rhs, lhs.m12 ^ rhs, lhs.m13 ^ rhs, lhs.m20 ^ rhs, lhs.m21 ^ rhs, lhs.m22 ^ rhs, lhs.m23 ^ rhs, lhs.m30 ^ rhs, lhs.m31 ^ rhs, lhs.m32 ^ rhs, lhs.m33 ^ rhs);
+        
+        /// <summary>
+        /// Executes a component-wise ^ (xor) with a scalar.
+        /// </summary>
+        public static umat4 operator^(uint lhs, umat4 rhs) => new umat4(lhs ^ rhs.m00, lhs ^ rhs.m01, lhs ^ rhs.m02, lhs ^ rhs.m03, lhs ^ rhs.m10, lhs ^ rhs.m11, lhs ^ rhs.m12, lhs ^ rhs.m13, lhs ^ rhs.m20, lhs ^ rhs.m21, lhs ^ rhs.m22, lhs ^ rhs.m23, lhs ^ rhs.m30, lhs ^ rhs.m31, lhs ^ rhs.m32, lhs ^ rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise | (bitwise-or).
+        /// </summary>
+        public static umat4 operator|(umat4 lhs, umat4 rhs) => new umat4(lhs.m00 | rhs.m00, lhs.m01 | rhs.m01, lhs.m02 | rhs.m02, lhs.m03 | rhs.m03, lhs.m10 | rhs.m10, lhs.m11 | rhs.m11, lhs.m12 | rhs.m12, lhs.m13 | rhs.m13, lhs.m20 | rhs.m20, lhs.m21 | rhs.m21, lhs.m22 | rhs.m22, lhs.m23 | rhs.m23, lhs.m30 | rhs.m30, lhs.m31 | rhs.m31, lhs.m32 | rhs.m32, lhs.m33 | rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static umat4 operator|(umat4 lhs, uint rhs) => new umat4(lhs.m00 | rhs, lhs.m01 | rhs, lhs.m02 | rhs, lhs.m03 | rhs, lhs.m10 | rhs, lhs.m11 | rhs, lhs.m12 | rhs, lhs.m13 | rhs, lhs.m20 | rhs, lhs.m21 | rhs, lhs.m22 | rhs, lhs.m23 | rhs, lhs.m30 | rhs, lhs.m31 | rhs, lhs.m32 | rhs, lhs.m33 | rhs);
+        
+        /// <summary>
+        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// </summary>
+        public static umat4 operator|(uint lhs, umat4 rhs) => new umat4(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m02, lhs | rhs.m03, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m12, lhs | rhs.m13, lhs | rhs.m20, lhs | rhs.m21, lhs | rhs.m22, lhs | rhs.m23, lhs | rhs.m30, lhs | rhs.m31, lhs | rhs.m32, lhs | rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise & (bitwise-and).
+        /// </summary>
+        public static umat4 operator&(umat4 lhs, umat4 rhs) => new umat4(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m02 & rhs.m02, lhs.m03 & rhs.m03, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m12 & rhs.m12, lhs.m13 & rhs.m13, lhs.m20 & rhs.m20, lhs.m21 & rhs.m21, lhs.m22 & rhs.m22, lhs.m23 & rhs.m23, lhs.m30 & rhs.m30, lhs.m31 & rhs.m31, lhs.m32 & rhs.m32, lhs.m33 & rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// </summary>
+        public static umat4 operator&(umat4 lhs, uint rhs) => new umat4(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m02 & rhs, lhs.m03 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m12 & rhs, lhs.m13 & rhs, lhs.m20 & rhs, lhs.m21 & rhs, lhs.m22 & rhs, lhs.m23 & rhs, lhs.m30 & rhs, lhs.m31 & rhs, lhs.m32 & rhs, lhs.m33 & rhs);
+        
+        /// <summary>
+        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// </summary>
+        public static umat4 operator&(uint lhs, umat4 rhs) => new umat4(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m02, lhs & rhs.m03, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m12, lhs & rhs.m13, lhs & rhs.m20, lhs & rhs.m21, lhs & rhs.m22, lhs & rhs.m23, lhs & rhs.m30, lhs & rhs.m31, lhs & rhs.m32, lhs & rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise left-shift with a scalar.
+        /// </summary>
+        public static umat4 operator<<(umat4 lhs, int rhs) => new umat4(lhs.m00 << rhs, lhs.m01 << rhs, lhs.m02 << rhs, lhs.m03 << rhs, lhs.m10 << rhs, lhs.m11 << rhs, lhs.m12 << rhs, lhs.m13 << rhs, lhs.m20 << rhs, lhs.m21 << rhs, lhs.m22 << rhs, lhs.m23 << rhs, lhs.m30 << rhs, lhs.m31 << rhs, lhs.m32 << rhs, lhs.m33 << rhs);
+        
+        /// <summary>
+        /// Executes a component-wise right-shift with a scalar.
+        /// </summary>
+        public static umat4 operator>>(umat4 lhs, int rhs) => new umat4(lhs.m00 >> rhs, lhs.m01 >> rhs, lhs.m02 >> rhs, lhs.m03 >> rhs, lhs.m10 >> rhs, lhs.m11 >> rhs, lhs.m12 >> rhs, lhs.m13 >> rhs, lhs.m20 >> rhs, lhs.m21 >> rhs, lhs.m22 >> rhs, lhs.m23 >> rhs, lhs.m30 >> rhs, lhs.m31 >> rhs, lhs.m32 >> rhs, lhs.m33 >> rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison.
+        /// </summary>
+        public static bmat4 operator<(umat4 lhs, umat4 rhs) => new bmat4(lhs.m00 < rhs.m00, lhs.m01 < rhs.m01, lhs.m02 < rhs.m02, lhs.m03 < rhs.m03, lhs.m10 < rhs.m10, lhs.m11 < rhs.m11, lhs.m12 < rhs.m12, lhs.m13 < rhs.m13, lhs.m20 < rhs.m20, lhs.m21 < rhs.m21, lhs.m22 < rhs.m22, lhs.m23 < rhs.m23, lhs.m30 < rhs.m30, lhs.m31 < rhs.m31, lhs.m32 < rhs.m32, lhs.m33 < rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator<(umat4 lhs, uint rhs) => new bmat4(lhs.m00 < rhs, lhs.m01 < rhs, lhs.m02 < rhs, lhs.m03 < rhs, lhs.m10 < rhs, lhs.m11 < rhs, lhs.m12 < rhs, lhs.m13 < rhs, lhs.m20 < rhs, lhs.m21 < rhs, lhs.m22 < rhs, lhs.m23 < rhs, lhs.m30 < rhs, lhs.m31 < rhs, lhs.m32 < rhs, lhs.m33 < rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-than comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator<(uint lhs, umat4 rhs) => new bmat4(lhs < rhs.m00, lhs < rhs.m01, lhs < rhs.m02, lhs < rhs.m03, lhs < rhs.m10, lhs < rhs.m11, lhs < rhs.m12, lhs < rhs.m13, lhs < rhs.m20, lhs < rhs.m21, lhs < rhs.m22, lhs < rhs.m23, lhs < rhs.m30, lhs < rhs.m31, lhs < rhs.m32, lhs < rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison.
+        /// </summary>
+        public static bmat4 operator<=(umat4 lhs, umat4 rhs) => new bmat4(lhs.m00 <= rhs.m00, lhs.m01 <= rhs.m01, lhs.m02 <= rhs.m02, lhs.m03 <= rhs.m03, lhs.m10 <= rhs.m10, lhs.m11 <= rhs.m11, lhs.m12 <= rhs.m12, lhs.m13 <= rhs.m13, lhs.m20 <= rhs.m20, lhs.m21 <= rhs.m21, lhs.m22 <= rhs.m22, lhs.m23 <= rhs.m23, lhs.m30 <= rhs.m30, lhs.m31 <= rhs.m31, lhs.m32 <= rhs.m32, lhs.m33 <= rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator<=(umat4 lhs, uint rhs) => new bmat4(lhs.m00 <= rhs, lhs.m01 <= rhs, lhs.m02 <= rhs, lhs.m03 <= rhs, lhs.m10 <= rhs, lhs.m11 <= rhs, lhs.m12 <= rhs, lhs.m13 <= rhs, lhs.m20 <= rhs, lhs.m21 <= rhs, lhs.m22 <= rhs, lhs.m23 <= rhs, lhs.m30 <= rhs, lhs.m31 <= rhs, lhs.m32 <= rhs, lhs.m33 <= rhs);
+        
+        /// <summary>
+        /// Executes a component-wise lesser-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator<=(uint lhs, umat4 rhs) => new bmat4(lhs <= rhs.m00, lhs <= rhs.m01, lhs <= rhs.m02, lhs <= rhs.m03, lhs <= rhs.m10, lhs <= rhs.m11, lhs <= rhs.m12, lhs <= rhs.m13, lhs <= rhs.m20, lhs <= rhs.m21, lhs <= rhs.m22, lhs <= rhs.m23, lhs <= rhs.m30, lhs <= rhs.m31, lhs <= rhs.m32, lhs <= rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison.
+        /// </summary>
+        public static bmat4 operator>(umat4 lhs, umat4 rhs) => new bmat4(lhs.m00 > rhs.m00, lhs.m01 > rhs.m01, lhs.m02 > rhs.m02, lhs.m03 > rhs.m03, lhs.m10 > rhs.m10, lhs.m11 > rhs.m11, lhs.m12 > rhs.m12, lhs.m13 > rhs.m13, lhs.m20 > rhs.m20, lhs.m21 > rhs.m21, lhs.m22 > rhs.m22, lhs.m23 > rhs.m23, lhs.m30 > rhs.m30, lhs.m31 > rhs.m31, lhs.m32 > rhs.m32, lhs.m33 > rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator>(umat4 lhs, uint rhs) => new bmat4(lhs.m00 > rhs, lhs.m01 > rhs, lhs.m02 > rhs, lhs.m03 > rhs, lhs.m10 > rhs, lhs.m11 > rhs, lhs.m12 > rhs, lhs.m13 > rhs, lhs.m20 > rhs, lhs.m21 > rhs, lhs.m22 > rhs, lhs.m23 > rhs, lhs.m30 > rhs, lhs.m31 > rhs, lhs.m32 > rhs, lhs.m33 > rhs);
+        
+        /// <summary>
+        /// Executes a component-wise greater-than comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator>(uint lhs, umat4 rhs) => new bmat4(lhs > rhs.m00, lhs > rhs.m01, lhs > rhs.m02, lhs > rhs.m03, lhs > rhs.m10, lhs > rhs.m11, lhs > rhs.m12, lhs > rhs.m13, lhs > rhs.m20, lhs > rhs.m21, lhs > rhs.m22, lhs > rhs.m23, lhs > rhs.m30, lhs > rhs.m31, lhs > rhs.m32, lhs > rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison.
+        /// </summary>
+        public static bmat4 operator>=(umat4 lhs, umat4 rhs) => new bmat4(lhs.m00 >= rhs.m00, lhs.m01 >= rhs.m01, lhs.m02 >= rhs.m02, lhs.m03 >= rhs.m03, lhs.m10 >= rhs.m10, lhs.m11 >= rhs.m11, lhs.m12 >= rhs.m12, lhs.m13 >= rhs.m13, lhs.m20 >= rhs.m20, lhs.m21 >= rhs.m21, lhs.m22 >= rhs.m22, lhs.m23 >= rhs.m23, lhs.m30 >= rhs.m30, lhs.m31 >= rhs.m31, lhs.m32 >= rhs.m32, lhs.m33 >= rhs.m33);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator>=(umat4 lhs, uint rhs) => new bmat4(lhs.m00 >= rhs, lhs.m01 >= rhs, lhs.m02 >= rhs, lhs.m03 >= rhs, lhs.m10 >= rhs, lhs.m11 >= rhs, lhs.m12 >= rhs, lhs.m13 >= rhs, lhs.m20 >= rhs, lhs.m21 >= rhs, lhs.m22 >= rhs, lhs.m23 >= rhs, lhs.m30 >= rhs, lhs.m31 >= rhs, lhs.m32 >= rhs, lhs.m33 >= rhs);
+        
+        /// <summary>
+        /// Executes a component-wise greater-or-equal comparison with a scalar.
+        /// </summary>
+        public static bmat4 operator>=(uint lhs, umat4 rhs) => new bmat4(lhs >= rhs.m00, lhs >= rhs.m01, lhs >= rhs.m02, lhs >= rhs.m03, lhs >= rhs.m10, lhs >= rhs.m11, lhs >= rhs.m12, lhs >= rhs.m13, lhs >= rhs.m20, lhs >= rhs.m21, lhs >= rhs.m22, lhs >= rhs.m23, lhs >= rhs.m30, lhs >= rhs.m31, lhs >= rhs.m32, lhs >= rhs.m33);
     }
 }
