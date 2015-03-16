@@ -637,7 +637,32 @@ namespace GlmSharpGenerator
                         yield return "    return tmp.swizzle.xyz;";
                         yield return "}";
 
-                        // TODO: unproject
+                        // unproject
+                        foreach (var line in "Map the specified window coordinates (win.x, win.y, win.z) into object coordinates.".AsComment()) yield return line;
+                        yield return string.Format("public static {1} UnProject({1} win, {0} model, {0} proj, {2} viewport)", ClassNameThat, BaseTypeInfo.Prefix + "vec3", BaseTypeInfo.Prefix + "vec4");
+                        yield return "{";
+                        yield return string.Format("    var tmp = new {0}(win, 1);", BaseTypeInfo.Prefix + "vec4");
+                        yield return "    tmp.x = (tmp.x - viewport.x) / viewport.z;";
+                        yield return "    tmp.y = (tmp.y - viewport.y) / viewport.w;";
+                        yield return "    tmp = tmp * 2 - 1;";
+                        yield return "";
+                        yield return "    var unp = proj.Inverse * tmp;";
+                        yield return "    unp /= unp.w;";
+                        yield return "    var obj = model.Inverse * unp;";
+                        yield return string.Format("    return ({0})obj / obj.w;", BaseTypeInfo.Prefix + "vec3");
+                        yield return "}";
+
+                        foreach (var line in "Map the specified window coordinates (win.x, win.y, win.z) into object coordinates (faster but less precise).".AsComment()) yield return line;
+                        yield return string.Format("public static {1} UnProjectFaster({1} win, {0} model, {0} proj, {2} viewport)", ClassNameThat, BaseTypeInfo.Prefix + "vec3", BaseTypeInfo.Prefix + "vec4");
+                        yield return "{";
+                        yield return string.Format("    var tmp = new {0}(win, 1);", BaseTypeInfo.Prefix + "vec4");
+                        yield return "    tmp.x = (tmp.x - viewport.x) / viewport.z;";
+                        yield return "    tmp.y = (tmp.y - viewport.y) / viewport.w;";
+                        yield return "    tmp = tmp * 2 - 1;";
+                        yield return "";
+                        yield return "    var obj = (proj * model).Inverse * tmp;";
+                        yield return string.Format("    return ({0})obj / obj.w;", BaseTypeInfo.Prefix + "vec3");
+                        yield return "}";
 
                         // rotate
                         foreach (var line in "Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.".AsComment()) yield return line;

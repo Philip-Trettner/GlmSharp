@@ -649,6 +649,36 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Map the specified window coordinates (win.x, win.y, win.z) into object coordinates.
+        /// </summary>
+        public static dvec3 UnProject(dvec3 win, dmat4 model, dmat4 proj, dvec4 viewport)
+        {
+            var tmp = new dvec4(win, 1);
+            tmp.x = (tmp.x - viewport.x) / viewport.z;
+            tmp.y = (tmp.y - viewport.y) / viewport.w;
+            tmp = tmp * 2 - 1;
+        
+            var unp = proj.Inverse * tmp;
+            unp /= unp.w;
+            var obj = model.Inverse * unp;
+            return (dvec3)obj / obj.w;
+        }
+        
+        /// <summary>
+        /// Map the specified window coordinates (win.x, win.y, win.z) into object coordinates (faster but less precise).
+        /// </summary>
+        public static dvec3 UnProjectFaster(dvec3 win, dmat4 model, dmat4 proj, dvec4 viewport)
+        {
+            var tmp = new dvec4(win, 1);
+            tmp.x = (tmp.x - viewport.x) / viewport.z;
+            tmp.y = (tmp.y - viewport.y) / viewport.w;
+            tmp = tmp * 2 - 1;
+        
+            var obj = (proj * model).Inverse * tmp;
+            return (dvec3)obj / obj.w;
+        }
+        
+        /// <summary>
         /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.
         /// </summary>
         public static dmat4 Rotate(double angle, dvec3 v)

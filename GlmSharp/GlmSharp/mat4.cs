@@ -649,6 +649,36 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Map the specified window coordinates (win.x, win.y, win.z) into object coordinates.
+        /// </summary>
+        public static vec3 UnProject(vec3 win, mat4 model, mat4 proj, vec4 viewport)
+        {
+            var tmp = new vec4(win, 1);
+            tmp.x = (tmp.x - viewport.x) / viewport.z;
+            tmp.y = (tmp.y - viewport.y) / viewport.w;
+            tmp = tmp * 2 - 1;
+        
+            var unp = proj.Inverse * tmp;
+            unp /= unp.w;
+            var obj = model.Inverse * unp;
+            return (vec3)obj / obj.w;
+        }
+        
+        /// <summary>
+        /// Map the specified window coordinates (win.x, win.y, win.z) into object coordinates (faster but less precise).
+        /// </summary>
+        public static vec3 UnProjectFaster(vec3 win, mat4 model, mat4 proj, vec4 viewport)
+        {
+            var tmp = new vec4(win, 1);
+            tmp.x = (tmp.x - viewport.x) / viewport.z;
+            tmp.y = (tmp.y - viewport.y) / viewport.w;
+            tmp = tmp * 2 - 1;
+        
+            var obj = (proj * model).Inverse * tmp;
+            return (vec3)obj / obj.w;
+        }
+        
+        /// <summary>
         /// Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.
         /// </summary>
         public static mat4 Rotate(float angle, vec3 v)
