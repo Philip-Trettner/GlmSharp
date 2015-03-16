@@ -245,5 +245,10 @@ namespace GlmSharp
                 return ((((((((((((((((((((((EqualityComparer<T>.Default.GetHashCode(m00)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m01)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m02)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m10)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m11)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m12)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m20)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m21)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m22)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m30)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m31)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m32);
             }
         }
+        
+        /// <summary>
+        /// Returns a transposed version of this matrix.
+        /// </summary>
+        public gmat3x4<T> Transposed => new gmat3x4<T>(m00, m10, m20, m30, m01, m11, m21, m31, m02, m12, m22, m32);
     }
 }

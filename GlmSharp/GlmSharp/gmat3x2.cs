@@ -198,5 +198,10 @@ namespace GlmSharp
                 return ((((((((((EqualityComparer<T>.Default.GetHashCode(m00)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m01)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m10)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m11)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m20)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m21);
             }
         }
+        
+        /// <summary>
+        /// Returns a transposed version of this matrix.
+        /// </summary>
+        public gmat2x3<T> Transposed => new gmat2x3<T>(m00, m10, m20, m01, m11, m21);
     }
 }

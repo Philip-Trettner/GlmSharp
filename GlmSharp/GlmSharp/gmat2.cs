@@ -180,5 +180,10 @@ namespace GlmSharp
                 return ((((((EqualityComparer<T>.Default.GetHashCode(m00)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m01)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m10)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(m11);
             }
         }
+        
+        /// <summary>
+        /// Returns a transposed version of this matrix.
+        /// </summary>
+        public gmat2<T> Transposed => new gmat2<T>(m00, m10, m01, m11);
     }
 }

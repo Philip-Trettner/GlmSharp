@@ -210,6 +210,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a transposed version of this matrix.
+        /// </summary>
+        public cmat2x3 Transposed => new cmat2x3(m00, m10, m20, m01, m11, m21);
+        
+        /// <summary>
         /// Returns the euclidean length of this matrix.
         /// </summary>
         public double Length => (double)Math.Sqrt(m00.LengthSqr() + m01.LengthSqr() + m10.LengthSqr() + m11.LengthSqr() + m20.LengthSqr() + m21.LengthSqr());

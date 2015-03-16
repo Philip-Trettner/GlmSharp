@@ -192,6 +192,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a transposed version of this matrix.
+        /// </summary>
+        public bmat2 Transposed => new bmat2(m00, m10, m01, m11);
+        
+        /// <summary>
         /// Returns the minimal component of this matrix.
         /// </summary>
         public bool MinElement => m00 && m01 && m10 && m11;

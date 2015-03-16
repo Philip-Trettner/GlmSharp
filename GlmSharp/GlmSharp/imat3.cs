@@ -233,6 +233,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a transposed version of this matrix.
+        /// </summary>
+        public imat3 Transposed => new imat3(m00, m10, m20, m01, m11, m21, m02, m12, m22);
+        
+        /// <summary>
         /// Returns the minimal component of this matrix.
         /// </summary>
         public int MinElement => Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(Math.Min(m00, m01), m02), m10), m11), m12), m20), m21), m22);

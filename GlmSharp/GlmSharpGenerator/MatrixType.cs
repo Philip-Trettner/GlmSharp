@@ -22,6 +22,7 @@ namespace GlmSharpGenerator
         }
 
         public override string ClassName => Name + (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows);
+        public string ClassNameTransposed => Name + (Rows == Columns ? Columns.ToString() : Rows + "x" + Columns) + GenericSuffix;
 
         public IEnumerable<string> Fields
         {
@@ -29,6 +30,15 @@ namespace GlmSharpGenerator
             {
                 for (var x = 0; x < Columns; ++x)
                     for (var y = 0; y < Rows; ++y)
+                        yield return "m" + x + y;
+            }
+        }
+        public IEnumerable<string> FieldsTransposed
+        {
+            get
+            {
+                for (var y = 0; y < Rows; ++y)
+                    for (var x = 0; x < Columns; ++x)
                         yield return "m" + x + y;
             }
         }
@@ -257,6 +267,11 @@ namespace GlmSharpGenerator
                 yield return "        return " + HashCodeFor(FieldCount - 1) + ";";
                 yield return "    }";
                 yield return "}";
+
+
+                // Transposed
+                foreach (var line in "Returns a transposed version of this matrix.".AsComment()) yield return line;
+                yield return string.Format("public {0} Transposed => new {0}({1});", ClassNameTransposed, FieldsTransposed.CommaSeparated());
 
 
                 // Logicals

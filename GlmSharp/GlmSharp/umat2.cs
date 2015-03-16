@@ -192,6 +192,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a transposed version of this matrix.
+        /// </summary>
+        public umat2 Transposed => new umat2(m00, m10, m01, m11);
+        
+        /// <summary>
         /// Returns the minimal component of this matrix.
         /// </summary>
         public uint MinElement => Math.Min(Math.Min(Math.Min(m00, m01), m10), m11);
