@@ -9,12 +9,24 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type Complex with 2 columns and 2 rows.
+    /// </summary>
     [Serializable]
     public struct cmat2 : IReadOnlyList<Complex>, IEquatable<cmat2>
     {
         // Matrix fields mXY
-        public Complex m00, m01; // Column 0
-        public Complex m10, m11; // Column 1
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public Complex m00, m01; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public Complex m10, m11; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

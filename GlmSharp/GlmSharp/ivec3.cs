@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type int with 3 components.
+    /// </summary>
     [Serializable]
     public struct ivec3 : IReadOnlyList<int>, IEquatable<ivec3>
     {
@@ -1016,32 +1020,32 @@ namespace GlmSharp
         public static ivec3 operator^(int lhs, ivec3 rhs) => new ivec3(lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or).
+        /// Executes a component-wise bitwise-or.
         /// </summary>
         public static ivec3 operator|(ivec3 lhs, ivec3 rhs) => new ivec3(lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static ivec3 operator|(ivec3 lhs, int rhs) => new ivec3(lhs.x | rhs, lhs.y | rhs, lhs.z | rhs);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static ivec3 operator|(int lhs, ivec3 rhs) => new ivec3(lhs | rhs.x, lhs | rhs.y, lhs | rhs.z);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise bitwise-and.
         /// </summary>
         public static ivec3 operator&(ivec3 lhs, ivec3 rhs) => new ivec3(lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static ivec3 operator&(ivec3 lhs, int rhs) => new ivec3(lhs.x & rhs, lhs.y & rhs, lhs.z & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static ivec3 operator&(int lhs, ivec3 rhs) => new ivec3(lhs & rhs.x, lhs & rhs.y, lhs & rhs.z);
         

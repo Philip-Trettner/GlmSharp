@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type int with 2 components.
+    /// </summary>
     [Serializable]
     public struct ivec2 : IReadOnlyList<int>, IEquatable<ivec2>
     {
@@ -988,32 +992,32 @@ namespace GlmSharp
         public static ivec2 operator^(int lhs, ivec2 rhs) => new ivec2(lhs ^ rhs.x, lhs ^ rhs.y);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or).
+        /// Executes a component-wise bitwise-or.
         /// </summary>
         public static ivec2 operator|(ivec2 lhs, ivec2 rhs) => new ivec2(lhs.x | rhs.x, lhs.y | rhs.y);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static ivec2 operator|(ivec2 lhs, int rhs) => new ivec2(lhs.x | rhs, lhs.y | rhs);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static ivec2 operator|(int lhs, ivec2 rhs) => new ivec2(lhs | rhs.x, lhs | rhs.y);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise bitwise-and.
         /// </summary>
         public static ivec2 operator&(ivec2 lhs, ivec2 rhs) => new ivec2(lhs.x & rhs.x, lhs.y & rhs.y);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static ivec2 operator&(ivec2 lhs, int rhs) => new ivec2(lhs.x & rhs, lhs.y & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static ivec2 operator&(int lhs, ivec2 rhs) => new ivec2(lhs & rhs.x, lhs & rhs.y);
         

@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type float with 3 components.
+    /// </summary>
     [Serializable]
     public struct vec3 : IReadOnlyList<float>, IEquatable<vec3>
     {

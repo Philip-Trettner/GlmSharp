@@ -9,13 +9,29 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type int with 3 columns and 3 rows.
+    /// </summary>
     [Serializable]
     public struct imat3 : IReadOnlyList<int>, IEquatable<imat3>
     {
         // Matrix fields mXY
-        public int m00, m01, m02; // Column 0
-        public int m10, m11, m12; // Column 1
-        public int m20, m21, m22; // Column 2
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public int m00, m01, m02; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public int m10, m11, m12; // 
+        
+        /// <summary>
+        /// Column 2
+        /// </summary>
+        public int m20, m21, m22; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -446,17 +462,17 @@ namespace GlmSharp
         public static imat3 operator|(int lhs, imat3 rhs) => new imat3(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m02, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m12, lhs | rhs.m20, lhs | rhs.m21, lhs | rhs.m22);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise &amp; (bitwise-and).
         /// </summary>
         public static imat3 operator&(imat3 lhs, imat3 rhs) => new imat3(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m02 & rhs.m02, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m12 & rhs.m12, lhs.m20 & rhs.m20, lhs.m21 & rhs.m21, lhs.m22 & rhs.m22);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static imat3 operator&(imat3 lhs, int rhs) => new imat3(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m02 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m12 & rhs, lhs.m20 & rhs, lhs.m21 & rhs, lhs.m22 & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static imat3 operator&(int lhs, imat3 rhs) => new imat3(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m02, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m12, lhs & rhs.m20, lhs & rhs.m21, lhs & rhs.m22);
         

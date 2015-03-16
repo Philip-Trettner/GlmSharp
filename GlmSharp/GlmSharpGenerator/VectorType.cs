@@ -15,6 +15,8 @@ namespace GlmSharpGenerator
 
         public string CompString => "xyzw".Substring(0, Components);
 
+        public override string StructComment => string.Format("A vector of type {0} with {1} components.", BaseType, Components);
+
         public override IEnumerable<string> BaseClasses
         {
             get
@@ -450,7 +452,7 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns true if any component is true.".AsComment()) yield return line;
                     yield return string.Format("public {0} Any => {1};", BaseType, CompString.Aggregated(" || "));
 
-                    foreach (var line in "Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)".AsComment()) yield return line;
+                    foreach (var line in "Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)".AsComment()) yield return line;
                     yield return ComponentWiseOperator("&", "&&");
 
                     foreach (var line in "Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
@@ -558,8 +560,8 @@ namespace GlmSharpGenerator
                         {
                             {"%", "% (modulo)"},
                             {"^", "^ (xor)"},
-                            {"|", "| (bitwise-or)"},
-                            {"&", "& (bitwise-and)"}
+                            {"|", "bitwise-or"},
+                            {"&", "bitwise-and"}
                         })
                         {
                             var op = kvp.Key;

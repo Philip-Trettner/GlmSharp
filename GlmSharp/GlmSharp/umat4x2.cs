@@ -9,14 +9,34 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type uint with 4 columns and 2 rows.
+    /// </summary>
     [Serializable]
     public struct umat4x2 : IReadOnlyList<uint>, IEquatable<umat4x2>
     {
         // Matrix fields mXY
-        public uint m00, m01; // Column 0
-        public uint m10, m11; // Column 1
-        public uint m20, m21; // Column 2
-        public uint m30, m31; // Column 3
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public uint m00, m01; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public uint m10, m11; // 
+        
+        /// <summary>
+        /// Column 2
+        /// </summary>
+        public uint m20, m21; // 
+        
+        /// <summary>
+        /// Column 3
+        /// </summary>
+        public uint m30, m31; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -421,17 +441,17 @@ namespace GlmSharp
         public static umat4x2 operator|(uint lhs, umat4x2 rhs) => new umat4x2(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m20, lhs | rhs.m21, lhs | rhs.m30, lhs | rhs.m31);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise &amp; (bitwise-and).
         /// </summary>
         public static umat4x2 operator&(umat4x2 lhs, umat4x2 rhs) => new umat4x2(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m20 & rhs.m20, lhs.m21 & rhs.m21, lhs.m30 & rhs.m30, lhs.m31 & rhs.m31);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static umat4x2 operator&(umat4x2 lhs, uint rhs) => new umat4x2(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m20 & rhs, lhs.m21 & rhs, lhs.m30 & rhs, lhs.m31 & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static umat4x2 operator&(uint lhs, umat4x2 rhs) => new umat4x2(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m20, lhs & rhs.m21, lhs & rhs.m30, lhs & rhs.m31);
         

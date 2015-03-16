@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type int with 4 components.
+    /// </summary>
     [Serializable]
     public struct ivec4 : IReadOnlyList<int>, IEquatable<ivec4>
     {
@@ -1057,32 +1061,32 @@ namespace GlmSharp
         public static ivec4 operator^(int lhs, ivec4 rhs) => new ivec4(lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z, lhs ^ rhs.w);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or).
+        /// Executes a component-wise bitwise-or.
         /// </summary>
         public static ivec4 operator|(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z, lhs.w | rhs.w);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static ivec4 operator|(ivec4 lhs, int rhs) => new ivec4(lhs.x | rhs, lhs.y | rhs, lhs.z | rhs, lhs.w | rhs);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static ivec4 operator|(int lhs, ivec4 rhs) => new ivec4(lhs | rhs.x, lhs | rhs.y, lhs | rhs.z, lhs | rhs.w);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise bitwise-and.
         /// </summary>
         public static ivec4 operator&(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z, lhs.w & rhs.w);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static ivec4 operator&(ivec4 lhs, int rhs) => new ivec4(lhs.x & rhs, lhs.y & rhs, lhs.z & rhs, lhs.w & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static ivec4 operator&(int lhs, ivec4 rhs) => new ivec4(lhs & rhs.x, lhs & rhs.y, lhs & rhs.z, lhs & rhs.w);
         

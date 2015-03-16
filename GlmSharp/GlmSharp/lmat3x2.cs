@@ -9,13 +9,29 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type long with 3 columns and 2 rows.
+    /// </summary>
     [Serializable]
     public struct lmat3x2 : IReadOnlyList<long>, IEquatable<lmat3x2>
     {
         // Matrix fields mXY
-        public long m00, m01; // Column 0
-        public long m10, m11; // Column 1
-        public long m20, m21; // Column 2
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public long m00, m01; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public long m10, m11; // 
+        
+        /// <summary>
+        /// Column 2
+        /// </summary>
+        public long m20, m21; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -403,17 +419,17 @@ namespace GlmSharp
         public static lmat3x2 operator|(long lhs, lmat3x2 rhs) => new lmat3x2(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m20, lhs | rhs.m21);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise &amp; (bitwise-and).
         /// </summary>
         public static lmat3x2 operator&(lmat3x2 lhs, lmat3x2 rhs) => new lmat3x2(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m20 & rhs.m20, lhs.m21 & rhs.m21);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static lmat3x2 operator&(lmat3x2 lhs, long rhs) => new lmat3x2(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m20 & rhs, lhs.m21 & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static lmat3x2 operator&(long lhs, lmat3x2 rhs) => new lmat3x2(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m20, lhs & rhs.m21);
         

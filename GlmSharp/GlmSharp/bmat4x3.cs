@@ -9,14 +9,34 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type bool with 4 columns and 3 rows.
+    /// </summary>
     [Serializable]
     public struct bmat4x3 : IReadOnlyList<bool>, IEquatable<bmat4x3>
     {
         // Matrix fields mXY
-        public bool m00, m01, m02; // Column 0
-        public bool m10, m11, m12; // Column 1
-        public bool m20, m21, m22; // Column 2
-        public bool m30, m31, m32; // Column 3
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public bool m00, m01, m02; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public bool m10, m11, m12; // 
+        
+        /// <summary>
+        /// Column 2
+        /// </summary>
+        public bool m20, m21, m22; // 
+        
+        /// <summary>
+        /// Column 3
+        /// </summary>
+        public bool m30, m31, m32; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -285,7 +305,7 @@ namespace GlmSharp
         public bool Any => m00 || m01 || m02 || m10 || m11 || m12 || m20 || m21 || m22 || m30 || m31 || m32;
         
         /// <summary>
-        /// Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)
+        /// Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)
         /// </summary>
         public static bmat4x3 operator&(bmat4x3 lhs, bmat4x3 rhs) => new bmat4x3(lhs.m00 && rhs.m00, lhs.m01 && rhs.m01, lhs.m02 && rhs.m02, lhs.m10 && rhs.m10, lhs.m11 && rhs.m11, lhs.m12 && rhs.m12, lhs.m20 && rhs.m20, lhs.m21 && rhs.m21, lhs.m22 && rhs.m22, lhs.m30 && rhs.m30, lhs.m31 && rhs.m31, lhs.m32 && rhs.m32);
         

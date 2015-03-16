@@ -9,14 +9,34 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type long with 4 columns and 3 rows.
+    /// </summary>
     [Serializable]
     public struct lmat4x3 : IReadOnlyList<long>, IEquatable<lmat4x3>
     {
         // Matrix fields mXY
-        public long m00, m01, m02; // Column 0
-        public long m10, m11, m12; // Column 1
-        public long m20, m21, m22; // Column 2
-        public long m30, m31, m32; // Column 3
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public long m00, m01, m02; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public long m10, m11, m12; // 
+        
+        /// <summary>
+        /// Column 2
+        /// </summary>
+        public long m20, m21, m22; // 
+        
+        /// <summary>
+        /// Column 3
+        /// </summary>
+        public long m30, m31, m32; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -450,17 +470,17 @@ namespace GlmSharp
         public static lmat4x3 operator|(long lhs, lmat4x3 rhs) => new lmat4x3(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m02, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m12, lhs | rhs.m20, lhs | rhs.m21, lhs | rhs.m22, lhs | rhs.m30, lhs | rhs.m31, lhs | rhs.m32);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise &amp; (bitwise-and).
         /// </summary>
         public static lmat4x3 operator&(lmat4x3 lhs, lmat4x3 rhs) => new lmat4x3(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m02 & rhs.m02, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m12 & rhs.m12, lhs.m20 & rhs.m20, lhs.m21 & rhs.m21, lhs.m22 & rhs.m22, lhs.m30 & rhs.m30, lhs.m31 & rhs.m31, lhs.m32 & rhs.m32);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static lmat4x3 operator&(lmat4x3 lhs, long rhs) => new lmat4x3(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m02 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m12 & rhs, lhs.m20 & rhs, lhs.m21 & rhs, lhs.m22 & rhs, lhs.m30 & rhs, lhs.m31 & rhs, lhs.m32 & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static lmat4x3 operator&(long lhs, lmat4x3 rhs) => new lmat4x3(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m02, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m12, lhs & rhs.m20, lhs & rhs.m21, lhs & rhs.m22, lhs & rhs.m30, lhs & rhs.m31, lhs & rhs.m32);
         

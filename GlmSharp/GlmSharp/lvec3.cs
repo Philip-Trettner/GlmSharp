@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type long with 3 components.
+    /// </summary>
     [Serializable]
     public struct lvec3 : IReadOnlyList<long>, IEquatable<lvec3>
     {
@@ -696,32 +700,32 @@ namespace GlmSharp
         public static lvec3 operator^(long lhs, lvec3 rhs) => new lvec3(lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or).
+        /// Executes a component-wise bitwise-or.
         /// </summary>
         public static lvec3 operator|(lvec3 lhs, lvec3 rhs) => new lvec3(lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static lvec3 operator|(lvec3 lhs, long rhs) => new lvec3(lhs.x | rhs, lhs.y | rhs, lhs.z | rhs);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static lvec3 operator|(long lhs, lvec3 rhs) => new lvec3(lhs | rhs.x, lhs | rhs.y, lhs | rhs.z);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise bitwise-and.
         /// </summary>
         public static lvec3 operator&(lvec3 lhs, lvec3 rhs) => new lvec3(lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static lvec3 operator&(lvec3 lhs, long rhs) => new lvec3(lhs.x & rhs, lhs.y & rhs, lhs.z & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static lvec3 operator&(long lhs, lvec3 rhs) => new lvec3(lhs & rhs.x, lhs & rhs.y, lhs & rhs.z);
         

@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type uint with 2 components.
+    /// </summary>
     [Serializable]
     public struct uvec2 : IReadOnlyList<uint>, IEquatable<uvec2>
     {
@@ -983,32 +987,32 @@ namespace GlmSharp
         public static uvec2 operator^(uint lhs, uvec2 rhs) => new uvec2(lhs ^ rhs.x, lhs ^ rhs.y);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or).
+        /// Executes a component-wise bitwise-or.
         /// </summary>
         public static uvec2 operator|(uvec2 lhs, uvec2 rhs) => new uvec2(lhs.x | rhs.x, lhs.y | rhs.y);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static uvec2 operator|(uvec2 lhs, uint rhs) => new uvec2(lhs.x | rhs, lhs.y | rhs);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static uvec2 operator|(uint lhs, uvec2 rhs) => new uvec2(lhs | rhs.x, lhs | rhs.y);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise bitwise-and.
         /// </summary>
         public static uvec2 operator&(uvec2 lhs, uvec2 rhs) => new uvec2(lhs.x & rhs.x, lhs.y & rhs.y);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static uvec2 operator&(uvec2 lhs, uint rhs) => new uvec2(lhs.x & rhs, lhs.y & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static uvec2 operator&(uint lhs, uvec2 rhs) => new uvec2(lhs & rhs.x, lhs & rhs.y);
         

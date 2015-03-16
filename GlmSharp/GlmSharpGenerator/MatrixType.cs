@@ -12,6 +12,8 @@ namespace GlmSharpGenerator
         public int Columns { get; set; }
         public int FieldCount => Rows * Columns;
 
+        public override string StructComment => string.Format("A matrix of type {0} with {1} columns and {2} rows.", BaseType, Columns, Rows);
+
         public override IEnumerable<string> BaseClasses
         {
             get
@@ -177,7 +179,10 @@ namespace GlmSharpGenerator
                 // Fields
                 yield return "// Matrix fields mXY";
                 for (var x = 0; x < Columns; ++x)
-                    yield return string.Format("public {0} {1}; // Column {2}", BaseType, Column(x).CommaSeparated(), x);
+                {
+                    foreach (var line in string.Format("Column {0}", x).AsComment()) yield return line;
+                    yield return string.Format("public {0} {1}; // ", BaseType, Column(x).CommaSeparated());
+                }
 
 
                 // Values
@@ -327,7 +332,7 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns true if any component is true.".AsComment()) yield return line;
                     yield return string.Format("public {0} Any => {1};", BaseType, Fields.Aggregated(" || "));
 
-                    foreach (var line in "Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)".AsComment()) yield return line;
+                    foreach (var line in "Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)".AsComment()) yield return line;
                     yield return ComponentWiseOperator("&", "&&");
 
                     foreach (var line in "Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
@@ -462,7 +467,7 @@ namespace GlmSharpGenerator
                             {"%", "% (modulo)"},
                             {"^", "^ (xor)"},
                             {"|", "| (bitwise-or)"},
-                            {"&", "& (bitwise-and)"}
+                            {"&", "&amp; (bitwise-and)"}
                         })
                         {
                             var op = kvp.Key;

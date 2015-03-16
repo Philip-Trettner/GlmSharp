@@ -22,7 +22,7 @@ namespace GlmSharpGenerator
                 yield return "";
                 yield break;
             }
-            
+
             if (i > 1)
                 yield return "";
 
@@ -47,17 +47,23 @@ namespace GlmSharpGenerator
             return s;
         }
 
+        public override string StructComment => string.Format("Temporary vector of type {0} with {1} components, used for implementing swizzling for {2}.", BaseType, Components, BaseTypeInfo.Prefix + "vec" + Components);
+
         protected override IEnumerable<string> Body
         {
             get
             {
                 // components
                 for (var i = 0; i < Components; ++i)
-                    yield return string.Format("public readonly {0} {1};", BaseType, "xyzw"[i]);
+                {
+                    foreach (var line in string.Format("{0}-component", "xyzw"[i]).AsComment()) yield return line;
+                    yield return string.Format("internal readonly {0} {1};", BaseType, "xyzw"[i]);
+                }
 
                 // ctor
                 yield return "";
-                yield return string.Format("public {0}({1})", ClassName, CompString.Select(c => BaseType + " " + c).CommaSeparated());
+                foreach (var line in string.Format("Constructor for {0}.", ClassName).AsComment()) yield return line;
+                yield return string.Format("internal {0}({1})", ClassName, CompString.Select(c => BaseType + " " + c).CommaSeparated());
                 yield return "{";
                 foreach (var c in CompString)
                     yield return string.Format("this.{0} = {0};", c).Indent();
@@ -67,11 +73,17 @@ namespace GlmSharpGenerator
                 yield return "";
                 yield return "// XYZW Versions";
                 foreach (var swizzle in Swizzle(0))
+                {
+                    foreach (var line in string.Format("Returns {0}.{1} swizzling.", BaseTypeInfo.Prefix + "vec" + Components, swizzle).AsComment()) yield return line;
                     yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", BaseName, swizzle.Length + GenericSuffix, swizzle, swizzle.CommaSeparated());
+                }
                 yield return "";
                 yield return "// RGBA Versions";
                 foreach (var swizzle in Swizzle(0))
+                {
+                    foreach (var line in string.Format("Returns {0}.{1} swizzling.", BaseTypeInfo.Prefix + "vec" + Components, ToRgba(swizzle)).AsComment()) yield return line;
                     yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", BaseName, swizzle.Length + GenericSuffix, ToRgba(swizzle), swizzle.CommaSeparated());
+                }
             }
         }
     }

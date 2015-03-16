@@ -9,14 +9,34 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type double with 4 columns and 2 rows.
+    /// </summary>
     [Serializable]
     public struct dmat4x2 : IReadOnlyList<double>, IEquatable<dmat4x2>
     {
         // Matrix fields mXY
-        public double m00, m01; // Column 0
-        public double m10, m11; // Column 1
-        public double m20, m21; // Column 2
-        public double m30, m31; // Column 3
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public double m00, m01; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public double m10, m11; // 
+        
+        /// <summary>
+        /// Column 2
+        /// </summary>
+        public double m20, m21; // 
+        
+        /// <summary>
+        /// Column 3
+        /// </summary>
+        public double m30, m31; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

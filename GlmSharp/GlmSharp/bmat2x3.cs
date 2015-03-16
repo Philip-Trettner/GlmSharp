@@ -9,12 +9,24 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type bool with 2 columns and 3 rows.
+    /// </summary>
     [Serializable]
     public struct bmat2x3 : IReadOnlyList<bool>, IEquatable<bmat2x3>
     {
         // Matrix fields mXY
-        public bool m00, m01, m02; // Column 0
-        public bool m10, m11, m12; // Column 1
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public bool m00, m01, m02; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public bool m10, m11, m12; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -237,7 +249,7 @@ namespace GlmSharp
         public bool Any => m00 || m01 || m02 || m10 || m11 || m12;
         
         /// <summary>
-        /// Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)
+        /// Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)
         /// </summary>
         public static bmat2x3 operator&(bmat2x3 lhs, bmat2x3 rhs) => new bmat2x3(lhs.m00 && rhs.m00, lhs.m01 && rhs.m01, lhs.m02 && rhs.m02, lhs.m10 && rhs.m10, lhs.m11 && rhs.m11, lhs.m12 && rhs.m12);
         

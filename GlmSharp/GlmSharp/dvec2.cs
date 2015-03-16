@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type double with 2 components.
+    /// </summary>
     [Serializable]
     public struct dvec2 : IReadOnlyList<double>, IEquatable<dvec2>
     {

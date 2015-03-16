@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type Complex with 3 components.
+    /// </summary>
     [Serializable]
     public struct cvec3 : IReadOnlyList<Complex>, IEquatable<cvec3>
     {

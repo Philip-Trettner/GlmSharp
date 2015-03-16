@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type T with 4 components.
+    /// </summary>
     [Serializable]
     public struct gvec4<T> : IReadOnlyList<T>, IEquatable<gvec4<T>>
     {

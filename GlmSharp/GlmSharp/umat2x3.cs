@@ -9,12 +9,24 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type uint with 2 columns and 3 rows.
+    /// </summary>
     [Serializable]
     public struct umat2x3 : IReadOnlyList<uint>, IEquatable<umat2x3>
     {
         // Matrix fields mXY
-        public uint m00, m01, m02; // Column 0
-        public uint m10, m11, m12; // Column 1
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public uint m00, m01, m02; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public uint m10, m11, m12; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -402,17 +414,17 @@ namespace GlmSharp
         public static umat2x3 operator|(uint lhs, umat2x3 rhs) => new umat2x3(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m02, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m12);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise &amp; (bitwise-and).
         /// </summary>
         public static umat2x3 operator&(umat2x3 lhs, umat2x3 rhs) => new umat2x3(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m02 & rhs.m02, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m12 & rhs.m12);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static umat2x3 operator&(umat2x3 lhs, uint rhs) => new umat2x3(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m02 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m12 & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static umat2x3 operator&(uint lhs, umat2x3 rhs) => new umat2x3(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m02, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m12);
         

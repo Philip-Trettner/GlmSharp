@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type bool with 2 components.
+    /// </summary>
     [Serializable]
     public struct bvec2 : IReadOnlyList<bool>, IEquatable<bvec2>
     {
@@ -363,7 +367,7 @@ namespace GlmSharp
         public bool Any => x || y;
         
         /// <summary>
-        /// Executes a component-wise &&. (sorry for different overload but && cannot be overloaded directly)
+        /// Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)
         /// </summary>
         public static bvec2 operator&(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x && rhs.x, lhs.y && rhs.y);
         

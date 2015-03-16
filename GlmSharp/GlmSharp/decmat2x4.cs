@@ -9,12 +9,24 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type decimal with 2 columns and 4 rows.
+    /// </summary>
     [Serializable]
     public struct decmat2x4 : IReadOnlyList<decimal>, IEquatable<decmat2x4>
     {
         // Matrix fields mXY
-        public decimal m00, m01, m02, m03; // Column 0
-        public decimal m10, m11, m12, m13; // Column 1
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public decimal m00, m01, m02, m03; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public decimal m10, m11, m12, m13; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

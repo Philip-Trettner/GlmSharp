@@ -17,6 +17,8 @@ namespace GlmSharpGenerator
 
         public bool IsGeneric => BaseTypeInfo.Generic;
 
+        public abstract string StructComment { get; }
+
         public virtual IEnumerable<string> BaseClasses { get { yield break; } }
 
         public IEnumerable<string> CSharpFile
@@ -35,6 +37,7 @@ namespace GlmSharpGenerator
                 yield return "";
                 yield return "namespace GlmSharp";
                 yield return "{";
+                foreach (var line in StructComment.AsComment()) yield return line.Indent();
                 yield return "    [Serializable]";
                 yield return "    public struct " + ClassName + GenericSuffix + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";

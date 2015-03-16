@@ -9,12 +9,24 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type uint with 2 columns and 4 rows.
+    /// </summary>
     [Serializable]
     public struct umat2x4 : IReadOnlyList<uint>, IEquatable<umat2x4>
     {
         // Matrix fields mXY
-        public uint m00, m01, m02, m03; // Column 0
-        public uint m10, m11, m12, m13; // Column 1
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public uint m00, m01, m02, m03; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public uint m10, m11, m12, m13; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -419,17 +431,17 @@ namespace GlmSharp
         public static umat2x4 operator|(uint lhs, umat2x4 rhs) => new umat2x4(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m02, lhs | rhs.m03, lhs | rhs.m10, lhs | rhs.m11, lhs | rhs.m12, lhs | rhs.m13);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise &amp; (bitwise-and).
         /// </summary>
         public static umat2x4 operator&(umat2x4 lhs, umat2x4 rhs) => new umat2x4(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m02 & rhs.m02, lhs.m03 & rhs.m03, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11, lhs.m12 & rhs.m12, lhs.m13 & rhs.m13);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static umat2x4 operator&(umat2x4 lhs, uint rhs) => new umat2x4(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m02 & rhs, lhs.m03 & rhs, lhs.m10 & rhs, lhs.m11 & rhs, lhs.m12 & rhs, lhs.m13 & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static umat2x4 operator&(uint lhs, umat2x4 rhs) => new umat2x4(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m02, lhs & rhs.m03, lhs & rhs.m10, lhs & rhs.m11, lhs & rhs.m12, lhs & rhs.m13);
         

@@ -9,14 +9,34 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type T with 4 columns and 3 rows.
+    /// </summary>
     [Serializable]
     public struct gmat4x3<T> : IReadOnlyList<T>, IEquatable<gmat4x3<T>>
     {
         // Matrix fields mXY
-        public T m00, m01, m02; // Column 0
-        public T m10, m11, m12; // Column 1
-        public T m20, m21, m22; // Column 2
-        public T m30, m31, m32; // Column 3
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public T m00, m01, m02; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public T m10, m11, m12; // 
+        
+        /// <summary>
+        /// Column 2
+        /// </summary>
+        public T m20, m21, m22; // 
+        
+        /// <summary>
+        /// Column 3
+        /// </summary>
+        public T m30, m31, m32; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

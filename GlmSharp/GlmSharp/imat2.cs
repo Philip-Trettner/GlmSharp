@@ -9,12 +9,24 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A matrix of type int with 2 columns and 2 rows.
+    /// </summary>
     [Serializable]
     public struct imat2 : IReadOnlyList<int>, IEquatable<imat2>
     {
         // Matrix fields mXY
-        public int m00, m01; // Column 0
-        public int m10, m11; // Column 1
+        
+        /// <summary>
+        /// Column 0
+        /// </summary>
+        public int m00, m01; // 
+        
+        /// <summary>
+        /// Column 1
+        /// </summary>
+        public int m10, m11; // 
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -405,17 +417,17 @@ namespace GlmSharp
         public static imat2 operator|(int lhs, imat2 rhs) => new imat2(lhs | rhs.m00, lhs | rhs.m01, lhs | rhs.m10, lhs | rhs.m11);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise &amp; (bitwise-and).
         /// </summary>
         public static imat2 operator&(imat2 lhs, imat2 rhs) => new imat2(lhs.m00 & rhs.m00, lhs.m01 & rhs.m01, lhs.m10 & rhs.m10, lhs.m11 & rhs.m11);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static imat2 operator&(imat2 lhs, int rhs) => new imat2(lhs.m00 & rhs, lhs.m01 & rhs, lhs.m10 & rhs, lhs.m11 & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise &amp; (bitwise-and) with a scalar.
         /// </summary>
         public static imat2 operator&(int lhs, imat2 rhs) => new imat2(lhs & rhs.m00, lhs & rhs.m01, lhs & rhs.m10, lhs & rhs.m11);
         

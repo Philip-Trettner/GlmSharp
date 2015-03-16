@@ -9,6 +9,10 @@ using System.Linq;
 
 namespace GlmSharp
 {
+    
+    /// <summary>
+    /// A vector of type uint with 3 components.
+    /// </summary>
     [Serializable]
     public struct uvec3 : IReadOnlyList<uint>, IEquatable<uvec3>
     {
@@ -1011,32 +1015,32 @@ namespace GlmSharp
         public static uvec3 operator^(uint lhs, uvec3 rhs) => new uvec3(lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or).
+        /// Executes a component-wise bitwise-or.
         /// </summary>
         public static uvec3 operator|(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static uvec3 operator|(uvec3 lhs, uint rhs) => new uvec3(lhs.x | rhs, lhs.y | rhs, lhs.z | rhs);
         
         /// <summary>
-        /// Executes a component-wise | (bitwise-or) with a scalar.
+        /// Executes a component-wise bitwise-or with a scalar.
         /// </summary>
         public static uvec3 operator|(uint lhs, uvec3 rhs) => new uvec3(lhs | rhs.x, lhs | rhs.y, lhs | rhs.z);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and).
+        /// Executes a component-wise bitwise-and.
         /// </summary>
         public static uvec3 operator&(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static uvec3 operator&(uvec3 lhs, uint rhs) => new uvec3(lhs.x & rhs, lhs.y & rhs, lhs.z & rhs);
         
         /// <summary>
-        /// Executes a component-wise & (bitwise-and) with a scalar.
+        /// Executes a component-wise bitwise-and with a scalar.
         /// </summary>
         public static uvec3 operator&(uint lhs, uvec3 rhs) => new uvec3(lhs & rhs.x, lhs & rhs.y, lhs & rhs.z);
         
