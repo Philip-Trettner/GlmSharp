@@ -319,6 +319,36 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a boolean vector with component-wise equal.
+        /// </summary>
+        public static bvec3 Equal(uvec3 lhs, uvec3 rhs) => new bvec3(lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z);
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise not-equal.
+        /// </summary>
+        public static bvec3 NotEqual(uvec3 lhs, uvec3 rhs) => new bvec3(lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z);
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise greater-than.
+        /// </summary>
+        public static bvec3 GreaterThan(uvec3 lhs, uvec3 rhs) => lhs > rhs;
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise greater-than-or-equal.
+        /// </summary>
+        public static bvec3 GreaterThanEqual(uvec3 lhs, uvec3 rhs) => lhs >= rhs;
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise lesser-than.
+        /// </summary>
+        public static bvec3 LesserThan(uvec3 lhs, uvec3 rhs) => lhs < rhs;
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise lesser-than-or-equal.
+        /// </summary>
+        public static bvec3 LesserThanEqual(uvec3 lhs, uvec3 rhs) => lhs <= rhs;
+        
+        /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
         /// </summary>
         public override string ToString() => ToString(", ");

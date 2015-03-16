@@ -291,6 +291,36 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a boolean vector with component-wise equal.
+        /// </summary>
+        public static bvec2 Equal(dvec2 lhs, dvec2 rhs) => new bvec2(lhs.x == rhs.x, lhs.y == rhs.y);
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise not-equal.
+        /// </summary>
+        public static bvec2 NotEqual(dvec2 lhs, dvec2 rhs) => new bvec2(lhs.x != rhs.x, lhs.y != rhs.y);
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise greater-than.
+        /// </summary>
+        public static bvec2 GreaterThan(dvec2 lhs, dvec2 rhs) => lhs > rhs;
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise greater-than-or-equal.
+        /// </summary>
+        public static bvec2 GreaterThanEqual(dvec2 lhs, dvec2 rhs) => lhs >= rhs;
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise lesser-than.
+        /// </summary>
+        public static bvec2 LesserThan(dvec2 lhs, dvec2 rhs) => lhs < rhs;
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise lesser-than-or-equal.
+        /// </summary>
+        public static bvec2 LesserThanEqual(dvec2 lhs, dvec2 rhs) => lhs <= rhs;
+        
+        /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
         /// </summary>
         public override string ToString() => ToString(", ");

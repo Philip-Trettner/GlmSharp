@@ -283,6 +283,27 @@ namespace GlmSharpGenerator
                 yield return "    }";
                 yield return "}";
 
+                if (!BaseTypeInfo.Generic && !BaseTypeInfo.Complex && BaseTypeInfo.HasArithmetics)
+                {
+                    foreach (var line in "Returns a boolean vector with component-wise equal.".AsComment()) yield return line;
+                    yield return string.Format("public static bvec{0} Equal({1} lhs, {1} rhs) => new bvec{0}({2});", Components, ClassNameThat, CompString.Select(c => string.Format("lhs.{0} == rhs.{0}", c)).CommaSeparated());
+
+                    foreach (var line in "Returns a boolean vector with component-wise not-equal.".AsComment()) yield return line;
+                    yield return string.Format("public static bvec{0} NotEqual({1} lhs, {1} rhs) => new bvec{0}({2});", Components, ClassNameThat, CompString.Select(c => string.Format("lhs.{0} != rhs.{0}", c)).CommaSeparated());
+
+                    foreach (var line in "Returns a boolean vector with component-wise greater-than.".AsComment()) yield return line;
+                    yield return string.Format("public static bvec{0} GreaterThan({1} lhs, {1} rhs) => lhs > rhs;", Components, ClassNameThat);
+
+                    foreach (var line in "Returns a boolean vector with component-wise greater-than-or-equal.".AsComment()) yield return line;
+                    yield return string.Format("public static bvec{0} GreaterThanEqual({1} lhs, {1} rhs) => lhs >= rhs;", Components, ClassNameThat);
+
+                    foreach (var line in "Returns a boolean vector with component-wise lesser-than.".AsComment()) yield return line;
+                    yield return string.Format("public static bvec{0} LesserThan({1} lhs, {1} rhs) => lhs < rhs;", Components, ClassNameThat);
+
+                    foreach (var line in "Returns a boolean vector with component-wise lesser-than-or-equal.".AsComment()) yield return line;
+                    yield return string.Format("public static bvec{0} LesserThanEqual({1} lhs, {1} rhs) => lhs <= rhs;", Components, ClassNameThat);
+                }
+
                 // ToString
                 foreach (var line in "Returns a string representation of this vector using ', ' as a seperator.".AsComment()) yield return line;
                 yield return string.Format("public override string ToString() => ToString(\", \");");
@@ -809,15 +830,6 @@ inline vec3 mix(vec3 const& mi, vec3 const& ma, vec3 const& a) { return vec3(mix
 inline vec3 mix(vec3 const& mi, vec3 const& ma, float a) { return vec3(mix(mi.x, ma.x, a), mix(mi.y, ma.y, a), mix(mi.z, ma.z, a)); }
 inline vec3 smoothstep(vec3 const& edge0, vec3 const& edge1, vec3 const& v) { return vec3(smoothstep(edge0.x, edge1.x, v.x), smoothstep(edge0.y, edge1.y, v.y), smoothstep(edge0.z, edge1.z, v.z)); }
 
-// bool vectors
-inline bvec3 isfinite(vec3 const& v) { return bvec3(isfinite(v.x), isfinite(v.y), isfinite(v.z)); }
-inline bvec3 isnan(vec3 const& v) { return bvec3(isnan(v.x), isnan(v.y), isnan(v.z)); }
-inline bvec3 isinf(vec3 const& v) { return bvec3(isinf(v.x), isinf(v.y), isinf(v.z)); }
-inline bvec3 equal(vec3 const& v1, vec3 const& v2) { return bvec3(equal(v1.x, v2.x), equal(v1.y, v2.y), equal(v1.z, v2.z)); }
-inline bvec3 greaterThan(vec3 const& v1, vec3 const& v2) { return bvec3(greaterThan(v1.x, v2.x), greaterThan(v1.y, v2.y), greaterThan(v1.z, v2.z)); }
-inline bvec3 greaterThanEqual(vec3 const& v1, vec3 const& v2) { return bvec3(greaterThanEqual(v1.x, v2.x), greaterThanEqual(v1.y, v2.y), greaterThanEqual(v1.z, v2.z)); }
-inline bvec3 lessThan(vec3 const& v1, vec3 const& v2) { return bvec3(lessThan(v1.x, v2.x), lessThan(v1.y, v2.y), lessThan(v1.z, v2.z)); }
-inline bvec3 lessThanEqual(vec3 const& v1, vec3 const& v2) { return bvec3(lessThanEqual(v1.x, v2.x), lessThanEqual(v1.y, v2.y), lessThanEqual(v1.z, v2.z)); }
                     */
                 }
             }
