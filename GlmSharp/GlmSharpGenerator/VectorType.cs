@@ -541,7 +541,7 @@ namespace GlmSharpGenerator
                         var op = kvp.Key;
                         var opComment = kvp.Value;
 
-                        if (op == "-" && !BaseTypeInfo.RequiredAbs)
+                        if (op == "-" && !BaseTypeInfo.IsSigned)
                             continue; // unsigned
 
                         foreach (var line in string.Format("Executes a component-wise unary {0}.", opComment).AsComment()) yield return line;
@@ -624,7 +624,7 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns the squared euclidean distance between the two vectors.".AsComment()) yield return line;
                     yield return string.Format("public static {0} DistanceSqr({1} lhs, {1} rhs) => (lhs - rhs).LengthSqr;", lengthType, ClassNameThat);
 
-                    if (BaseTypeInfo.RequiredAbs)
+                    if (BaseTypeInfo.IsSigned)
                     {
                         // reflect
                         foreach (var line in "Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).".AsComment()) yield return line;

@@ -296,6 +296,16 @@ namespace GlmSharp
         public double Determinant => m00 * (m11 * m22 - m21 * m12) - m10 * (m01 * m22 - m21 * m02) + m20 * (m01 * m12 - m11 * m02);
         
         /// <summary>
+        /// Returns the adjunct of this matrix.
+        /// </summary>
+        public dmat3 Adjugate => new dmat3(m11 * m22 - m21 * m12, -m01 * m22 + m21 * m02, m01 * m12 - m11 * m02, -m10 * m22 + m20 * m12, m00 * m22 - m20 * m02, -m00 * m12 + m10 * m02, m10 * m21 - m20 * m11, -m00 * m21 + m20 * m01, m00 * m11 - m10 * m01);
+        
+        /// <summary>
+        /// Returns the inverse of this matrix (use with caution).
+        /// </summary>
+        public dmat3 Inverse => Adjugate / Determinant;
+        
+        /// <summary>
         /// Executes a matrix-matrix-multiplication dmat3 * dmat2x3 -> dmat2x3.
         /// </summary>
         public static dmat2x3 operator*(dmat3 lhs, dmat2x3 rhs) => new dmat2x3(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01 + lhs.m22 * rhs.m02, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11 + lhs.m22 * rhs.m12);
@@ -339,6 +349,26 @@ namespace GlmSharp
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static dmat3 operator-(double lhs, dmat3 rhs) => new dmat3(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m02, lhs - rhs.m10, lhs - rhs.m11, lhs - rhs.m12, lhs - rhs.m20, lhs - rhs.m21, lhs - rhs.m22);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static dmat3 operator/(dmat3 lhs, double rhs) => new dmat3(lhs.m00 / rhs, lhs.m01 / rhs, lhs.m02 / rhs, lhs.m10 / rhs, lhs.m11 / rhs, lhs.m12 / rhs, lhs.m20 / rhs, lhs.m21 / rhs, lhs.m22 / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static dmat3 operator/(double lhs, dmat3 rhs) => new dmat3(lhs / rhs.m00, lhs / rhs.m01, lhs / rhs.m02, lhs / rhs.m10, lhs / rhs.m11, lhs / rhs.m12, lhs / rhs.m20, lhs / rhs.m21, lhs / rhs.m22);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static dmat3 operator*(dmat3 lhs, double rhs) => new dmat3(lhs.m00 * rhs, lhs.m01 * rhs, lhs.m02 * rhs, lhs.m10 * rhs, lhs.m11 * rhs, lhs.m12 * rhs, lhs.m20 * rhs, lhs.m21 * rhs, lhs.m22 * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static dmat3 operator*(double lhs, dmat3 rhs) => new dmat3(lhs * rhs.m00, lhs * rhs.m01, lhs * rhs.m02, lhs * rhs.m10, lhs * rhs.m11, lhs * rhs.m12, lhs * rhs.m20, lhs * rhs.m21, lhs * rhs.m22);
         
         /// <summary>
         /// Executes a component-wise lesser-than comparison.

@@ -40,17 +40,19 @@ namespace GlmSharpGenerator
             return f;
         }
 
-        public static string HelperDet(string[,] f)
+        public static string HelperDet(string[,] f, int initialSign = 0)
         {
             var s = f.GetLength(0);
+            if (s == 1)
+                return (initialSign % 2 == 1 ? "-" : "") + f[0, 0];
             if (s <= 2)
-                return string.Format("{0} * {1} - {2} * {3}", f[0, 0], f[1, 1], f[1, 0], f[0, 1]);
+                return (initialSign % 2 == 1 ? "-" : "") + string.Format("{0} * {1} {4} {2} * {3}", f[0, 0], f[1, 1], f[1, 0], f[0, 1], initialSign % 2 == 0 ? "-" : "+");
 
-            var res = "";
+            var res = initialSign % 2 == 1 ? "-" : "";
             for (var i = 0; i < s; ++i)
             {
                 if (res.Length > 0)
-                    res += i % 2 == 1 ? " - " : " + ";
+                    res += (i + initialSign) % 2 == 1 ? " - " : " + ";
                 res += f[i, 0] + " * (" + HelperDet(HelperSubmatrix(f, i, 0)) + ")";
             }
 
@@ -376,6 +378,15 @@ namespace GlmSharpGenerator
                     {
                         foreach (var line in "Returns determinant of this matrix.".AsComment()) yield return line;
                         yield return string.Format("public {0} Determinant => {1};", BaseType, HelperDet(HelperFieldsOf(Rows)));
+
+                        if (BaseTypeInfo.IsSigned)
+                        {
+                            foreach (var line in "Returns the adjunct of this matrix.".AsComment()) yield return line;
+                            yield return string.Format("public {0} Adjugate => new {0}({1});", ClassNameThat, FieldsTransposed.Select(f => HelperDet(HelperSubmatrix(HelperFieldsOf(Rows), ColOf(f), RowOf(f)), ColOf(f) + RowOf(f))).CommaSeparated());
+
+                            foreach (var line in "Returns the inverse of this matrix (use with caution).".AsComment()) yield return line;
+                            yield return string.Format("public {0} Inverse => Adjugate / Determinant;", ClassNameThat);
+                        }
                     }
 
                     // matrix-matrix-multiplication
@@ -398,15 +409,20 @@ namespace GlmSharpGenerator
                     {
                         {"+", "+ (add)"},
                         {"-", "- (subtract)"},
-                        //{"/", "/ (divide)"}, not natural
-                        //{"*", "* (multiply)"} not natural
+                        {"/", "/ (divide)"}, // only scalar
+                        {"*", "* (multiply)"} // only scalar
                     })
                     {
                         var op = kvp.Key;
                         var opComment = kvp.Value;
 
-                        foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
-                        yield return ComponentWiseOperator(op);
+                        var onlyScalar = op == "/" || op == "*";
+
+                        if (!onlyScalar)
+                        {
+                            foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
+                            yield return ComponentWiseOperator(op);
+                        }
                         foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
                         yield return ComponentWiseOperatorScalar(op, BaseType);
                         foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;

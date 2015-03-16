@@ -64,7 +64,7 @@ namespace GlmSharpGenerator
         {
             Name = "uint",
             Prefix = "u",
-            RequiredAbs = false,
+            IsSigned = false,
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
         };
@@ -157,7 +157,7 @@ namespace GlmSharpGenerator
         public string LengthType { get; set; } = "float";
         public string AbsOverrideType { get; set; }
         public string AbsOverrideTypePrefix { get; set; }
-        public bool RequiredAbs { get; set; } = true;
+        public bool IsSigned { get; set; } = true;
         public bool IsInteger { get; set; } = false;
         public bool IsFloatingPoint { get; set; }
 

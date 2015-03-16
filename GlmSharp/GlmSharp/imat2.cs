@@ -255,6 +255,16 @@ namespace GlmSharp
         public int Determinant => m00 * m11 - m10 * m01;
         
         /// <summary>
+        /// Returns the adjunct of this matrix.
+        /// </summary>
+        public imat2 Adjugate => new imat2(m11, -m01, -m10, m00);
+        
+        /// <summary>
+        /// Returns the inverse of this matrix (use with caution).
+        /// </summary>
+        public imat2 Inverse => Adjugate / Determinant;
+        
+        /// <summary>
         /// Executes a matrix-matrix-multiplication imat2 * imat2 -> imat2.
         /// </summary>
         public static imat2 operator*(imat2 lhs, imat2 rhs) => new imat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11);
@@ -298,6 +308,26 @@ namespace GlmSharp
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static imat2 operator-(int lhs, imat2 rhs) => new imat2(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m10, lhs - rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static imat2 operator/(imat2 lhs, int rhs) => new imat2(lhs.m00 / rhs, lhs.m01 / rhs, lhs.m10 / rhs, lhs.m11 / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static imat2 operator/(int lhs, imat2 rhs) => new imat2(lhs / rhs.m00, lhs / rhs.m01, lhs / rhs.m10, lhs / rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static imat2 operator*(imat2 lhs, int rhs) => new imat2(lhs.m00 * rhs, lhs.m01 * rhs, lhs.m10 * rhs, lhs.m11 * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static imat2 operator*(int lhs, imat2 rhs) => new imat2(lhs * rhs.m00, lhs * rhs.m01, lhs * rhs.m10, lhs * rhs.m11);
         
         /// <summary>
         /// Executes a component-wise % (modulo).

@@ -347,5 +347,25 @@ namespace GlmSharp
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static cmat3x4 operator-(Complex lhs, cmat3x4 rhs) => new cmat3x4(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m02, lhs - rhs.m03, lhs - rhs.m10, lhs - rhs.m11, lhs - rhs.m12, lhs - rhs.m13, lhs - rhs.m20, lhs - rhs.m21, lhs - rhs.m22, lhs - rhs.m23);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static cmat3x4 operator/(cmat3x4 lhs, Complex rhs) => new cmat3x4(lhs.m00 / rhs, lhs.m01 / rhs, lhs.m02 / rhs, lhs.m03 / rhs, lhs.m10 / rhs, lhs.m11 / rhs, lhs.m12 / rhs, lhs.m13 / rhs, lhs.m20 / rhs, lhs.m21 / rhs, lhs.m22 / rhs, lhs.m23 / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static cmat3x4 operator/(Complex lhs, cmat3x4 rhs) => new cmat3x4(lhs / rhs.m00, lhs / rhs.m01, lhs / rhs.m02, lhs / rhs.m03, lhs / rhs.m10, lhs / rhs.m11, lhs / rhs.m12, lhs / rhs.m13, lhs / rhs.m20, lhs / rhs.m21, lhs / rhs.m22, lhs / rhs.m23);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static cmat3x4 operator*(cmat3x4 lhs, Complex rhs) => new cmat3x4(lhs.m00 * rhs, lhs.m01 * rhs, lhs.m02 * rhs, lhs.m03 * rhs, lhs.m10 * rhs, lhs.m11 * rhs, lhs.m12 * rhs, lhs.m13 * rhs, lhs.m20 * rhs, lhs.m21 * rhs, lhs.m22 * rhs, lhs.m23 * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static cmat3x4 operator*(Complex lhs, cmat3x4 rhs) => new cmat3x4(lhs * rhs.m00, lhs * rhs.m01, lhs * rhs.m02, lhs * rhs.m03, lhs * rhs.m10, lhs * rhs.m11, lhs * rhs.m12, lhs * rhs.m13, lhs * rhs.m20, lhs * rhs.m21, lhs * rhs.m22, lhs * rhs.m23);
     }
 }

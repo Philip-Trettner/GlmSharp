@@ -255,6 +255,16 @@ namespace GlmSharp
         public float Determinant => m00 * m11 - m10 * m01;
         
         /// <summary>
+        /// Returns the adjunct of this matrix.
+        /// </summary>
+        public mat2 Adjugate => new mat2(m11, -m01, -m10, m00);
+        
+        /// <summary>
+        /// Returns the inverse of this matrix (use with caution).
+        /// </summary>
+        public mat2 Inverse => Adjugate / Determinant;
+        
+        /// <summary>
         /// Executes a matrix-matrix-multiplication mat2 * mat2 -> mat2.
         /// </summary>
         public static mat2 operator*(mat2 lhs, mat2 rhs) => new mat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11);
@@ -298,6 +308,26 @@ namespace GlmSharp
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static mat2 operator-(float lhs, mat2 rhs) => new mat2(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m10, lhs - rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static mat2 operator/(mat2 lhs, float rhs) => new mat2(lhs.m00 / rhs, lhs.m01 / rhs, lhs.m10 / rhs, lhs.m11 / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static mat2 operator/(float lhs, mat2 rhs) => new mat2(lhs / rhs.m00, lhs / rhs.m01, lhs / rhs.m10, lhs / rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static mat2 operator*(mat2 lhs, float rhs) => new mat2(lhs.m00 * rhs, lhs.m01 * rhs, lhs.m10 * rhs, lhs.m11 * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static mat2 operator*(float lhs, mat2 rhs) => new mat2(lhs * rhs.m00, lhs * rhs.m01, lhs * rhs.m10, lhs * rhs.m11);
         
         /// <summary>
         /// Executes a component-wise lesser-than comparison.

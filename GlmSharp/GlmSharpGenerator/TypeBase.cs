@@ -64,7 +64,7 @@ namespace GlmSharpGenerator
         public string SqrtOf(char s) => SqrOf(s.ToString());
 
 
-        public string AbsString(string s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
-        public string AbsString(char s) => BaseTypeInfo.RequiredAbs ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();
+        public string AbsString(string s) => BaseTypeInfo.IsSigned ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
+        public string AbsString(char s) => BaseTypeInfo.IsSigned ? (BaseTypeInfo.Complex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();
     }
 }

@@ -313,6 +313,26 @@ namespace GlmSharp
         public static lmat3x2 operator-(long lhs, lmat3x2 rhs) => new lmat3x2(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m10, lhs - rhs.m11, lhs - rhs.m20, lhs - rhs.m21);
         
         /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static lmat3x2 operator/(lmat3x2 lhs, long rhs) => new lmat3x2(lhs.m00 / rhs, lhs.m01 / rhs, lhs.m10 / rhs, lhs.m11 / rhs, lhs.m20 / rhs, lhs.m21 / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static lmat3x2 operator/(long lhs, lmat3x2 rhs) => new lmat3x2(lhs / rhs.m00, lhs / rhs.m01, lhs / rhs.m10, lhs / rhs.m11, lhs / rhs.m20, lhs / rhs.m21);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static lmat3x2 operator*(lmat3x2 lhs, long rhs) => new lmat3x2(lhs.m00 * rhs, lhs.m01 * rhs, lhs.m10 * rhs, lhs.m11 * rhs, lhs.m20 * rhs, lhs.m21 * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static lmat3x2 operator*(long lhs, lmat3x2 rhs) => new lmat3x2(lhs * rhs.m00, lhs * rhs.m01, lhs * rhs.m10, lhs * rhs.m11, lhs * rhs.m20, lhs * rhs.m21);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static lmat3x2 operator%(lmat3x2 lhs, lmat3x2 rhs) => new lmat3x2(lhs.m00 % rhs.m00, lhs.m01 % rhs.m01, lhs.m10 % rhs.m10, lhs.m11 % rhs.m11, lhs.m20 % rhs.m20, lhs.m21 % rhs.m21);

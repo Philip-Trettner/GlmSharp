@@ -255,6 +255,16 @@ namespace GlmSharp
         public double Determinant => m00 * m11 - m10 * m01;
         
         /// <summary>
+        /// Returns the adjunct of this matrix.
+        /// </summary>
+        public dmat2 Adjugate => new dmat2(m11, -m01, -m10, m00);
+        
+        /// <summary>
+        /// Returns the inverse of this matrix (use with caution).
+        /// </summary>
+        public dmat2 Inverse => Adjugate / Determinant;
+        
+        /// <summary>
         /// Executes a matrix-matrix-multiplication dmat2 * dmat2 -> dmat2.
         /// </summary>
         public static dmat2 operator*(dmat2 lhs, dmat2 rhs) => new dmat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11);
@@ -298,6 +308,26 @@ namespace GlmSharp
         /// Executes a component-wise - (subtract) with a scalar.
         /// </summary>
         public static dmat2 operator-(double lhs, dmat2 rhs) => new dmat2(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m10, lhs - rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static dmat2 operator/(dmat2 lhs, double rhs) => new dmat2(lhs.m00 / rhs, lhs.m01 / rhs, lhs.m10 / rhs, lhs.m11 / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static dmat2 operator/(double lhs, dmat2 rhs) => new dmat2(lhs / rhs.m00, lhs / rhs.m01, lhs / rhs.m10, lhs / rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static dmat2 operator*(dmat2 lhs, double rhs) => new dmat2(lhs.m00 * rhs, lhs.m01 * rhs, lhs.m10 * rhs, lhs.m11 * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static dmat2 operator*(double lhs, dmat2 rhs) => new dmat2(lhs * rhs.m00, lhs * rhs.m01, lhs * rhs.m10, lhs * rhs.m11);
         
         /// <summary>
         /// Executes a component-wise lesser-than comparison.

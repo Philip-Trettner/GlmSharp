@@ -300,6 +300,26 @@ namespace GlmSharp
         public static umat2 operator-(uint lhs, umat2 rhs) => new umat2(lhs - rhs.m00, lhs - rhs.m01, lhs - rhs.m10, lhs - rhs.m11);
         
         /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static umat2 operator/(umat2 lhs, uint rhs) => new umat2(lhs.m00 / rhs, lhs.m01 / rhs, lhs.m10 / rhs, lhs.m11 / rhs);
+        
+        /// <summary>
+        /// Executes a component-wise / (divide) with a scalar.
+        /// </summary>
+        public static umat2 operator/(uint lhs, umat2 rhs) => new umat2(lhs / rhs.m00, lhs / rhs.m01, lhs / rhs.m10, lhs / rhs.m11);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static umat2 operator*(umat2 lhs, uint rhs) => new umat2(lhs.m00 * rhs, lhs.m01 * rhs, lhs.m10 * rhs, lhs.m11 * rhs);
+        
+        /// <summary>
+        /// Executes a component-wise * (multiply) with a scalar.
+        /// </summary>
+        public static umat2 operator*(uint lhs, umat2 rhs) => new umat2(lhs * rhs.m00, lhs * rhs.m01, lhs * rhs.m10, lhs * rhs.m11);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static umat2 operator%(umat2 lhs, umat2 rhs) => new umat2(lhs.m00 % rhs.m00, lhs.m01 % rhs.m01, lhs.m10 % rhs.m10, lhs.m11 % rhs.m11);
