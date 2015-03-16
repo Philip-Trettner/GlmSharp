@@ -804,9 +804,19 @@ namespace GlmSharp
         public static dvec3 Abs(dvec3 v) => new dvec3(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Abs with a scalar.
+        /// </summary>
+        public static dvec3 Abs(double v) => new dvec3(Math.Abs(v));
+        
+        /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder3.
         /// </summary>
         public static dvec3 HermiteInterpolationOrder3(dvec3 v) => new dvec3((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
+        /// </summary>
+        public static dvec3 HermiteInterpolationOrder3(double v) => new dvec3((3 - 2 * v) * v * v);
         
         /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder5.
@@ -814,9 +824,19 @@ namespace GlmSharp
         public static dvec3 HermiteInterpolationOrder5(dvec3 v) => new dvec3(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z);
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
+        /// </summary>
+        public static dvec3 HermiteInterpolationOrder5(double v) => new dvec3(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Step.
         /// </summary>
         public static dvec3 Step(dvec3 v) => new dvec3(v.x >= default(double) ? 1.0 : default(double), v.y >= default(double) ? 1.0 : default(double), v.z >= default(double) ? 1.0 : default(double));
+        
+        /// <summary>
+        /// Returns a component-wise executed Step.
+        /// </summary>
+        public static dvec3 Step(double v) => new dvec3(v >= default(double) ? 1.0 : default(double));
         
         /// <summary>
         /// Returns a component-wise executed Acos.
@@ -824,9 +844,19 @@ namespace GlmSharp
         public static dvec3 Acos(dvec3 v) => new dvec3((double)Math.Acos((double)v.x), (double)Math.Acos((double)v.y), (double)Math.Acos((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Acos.
+        /// </summary>
+        public static dvec3 Acos(double v) => new dvec3((double)Math.Acos((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Asin.
         /// </summary>
         public static dvec3 Asin(dvec3 v) => new dvec3((double)Math.Asin((double)v.x), (double)Math.Asin((double)v.y), (double)Math.Asin((double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Asin.
+        /// </summary>
+        public static dvec3 Asin(double v) => new dvec3((double)Math.Asin((double)v));
         
         /// <summary>
         /// Returns a component-wise executed Atan.
@@ -834,9 +864,19 @@ namespace GlmSharp
         public static dvec3 Atan(dvec3 v) => new dvec3((double)Math.Atan((double)v.x), (double)Math.Atan((double)v.y), (double)Math.Atan((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Atan.
+        /// </summary>
+        public static dvec3 Atan(double v) => new dvec3((double)Math.Atan((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Cos.
         /// </summary>
         public static dvec3 Cos(dvec3 v) => new dvec3((double)Math.Cos((double)v.x), (double)Math.Cos((double)v.y), (double)Math.Cos((double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Cos.
+        /// </summary>
+        public static dvec3 Cos(double v) => new dvec3((double)Math.Cos((double)v));
         
         /// <summary>
         /// Returns a component-wise executed Cosh.
@@ -844,9 +884,19 @@ namespace GlmSharp
         public static dvec3 Cosh(dvec3 v) => new dvec3((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y), (double)Math.Cosh((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Cosh.
+        /// </summary>
+        public static dvec3 Cosh(double v) => new dvec3((double)Math.Cosh((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Exp.
         /// </summary>
         public static dvec3 Exp(dvec3 v) => new dvec3((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y), (double)Math.Exp((double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Exp.
+        /// </summary>
+        public static dvec3 Exp(double v) => new dvec3((double)Math.Exp((double)v));
         
         /// <summary>
         /// Returns a component-wise executed Log.
@@ -854,9 +904,19 @@ namespace GlmSharp
         public static dvec3 Log(dvec3 v) => new dvec3((double)Math.Log((double)v.x), (double)Math.Log((double)v.y), (double)Math.Log((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static dvec3 Log(double v) => new dvec3((double)Math.Log((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Log2.
         /// </summary>
         public static dvec3 Log2(dvec3 v) => new dvec3((double)Math.Log((double)v.x, 2), (double)Math.Log((double)v.y, 2), (double)Math.Log((double)v.z, 2));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log2.
+        /// </summary>
+        public static dvec3 Log2(double v) => new dvec3((double)Math.Log((double)v, 2));
         
         /// <summary>
         /// Returns a component-wise executed Log10.
@@ -864,9 +924,19 @@ namespace GlmSharp
         public static dvec3 Log10(dvec3 v) => new dvec3((double)Math.Log10((double)v.x), (double)Math.Log10((double)v.y), (double)Math.Log10((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Log10.
+        /// </summary>
+        public static dvec3 Log10(double v) => new dvec3((double)Math.Log10((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Floor.
         /// </summary>
         public static dvec3 Floor(dvec3 v) => new dvec3((double)Math.Floor(v.x), (double)Math.Floor(v.y), (double)Math.Floor(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Floor.
+        /// </summary>
+        public static dvec3 Floor(double v) => new dvec3((double)Math.Floor(v));
         
         /// <summary>
         /// Returns a component-wise executed Ceiling.
@@ -874,9 +944,19 @@ namespace GlmSharp
         public static dvec3 Ceiling(dvec3 v) => new dvec3((double)Math.Ceiling(v.x), (double)Math.Ceiling(v.y), (double)Math.Ceiling(v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Ceiling.
+        /// </summary>
+        public static dvec3 Ceiling(double v) => new dvec3((double)Math.Ceiling(v));
+        
+        /// <summary>
         /// Returns a component-wise executed Round.
         /// </summary>
         public static dvec3 Round(dvec3 v) => new dvec3((double)Math.Round(v.x), (double)Math.Round(v.y), (double)Math.Round(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Round.
+        /// </summary>
+        public static dvec3 Round(double v) => new dvec3((double)Math.Round(v));
         
         /// <summary>
         /// Returns a component-wise executed Sin.
@@ -884,9 +964,19 @@ namespace GlmSharp
         public static dvec3 Sin(dvec3 v) => new dvec3((double)Math.Sin((double)v.x), (double)Math.Sin((double)v.y), (double)Math.Sin((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Sin.
+        /// </summary>
+        public static dvec3 Sin(double v) => new dvec3((double)Math.Sin((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Sinh.
         /// </summary>
         public static dvec3 Sinh(dvec3 v) => new dvec3((double)Math.Sinh((double)v.x), (double)Math.Sinh((double)v.y), (double)Math.Sinh((double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sinh.
+        /// </summary>
+        public static dvec3 Sinh(double v) => new dvec3((double)Math.Sinh((double)v));
         
         /// <summary>
         /// Returns a component-wise executed Sqrt.
@@ -894,9 +984,19 @@ namespace GlmSharp
         public static dvec3 Sqrt(dvec3 v) => new dvec3((double)Math.Sqrt((double)v.x), (double)Math.Sqrt((double)v.y), (double)Math.Sqrt((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Sqrt.
+        /// </summary>
+        public static dvec3 Sqrt(double v) => new dvec3((double)Math.Sqrt((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Tan.
         /// </summary>
         public static dvec3 Tan(dvec3 v) => new dvec3((double)Math.Tan((double)v.x), (double)Math.Tan((double)v.y), (double)Math.Tan((double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Tan.
+        /// </summary>
+        public static dvec3 Tan(double v) => new dvec3((double)Math.Tan((double)v));
         
         /// <summary>
         /// Returns a component-wise executed Tanh.
@@ -904,9 +1004,19 @@ namespace GlmSharp
         public static dvec3 Tanh(dvec3 v) => new dvec3((double)Math.Tanh((double)v.x), (double)Math.Tanh((double)v.y), (double)Math.Tanh((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Tanh.
+        /// </summary>
+        public static dvec3 Tanh(double v) => new dvec3((double)Math.Tanh((double)v));
+        
+        /// <summary>
         /// Returns a component-wise executed Truncate.
         /// </summary>
         public static dvec3 Truncate(dvec3 v) => new dvec3((double)Math.Truncate((double)v.x), (double)Math.Truncate((double)v.y), (double)Math.Truncate((double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Truncate.
+        /// </summary>
+        public static dvec3 Truncate(double v) => new dvec3((double)Math.Truncate((double)v));
         
         /// <summary>
         /// Returns a component-wise executed Sign.
@@ -914,14 +1024,29 @@ namespace GlmSharp
         public static ivec3 Sign(dvec3 v) => new ivec3(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Sign.
+        /// </summary>
+        public static ivec3 Sign(double v) => new ivec3(Math.Sign(v));
+        
+        /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static dvec3 Sqr(dvec3 v) => new dvec3(v.x * v.x, v.y * v.y, v.z * v.z);
         
         /// <summary>
+        /// Returns a component-wise executed Sqr with a scalar.
+        /// </summary>
+        public static dvec3 Sqr(double v) => new dvec3(v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Pow2.
         /// </summary>
         public static dvec3 Pow2(dvec3 v) => new dvec3(v.x * v.x, v.y * v.y, v.z * v.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2 with a scalar.
+        /// </summary>
+        public static dvec3 Pow2(double v) => new dvec3(v * v);
         
         /// <summary>
         /// Returns a component-wise executed Max.
@@ -939,6 +1064,11 @@ namespace GlmSharp
         public static dvec3 Max(double s, dvec3 v) => new dvec3(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Max with scalars.
+        /// </summary>
+        public static dvec3 Max(double lhs, double rhs) => new dvec3(Math.Max(lhs, rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Min.
         /// </summary>
         public static dvec3 Min(dvec3 lhs, dvec3 rhs) => new dvec3(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z));
@@ -952,6 +1082,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Min with a scalar.
         /// </summary>
         public static dvec3 Min(double s, dvec3 v) => new dvec3(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with scalars.
+        /// </summary>
+        public static dvec3 Min(double lhs, double rhs) => new dvec3(Math.Min(lhs, rhs));
         
         /// <summary>
         /// Returns a component-wise executed Pow.
@@ -969,6 +1104,11 @@ namespace GlmSharp
         public static dvec3 Pow(double s, dvec3 v) => new dvec3((double)Math.Pow((double)s, (double)v.x), (double)Math.Pow((double)s, (double)v.y), (double)Math.Pow((double)s, (double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Pow with scalars.
+        /// </summary>
+        public static dvec3 Pow(double lhs, double rhs) => new dvec3((double)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static dvec3 Log(dvec3 lhs, dvec3 rhs) => new dvec3((double)Math.Log((double)lhs.x, (double)rhs.x), (double)Math.Log((double)lhs.y, (double)rhs.y), (double)Math.Log((double)lhs.z, (double)rhs.z));
@@ -982,6 +1122,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static dvec3 Log(double s, dvec3 v) => new dvec3((double)Math.Log((double)s, (double)v.x), (double)Math.Log((double)s, (double)v.y), (double)Math.Log((double)s, (double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with scalars.
+        /// </summary>
+        public static dvec3 Log(double lhs, double rhs) => new dvec3((double)Math.Log((double)lhs, (double)rhs));
         
         /// <summary>
         /// Returns a component-wise executed Clamp.
@@ -1021,7 +1166,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Clamp with scalars.
         /// </summary>
-        public static dvec3 Clamp(double v, double min, double max) => new dvec3(Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max));
+        public static dvec3 Clamp(double v, double min, double max) => new dvec3(Math.Min(Math.Max(v, min), max));
         
         /// <summary>
         /// Returns a component-wise executed Mix.
@@ -1061,7 +1206,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Mix with scalars.
         /// </summary>
-        public static dvec3 Mix(double min, double max, double a) => new dvec3(min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a);
+        public static dvec3 Mix(double min, double max, double a) => new dvec3(min * (1-a) + max * a);
         
         /// <summary>
         /// Returns a component-wise executed Lerp.
@@ -1101,7 +1246,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Lerp with scalars.
         /// </summary>
-        public static dvec3 Lerp(double min, double max, double a) => new dvec3(min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a);
+        public static dvec3 Lerp(double min, double max, double a) => new dvec3(min * (1-a) + max * a);
         
         /// <summary>
         /// Returns a component-wise executed Smoothstep.
@@ -1141,7 +1286,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Smoothstep with scalars.
         /// </summary>
-        public static dvec3 Smoothstep(double edge0, double edge1, double v) => new dvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        public static dvec3 Smoothstep(double edge0, double edge1, double v) => new dvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
         /// Returns a component-wise executed Smootherstep.
@@ -1181,6 +1326,6 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Smootherstep with scalars.
         /// </summary>
-        public static dvec3 Smootherstep(double edge0, double edge1, double v) => new dvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        public static dvec3 Smootherstep(double edge0, double edge1, double v) => new dvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

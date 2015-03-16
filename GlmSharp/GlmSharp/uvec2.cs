@@ -1121,9 +1121,19 @@ namespace GlmSharp
         public static uvec2 Abs(uvec2 v) => new uvec2(v.x, v.y);
         
         /// <summary>
+        /// Returns a component-wise executed Abs with a scalar.
+        /// </summary>
+        public static uvec2 Abs(uint v) => new uvec2(v);
+        
+        /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder3.
         /// </summary>
         public static uvec2 HermiteInterpolationOrder3(uvec2 v) => new uvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
+        /// </summary>
+        public static uvec2 HermiteInterpolationOrder3(uint v) => new uvec2((3 - 2 * v) * v * v);
         
         /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder5.
@@ -1131,14 +1141,29 @@ namespace GlmSharp
         public static uvec2 HermiteInterpolationOrder5(uvec2 v) => new uvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
+        /// </summary>
+        public static uvec2 HermiteInterpolationOrder5(uint v) => new uvec2(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static uvec2 Sqr(uvec2 v) => new uvec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
+        /// Returns a component-wise executed Sqr with a scalar.
+        /// </summary>
+        public static uvec2 Sqr(uint v) => new uvec2(v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Pow2.
         /// </summary>
         public static uvec2 Pow2(uvec2 v) => new uvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2 with a scalar.
+        /// </summary>
+        public static uvec2 Pow2(uint v) => new uvec2(v * v);
         
         /// <summary>
         /// Returns a component-wise executed Max.
@@ -1156,6 +1181,11 @@ namespace GlmSharp
         public static uvec2 Max(uint s, uvec2 v) => new uvec2(Math.Max(s, v.x), Math.Max(s, v.y));
         
         /// <summary>
+        /// Returns a component-wise executed Max with scalars.
+        /// </summary>
+        public static uvec2 Max(uint lhs, uint rhs) => new uvec2(Math.Max(lhs, rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Min.
         /// </summary>
         public static uvec2 Min(uvec2 lhs, uvec2 rhs) => new uvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
@@ -1169,6 +1199,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Min with a scalar.
         /// </summary>
         public static uvec2 Min(uint s, uvec2 v) => new uvec2(Math.Min(s, v.x), Math.Min(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with scalars.
+        /// </summary>
+        public static uvec2 Min(uint lhs, uint rhs) => new uvec2(Math.Min(lhs, rhs));
         
         /// <summary>
         /// Returns a component-wise executed Pow.
@@ -1186,6 +1221,11 @@ namespace GlmSharp
         public static uvec2 Pow(uint s, uvec2 v) => new uvec2((uint)Math.Pow((double)s, (double)v.x), (uint)Math.Pow((double)s, (double)v.y));
         
         /// <summary>
+        /// Returns a component-wise executed Pow with scalars.
+        /// </summary>
+        public static uvec2 Pow(uint lhs, uint rhs) => new uvec2((uint)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static uvec2 Log(uvec2 lhs, uvec2 rhs) => new uvec2((uint)Math.Log((double)lhs.x, (double)rhs.x), (uint)Math.Log((double)lhs.y, (double)rhs.y));
@@ -1199,6 +1239,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static uvec2 Log(uint s, uvec2 v) => new uvec2((uint)Math.Log((double)s, (double)v.x), (uint)Math.Log((double)s, (double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with scalars.
+        /// </summary>
+        public static uvec2 Log(uint lhs, uint rhs) => new uvec2((uint)Math.Log((double)lhs, (double)rhs));
         
         /// <summary>
         /// Returns a component-wise executed Clamp.
@@ -1238,7 +1283,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Clamp with scalars.
         /// </summary>
-        public static uvec2 Clamp(uint v, uint min, uint max) => new uvec2(Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max));
+        public static uvec2 Clamp(uint v, uint min, uint max) => new uvec2(Math.Min(Math.Max(v, min), max));
         
         /// <summary>
         /// Returns a component-wise executed Mix.
@@ -1278,7 +1323,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Mix with scalars.
         /// </summary>
-        public static uvec2 Mix(uint min, uint max, uint a) => new uvec2(min * (1-a) + max * a, min * (1-a) + max * a);
+        public static uvec2 Mix(uint min, uint max, uint a) => new uvec2(min * (1-a) + max * a);
         
         /// <summary>
         /// Returns a component-wise executed Lerp.
@@ -1318,7 +1363,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Lerp with scalars.
         /// </summary>
-        public static uvec2 Lerp(uint min, uint max, uint a) => new uvec2(min * (1-a) + max * a, min * (1-a) + max * a);
+        public static uvec2 Lerp(uint min, uint max, uint a) => new uvec2(min * (1-a) + max * a);
         
         /// <summary>
         /// Returns a component-wise executed Smoothstep.
@@ -1358,7 +1403,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Smoothstep with scalars.
         /// </summary>
-        public static uvec2 Smoothstep(uint edge0, uint edge1, uint v) => new uvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        public static uvec2 Smoothstep(uint edge0, uint edge1, uint v) => new uvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
         /// Returns a component-wise executed Smootherstep.
@@ -1398,6 +1443,6 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Smootherstep with scalars.
         /// </summary>
-        public static uvec2 Smootherstep(uint edge0, uint edge1, uint v) => new uvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        public static uvec2 Smootherstep(uint edge0, uint edge1, uint v) => new uvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

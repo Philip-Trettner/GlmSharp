@@ -1170,9 +1170,19 @@ namespace GlmSharp
         public static uvec4 Abs(uvec4 v) => new uvec4(v.x, v.y, v.z, v.w);
         
         /// <summary>
+        /// Returns a component-wise executed Abs with a scalar.
+        /// </summary>
+        public static uvec4 Abs(uint v) => new uvec4(v);
+        
+        /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder3.
         /// </summary>
         public static uvec4 HermiteInterpolationOrder3(uvec4 v) => new uvec4((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z, (3 - 2 * v.w) * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
+        /// </summary>
+        public static uvec4 HermiteInterpolationOrder3(uint v) => new uvec4((3 - 2 * v) * v * v);
         
         /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder5.
@@ -1180,14 +1190,29 @@ namespace GlmSharp
         public static uvec4 HermiteInterpolationOrder5(uvec4 v) => new uvec4(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z, ((6 * v.w - 15) * v.w + 10) * v.w * v.w * v.w);
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
+        /// </summary>
+        public static uvec4 HermiteInterpolationOrder5(uint v) => new uvec4(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
         public static uvec4 Sqr(uvec4 v) => new uvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
         
         /// <summary>
+        /// Returns a component-wise executed Sqr with a scalar.
+        /// </summary>
+        public static uvec4 Sqr(uint v) => new uvec4(v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Pow2.
         /// </summary>
         public static uvec4 Pow2(uvec4 v) => new uvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2 with a scalar.
+        /// </summary>
+        public static uvec4 Pow2(uint v) => new uvec4(v * v);
         
         /// <summary>
         /// Returns a component-wise executed Max.
@@ -1205,6 +1230,11 @@ namespace GlmSharp
         public static uvec4 Max(uint s, uvec4 v) => new uvec4(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z), Math.Max(s, v.w));
         
         /// <summary>
+        /// Returns a component-wise executed Max with scalars.
+        /// </summary>
+        public static uvec4 Max(uint lhs, uint rhs) => new uvec4(Math.Max(lhs, rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Min.
         /// </summary>
         public static uvec4 Min(uvec4 lhs, uvec4 rhs) => new uvec4(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z), Math.Min(lhs.w, rhs.w));
@@ -1218,6 +1248,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Min with a scalar.
         /// </summary>
         public static uvec4 Min(uint s, uvec4 v) => new uvec4(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z), Math.Min(s, v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with scalars.
+        /// </summary>
+        public static uvec4 Min(uint lhs, uint rhs) => new uvec4(Math.Min(lhs, rhs));
         
         /// <summary>
         /// Returns a component-wise executed Pow.
@@ -1235,6 +1270,11 @@ namespace GlmSharp
         public static uvec4 Pow(uint s, uvec4 v) => new uvec4((uint)Math.Pow((double)s, (double)v.x), (uint)Math.Pow((double)s, (double)v.y), (uint)Math.Pow((double)s, (double)v.z), (uint)Math.Pow((double)s, (double)v.w));
         
         /// <summary>
+        /// Returns a component-wise executed Pow with scalars.
+        /// </summary>
+        public static uvec4 Pow(uint lhs, uint rhs) => new uvec4((uint)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static uvec4 Log(uvec4 lhs, uvec4 rhs) => new uvec4((uint)Math.Log((double)lhs.x, (double)rhs.x), (uint)Math.Log((double)lhs.y, (double)rhs.y), (uint)Math.Log((double)lhs.z, (double)rhs.z), (uint)Math.Log((double)lhs.w, (double)rhs.w));
@@ -1248,6 +1288,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static uvec4 Log(uint s, uvec4 v) => new uvec4((uint)Math.Log((double)s, (double)v.x), (uint)Math.Log((double)s, (double)v.y), (uint)Math.Log((double)s, (double)v.z), (uint)Math.Log((double)s, (double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with scalars.
+        /// </summary>
+        public static uvec4 Log(uint lhs, uint rhs) => new uvec4((uint)Math.Log((double)lhs, (double)rhs));
         
         /// <summary>
         /// Returns a component-wise executed Clamp.
@@ -1287,7 +1332,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Clamp with scalars.
         /// </summary>
-        public static uvec4 Clamp(uint v, uint min, uint max) => new uvec4(Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max));
+        public static uvec4 Clamp(uint v, uint min, uint max) => new uvec4(Math.Min(Math.Max(v, min), max));
         
         /// <summary>
         /// Returns a component-wise executed Mix.
@@ -1327,7 +1372,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Mix with scalars.
         /// </summary>
-        public static uvec4 Mix(uint min, uint max, uint a) => new uvec4(min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a);
+        public static uvec4 Mix(uint min, uint max, uint a) => new uvec4(min * (1-a) + max * a);
         
         /// <summary>
         /// Returns a component-wise executed Lerp.
@@ -1367,7 +1412,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Lerp with scalars.
         /// </summary>
-        public static uvec4 Lerp(uint min, uint max, uint a) => new uvec4(min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a);
+        public static uvec4 Lerp(uint min, uint max, uint a) => new uvec4(min * (1-a) + max * a);
         
         /// <summary>
         /// Returns a component-wise executed Smoothstep.
@@ -1407,7 +1452,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Smoothstep with scalars.
         /// </summary>
-        public static uvec4 Smoothstep(uint edge0, uint edge1, uint v) => new uvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        public static uvec4 Smoothstep(uint edge0, uint edge1, uint v) => new uvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
         /// Returns a component-wise executed Smootherstep.
@@ -1447,6 +1492,6 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Smootherstep with scalars.
         /// </summary>
-        public static uvec4 Smootherstep(uint edge0, uint edge1, uint v) => new uvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        public static uvec4 Smootherstep(uint edge0, uint edge1, uint v) => new uvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

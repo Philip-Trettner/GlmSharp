@@ -465,9 +465,19 @@ namespace GlmSharp
         public static dvec4 Abs(cvec4 v) => new dvec4(v.x.Magnitude, v.y.Magnitude, v.z.Magnitude, v.w.Magnitude);
         
         /// <summary>
+        /// Returns a component-wise executed Abs with a scalar.
+        /// </summary>
+        public static dvec4 Abs(Complex v) => new dvec4(v.Magnitude);
+        
+        /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder3.
         /// </summary>
         public static cvec4 HermiteInterpolationOrder3(cvec4 v) => new cvec4((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z, (3 - 2 * v.w) * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
+        /// </summary>
+        public static cvec4 HermiteInterpolationOrder3(Complex v) => new cvec4((3 - 2 * v) * v * v);
         
         /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder5.
@@ -475,9 +485,19 @@ namespace GlmSharp
         public static cvec4 HermiteInterpolationOrder5(cvec4 v) => new cvec4(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z, ((6 * v.w - 15) * v.w + 10) * v.w * v.w * v.w);
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
+        /// </summary>
+        public static cvec4 HermiteInterpolationOrder5(Complex v) => new cvec4(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed complex Acos.
         /// </summary>
         public static cvec4 Acos(cvec4 v) => new cvec4(Complex.Acos(v.x), Complex.Acos(v.y), Complex.Acos(v.z), Complex.Acos(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Acos with a scalar.
+        /// </summary>
+        public static cvec4 Acos(Complex s) => new cvec4(Complex.Acos(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Asin.
@@ -485,9 +505,19 @@ namespace GlmSharp
         public static cvec4 Asin(cvec4 v) => new cvec4(Complex.Asin(v.x), Complex.Asin(v.y), Complex.Asin(v.z), Complex.Asin(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed complex Asin with a scalar.
+        /// </summary>
+        public static cvec4 Asin(Complex s) => new cvec4(Complex.Asin(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Atan.
         /// </summary>
         public static cvec4 Atan(cvec4 v) => new cvec4(Complex.Atan(v.x), Complex.Atan(v.y), Complex.Atan(v.z), Complex.Atan(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Atan with a scalar.
+        /// </summary>
+        public static cvec4 Atan(Complex s) => new cvec4(Complex.Atan(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Cos.
@@ -495,9 +525,19 @@ namespace GlmSharp
         public static cvec4 Cos(cvec4 v) => new cvec4(Complex.Cos(v.x), Complex.Cos(v.y), Complex.Cos(v.z), Complex.Cos(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed complex Cos with a scalar.
+        /// </summary>
+        public static cvec4 Cos(Complex s) => new cvec4(Complex.Cos(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Cosh.
         /// </summary>
         public static cvec4 Cosh(cvec4 v) => new cvec4(Complex.Cosh(v.x), Complex.Cosh(v.y), Complex.Cosh(v.z), Complex.Cosh(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Cosh with a scalar.
+        /// </summary>
+        public static cvec4 Cosh(Complex s) => new cvec4(Complex.Cosh(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Exp.
@@ -505,9 +545,19 @@ namespace GlmSharp
         public static cvec4 Exp(cvec4 v) => new cvec4(Complex.Exp(v.x), Complex.Exp(v.y), Complex.Exp(v.z), Complex.Exp(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed complex Exp with a scalar.
+        /// </summary>
+        public static cvec4 Exp(Complex s) => new cvec4(Complex.Exp(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Log.
         /// </summary>
         public static cvec4 Log(cvec4 v) => new cvec4(Complex.Log(v.x), Complex.Log(v.y), Complex.Log(v.z), Complex.Log(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Log with a scalar.
+        /// </summary>
+        public static cvec4 Log(Complex s) => new cvec4(Complex.Log(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Log2.
@@ -515,9 +565,19 @@ namespace GlmSharp
         public static cvec4 Log2(cvec4 v) => new cvec4(Complex.Log(v.x, 2.0), Complex.Log(v.y, 2.0), Complex.Log(v.z, 2.0), Complex.Log(v.w, 2.0));
         
         /// <summary>
+        /// Returns a component-wise executed complex Log2 with a scalar.
+        /// </summary>
+        public static cvec4 Log2(Complex s) => new cvec4(Complex.Log(s, 2.0));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Log10.
         /// </summary>
         public static cvec4 Log10(cvec4 v) => new cvec4(Complex.Log10(v.x), Complex.Log10(v.y), Complex.Log10(v.z), Complex.Log10(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Log10 with a scalar.
+        /// </summary>
+        public static cvec4 Log10(Complex s) => new cvec4(Complex.Log10(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Reciprocal.
@@ -525,9 +585,19 @@ namespace GlmSharp
         public static cvec4 Reciprocal(cvec4 v) => new cvec4(Complex.Reciprocal(v.x), Complex.Reciprocal(v.y), Complex.Reciprocal(v.z), Complex.Reciprocal(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed complex Reciprocal with a scalar.
+        /// </summary>
+        public static cvec4 Reciprocal(Complex s) => new cvec4(Complex.Reciprocal(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Sin.
         /// </summary>
         public static cvec4 Sin(cvec4 v) => new cvec4(Complex.Sin(v.x), Complex.Sin(v.y), Complex.Sin(v.z), Complex.Sin(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Sin with a scalar.
+        /// </summary>
+        public static cvec4 Sin(Complex s) => new cvec4(Complex.Sin(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Sinh.
@@ -535,9 +605,19 @@ namespace GlmSharp
         public static cvec4 Sinh(cvec4 v) => new cvec4(Complex.Sinh(v.x), Complex.Sinh(v.y), Complex.Sinh(v.z), Complex.Sinh(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed complex Sinh with a scalar.
+        /// </summary>
+        public static cvec4 Sinh(Complex s) => new cvec4(Complex.Sinh(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Sqrt.
         /// </summary>
         public static cvec4 Sqrt(cvec4 v) => new cvec4(Complex.Sqrt(v.x), Complex.Sqrt(v.y), Complex.Sqrt(v.z), Complex.Sqrt(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Sqrt with a scalar.
+        /// </summary>
+        public static cvec4 Sqrt(Complex s) => new cvec4(Complex.Sqrt(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Tan.
@@ -545,14 +625,29 @@ namespace GlmSharp
         public static cvec4 Tan(cvec4 v) => new cvec4(Complex.Tan(v.x), Complex.Tan(v.y), Complex.Tan(v.z), Complex.Tan(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed complex Tan with a scalar.
+        /// </summary>
+        public static cvec4 Tan(Complex s) => new cvec4(Complex.Tan(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Tanh.
         /// </summary>
         public static cvec4 Tanh(cvec4 v) => new cvec4(Complex.Tanh(v.x), Complex.Tanh(v.y), Complex.Tanh(v.z), Complex.Tanh(v.w));
         
         /// <summary>
+        /// Returns a component-wise executed complex Tanh with a scalar.
+        /// </summary>
+        public static cvec4 Tanh(Complex s) => new cvec4(Complex.Tanh(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Conjugate.
         /// </summary>
         public static cvec4 Conjugate(cvec4 v) => new cvec4(Complex.Conjugate(v.x), Complex.Conjugate(v.y), Complex.Conjugate(v.z), Complex.Conjugate(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Conjugate with a scalar.
+        /// </summary>
+        public static cvec4 Conjugate(Complex s) => new cvec4(Complex.Conjugate(s));
         
         /// <summary>
         /// Returns a component-wise executed Pow.
@@ -575,6 +670,11 @@ namespace GlmSharp
         public static cvec4 Pow(double s, cvec4 v) => new cvec4(Complex.Pow(s, v.x), Complex.Pow(s, v.y), Complex.Pow(s, v.z), Complex.Pow(s, v.w));
         
         /// <summary>
+        /// Returns a component-wise executed Pow with scalars.
+        /// </summary>
+        public static cvec4 Pow(Complex lhs, Complex rhs) => new cvec4(Complex.Pow(lhs, rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Pow.
         /// </summary>
         public static cvec4 Pow(cvec4 lhs, dvec4 rhs) => new cvec4(Complex.Pow(lhs.x, rhs.x), Complex.Pow(lhs.y, rhs.y), Complex.Pow(lhs.z, rhs.z), Complex.Pow(lhs.w, rhs.w));
@@ -585,6 +685,11 @@ namespace GlmSharp
         public static cvec4 Pow(cvec4 v, double s) => new cvec4(Complex.Pow(v.x, s), Complex.Pow(v.y, s), Complex.Pow(v.z, s), Complex.Pow(v.w, s));
         
         /// <summary>
+        /// Returns a component-wise executed Pow with scalars.
+        /// </summary>
+        public static cvec4 Pow(double lhs, double rhs) => new cvec4(Complex.Pow(lhs, rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static cvec4 Log(cvec4 lhs, dvec4 rhs) => new cvec4(Complex.Log(lhs.x, rhs.x), Complex.Log(lhs.y, rhs.y), Complex.Log(lhs.z, rhs.z), Complex.Log(lhs.w, rhs.w));
@@ -593,6 +698,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static cvec4 Log(cvec4 v, double s) => new cvec4(Complex.Log(v.x, s), Complex.Log(v.y, s), Complex.Log(v.z, s), Complex.Log(v.w, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with scalars.
+        /// </summary>
+        public static cvec4 Log(double lhs, double rhs) => new cvec4(Complex.Log(lhs, rhs));
         
         /// <summary>
         /// Returns a component-wise executed FromPolarCoordinates.
@@ -615,9 +725,19 @@ namespace GlmSharp
         public static cvec4 Sqr(cvec4 v) => new cvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
         
         /// <summary>
+        /// Returns a component-wise executed Sqr with a scalar.
+        /// </summary>
+        public static cvec4 Sqr(Complex v) => new cvec4(v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Pow2.
         /// </summary>
         public static cvec4 Pow2(cvec4 v) => new cvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2 with a scalar.
+        /// </summary>
+        public static cvec4 Pow2(Complex v) => new cvec4(v * v);
         
         /// <summary>
         /// Returns a component-wise executed Mix.
@@ -657,6 +777,6 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Mix with scalars.
         /// </summary>
-        public static cvec4 Mix(Complex min, Complex max, Complex a) => new cvec4(min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a);
+        public static cvec4 Mix(Complex min, Complex max, Complex a) => new cvec4(min * (1-a) + max * a);
     }
 }

@@ -665,6 +665,9 @@ namespace GlmSharpGenerator
 
                         foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
                         yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+
+                        foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseType, opFunc("v"));
                     }
                     
                     foreach (var kvp in new Dictionary<string, Func<string, string>>
@@ -680,6 +683,9 @@ namespace GlmSharpGenerator
 
                         foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
                         yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+
+                        foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseType, opFunc("v"));
                     }
 
                     if (BaseTypeInfo.IsFloatingPoint)
@@ -717,6 +723,9 @@ namespace GlmSharpGenerator
 
                             foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
                             yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseType, opFunc("v"));
                         }
 
                     if (BaseTypeInfo.Complex)
@@ -748,6 +757,9 @@ namespace GlmSharpGenerator
 
                             foreach (var line in string.Format("Returns a component-wise executed complex {0}.", op).AsComment()) yield return line;
                             yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+
+                            foreach (var line in string.Format("Returns a component-wise executed complex {0} with a scalar.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({4} s) => new {0}({3});", retType, op, ClassNameThat, opFunc("s"), BaseType);
                         }
 
                         foreach (var kvp in new Dictionary<string, Func<string, string, string>>
@@ -777,6 +789,9 @@ namespace GlmSharpGenerator
 
                                 foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
                                 yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), "double");
+
+                                foreach (var line in string.Format("Returns a component-wise executed {0} with scalars.", op).AsComment()) yield return line;
+                                yield return string.Format("public static {0} {1}({4} lhs, {4} rhs) => new {0}({3});", retType, op, ClassNameThat, opFunc("lhs", "rhs"), BaseType);
                             }
 
                             // double rhs
@@ -785,6 +800,9 @@ namespace GlmSharpGenerator
 
                             foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
                             yield return string.Format("public static {0} {1}({2} v, {4} s) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c, "s")).CommaSeparated(), "double");
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0} with scalars.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({4} lhs, {4} rhs) => new {0}({3});", retType, op, ClassNameThat, opFunc("lhs", "rhs"), "double");
                         }
 
                         // from polar coordinates
@@ -811,6 +829,9 @@ namespace GlmSharpGenerator
 
                         foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
                         yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+
+                        foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseType, opFunc("v"));
                     }
 
                     if (!BaseTypeInfo.Complex)
@@ -835,6 +856,9 @@ namespace GlmSharpGenerator
 
                             foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
                             yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), BaseType);
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0} with scalars.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({4} lhs, {4} rhs) => new {0}({3});", retType, op, ClassNameThat, opFunc("lhs", "rhs"), BaseType);
                         }
 
                     foreach (var kvp in new Dictionary<string[], Func<string, string, string, string>>
@@ -876,20 +900,12 @@ namespace GlmSharpGenerator
 
                             var comm = scalars.All(b => !b) ? "" : " with scalars";
 
+                            var compStr = scalars.All(b => b) ? "_" : CompString;
+
                             foreach (var line in string.Format("Returns a component-wise executed {0}{1}.", op[0], comm).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} {6}, {3} {7}, {4} {8}) => new {0}({5});", retType, op[0], opt0, opt1, opt2, CompString.Select(c => opFunc(op0(c), op1(c), op2(c))).CommaSeparated(), op[1], op[2], op[3]);
+                            yield return string.Format("public static {0} {1}({2} {6}, {3} {7}, {4} {8}) => new {0}({5});", retType, op[0], opt0, opt1, opt2, compStr.Select(c => opFunc(op0(c), op1(c), op2(c))).CommaSeparated(), op[1], op[2], op[3]);
                         }
                     }
-
-
-                    /*
-
-inline vec3 clamp(vec3 const& v, vec3 const& mi, vec3 const& ma) { return vec3(clamp(v.x, mi.x, ma.x), clamp(v.y, mi.y, ma.y), clamp(v.z, mi.z, ma.z)); }
-inline vec3 mix(vec3 const& mi, vec3 const& ma, vec3 const& a) { return vec3(mix(mi.x, ma.x, a.x), mix(mi.y, ma.y, a.y), mix(mi.z, ma.z, a.z)); }
-inline vec3 mix(vec3 const& mi, vec3 const& ma, float a) { return vec3(mix(mi.x, ma.x, a), mix(mi.y, ma.y, a), mix(mi.z, ma.z, a)); }
-inline vec3 smoothstep(vec3 const& edge0, vec3 const& edge1, vec3 const& v) { return vec3(smoothstep(edge0.x, edge1.x, v.x), smoothstep(edge0.y, edge1.y, v.y), smoothstep(edge0.z, edge1.z, v.z)); }
-
-                    */
                 }
             }
         }

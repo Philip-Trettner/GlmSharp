@@ -391,9 +391,19 @@ namespace GlmSharp
         public static dvec2 Abs(cvec2 v) => new dvec2(v.x.Magnitude, v.y.Magnitude);
         
         /// <summary>
+        /// Returns a component-wise executed Abs with a scalar.
+        /// </summary>
+        public static dvec2 Abs(Complex v) => new dvec2(v.Magnitude);
+        
+        /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder3.
         /// </summary>
         public static cvec2 HermiteInterpolationOrder3(cvec2 v) => new cvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
+        /// </summary>
+        public static cvec2 HermiteInterpolationOrder3(Complex v) => new cvec2((3 - 2 * v) * v * v);
         
         /// <summary>
         /// Returns a component-wise executed HermiteInterpolationOrder5.
@@ -401,9 +411,19 @@ namespace GlmSharp
         public static cvec2 HermiteInterpolationOrder5(cvec2 v) => new cvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
         
         /// <summary>
+        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
+        /// </summary>
+        public static cvec2 HermiteInterpolationOrder5(Complex v) => new cvec2(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed complex Acos.
         /// </summary>
         public static cvec2 Acos(cvec2 v) => new cvec2(Complex.Acos(v.x), Complex.Acos(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Acos with a scalar.
+        /// </summary>
+        public static cvec2 Acos(Complex s) => new cvec2(Complex.Acos(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Asin.
@@ -411,9 +431,19 @@ namespace GlmSharp
         public static cvec2 Asin(cvec2 v) => new cvec2(Complex.Asin(v.x), Complex.Asin(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed complex Asin with a scalar.
+        /// </summary>
+        public static cvec2 Asin(Complex s) => new cvec2(Complex.Asin(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Atan.
         /// </summary>
         public static cvec2 Atan(cvec2 v) => new cvec2(Complex.Atan(v.x), Complex.Atan(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Atan with a scalar.
+        /// </summary>
+        public static cvec2 Atan(Complex s) => new cvec2(Complex.Atan(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Cos.
@@ -421,9 +451,19 @@ namespace GlmSharp
         public static cvec2 Cos(cvec2 v) => new cvec2(Complex.Cos(v.x), Complex.Cos(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed complex Cos with a scalar.
+        /// </summary>
+        public static cvec2 Cos(Complex s) => new cvec2(Complex.Cos(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Cosh.
         /// </summary>
         public static cvec2 Cosh(cvec2 v) => new cvec2(Complex.Cosh(v.x), Complex.Cosh(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Cosh with a scalar.
+        /// </summary>
+        public static cvec2 Cosh(Complex s) => new cvec2(Complex.Cosh(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Exp.
@@ -431,9 +471,19 @@ namespace GlmSharp
         public static cvec2 Exp(cvec2 v) => new cvec2(Complex.Exp(v.x), Complex.Exp(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed complex Exp with a scalar.
+        /// </summary>
+        public static cvec2 Exp(Complex s) => new cvec2(Complex.Exp(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Log.
         /// </summary>
         public static cvec2 Log(cvec2 v) => new cvec2(Complex.Log(v.x), Complex.Log(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Log with a scalar.
+        /// </summary>
+        public static cvec2 Log(Complex s) => new cvec2(Complex.Log(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Log2.
@@ -441,9 +491,19 @@ namespace GlmSharp
         public static cvec2 Log2(cvec2 v) => new cvec2(Complex.Log(v.x, 2.0), Complex.Log(v.y, 2.0));
         
         /// <summary>
+        /// Returns a component-wise executed complex Log2 with a scalar.
+        /// </summary>
+        public static cvec2 Log2(Complex s) => new cvec2(Complex.Log(s, 2.0));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Log10.
         /// </summary>
         public static cvec2 Log10(cvec2 v) => new cvec2(Complex.Log10(v.x), Complex.Log10(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Log10 with a scalar.
+        /// </summary>
+        public static cvec2 Log10(Complex s) => new cvec2(Complex.Log10(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Reciprocal.
@@ -451,9 +511,19 @@ namespace GlmSharp
         public static cvec2 Reciprocal(cvec2 v) => new cvec2(Complex.Reciprocal(v.x), Complex.Reciprocal(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed complex Reciprocal with a scalar.
+        /// </summary>
+        public static cvec2 Reciprocal(Complex s) => new cvec2(Complex.Reciprocal(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Sin.
         /// </summary>
         public static cvec2 Sin(cvec2 v) => new cvec2(Complex.Sin(v.x), Complex.Sin(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Sin with a scalar.
+        /// </summary>
+        public static cvec2 Sin(Complex s) => new cvec2(Complex.Sin(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Sinh.
@@ -461,9 +531,19 @@ namespace GlmSharp
         public static cvec2 Sinh(cvec2 v) => new cvec2(Complex.Sinh(v.x), Complex.Sinh(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed complex Sinh with a scalar.
+        /// </summary>
+        public static cvec2 Sinh(Complex s) => new cvec2(Complex.Sinh(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Sqrt.
         /// </summary>
         public static cvec2 Sqrt(cvec2 v) => new cvec2(Complex.Sqrt(v.x), Complex.Sqrt(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Sqrt with a scalar.
+        /// </summary>
+        public static cvec2 Sqrt(Complex s) => new cvec2(Complex.Sqrt(s));
         
         /// <summary>
         /// Returns a component-wise executed complex Tan.
@@ -471,14 +551,29 @@ namespace GlmSharp
         public static cvec2 Tan(cvec2 v) => new cvec2(Complex.Tan(v.x), Complex.Tan(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed complex Tan with a scalar.
+        /// </summary>
+        public static cvec2 Tan(Complex s) => new cvec2(Complex.Tan(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Tanh.
         /// </summary>
         public static cvec2 Tanh(cvec2 v) => new cvec2(Complex.Tanh(v.x), Complex.Tanh(v.y));
         
         /// <summary>
+        /// Returns a component-wise executed complex Tanh with a scalar.
+        /// </summary>
+        public static cvec2 Tanh(Complex s) => new cvec2(Complex.Tanh(s));
+        
+        /// <summary>
         /// Returns a component-wise executed complex Conjugate.
         /// </summary>
         public static cvec2 Conjugate(cvec2 v) => new cvec2(Complex.Conjugate(v.x), Complex.Conjugate(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Conjugate with a scalar.
+        /// </summary>
+        public static cvec2 Conjugate(Complex s) => new cvec2(Complex.Conjugate(s));
         
         /// <summary>
         /// Returns a component-wise executed Pow.
@@ -501,6 +596,11 @@ namespace GlmSharp
         public static cvec2 Pow(double s, cvec2 v) => new cvec2(Complex.Pow(s, v.x), Complex.Pow(s, v.y));
         
         /// <summary>
+        /// Returns a component-wise executed Pow with scalars.
+        /// </summary>
+        public static cvec2 Pow(Complex lhs, Complex rhs) => new cvec2(Complex.Pow(lhs, rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Pow.
         /// </summary>
         public static cvec2 Pow(cvec2 lhs, dvec2 rhs) => new cvec2(Complex.Pow(lhs.x, rhs.x), Complex.Pow(lhs.y, rhs.y));
@@ -511,6 +611,11 @@ namespace GlmSharp
         public static cvec2 Pow(cvec2 v, double s) => new cvec2(Complex.Pow(v.x, s), Complex.Pow(v.y, s));
         
         /// <summary>
+        /// Returns a component-wise executed Pow with scalars.
+        /// </summary>
+        public static cvec2 Pow(double lhs, double rhs) => new cvec2(Complex.Pow(lhs, rhs));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static cvec2 Log(cvec2 lhs, dvec2 rhs) => new cvec2(Complex.Log(lhs.x, rhs.x), Complex.Log(lhs.y, rhs.y));
@@ -519,6 +624,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Log with a scalar.
         /// </summary>
         public static cvec2 Log(cvec2 v, double s) => new cvec2(Complex.Log(v.x, s), Complex.Log(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with scalars.
+        /// </summary>
+        public static cvec2 Log(double lhs, double rhs) => new cvec2(Complex.Log(lhs, rhs));
         
         /// <summary>
         /// Returns a component-wise executed FromPolarCoordinates.
@@ -541,9 +651,19 @@ namespace GlmSharp
         public static cvec2 Sqr(cvec2 v) => new cvec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
+        /// Returns a component-wise executed Sqr with a scalar.
+        /// </summary>
+        public static cvec2 Sqr(Complex v) => new cvec2(v * v);
+        
+        /// <summary>
         /// Returns a component-wise executed Pow2.
         /// </summary>
         public static cvec2 Pow2(cvec2 v) => new cvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow2 with a scalar.
+        /// </summary>
+        public static cvec2 Pow2(Complex v) => new cvec2(v * v);
         
         /// <summary>
         /// Returns a component-wise executed Mix.
@@ -583,6 +703,6 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Mix with scalars.
         /// </summary>
-        public static cvec2 Mix(Complex min, Complex max, Complex a) => new cvec2(min * (1-a) + max * a, min * (1-a) + max * a);
+        public static cvec2 Mix(Complex min, Complex max, Complex a) => new cvec2(min * (1-a) + max * a);
     }
 }
