@@ -250,6 +250,21 @@ namespace GlmSharp
         public double NormP(double p) => Math.Pow(Math.Pow((double)m00.Magnitude, p) + Math.Pow((double)m01.Magnitude, p) + Math.Pow((double)m10.Magnitude, p) + Math.Pow((double)m11.Magnitude, p) + Math.Pow((double)m20.Magnitude, p) + Math.Pow((double)m21.Magnitude, p), 1 / p);
         
         /// <summary>
+        /// Executes a matrix-matrix-multiplication cmat3x2 * cmat2x3 -> cmat2.
+        /// </summary>
+        public static cmat2 operator*(cmat3x2 lhs, cmat2x3 rhs) => new cmat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication cmat3x2 * cmat3 -> cmat3x2.
+        /// </summary>
+        public static cmat3x2 operator*(cmat3x2 lhs, cmat3 rhs) => new cmat3x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21 + lhs.m20 * rhs.m22, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21 + lhs.m21 * rhs.m22);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication cmat3x2 * cmat4x3 -> cmat4x2.
+        /// </summary>
+        public static cmat4x2 operator*(cmat3x2 lhs, cmat4x3 rhs) => new cmat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21 + lhs.m20 * rhs.m22, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31 + lhs.m20 * rhs.m32, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21 + lhs.m21 * rhs.m22, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31 + lhs.m21 * rhs.m32);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static cmat3x2 operator+(cmat3x2 lhs, cmat3x2 rhs) => new cmat3x2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m20 + rhs.m20, lhs.m21 + rhs.m21);

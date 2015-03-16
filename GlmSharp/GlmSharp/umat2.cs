@@ -242,6 +242,21 @@ namespace GlmSharp
         public double NormP(double p) => Math.Pow(Math.Pow((double)m00, p) + Math.Pow((double)m01, p) + Math.Pow((double)m10, p) + Math.Pow((double)m11, p), 1 / p);
         
         /// <summary>
+        /// Executes a matrix-matrix-multiplication umat2 * umat2 -> umat2.
+        /// </summary>
+        public static umat2 operator*(umat2 lhs, umat2 rhs) => new umat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication umat2 * umat3x2 -> umat3x2.
+        /// </summary>
+        public static umat3x2 operator*(umat2 lhs, umat3x2 rhs) => new umat3x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication umat2 * umat4x2 -> umat4x2.
+        /// </summary>
+        public static umat4x2 operator*(umat2 lhs, umat4x2 rhs) => new umat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static umat2 operator+(umat2 lhs, umat2 rhs) => new umat2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11);

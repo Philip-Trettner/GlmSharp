@@ -242,6 +242,21 @@ namespace GlmSharp
         public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(m00), p) + Math.Pow((double)Math.Abs(m01), p) + Math.Pow((double)Math.Abs(m10), p) + Math.Pow((double)Math.Abs(m11), p), 1 / p);
         
         /// <summary>
+        /// Executes a matrix-matrix-multiplication mat2 * mat2 -> mat2.
+        /// </summary>
+        public static mat2 operator*(mat2 lhs, mat2 rhs) => new mat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication mat2 * mat3x2 -> mat3x2.
+        /// </summary>
+        public static mat3x2 operator*(mat2 lhs, mat3x2 rhs) => new mat3x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication mat2 * mat4x2 -> mat4x2.
+        /// </summary>
+        public static mat4x2 operator*(mat2 lhs, mat4x2 rhs) => new mat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static mat2 operator+(mat2 lhs, mat2 rhs) => new mat2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11);

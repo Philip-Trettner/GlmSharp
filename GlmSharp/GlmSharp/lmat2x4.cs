@@ -276,6 +276,21 @@ namespace GlmSharp
         public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(m00), p) + Math.Pow((double)Math.Abs(m01), p) + Math.Pow((double)Math.Abs(m02), p) + Math.Pow((double)Math.Abs(m03), p) + Math.Pow((double)Math.Abs(m10), p) + Math.Pow((double)Math.Abs(m11), p) + Math.Pow((double)Math.Abs(m12), p) + Math.Pow((double)Math.Abs(m13), p), 1 / p);
         
         /// <summary>
+        /// Executes a matrix-matrix-multiplication lmat2x4 * lmat2 -> lmat2x4.
+        /// </summary>
+        public static lmat2x4 operator*(lmat2x4 lhs, lmat2 rhs) => new lmat2x4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication lmat2x4 * lmat3x2 -> lmat3x4.
+        /// </summary>
+        public static lmat3x4 operator*(lmat2x4 lhs, lmat3x2 rhs) => new lmat3x4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11, lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21);
+        
+        /// <summary>
+        /// Executes a matrix-matrix-multiplication lmat2x4 * lmat4x2 -> lmat4.
+        /// </summary>
+        public static lmat4 operator*(lmat2x4 lhs, lmat4x2 rhs) => new lmat4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21, lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11, lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21, lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31);
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static lmat2x4 operator+(lmat2x4 lhs, lmat2x4 rhs) => new lmat2x4(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m02 + rhs.m02, lhs.m03 + rhs.m03, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11, lhs.m12 + rhs.m12, lhs.m13 + rhs.m13);

@@ -115,6 +115,13 @@ namespace GlmSharpGenerator
 
         public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
 
+        public IEnumerable<string> FieldsHelper(int cols, int rows)
+        {
+            for (var x = 0; x < cols; ++x)
+                for (var y = 0; y < rows; ++y)
+                    yield return "m" + x + y;
+        }
+
         protected override IEnumerable<string> Body
         {
             get
@@ -312,6 +319,21 @@ namespace GlmSharpGenerator
 
                     foreach (var line in "Returns the p-norm of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", Fields.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
+
+                    // matrix-matrix-multiplication
+                    for (var rcols = 2; rcols <= 4; ++rcols)
+                    {
+                        var lhsRows = Rows;
+                        var lhsCols = Columns;
+                        var rhsRows = Columns;
+                        var rhsColumns = rcols;
+                        var rhsType = Name + (rhsRows == rhsColumns ? rhsColumns.ToString() : rhsColumns + "x" + rhsRows) + GenericSuffix;
+                        var resultType = Name + (lhsRows == rhsColumns ? rhsColumns.ToString() : rhsColumns + "x" + lhsRows) + GenericSuffix;
+                        foreach (var line in string.Format("Executes a matrix-matrix-multiplication {0} * {1} -> {2}.", ClassNameThat, rhsType, resultType).AsComment()) yield return line;
+                        yield return string.Format("public static {0} operator*({1} lhs, {2} rhs) => new {0}({3});",
+                            resultType, ClassNameThat, rhsType,
+                            FieldsHelper(lhsRows, rhsColumns).Select(f => lhsCols.ForIndexUpTo(i => string.Format("lhs.m{1}{0} * rhs.m{2}{1}", f[1], i, f[2])).Aggregated(" + ")).CommaSeparated());
+                    }
 
                     // arithmetic operators
                     foreach (var kvp in new Dictionary<string, string>
