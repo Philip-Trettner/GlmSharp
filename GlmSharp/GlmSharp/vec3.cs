@@ -718,6 +718,11 @@ namespace GlmSharp
         public static vec3 Cosh(vec3 v) => new vec3((float)Math.Cosh((double)v.x), (float)Math.Cosh((double)v.y), (float)Math.Cosh((double)v.z));
         
         /// <summary>
+        /// Returns a component-wise executed Exp.
+        /// </summary>
+        public static vec3 Exp(vec3 v) => new vec3((float)Math.Exp((double)v.x), (float)Math.Exp((double)v.y), (float)Math.Exp((double)v.z));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static vec3 Log(vec3 v) => new vec3((float)Math.Log((double)v.x), (float)Math.Log((double)v.y), (float)Math.Log((double)v.z));
@@ -785,6 +790,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static vec3 Sqr(vec3 v) => new vec3((v.x * v.x), (v.y * v.y), (v.z * v.z));
+        public static vec3 Sqr(vec3 v) => new vec3(v.x * v.x, v.y * v.y, v.z * v.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static vec3 Max(vec3 lhs, vec3 rhs) => new vec3(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static vec3 Max(vec3 v, float s) => new vec3(Math.Max(v.x, s), Math.Max(v.y, s), Math.Max(v.z, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static vec3 Max(float s, vec3 v) => new vec3(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static vec3 Min(vec3 lhs, vec3 rhs) => new vec3(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static vec3 Min(vec3 v, float s) => new vec3(Math.Min(v.x, s), Math.Min(v.y, s), Math.Min(v.z, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static vec3 Min(float s, vec3 v) => new vec3(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static vec3 Pow(vec3 lhs, vec3 rhs) => new vec3((float)Math.Pow((double)lhs.x, (double)rhs.x), (float)Math.Pow((double)lhs.y, (double)rhs.y), (float)Math.Pow((double)lhs.z, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static vec3 Pow(vec3 v, float s) => new vec3((float)Math.Pow((double)v.x, (double)s), (float)Math.Pow((double)v.y, (double)s), (float)Math.Pow((double)v.z, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static vec3 Pow(float s, vec3 v) => new vec3((float)Math.Pow((double)s, (double)v.x), (float)Math.Pow((double)s, (double)v.y), (float)Math.Pow((double)s, (double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static vec3 Log(vec3 lhs, vec3 rhs) => new vec3((float)Math.Log((double)lhs.x, (double)rhs.x), (float)Math.Log((double)lhs.y, (double)rhs.y), (float)Math.Log((double)lhs.z, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static vec3 Log(vec3 v, float s) => new vec3((float)Math.Log((double)v.x, (double)s), (float)Math.Log((double)v.y, (double)s), (float)Math.Log((double)v.z, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static vec3 Log(float s, vec3 v) => new vec3((float)Math.Log((double)s, (double)v.x), (float)Math.Log((double)s, (double)v.y), (float)Math.Log((double)s, (double)v.z));
     }
 }

@@ -625,6 +625,11 @@ namespace GlmSharp
         public static dvec2 Cosh(dvec2 v) => new dvec2((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y));
         
         /// <summary>
+        /// Returns a component-wise executed Exp.
+        /// </summary>
+        public static dvec2 Exp(dvec2 v) => new dvec2((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static dvec2 Log(dvec2 v) => new dvec2((double)Math.Log((double)v.x), (double)Math.Log((double)v.y));
@@ -692,6 +697,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static dvec2 Sqr(dvec2 v) => new dvec2((v.x * v.x), (v.y * v.y));
+        public static dvec2 Sqr(dvec2 v) => new dvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static dvec2 Max(dvec2 lhs, dvec2 rhs) => new dvec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static dvec2 Max(dvec2 v, double s) => new dvec2(Math.Max(v.x, s), Math.Max(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static dvec2 Max(double s, dvec2 v) => new dvec2(Math.Max(s, v.x), Math.Max(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static dvec2 Min(dvec2 lhs, dvec2 rhs) => new dvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static dvec2 Min(dvec2 v, double s) => new dvec2(Math.Min(v.x, s), Math.Min(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static dvec2 Min(double s, dvec2 v) => new dvec2(Math.Min(s, v.x), Math.Min(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static dvec2 Pow(dvec2 lhs, dvec2 rhs) => new dvec2((double)Math.Pow((double)lhs.x, (double)rhs.x), (double)Math.Pow((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static dvec2 Pow(dvec2 v, double s) => new dvec2((double)Math.Pow((double)v.x, (double)s), (double)Math.Pow((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static dvec2 Pow(double s, dvec2 v) => new dvec2((double)Math.Pow((double)s, (double)v.x), (double)Math.Pow((double)s, (double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static dvec2 Log(dvec2 lhs, dvec2 rhs) => new dvec2((double)Math.Log((double)lhs.x, (double)rhs.x), (double)Math.Log((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static dvec2 Log(dvec2 v, double s) => new dvec2((double)Math.Log((double)v.x, (double)s), (double)Math.Log((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static dvec2 Log(double s, dvec2 v) => new dvec2((double)Math.Log((double)s, (double)v.x), (double)Math.Log((double)s, (double)v.y));
     }
 }

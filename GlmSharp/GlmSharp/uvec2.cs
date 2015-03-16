@@ -977,6 +977,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static uvec2 Sqr(uvec2 v) => new uvec2((v.x * v.x), (v.y * v.y));
+        public static uvec2 Sqr(uvec2 v) => new uvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static uvec2 Max(uvec2 lhs, uvec2 rhs) => new uvec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static uvec2 Max(uvec2 v, uint s) => new uvec2(Math.Max(v.x, s), Math.Max(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static uvec2 Max(uint s, uvec2 v) => new uvec2(Math.Max(s, v.x), Math.Max(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static uvec2 Min(uvec2 lhs, uvec2 rhs) => new uvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static uvec2 Min(uvec2 v, uint s) => new uvec2(Math.Min(v.x, s), Math.Min(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static uvec2 Min(uint s, uvec2 v) => new uvec2(Math.Min(s, v.x), Math.Min(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static uvec2 Pow(uvec2 lhs, uvec2 rhs) => new uvec2((uint)Math.Pow((double)lhs.x, (double)rhs.x), (uint)Math.Pow((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static uvec2 Pow(uvec2 v, uint s) => new uvec2((uint)Math.Pow((double)v.x, (double)s), (uint)Math.Pow((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static uvec2 Pow(uint s, uvec2 v) => new uvec2((uint)Math.Pow((double)s, (double)v.x), (uint)Math.Pow((double)s, (double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static uvec2 Log(uvec2 lhs, uvec2 rhs) => new uvec2((uint)Math.Log((double)lhs.x, (double)rhs.x), (uint)Math.Log((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static uvec2 Log(uvec2 v, uint s) => new uvec2((uint)Math.Log((double)v.x, (double)s), (uint)Math.Log((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static uvec2 Log(uint s, uvec2 v) => new uvec2((uint)Math.Log((double)s, (double)v.x), (uint)Math.Log((double)s, (double)v.y));
     }
 }

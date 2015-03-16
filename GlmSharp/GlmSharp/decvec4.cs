@@ -594,6 +594,11 @@ namespace GlmSharp
         public static decvec4 Cosh(decvec4 v) => new decvec4((decimal)Math.Cosh((double)v.x), (decimal)Math.Cosh((double)v.y), (decimal)Math.Cosh((double)v.z), (decimal)Math.Cosh((double)v.w));
         
         /// <summary>
+        /// Returns a component-wise executed Exp.
+        /// </summary>
+        public static decvec4 Exp(decvec4 v) => new decvec4((decimal)Math.Exp((double)v.x), (decimal)Math.Exp((double)v.y), (decimal)Math.Exp((double)v.z), (decimal)Math.Exp((double)v.w));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static decvec4 Log(decvec4 v) => new decvec4((decimal)Math.Log((double)v.x), (decimal)Math.Log((double)v.y), (decimal)Math.Log((double)v.z), (decimal)Math.Log((double)v.w));
@@ -661,6 +666,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static decvec4 Sqr(decvec4 v) => new decvec4((v.x * v.x), (v.y * v.y), (v.z * v.z), (v.w * v.w));
+        public static decvec4 Sqr(decvec4 v) => new decvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static decvec4 Max(decvec4 lhs, decvec4 rhs) => new decvec4(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z), Math.Max(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static decvec4 Max(decvec4 v, decimal s) => new decvec4(Math.Max(v.x, s), Math.Max(v.y, s), Math.Max(v.z, s), Math.Max(v.w, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static decvec4 Max(decimal s, decvec4 v) => new decvec4(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z), Math.Max(s, v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static decvec4 Min(decvec4 lhs, decvec4 rhs) => new decvec4(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z), Math.Min(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static decvec4 Min(decvec4 v, decimal s) => new decvec4(Math.Min(v.x, s), Math.Min(v.y, s), Math.Min(v.z, s), Math.Min(v.w, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static decvec4 Min(decimal s, decvec4 v) => new decvec4(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z), Math.Min(s, v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static decvec4 Pow(decvec4 lhs, decvec4 rhs) => new decvec4((decimal)Math.Pow((double)lhs.x, (double)rhs.x), (decimal)Math.Pow((double)lhs.y, (double)rhs.y), (decimal)Math.Pow((double)lhs.z, (double)rhs.z), (decimal)Math.Pow((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static decvec4 Pow(decvec4 v, decimal s) => new decvec4((decimal)Math.Pow((double)v.x, (double)s), (decimal)Math.Pow((double)v.y, (double)s), (decimal)Math.Pow((double)v.z, (double)s), (decimal)Math.Pow((double)v.w, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static decvec4 Pow(decimal s, decvec4 v) => new decvec4((decimal)Math.Pow((double)s, (double)v.x), (decimal)Math.Pow((double)s, (double)v.y), (decimal)Math.Pow((double)s, (double)v.z), (decimal)Math.Pow((double)s, (double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static decvec4 Log(decvec4 lhs, decvec4 rhs) => new decvec4((decimal)Math.Log((double)lhs.x, (double)rhs.x), (decimal)Math.Log((double)lhs.y, (double)rhs.y), (decimal)Math.Log((double)lhs.z, (double)rhs.z), (decimal)Math.Log((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static decvec4 Log(decvec4 v, decimal s) => new decvec4((decimal)Math.Log((double)v.x, (double)s), (decimal)Math.Log((double)v.y, (double)s), (decimal)Math.Log((double)v.z, (double)s), (decimal)Math.Log((double)v.w, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static decvec4 Log(decimal s, decvec4 v) => new decvec4((decimal)Math.Log((double)s, (double)v.x), (decimal)Math.Log((double)s, (double)v.y), (decimal)Math.Log((double)s, (double)v.z), (decimal)Math.Log((double)s, (double)v.w));
     }
 }

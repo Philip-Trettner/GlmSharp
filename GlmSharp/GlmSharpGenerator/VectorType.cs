@@ -143,6 +143,18 @@ namespace GlmSharpGenerator
                     }
                 }
 
+                if (BaseTypeInfo.Complex)
+                {
+                    foreach (var line in "Predefined all-imaginary-ones vector (DO NOT MODIFY)".AsComment()) yield return line;
+                    yield return string.Format("public static readonly {0} ImaginaryOnes = new {0}({1});", ClassNameThat, "Complex.ImaginaryOne".RepeatTimes(Components).CommaSeparated());
+
+                    for (var c = 0; c < Components; ++c)
+                    {
+                        foreach (var line in string.Format("Predefined unit-imaginary-{0} vector (DO NOT MODIFY)", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
+                        yield return string.Format("public static readonly {0} ImaginaryUnit{1} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString("Complex.ImaginaryOne", ZeroValue, Components).CommaSeparated());
+                    }
+                }
+
                 // values
                 foreach (var line in "Returns an array with all values".AsComment()) yield return line;
                 yield return string.Format("public {0}[] Values => new[] {{ {1} }};", BaseType, CompArgString);
@@ -269,6 +281,26 @@ namespace GlmSharpGenerator
                 yield return "        return " + HashCodeFor(Components - 1) + ";";
                 yield return "    }";
                 yield return "}";
+
+                // TODO: ToString
+
+                // TODO: BaseType stuff
+
+                // Complex properties
+                if (BaseTypeInfo.Complex)
+                {
+                    foreach (var line in "Returns a vector containing component-wise magnitudes.".AsComment()) yield return line;
+                    yield return string.Format("public dvec{0} Magnitude => new dvec{0}({1});", Components, CompString.Select(c => c + ".Magnitude").CommaSeparated());
+
+                    foreach (var line in "Returns a vector containing component-wise phases.".AsComment()) yield return line;
+                    yield return string.Format("public dvec{0} Phase => new dvec{0}({1});", Components, CompString.Select(c => c + ".Phase").CommaSeparated());
+
+                    foreach (var line in "Returns a vector containing component-wise imaginary parts.".AsComment()) yield return line;
+                    yield return string.Format("public dvec{0} Imaginary => new dvec{0}({1});", Components, CompString.Select(c => c + ".Imaginary").CommaSeparated());
+
+                    foreach (var line in "Returns a vector containing component-wise real parts.".AsComment()) yield return line;
+                    yield return string.Format("public dvec{0} Real => new dvec{0}({1});", Components, CompString.Select(c => c + ".Real").CommaSeparated());
+                }
 
                 // Logicals
                 if (BaseTypeInfo.HasLogicOps)
@@ -510,6 +542,7 @@ namespace GlmSharpGenerator
                             {"Atan", s => string.Format("({1})Math.Atan((double){0})", s, BaseType)},
                             {"Cos", s => string.Format("({1})Math.Cos((double){0})", s, BaseType)},
                             {"Cosh", s => string.Format("({1})Math.Cosh((double){0})", s, BaseType)},
+                            {"Exp", s => string.Format("({1})Math.Exp((double){0})", s, BaseType)},
                             {"Log", s => string.Format("({1})Math.Log((double){0})", s, BaseType)},
                             {"Log2", s => string.Format("({1})Math.Log((double){0}, 2)", s, BaseType)},
                             {"Log10", s => string.Format("({1})Math.Log10((double){0})", s, BaseType)},
@@ -537,9 +570,88 @@ namespace GlmSharpGenerator
                             yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
                         }
 
+                    if (BaseTypeInfo.Complex)
+                    {
+                        foreach (var kvp in new Dictionary<string, Func<string, string>>
+                        {
+                            {"Acos", s => string.Format("Complex.Acos({0})", s)},
+                            {"Asin", s => string.Format("Complex.Asin({0})", s)},
+                            {"Atan", s => string.Format("Complex.Atan({0})", s)},
+                            {"Cos", s => string.Format("Complex.Cos({0})", s)},
+                            {"Cosh", s => string.Format("Complex.Cosh({0})", s)},
+                            {"Exp", s => string.Format("Complex.Exp({0})", s)},
+                            {"Log", s => string.Format("Complex.Log({0})", s)},
+                            {"Log2", s => string.Format("Complex.Log({0}, 2.0)", s)},
+                            {"Log10", s => string.Format("Complex.Log10({0})", s)},
+                            {"Reciprocal", s => string.Format("Complex.Reciprocal({0})", s)},
+                            {"Sin", s => string.Format("Complex.Sin({0})", s)},
+                            {"Sinh", s => string.Format("Complex.Sinh({0})", s)},
+                            {"Sqrt", s => string.Format("Complex.Sqrt({0})", s)},
+                            {"Tan", s => string.Format("Complex.Tan({0})", s)},
+                            {"Tanh", s => string.Format("Complex.Tanh({0})", s)},
+                            {"Conjugate", s => string.Format("Complex.Conjugate({0})", s)},
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opFunc = kvp.Value;
+
+                            var retType = ClassNameThat;
+
+                            foreach (var line in string.Format("Returns a component-wise executed complex {0}.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+                        }
+
+                        foreach (var kvp in new Dictionary<string, Func<string, string, string>>
+                        {
+                            {"Pow", (s1, s2) => string.Format("Complex.Pow({0}, {1})", s1, s2)},
+                            {"Log", (s1, s2) => string.Format("Complex.Log({0}, {1})", s1, s2)},
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opFunc = kvp.Value;
+
+                            var retType = ClassNameThat;
+
+                            var complexRhs = op != "Log";
+
+                            // complex rhs
+                            if (complexRhs)
+                            {
+                                foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                                yield return string.Format("public static {0} {1}({2} lhs, {2} rhs) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("lhs." + c, "rhs." + c)).CommaSeparated());
+
+                                foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                                yield return string.Format("public static {0} {1}({2} v, {4} s) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c, "s")).CommaSeparated(), BaseType);
+
+                                foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                                yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), BaseType);
+
+                                foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                                yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), "double");
+                            }
+
+                            // double rhs
+                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} lhs, {4} rhs) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("lhs." + c, "rhs." + c)).CommaSeparated(), "dvec" + Components);
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} v, {4} s) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c, "s")).CommaSeparated(), "double");
+                        }
+
+                        // from polar coordinates
+                        foreach (var line in "Returns a component-wise executed FromPolarCoordinates.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} FromPolarCoordinates({1} lhs, {1} rhs) => new {0}({2});", ClassNameThat, "dvec" + Components, CompString.Select(c => string.Format("Complex.FromPolarCoordinates({0}, {1})", "lhs." + c, "rhs." + c)).CommaSeparated());
+
+                        foreach (var line in "Returns a component-wise executed FromPolarCoordinates with a scalar.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} FromPolarCoordinates(double s, {1} v) => new {0}({2});", ClassNameThat, "dvec" + Components, CompString.Select(c => string.Format("Complex.FromPolarCoordinates({0}, {1})", "s", "v." + c)).CommaSeparated());
+
+                        foreach (var line in "Returns a component-wise executed FromPolarCoordinates with a scalar.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} FromPolarCoordinates({1} v, double s) => new {0}({2});", ClassNameThat, "dvec" + Components, CompString.Select(c => string.Format("Complex.FromPolarCoordinates({0}, {1})", "v." + c, "s")).CommaSeparated());
+                    }
+
                     foreach (var kvp in new Dictionary<string, Func<string, string>>
                     {
-                        {"Sqr", s => string.Format("({0} * {0})", s)},
+                        {"Sqr", s => string.Format("{0} * {0}", s)},
                     })
                     {
                         var op = kvp.Key;
@@ -550,6 +662,30 @@ namespace GlmSharpGenerator
                         foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
                         yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
                     }
+
+                    if (!BaseTypeInfo.Complex)
+                        foreach (var kvp in new Dictionary<string, Func<string, string, string>>
+                        {
+                            {"Max", (s1, s2) => string.Format("Math.Max({0}, {1})", s1, s2)},
+                            {"Min", (s1, s2) => string.Format("Math.Min({0}, {1})", s1, s2)},
+                            {"Pow", (s1, s2) => string.Format("({2})Math.Pow((double){0}, (double){1})", s1, s2, BaseType)},
+                            {"Log", (s1, s2) => string.Format("({2})Math.Log((double){0}, (double){1})", s1, s2, BaseType)},
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opFunc = kvp.Value;
+
+                            var retType = ClassNameThat;
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} lhs, {2} rhs) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("lhs." + c, "rhs." + c)).CommaSeparated());
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} v, {4} s) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c, "s")).CommaSeparated(), BaseType);
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), BaseType);
+                        }
 
 
                     /*

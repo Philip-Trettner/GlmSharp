@@ -674,6 +674,11 @@ namespace GlmSharp
         public static dvec4 Cosh(dvec4 v) => new dvec4((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y), (double)Math.Cosh((double)v.z), (double)Math.Cosh((double)v.w));
         
         /// <summary>
+        /// Returns a component-wise executed Exp.
+        /// </summary>
+        public static dvec4 Exp(dvec4 v) => new dvec4((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y), (double)Math.Exp((double)v.z), (double)Math.Exp((double)v.w));
+        
+        /// <summary>
         /// Returns a component-wise executed Log.
         /// </summary>
         public static dvec4 Log(dvec4 v) => new dvec4((double)Math.Log((double)v.x), (double)Math.Log((double)v.y), (double)Math.Log((double)v.z), (double)Math.Log((double)v.w));
@@ -741,6 +746,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static dvec4 Sqr(dvec4 v) => new dvec4((v.x * v.x), (v.y * v.y), (v.z * v.z), (v.w * v.w));
+        public static dvec4 Sqr(dvec4 v) => new dvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static dvec4 Max(dvec4 lhs, dvec4 rhs) => new dvec4(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z), Math.Max(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static dvec4 Max(dvec4 v, double s) => new dvec4(Math.Max(v.x, s), Math.Max(v.y, s), Math.Max(v.z, s), Math.Max(v.w, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static dvec4 Max(double s, dvec4 v) => new dvec4(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z), Math.Max(s, v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static dvec4 Min(dvec4 lhs, dvec4 rhs) => new dvec4(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z), Math.Min(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static dvec4 Min(dvec4 v, double s) => new dvec4(Math.Min(v.x, s), Math.Min(v.y, s), Math.Min(v.z, s), Math.Min(v.w, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static dvec4 Min(double s, dvec4 v) => new dvec4(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z), Math.Min(s, v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static dvec4 Pow(dvec4 lhs, dvec4 rhs) => new dvec4((double)Math.Pow((double)lhs.x, (double)rhs.x), (double)Math.Pow((double)lhs.y, (double)rhs.y), (double)Math.Pow((double)lhs.z, (double)rhs.z), (double)Math.Pow((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static dvec4 Pow(dvec4 v, double s) => new dvec4((double)Math.Pow((double)v.x, (double)s), (double)Math.Pow((double)v.y, (double)s), (double)Math.Pow((double)v.z, (double)s), (double)Math.Pow((double)v.w, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static dvec4 Pow(double s, dvec4 v) => new dvec4((double)Math.Pow((double)s, (double)v.x), (double)Math.Pow((double)s, (double)v.y), (double)Math.Pow((double)s, (double)v.z), (double)Math.Pow((double)s, (double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static dvec4 Log(dvec4 lhs, dvec4 rhs) => new dvec4((double)Math.Log((double)lhs.x, (double)rhs.x), (double)Math.Log((double)lhs.y, (double)rhs.y), (double)Math.Log((double)lhs.z, (double)rhs.z), (double)Math.Log((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static dvec4 Log(dvec4 v, double s) => new dvec4((double)Math.Log((double)v.x, (double)s), (double)Math.Log((double)v.y, (double)s), (double)Math.Log((double)v.z, (double)s), (double)Math.Log((double)v.w, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static dvec4 Log(double s, dvec4 v) => new dvec4((double)Math.Log((double)s, (double)v.x), (double)Math.Log((double)s, (double)v.y), (double)Math.Log((double)s, (double)v.z), (double)Math.Log((double)s, (double)v.w));
     }
 }

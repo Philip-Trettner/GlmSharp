@@ -56,6 +56,26 @@ namespace GlmSharp
         public static readonly cvec3 UnitZ = new cvec3(default(Complex), default(Complex), 1.0);
         
         /// <summary>
+        /// Predefined all-imaginary-ones vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly cvec3 ImaginaryOnes = new cvec3(Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne);
+        
+        /// <summary>
+        /// Predefined unit-imaginary-X vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly cvec3 ImaginaryUnitX = new cvec3(Complex.ImaginaryOne, default(Complex), default(Complex));
+        
+        /// <summary>
+        /// Predefined unit-imaginary-Y vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly cvec3 ImaginaryUnitY = new cvec3(default(Complex), Complex.ImaginaryOne, default(Complex));
+        
+        /// <summary>
+        /// Predefined unit-imaginary-Z vector (DO NOT MODIFY)
+        /// </summary>
+        public static readonly cvec3 ImaginaryUnitZ = new cvec3(default(Complex), default(Complex), Complex.ImaginaryOne);
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public Complex[] Values => new[] { x, y, z };
@@ -213,6 +233,26 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns a vector containing component-wise magnitudes.
+        /// </summary>
+        public dvec3 Magnitude => new dvec3(x.Magnitude, y.Magnitude, z.Magnitude);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise phases.
+        /// </summary>
+        public dvec3 Phase => new dvec3(x.Phase, y.Phase, z.Phase);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise imaginary parts.
+        /// </summary>
+        public dvec3 Imaginary => new dvec3(x.Imaginary, y.Imaginary, z.Imaginary);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise real parts.
+        /// </summary>
+        public dvec3 Real => new dvec3(x.Real, y.Real, z.Real);
+        
+        /// <summary>
         /// Returns the euclidean length of this vector.
         /// </summary>
         public double Length => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr() + z.LengthSqr());
@@ -358,8 +398,143 @@ namespace GlmSharp
         public static dvec3 Abs(cvec3 v) => new dvec3(v.x.Magnitude, v.y.Magnitude, v.z.Magnitude);
         
         /// <summary>
+        /// Returns a component-wise executed complex Acos.
+        /// </summary>
+        public static cvec3 Acos(cvec3 v) => new cvec3(Complex.Acos(v.x), Complex.Acos(v.y), Complex.Acos(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Asin.
+        /// </summary>
+        public static cvec3 Asin(cvec3 v) => new cvec3(Complex.Asin(v.x), Complex.Asin(v.y), Complex.Asin(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Atan.
+        /// </summary>
+        public static cvec3 Atan(cvec3 v) => new cvec3(Complex.Atan(v.x), Complex.Atan(v.y), Complex.Atan(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Cos.
+        /// </summary>
+        public static cvec3 Cos(cvec3 v) => new cvec3(Complex.Cos(v.x), Complex.Cos(v.y), Complex.Cos(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Cosh.
+        /// </summary>
+        public static cvec3 Cosh(cvec3 v) => new cvec3(Complex.Cosh(v.x), Complex.Cosh(v.y), Complex.Cosh(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Exp.
+        /// </summary>
+        public static cvec3 Exp(cvec3 v) => new cvec3(Complex.Exp(v.x), Complex.Exp(v.y), Complex.Exp(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Log.
+        /// </summary>
+        public static cvec3 Log(cvec3 v) => new cvec3(Complex.Log(v.x), Complex.Log(v.y), Complex.Log(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Log2.
+        /// </summary>
+        public static cvec3 Log2(cvec3 v) => new cvec3(Complex.Log(v.x, 2.0), Complex.Log(v.y, 2.0), Complex.Log(v.z, 2.0));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Log10.
+        /// </summary>
+        public static cvec3 Log10(cvec3 v) => new cvec3(Complex.Log10(v.x), Complex.Log10(v.y), Complex.Log10(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Reciprocal.
+        /// </summary>
+        public static cvec3 Reciprocal(cvec3 v) => new cvec3(Complex.Reciprocal(v.x), Complex.Reciprocal(v.y), Complex.Reciprocal(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Sin.
+        /// </summary>
+        public static cvec3 Sin(cvec3 v) => new cvec3(Complex.Sin(v.x), Complex.Sin(v.y), Complex.Sin(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Sinh.
+        /// </summary>
+        public static cvec3 Sinh(cvec3 v) => new cvec3(Complex.Sinh(v.x), Complex.Sinh(v.y), Complex.Sinh(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Sqrt.
+        /// </summary>
+        public static cvec3 Sqrt(cvec3 v) => new cvec3(Complex.Sqrt(v.x), Complex.Sqrt(v.y), Complex.Sqrt(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Tan.
+        /// </summary>
+        public static cvec3 Tan(cvec3 v) => new cvec3(Complex.Tan(v.x), Complex.Tan(v.y), Complex.Tan(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Tanh.
+        /// </summary>
+        public static cvec3 Tanh(cvec3 v) => new cvec3(Complex.Tanh(v.x), Complex.Tanh(v.y), Complex.Tanh(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed complex Conjugate.
+        /// </summary>
+        public static cvec3 Conjugate(cvec3 v) => new cvec3(Complex.Conjugate(v.x), Complex.Conjugate(v.y), Complex.Conjugate(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static cvec3 Pow(cvec3 lhs, cvec3 rhs) => new cvec3(Complex.Pow(lhs.x, rhs.x), Complex.Pow(lhs.y, rhs.y), Complex.Pow(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static cvec3 Pow(cvec3 v, Complex s) => new cvec3(Complex.Pow(v.x, s), Complex.Pow(v.y, s), Complex.Pow(v.z, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static cvec3 Pow(Complex s, cvec3 v) => new cvec3(Complex.Pow(s, v.x), Complex.Pow(s, v.y), Complex.Pow(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static cvec3 Pow(double s, cvec3 v) => new cvec3(Complex.Pow(s, v.x), Complex.Pow(s, v.y), Complex.Pow(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static cvec3 Pow(cvec3 lhs, dvec3 rhs) => new cvec3(Complex.Pow(lhs.x, rhs.x), Complex.Pow(lhs.y, rhs.y), Complex.Pow(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static cvec3 Pow(cvec3 v, double s) => new cvec3(Complex.Pow(v.x, s), Complex.Pow(v.y, s), Complex.Pow(v.z, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static cvec3 Log(cvec3 lhs, dvec3 rhs) => new cvec3(Complex.Log(lhs.x, rhs.x), Complex.Log(lhs.y, rhs.y), Complex.Log(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static cvec3 Log(cvec3 v, double s) => new cvec3(Complex.Log(v.x, s), Complex.Log(v.y, s), Complex.Log(v.z, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed FromPolarCoordinates.
+        /// </summary>
+        public static cvec3 FromPolarCoordinates(dvec3 lhs, dvec3 rhs) => new cvec3(Complex.FromPolarCoordinates(lhs.x, rhs.x), Complex.FromPolarCoordinates(lhs.y, rhs.y), Complex.FromPolarCoordinates(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed FromPolarCoordinates with a scalar.
+        /// </summary>
+        public static cvec3 FromPolarCoordinates(double s, dvec3 v) => new cvec3(Complex.FromPolarCoordinates(s, v.x), Complex.FromPolarCoordinates(s, v.y), Complex.FromPolarCoordinates(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed FromPolarCoordinates with a scalar.
+        /// </summary>
+        public static cvec3 FromPolarCoordinates(dvec3 v, double s) => new cvec3(Complex.FromPolarCoordinates(v.x, s), Complex.FromPolarCoordinates(v.y, s), Complex.FromPolarCoordinates(v.z, s));
+        
+        /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static cvec3 Sqr(cvec3 v) => new cvec3((v.x * v.x), (v.y * v.y), (v.z * v.z));
+        public static cvec3 Sqr(cvec3 v) => new cvec3(v.x * v.x, v.y * v.y, v.z * v.z);
     }
 }

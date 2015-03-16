@@ -675,6 +675,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static lvec3 Sqr(lvec3 v) => new lvec3((v.x * v.x), (v.y * v.y), (v.z * v.z));
+        public static lvec3 Sqr(lvec3 v) => new lvec3(v.x * v.x, v.y * v.y, v.z * v.z);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static lvec3 Max(lvec3 lhs, lvec3 rhs) => new lvec3(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static lvec3 Max(lvec3 v, long s) => new lvec3(Math.Max(v.x, s), Math.Max(v.y, s), Math.Max(v.z, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static lvec3 Max(long s, lvec3 v) => new lvec3(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static lvec3 Min(lvec3 lhs, lvec3 rhs) => new lvec3(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static lvec3 Min(lvec3 v, long s) => new lvec3(Math.Min(v.x, s), Math.Min(v.y, s), Math.Min(v.z, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static lvec3 Min(long s, lvec3 v) => new lvec3(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static lvec3 Pow(lvec3 lhs, lvec3 rhs) => new lvec3((long)Math.Pow((double)lhs.x, (double)rhs.x), (long)Math.Pow((double)lhs.y, (double)rhs.y), (long)Math.Pow((double)lhs.z, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static lvec3 Pow(lvec3 v, long s) => new lvec3((long)Math.Pow((double)v.x, (double)s), (long)Math.Pow((double)v.y, (double)s), (long)Math.Pow((double)v.z, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static lvec3 Pow(long s, lvec3 v) => new lvec3((long)Math.Pow((double)s, (double)v.x), (long)Math.Pow((double)s, (double)v.y), (long)Math.Pow((double)s, (double)v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static lvec3 Log(lvec3 lhs, lvec3 rhs) => new lvec3((long)Math.Log((double)lhs.x, (double)rhs.x), (long)Math.Log((double)lhs.y, (double)rhs.y), (long)Math.Log((double)lhs.z, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static lvec3 Log(lvec3 v, long s) => new lvec3((long)Math.Log((double)v.x, (double)s), (long)Math.Log((double)v.y, (double)s), (long)Math.Log((double)v.z, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static lvec3 Log(long s, lvec3 v) => new lvec3((long)Math.Log((double)s, (double)v.x), (long)Math.Log((double)s, (double)v.y), (long)Math.Log((double)s, (double)v.z));
     }
 }

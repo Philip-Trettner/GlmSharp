@@ -662,6 +662,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static lvec2 Sqr(lvec2 v) => new lvec2((v.x * v.x), (v.y * v.y));
+        public static lvec2 Sqr(lvec2 v) => new lvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static lvec2 Max(lvec2 lhs, lvec2 rhs) => new lvec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static lvec2 Max(lvec2 v, long s) => new lvec2(Math.Max(v.x, s), Math.Max(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static lvec2 Max(long s, lvec2 v) => new lvec2(Math.Max(s, v.x), Math.Max(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static lvec2 Min(lvec2 lhs, lvec2 rhs) => new lvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static lvec2 Min(lvec2 v, long s) => new lvec2(Math.Min(v.x, s), Math.Min(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static lvec2 Min(long s, lvec2 v) => new lvec2(Math.Min(s, v.x), Math.Min(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static lvec2 Pow(lvec2 lhs, lvec2 rhs) => new lvec2((long)Math.Pow((double)lhs.x, (double)rhs.x), (long)Math.Pow((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static lvec2 Pow(lvec2 v, long s) => new lvec2((long)Math.Pow((double)v.x, (double)s), (long)Math.Pow((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static lvec2 Pow(long s, lvec2 v) => new lvec2((long)Math.Pow((double)s, (double)v.x), (long)Math.Pow((double)s, (double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static lvec2 Log(lvec2 lhs, lvec2 rhs) => new lvec2((long)Math.Log((double)lhs.x, (double)rhs.x), (long)Math.Log((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static lvec2 Log(lvec2 v, long s) => new lvec2((long)Math.Log((double)v.x, (double)s), (long)Math.Log((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static lvec2 Log(long s, lvec2 v) => new lvec2((long)Math.Log((double)s, (double)v.x), (long)Math.Log((double)s, (double)v.y));
     }
 }

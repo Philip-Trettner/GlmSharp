@@ -982,6 +982,66 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Sqr.
         /// </summary>
-        public static ivec2 Sqr(ivec2 v) => new ivec2((v.x * v.x), (v.y * v.y));
+        public static ivec2 Sqr(ivec2 v) => new ivec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Max.
+        /// </summary>
+        public static ivec2 Max(ivec2 lhs, ivec2 rhs) => new ivec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static ivec2 Max(ivec2 v, int s) => new ivec2(Math.Max(v.x, s), Math.Max(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Max with a scalar.
+        /// </summary>
+        public static ivec2 Max(int s, ivec2 v) => new ivec2(Math.Max(s, v.x), Math.Max(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min.
+        /// </summary>
+        public static ivec2 Min(ivec2 lhs, ivec2 rhs) => new ivec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static ivec2 Min(ivec2 v, int s) => new ivec2(Math.Min(v.x, s), Math.Min(v.y, s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Min with a scalar.
+        /// </summary>
+        public static ivec2 Min(int s, ivec2 v) => new ivec2(Math.Min(s, v.x), Math.Min(s, v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow.
+        /// </summary>
+        public static ivec2 Pow(ivec2 lhs, ivec2 rhs) => new ivec2((int)Math.Pow((double)lhs.x, (double)rhs.x), (int)Math.Pow((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static ivec2 Pow(ivec2 v, int s) => new ivec2((int)Math.Pow((double)v.x, (double)s), (int)Math.Pow((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Pow with a scalar.
+        /// </summary>
+        public static ivec2 Pow(int s, ivec2 v) => new ivec2((int)Math.Pow((double)s, (double)v.x), (int)Math.Pow((double)s, (double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static ivec2 Log(ivec2 lhs, ivec2 rhs) => new ivec2((int)Math.Log((double)lhs.x, (double)rhs.x), (int)Math.Log((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static ivec2 Log(ivec2 v, int s) => new ivec2((int)Math.Log((double)v.x, (double)s), (int)Math.Log((double)v.y, (double)s));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log with a scalar.
+        /// </summary>
+        public static ivec2 Log(int s, ivec2 v) => new ivec2((int)Math.Log((double)s, (double)v.x), (int)Math.Log((double)s, (double)v.y));
     }
 }
