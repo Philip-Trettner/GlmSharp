@@ -69,14 +69,16 @@ namespace GlmSharpGenerator
         public static readonly BaseTypeInfo TypeFloat = new BaseTypeInfo
         {
             Name = "float",
-            OneValue = "1f"
+            OneValue = "1f",
+            IsFloatingPoint = true
         };
         public static readonly BaseTypeInfo TypeDouble = new BaseTypeInfo
         {
             Name = "double",
             Prefix = "d",
             LengthType = "double",
-            OneValue = "1.0"
+            OneValue = "1.0",
+            IsFloatingPoint = true
         };
         public static readonly BaseTypeInfo TypeDecimal = new BaseTypeInfo
         {
@@ -84,7 +86,8 @@ namespace GlmSharpGenerator
             Prefix = "dec",
             LengthType = "decimal",
             OneValue = "1m",
-            Decimal = true
+            Decimal = true,
+            IsFloatingPoint = true
         };
         public static readonly BaseTypeInfo TypeComplex = new BaseTypeInfo
         {
@@ -129,6 +132,7 @@ namespace GlmSharpGenerator
         public string LengthType { get; set; } = "float";
         public bool RequiredAbs { get; set; } = true;
         public bool IsInteger { get; set; } = false;
+        public bool IsFloatingPoint { get; set; }
 
         public bool HasLogicOps { get; set; }
 
