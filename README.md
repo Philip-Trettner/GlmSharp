@@ -10,6 +10,8 @@ Install via [NuGet](https://www.nuget.org/):
 
 > PM> Install-Package GlmSharp
 
+Current version: *0.9.2*
+
 ## Overview
 
 Supported types: 

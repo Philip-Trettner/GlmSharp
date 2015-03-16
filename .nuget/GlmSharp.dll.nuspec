@@ -2,16 +2,30 @@
 <package >
   <metadata>
     <id>GlmSharp</id>
-    <version>0.9.1</version>
+    <title>GlmSharp</title>
+    <version>0.9.2</version>
     <authors>Philip Trettner</authors>
     <owners>Philip Trettner</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/Philip-Trettner/GlmSharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>semi-generated GLM-flavored math library for .NET/C#</description>
+    <description>
+C#/.NET math library for small vectors and matrices.
+
+Supported types: vec2, vec3, vec4, mat2, mat3, mat4, non-quadratic mats.
+
+Supported base types: int, uint, long, float, double, decimal, complex, long, bool, generic T.
+
+Supports swizzling.
+
+The naming and behavior is inspired by the excellent OpenGL Mathematics lib by Christophe Riccio.
+
+This library is MIT-licensed.
+    </description>
+    <summary>Open-source semi-generated GLM-flavored math library for .NET/C#</summary>
     <releaseNotes>Initial working version at around 25k LOC, several supported types, quite extensive functionality. Includes XML documentation.</releaseNotes>
     <copyright>Copyright 2015</copyright>
-    <tags>glm C# math .NET linear algebra glsl opengl</tags>
+    <tags>glm C# math .NET linear algebra glsl opengl vec mat</tags>
     <dependencies>
     </dependencies>
   </metadata>
