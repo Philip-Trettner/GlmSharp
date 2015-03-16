@@ -579,5 +579,10 @@ namespace GlmSharp
         /// Returns a component-wise executed Mix with scalars.
         /// </summary>
         public static cvec2 Mix(Complex min, cvec2 max, Complex a) => new cvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static cvec2 Mix(Complex min, Complex max, Complex a) => new cvec2(min * (1-a) + max * a, min * (1-a) + max * a);
     }
 }

@@ -863,6 +863,7 @@ namespace GlmSharpGenerator
                             new[] { true, true, false },
                             new[] { false, true, true },
                             new[] { true, false, true },
+                            new[] { true, true, true }, // all scalar
                         })
                         {
                             var opt0 = scalars[0] ? BaseType : ClassNameThat;

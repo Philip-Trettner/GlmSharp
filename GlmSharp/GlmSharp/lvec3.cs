@@ -934,6 +934,11 @@ namespace GlmSharp
         public static lvec3 Clamp(long v, lvec3 min, long max) => new lvec3(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max));
         
         /// <summary>
+        /// Returns a component-wise executed Clamp with scalars.
+        /// </summary>
+        public static lvec3 Clamp(long v, long min, long max) => new lvec3(Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max), Math.Min(Math.Max(v, min), max));
+        
+        /// <summary>
         /// Returns a component-wise executed Mix.
         /// </summary>
         public static lvec3 Mix(lvec3 min, lvec3 max, lvec3 a) => new lvec3(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z);
@@ -967,6 +972,11 @@ namespace GlmSharp
         /// Returns a component-wise executed Mix with scalars.
         /// </summary>
         public static lvec3 Mix(long min, lvec3 max, long a) => new lvec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
+        
+        /// <summary>
+        /// Returns a component-wise executed Mix with scalars.
+        /// </summary>
+        public static lvec3 Mix(long min, long max, long a) => new lvec3(min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a);
         
         /// <summary>
         /// Returns a component-wise executed Lerp.
@@ -1004,6 +1014,11 @@ namespace GlmSharp
         public static lvec3 Lerp(long min, lvec3 max, long a) => new lvec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
         
         /// <summary>
+        /// Returns a component-wise executed Lerp with scalars.
+        /// </summary>
+        public static lvec3 Lerp(long min, long max, long a) => new lvec3(min * (1-a) + max * a, min * (1-a) + max * a, min * (1-a) + max * a);
+        
+        /// <summary>
         /// Returns a component-wise executed Smoothstep.
         /// </summary>
         public static lvec3 Smoothstep(lvec3 edge0, lvec3 edge1, lvec3 v) => new lvec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3());
@@ -1039,6 +1054,11 @@ namespace GlmSharp
         public static lvec3 Smoothstep(long edge0, lvec3 edge1, long v) => new lvec3(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
+        /// Returns a component-wise executed Smoothstep with scalars.
+        /// </summary>
+        public static lvec3 Smoothstep(long edge0, long edge1, long v) => new lvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
         /// Returns a component-wise executed Smootherstep.
         /// </summary>
         public static lvec3 Smootherstep(lvec3 edge0, lvec3 edge1, lvec3 v) => new lvec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5());
@@ -1072,5 +1092,10 @@ namespace GlmSharp
         /// Returns a component-wise executed Smootherstep with scalars.
         /// </summary>
         public static lvec3 Smootherstep(long edge0, lvec3 edge1, long v) => new lvec3(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a component-wise executed Smootherstep with scalars.
+        /// </summary>
+        public static lvec3 Smootherstep(long edge0, long edge1, long v) => new lvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }
