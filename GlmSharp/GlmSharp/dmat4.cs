@@ -610,5 +610,24 @@ namespace GlmSharp
             m.m32 = (double)( -(2 * zFar * zNear) / (zFar - zNear) );
             return m;
         }
+        
+        /// <summary>
+        /// Builds a perspective projection matrix based on a field of view.
+        /// </summary>
+        public static dmat4 PerspectiveFov(double fov, double width, double height, double zNear, double zFar)
+        {
+            if (width <= 0) throw new ArgumentOutOfRangeException("width");
+            if (height <= 0) throw new ArgumentOutOfRangeException("height");
+            if (fov <= 0) throw new ArgumentOutOfRangeException("fov");
+            var h = Math.Cos((double)fov / 2.0) / Math.Sin((double)fov / 2.0);
+            var w = h * (double)(height / width);
+            var m = Zero;
+            m.m00 = (double)w;
+            m.m11 = (double)h;
+            m.m22 = - (zFar + zNear)/(zFar - zNear);
+            m.m23 = - 1;
+            m.m32 = - (2*zFar*zNear)/(zFar - zNear);
+            return m;
+        }
     }
 }

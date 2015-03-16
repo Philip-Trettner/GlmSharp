@@ -599,6 +599,24 @@ namespace GlmSharpGenerator
                         yield return string.Format("    m.m32 = ({0})( -(2 * zFar * zNear) / (zFar - zNear) );", BaseType);
                         yield return "    return m;";
                         yield return "}";
+
+                        // perspectiveFov
+                        foreach (var line in "Builds a perspective projection matrix based on a field of view.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} PerspectiveFov({1} fov, {1} width, {1} height, {1} zNear, {1} zFar)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    if (width <= 0) throw new ArgumentOutOfRangeException(\"width\");";
+                        yield return "    if (height <= 0) throw new ArgumentOutOfRangeException(\"height\");";
+                        yield return "    if (fov <= 0) throw new ArgumentOutOfRangeException(\"fov\");";
+                        yield return "    var h = Math.Cos((double)fov / 2.0) / Math.Sin((double)fov / 2.0);";
+                        yield return "    var w = h * (double)(height / width);";
+                        yield return "    var m = Zero;";
+                        yield return string.Format("    m.m00 = ({0})w;", BaseType);
+                        yield return string.Format("    m.m11 = ({0})h;", BaseType);
+                        yield return "    m.m22 = - (zFar + zNear)/(zFar - zNear);";
+                        yield return "    m.m23 = - 1;";
+                        yield return "    m.m32 = - (2*zFar*zNear)/(zFar - zNear);";
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }
