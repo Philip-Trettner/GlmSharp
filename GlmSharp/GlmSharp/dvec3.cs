@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
+// ReSharper disable InconsistentNaming
+
 namespace GlmSharp
 {
     [Serializable]
@@ -792,6 +794,11 @@ namespace GlmSharp
         /// Returns the squared euclidean distance between the two vectors.
         /// </summary>
         public static double DistanceSqr(dvec3 lhs, dvec3 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Calculate the reflection direction for an incident vector.
+        /// </summary>
+        public static dvec3 Reflect(dvec3 I, dvec3 N) => I - 2 * Dot(N, I) * N;
         
         /// <summary>
         /// Returns the outer product (cross product, vector product) of the two vectors.

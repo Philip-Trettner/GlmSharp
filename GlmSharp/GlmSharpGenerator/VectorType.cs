@@ -624,6 +624,10 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns the squared euclidean distance between the two vectors.".AsComment()) yield return line;
                     yield return string.Format("public static {0} DistanceSqr({1} lhs, {1} rhs) => (lhs - rhs).LengthSqr;", lengthType, ClassNameThat);
 
+                    // reflect
+                    foreach (var line in "Calculate the reflection direction for an incident vector.".AsComment()) yield return line;
+                    yield return string.Format("public static {0} Reflect({0} I, {0} N) => I - 2 * Dot(N, I) * N;", ClassNameThat);
+
                     // cross
                     switch (Components)
                     {

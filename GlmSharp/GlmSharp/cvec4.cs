@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
+// ReSharper disable InconsistentNaming
+
 namespace GlmSharp
 {
     [Serializable]
@@ -458,6 +460,11 @@ namespace GlmSharp
         /// Returns the squared euclidean distance between the two vectors.
         /// </summary>
         public static double DistanceSqr(cvec4 lhs, cvec4 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Calculate the reflection direction for an incident vector.
+        /// </summary>
+        public static cvec4 Reflect(cvec4 I, cvec4 N) => I - 2 * Dot(N, I) * N;
         
         /// <summary>
         /// Returns a component-wise executed Abs.

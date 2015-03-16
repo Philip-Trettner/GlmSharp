@@ -5,6 +5,8 @@ using System.Globalization;
 using System.Numerics;
 using System.Linq;
 
+// ReSharper disable InconsistentNaming
+
 namespace GlmSharp
 {
     [Serializable]
