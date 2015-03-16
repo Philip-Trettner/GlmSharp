@@ -64,5 +64,17 @@ namespace GlmSharpGenerator
             for (var i = 0; i < n; ++i)
                 yield return it.MoveNext() ? it.Current : obj;
         }
+
+        public static IEnumerable<int> IndexUpTo(this int n)
+        {
+            for (var i = 0; i < n; ++i)
+                yield return i;
+        }
+
+        public static IEnumerable<T> ForIndexUpTo<T>(this int n, Func<int, T> f)
+        {
+            for (var i = 0; i < n; ++i)
+                yield return f(i);
+        }
     }
 }

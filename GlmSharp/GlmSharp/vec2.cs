@@ -655,7 +655,7 @@ namespace GlmSharp
         public double Angle => Math.Atan2((double)y, (double)x);
         
         /// <summary>
-        /// Returns a unit 2D vector with a given angle in radians.
+        /// Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types).
         /// </summary>
         public static vec2 FromAngle(double angleInRad) => new vec2((float)Math.Cos(angleInRad), (float)Math.Sin(angleInRad));
         

@@ -35,6 +35,20 @@ namespace GlmSharpGenerator
                     Types.Add(vect.ClassName, vect);
                     Types.Add(swizzler.ClassName, swizzler);
                 }
+            foreach (var type in BaseTypeInfo.Types)
+                for (var rows = 2; rows <= 4; ++rows)
+                    for (var cols = 2; cols <= 4; ++cols)
+                    {
+                        var matt = new MatrixType
+                        {
+                            Name = type.Prefix + "mat",
+                            Columns = cols,
+                            Rows = rows,
+                            BaseTypeInfo = type,
+                            BaseType = type.Name
+                        };
+                        Types.Add(matt.ClassName, matt);
+                    }
 
             Console.WriteLine();
             Console.WriteLine("Types:");

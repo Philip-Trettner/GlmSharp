@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="BaseTypeInfo.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="MatrixType.cs" />
     <Compile Include="SwizzleType.cs" />
     <Compile Include="TypeBase.cs" />
     <Compile Include="Program.cs" />

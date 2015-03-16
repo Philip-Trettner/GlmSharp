@@ -29,7 +29,6 @@ namespace GlmSharpGenerator
         public string CompArgString => CompString.CommaSeparated();
         public IEnumerable<string> CompArgs => CompString.Select(c => c.ToString());
 
-        public string DefaultValue => "default(" + BaseType + ")";
 
         public char ArgOf(int c) => "xyzw"[c];
         public string ArgOfs(int c) => "xyzw"[c].ToString();
@@ -44,11 +43,6 @@ namespace GlmSharpGenerator
 
         public SwizzleType SwizzleType => new SwizzleType { BaseType = BaseType, BaseName = Name, Components = Components, Name = "swizzle_" + Name, BaseTypeInfo = BaseTypeInfo };
 
-        public string Comparer(string val) => IsGeneric ?
-            string.Format("EqualityComparer<T>.Default.Equals({0}, rhs.{0})", val) :
-            string.Format("{0}.Equals(rhs.{0})", val);
-
-        public string HashCodeOf(string val) => IsGeneric ? string.Format("EqualityComparer<T>.Default.GetHashCode({0})", val) : string.Format("{0}.GetHashCode()", val);
 
         private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
         {
@@ -58,7 +52,7 @@ namespace GlmSharpGenerator
             yield return "{";
             var it = assignments.GetEnumerator();
             foreach (var c in CompString)
-                yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : DefaultValue).Indent();
+                yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : ZeroValue).Indent();
             yield return "}";
         }
 
@@ -144,7 +138,7 @@ namespace GlmSharpGenerator
 
                 // predefs
                 foreach (var line in "Predefined all-zero vector (DO NOT MODIFY)".AsComment()) yield return line;
-                yield return string.Format("public static readonly {0} Zero = new {0}({1});", ClassNameThat, DefaultValue.RepeatTimes(Components).CommaSeparated());
+                yield return string.Format("public static readonly {0} Zero = new {0}({1});", ClassNameThat, ZeroValue.RepeatTimes(Components).CommaSeparated());
 
                 if (!string.IsNullOrEmpty(BaseTypeInfo.OneValue))
                 {
@@ -154,7 +148,7 @@ namespace GlmSharpGenerator
                     for (var c = 0; c < Components; ++c)
                     {
                         foreach (var line in string.Format("Predefined unit-{0} vector (DO NOT MODIFY)", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
-                        yield return string.Format("public static readonly {0} Unit{1} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString(BaseTypeInfo.OneValue, DefaultValue, Components).CommaSeparated());
+                        yield return string.Format("public static readonly {0} Unit{1} = new {0}({2});", ClassNameThat, char.ToUpper(ArgOf(c)), c.ImpulseString(BaseTypeInfo.OneValue, ZeroValue, Components).CommaSeparated());
                     }
                 }
 
@@ -473,7 +467,7 @@ namespace GlmSharpGenerator
                         foreach (var line in "Returns the vector angle (atan2(y, x)) in radians.".AsComment()) yield return line;
                         yield return string.Format("public double Angle => Math.Atan2((double)y, (double)x);");
 
-                        foreach (var line in "Returns a unit 2D vector with a given angle in radians.".AsComment()) yield return line;
+                        foreach (var line in "Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types).".AsComment()) yield return line;
                         yield return string.Format("public static {0} FromAngle(double angleInRad) => new {0}(({1})Math.Cos(angleInRad), ({1})Math.Sin(angleInRad));", ClassNameThat, BaseType);
 
                         foreach (var line in "Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).".AsComment()) yield return line;
