@@ -624,9 +624,25 @@ namespace GlmSharpGenerator
                     foreach (var line in "Returns the squared euclidean distance between the two vectors.".AsComment()) yield return line;
                     yield return string.Format("public static {0} DistanceSqr({1} lhs, {1} rhs) => (lhs - rhs).LengthSqr;", lengthType, ClassNameThat);
 
-                    // reflect
-                    foreach (var line in "Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Reflect({0} I, {0} N) => I - 2 * Dot(N, I) * N;", ClassNameThat);
+                    if (BaseTypeInfo.RequiredAbs)
+                    {
+                        // reflect
+                        foreach (var line in "Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Reflect({0} I, {0} N) => I - 2 * Dot(N, I) * N;", ClassNameThat);
+
+                        // refract
+                        if (!BaseTypeInfo.Complex)
+                        {
+                            foreach (var line in "Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).".AsComment()) yield return line;
+                            yield return string.Format("public static {0} Refract({0} I, {0} N, {1} eta)", ClassNameThat, BaseType);
+                            yield return "{";
+                            yield return "    var dNI = Dot(N, I);";
+                            yield return "    var k = 1 - eta * eta * (1 - dNI * dNI);";
+                            yield return "    if (k < 0) return Zero;";
+                            yield return string.Format("    return eta * I - (eta * dNI + ({1}){0}) * N;", BaseTypeInfo.Complex ? "Complex.Sqrt(k)" : SqrtOf("k"), BaseType);
+                            yield return "}";
+                        }
+                    }
 
                     // cross
                     switch (Components)
@@ -673,7 +689,7 @@ namespace GlmSharpGenerator
                         foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
                         yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseType, opFunc("v"));
                     }
-                    
+
                     foreach (var kvp in new Dictionary<string, Func<string, string>>
                     {
                         {"HermiteInterpolationOrder3", s => string.Format("(3 - 2 * {0}) * {0} * {0}", s)},

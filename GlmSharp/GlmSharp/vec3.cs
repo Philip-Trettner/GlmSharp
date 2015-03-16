@@ -881,6 +881,17 @@ namespace GlmSharp
         public static vec3 Reflect(vec3 I, vec3 N) => I - 2 * Dot(N, I) * N;
         
         /// <summary>
+        /// Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).
+        /// </summary>
+        public static vec3 Refract(vec3 I, vec3 N, float eta)
+        {
+            var dNI = Dot(N, I);
+            var k = 1 - eta * eta * (1 - dNI * dNI);
+            if (k < 0) return Zero;
+            return eta * I - (eta * dNI + (float)Math.Sqrt(k)) * N;
+        }
+        
+        /// <summary>
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static vec3 Cross(vec3 l, vec3 r) => new vec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);

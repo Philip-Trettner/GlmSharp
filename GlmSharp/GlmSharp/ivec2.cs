@@ -1108,6 +1108,17 @@ namespace GlmSharp
         public static ivec2 Reflect(ivec2 I, ivec2 N) => I - 2 * Dot(N, I) * N;
         
         /// <summary>
+        /// Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).
+        /// </summary>
+        public static ivec2 Refract(ivec2 I, ivec2 N, int eta)
+        {
+            var dNI = Dot(N, I);
+            var k = 1 - eta * eta * (1 - dNI * dNI);
+            if (k < 0) return Zero;
+            return eta * I - (eta * dNI + (int)Math.Sqrt(k)) * N;
+        }
+        
+        /// <summary>
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static int Cross(ivec2 l, ivec2 r) => l.x * r.y - l.y * r.x;

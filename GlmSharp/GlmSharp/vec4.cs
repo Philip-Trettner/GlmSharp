@@ -922,6 +922,17 @@ namespace GlmSharp
         public static vec4 Reflect(vec4 I, vec4 N) => I - 2 * Dot(N, I) * N;
         
         /// <summary>
+        /// Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).
+        /// </summary>
+        public static vec4 Refract(vec4 I, vec4 N, float eta)
+        {
+            var dNI = Dot(N, I);
+            var k = 1 - eta * eta * (1 - dNI * dNI);
+            if (k < 0) return Zero;
+            return eta * I - (eta * dNI + (float)Math.Sqrt(k)) * N;
+        }
+        
+        /// <summary>
         /// Returns a component-wise executed Abs.
         /// </summary>
         public static vec4 Abs(vec4 v) => new vec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));

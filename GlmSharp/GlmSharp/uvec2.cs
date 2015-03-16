@@ -1098,11 +1098,6 @@ namespace GlmSharp
         public static float DistanceSqr(uvec2 lhs, uvec2 rhs) => (lhs - rhs).LengthSqr;
         
         /// <summary>
-        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
-        /// </summary>
-        public static uvec2 Reflect(uvec2 I, uvec2 N) => I - 2 * Dot(N, I) * N;
-        
-        /// <summary>
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static uint Cross(uvec2 l, uvec2 r) => l.x * r.y - l.y * r.x;
