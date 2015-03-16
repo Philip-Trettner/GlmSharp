@@ -404,6 +404,13 @@ namespace GlmSharpGenerator
                             FieldsHelper(lhsRows, rhsColumns).Select(f => lhsCols.ForIndexUpTo(i => string.Format("lhs.m{1}{0} * rhs.m{2}{1}", f[1], i, f[2])).Aggregated(" + ")).CommaSeparated());
                     }
 
+                    // matrix-matrix-division
+                    if (Rows == Columns && BaseTypeInfo.IsSigned)
+                    {
+                        foreach (var line in "Executes a matrix-matrix-divison A / B == A * B^-1 (use with caution).".AsComment()) yield return line;
+                        yield return string.Format("public static {0} operator/({0} A, {0} B) => A * B.Inverse;", ClassNameThat);
+                    }
+
                     // arithmetic operators
                     foreach (var kvp in new Dictionary<string, string>
                     {

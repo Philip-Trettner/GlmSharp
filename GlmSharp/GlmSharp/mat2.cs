@@ -280,6 +280,11 @@ namespace GlmSharp
         public static mat4x2 operator*(mat2 lhs, mat4x2 rhs) => new mat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31);
         
         /// <summary>
+        /// Executes a matrix-matrix-divison A / B == A * B^-1 (use with caution).
+        /// </summary>
+        public static mat2 operator/(mat2 A, mat2 B) => A * B.Inverse;
+        
+        /// <summary>
         /// Executes a component-wise + (add).
         /// </summary>
         public static mat2 operator+(mat2 lhs, mat2 rhs) => new mat2(lhs.m00 + rhs.m00, lhs.m01 + rhs.m01, lhs.m10 + rhs.m10, lhs.m11 + rhs.m11);
