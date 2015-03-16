@@ -666,5 +666,15 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static lvec3 Cross(lvec3 l, lvec3 r) => new lvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static lvec3 Abs(lvec3 v) => new lvec3(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static lvec3 Sqr(lvec3 v) => new lvec3((v.x * v.x), (v.y * v.y), (v.z * v.z));
     }
 }

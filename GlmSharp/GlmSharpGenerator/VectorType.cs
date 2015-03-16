@@ -484,6 +484,133 @@ namespace GlmSharpGenerator
                         foreach (var line in "Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).".AsComment()) yield return line;
                         yield return string.Format("public {0} Rotated(double angleInRad) => ({0})(dvec2.FromAngle(Angle) * (double)Length);", ClassNameThat);
                     }
+
+                    // component-wise unary functions
+                    foreach (var kvp in new Dictionary<string, Func<string, string>>
+                    {
+                        {"Abs", AbsString},
+                    })
+                    {
+                        var op = kvp.Key;
+                        var opFunc = kvp.Value;
+
+                        var retType = ClassNameThat;
+                        if (op == "Abs" && !string.IsNullOrEmpty(BaseTypeInfo.AbsOverrideType))
+                            retType = BaseTypeInfo.AbsOverrideTypePrefix + "vec" + Components + GenericSuffix;
+
+                        foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+                    }
+
+                    if (BaseTypeInfo.IsFloatingPoint)
+                        foreach (var kvp in new Dictionary<string, Func<string, string>>
+                        {
+                            {"Acos", s => string.Format("({1})Math.Acos((double){0})", s, BaseType)},
+                            {"Asin", s => string.Format("({1})Math.Asin((double){0})", s, BaseType)},
+                            {"Atan", s => string.Format("({1})Math.Atan((double){0})", s, BaseType)},
+                            {"Cos", s => string.Format("({1})Math.Cos((double){0})", s, BaseType)},
+                            {"Cosh", s => string.Format("({1})Math.Cosh((double){0})", s, BaseType)},
+                            {"Log", s => string.Format("({1})Math.Log((double){0})", s, BaseType)},
+                            {"Log2", s => string.Format("({1})Math.Log((double){0}, 2)", s, BaseType)},
+                            {"Log10", s => string.Format("({1})Math.Log10((double){0})", s, BaseType)},
+                            {"Floor", s => string.Format("({1})Math.Floor({0})", s, BaseType)},
+                            {"Ceiling", s => string.Format("({1})Math.Ceiling({0})", s, BaseType)},
+                            {"Round", s => string.Format("({1})Math.Round({0})", s, BaseType)},
+                            {"Sin", s => string.Format("({1})Math.Sin((double){0})", s, BaseType)},
+                            {"Sinh", s => string.Format("({1})Math.Sinh((double){0})", s, BaseType)},
+                            {"Sqrt", s => string.Format("({1})Math.Sqrt((double){0})", s, BaseType)},
+                            {"Tan", s => string.Format("({1})Math.Tan((double){0})", s, BaseType)},
+                            {"Tanh", s => string.Format("({1})Math.Tanh((double){0})", s, BaseType)},
+                            {"Truncate", s => string.Format("({1})Math.Truncate((double){0})", s, BaseType)},
+                            {"Sign", s => string.Format("Math.Sign({0})", s)},
+                        })
+                        {
+                            var op = kvp.Key;
+                            var opFunc = kvp.Value;
+
+                            var retType = ClassNameThat;
+
+                            if (op == "Sign")
+                                retType = "ivec" + Components;
+
+                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                            yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+                        }
+
+                    foreach (var kvp in new Dictionary<string, Func<string, string>>
+                    {
+                        {"Sqr", s => string.Format("({0} * {0})", s)},
+                    })
+                    {
+                        var op = kvp.Key;
+                        var opFunc = kvp.Value;
+
+                        var retType = ClassNameThat;
+
+                        foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
+                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, ClassNameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
+                    }
+
+
+                    /*
+                    
+
+//   = component-wise
+inline vec3 pow2(vec3 const& v) { return vec3(pow2(v.x), pow2(v.y), pow2(v.z)); }
+inline vec3 sqrt(vec3 const& v) { return vec3(sqrt(v.x), sqrt(v.y), sqrt(v.z)); }
+inline vec3 sin(vec3 const& v) { return vec3(sin(v.x), sin(v.y), sin(v.z)); }
+inline vec3 cos(vec3 const& v) { return vec3(cos(v.x), cos(v.y), cos(v.z)); }
+inline vec3 tan(vec3 const& v) { return vec3(tan(v.x), tan(v.y), tan(v.z)); }
+inline vec3 asin(vec3 const& v) { return vec3(asin(v.x), asin(v.y), asin(v.z)); }
+inline vec3 acos(vec3 const& v) { return vec3(acos(v.x), acos(v.y), acos(v.z)); }
+inline vec3 atan(vec3 const& v) { return vec3(atan(v.x), atan(v.y), atan(v.z)); }
+inline vec3 abs(vec3 const& v) { return vec3(abs(v.x), abs(v.y), abs(v.z)); }
+inline vec3 floor(vec3 const& v) { return vec3(floor(v.x), floor(v.y), floor(v.z)); }
+inline vec3 ceil(vec3 const& v) { return vec3(ceil(v.x), ceil(v.y), ceil(v.z)); }
+inline vec3 round(vec3 const& v) { return vec3(round(v.x), round(v.y), round(v.z)); }
+inline vec3 step(vec3 const& v) { return vec3(step(v.x), step(v.y), step(v.z)); }
+inline vec3 sign(vec3 const& v) { return vec3(sign(v.x), sign(v.y), sign(v.z)); }
+inline vec3 log(vec3 const& v) { return vec3(log(v.x), log(v.y), log(v.z)); }
+inline vec3 log2(vec3 const& v) { return vec3(log2(v.x), log2(v.y), log2(v.z)); }
+inline vec3 log10(vec3 const& v) { return vec3(log10(v.x), log10(v.y), log10(v.z)); }
+inline vec3 exp(vec3 const& v) { return vec3(exp(v.x), exp(v.y), exp(v.z)); }
+
+inline vec3 pow(vec3 const& v1, vec3 const& v2) { return vec3(pow(v1.x, v2.x), pow(v1.y, v2.y), pow(v1.z, v2.z)); }
+inline vec3 min(vec3 const& v1, vec3 const& v2) { return vec3(min(v1.x, v2.x), min(v1.y, v2.y), min(v1.z, v2.z)); }
+inline vec3 max(vec3 const& v1, vec3 const& v2) { return vec3(max(v1.x, v2.x), max(v1.y, v2.y), max(v1.z, v2.z)); }
+inline vec3 atan(vec3 const& v1, vec3 const& v2) { return vec3(atan(v1.x, v2.x), atan(v1.y, v2.y), atan(v1.z, v2.z)); }
+
+inline vec3 clamp(vec3 const& v, vec3 const& mi, vec3 const& ma) { return vec3(clamp(v.x, mi.x, ma.x), clamp(v.y, mi.y, ma.y), clamp(v.z, mi.z, ma.z)); }
+inline vec3 mix(vec3 const& mi, vec3 const& ma, vec3 const& a) { return vec3(mix(mi.x, ma.x, a.x), mix(mi.y, ma.y, a.y), mix(mi.z, ma.z, a.z)); }
+inline vec3 mix(vec3 const& mi, vec3 const& ma, float a) { return vec3(mix(mi.x, ma.x, a), mix(mi.y, ma.y, a), mix(mi.z, ma.z, a)); }
+inline vec3 smoothstep(vec3 const& edge0, vec3 const& edge1, vec3 const& v) { return vec3(smoothstep(edge0.x, edge1.x, v.x), smoothstep(edge0.y, edge1.y, v.y), smoothstep(edge0.z, edge1.z, v.z)); }
+
+
+//   = special
+inline vec3 normalize(vec3 const& v) { return v / length(v); }
+
+inline vec3 cross(vec3 const& v1, vec3 const& v2)
+{
+    return vec3(
+                v1.y * v2.z - v1.z * v2.y,
+                v1.z * v2.x - v1.x * v2.z,
+                v1.x * v2.y - v1.y * v2.x
+                );
+}
+
+inline float *value_ptr(vec3 & v) { return &v.x; }
+inline const float *value_ptr(vec3 const& v) { return &v.x; }
+
+// bool vectors
+inline bvec3 isfinite(vec3 const& v) { return bvec3(isfinite(v.x), isfinite(v.y), isfinite(v.z)); }
+inline bvec3 isnan(vec3 const& v) { return bvec3(isnan(v.x), isnan(v.y), isnan(v.z)); }
+inline bvec3 isinf(vec3 const& v) { return bvec3(isinf(v.x), isinf(v.y), isinf(v.z)); }
+inline bvec3 equal(vec3 const& v1, vec3 const& v2) { return bvec3(equal(v1.x, v2.x), equal(v1.y, v2.y), equal(v1.z, v2.z)); }
+inline bvec3 greaterThan(vec3 const& v1, vec3 const& v2) { return bvec3(greaterThan(v1.x, v2.x), greaterThan(v1.y, v2.y), greaterThan(v1.z, v2.z)); }
+inline bvec3 greaterThanEqual(vec3 const& v1, vec3 const& v2) { return bvec3(greaterThanEqual(v1.x, v2.x), greaterThanEqual(v1.y, v2.y), greaterThanEqual(v1.z, v2.z)); }
+inline bvec3 lessThan(vec3 const& v1, vec3 const& v2) { return bvec3(lessThan(v1.x, v2.x), lessThan(v1.y, v2.y), lessThan(v1.z, v2.z)); }
+inline bvec3 lessThanEqual(vec3 const& v1, vec3 const& v2) { return bvec3(lessThanEqual(v1.x, v2.x), lessThanEqual(v1.y, v2.y), lessThanEqual(v1.z, v2.z)); }
+                    */
                 }
             }
         }

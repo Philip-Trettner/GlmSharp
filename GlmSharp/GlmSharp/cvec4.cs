@@ -387,5 +387,15 @@ namespace GlmSharp
         /// Returns the squared euclidean distance between the two vectors.
         /// </summary>
         public static double DistanceSqr(cvec4 lhs, cvec4 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static dvec4 Abs(cvec4 v) => new dvec4(v.x.Magnitude, v.y.Magnitude, v.z.Magnitude, v.w.Magnitude);
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static cvec4 Sqr(cvec4 v) => new cvec4((v.x * v.x), (v.y * v.y), (v.z * v.z), (v.w * v.w));
     }
 }

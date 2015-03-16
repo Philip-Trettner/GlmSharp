@@ -968,5 +968,15 @@ namespace GlmSharp
         /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
         /// </summary>
         public uvec2 Rotated(double angleInRad) => (uvec2)(dvec2.FromAngle(Angle) * (double)Length);
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static uvec2 Abs(uvec2 v) => new uvec2(v.x, v.y);
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static uvec2 Sqr(uvec2 v) => new uvec2((v.x * v.x), (v.y * v.y));
     }
 }

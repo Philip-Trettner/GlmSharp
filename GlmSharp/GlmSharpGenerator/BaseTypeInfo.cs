@@ -95,7 +95,9 @@ namespace GlmSharpGenerator
             Prefix = "c",
             LengthType = "double",
             OneValue = "1.0",
-            Complex = true
+            Complex = true,
+            AbsOverrideType = "double",
+            AbsOverrideTypePrefix = "d"
         };
         public static readonly BaseTypeInfo TypeLong = new BaseTypeInfo
         {
@@ -130,6 +132,8 @@ namespace GlmSharpGenerator
 
         public bool HasArithmetics { get; set; } = true;
         public string LengthType { get; set; } = "float";
+        public string AbsOverrideType { get; set; }
+        public string AbsOverrideTypePrefix { get; set; }
         public bool RequiredAbs { get; set; } = true;
         public bool IsInteger { get; set; } = false;
         public bool IsFloatingPoint { get; set; }

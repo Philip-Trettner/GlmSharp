@@ -722,5 +722,105 @@ namespace GlmSharp
         /// Returns the squared euclidean distance between the two vectors.
         /// </summary>
         public static float DistanceSqr(vec4 lhs, vec4 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static vec4 Abs(vec4 v) => new vec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Acos.
+        /// </summary>
+        public static vec4 Acos(vec4 v) => new vec4((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y), (float)Math.Acos((double)v.z), (float)Math.Acos((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Asin.
+        /// </summary>
+        public static vec4 Asin(vec4 v) => new vec4((float)Math.Asin((double)v.x), (float)Math.Asin((double)v.y), (float)Math.Asin((double)v.z), (float)Math.Asin((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Atan.
+        /// </summary>
+        public static vec4 Atan(vec4 v) => new vec4((float)Math.Atan((double)v.x), (float)Math.Atan((double)v.y), (float)Math.Atan((double)v.z), (float)Math.Atan((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Cos.
+        /// </summary>
+        public static vec4 Cos(vec4 v) => new vec4((float)Math.Cos((double)v.x), (float)Math.Cos((double)v.y), (float)Math.Cos((double)v.z), (float)Math.Cos((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Cosh.
+        /// </summary>
+        public static vec4 Cosh(vec4 v) => new vec4((float)Math.Cosh((double)v.x), (float)Math.Cosh((double)v.y), (float)Math.Cosh((double)v.z), (float)Math.Cosh((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static vec4 Log(vec4 v) => new vec4((float)Math.Log((double)v.x), (float)Math.Log((double)v.y), (float)Math.Log((double)v.z), (float)Math.Log((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log2.
+        /// </summary>
+        public static vec4 Log2(vec4 v) => new vec4((float)Math.Log((double)v.x, 2), (float)Math.Log((double)v.y, 2), (float)Math.Log((double)v.z, 2), (float)Math.Log((double)v.w, 2));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log10.
+        /// </summary>
+        public static vec4 Log10(vec4 v) => new vec4((float)Math.Log10((double)v.x), (float)Math.Log10((double)v.y), (float)Math.Log10((double)v.z), (float)Math.Log10((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Floor.
+        /// </summary>
+        public static vec4 Floor(vec4 v) => new vec4((float)Math.Floor(v.x), (float)Math.Floor(v.y), (float)Math.Floor(v.z), (float)Math.Floor(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Ceiling.
+        /// </summary>
+        public static vec4 Ceiling(vec4 v) => new vec4((float)Math.Ceiling(v.x), (float)Math.Ceiling(v.y), (float)Math.Ceiling(v.z), (float)Math.Ceiling(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Round.
+        /// </summary>
+        public static vec4 Round(vec4 v) => new vec4((float)Math.Round(v.x), (float)Math.Round(v.y), (float)Math.Round(v.z), (float)Math.Round(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sin.
+        /// </summary>
+        public static vec4 Sin(vec4 v) => new vec4((float)Math.Sin((double)v.x), (float)Math.Sin((double)v.y), (float)Math.Sin((double)v.z), (float)Math.Sin((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sinh.
+        /// </summary>
+        public static vec4 Sinh(vec4 v) => new vec4((float)Math.Sinh((double)v.x), (float)Math.Sinh((double)v.y), (float)Math.Sinh((double)v.z), (float)Math.Sinh((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqrt.
+        /// </summary>
+        public static vec4 Sqrt(vec4 v) => new vec4((float)Math.Sqrt((double)v.x), (float)Math.Sqrt((double)v.y), (float)Math.Sqrt((double)v.z), (float)Math.Sqrt((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Tan.
+        /// </summary>
+        public static vec4 Tan(vec4 v) => new vec4((float)Math.Tan((double)v.x), (float)Math.Tan((double)v.y), (float)Math.Tan((double)v.z), (float)Math.Tan((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Tanh.
+        /// </summary>
+        public static vec4 Tanh(vec4 v) => new vec4((float)Math.Tanh((double)v.x), (float)Math.Tanh((double)v.y), (float)Math.Tanh((double)v.z), (float)Math.Tanh((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Truncate.
+        /// </summary>
+        public static vec4 Truncate(vec4 v) => new vec4((float)Math.Truncate((double)v.x), (float)Math.Truncate((double)v.y), (float)Math.Truncate((double)v.z), (float)Math.Truncate((double)v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sign.
+        /// </summary>
+        public static ivec4 Sign(vec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static vec4 Sqr(vec4 v) => new vec4((v.x * v.x), (v.y * v.y), (v.z * v.z), (v.w * v.w));
     }
 }

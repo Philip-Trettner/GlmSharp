@@ -513,5 +513,105 @@ namespace GlmSharp
         /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
         /// </summary>
         public decvec2 Rotated(double angleInRad) => (decvec2)(dvec2.FromAngle(Angle) * (double)Length);
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static decvec2 Abs(decvec2 v) => new decvec2(Math.Abs(v.x), Math.Abs(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Acos.
+        /// </summary>
+        public static decvec2 Acos(decvec2 v) => new decvec2((decimal)Math.Acos((double)v.x), (decimal)Math.Acos((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Asin.
+        /// </summary>
+        public static decvec2 Asin(decvec2 v) => new decvec2((decimal)Math.Asin((double)v.x), (decimal)Math.Asin((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Atan.
+        /// </summary>
+        public static decvec2 Atan(decvec2 v) => new decvec2((decimal)Math.Atan((double)v.x), (decimal)Math.Atan((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Cos.
+        /// </summary>
+        public static decvec2 Cos(decvec2 v) => new decvec2((decimal)Math.Cos((double)v.x), (decimal)Math.Cos((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Cosh.
+        /// </summary>
+        public static decvec2 Cosh(decvec2 v) => new decvec2((decimal)Math.Cosh((double)v.x), (decimal)Math.Cosh((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static decvec2 Log(decvec2 v) => new decvec2((decimal)Math.Log((double)v.x), (decimal)Math.Log((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log2.
+        /// </summary>
+        public static decvec2 Log2(decvec2 v) => new decvec2((decimal)Math.Log((double)v.x, 2), (decimal)Math.Log((double)v.y, 2));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log10.
+        /// </summary>
+        public static decvec2 Log10(decvec2 v) => new decvec2((decimal)Math.Log10((double)v.x), (decimal)Math.Log10((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Floor.
+        /// </summary>
+        public static decvec2 Floor(decvec2 v) => new decvec2((decimal)Math.Floor(v.x), (decimal)Math.Floor(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Ceiling.
+        /// </summary>
+        public static decvec2 Ceiling(decvec2 v) => new decvec2((decimal)Math.Ceiling(v.x), (decimal)Math.Ceiling(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Round.
+        /// </summary>
+        public static decvec2 Round(decvec2 v) => new decvec2((decimal)Math.Round(v.x), (decimal)Math.Round(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sin.
+        /// </summary>
+        public static decvec2 Sin(decvec2 v) => new decvec2((decimal)Math.Sin((double)v.x), (decimal)Math.Sin((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sinh.
+        /// </summary>
+        public static decvec2 Sinh(decvec2 v) => new decvec2((decimal)Math.Sinh((double)v.x), (decimal)Math.Sinh((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqrt.
+        /// </summary>
+        public static decvec2 Sqrt(decvec2 v) => new decvec2((decimal)Math.Sqrt((double)v.x), (decimal)Math.Sqrt((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Tan.
+        /// </summary>
+        public static decvec2 Tan(decvec2 v) => new decvec2((decimal)Math.Tan((double)v.x), (decimal)Math.Tan((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Tanh.
+        /// </summary>
+        public static decvec2 Tanh(decvec2 v) => new decvec2((decimal)Math.Tanh((double)v.x), (decimal)Math.Tanh((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Truncate.
+        /// </summary>
+        public static decvec2 Truncate(decvec2 v) => new decvec2((decimal)Math.Truncate((double)v.x), (decimal)Math.Truncate((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sign.
+        /// </summary>
+        public static ivec2 Sign(decvec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static decvec2 Sqr(decvec2 v) => new decvec2((v.x * v.x), (v.y * v.y));
     }
 }

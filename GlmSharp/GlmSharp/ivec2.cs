@@ -973,5 +973,15 @@ namespace GlmSharp
         /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
         /// </summary>
         public ivec2 Rotated(double angleInRad) => (ivec2)(dvec2.FromAngle(Angle) * (double)Length);
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static ivec2 Abs(ivec2 v) => new ivec2(Math.Abs(v.x), Math.Abs(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static ivec2 Sqr(ivec2 v) => new ivec2((v.x * v.x), (v.y * v.y));
     }
 }

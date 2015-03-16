@@ -673,5 +673,105 @@ namespace GlmSharp
         /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
         /// </summary>
         public vec2 Rotated(double angleInRad) => (vec2)(dvec2.FromAngle(Angle) * (double)Length);
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static vec2 Abs(vec2 v) => new vec2(Math.Abs(v.x), Math.Abs(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Acos.
+        /// </summary>
+        public static vec2 Acos(vec2 v) => new vec2((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Asin.
+        /// </summary>
+        public static vec2 Asin(vec2 v) => new vec2((float)Math.Asin((double)v.x), (float)Math.Asin((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Atan.
+        /// </summary>
+        public static vec2 Atan(vec2 v) => new vec2((float)Math.Atan((double)v.x), (float)Math.Atan((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Cos.
+        /// </summary>
+        public static vec2 Cos(vec2 v) => new vec2((float)Math.Cos((double)v.x), (float)Math.Cos((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Cosh.
+        /// </summary>
+        public static vec2 Cosh(vec2 v) => new vec2((float)Math.Cosh((double)v.x), (float)Math.Cosh((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log.
+        /// </summary>
+        public static vec2 Log(vec2 v) => new vec2((float)Math.Log((double)v.x), (float)Math.Log((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log2.
+        /// </summary>
+        public static vec2 Log2(vec2 v) => new vec2((float)Math.Log((double)v.x, 2), (float)Math.Log((double)v.y, 2));
+        
+        /// <summary>
+        /// Returns a component-wise executed Log10.
+        /// </summary>
+        public static vec2 Log10(vec2 v) => new vec2((float)Math.Log10((double)v.x), (float)Math.Log10((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Floor.
+        /// </summary>
+        public static vec2 Floor(vec2 v) => new vec2((float)Math.Floor(v.x), (float)Math.Floor(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Ceiling.
+        /// </summary>
+        public static vec2 Ceiling(vec2 v) => new vec2((float)Math.Ceiling(v.x), (float)Math.Ceiling(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Round.
+        /// </summary>
+        public static vec2 Round(vec2 v) => new vec2((float)Math.Round(v.x), (float)Math.Round(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sin.
+        /// </summary>
+        public static vec2 Sin(vec2 v) => new vec2((float)Math.Sin((double)v.x), (float)Math.Sin((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sinh.
+        /// </summary>
+        public static vec2 Sinh(vec2 v) => new vec2((float)Math.Sinh((double)v.x), (float)Math.Sinh((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqrt.
+        /// </summary>
+        public static vec2 Sqrt(vec2 v) => new vec2((float)Math.Sqrt((double)v.x), (float)Math.Sqrt((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Tan.
+        /// </summary>
+        public static vec2 Tan(vec2 v) => new vec2((float)Math.Tan((double)v.x), (float)Math.Tan((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Tanh.
+        /// </summary>
+        public static vec2 Tanh(vec2 v) => new vec2((float)Math.Tanh((double)v.x), (float)Math.Tanh((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Truncate.
+        /// </summary>
+        public static vec2 Truncate(vec2 v) => new vec2((float)Math.Truncate((double)v.x), (float)Math.Truncate((double)v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sign.
+        /// </summary>
+        public static ivec2 Sign(vec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static vec2 Sqr(vec2 v) => new vec2((v.x * v.x), (v.y * v.y));
     }
 }

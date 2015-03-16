@@ -35,6 +35,9 @@ namespace GlmSharpTest
 
             cvec4 cv = v * c;
             //c.Magnitude
+
+            dvec4 acv = cvec4.Abs(cv);
+            acv = dvec4.Tanh(acv);
         }
     }
 }

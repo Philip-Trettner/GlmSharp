@@ -323,5 +323,15 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static Complex Cross(cvec2 l, cvec2 r) => l.x * r.y - l.y * r.x;
+        
+        /// <summary>
+        /// Returns a component-wise executed Abs.
+        /// </summary>
+        public static dvec2 Abs(cvec2 v) => new dvec2(v.x.Magnitude, v.y.Magnitude);
+        
+        /// <summary>
+        /// Returns a component-wise executed Sqr.
+        /// </summary>
+        public static cvec2 Sqr(cvec2 v) => new cvec2((v.x * v.x), (v.y * v.y));
     }
 }
