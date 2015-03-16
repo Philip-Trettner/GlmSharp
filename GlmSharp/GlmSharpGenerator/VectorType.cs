@@ -625,7 +625,7 @@ namespace GlmSharpGenerator
                     yield return string.Format("public static {0} DistanceSqr({1} lhs, {1} rhs) => (lhs - rhs).LengthSqr;", lengthType, ClassNameThat);
 
                     // reflect
-                    foreach (var line in "Calculate the reflection direction for an incident vector.".AsComment()) yield return line;
+                    foreach (var line in "Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).".AsComment()) yield return line;
                     yield return string.Format("public static {0} Reflect({0} I, {0} N) => I - 2 * Dot(N, I) * N;", ClassNameThat);
 
                     // cross

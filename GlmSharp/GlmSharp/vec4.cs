@@ -917,7 +917,7 @@ namespace GlmSharp
         public static float DistanceSqr(vec4 lhs, vec4 rhs) => (lhs - rhs).LengthSqr;
         
         /// <summary>
-        /// Calculate the reflection direction for an incident vector.
+        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
         /// </summary>
         public static vec4 Reflect(vec4 I, vec4 N) => I - 2 * Dot(N, I) * N;
         
