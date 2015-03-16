@@ -144,7 +144,7 @@ namespace GlmSharpGenerator
                     }
                 }
 
-                if (BaseTypeInfo.Complex)
+                if (BaseTypeInfo.IsComplex)
                 {
                     foreach (var line in "Predefined all-imaginary-ones vector".AsComment()) yield return line;
                     yield return string.Format("public static {0} ImaginaryOnes {{ get; }} = new {0}({1});", ClassNameThat, "Complex.ImaginaryOne".RepeatTimes(Components).CommaSeparated());
@@ -198,7 +198,7 @@ namespace GlmSharpGenerator
                     var otherType = oType;
                     if (otherType.Generic != BaseTypeInfo.Generic)
                         continue; // cannot mix generic/non-generic
-                    if (BaseTypeInfo.Complex && !otherType.Complex)
+                    if (BaseTypeInfo.IsComplex && !otherType.IsComplex)
                         continue; // cannot "downcast" complex type
 
                     for (var comps = 2; comps <= 4; ++comps)
@@ -283,7 +283,7 @@ namespace GlmSharpGenerator
                 yield return "    }";
                 yield return "}";
 
-                if (!BaseTypeInfo.Generic && !BaseTypeInfo.Complex && BaseTypeInfo.HasArithmetics)
+                if (!BaseTypeInfo.Generic && !BaseTypeInfo.IsComplex && BaseTypeInfo.HasArithmetics)
                 {
                     foreach (var line in "Returns a boolean vector with component-wise equal.".AsComment()) yield return line;
                     yield return string.Format("public static bvec{0} Equal({1} lhs, {1} rhs) => new bvec{0}({2});", Components, ClassNameThat, CompString.Select(c => string.Format("lhs.{0} == rhs.{0}", c)).CommaSeparated());
@@ -343,7 +343,7 @@ namespace GlmSharpGenerator
                 }
 
                 // Parsing
-                if (!BaseTypeInfo.Complex && !BaseTypeInfo.Generic)
+                if (!BaseTypeInfo.IsComplex && !BaseTypeInfo.Generic)
                 {
                     // Parse
                     foreach (var line in "Converts the string representation of the vector into a vector representation (using ', ' as a separator).".AsComment()) yield return line;
@@ -420,7 +420,7 @@ namespace GlmSharpGenerator
 
 
                 // Complex properties
-                if (BaseTypeInfo.Complex)
+                if (BaseTypeInfo.IsComplex)
                 {
                     foreach (var line in "Returns a vector containing component-wise magnitudes.".AsComment()) yield return line;
                     yield return string.Format("public dvec{0} Magnitude => new dvec{0}({1});", Components, CompString.Select(c => c + ".Magnitude").CommaSeparated());
@@ -462,7 +462,7 @@ namespace GlmSharpGenerator
                 {
                     var lengthType = BaseTypeInfo.LengthType;
 
-                    if (!BaseTypeInfo.Complex)
+                    if (!BaseTypeInfo.IsComplex)
                     {
                         foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
                         yield return string.Format("public {0} MinElement => {1};", BaseType, NestedBiFuncFor("Math.Min({0}, {1})", Components - 1, ArgOfs));
@@ -581,7 +581,7 @@ namespace GlmSharpGenerator
                     }
 
                     // comparisons
-                    if (!BaseTypeInfo.Complex)
+                    if (!BaseTypeInfo.IsComplex)
                     {
                         foreach (var kvp in new Dictionary<string, string>
                         {
@@ -631,7 +631,7 @@ namespace GlmSharpGenerator
                         yield return string.Format("public static {0} Reflect({0} I, {0} N) => I - 2 * Dot(N, I) * N;", ClassNameThat);
 
                         // refract
-                        if (!BaseTypeInfo.Complex)
+                        if (!BaseTypeInfo.IsComplex)
                         {
                             foreach (var line in "Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).".AsComment()) yield return line;
                             yield return string.Format("public static {0} Refract({0} I, {0} N, {1} eta)", ClassNameThat, BaseType);
@@ -639,7 +639,7 @@ namespace GlmSharpGenerator
                             yield return "    var dNI = Dot(N, I);";
                             yield return "    var k = 1 - eta * eta * (1 - dNI * dNI);";
                             yield return "    if (k < 0) return Zero;";
-                            yield return string.Format("    return eta * I - (eta * dNI + ({1}){0}) * N;", BaseTypeInfo.Complex ? "Complex.Sqrt(k)" : SqrtOf("k"), BaseType);
+                            yield return string.Format("    return eta * I - (eta * dNI + ({1}){0}) * N;", BaseTypeInfo.IsComplex ? "Complex.Sqrt(k)" : SqrtOf("k"), BaseType);
                             yield return "}";
 
                             // faceforward
@@ -662,7 +662,7 @@ namespace GlmSharpGenerator
                     }
 
                     // angle
-                    if (Components == 2 && !BaseTypeInfo.Complex)
+                    if (Components == 2 && !BaseTypeInfo.IsComplex)
                     {
                         foreach (var line in "Returns the vector angle (atan2(y, x)) in radians.".AsComment()) yield return line;
                         yield return string.Format("public double Angle => Math.Atan2((double)y, (double)x);");
@@ -766,7 +766,7 @@ namespace GlmSharpGenerator
                         yield return string.Format("public static {0} {1}({2} v) => new {0}(v * {3});", ClassNameThat, "Radians", BaseType, ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172"));
                     }
 
-                    if (BaseTypeInfo.Complex)
+                    if (BaseTypeInfo.IsComplex)
                     {
                         foreach (var kvp in new Dictionary<string, Func<string, string>>
                         {
@@ -872,7 +872,7 @@ namespace GlmSharpGenerator
                         yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseType, opFunc("v"));
                     }
 
-                    if (!BaseTypeInfo.Complex)
+                    if (!BaseTypeInfo.IsComplex)
                         foreach (var kvp in new Dictionary<string, Func<string, string, string>>
                         {
                             {"Max", (s1, s2) => string.Format("Math.Max({0}, {1})", s1, s2)},
@@ -911,7 +911,7 @@ namespace GlmSharpGenerator
                         var op = kvp.Key;
                         var opFunc = kvp.Value;
 
-                        if (BaseTypeInfo.Complex && op[0] != "Mix")
+                        if (BaseTypeInfo.IsComplex && op[0] != "Mix")
                             continue; // no clamp for complex
 
                         var retType = ClassNameThat;

@@ -340,7 +340,7 @@ namespace GlmSharpGenerator
                 {
                     var lengthType = BaseTypeInfo.LengthType;
 
-                    if (!BaseTypeInfo.Complex)
+                    if (!BaseTypeInfo.IsComplex)
                     {
                         foreach (var line in "Returns the minimal component of this matrix.".AsComment()) yield return line;
                         yield return string.Format("public {0} MinElement => {1};", BaseType, NestedBiFuncFor("Math.Min({0}, {1})", FieldCount - 1, FieldFor));
@@ -479,7 +479,7 @@ namespace GlmSharpGenerator
                     }
 
                     // comparisons
-                    if (!BaseTypeInfo.Complex)
+                    if (!BaseTypeInfo.IsComplex)
                     {
                         foreach (var kvp in new Dictionary<string, string>
                         {
@@ -499,6 +499,25 @@ namespace GlmSharpGenerator
                             foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
                             yield return ComparisonOperatorScalarL(op, BaseType);
                         }
+                    }
+
+                    // special mat4x4 funcs
+                    if (BaseTypeInfo.IsFloatingPoint && Rows == 4 && Columns == 4)
+                    {
+                        // frustum
+                        foreach (var line in "Creates a frustrum projection matrix.".AsComment()) yield return line;
+                        yield return string.Format("public static {0} Frustum({1} left, {1} right, {1} bottom, {1} top, {1} nearVal, {1} farVal)", ClassNameThat, BaseType);
+                        yield return "{";
+                        yield return "    var m = Identity;";
+                        yield return "    m.m00 = (2 * nearVal) / (right - left);";
+                        yield return "    m.m11 = (2 * nearVal) / (top - bottom);";
+                        yield return "    m.m20 = (right + left) / (right - left);";
+                        yield return "    m.m21 = (top + bottom) / (top - bottom);";
+                        yield return "    m.m22 = -(farVal + nearVal) / (farVal - nearVal);";
+                        yield return "    m.m23 = -1;";
+                        yield return "    m.m32 = -(2 * farVal * nearVal) / (farVal - nearVal);";
+                        yield return "    return m;";
+                        yield return "}";
                     }
                 }
             }

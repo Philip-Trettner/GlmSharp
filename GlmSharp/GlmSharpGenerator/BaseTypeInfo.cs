@@ -116,7 +116,7 @@ namespace GlmSharpGenerator
             Prefix = "c",
             LengthType = "double",
             OneValue = "1.0",
-            Complex = true,
+            IsComplex = true,
             AbsOverrideType = "double",
             AbsOverrideTypePrefix = "d"
         };
@@ -150,7 +150,7 @@ namespace GlmSharpGenerator
         public string Name { get; set; }
         public string Prefix { get; set; }
         public bool Generic { get; set; }
-        public bool Complex { get; set; }
+        public bool IsComplex { get; set; }
         public bool Decimal { get; set; }
 
         public bool HasArithmetics { get; set; } = true;

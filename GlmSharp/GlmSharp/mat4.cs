@@ -507,5 +507,21 @@ namespace GlmSharp
         /// Executes a component-wise greater-or-equal comparison with a scalar.
         /// </summary>
         public static bmat4 operator>=(float lhs, mat4 rhs) => new bmat4(lhs >= rhs.m00, lhs >= rhs.m01, lhs >= rhs.m02, lhs >= rhs.m03, lhs >= rhs.m10, lhs >= rhs.m11, lhs >= rhs.m12, lhs >= rhs.m13, lhs >= rhs.m20, lhs >= rhs.m21, lhs >= rhs.m22, lhs >= rhs.m23, lhs >= rhs.m30, lhs >= rhs.m31, lhs >= rhs.m32, lhs >= rhs.m33);
+        
+        /// <summary>
+        /// Creates a frustrum projection matrix.
+        /// </summary>
+        public static mat4 Frustum(float left, float right, float bottom, float top, float nearVal, float farVal)
+        {
+            var m = Identity;
+            m.m00 = (2 * nearVal) / (right - left);
+            m.m11 = (2 * nearVal) / (top - bottom);
+            m.m20 = (right + left) / (right - left);
+            m.m21 = (top + bottom) / (top - bottom);
+            m.m22 = -(farVal + nearVal) / (farVal - nearVal);
+            m.m23 = -1;
+            m.m32 = -(2 * farVal * nearVal) / (farVal - nearVal);
+            return m;
+        }
     }
 }
