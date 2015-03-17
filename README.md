@@ -108,3 +108,4 @@ This library is MIT-licensed.
 * ToString, Parse, TryParse for matrices
 * more constructors and casts for matrices
 * some GLU functions (e.g. PickMatrix)
+* advanced glsl/glm functions
