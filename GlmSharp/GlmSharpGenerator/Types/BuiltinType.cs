@@ -142,7 +142,8 @@ namespace GlmSharpGenerator.Types
             OneValueConstant = "true",
             ZeroValueConstant = "false",
             HasLogicOps = true,
-            HasFormatString = false
+            HasFormatString = false,
+            IsBool = true
         };
         public static readonly BuiltinType TypeGeneric = new BuiltinType
         {
@@ -166,6 +167,7 @@ namespace GlmSharpGenerator.Types
         public string AbsOverrideTypePrefix { get; set; }
         public bool IsSigned { get; set; } = true;
         public bool IsInteger { get; set; } = false;
+        public bool IsBool { get; set; } = false;
         public bool IsFloatingPoint { get; set; }
 
         public bool HasFormatString { get; set; } = true;

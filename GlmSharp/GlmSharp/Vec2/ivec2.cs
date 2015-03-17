@@ -1009,6 +1009,11 @@ namespace GlmSharp
         public static ivec2 operator-(ivec2 v) => new ivec2(-v.x, -v.y);
         
         /// <summary>
+        /// Executes a component-wise unary ~ (bitwise-not).
+        /// </summary>
+        public static ivec2 operator~(ivec2 v) => new ivec2(~v.x, ~v.y);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static ivec2 operator%(ivec2 lhs, ivec2 rhs) => new ivec2(lhs.x % rhs.x, lhs.y % rhs.y);

@@ -718,6 +718,11 @@ namespace GlmSharp
         public static lvec3 operator-(lvec3 v) => new lvec3(-v.x, -v.y, -v.z);
         
         /// <summary>
+        /// Executes a component-wise unary ~ (bitwise-not).
+        /// </summary>
+        public static lvec3 operator~(lvec3 v) => new lvec3(~v.x, ~v.y, ~v.z);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static lvec3 operator%(lvec3 lhs, lvec3 rhs) => new lvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);

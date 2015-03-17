@@ -689,6 +689,11 @@ namespace GlmSharp
         public static lvec2 operator-(lvec2 v) => new lvec2(-v.x, -v.y);
         
         /// <summary>
+        /// Executes a component-wise unary ~ (bitwise-not).
+        /// </summary>
+        public static lvec2 operator~(lvec2 v) => new lvec2(~v.x, ~v.y);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static lvec2 operator%(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x % rhs.x, lhs.y % rhs.y);

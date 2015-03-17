@@ -510,6 +510,9 @@ namespace GlmSharpGenerator.Types
 
                     foreach (var line in "Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
                     yield return ComponentWiseOperator("|", "||");
+
+                    foreach (var line in "Returns a boolean vector with component-wise not.".AsComment()) yield return line;
+                    yield return string.Format("public static bvec{0} Not({1} v) => new bvec{0}({2});", Components, NameThat, CompString.Select(c => string.Format("!v.{0}", c)).CommaSeparated());
                 }
 
                 // Arithmetics
@@ -592,6 +595,8 @@ namespace GlmSharpGenerator.Types
                     {
                         {"+", "+ (add)"},
                         {"-", "- (subtract)"},
+                        {"~", "~ (bitwise-not)"},
+                        {"!", "! (not)"},
                     })
                     {
                         var op = kvp.Key;
@@ -599,6 +604,12 @@ namespace GlmSharpGenerator.Types
 
                         if (op == "-" && !BaseType.IsSigned)
                             continue; // unsigned
+
+                        if (op == "~" && !BaseType.IsInteger)
+                            continue;
+
+                        if (op == "!" && !BaseType.IsBool)
+                            continue;
 
                         foreach (var line in string.Format("Executes a component-wise unary {0}.", opComment).AsComment()) yield return line;
                         if (op == "+")

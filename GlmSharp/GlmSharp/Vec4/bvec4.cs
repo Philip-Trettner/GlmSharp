@@ -488,5 +488,10 @@ namespace GlmSharp
         /// Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)
         /// </summary>
         public static bvec4 operator|(bvec4 lhs, bvec4 rhs) => new bvec4(lhs.x || rhs.x, lhs.y || rhs.y, lhs.z || rhs.z, lhs.w || rhs.w);
+        
+        /// <summary>
+        /// Returns a boolean vector with component-wise not.
+        /// </summary>
+        public static bvec4 Not(bvec4 v) => new bvec4(!v.x, !v.y, !v.z, !v.w);
     }
 }

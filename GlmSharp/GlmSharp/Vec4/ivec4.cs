@@ -1080,6 +1080,11 @@ namespace GlmSharp
         public static ivec4 operator-(ivec4 v) => new ivec4(-v.x, -v.y, -v.z, -v.w);
         
         /// <summary>
+        /// Executes a component-wise unary ~ (bitwise-not).
+        /// </summary>
+        public static ivec4 operator~(ivec4 v) => new ivec4(~v.x, ~v.y, ~v.z, ~v.w);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static ivec4 operator%(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);

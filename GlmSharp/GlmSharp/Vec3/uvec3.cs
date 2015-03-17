@@ -1033,6 +1033,11 @@ namespace GlmSharp
         public static uvec3 operator+(uvec3 v) => v;
         
         /// <summary>
+        /// Executes a component-wise unary ~ (bitwise-not).
+        /// </summary>
+        public static uvec3 operator~(uvec3 v) => new uvec3(~v.x, ~v.y, ~v.z);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static uvec3 operator%(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);

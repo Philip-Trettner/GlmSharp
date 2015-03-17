@@ -760,6 +760,11 @@ namespace GlmSharp
         public static lvec4 operator-(lvec4 v) => new lvec4(-v.x, -v.y, -v.z, -v.w);
         
         /// <summary>
+        /// Executes a component-wise unary ~ (bitwise-not).
+        /// </summary>
+        public static lvec4 operator~(lvec4 v) => new lvec4(~v.x, ~v.y, ~v.z, ~v.w);
+        
+        /// <summary>
         /// Executes a component-wise % (modulo).
         /// </summary>
         public static lvec4 operator%(lvec4 lhs, lvec4 rhs) => new lvec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
