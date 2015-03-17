@@ -171,7 +171,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static imat4 Zero { get; } = new imat4(default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int), default(int));
+        public static imat4 Zero { get; } = new imat4(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -181,7 +181,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static imat4 Identity { get; } = new imat4(1, default(int), default(int), default(int), default(int), 1, default(int), default(int), default(int), default(int), 1, default(int), default(int), default(int), default(int), 1);
+        public static imat4 Identity { get; } = new imat4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
         
         /// <summary>
         /// Component-wise constructor

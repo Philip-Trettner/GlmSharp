@@ -96,7 +96,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static umat2x3 Zero { get; } = new umat2x3(default(uint), default(uint), default(uint), default(uint), default(uint), default(uint));
+        public static umat2x3 Zero { get; } = new umat2x3(0u, 0u, 0u, 0u, 0u, 0u);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -106,7 +106,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static umat2x3 Identity { get; } = new umat2x3(1u, default(uint), default(uint), default(uint), 1u, default(uint));
+        public static umat2x3 Identity { get; } = new umat2x3(1u, 0u, 0u, 0u, 1u, 0u);
         
         /// <summary>
         /// Component-wise constructor

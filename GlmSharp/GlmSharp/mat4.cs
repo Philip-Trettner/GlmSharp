@@ -171,7 +171,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static mat4 Zero { get; } = new mat4(default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float), default(float));
+        public static mat4 Zero { get; } = new mat4(0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -181,7 +181,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static mat4 Identity { get; } = new mat4(1f, default(float), default(float), default(float), default(float), 1f, default(float), default(float), default(float), default(float), 1f, default(float), default(float), default(float), default(float), 1f);
+        public static mat4 Identity { get; } = new mat4(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f);
         
         /// <summary>
         /// Component-wise constructor

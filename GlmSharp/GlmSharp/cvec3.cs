@@ -48,7 +48,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static cvec3 Zero { get; } = new cvec3(default(Complex), default(Complex), default(Complex));
+        public static cvec3 Zero { get; } = new cvec3(0.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -58,17 +58,17 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static cvec3 UnitX { get; } = new cvec3(1.0, default(Complex), default(Complex));
+        public static cvec3 UnitX { get; } = new cvec3(1.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static cvec3 UnitY { get; } = new cvec3(default(Complex), 1.0, default(Complex));
+        public static cvec3 UnitY { get; } = new cvec3(0.0, 1.0, 0.0);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static cvec3 UnitZ { get; } = new cvec3(default(Complex), default(Complex), 1.0);
+        public static cvec3 UnitZ { get; } = new cvec3(0.0, 0.0, 1.0);
         
         /// <summary>
         /// Predefined all-imaginary-ones vector
@@ -78,17 +78,17 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static cvec3 ImaginaryUnitX { get; } = new cvec3(Complex.ImaginaryOne, default(Complex), default(Complex));
+        public static cvec3 ImaginaryUnitX { get; } = new cvec3(Complex.ImaginaryOne, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static cvec3 ImaginaryUnitY { get; } = new cvec3(default(Complex), Complex.ImaginaryOne, default(Complex));
+        public static cvec3 ImaginaryUnitY { get; } = new cvec3(0.0, Complex.ImaginaryOne, 0.0);
         
         /// <summary>
         /// Predefined unit-imaginary-Z vector
         /// </summary>
-        public static cvec3 ImaginaryUnitZ { get; } = new cvec3(default(Complex), default(Complex), Complex.ImaginaryOne);
+        public static cvec3 ImaginaryUnitZ { get; } = new cvec3(0.0, 0.0, Complex.ImaginaryOne);
         
         /// <summary>
         /// Returns an array with all values
@@ -122,7 +122,7 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(Complex);
+            this.z = 0.0;
         }
         
         /// <summary>
@@ -163,7 +163,7 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec4(cvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, default(Complex));
+        public static explicit operator cvec4(cvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, 0.0);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

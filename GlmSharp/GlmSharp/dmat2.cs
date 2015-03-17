@@ -79,7 +79,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static dmat2 Zero { get; } = new dmat2(default(double), default(double), default(double), default(double));
+        public static dmat2 Zero { get; } = new dmat2(0.0, 0.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -89,7 +89,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static dmat2 Identity { get; } = new dmat2(1.0, default(double), default(double), 1.0);
+        public static dmat2 Identity { get; } = new dmat2(1.0, 0.0, 0.0, 1.0);
         
         /// <summary>
         /// Component-wise constructor

@@ -54,7 +54,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static decvec4 Zero { get; } = new decvec4(default(decimal), default(decimal), default(decimal), default(decimal));
+        public static decvec4 Zero { get; } = new decvec4(0m, 0m, 0m, 0m);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -64,22 +64,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static decvec4 UnitX { get; } = new decvec4(1m, default(decimal), default(decimal), default(decimal));
+        public static decvec4 UnitX { get; } = new decvec4(1m, 0m, 0m, 0m);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static decvec4 UnitY { get; } = new decvec4(default(decimal), 1m, default(decimal), default(decimal));
+        public static decvec4 UnitY { get; } = new decvec4(0m, 1m, 0m, 0m);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static decvec4 UnitZ { get; } = new decvec4(default(decimal), default(decimal), 1m, default(decimal));
+        public static decvec4 UnitZ { get; } = new decvec4(0m, 0m, 1m, 0m);
         
         /// <summary>
         /// Predefined unit-W vector
         /// </summary>
-        public static decvec4 UnitW { get; } = new decvec4(default(decimal), default(decimal), default(decimal), 1m);
+        public static decvec4 UnitW { get; } = new decvec4(0m, 0m, 0m, 1m);
         
         /// <summary>
         /// Returns an array with all values
@@ -115,8 +115,8 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(decimal);
-            this.w = default(decimal);
+            this.z = 0m;
+            this.w = 0m;
         }
         
         /// <summary>
@@ -127,7 +127,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = z;
-            this.w = default(decimal);
+            this.w = 0m;
         }
         
         /// <summary>
@@ -149,7 +149,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = v.z;
-            this.w = default(decimal);
+            this.w = 0m;
         }
         
         /// <summary>
@@ -277,17 +277,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(decvec4 v) => new bvec2(v.x != default(decimal), v.y != default(decimal));
+        public static explicit operator bvec2(decvec4 v) => new bvec2(v.x != 0m, v.y != 0m);
         
         /// <summary>
         /// Explicitly converts this to a bvec3.
         /// </summary>
-        public static explicit operator bvec3(decvec4 v) => new bvec3(v.x != default(decimal), v.y != default(decimal), v.z != default(decimal));
+        public static explicit operator bvec3(decvec4 v) => new bvec3(v.x != 0m, v.y != 0m, v.z != 0m);
         
         /// <summary>
         /// Explicitly converts this to a bvec4.
         /// </summary>
-        public static explicit operator bvec4(decvec4 v) => new bvec4(v.x != default(decimal), v.y != default(decimal), v.z != default(decimal), v.w != default(decimal));
+        public static explicit operator bvec4(decvec4 v) => new bvec4(v.x != 0m, v.y != 0m, v.z != 0m, v.w != 0m);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -503,7 +503,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            decimal x = default(decimal), y = default(decimal), z = default(decimal), w = default(decimal);
+            decimal x = 0m, y = 0m, z = 0m, w = 0m;
             var ok = decimal.TryParse(kvp[0].Trim(), out x) && decimal.TryParse(kvp[1].Trim(), out y) && decimal.TryParse(kvp[2].Trim(), out z) && decimal.TryParse(kvp[3].Trim(), out w);
             result = ok ? new decvec4(x, y, z, w) : Zero;
             return ok;
@@ -518,7 +518,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            decimal x = default(decimal), y = default(decimal), z = default(decimal), w = default(decimal);
+            decimal x = 0m, y = 0m, z = 0m, w = 0m;
             var ok = decimal.TryParse(kvp[0].Trim(), style, provider, out x) && decimal.TryParse(kvp[1].Trim(), style, provider, out y) && decimal.TryParse(kvp[2].Trim(), style, provider, out z) && decimal.TryParse(kvp[3].Trim(), style, provider, out w);
             result = ok ? new decvec4(x, y, z, w) : Zero;
             return ok;
@@ -783,12 +783,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Step.
         /// </summary>
-        public static decvec4 Step(decvec4 v) => new decvec4(v.x >= default(decimal) ? 1m : default(decimal), v.y >= default(decimal) ? 1m : default(decimal), v.z >= default(decimal) ? 1m : default(decimal), v.w >= default(decimal) ? 1m : default(decimal));
+        public static decvec4 Step(decvec4 v) => new decvec4(v.x >= 0m ? 1m : 0m, v.y >= 0m ? 1m : 0m, v.z >= 0m ? 1m : 0m, v.w >= 0m ? 1m : 0m);
         
         /// <summary>
         /// Returns a component-wise executed Step with a scalar.
         /// </summary>
-        public static decvec4 Step(decimal v) => new decvec4(v >= default(decimal) ? 1m : default(decimal));
+        public static decvec4 Step(decimal v) => new decvec4(v >= 0m ? 1m : 0m);
         
         /// <summary>
         /// Returns a component-wise executed Acos.

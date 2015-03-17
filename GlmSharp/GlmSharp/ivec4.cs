@@ -54,7 +54,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static ivec4 Zero { get; } = new ivec4(default(int), default(int), default(int), default(int));
+        public static ivec4 Zero { get; } = new ivec4(0, 0, 0, 0);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -64,22 +64,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static ivec4 UnitX { get; } = new ivec4(1, default(int), default(int), default(int));
+        public static ivec4 UnitX { get; } = new ivec4(1, 0, 0, 0);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static ivec4 UnitY { get; } = new ivec4(default(int), 1, default(int), default(int));
+        public static ivec4 UnitY { get; } = new ivec4(0, 1, 0, 0);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static ivec4 UnitZ { get; } = new ivec4(default(int), default(int), 1, default(int));
+        public static ivec4 UnitZ { get; } = new ivec4(0, 0, 1, 0);
         
         /// <summary>
         /// Predefined unit-W vector
         /// </summary>
-        public static ivec4 UnitW { get; } = new ivec4(default(int), default(int), default(int), 1);
+        public static ivec4 UnitW { get; } = new ivec4(0, 0, 0, 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -115,8 +115,8 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(int);
-            this.w = default(int);
+            this.z = 0;
+            this.w = 0;
         }
         
         /// <summary>
@@ -127,7 +127,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = z;
-            this.w = default(int);
+            this.w = 0;
         }
         
         /// <summary>
@@ -149,7 +149,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = v.z;
-            this.w = default(int);
+            this.w = 0;
         }
         
         /// <summary>
@@ -277,17 +277,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(ivec4 v) => new bvec2(v.x != default(int), v.y != default(int));
+        public static explicit operator bvec2(ivec4 v) => new bvec2(v.x != 0, v.y != 0);
         
         /// <summary>
         /// Explicitly converts this to a bvec3.
         /// </summary>
-        public static explicit operator bvec3(ivec4 v) => new bvec3(v.x != default(int), v.y != default(int), v.z != default(int));
+        public static explicit operator bvec3(ivec4 v) => new bvec3(v.x != 0, v.y != 0, v.z != 0);
         
         /// <summary>
         /// Explicitly converts this to a bvec4.
         /// </summary>
-        public static explicit operator bvec4(ivec4 v) => new bvec4(v.x != default(int), v.y != default(int), v.z != default(int), v.w != default(int));
+        public static explicit operator bvec4(ivec4 v) => new bvec4(v.x != 0, v.y != 0, v.z != 0, v.w != 0);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -498,7 +498,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            int x = default(int), y = default(int), z = default(int), w = default(int);
+            int x = 0, y = 0, z = 0, w = 0;
             var ok = int.TryParse(kvp[0].Trim(), out x) && int.TryParse(kvp[1].Trim(), out y) && int.TryParse(kvp[2].Trim(), out z) && int.TryParse(kvp[3].Trim(), out w);
             result = ok ? new ivec4(x, y, z, w) : Zero;
             return ok;
@@ -513,7 +513,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            int x = default(int), y = default(int), z = default(int), w = default(int);
+            int x = 0, y = 0, z = 0, w = 0;
             var ok = int.TryParse(kvp[0].Trim(), style, provider, out x) && int.TryParse(kvp[1].Trim(), style, provider, out y) && int.TryParse(kvp[2].Trim(), style, provider, out z) && int.TryParse(kvp[3].Trim(), style, provider, out w);
             result = ok ? new ivec4(x, y, z, w) : Zero;
             return ok;

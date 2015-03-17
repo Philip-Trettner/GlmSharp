@@ -63,6 +63,7 @@ namespace GlmSharpGenerator.Types
             TypeName = "uint",
             Prefix = "u",
             OneValueConstant = "1u",
+            ZeroValueConstant = "0u",
             IsSigned = false,
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
@@ -71,6 +72,7 @@ namespace GlmSharpGenerator.Types
         {
             TypeName = "float",
             OneValueConstant = "1f",
+            ZeroValueConstant = "0f",
             IsFloatingPoint = true,
             TypeConstants = new[] { "MaxValue", "MinValue", "Epsilon", "NaN", "NegativeInfinity", "PositiveInfinity" },
             TypeTestFuncs = new Dictionary<string, string>
@@ -88,6 +90,7 @@ namespace GlmSharpGenerator.Types
             Prefix = "d",
             LengthType = "double",
             OneValueConstant = "1.0",
+            ZeroValueConstant = "0.0",
             IsFloatingPoint = true,
             TypeConstants = new[] { "MaxValue", "MinValue", "Epsilon", "NaN", "NegativeInfinity", "PositiveInfinity" },
             TypeTestFuncs = new Dictionary<string, string>
@@ -105,6 +108,7 @@ namespace GlmSharpGenerator.Types
             Prefix = "dec",
             LengthType = "decimal",
             OneValueConstant = "1m",
+            ZeroValueConstant = "0m",
             Decimal = true,
             IsFloatingPoint = true,
             TypeConstants = new[] { "MaxValue", "MinValue", "MinusOne" }
@@ -115,6 +119,7 @@ namespace GlmSharpGenerator.Types
             Prefix = "c",
             LengthType = "double",
             OneValueConstant = "1.0",
+            ZeroValueConstant = "0.0",
             IsComplex = true,
             AbsOverrideType = "double",
             AbsOverrideTypePrefix = "d"
@@ -134,6 +139,7 @@ namespace GlmSharpGenerator.Types
             HasArithmetics = false,
             HashCodeMultiplier = 2,
             OneValueConstant = "true",
+            ZeroValueConstant = "false",
             HasLogicOps = true,
             HasFormatString = false
         };
@@ -143,7 +149,8 @@ namespace GlmSharpGenerator.Types
             Prefix = "g",
             Generic = true,
             HasArithmetics = false,
-            OneValueConstant = null
+            OneValueConstant = null,
+            ZeroValueConstant = "default(T)"
         };
 
         public string TypeName { get; set; }
@@ -165,8 +172,10 @@ namespace GlmSharpGenerator.Types
         public bool HasLogicOps { get; set; }
 
         public string OneValueConstant { get; set; } = "1";
+        public string ZeroValueConstant { get; set; } = "0";
 
         public override string OneValue => OneValueConstant;
+        public override string ZeroValue => ZeroValueConstant;
 
         public int HashCodeMultiplier { get; set; } = 397;
 
@@ -178,9 +187,7 @@ namespace GlmSharpGenerator.Types
         {
             get { throw new InvalidOperationException("No body for builtin types"); }
         }
-
-        public override string ZeroValue => "default(" + Name + ")";
-
+        
         public string[] TypeConstants { get; set; } = new string[] { };
 
         public Dictionary<string, string> TypeTestFuncs { get; set; } = new Dictionary<string, string>();

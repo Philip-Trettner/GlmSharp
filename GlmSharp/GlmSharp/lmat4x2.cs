@@ -113,7 +113,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static lmat4x2 Zero { get; } = new lmat4x2(default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long));
+        public static lmat4x2 Zero { get; } = new lmat4x2(0, 0, 0, 0, 0, 0, 0, 0);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -123,7 +123,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static lmat4x2 Identity { get; } = new lmat4x2(1, default(long), default(long), 1, default(long), default(long), default(long), default(long));
+        public static lmat4x2 Identity { get; } = new lmat4x2(1, 0, 0, 1, 0, 0, 0, 0);
         
         /// <summary>
         /// Component-wise constructor

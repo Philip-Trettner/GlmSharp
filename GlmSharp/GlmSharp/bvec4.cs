@@ -54,7 +54,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static bvec4 Zero { get; } = new bvec4(default(bool), default(bool), default(bool), default(bool));
+        public static bvec4 Zero { get; } = new bvec4(false, false, false, false);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -64,22 +64,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static bvec4 UnitX { get; } = new bvec4(true, default(bool), default(bool), default(bool));
+        public static bvec4 UnitX { get; } = new bvec4(true, false, false, false);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static bvec4 UnitY { get; } = new bvec4(default(bool), true, default(bool), default(bool));
+        public static bvec4 UnitY { get; } = new bvec4(false, true, false, false);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static bvec4 UnitZ { get; } = new bvec4(default(bool), default(bool), true, default(bool));
+        public static bvec4 UnitZ { get; } = new bvec4(false, false, true, false);
         
         /// <summary>
         /// Predefined unit-W vector
         /// </summary>
-        public static bvec4 UnitW { get; } = new bvec4(default(bool), default(bool), default(bool), true);
+        public static bvec4 UnitW { get; } = new bvec4(false, false, false, true);
         
         /// <summary>
         /// Returns an array with all values
@@ -115,8 +115,8 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(bool);
-            this.w = default(bool);
+            this.z = false;
+            this.w = false;
         }
         
         /// <summary>
@@ -127,7 +127,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = z;
-            this.w = default(bool);
+            this.w = false;
         }
         
         /// <summary>
@@ -149,7 +149,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = v.z;
-            this.w = default(bool);
+            this.w = false;
         }
         
         /// <summary>
@@ -177,107 +177,107 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a ivec2.
         /// </summary>
-        public static explicit operator ivec2(bvec4 v) => new ivec2(v.x ? 1 : default(int), v.y ? 1 : default(int));
+        public static explicit operator ivec2(bvec4 v) => new ivec2(v.x ? 1 : 0, v.y ? 1 : 0);
         
         /// <summary>
         /// Explicitly converts this to a ivec3.
         /// </summary>
-        public static explicit operator ivec3(bvec4 v) => new ivec3(v.x ? 1 : default(int), v.y ? 1 : default(int), v.z ? 1 : default(int));
+        public static explicit operator ivec3(bvec4 v) => new ivec3(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0);
         
         /// <summary>
         /// Explicitly converts this to a ivec4.
         /// </summary>
-        public static explicit operator ivec4(bvec4 v) => new ivec4(v.x ? 1 : default(int), v.y ? 1 : default(int), v.z ? 1 : default(int), v.w ? 1 : default(int));
+        public static explicit operator ivec4(bvec4 v) => new ivec4(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0, v.w ? 1 : 0);
         
         /// <summary>
         /// Explicitly converts this to a uvec2.
         /// </summary>
-        public static explicit operator uvec2(bvec4 v) => new uvec2(v.x ? 1u : default(uint), v.y ? 1u : default(uint));
+        public static explicit operator uvec2(bvec4 v) => new uvec2(v.x ? 1u : 0u, v.y ? 1u : 0u);
         
         /// <summary>
         /// Explicitly converts this to a uvec3.
         /// </summary>
-        public static explicit operator uvec3(bvec4 v) => new uvec3(v.x ? 1u : default(uint), v.y ? 1u : default(uint), v.z ? 1u : default(uint));
+        public static explicit operator uvec3(bvec4 v) => new uvec3(v.x ? 1u : 0u, v.y ? 1u : 0u, v.z ? 1u : 0u);
         
         /// <summary>
         /// Explicitly converts this to a uvec4.
         /// </summary>
-        public static explicit operator uvec4(bvec4 v) => new uvec4(v.x ? 1u : default(uint), v.y ? 1u : default(uint), v.z ? 1u : default(uint), v.w ? 1u : default(uint));
+        public static explicit operator uvec4(bvec4 v) => new uvec4(v.x ? 1u : 0u, v.y ? 1u : 0u, v.z ? 1u : 0u, v.w ? 1u : 0u);
         
         /// <summary>
         /// Explicitly converts this to a vec2.
         /// </summary>
-        public static explicit operator vec2(bvec4 v) => new vec2(v.x ? 1f : default(float), v.y ? 1f : default(float));
+        public static explicit operator vec2(bvec4 v) => new vec2(v.x ? 1f : 0f, v.y ? 1f : 0f);
         
         /// <summary>
         /// Explicitly converts this to a vec3.
         /// </summary>
-        public static explicit operator vec3(bvec4 v) => new vec3(v.x ? 1f : default(float), v.y ? 1f : default(float), v.z ? 1f : default(float));
+        public static explicit operator vec3(bvec4 v) => new vec3(v.x ? 1f : 0f, v.y ? 1f : 0f, v.z ? 1f : 0f);
         
         /// <summary>
         /// Explicitly converts this to a vec4.
         /// </summary>
-        public static explicit operator vec4(bvec4 v) => new vec4(v.x ? 1f : default(float), v.y ? 1f : default(float), v.z ? 1f : default(float), v.w ? 1f : default(float));
+        public static explicit operator vec4(bvec4 v) => new vec4(v.x ? 1f : 0f, v.y ? 1f : 0f, v.z ? 1f : 0f, v.w ? 1f : 0f);
         
         /// <summary>
         /// Explicitly converts this to a dvec2.
         /// </summary>
-        public static explicit operator dvec2(bvec4 v) => new dvec2(v.x ? 1.0 : default(double), v.y ? 1.0 : default(double));
+        public static explicit operator dvec2(bvec4 v) => new dvec2(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0);
         
         /// <summary>
         /// Explicitly converts this to a dvec3.
         /// </summary>
-        public static explicit operator dvec3(bvec4 v) => new dvec3(v.x ? 1.0 : default(double), v.y ? 1.0 : default(double), v.z ? 1.0 : default(double));
+        public static explicit operator dvec3(bvec4 v) => new dvec3(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0);
         
         /// <summary>
         /// Explicitly converts this to a dvec4.
         /// </summary>
-        public static explicit operator dvec4(bvec4 v) => new dvec4(v.x ? 1.0 : default(double), v.y ? 1.0 : default(double), v.z ? 1.0 : default(double), v.w ? 1.0 : default(double));
+        public static explicit operator dvec4(bvec4 v) => new dvec4(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
         
         /// <summary>
         /// Explicitly converts this to a decvec2.
         /// </summary>
-        public static explicit operator decvec2(bvec4 v) => new decvec2(v.x ? 1m : default(decimal), v.y ? 1m : default(decimal));
+        public static explicit operator decvec2(bvec4 v) => new decvec2(v.x ? 1m : 0m, v.y ? 1m : 0m);
         
         /// <summary>
         /// Explicitly converts this to a decvec3.
         /// </summary>
-        public static explicit operator decvec3(bvec4 v) => new decvec3(v.x ? 1m : default(decimal), v.y ? 1m : default(decimal), v.z ? 1m : default(decimal));
+        public static explicit operator decvec3(bvec4 v) => new decvec3(v.x ? 1m : 0m, v.y ? 1m : 0m, v.z ? 1m : 0m);
         
         /// <summary>
         /// Explicitly converts this to a decvec4.
         /// </summary>
-        public static explicit operator decvec4(bvec4 v) => new decvec4(v.x ? 1m : default(decimal), v.y ? 1m : default(decimal), v.z ? 1m : default(decimal), v.w ? 1m : default(decimal));
+        public static explicit operator decvec4(bvec4 v) => new decvec4(v.x ? 1m : 0m, v.y ? 1m : 0m, v.z ? 1m : 0m, v.w ? 1m : 0m);
         
         /// <summary>
         /// Explicitly converts this to a cvec2.
         /// </summary>
-        public static explicit operator cvec2(bvec4 v) => new cvec2(v.x ? 1.0 : default(Complex), v.y ? 1.0 : default(Complex));
+        public static explicit operator cvec2(bvec4 v) => new cvec2(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0);
         
         /// <summary>
         /// Explicitly converts this to a cvec3.
         /// </summary>
-        public static explicit operator cvec3(bvec4 v) => new cvec3(v.x ? 1.0 : default(Complex), v.y ? 1.0 : default(Complex), v.z ? 1.0 : default(Complex));
+        public static explicit operator cvec3(bvec4 v) => new cvec3(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0);
         
         /// <summary>
         /// Explicitly converts this to a cvec4.
         /// </summary>
-        public static explicit operator cvec4(bvec4 v) => new cvec4(v.x ? 1.0 : default(Complex), v.y ? 1.0 : default(Complex), v.z ? 1.0 : default(Complex), v.w ? 1.0 : default(Complex));
+        public static explicit operator cvec4(bvec4 v) => new cvec4(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
         
         /// <summary>
         /// Explicitly converts this to a lvec2.
         /// </summary>
-        public static explicit operator lvec2(bvec4 v) => new lvec2(v.x ? 1 : default(long), v.y ? 1 : default(long));
+        public static explicit operator lvec2(bvec4 v) => new lvec2(v.x ? 1 : 0, v.y ? 1 : 0);
         
         /// <summary>
         /// Explicitly converts this to a lvec3.
         /// </summary>
-        public static explicit operator lvec3(bvec4 v) => new lvec3(v.x ? 1 : default(long), v.y ? 1 : default(long), v.z ? 1 : default(long));
+        public static explicit operator lvec3(bvec4 v) => new lvec3(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0);
         
         /// <summary>
         /// Explicitly converts this to a lvec4.
         /// </summary>
-        public static explicit operator lvec4(bvec4 v) => new lvec4(v.x ? 1 : default(long), v.y ? 1 : default(long), v.z ? 1 : default(long), v.w ? 1 : default(long));
+        public static explicit operator lvec4(bvec4 v) => new lvec4(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0, v.w ? 1 : 0);
         
         /// <summary>
         /// Explicitly converts this to a bvec2.
@@ -418,7 +418,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            bool x = default(bool), y = default(bool), z = default(bool), w = default(bool);
+            bool x = false, y = false, z = false, w = false;
             var ok = bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y) && bool.TryParse(kvp[2].Trim(), out z) && bool.TryParse(kvp[3].Trim(), out w);
             result = ok ? new bvec4(x, y, z, w) : Zero;
             return ok;

@@ -54,7 +54,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static lvec4 Zero { get; } = new lvec4(default(long), default(long), default(long), default(long));
+        public static lvec4 Zero { get; } = new lvec4(0, 0, 0, 0);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -64,22 +64,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static lvec4 UnitX { get; } = new lvec4(1, default(long), default(long), default(long));
+        public static lvec4 UnitX { get; } = new lvec4(1, 0, 0, 0);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static lvec4 UnitY { get; } = new lvec4(default(long), 1, default(long), default(long));
+        public static lvec4 UnitY { get; } = new lvec4(0, 1, 0, 0);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static lvec4 UnitZ { get; } = new lvec4(default(long), default(long), 1, default(long));
+        public static lvec4 UnitZ { get; } = new lvec4(0, 0, 1, 0);
         
         /// <summary>
         /// Predefined unit-W vector
         /// </summary>
-        public static lvec4 UnitW { get; } = new lvec4(default(long), default(long), default(long), 1);
+        public static lvec4 UnitW { get; } = new lvec4(0, 0, 0, 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -115,8 +115,8 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(long);
-            this.w = default(long);
+            this.z = 0;
+            this.w = 0;
         }
         
         /// <summary>
@@ -127,7 +127,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = z;
-            this.w = default(long);
+            this.w = 0;
         }
         
         /// <summary>
@@ -149,7 +149,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = v.z;
-            this.w = default(long);
+            this.w = 0;
         }
         
         /// <summary>
@@ -277,17 +277,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(lvec4 v) => new bvec2(v.x != default(long), v.y != default(long));
+        public static explicit operator bvec2(lvec4 v) => new bvec2(v.x != 0, v.y != 0);
         
         /// <summary>
         /// Explicitly converts this to a bvec3.
         /// </summary>
-        public static explicit operator bvec3(lvec4 v) => new bvec3(v.x != default(long), v.y != default(long), v.z != default(long));
+        public static explicit operator bvec3(lvec4 v) => new bvec3(v.x != 0, v.y != 0, v.z != 0);
         
         /// <summary>
         /// Explicitly converts this to a bvec4.
         /// </summary>
-        public static explicit operator bvec4(lvec4 v) => new bvec4(v.x != default(long), v.y != default(long), v.z != default(long), v.w != default(long));
+        public static explicit operator bvec4(lvec4 v) => new bvec4(v.x != 0, v.y != 0, v.z != 0, v.w != 0);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -498,7 +498,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            long x = default(long), y = default(long), z = default(long), w = default(long);
+            long x = 0, y = 0, z = 0, w = 0;
             var ok = long.TryParse(kvp[0].Trim(), out x) && long.TryParse(kvp[1].Trim(), out y) && long.TryParse(kvp[2].Trim(), out z) && long.TryParse(kvp[3].Trim(), out w);
             result = ok ? new lvec4(x, y, z, w) : Zero;
             return ok;
@@ -513,7 +513,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            long x = default(long), y = default(long), z = default(long), w = default(long);
+            long x = 0, y = 0, z = 0, w = 0;
             var ok = long.TryParse(kvp[0].Trim(), style, provider, out x) && long.TryParse(kvp[1].Trim(), style, provider, out y) && long.TryParse(kvp[2].Trim(), style, provider, out z) && long.TryParse(kvp[3].Trim(), style, provider, out w);
             result = ok ? new lvec4(x, y, z, w) : Zero;
             return ok;

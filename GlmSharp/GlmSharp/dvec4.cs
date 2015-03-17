@@ -54,7 +54,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static dvec4 Zero { get; } = new dvec4(default(double), default(double), default(double), default(double));
+        public static dvec4 Zero { get; } = new dvec4(0.0, 0.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -64,22 +64,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static dvec4 UnitX { get; } = new dvec4(1.0, default(double), default(double), default(double));
+        public static dvec4 UnitX { get; } = new dvec4(1.0, 0.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static dvec4 UnitY { get; } = new dvec4(default(double), 1.0, default(double), default(double));
+        public static dvec4 UnitY { get; } = new dvec4(0.0, 1.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static dvec4 UnitZ { get; } = new dvec4(default(double), default(double), 1.0, default(double));
+        public static dvec4 UnitZ { get; } = new dvec4(0.0, 0.0, 1.0, 0.0);
         
         /// <summary>
         /// Predefined unit-W vector
         /// </summary>
-        public static dvec4 UnitW { get; } = new dvec4(default(double), default(double), default(double), 1.0);
+        public static dvec4 UnitW { get; } = new dvec4(0.0, 0.0, 0.0, 1.0);
         
         /// <summary>
         /// Returns an array with all values
@@ -115,8 +115,8 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(double);
-            this.w = default(double);
+            this.z = 0.0;
+            this.w = 0.0;
         }
         
         /// <summary>
@@ -127,7 +127,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = z;
-            this.w = default(double);
+            this.w = 0.0;
         }
         
         /// <summary>
@@ -149,7 +149,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = v.z;
-            this.w = default(double);
+            this.w = 0.0;
         }
         
         /// <summary>
@@ -277,17 +277,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(dvec4 v) => new bvec2(v.x != default(double), v.y != default(double));
+        public static explicit operator bvec2(dvec4 v) => new bvec2(v.x != 0.0, v.y != 0.0);
         
         /// <summary>
         /// Explicitly converts this to a bvec3.
         /// </summary>
-        public static explicit operator bvec3(dvec4 v) => new bvec3(v.x != default(double), v.y != default(double), v.z != default(double));
+        public static explicit operator bvec3(dvec4 v) => new bvec3(v.x != 0.0, v.y != 0.0, v.z != 0.0);
         
         /// <summary>
         /// Explicitly converts this to a bvec4.
         /// </summary>
-        public static explicit operator bvec4(dvec4 v) => new bvec4(v.x != default(double), v.y != default(double), v.z != default(double), v.w != default(double));
+        public static explicit operator bvec4(dvec4 v) => new bvec4(v.x != 0.0, v.y != 0.0, v.z != 0.0, v.w != 0.0);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -543,7 +543,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            double x = default(double), y = default(double), z = default(double), w = default(double);
+            double x = 0.0, y = 0.0, z = 0.0, w = 0.0;
             var ok = double.TryParse(kvp[0].Trim(), out x) && double.TryParse(kvp[1].Trim(), out y) && double.TryParse(kvp[2].Trim(), out z) && double.TryParse(kvp[3].Trim(), out w);
             result = ok ? new dvec4(x, y, z, w) : Zero;
             return ok;
@@ -558,7 +558,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
-            double x = default(double), y = default(double), z = default(double), w = default(double);
+            double x = 0.0, y = 0.0, z = 0.0, w = 0.0;
             var ok = double.TryParse(kvp[0].Trim(), style, provider, out x) && double.TryParse(kvp[1].Trim(), style, provider, out y) && double.TryParse(kvp[2].Trim(), style, provider, out z) && double.TryParse(kvp[3].Trim(), style, provider, out w);
             result = ok ? new dvec4(x, y, z, w) : Zero;
             return ok;
@@ -903,12 +903,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a component-wise executed Step.
         /// </summary>
-        public static dvec4 Step(dvec4 v) => new dvec4(v.x >= default(double) ? 1.0 : default(double), v.y >= default(double) ? 1.0 : default(double), v.z >= default(double) ? 1.0 : default(double), v.w >= default(double) ? 1.0 : default(double));
+        public static dvec4 Step(dvec4 v) => new dvec4(v.x >= 0.0 ? 1.0 : 0.0, v.y >= 0.0 ? 1.0 : 0.0, v.z >= 0.0 ? 1.0 : 0.0, v.w >= 0.0 ? 1.0 : 0.0);
         
         /// <summary>
         /// Returns a component-wise executed Step with a scalar.
         /// </summary>
-        public static dvec4 Step(double v) => new dvec4(v >= default(double) ? 1.0 : default(double));
+        public static dvec4 Step(double v) => new dvec4(v >= 0.0 ? 1.0 : 0.0);
         
         /// <summary>
         /// Returns a component-wise executed Acos.

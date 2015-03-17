@@ -96,7 +96,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static mat2x3 Zero { get; } = new mat2x3(default(float), default(float), default(float), default(float), default(float), default(float));
+        public static mat2x3 Zero { get; } = new mat2x3(0f, 0f, 0f, 0f, 0f, 0f);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -106,7 +106,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static mat2x3 Identity { get; } = new mat2x3(1f, default(float), default(float), default(float), 1f, default(float));
+        public static mat2x3 Identity { get; } = new mat2x3(1f, 0f, 0f, 0f, 1f, 0f);
         
         /// <summary>
         /// Component-wise constructor

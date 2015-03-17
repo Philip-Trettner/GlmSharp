@@ -42,7 +42,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static cvec2 Zero { get; } = new cvec2(default(Complex), default(Complex));
+        public static cvec2 Zero { get; } = new cvec2(0.0, 0.0);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -52,12 +52,12 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static cvec2 UnitX { get; } = new cvec2(1.0, default(Complex));
+        public static cvec2 UnitX { get; } = new cvec2(1.0, 0.0);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static cvec2 UnitY { get; } = new cvec2(default(Complex), 1.0);
+        public static cvec2 UnitY { get; } = new cvec2(0.0, 1.0);
         
         /// <summary>
         /// Predefined all-imaginary-ones vector
@@ -67,12 +67,12 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static cvec2 ImaginaryUnitX { get; } = new cvec2(Complex.ImaginaryOne, default(Complex));
+        public static cvec2 ImaginaryUnitX { get; } = new cvec2(Complex.ImaginaryOne, 0.0);
         
         /// <summary>
         /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static cvec2 ImaginaryUnitY { get; } = new cvec2(default(Complex), Complex.ImaginaryOne);
+        public static cvec2 ImaginaryUnitY { get; } = new cvec2(0.0, Complex.ImaginaryOne);
         
         /// <summary>
         /// Returns an array with all values
@@ -127,12 +127,12 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a cvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec3(cvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, default(Complex));
+        public static explicit operator cvec3(cvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, 0.0);
         
         /// <summary>
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec4(cvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, default(Complex), default(Complex));
+        public static explicit operator cvec4(cvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, 0.0, 0.0);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

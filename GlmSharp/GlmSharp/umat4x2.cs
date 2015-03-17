@@ -113,7 +113,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static umat4x2 Zero { get; } = new umat4x2(default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint), default(uint));
+        public static umat4x2 Zero { get; } = new umat4x2(0u, 0u, 0u, 0u, 0u, 0u, 0u, 0u);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -123,7 +123,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static umat4x2 Identity { get; } = new umat4x2(1u, default(uint), default(uint), 1u, default(uint), default(uint), default(uint), default(uint));
+        public static umat4x2 Identity { get; } = new umat4x2(1u, 0u, 0u, 1u, 0u, 0u, 0u, 0u);
         
         /// <summary>
         /// Component-wise constructor

@@ -142,7 +142,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static decmat3x4 Zero { get; } = new decmat3x4(default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal), default(decimal));
+        public static decmat3x4 Zero { get; } = new decmat3x4(0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m, 0m);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -152,7 +152,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static decmat3x4 Identity { get; } = new decmat3x4(1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal), default(decimal), default(decimal), default(decimal), 1m, default(decimal));
+        public static decmat3x4 Identity { get; } = new decmat3x4(1m, 0m, 0m, 0m, 0m, 1m, 0m, 0m, 0m, 0m, 1m, 0m);
         
         /// <summary>
         /// Component-wise constructor

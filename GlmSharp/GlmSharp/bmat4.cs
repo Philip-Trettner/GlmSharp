@@ -171,7 +171,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static bmat4 Zero { get; } = new bmat4(default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool), default(bool));
+        public static bmat4 Zero { get; } = new bmat4(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -181,7 +181,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static bmat4 Identity { get; } = new bmat4(true, default(bool), default(bool), default(bool), default(bool), true, default(bool), default(bool), default(bool), default(bool), true, default(bool), default(bool), default(bool), default(bool), true);
+        public static bmat4 Identity { get; } = new bmat4(true, false, false, false, false, true, false, false, false, false, true, false, false, false, false, true);
         
         /// <summary>
         /// Component-wise constructor

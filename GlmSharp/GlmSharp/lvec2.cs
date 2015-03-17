@@ -42,7 +42,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static lvec2 Zero { get; } = new lvec2(default(long), default(long));
+        public static lvec2 Zero { get; } = new lvec2(0, 0);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -52,12 +52,12 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static lvec2 UnitX { get; } = new lvec2(1, default(long));
+        public static lvec2 UnitX { get; } = new lvec2(1, 0);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static lvec2 UnitY { get; } = new lvec2(default(long), 1);
+        public static lvec2 UnitY { get; } = new lvec2(0, 1);
         
         /// <summary>
         /// Returns an array with all values
@@ -122,12 +122,12 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a ivec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator ivec3(lvec2 v) => new ivec3((int)v.x, (int)v.y, default(int));
+        public static explicit operator ivec3(lvec2 v) => new ivec3((int)v.x, (int)v.y, 0);
         
         /// <summary>
         /// Explicitly converts this to a ivec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator ivec4(lvec2 v) => new ivec4((int)v.x, (int)v.y, default(int), default(int));
+        public static explicit operator ivec4(lvec2 v) => new ivec4((int)v.x, (int)v.y, 0, 0);
         
         /// <summary>
         /// Explicitly converts this to a uvec2.
@@ -137,12 +137,12 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a uvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator uvec3(lvec2 v) => new uvec3((uint)v.x, (uint)v.y, default(uint));
+        public static explicit operator uvec3(lvec2 v) => new uvec3((uint)v.x, (uint)v.y, 0u);
         
         /// <summary>
         /// Explicitly converts this to a uvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator uvec4(lvec2 v) => new uvec4((uint)v.x, (uint)v.y, default(uint), default(uint));
+        public static explicit operator uvec4(lvec2 v) => new uvec4((uint)v.x, (uint)v.y, 0u, 0u);
         
         /// <summary>
         /// Explicitly converts this to a vec2.
@@ -152,12 +152,12 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a vec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator vec3(lvec2 v) => new vec3((float)v.x, (float)v.y, default(float));
+        public static explicit operator vec3(lvec2 v) => new vec3((float)v.x, (float)v.y, 0f);
         
         /// <summary>
         /// Explicitly converts this to a vec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator vec4(lvec2 v) => new vec4((float)v.x, (float)v.y, default(float), default(float));
+        public static explicit operator vec4(lvec2 v) => new vec4((float)v.x, (float)v.y, 0f, 0f);
         
         /// <summary>
         /// Explicitly converts this to a dvec2.
@@ -167,22 +167,22 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a dvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator dvec3(lvec2 v) => new dvec3((double)v.x, (double)v.y, default(double));
+        public static explicit operator dvec3(lvec2 v) => new dvec3((double)v.x, (double)v.y, 0.0);
         
         /// <summary>
         /// Explicitly converts this to a dvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator dvec4(lvec2 v) => new dvec4((double)v.x, (double)v.y, default(double), default(double));
+        public static explicit operator dvec4(lvec2 v) => new dvec4((double)v.x, (double)v.y, 0.0, 0.0);
         
         /// <summary>
         /// Explicitly converts this to a decvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator decvec3(lvec2 v) => new decvec3((decimal)v.x, (decimal)v.y, default(decimal));
+        public static explicit operator decvec3(lvec2 v) => new decvec3((decimal)v.x, (decimal)v.y, 0m);
         
         /// <summary>
         /// Explicitly converts this to a decvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator decvec4(lvec2 v) => new decvec4((decimal)v.x, (decimal)v.y, default(decimal), default(decimal));
+        public static explicit operator decvec4(lvec2 v) => new decvec4((decimal)v.x, (decimal)v.y, 0m, 0m);
         
         /// <summary>
         /// Explicitly converts this to a cvec2.
@@ -192,37 +192,37 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a cvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec3(lvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, default(Complex));
+        public static explicit operator cvec3(lvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, 0.0);
         
         /// <summary>
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec4(lvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, default(Complex), default(Complex));
+        public static explicit operator cvec4(lvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, 0.0, 0.0);
         
         /// <summary>
         /// Explicitly converts this to a lvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator lvec3(lvec2 v) => new lvec3((long)v.x, (long)v.y, default(long));
+        public static explicit operator lvec3(lvec2 v) => new lvec3((long)v.x, (long)v.y, 0);
         
         /// <summary>
         /// Explicitly converts this to a lvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator lvec4(lvec2 v) => new lvec4((long)v.x, (long)v.y, default(long), default(long));
+        public static explicit operator lvec4(lvec2 v) => new lvec4((long)v.x, (long)v.y, 0, 0);
         
         /// <summary>
         /// Explicitly converts this to a bvec2.
         /// </summary>
-        public static explicit operator bvec2(lvec2 v) => new bvec2(v.x != default(long), v.y != default(long));
+        public static explicit operator bvec2(lvec2 v) => new bvec2(v.x != 0, v.y != 0);
         
         /// <summary>
         /// Explicitly converts this to a bvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec3(lvec2 v) => new bvec3(v.x != default(long), v.y != default(long), default(bool));
+        public static explicit operator bvec3(lvec2 v) => new bvec3(v.x != 0, v.y != 0, false);
         
         /// <summary>
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator bvec4(lvec2 v) => new bvec4(v.x != default(long), v.y != default(long), default(bool), default(bool));
+        public static explicit operator bvec4(lvec2 v) => new bvec4(v.x != 0, v.y != 0, false, false);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -427,7 +427,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 2) return false;
-            long x = default(long), y = default(long);
+            long x = 0, y = 0;
             var ok = long.TryParse(kvp[0].Trim(), out x) && long.TryParse(kvp[1].Trim(), out y);
             result = ok ? new lvec2(x, y) : Zero;
             return ok;
@@ -442,7 +442,7 @@ namespace GlmSharp
             if (string.IsNullOrEmpty(s)) return false;
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 2) return false;
-            long x = default(long), y = default(long);
+            long x = 0, y = 0;
             var ok = long.TryParse(kvp[0].Trim(), style, provider, out x) && long.TryParse(kvp[1].Trim(), style, provider, out y);
             result = ok ? new lvec2(x, y) : Zero;
             return ok;

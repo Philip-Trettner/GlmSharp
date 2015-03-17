@@ -54,7 +54,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static cvec4 Zero { get; } = new cvec4(default(Complex), default(Complex), default(Complex), default(Complex));
+        public static cvec4 Zero { get; } = new cvec4(0.0, 0.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined all-ones vector
@@ -64,22 +64,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static cvec4 UnitX { get; } = new cvec4(1.0, default(Complex), default(Complex), default(Complex));
+        public static cvec4 UnitX { get; } = new cvec4(1.0, 0.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static cvec4 UnitY { get; } = new cvec4(default(Complex), 1.0, default(Complex), default(Complex));
+        public static cvec4 UnitY { get; } = new cvec4(0.0, 1.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static cvec4 UnitZ { get; } = new cvec4(default(Complex), default(Complex), 1.0, default(Complex));
+        public static cvec4 UnitZ { get; } = new cvec4(0.0, 0.0, 1.0, 0.0);
         
         /// <summary>
         /// Predefined unit-W vector
         /// </summary>
-        public static cvec4 UnitW { get; } = new cvec4(default(Complex), default(Complex), default(Complex), 1.0);
+        public static cvec4 UnitW { get; } = new cvec4(0.0, 0.0, 0.0, 1.0);
         
         /// <summary>
         /// Predefined all-imaginary-ones vector
@@ -89,22 +89,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static cvec4 ImaginaryUnitX { get; } = new cvec4(Complex.ImaginaryOne, default(Complex), default(Complex), default(Complex));
+        public static cvec4 ImaginaryUnitX { get; } = new cvec4(Complex.ImaginaryOne, 0.0, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static cvec4 ImaginaryUnitY { get; } = new cvec4(default(Complex), Complex.ImaginaryOne, default(Complex), default(Complex));
+        public static cvec4 ImaginaryUnitY { get; } = new cvec4(0.0, Complex.ImaginaryOne, 0.0, 0.0);
         
         /// <summary>
         /// Predefined unit-imaginary-Z vector
         /// </summary>
-        public static cvec4 ImaginaryUnitZ { get; } = new cvec4(default(Complex), default(Complex), Complex.ImaginaryOne, default(Complex));
+        public static cvec4 ImaginaryUnitZ { get; } = new cvec4(0.0, 0.0, Complex.ImaginaryOne, 0.0);
         
         /// <summary>
         /// Predefined unit-imaginary-W vector
         /// </summary>
-        public static cvec4 ImaginaryUnitW { get; } = new cvec4(default(Complex), default(Complex), default(Complex), Complex.ImaginaryOne);
+        public static cvec4 ImaginaryUnitW { get; } = new cvec4(0.0, 0.0, 0.0, Complex.ImaginaryOne);
         
         /// <summary>
         /// Returns an array with all values
@@ -140,8 +140,8 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = default(Complex);
-            this.w = default(Complex);
+            this.z = 0.0;
+            this.w = 0.0;
         }
         
         /// <summary>
@@ -152,7 +152,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = z;
-            this.w = default(Complex);
+            this.w = 0.0;
         }
         
         /// <summary>
@@ -174,7 +174,7 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
             this.z = v.z;
-            this.w = default(Complex);
+            this.w = 0.0;
         }
         
         /// <summary>

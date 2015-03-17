@@ -119,7 +119,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static lmat3 Zero { get; } = new lmat3(default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long), default(long));
+        public static lmat3 Zero { get; } = new lmat3(0, 0, 0, 0, 0, 0, 0, 0, 0);
         
         /// <summary>
         /// Predefined all-ones matrix
@@ -129,7 +129,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static lmat3 Identity { get; } = new lmat3(1, default(long), default(long), default(long), 1, default(long), default(long), default(long), 1);
+        public static lmat3 Identity { get; } = new lmat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
         
         /// <summary>
         /// Component-wise constructor
