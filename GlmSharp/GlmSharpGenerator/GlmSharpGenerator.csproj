@@ -46,6 +46,7 @@
     <Compile Include="Members\Constructor.cs" />
     <Compile Include="Members\Field.cs" />
     <Compile Include="Members\Member.cs" />
+    <Compile Include="Members\Property.cs" />
     <Compile Include="Types\BuiltinType.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Types\MatrixType.cs" />

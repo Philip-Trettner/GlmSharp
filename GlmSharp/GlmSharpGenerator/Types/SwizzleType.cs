@@ -15,6 +15,15 @@ namespace GlmSharpGenerator.Types
 
         public override string Folder => "Swizzle";
 
+        /// <summary>
+        /// Type for swizzling
+        /// </summary>
+        public VectorType VectorType => Types[BaseType.Prefix + "vec" + Components] as VectorType;
+        /// <summary>
+        /// Type for swizzling
+        /// </summary>
+        public VectorType VectorTypeFor(int comps) => Types[BaseType.Prefix + "vec" + comps] as VectorType;
+
         public IEnumerable<string> Fields => CompString.Select(c => c.ToString());
 
         private IEnumerable<string> Swizzle(int i)
@@ -53,6 +62,7 @@ namespace GlmSharpGenerator.Types
 
         public override IEnumerable<Member> GenerateMembers()
         {
+            // fields
             foreach (var f in Fields)
                 yield return new Field(f, BaseType)
                 {
@@ -61,6 +71,7 @@ namespace GlmSharpGenerator.Types
                     Comment = string.Format("{0}-component", f)
                 };
 
+            // ctor
             yield return new Constructor(this, Fields)
             {
                 Visibility = "internal",
@@ -68,27 +79,31 @@ namespace GlmSharpGenerator.Types
                 Initializers = Fields,
                 Comment = string.Format("Constructor for {0}.", Name)
             };
+
+            // properties
+            foreach (var swizzle in Swizzle(0))
+            {
+                var type = VectorTypeFor(swizzle.Length);
+                // xyzw
+                yield return new Property(swizzle, type)
+                {
+                    GetterLine = Construct(type, swizzle.CommaSeparated()),
+                    Comment = string.Format("Returns {0}.{1} swizzling.", VectorType.Name, swizzle)
+                };
+                // rgba
+                yield return new Property(ToRgba(swizzle), type)
+                {
+                    GetterLine = Construct(type, swizzle.CommaSeparated()),
+                    Comment = string.Format("Returns {0}.{1} swizzling (equivalent to {0}.{2}).", VectorType.Name, ToRgba(swizzle), swizzle)
+                };
+            }
         }
 
         protected override IEnumerable<string> Body
         {
             get
             {
-                // swizzle
-                yield return "";
-                yield return "// XYZW Versions";
-                foreach (var swizzle in Swizzle(0))
-                {
-                    foreach (var line in string.Format("Returns {0}.{1} swizzling.", BaseType.Prefix + "vec" + Components, swizzle).AsComment()) yield return line;
-                    yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", OriginalTypeName, swizzle.Length + GenericSuffix, swizzle, swizzle.CommaSeparated());
-                }
-                yield return "";
-                yield return "// RGBA Versions";
-                foreach (var swizzle in Swizzle(0))
-                {
-                    foreach (var line in string.Format("Returns {0}.{1} swizzling.", BaseType.Prefix + "vec" + Components, ToRgba(swizzle)).AsComment()) yield return line;
-                    yield return string.Format("public {0}{1} {2} => new {0}{1}({3});", OriginalTypeName, swizzle.Length + GenericSuffix, ToRgba(swizzle), swizzle.CommaSeparated());
-                }
+                yield break;
             }
         }
     }

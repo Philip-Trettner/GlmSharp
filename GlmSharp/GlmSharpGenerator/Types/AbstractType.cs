@@ -33,7 +33,7 @@ namespace GlmSharpGenerator.Types
         /// <summary>
         /// Suffix for generic types
         /// </summary>
-        public string GenericSuffix => BaseType.Generic ? "<T>" : "";
+        public string GenericSuffix => BaseType?.Generic ?? false ? "<T>" : "";
         /// <summary>
         /// Reference to base type
         /// </summary>
@@ -69,6 +69,7 @@ namespace GlmSharpGenerator.Types
         private Member[] members;
         private Field[] fields;
         private Constructor[] constructors;
+        private Property[] properties;
 
         /// <summary>
         /// Generate all members
@@ -87,7 +88,17 @@ namespace GlmSharpGenerator.Types
 
             fields = members.OfType<Field>().ToArray();
             constructors = members.OfType<Constructor>().ToArray();
+            properties = members.OfType<Property>().ToArray();
         }
+
+        /// <summary>
+        /// Constructs an object of a given type
+        /// </summary>
+        public string Construct(AbstractType type, IEnumerable<string> args) => string.Format("new {0}({1})", type.NameThat, args.CommaSeparated());
+        /// <summary>
+        /// Constructs an object of a given type
+        /// </summary>
+        public string Construct(AbstractType type, string args) => string.Format("new {0}({1})", type.NameThat, args);
 
 
         public IEnumerable<string> CSharpFile
@@ -118,22 +129,38 @@ namespace GlmSharpGenerator.Types
 
                 if (fields.Length > 0)
                 {
+                    yield return "";
                     yield return "        #region Fields";
                     foreach (var field in fields)
                         foreach (var line in field.Lines)
                             yield return line.Indent(2);
                     yield return "";
                     yield return "        #endregion";
+                    yield return "";
                 }
 
                 if (constructors.Length > 0)
                 {
+                    yield return "";
                     yield return "        #region Constructors";
                     foreach (var ctor in constructors)
                         foreach (var line in ctor.Lines)
                             yield return line.Indent(2);
                     yield return "";
                     yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (properties.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Properties";
+                    foreach (var prop in properties)
+                        foreach (var line in prop.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
                 }
 
                 foreach (var line in Body)
