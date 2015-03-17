@@ -141,7 +141,6 @@ namespace GlmSharpGenerator.Types
             HashCodeMultiplier = 2,
             OneValueConstant = "true",
             ZeroValueConstant = "false",
-            HasLogicOps = true,
             HasFormatString = false,
             IsBool = true
         };
@@ -168,12 +167,11 @@ namespace GlmSharpGenerator.Types
         public string AbsOverrideTypePrefix { get; set; }
         public bool IsSigned { get; set; } = true;
         public bool IsInteger { get; set; } = false;
-        public bool IsBool { get; set; } = false;
         public bool IsFloatingPoint { get; set; }
 
         public bool HasFormatString { get; set; } = true;
 
-        public bool HasLogicOps { get; set; }
+        public bool IsBool { get; set; }
 
         public string OneValueConstant { get; set; } = "1";
         public string ZeroValueConstant { get; set; } = "0";

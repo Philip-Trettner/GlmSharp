@@ -73,10 +73,10 @@ namespace GlmSharpGenerator.Types
 
         public string TypeCast(BuiltinType otherType, string c)
         {
-            if (otherType.HasArithmetics && BaseType.HasLogicOps)
+            if (otherType.HasArithmetics && BaseType.IsBool)
                 return string.Format("{0} ? {1} : {2}", c, otherType.OneValue, otherType.ZeroValue);
 
-            if (otherType.HasLogicOps && BaseType.HasArithmetics)
+            if (otherType.IsBool && BaseType.HasArithmetics)
                 return string.Format("{0} != {1}", c, BaseType.ZeroValue);
 
             return string.Format("({0}){1}", otherType.Name, c);
@@ -522,7 +522,7 @@ namespace GlmSharpGenerator.Types
                 }
 
                 // Logicals
-                if (BaseType.HasLogicOps)
+                if (BaseType.IsBool)
                 {
                     foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
                     yield return string.Format("public {0} MinElement => {1};", BaseTypeName, CompString.Aggregated(" && "));

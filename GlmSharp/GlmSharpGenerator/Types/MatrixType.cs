@@ -332,7 +332,7 @@ namespace GlmSharpGenerator.Types
 
 
                 // Logicals
-                if (BaseType.HasLogicOps)
+                if (BaseType.IsBool)
                 {
                     foreach (var line in "Returns the minimal component of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public {0} MinElement => {1};", BaseTypeName, Fields.Aggregated(" && "));
