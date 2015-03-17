@@ -109,3 +109,5 @@ This library is MIT-licensed.
 * more constructors and casts for matrices
 * some GLU functions (e.g. PickMatrix)
 * advanced glsl/glm functions
+* .net 2 support
+* extensive documentation (parameters, return values, formulas)
