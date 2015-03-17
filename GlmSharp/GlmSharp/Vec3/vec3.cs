@@ -313,6 +313,36 @@ namespace GlmSharp
         /// Predefined unit-Z vector
         /// </summary>
         public static vec3 UnitZ { get; } = new vec3(0f, 0f, 1f);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static vec3 MaxValue { get; } = new vec3(float.MaxValue, float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static vec3 MinValue { get; } = new vec3(float.MinValue, float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon vector
+        /// </summary>
+        public static vec3 Epsilon { get; } = new vec3(float.Epsilon, float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN vector
+        /// </summary>
+        public static vec3 NaN { get; } = new vec3(float.NaN, float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity vector
+        /// </summary>
+        public static vec3 NegativeInfinity { get; } = new vec3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity vector
+        /// </summary>
+        public static vec3 PositiveInfinity { get; } = new vec3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
 
         #endregion
 
@@ -526,36 +556,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static vec3 MaxValue { get; } = new vec3(float.MaxValue, float.MaxValue, float.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static vec3 MinValue { get; } = new vec3(float.MinValue, float.MinValue, float.MinValue);
-        
-        /// <summary>
-        /// Predefined all-Epsilon vector
-        /// </summary>
-        public static vec3 Epsilon { get; } = new vec3(float.Epsilon, float.Epsilon, float.Epsilon);
-        
-        /// <summary>
-        /// Predefined all-NaN vector
-        /// </summary>
-        public static vec3 NaN { get; } = new vec3(float.NaN, float.NaN, float.NaN);
-        
-        /// <summary>
-        /// Predefined all-NegativeInfinity vector
-        /// </summary>
-        public static vec3 NegativeInfinity { get; } = new vec3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
-        
-        /// <summary>
-        /// Predefined all-PositiveInfinity vector
-        /// </summary>
-        public static vec3 PositiveInfinity { get; } = new vec3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

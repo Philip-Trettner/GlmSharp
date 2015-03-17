@@ -285,6 +285,36 @@ namespace GlmSharp
         /// Predefined unit-Y vector
         /// </summary>
         public static dvec2 UnitY { get; } = new dvec2(0.0, 1.0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static dvec2 MaxValue { get; } = new dvec2(double.MaxValue, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static dvec2 MinValue { get; } = new dvec2(double.MinValue, double.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon vector
+        /// </summary>
+        public static dvec2 Epsilon { get; } = new dvec2(double.Epsilon, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN vector
+        /// </summary>
+        public static dvec2 NaN { get; } = new dvec2(double.NaN, double.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity vector
+        /// </summary>
+        public static dvec2 NegativeInfinity { get; } = new dvec2(double.NegativeInfinity, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity vector
+        /// </summary>
+        public static dvec2 PositiveInfinity { get; } = new dvec2(double.PositiveInfinity, double.PositiveInfinity);
 
         #endregion
 
@@ -497,36 +527,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static dvec2 MaxValue { get; } = new dvec2(double.MaxValue, double.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static dvec2 MinValue { get; } = new dvec2(double.MinValue, double.MinValue);
-        
-        /// <summary>
-        /// Predefined all-Epsilon vector
-        /// </summary>
-        public static dvec2 Epsilon { get; } = new dvec2(double.Epsilon, double.Epsilon);
-        
-        /// <summary>
-        /// Predefined all-NaN vector
-        /// </summary>
-        public static dvec2 NaN { get; } = new dvec2(double.NaN, double.NaN);
-        
-        /// <summary>
-        /// Predefined all-NegativeInfinity vector
-        /// </summary>
-        public static dvec2 NegativeInfinity { get; } = new dvec2(double.NegativeInfinity, double.NegativeInfinity);
-        
-        /// <summary>
-        /// Predefined all-PositiveInfinity vector
-        /// </summary>
-        public static dvec2 PositiveInfinity { get; } = new dvec2(double.PositiveInfinity, double.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

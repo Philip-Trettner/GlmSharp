@@ -313,6 +313,16 @@ namespace GlmSharp
         /// Predefined unit-Z vector
         /// </summary>
         public static ivec3 UnitZ { get; } = new ivec3(0, 0, 1);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static ivec3 MaxValue { get; } = new ivec3(int.MaxValue, int.MaxValue, int.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static ivec3 MinValue { get; } = new ivec3(int.MinValue, int.MinValue, int.MinValue);
 
         #endregion
 
@@ -526,16 +536,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static ivec3 MaxValue { get; } = new ivec3(int.MaxValue, int.MaxValue, int.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static ivec3 MinValue { get; } = new ivec3(int.MinValue, int.MinValue, int.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

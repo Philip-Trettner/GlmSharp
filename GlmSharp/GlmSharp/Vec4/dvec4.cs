@@ -354,6 +354,36 @@ namespace GlmSharp
         /// Predefined unit-W vector
         /// </summary>
         public static dvec4 UnitW { get; } = new dvec4(0.0, 0.0, 0.0, 1.0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static dvec4 MaxValue { get; } = new dvec4(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static dvec4 MinValue { get; } = new dvec4(double.MinValue, double.MinValue, double.MinValue, double.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon vector
+        /// </summary>
+        public static dvec4 Epsilon { get; } = new dvec4(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN vector
+        /// </summary>
+        public static dvec4 NaN { get; } = new dvec4(double.NaN, double.NaN, double.NaN, double.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity vector
+        /// </summary>
+        public static dvec4 NegativeInfinity { get; } = new dvec4(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity vector
+        /// </summary>
+        public static dvec4 PositiveInfinity { get; } = new dvec4(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
 
         #endregion
 
@@ -568,36 +598,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static dvec4 MaxValue { get; } = new dvec4(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static dvec4 MinValue { get; } = new dvec4(double.MinValue, double.MinValue, double.MinValue, double.MinValue);
-        
-        /// <summary>
-        /// Predefined all-Epsilon vector
-        /// </summary>
-        public static dvec4 Epsilon { get; } = new dvec4(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
-        
-        /// <summary>
-        /// Predefined all-NaN vector
-        /// </summary>
-        public static dvec4 NaN { get; } = new dvec4(double.NaN, double.NaN, double.NaN, double.NaN);
-        
-        /// <summary>
-        /// Predefined all-NegativeInfinity vector
-        /// </summary>
-        public static dvec4 NegativeInfinity { get; } = new dvec4(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
-        
-        /// <summary>
-        /// Predefined all-PositiveInfinity vector
-        /// </summary>
-        public static dvec4 PositiveInfinity { get; } = new dvec4(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

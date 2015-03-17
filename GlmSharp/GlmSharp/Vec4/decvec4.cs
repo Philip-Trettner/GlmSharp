@@ -349,6 +349,21 @@ namespace GlmSharp
         /// Predefined unit-W vector
         /// </summary>
         public static decvec4 UnitW { get; } = new decvec4(0m, 0m, 0m, 1m);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static decvec4 MaxValue { get; } = new decvec4(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static decvec4 MinValue { get; } = new decvec4(decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue);
+        
+        /// <summary>
+        /// Predefined all-MinusOne vector
+        /// </summary>
+        public static decvec4 MinusOne { get; } = new decvec4(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
 
         #endregion
 
@@ -563,21 +578,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static decvec4 MaxValue { get; } = new decvec4(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static decvec4 MinValue { get; } = new decvec4(decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue);
-        
-        /// <summary>
-        /// Predefined all-MinusOne vector
-        /// </summary>
-        public static decvec4 MinusOne { get; } = new decvec4(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

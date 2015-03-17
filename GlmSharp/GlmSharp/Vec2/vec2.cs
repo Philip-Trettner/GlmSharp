@@ -285,6 +285,36 @@ namespace GlmSharp
         /// Predefined unit-Y vector
         /// </summary>
         public static vec2 UnitY { get; } = new vec2(0f, 1f);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static vec2 MaxValue { get; } = new vec2(float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static vec2 MinValue { get; } = new vec2(float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon vector
+        /// </summary>
+        public static vec2 Epsilon { get; } = new vec2(float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN vector
+        /// </summary>
+        public static vec2 NaN { get; } = new vec2(float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity vector
+        /// </summary>
+        public static vec2 NegativeInfinity { get; } = new vec2(float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity vector
+        /// </summary>
+        public static vec2 PositiveInfinity { get; } = new vec2(float.PositiveInfinity, float.PositiveInfinity);
 
         #endregion
 
@@ -497,36 +527,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static vec2 MaxValue { get; } = new vec2(float.MaxValue, float.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static vec2 MinValue { get; } = new vec2(float.MinValue, float.MinValue);
-        
-        /// <summary>
-        /// Predefined all-Epsilon vector
-        /// </summary>
-        public static vec2 Epsilon { get; } = new vec2(float.Epsilon, float.Epsilon);
-        
-        /// <summary>
-        /// Predefined all-NaN vector
-        /// </summary>
-        public static vec2 NaN { get; } = new vec2(float.NaN, float.NaN);
-        
-        /// <summary>
-        /// Predefined all-NegativeInfinity vector
-        /// </summary>
-        public static vec2 NegativeInfinity { get; } = new vec2(float.NegativeInfinity, float.NegativeInfinity);
-        
-        /// <summary>
-        /// Predefined all-PositiveInfinity vector
-        /// </summary>
-        public static vec2 PositiveInfinity { get; } = new vec2(float.PositiveInfinity, float.PositiveInfinity);
         
         /// <summary>
         /// Executes a component-wise IsInfinity

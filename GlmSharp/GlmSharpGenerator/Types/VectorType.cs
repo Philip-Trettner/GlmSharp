@@ -191,6 +191,16 @@ namespace GlmSharpGenerator.Types
                     };
             }
 
+            // Basetype constants
+            foreach (var constant in BaseType.TypeConstants)
+            {
+                yield return new StaticProperty(constant, this)
+                {
+                    Value = Construct(this, string.Format("{0}.{1}", BaseTypeName, constant).RepeatTimes(Components)),
+                    Comment = string.Format("Predefined all-{0} vector", constant)
+                };
+            }
+
             // values
             yield return new Property("Values", new ArrayType(BaseType))
             {
@@ -398,13 +408,6 @@ namespace GlmSharpGenerator.Types
                         foreach (var line in "Returns a string representation of this vector using a provided seperator and a format and format provider for each component.".AsComment()) yield return line;
                         yield return string.Format("public string ToString(string sep, string format, IFormatProvider provider) => {0};", CompString.Select(c => c + ".ToString(format, provider)").Aggregated(" + sep + "));
                     }
-                }
-
-                // Basetype constants
-                foreach (var constant in BaseType.TypeConstants)
-                {
-                    foreach (var line in string.Format("Predefined all-{0} vector", constant).AsComment()) yield return line;
-                    yield return string.Format("public static {0} {2} {{ get; }} = new {0}({1});", NameThat, string.Format("{0}.{1}", BaseTypeName, constant).RepeatTimes(Components).CommaSeparated(), constant);
                 }
 
                 // Basetype test functions

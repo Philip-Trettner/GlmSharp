@@ -285,6 +285,16 @@ namespace GlmSharp
         /// Predefined unit-Y vector
         /// </summary>
         public static ivec2 UnitY { get; } = new ivec2(0, 1);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static ivec2 MaxValue { get; } = new ivec2(int.MaxValue, int.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static ivec2 MinValue { get; } = new ivec2(int.MinValue, int.MinValue);
 
         #endregion
 
@@ -497,16 +507,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static ivec2 MaxValue { get; } = new ivec2(int.MaxValue, int.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static ivec2 MinValue { get; } = new ivec2(int.MinValue, int.MinValue);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

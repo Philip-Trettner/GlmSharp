@@ -308,6 +308,21 @@ namespace GlmSharp
         /// Predefined unit-Z vector
         /// </summary>
         public static decvec3 UnitZ { get; } = new decvec3(0m, 0m, 1m);
+        
+        /// <summary>
+        /// Predefined all-MaxValue vector
+        /// </summary>
+        public static decvec3 MaxValue { get; } = new decvec3(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue vector
+        /// </summary>
+        public static decvec3 MinValue { get; } = new decvec3(decimal.MinValue, decimal.MinValue, decimal.MinValue);
+        
+        /// <summary>
+        /// Predefined all-MinusOne vector
+        /// </summary>
+        public static decvec3 MinusOne { get; } = new decvec3(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
 
         #endregion
 
@@ -521,21 +536,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
-        
-        /// <summary>
-        /// Predefined all-MaxValue vector
-        /// </summary>
-        public static decvec3 MaxValue { get; } = new decvec3(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
-        
-        /// <summary>
-        /// Predefined all-MinValue vector
-        /// </summary>
-        public static decvec3 MinValue { get; } = new decvec3(decimal.MinValue, decimal.MinValue, decimal.MinValue);
-        
-        /// <summary>
-        /// Predefined all-MinusOne vector
-        /// </summary>
-        public static decvec3 MinusOne { get; } = new decvec3(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
