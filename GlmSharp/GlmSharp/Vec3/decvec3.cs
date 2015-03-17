@@ -357,9 +357,6 @@ namespace GlmSharp
             if (ReferenceEquals(null, obj)) return false;
             return obj is decvec3 && Equals((decvec3) obj);
         }
-
-        #endregion
-
         
         /// <summary>
         /// Returns a hash code for this instance.
@@ -371,6 +368,9 @@ namespace GlmSharp
                 return ((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode();
             }
         }
+
+        #endregion
+
         
         /// <summary>
         /// Returns a boolean vector with component-wise equal.

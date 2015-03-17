@@ -162,6 +162,7 @@ namespace GlmSharpGenerator.Types
         public bool Decimal { get; set; }
 
         public bool HasArithmetics { get; set; } = true;
+        public bool HasComparisons => HasArithmetics && !Generic && !IsComplex;
         public string LengthType { get; set; } = "float";
         public string AbsOverrideType { get; set; }
         public string AbsOverrideTypePrefix { get; set; }

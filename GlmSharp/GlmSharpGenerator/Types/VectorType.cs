@@ -340,6 +340,19 @@ namespace GlmSharpGenerator.Types
                 CodeString = "!lhs.Equals(rhs)",
                 Comment = "Returns true iff this does not equal rhs (component-wise)."
             };
+
+            yield return new Function(BuiltinType.TypeInt, "GetHashCode")
+            {
+                Override = true,
+                Code = new[]
+                {
+                    "unchecked",
+                    "{",
+                    string.Format("    return {0};", HashCodeFor(Components - 1)),
+                    "}"
+                },
+                Comment = "Returns a hash code for this instance."
+            };
         }
 
         protected override IEnumerable<string> Body
@@ -347,17 +360,8 @@ namespace GlmSharpGenerator.Types
             get
             {
                 // Equality comparisons
-                
-                foreach (var line in "Returns a hash code for this instance.".AsComment()) yield return line;
-                yield return "public override int GetHashCode()";
-                yield return "{";
-                yield return "    unchecked";
-                yield return "    {";
-                yield return "        return " + HashCodeFor(Components - 1) + ";";
-                yield return "    }";
-                yield return "}";
 
-                if (!BaseType.Generic && !BaseType.IsComplex && BaseType.HasArithmetics)
+                if (BaseType.HasComparisons)
                 {
                     foreach (var line in "Returns a boolean vector with component-wise equal.".AsComment()) yield return line;
                     yield return string.Format("public static bvec{0} Equal({1} lhs, {1} rhs) => new bvec{0}({2});", Components, NameThat, CompString.Select(c => string.Format("lhs.{0} == rhs.{0}", c)).CommaSeparated());

@@ -232,9 +232,6 @@ namespace GlmSharp
             if (ReferenceEquals(null, obj)) return false;
             return obj is gvec3<T> && Equals((gvec3<T>) obj);
         }
-
-        #endregion
-
         
         /// <summary>
         /// Returns a hash code for this instance.
@@ -246,6 +243,9 @@ namespace GlmSharp
                 return ((((EqualityComparer<T>.Default.GetHashCode(x)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(y)) * 397) ^ EqualityComparer<T>.Default.GetHashCode(z);
             }
         }
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.

@@ -328,9 +328,6 @@ namespace GlmSharp
             if (ReferenceEquals(null, obj)) return false;
             return obj is bvec2 && Equals((bvec2) obj);
         }
-
-        #endregion
-
         
         /// <summary>
         /// Returns a hash code for this instance.
@@ -342,6 +339,9 @@ namespace GlmSharp
                 return ((x.GetHashCode()) * 2) ^ y.GetHashCode();
             }
         }
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
