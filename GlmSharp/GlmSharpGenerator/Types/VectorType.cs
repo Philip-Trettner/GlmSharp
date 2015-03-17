@@ -56,7 +56,7 @@ namespace GlmSharpGenerator.Types
 
         public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
 
-        public string TypeCast(BaseTypeInfo otherType, string c)
+        public string TypeCast(BuiltinType otherType, string c)
         {
             if (otherType.HasArithmetics && BaseType.HasLogicOps)
                 return string.Format("{0} ? {1} : {2}", c, otherType.OneValue, otherType.ZeroValue);
@@ -178,8 +178,8 @@ namespace GlmSharpGenerator.Types
                 }
 
                 // implicit upcasts
-                var implicits = new HashSet<BaseTypeInfo>();
-                var upcasts = BaseTypeInfo.Upcasts;
+                var implicits = new HashSet<BuiltinType>();
+                var upcasts = BuiltinType.Upcasts;
                 foreach (var ukvp in upcasts.Where(k => k.Key == BaseType))
                 {
                     var otherType = ukvp.Value;
@@ -192,7 +192,7 @@ namespace GlmSharpGenerator.Types
                 }
 
                 // explicit casts
-                foreach (var oType in BaseTypeInfo.BaseTypes)
+                foreach (var oType in BuiltinType.BaseTypes)
                 {
                     var otherType = oType;
                     if (otherType.Generic != BaseType.Generic)

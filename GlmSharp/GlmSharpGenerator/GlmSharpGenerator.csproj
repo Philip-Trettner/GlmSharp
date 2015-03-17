@@ -45,7 +45,7 @@
   <ItemGroup>
     <Compile Include="Members\Field.cs" />
     <Compile Include="Members\Member.cs" />
-    <Compile Include="Types\BaseTypeInfo.cs" />
+    <Compile Include="Types\BuiltinType.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Types\MatrixType.cs" />
     <Compile Include="Types\SwizzleType.cs" />

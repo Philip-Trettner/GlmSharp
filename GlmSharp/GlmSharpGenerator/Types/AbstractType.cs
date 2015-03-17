@@ -34,7 +34,7 @@ namespace GlmSharpGenerator.Types
         /// <summary>
         /// Reference to base type
         /// </summary>
-        public BaseTypeInfo BaseType { get; set; }
+        public BuiltinType BaseType { get; set; }
 
         /// <summary>
         /// Namespace of this type
@@ -107,13 +107,13 @@ namespace GlmSharpGenerator.Types
 
         public string ConstantSuffixFor(string s)
         {
-            if (BaseType == BaseTypeInfo.TypeFloat)
+            if (BaseType == BuiltinType.TypeFloat)
                 return s + "f";
 
-            if (BaseType == BaseTypeInfo.TypeDouble)
+            if (BaseType == BuiltinType.TypeDouble)
                 return s + "d";
 
-            if (BaseType == BaseTypeInfo.TypeDecimal)
+            if (BaseType == BuiltinType.TypeDecimal)
                 return s + "m";
 
             throw new InvalidOperationException("unknown type");
@@ -122,7 +122,7 @@ namespace GlmSharpGenerator.Types
         public static void InitTypes()
         {
             // vectors
-            foreach (var type in BaseTypeInfo.BaseTypes)
+            foreach (var type in BuiltinType.BaseTypes)
                 for (var comp = 2; comp <= 4; ++comp)
                 {
                     var vect = new VectorType
@@ -137,7 +137,7 @@ namespace GlmSharpGenerator.Types
                 }
 
             // matrices
-            foreach (var type in BaseTypeInfo.BaseTypes)
+            foreach (var type in BuiltinType.BaseTypes)
                 for (var rows = 2; rows <= 4; ++rows)
                     for (var cols = 2; cols <= 4; ++cols)
                     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace GlmSharpGenerator.Types
 {
-    class BaseTypeInfo : AbstractType
+    class BuiltinType : AbstractType
     {
-        public static IEnumerable<BaseTypeInfo> BaseTypes
+        public static IEnumerable<BuiltinType> BaseTypes
         {
             get
             {
@@ -21,44 +21,44 @@ namespace GlmSharpGenerator.Types
             }
         }
 
-        public static List<KeyValuePair<BaseTypeInfo, BaseTypeInfo>> Upcasts
+        public static List<KeyValuePair<BuiltinType, BuiltinType>> Upcasts
         {
             get
             {
                 // from -> to
-                var dic = new List<KeyValuePair<BaseTypeInfo, BaseTypeInfo>>
+                var dic = new List<KeyValuePair<BuiltinType, BuiltinType>>
                 {
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeLong),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeFloat),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeDouble),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeDecimal),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeInt, TypeComplex),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeLong),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeFloat),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeDouble),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeDecimal),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeComplex),
 
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeLong),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeFloat),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeDouble),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeDecimal),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeUint, TypeComplex),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeLong),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeFloat),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeDouble),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeDecimal),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeComplex),
 
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeFloat, TypeDouble),
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeFloat, TypeComplex),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeFloat, TypeDouble),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeFloat, TypeComplex),
 
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeDouble, TypeComplex),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeDouble, TypeComplex),
 
-                    new KeyValuePair<BaseTypeInfo, BaseTypeInfo>(TypeLong, TypeDecimal)
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeLong, TypeDecimal)
                 };
                 return dic;
             }
         }
 
-        public static readonly BaseTypeInfo TypeInt = new BaseTypeInfo
+        public static readonly BuiltinType TypeInt = new BuiltinType
         {
             TypeName = "int",
             Prefix = "i",
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
         };
-        public static readonly BaseTypeInfo TypeUint = new BaseTypeInfo
+        public static readonly BuiltinType TypeUint = new BuiltinType
         {
             TypeName = "uint",
             Prefix = "u",
@@ -68,7 +68,7 @@ namespace GlmSharpGenerator.Types
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
         };
-        public static readonly BaseTypeInfo TypeFloat = new BaseTypeInfo
+        public static readonly BuiltinType TypeFloat = new BuiltinType
         {
             TypeName = "float",
             OneValueConstant = "1f",
@@ -84,7 +84,7 @@ namespace GlmSharpGenerator.Types
                 { "IsPositiveInfinity", "float.IsPositiveInfinity({0})" }
             }
         };
-        public static readonly BaseTypeInfo TypeDouble = new BaseTypeInfo
+        public static readonly BuiltinType TypeDouble = new BuiltinType
         {
             TypeName = "double",
             Prefix = "d",
@@ -102,7 +102,7 @@ namespace GlmSharpGenerator.Types
                 { "IsPositiveInfinity", "double.IsPositiveInfinity({0})" }
             }
         };
-        public static readonly BaseTypeInfo TypeDecimal = new BaseTypeInfo
+        public static readonly BuiltinType TypeDecimal = new BuiltinType
         {
             TypeName = "decimal",
             Prefix = "dec",
@@ -113,7 +113,7 @@ namespace GlmSharpGenerator.Types
             IsFloatingPoint = true,
             TypeConstants = new[] { "MaxValue", "MinValue", "MinusOne" }
         };
-        public static readonly BaseTypeInfo TypeComplex = new BaseTypeInfo
+        public static readonly BuiltinType TypeComplex = new BuiltinType
         {
             TypeName = "Complex",
             Prefix = "c",
@@ -124,7 +124,7 @@ namespace GlmSharpGenerator.Types
             AbsOverrideType = "double",
             AbsOverrideTypePrefix = "d"
         };
-        public static readonly BaseTypeInfo TypeLong = new BaseTypeInfo
+        public static readonly BuiltinType TypeLong = new BuiltinType
         {
             TypeName = "long",
             Prefix = "l",
@@ -132,7 +132,7 @@ namespace GlmSharpGenerator.Types
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
         };
-        public static readonly BaseTypeInfo TypeBool = new BaseTypeInfo
+        public static readonly BuiltinType TypeBool = new BuiltinType
         {
             TypeName = "bool",
             Prefix = "b",
@@ -143,7 +143,7 @@ namespace GlmSharpGenerator.Types
             HasLogicOps = true,
             HasFormatString = false
         };
-        public static readonly BaseTypeInfo TypeGeneric = new BaseTypeInfo
+        public static readonly BuiltinType TypeGeneric = new BuiltinType
         {
             TypeName = "T",
             Prefix = "g",
