@@ -59,27 +59,27 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-ones vector
         /// </summary>
-        public static uvec4 Ones { get; } = new uvec4(1, 1, 1, 1);
+        public static uvec4 Ones { get; } = new uvec4(1u, 1u, 1u, 1u);
         
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static uvec4 UnitX { get; } = new uvec4(1, default(uint), default(uint), default(uint));
+        public static uvec4 UnitX { get; } = new uvec4(1u, default(uint), default(uint), default(uint));
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static uvec4 UnitY { get; } = new uvec4(default(uint), 1, default(uint), default(uint));
+        public static uvec4 UnitY { get; } = new uvec4(default(uint), 1u, default(uint), default(uint));
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static uvec4 UnitZ { get; } = new uvec4(default(uint), default(uint), 1, default(uint));
+        public static uvec4 UnitZ { get; } = new uvec4(default(uint), default(uint), 1u, default(uint));
         
         /// <summary>
         /// Predefined unit-W vector
         /// </summary>
-        public static uvec4 UnitW { get; } = new uvec4(default(uint), default(uint), default(uint), 1);
+        public static uvec4 UnitW { get; } = new uvec4(default(uint), default(uint), default(uint), 1u);
         
         /// <summary>
         /// Returns an array with all values

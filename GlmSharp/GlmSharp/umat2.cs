@@ -84,12 +84,12 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-ones matrix
         /// </summary>
-        public static umat2 Ones { get; } = new umat2(1, 1, 1, 1);
+        public static umat2 Ones { get; } = new umat2(1u, 1u, 1u, 1u);
         
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static umat2 Identity { get; } = new umat2(1, default(uint), default(uint), 1);
+        public static umat2 Identity { get; } = new umat2(1u, default(uint), default(uint), 1u);
         
         /// <summary>
         /// Component-wise constructor

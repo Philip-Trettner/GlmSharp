@@ -53,22 +53,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-ones vector
         /// </summary>
-        public static uvec3 Ones { get; } = new uvec3(1, 1, 1);
+        public static uvec3 Ones { get; } = new uvec3(1u, 1u, 1u);
         
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static uvec3 UnitX { get; } = new uvec3(1, default(uint), default(uint));
+        public static uvec3 UnitX { get; } = new uvec3(1u, default(uint), default(uint));
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static uvec3 UnitY { get; } = new uvec3(default(uint), 1, default(uint));
+        public static uvec3 UnitY { get; } = new uvec3(default(uint), 1u, default(uint));
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static uvec3 UnitZ { get; } = new uvec3(default(uint), default(uint), 1);
+        public static uvec3 UnitZ { get; } = new uvec3(default(uint), default(uint), 1u);
         
         /// <summary>
         /// Returns an array with all values

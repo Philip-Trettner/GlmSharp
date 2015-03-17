@@ -47,17 +47,17 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-ones vector
         /// </summary>
-        public static uvec2 Ones { get; } = new uvec2(1, 1);
+        public static uvec2 Ones { get; } = new uvec2(1u, 1u);
         
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static uvec2 UnitX { get; } = new uvec2(1, default(uint));
+        public static uvec2 UnitX { get; } = new uvec2(1u, default(uint));
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static uvec2 UnitY { get; } = new uvec2(default(uint), 1);
+        public static uvec2 UnitY { get; } = new uvec2(default(uint), 1u);
         
         /// <summary>
         /// Returns an array with all values

@@ -147,12 +147,12 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-ones matrix
         /// </summary>
-        public static umat3x4 Ones { get; } = new umat3x4(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+        public static umat3x4 Ones { get; } = new umat3x4(1u, 1u, 1u, 1u, 1u, 1u, 1u, 1u, 1u, 1u, 1u, 1u);
         
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static umat3x4 Identity { get; } = new umat3x4(1, default(uint), default(uint), default(uint), default(uint), 1, default(uint), default(uint), default(uint), default(uint), 1, default(uint));
+        public static umat3x4 Identity { get; } = new umat3x4(1u, default(uint), default(uint), default(uint), default(uint), 1u, default(uint), default(uint), default(uint), default(uint), 1u, default(uint));
         
         /// <summary>
         /// Component-wise constructor

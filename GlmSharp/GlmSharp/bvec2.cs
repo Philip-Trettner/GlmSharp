@@ -127,17 +127,17 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a uvec2.
         /// </summary>
-        public static explicit operator uvec2(bvec2 v) => new uvec2(v.x ? 1 : default(uint), v.y ? 1 : default(uint));
+        public static explicit operator uvec2(bvec2 v) => new uvec2(v.x ? 1u : default(uint), v.y ? 1u : default(uint));
         
         /// <summary>
         /// Explicitly converts this to a uvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator uvec3(bvec2 v) => new uvec3(v.x ? 1 : default(uint), v.y ? 1 : default(uint), default(uint));
+        public static explicit operator uvec3(bvec2 v) => new uvec3(v.x ? 1u : default(uint), v.y ? 1u : default(uint), default(uint));
         
         /// <summary>
         /// Explicitly converts this to a uvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator uvec4(bvec2 v) => new uvec4(v.x ? 1 : default(uint), v.y ? 1 : default(uint), default(uint), default(uint));
+        public static explicit operator uvec4(bvec2 v) => new uvec4(v.x ? 1u : default(uint), v.y ? 1u : default(uint), default(uint), default(uint));
         
         /// <summary>
         /// Explicitly converts this to a vec2.

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GlmSharpGenerator
+namespace GlmSharpGenerator.Types
 {
-    class BaseTypeInfo
+    class BaseTypeInfo : AbstractType
     {
-        public static IEnumerable<BaseTypeInfo> Types
+        public static IEnumerable<BaseTypeInfo> BaseTypes
         {
             get
             {
@@ -23,6 +20,7 @@ namespace GlmSharpGenerator
                 yield return TypeGeneric;
             }
         }
+
         public static List<KeyValuePair<BaseTypeInfo, BaseTypeInfo>> Upcasts
         {
             get
@@ -55,23 +53,24 @@ namespace GlmSharpGenerator
 
         public static readonly BaseTypeInfo TypeInt = new BaseTypeInfo
         {
-            Name = "int",
+            TypeName = "int",
             Prefix = "i",
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
         };
         public static readonly BaseTypeInfo TypeUint = new BaseTypeInfo
         {
-            Name = "uint",
+            TypeName = "uint",
             Prefix = "u",
+            OneValueConstant = "1u",
             IsSigned = false,
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
         };
         public static readonly BaseTypeInfo TypeFloat = new BaseTypeInfo
         {
-            Name = "float",
-            OneValue = "1f",
+            TypeName = "float",
+            OneValueConstant = "1f",
             IsFloatingPoint = true,
             TypeConstants = new[] { "MaxValue", "MinValue", "Epsilon", "NaN", "NegativeInfinity", "PositiveInfinity" },
             TypeTestFuncs = new Dictionary<string, string>
@@ -85,10 +84,10 @@ namespace GlmSharpGenerator
         };
         public static readonly BaseTypeInfo TypeDouble = new BaseTypeInfo
         {
-            Name = "double",
+            TypeName = "double",
             Prefix = "d",
             LengthType = "double",
-            OneValue = "1.0",
+            OneValueConstant = "1.0",
             IsFloatingPoint = true,
             TypeConstants = new[] { "MaxValue", "MinValue", "Epsilon", "NaN", "NegativeInfinity", "PositiveInfinity" },
             TypeTestFuncs = new Dictionary<string, string>
@@ -102,27 +101,27 @@ namespace GlmSharpGenerator
         };
         public static readonly BaseTypeInfo TypeDecimal = new BaseTypeInfo
         {
-            Name = "decimal",
+            TypeName = "decimal",
             Prefix = "dec",
             LengthType = "decimal",
-            OneValue = "1m",
+            OneValueConstant = "1m",
             Decimal = true,
             IsFloatingPoint = true,
             TypeConstants = new[] { "MaxValue", "MinValue", "MinusOne" }
         };
         public static readonly BaseTypeInfo TypeComplex = new BaseTypeInfo
         {
-            Name = "Complex",
+            TypeName = "Complex",
             Prefix = "c",
             LengthType = "double",
-            OneValue = "1.0",
+            OneValueConstant = "1.0",
             IsComplex = true,
             AbsOverrideType = "double",
             AbsOverrideTypePrefix = "d"
         };
         public static readonly BaseTypeInfo TypeLong = new BaseTypeInfo
         {
-            Name = "long",
+            TypeName = "long",
             Prefix = "l",
             LengthType = "double",
             IsInteger = true,
@@ -130,24 +129,24 @@ namespace GlmSharpGenerator
         };
         public static readonly BaseTypeInfo TypeBool = new BaseTypeInfo
         {
-            Name = "bool",
+            TypeName = "bool",
             Prefix = "b",
             HasArithmetics = false,
             HashCodeMultiplier = 2,
-            OneValue = "true",
+            OneValueConstant = "true",
             HasLogicOps = true,
             HasFormatString = false
         };
         public static readonly BaseTypeInfo TypeGeneric = new BaseTypeInfo
         {
-            Name = "T",
+            TypeName = "T",
             Prefix = "g",
             Generic = true,
             HasArithmetics = false,
-            OneValue = null
+            OneValueConstant = null
         };
 
-        public string Name { get; set; }
+        public string TypeName { get; set; }
         public string Prefix { get; set; }
         public bool Generic { get; set; }
         public bool IsComplex { get; set; }
@@ -165,11 +164,22 @@ namespace GlmSharpGenerator
 
         public bool HasLogicOps { get; set; }
 
-        public string OneValue { get; set; } = "1";
+        public string OneValueConstant { get; set; } = "1";
+
+        public override string OneValue => OneValueConstant;
 
         public int HashCodeMultiplier { get; set; } = 397;
 
-        public string ZeroValue => "default(" + Name + ")";
+        public override string Name => TypeName;
+
+        public override string TypeComment => "Builtin " + Name;
+
+        protected override IEnumerable<string> Body
+        {
+            get { throw new InvalidOperationException("No body for builtin types"); }
+        }
+
+        public override string ZeroValue => "default(" + Name + ")";
 
         public string[] TypeConstants { get; set; } = new string[] { };
 

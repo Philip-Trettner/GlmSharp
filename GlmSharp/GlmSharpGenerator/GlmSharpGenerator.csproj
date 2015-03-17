@@ -43,18 +43,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTypeInfo.cs" />
+    <Compile Include="Members\Field.cs" />
+    <Compile Include="Members\Member.cs" />
+    <Compile Include="Types\BaseTypeInfo.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="MatrixType.cs" />
-    <Compile Include="SwizzleType.cs" />
-    <Compile Include="TypeBase.cs" />
+    <Compile Include="Types\MatrixType.cs" />
+    <Compile Include="Types\SwizzleType.cs" />
+    <Compile Include="Types\AbstractType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VectorType.cs" />
+    <Compile Include="Types\VectorType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
