@@ -346,6 +346,46 @@ namespace GlmSharp
         #region Component-Wise Static Functions
         
         /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x == rhs.x, lhs.y == rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(bvec2 lhs, bool rhs) => new bvec2(lhs.x == rhs, lhs.y == rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(bool lhs, bvec2 rhs) => new bvec2(lhs == rhs.x, lhs == rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(bool lhs, bool rhs) => new bvec2(lhs == rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x != rhs.x, lhs.y != rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(bvec2 lhs, bool rhs) => new bvec2(lhs.x != rhs, lhs.y != rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(bool lhs, bvec2 rhs) => new bvec2(lhs != rhs.x, lhs != rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(bool lhs, bool rhs) => new bvec2(lhs != rhs);
+        
+        /// <summary>
         /// Returns a bvec2 from component-wise application of Not (!v).
         /// </summary>
         public static bvec2 Not(bvec2 v) => new bvec2(!v.x, !v.y);

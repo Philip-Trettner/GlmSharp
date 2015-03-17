@@ -417,6 +417,46 @@ namespace GlmSharp
         #region Component-Wise Static Functions
         
         /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(bvec4 lhs, bvec4 rhs) => new bvec4(lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z, lhs.w == rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(bvec4 lhs, bool rhs) => new bvec4(lhs.x == rhs, lhs.y == rhs, lhs.z == rhs, lhs.w == rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(bool lhs, bvec4 rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(bool lhs, bool rhs) => new bvec4(lhs == rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(bvec4 lhs, bvec4 rhs) => new bvec4(lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z, lhs.w != rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(bvec4 lhs, bool rhs) => new bvec4(lhs.x != rhs, lhs.y != rhs, lhs.z != rhs, lhs.w != rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(bool lhs, bvec4 rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(bool lhs, bool rhs) => new bvec4(lhs != rhs);
+        
+        /// <summary>
         /// Returns a bvec4 from component-wise application of Not (!v).
         /// </summary>
         public static bvec4 Not(bvec4 v) => new bvec4(!v.x, !v.y, !v.z, !v.w);

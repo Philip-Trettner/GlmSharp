@@ -440,34 +440,109 @@ namespace GlmSharp
         /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(int lhs, int rhs) => new bvec4(lhs == rhs);
-
-        #endregion
-
         
         /// <summary>
-        /// Returns a boolean vector with component-wise not-equal.
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(ivec4 lhs, ivec4 rhs) => new bvec4(lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z, lhs.w != rhs.w);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise greater-than.
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec4 GreaterThan(ivec4 lhs, ivec4 rhs) => lhs > rhs;
+        public static bvec4 NotEqual(ivec4 lhs, int rhs) => new bvec4(lhs.x != rhs, lhs.y != rhs, lhs.z != rhs, lhs.w != rhs);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise greater-than-or-equal.
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec4 GreaterThanEqual(ivec4 lhs, ivec4 rhs) => lhs >= rhs;
+        public static bvec4 NotEqual(int lhs, ivec4 rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise lesser-than.
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec4 LesserThan(ivec4 lhs, ivec4 rhs) => lhs < rhs;
+        public static bvec4 NotEqual(int lhs, int rhs) => new bvec4(lhs != rhs);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise lesser-than-or-equal.
+        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
         /// </summary>
-        public static bvec4 LesserThanEqual(ivec4 lhs, ivec4 rhs) => lhs <= rhs;
+        public static bvec4 GreaterThan(ivec4 lhs, ivec4 rhs) => new bvec4(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 GreaterThan(ivec4 lhs, int rhs) => new bvec4(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 GreaterThan(int lhs, ivec4 rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 GreaterThan(int lhs, int rhs) => new bvec4(lhs > rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 GreaterThanEqual(ivec4 lhs, ivec4 rhs) => new bvec4(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 GreaterThanEqual(ivec4 lhs, int rhs) => new bvec4(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 GreaterThanEqual(int lhs, ivec4 rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 GreaterThanEqual(int lhs, int rhs) => new bvec4(lhs >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 LesserThan(ivec4 lhs, ivec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 LesserThan(ivec4 lhs, int rhs) => new bvec4(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 LesserThan(int lhs, ivec4 rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 LesserThan(int lhs, int rhs) => new bvec4(lhs < rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 LesserThanEqual(ivec4 lhs, ivec4 rhs) => new bvec4(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 LesserThanEqual(ivec4 lhs, int rhs) => new bvec4(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 LesserThanEqual(int lhs, ivec4 rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 LesserThanEqual(int lhs, int rhs) => new bvec4(lhs <= rhs);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.

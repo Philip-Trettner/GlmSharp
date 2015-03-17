@@ -356,10 +356,18 @@ namespace GlmSharpGenerator.Types
 
             // Component-wise static functions
             var boolVec = new VectorType(BuiltinType.TypeBool, Components);
+
+            yield return new ComponentWiseStaticFunction(Fields, boolVec, "Equal", this, "lhs", this, "rhs", BaseType.EqualFormat);
+            yield return new ComponentWiseStaticFunction(Fields, boolVec, "NotEqual", this, "lhs", this, "rhs", BaseType.NotEqualFormat);
+
             if (BaseType.HasComparisons)
             {
-                yield return new ComponentWiseStaticFunction(Fields, boolVec, "Equal", this, "lhs", this, "rhs", "{0} == {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVec, "GreaterThan", this, "lhs", this, "rhs", "{0} > {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVec, "GreaterThanEqual", this, "lhs", this, "rhs", "{0} >= {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVec, "LesserThan", this, "lhs", this, "rhs", "{0} < {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVec, "LesserThanEqual", this, "lhs", this, "rhs", "{0} <= {1}");
             }
+
             if (BaseType.IsBool)
             {
                 yield return new ComponentWiseStaticFunction(Fields, boolVec, "Not", this, "v", "!{0}");
@@ -370,26 +378,6 @@ namespace GlmSharpGenerator.Types
         {
             get
             {
-                // Equality comparisons
-
-                if (BaseType.HasComparisons)
-                {
-                    foreach (var line in "Returns a boolean vector with component-wise not-equal.".AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} NotEqual({1} lhs, {1} rhs) => new bvec{0}({2});", Components, NameThat, CompString.Select(c => string.Format("lhs.{0} != rhs.{0}", c)).CommaSeparated());
-
-                    foreach (var line in "Returns a boolean vector with component-wise greater-than.".AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} GreaterThan({1} lhs, {1} rhs) => lhs > rhs;", Components, NameThat);
-
-                    foreach (var line in "Returns a boolean vector with component-wise greater-than-or-equal.".AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} GreaterThanEqual({1} lhs, {1} rhs) => lhs >= rhs;", Components, NameThat);
-
-                    foreach (var line in "Returns a boolean vector with component-wise lesser-than.".AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} LesserThan({1} lhs, {1} rhs) => lhs < rhs;", Components, NameThat);
-
-                    foreach (var line in "Returns a boolean vector with component-wise lesser-than-or-equal.".AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} LesserThanEqual({1} lhs, {1} rhs) => lhs <= rhs;", Components, NameThat);
-                }
-
                 // ToString
                 foreach (var line in "Returns a string representation of this vector using ', ' as a seperator.".AsComment()) yield return line;
                 yield return string.Format("public override string ToString() => ToString(\", \");");

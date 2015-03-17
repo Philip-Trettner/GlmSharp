@@ -252,6 +252,51 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Static Functions
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(cvec2 lhs, cvec2 rhs) => new bvec2(lhs.x == rhs.x, lhs.y == rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(cvec2 lhs, Complex rhs) => new bvec2(lhs.x == rhs, lhs.y == rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(Complex lhs, cvec2 rhs) => new bvec2(lhs == rhs.x, lhs == rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec2 Equal(Complex lhs, Complex rhs) => new bvec2(lhs == rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(cvec2 lhs, cvec2 rhs) => new bvec2(lhs.x != rhs.x, lhs.y != rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(cvec2 lhs, Complex rhs) => new bvec2(lhs.x != rhs, lhs.y != rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(Complex lhs, cvec2 rhs) => new bvec2(lhs != rhs.x, lhs != rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec2 NotEqual(Complex lhs, Complex rhs) => new bvec2(lhs != rhs);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.

@@ -246,6 +246,51 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Static Functions
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 Equal(gvec3<T> lhs, gvec3<T> rhs) => new bvec3(EqualityComparer<T>.Default.Equals(lhs.x, rhs.x), EqualityComparer<T>.Default.Equals(lhs.y, rhs.y), EqualityComparer<T>.Default.Equals(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 Equal(gvec3<T> lhs, T rhs) => new bvec3(EqualityComparer<T>.Default.Equals(lhs.x, rhs), EqualityComparer<T>.Default.Equals(lhs.y, rhs), EqualityComparer<T>.Default.Equals(lhs.z, rhs));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 Equal(T lhs, gvec3<T> rhs) => new bvec3(EqualityComparer<T>.Default.Equals(lhs, rhs.x), EqualityComparer<T>.Default.Equals(lhs, rhs.y), EqualityComparer<T>.Default.Equals(lhs, rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 Equal(T lhs, T rhs) => new bvec3(EqualityComparer<T>.Default.Equals(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 NotEqual(gvec3<T> lhs, gvec3<T> rhs) => new bvec3(!EqualityComparer<T>.Default.Equals(lhs.x, rhs.x), !EqualityComparer<T>.Default.Equals(lhs.y, rhs.y), !EqualityComparer<T>.Default.Equals(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 NotEqual(gvec3<T> lhs, T rhs) => new bvec3(!EqualityComparer<T>.Default.Equals(lhs.x, rhs), !EqualityComparer<T>.Default.Equals(lhs.y, rhs), !EqualityComparer<T>.Default.Equals(lhs.z, rhs));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 NotEqual(T lhs, gvec3<T> rhs) => new bvec3(!EqualityComparer<T>.Default.Equals(lhs, rhs.x), !EqualityComparer<T>.Default.Equals(lhs, rhs.y), !EqualityComparer<T>.Default.Equals(lhs, rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec3 NotEqual(T lhs, T rhs) => new bvec3(!EqualityComparer<T>.Default.Equals(lhs, rhs));
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.

@@ -398,34 +398,109 @@ namespace GlmSharp
         /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
         /// </summary>
         public static bvec3 Equal(float lhs, float rhs) => new bvec3(lhs == rhs);
-
-        #endregion
-
         
         /// <summary>
-        /// Returns a boolean vector with component-wise not-equal.
+        /// Returns a bvec3 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec3 NotEqual(vec3 lhs, vec3 rhs) => new bvec3(lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise greater-than.
+        /// Returns a bvec3 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec3 GreaterThan(vec3 lhs, vec3 rhs) => lhs > rhs;
+        public static bvec3 NotEqual(vec3 lhs, float rhs) => new bvec3(lhs.x != rhs, lhs.y != rhs, lhs.z != rhs);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise greater-than-or-equal.
+        /// Returns a bvec3 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec3 GreaterThanEqual(vec3 lhs, vec3 rhs) => lhs >= rhs;
+        public static bvec3 NotEqual(float lhs, vec3 rhs) => new bvec3(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise lesser-than.
+        /// Returns a bvec3 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec3 LesserThan(vec3 lhs, vec3 rhs) => lhs < rhs;
+        public static bvec3 NotEqual(float lhs, float rhs) => new bvec3(lhs != rhs);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise lesser-than-or-equal.
+        /// Returns a bvec3 from component-wise application of GreaterThan (lhs &gt; rhs).
         /// </summary>
-        public static bvec3 LesserThanEqual(vec3 lhs, vec3 rhs) => lhs <= rhs;
+        public static bvec3 GreaterThan(vec3 lhs, vec3 rhs) => new bvec3(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec3 GreaterThan(vec3 lhs, float rhs) => new bvec3(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec3 GreaterThan(float lhs, vec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec3 GreaterThan(float lhs, float rhs) => new bvec3(lhs > rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec3 GreaterThanEqual(vec3 lhs, vec3 rhs) => new bvec3(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec3 GreaterThanEqual(vec3 lhs, float rhs) => new bvec3(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec3 GreaterThanEqual(float lhs, vec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec3 GreaterThanEqual(float lhs, float rhs) => new bvec3(lhs >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec3 LesserThan(vec3 lhs, vec3 rhs) => new bvec3(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec3 LesserThan(vec3 lhs, float rhs) => new bvec3(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec3 LesserThan(float lhs, vec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec3 LesserThan(float lhs, float rhs) => new bvec3(lhs < rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec3 LesserThanEqual(vec3 lhs, vec3 rhs) => new bvec3(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec3 LesserThanEqual(vec3 lhs, float rhs) => new bvec3(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec3 LesserThanEqual(float lhs, vec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec3 LesserThanEqual(float lhs, float rhs) => new bvec3(lhs <= rhs);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.

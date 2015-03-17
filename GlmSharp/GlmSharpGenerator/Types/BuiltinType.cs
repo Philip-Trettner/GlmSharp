@@ -151,7 +151,9 @@ namespace GlmSharpGenerator.Types
             Generic = true,
             HasArithmetics = false,
             OneValueConstant = null,
-            ZeroValueConstant = "default(T)"
+            ZeroValueConstant = "default(T)",
+            EqualFormat = "EqualityComparer<T>.Default.Equals({0}, {1})",
+            NotEqualFormat = "!EqualityComparer<T>.Default.Equals({0}, {1})"
         };
 
         public string TypeName { get; set; }
@@ -168,6 +170,9 @@ namespace GlmSharpGenerator.Types
         public bool IsSigned { get; set; } = true;
         public bool IsInteger { get; set; } = false;
         public bool IsFloatingPoint { get; set; }
+
+        public string EqualFormat { get; set; } = "{0} == {1}";
+        public string NotEqualFormat { get; set; } = "{0} != {1}";
 
         public bool HasFormatString { get; set; } = true;
 

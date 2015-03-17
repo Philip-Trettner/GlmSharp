@@ -369,34 +369,109 @@ namespace GlmSharp
         /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
         /// </summary>
         public static bvec2 Equal(float lhs, float rhs) => new bvec2(lhs == rhs);
-
-        #endregion
-
         
         /// <summary>
-        /// Returns a boolean vector with component-wise not-equal.
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec2 NotEqual(vec2 lhs, vec2 rhs) => new bvec2(lhs.x != rhs.x, lhs.y != rhs.y);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise greater-than.
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec2 GreaterThan(vec2 lhs, vec2 rhs) => lhs > rhs;
+        public static bvec2 NotEqual(vec2 lhs, float rhs) => new bvec2(lhs.x != rhs, lhs.y != rhs);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise greater-than-or-equal.
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec2 GreaterThanEqual(vec2 lhs, vec2 rhs) => lhs >= rhs;
+        public static bvec2 NotEqual(float lhs, vec2 rhs) => new bvec2(lhs != rhs.x, lhs != rhs.y);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise lesser-than.
+        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
-        public static bvec2 LesserThan(vec2 lhs, vec2 rhs) => lhs < rhs;
+        public static bvec2 NotEqual(float lhs, float rhs) => new bvec2(lhs != rhs);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise lesser-than-or-equal.
+        /// Returns a bvec2 from component-wise application of GreaterThan (lhs &gt; rhs).
         /// </summary>
-        public static bvec2 LesserThanEqual(vec2 lhs, vec2 rhs) => lhs <= rhs;
+        public static bvec2 GreaterThan(vec2 lhs, vec2 rhs) => new bvec2(lhs.x > rhs.x, lhs.y > rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec2 GreaterThan(vec2 lhs, float rhs) => new bvec2(lhs.x > rhs, lhs.y > rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec2 GreaterThan(float lhs, vec2 rhs) => new bvec2(lhs > rhs.x, lhs > rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// </summary>
+        public static bvec2 GreaterThan(float lhs, float rhs) => new bvec2(lhs > rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec2 GreaterThanEqual(vec2 lhs, vec2 rhs) => new bvec2(lhs.x >= rhs.x, lhs.y >= rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec2 GreaterThanEqual(vec2 lhs, float rhs) => new bvec2(lhs.x >= rhs, lhs.y >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec2 GreaterThanEqual(float lhs, vec2 rhs) => new bvec2(lhs >= rhs.x, lhs >= rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec2 GreaterThanEqual(float lhs, float rhs) => new bvec2(lhs >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec2 LesserThan(vec2 lhs, vec2 rhs) => new bvec2(lhs.x < rhs.x, lhs.y < rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec2 LesserThan(vec2 lhs, float rhs) => new bvec2(lhs.x < rhs, lhs.y < rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec2 LesserThan(float lhs, vec2 rhs) => new bvec2(lhs < rhs.x, lhs < rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// </summary>
+        public static bvec2 LesserThan(float lhs, float rhs) => new bvec2(lhs < rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec2 LesserThanEqual(vec2 lhs, vec2 rhs) => new bvec2(lhs.x <= rhs.x, lhs.y <= rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec2 LesserThanEqual(vec2 lhs, float rhs) => new bvec2(lhs.x <= rhs, lhs.y <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec2 LesserThanEqual(float lhs, vec2 rhs) => new bvec2(lhs <= rhs.x, lhs <= rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec2 LesserThanEqual(float lhs, float rhs) => new bvec2(lhs <= rhs);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.

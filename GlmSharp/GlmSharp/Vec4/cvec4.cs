@@ -333,6 +333,51 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Static Functions
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(cvec4 lhs, cvec4 rhs) => new bvec4(lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z, lhs.w == rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(cvec4 lhs, Complex rhs) => new bvec4(lhs.x == rhs, lhs.y == rhs, lhs.z == rhs, lhs.w == rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(Complex lhs, cvec4 rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec4 Equal(Complex lhs, Complex rhs) => new bvec4(lhs == rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(cvec4 lhs, cvec4 rhs) => new bvec4(lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z, lhs.w != rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(cvec4 lhs, Complex rhs) => new bvec4(lhs.x != rhs, lhs.y != rhs, lhs.z != rhs, lhs.w != rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(Complex lhs, cvec4 rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// </summary>
+        public static bvec4 NotEqual(Complex lhs, Complex rhs) => new bvec4(lhs != rhs);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.

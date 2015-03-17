@@ -51,6 +51,9 @@ namespace GlmSharpGenerator.Members
         private void BuildComment()
         {
             Comment = "Returns a " + ReturnType.Name + " from component-wise application of " + Name + " (" + string.Format(CompString, ParameterNames.OfType<object>().ToArray()) + ").";
+            Comment = Comment.Replace("&", "&amp;");
+            Comment = Comment.Replace(">", "&gt;");
+            Comment = Comment.Replace("<", "&lt;");
         }
 
         public ComponentWiseStaticFunction(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, string compString)

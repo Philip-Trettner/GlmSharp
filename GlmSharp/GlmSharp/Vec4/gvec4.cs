@@ -283,6 +283,51 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Static Functions
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 Equal(gvec4<T> lhs, gvec4<T> rhs) => new bvec4(EqualityComparer<T>.Default.Equals(lhs.x, rhs.x), EqualityComparer<T>.Default.Equals(lhs.y, rhs.y), EqualityComparer<T>.Default.Equals(lhs.z, rhs.z), EqualityComparer<T>.Default.Equals(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 Equal(gvec4<T> lhs, T rhs) => new bvec4(EqualityComparer<T>.Default.Equals(lhs.x, rhs), EqualityComparer<T>.Default.Equals(lhs.y, rhs), EqualityComparer<T>.Default.Equals(lhs.z, rhs), EqualityComparer<T>.Default.Equals(lhs.w, rhs));
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 Equal(T lhs, gvec4<T> rhs) => new bvec4(EqualityComparer<T>.Default.Equals(lhs, rhs.x), EqualityComparer<T>.Default.Equals(lhs, rhs.y), EqualityComparer<T>.Default.Equals(lhs, rhs.z), EqualityComparer<T>.Default.Equals(lhs, rhs.w));
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 Equal(T lhs, T rhs) => new bvec4(EqualityComparer<T>.Default.Equals(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 NotEqual(gvec4<T> lhs, gvec4<T> rhs) => new bvec4(!EqualityComparer<T>.Default.Equals(lhs.x, rhs.x), !EqualityComparer<T>.Default.Equals(lhs.y, rhs.y), !EqualityComparer<T>.Default.Equals(lhs.z, rhs.z), !EqualityComparer<T>.Default.Equals(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 NotEqual(gvec4<T> lhs, T rhs) => new bvec4(!EqualityComparer<T>.Default.Equals(lhs.x, rhs), !EqualityComparer<T>.Default.Equals(lhs.y, rhs), !EqualityComparer<T>.Default.Equals(lhs.z, rhs), !EqualityComparer<T>.Default.Equals(lhs.w, rhs));
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 NotEqual(T lhs, gvec4<T> rhs) => new bvec4(!EqualityComparer<T>.Default.Equals(lhs, rhs.x), !EqualityComparer<T>.Default.Equals(lhs, rhs.y), !EqualityComparer<T>.Default.Equals(lhs, rhs.z), !EqualityComparer<T>.Default.Equals(lhs, rhs.w));
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// </summary>
+        public static bvec4 NotEqual(T lhs, T rhs) => new bvec4(!EqualityComparer<T>.Default.Equals(lhs, rhs));
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
