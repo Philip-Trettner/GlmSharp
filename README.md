@@ -113,3 +113,4 @@ This library is MIT-licensed.
 * extensive documentation (parameters, return values, formulas)
 * inline-swizzle and swizzle as L-ref?
 * noise functions
+* random extensions
