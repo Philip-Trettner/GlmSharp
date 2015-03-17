@@ -111,3 +111,4 @@ This library is MIT-licensed.
 * advanced glsl/glm functions
 * .net 2 support
 * extensive documentation (parameters, return values, formulas)
+* inline-swizzle and swizzle as L-ref?
