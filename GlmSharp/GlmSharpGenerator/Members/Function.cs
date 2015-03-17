@@ -39,8 +39,15 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public bool NoReturn { get; set; }
 
+        /// <summary>
+        /// True if override property
+        /// </summary>
+        public bool Override { get; set; }
+
         public virtual string ReturnName => ReturnType.NameThat;
         public virtual string FunctionName => Name;
+
+        public override string MemberPrefix => base.MemberPrefix + (Override ? " override" : "");
 
         public Function(AbstractType returnType, string name)
         {

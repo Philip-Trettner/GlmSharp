@@ -306,6 +306,26 @@ namespace GlmSharpGenerator.Types
                 Setter = SwitchIndex(Components.ForIndexUpTo(i => string.Format("case {0}: {1} = value; break;", i, ArgOf(i)))),
                 Comment = "Gets/Sets a specific indexed component (a bit slower than direct access)."
             };
+
+            // Equality comparisons
+            yield return new Function(BuiltinType.TypeBool, "Equals")
+            {
+                ParameterString = NameThat + " rhs",
+                CodeString = Fields.Select(Comparer).Aggregated(" && "),
+                Comment = "Returns true iff this equals rhs component-wise."
+            };
+
+            yield return new Function(BuiltinType.TypeBool, "Equals")
+            {
+                Override = true,
+                ParameterString = "object obj",
+                Code = new[]
+                {
+                    "if (ReferenceEquals(null, obj)) return false;",
+                    string.Format("return obj is {0} && Equals(({0}) obj);", NameThat)
+                },
+                Comment = "Returns true iff this equals rhs type- and component-wise."
+            };
         }
 
         protected override IEnumerable<string> Body
@@ -313,15 +333,6 @@ namespace GlmSharpGenerator.Types
             get
             {
                 // Equality comparisons
-                foreach (var line in "Returns true iff this equals rhs component-wise.".AsComment()) yield return line;
-                yield return string.Format("public bool Equals({0} rhs) => {1};", NameThat, CompString.Select(c => Comparer(c.ToString())).Aggregated(" && "));
-
-                foreach (var line in "Returns true iff this equals rhs type- and component-wise.".AsComment()) yield return line;
-                yield return "public override bool Equals(object obj)";
-                yield return "{";
-                yield return "    if (ReferenceEquals(null, obj)) return false;";
-                yield return string.Format("    return obj is {0} && Equals(({0}) obj);", NameThat);
-                yield return "}";
 
                 foreach (var line in "Returns true iff this equals rhs component-wise.".AsComment()) yield return line;
                 yield return string.Format("public static bool operator ==({0} lhs, {0} rhs) => lhs.Equals(rhs);", NameThat);

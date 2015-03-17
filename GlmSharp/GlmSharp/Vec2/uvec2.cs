@@ -304,9 +304,6 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-        #endregion
-
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
@@ -321,6 +318,9 @@ namespace GlmSharp
             if (ReferenceEquals(null, obj)) return false;
             return obj is uvec2 && Equals((uvec2) obj);
         }
+
+        #endregion
+
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
