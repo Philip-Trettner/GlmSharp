@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GlmSharpGenerator.Members;
 
 namespace GlmSharpGenerator.Types
 {
@@ -23,6 +24,11 @@ namespace GlmSharpGenerator.Types
                 yield return string.Format("IReadOnlyList<{0}>", BaseTypeName);
                 yield return string.Format("IEquatable<{0}>", NameThat);
             }
+        }
+
+        public override IEnumerable<Member> GenerateMembers()
+        {
+            yield break; // TODO
         }
 
         public string CompParameterString => CompString.Select(c => BaseTypeName + " " + c).CommaSeparated();

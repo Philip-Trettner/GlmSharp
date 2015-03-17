@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using GlmSharpGenerator.Types;
 
 namespace GlmSharpGenerator
 {
@@ -17,6 +18,11 @@ namespace GlmSharpGenerator
         public static IEnumerable<string> Indent(this IEnumerable<string> ss, int lvl = 1)
         {
             return ss.Select(s => s.Indent(lvl));
+        }
+
+        public static IEnumerable<string> TypedArgs(this IEnumerable<string> ss, AbstractType type)
+        {
+            return ss.Select(s => type.Name + " " + s);
         }
 
         public static string CommaSeparated<T>(this IEnumerable<T> coll)

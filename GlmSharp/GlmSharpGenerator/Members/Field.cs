@@ -14,6 +14,13 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public AbstractType Type { get; set; }
 
+        /// <summary>
+        /// True iff field is readonly
+        /// </summary>
+        public bool Readonly { get; set; }
+
+        public override string MemberPrefix => base.MemberPrefix + (Readonly ? " readonly" : "");
+
         public override IEnumerable<string> Lines
         {
             get
@@ -21,8 +28,15 @@ namespace GlmSharpGenerator.Members
                 foreach (var line in base.Lines)
                     yield return line;
 
-                yield return string.Format("{0} {1} {2};", Visibility, Type.BaseName, Name);
+                yield return string.Format("{0} {1} {2};", MemberPrefix, Type.Name, Name);
             }
+        }
+
+        public Field(string name, AbstractType type)
+        {
+            Name = name;
+            Type = type;
+            Attributes = new[] { "DataMember" };
         }
     }
 }

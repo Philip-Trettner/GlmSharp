@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using GlmSharpGenerator.Members;
 
 namespace GlmSharpGenerator.Types
 {
@@ -61,6 +63,33 @@ namespace GlmSharpGenerator.Types
         /// </summary>
         public virtual IEnumerable<string> BaseClasses { get { yield break; } }
 
+        /// <summary>
+        /// All members
+        /// </summary>
+        private Member[] members;
+        private Field[] fields;
+        private Constructor[] constructors;
+
+        /// <summary>
+        /// Generate all members
+        /// </summary>
+        public abstract IEnumerable<Member> GenerateMembers(); 
+
+        /// <summary>
+        /// Generates type members and sorts them
+        /// </summary>
+        public void Generate()
+        {
+            members = GenerateMembers().ToArray();
+
+            if (members.Any(m => string.IsNullOrEmpty(m.Comment)))
+                throw new InvalidOperationException("Missing comment");
+
+            fields = members.OfType<Field>().ToArray();
+            constructors = members.OfType<Constructor>().ToArray();
+        }
+
+
         public IEnumerable<string> CSharpFile
         {
             get
@@ -86,6 +115,27 @@ namespace GlmSharpGenerator.Types
                 yield return "    [StructLayout(LayoutKind.Sequential)]";
                 yield return "    public struct " + Name + GenericSuffix + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";
+
+                if (fields.Length > 0)
+                {
+                    yield return "        #region Fields";
+                    foreach (var field in fields)
+                        foreach (var line in field.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                }
+
+                if (constructors.Length > 0)
+                {
+                    yield return "        #region Constructors";
+                    foreach (var ctor in constructors)
+                        foreach (var line in ctor.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                }
+
                 foreach (var line in Body)
                     yield return line.Indent(2);
                 yield return "    }";
@@ -160,6 +210,10 @@ namespace GlmSharpGenerator.Types
                         };
                         Types.Add(matt.Name, matt);
                     }
+
+            // generate types
+            foreach (var type in Types.Values)
+                type.Generate();
         }
 
     }

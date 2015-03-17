@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GlmSharpGenerator.Members;
 
 namespace GlmSharpGenerator.Types
 {
@@ -13,6 +14,8 @@ namespace GlmSharpGenerator.Types
         public override string Namespace { get; } = "GlmSharp.Swizzle";
 
         public override string Folder => "Swizzle";
+
+        public IEnumerable<string> Fields => CompString.Select(c => c.ToString());
 
         private IEnumerable<string> Swizzle(int i)
         {
@@ -48,27 +51,29 @@ namespace GlmSharpGenerator.Types
 
         public override string TypeComment => string.Format("Temporary vector of type {0} with {1} components, used for implementing swizzling for {2}.", BaseTypeName, Components, BaseType.Prefix + "vec" + Components);
 
+        public override IEnumerable<Member> GenerateMembers()
+        {
+            foreach (var f in Fields)
+                yield return new Field(f, BaseType)
+                {
+                    Readonly = true,
+                    Visibility = "internal",
+                    Comment = string.Format("{0}-component", f)
+                };
+
+            yield return new Constructor(this, Fields)
+            {
+                Visibility = "internal",
+                Parameters = Fields.TypedArgs(BaseType),
+                Initializers = Fields,
+                Comment = string.Format("Constructor for {0}.", Name)
+            };
+        }
+
         protected override IEnumerable<string> Body
         {
             get
             {
-                // components
-                for (var i = 0; i < Components; ++i)
-                {
-                    foreach (var line in string.Format("{0}-component", "xyzw"[i]).AsComment()) yield return line;
-                    yield return "[DataMember]";
-                    yield return string.Format("internal readonly {0} {1};", BaseTypeName, "xyzw"[i]);
-                }
-
-                // ctor
-                yield return "";
-                foreach (var line in string.Format("Constructor for {0}.", Name).AsComment()) yield return line;
-                yield return string.Format("internal {0}({1})", Name, CompString.Select(c => BaseTypeName + " " + c).CommaSeparated());
-                yield return "{";
-                foreach (var c in CompString)
-                    yield return string.Format("this.{0} = {0};", c).Indent();
-                yield return "}";
-
                 // swizzle
                 yield return "";
                 yield return "// XYZW Versions";

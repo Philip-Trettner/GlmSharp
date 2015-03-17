@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GlmSharpGenerator.Members;
 
 namespace GlmSharpGenerator.Types
 {
@@ -182,6 +183,11 @@ namespace GlmSharpGenerator.Types
         public override string Name => TypeName;
 
         public override string TypeComment => "Builtin " + Name;
+
+        public override IEnumerable<Member> GenerateMembers()
+        {
+            yield break; // no-op
+        }
 
         protected override IEnumerable<string> Body
         {

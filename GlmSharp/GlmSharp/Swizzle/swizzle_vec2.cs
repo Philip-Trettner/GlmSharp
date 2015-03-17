@@ -21,6 +21,7 @@ namespace GlmSharp.Swizzle
     [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_vec2
     {
+        #region Fields
         
         /// <summary>
         /// x-component
@@ -33,7 +34,9 @@ namespace GlmSharp.Swizzle
         /// </summary>
         [DataMember]
         internal readonly float y;
-        
+
+        #endregion
+        #region Constructors
         
         /// <summary>
         /// Constructor for swizzle_vec2.
@@ -43,6 +46,8 @@ namespace GlmSharp.Swizzle
             this.x = x;
             this.y = y;
         }
+
+        #endregion
         
         // XYZW Versions
         
