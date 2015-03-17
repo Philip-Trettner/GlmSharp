@@ -353,6 +353,17 @@ namespace GlmSharpGenerator.Types
                 },
                 Comment = "Returns a hash code for this instance."
             };
+
+            // Component-wise static functions
+            var boolVec = new VectorType(BuiltinType.TypeBool, Components);
+            if (BaseType.HasComparisons)
+            {
+                yield return new ComponentWiseStaticFunction(Fields, boolVec, "Equal", this, "lhs", this, "rhs", "{0} == {1}");
+            }
+            if (BaseType.IsBool)
+            {
+                yield return new ComponentWiseStaticFunction(Fields, boolVec, "Not", this, "v", "!{0}");
+            }
         }
 
         protected override IEnumerable<string> Body
@@ -363,9 +374,6 @@ namespace GlmSharpGenerator.Types
 
                 if (BaseType.HasComparisons)
                 {
-                    foreach (var line in "Returns a boolean vector with component-wise equal.".AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} Equal({1} lhs, {1} rhs) => new bvec{0}({2});", Components, NameThat, CompString.Select(c => string.Format("lhs.{0} == rhs.{0}", c)).CommaSeparated());
-
                     foreach (var line in "Returns a boolean vector with component-wise not-equal.".AsComment()) yield return line;
                     yield return string.Format("public static bvec{0} NotEqual({1} lhs, {1} rhs) => new bvec{0}({2});", Components, NameThat, CompString.Select(c => string.Format("lhs.{0} != rhs.{0}", c)).CommaSeparated());
 
@@ -534,8 +542,18 @@ namespace GlmSharpGenerator.Types
                     foreach (var line in "Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
                     yield return ComponentWiseOperator("|", "||");
 
-                    foreach (var line in "Returns a boolean vector with component-wise not.".AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} Not({1} v) => new bvec{0}({2});", Components, NameThat, CompString.Select(c => string.Format("!v.{0}", c)).CommaSeparated());
+                    // unary arithmetic operators
+                    foreach (var kvp in new Dictionary<string, string>
+                    {
+                        {"!", "! (not)"},
+                    })
+                    {
+                        var op = kvp.Key;
+                        var opComment = kvp.Value;
+
+                        foreach (var line in string.Format("Executes a component-wise unary {0}.", opComment).AsComment()) yield return line;
+                        yield return string.Format("public static {0} operator{1}({0} v) => new {0}({2});", NameThat, op, CompString.Select(c => op + "v." + c).CommaSeparated());
+                    }
                 }
 
                 // Arithmetics
@@ -618,8 +636,7 @@ namespace GlmSharpGenerator.Types
                     {
                         {"+", "+ (add)"},
                         {"-", "- (subtract)"},
-                        {"~", "~ (bitwise-not)"},
-                        {"!", "! (not)"},
+                        {"~", "~ (bitwise-not)"}
                     })
                     {
                         var op = kvp.Key;
@@ -629,9 +646,6 @@ namespace GlmSharpGenerator.Types
                             continue; // unsigned
 
                         if (op == "~" && !BaseType.IsInteger)
-                            continue;
-
-                        if (op == "!" && !BaseType.IsBool)
                             continue;
 
                         foreach (var line in string.Format("Executes a component-wise unary {0}.", opComment).AsComment()) yield return line;

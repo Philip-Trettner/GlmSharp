@@ -77,6 +77,7 @@ namespace GlmSharpGenerator.Types
         private Function[] functions;
         private Function[] staticFunctions;
         private Indexer[] indexer;
+        private ComponentWiseStaticFunction[] componentWiseStaticFunctions;
 
         /// <summary>
         /// Generate all members
@@ -103,6 +104,7 @@ namespace GlmSharpGenerator.Types
             functions = members.Where(m => !m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
             staticFunctions = members.Where(m => m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
             indexer = members.OfType<Indexer>().ToArray();
+            componentWiseStaticFunctions = members.OfType<ComponentWiseStaticFunction>().ToArray();
         }
 
         /// <summary>
@@ -254,6 +256,18 @@ namespace GlmSharpGenerator.Types
                     yield return "";
                     yield return "        #region Static Functions";
                     foreach (var func in staticFunctions)
+                        foreach (var line in func.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (componentWiseStaticFunctions.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Component-Wise Static Functions";
+                    foreach (var func in componentWiseStaticFunctions)
                         foreach (var line in func.Lines)
                             yield return line.Indent(2);
                     yield return "";

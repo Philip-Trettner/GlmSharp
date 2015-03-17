@@ -342,6 +342,21 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Static Functions
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Not (!v).
+        /// </summary>
+        public static bvec2 Not(bvec2 v) => new bvec2(!v.x, !v.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Not (!v).
+        /// </summary>
+        public static bvec2 Not(bool v) => new bvec2(!v);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
@@ -424,8 +439,8 @@ namespace GlmSharp
         public static bvec2 operator|(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x || rhs.x, lhs.y || rhs.y);
         
         /// <summary>
-        /// Returns a boolean vector with component-wise not.
+        /// Executes a component-wise unary ! (not).
         /// </summary>
-        public static bvec2 Not(bvec2 v) => new bvec2(!v.x, !v.y);
+        public static bvec2 operator!(bvec2 v) => new bvec2(!v.x, !v.y);
     }
 }

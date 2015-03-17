@@ -371,11 +371,31 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Static Functions
         
         /// <summary>
-        /// Returns a boolean vector with component-wise equal.
+        /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
         /// </summary>
         public static bvec3 Equal(decvec3 lhs, decvec3 rhs) => new bvec3(lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec3 Equal(decvec3 lhs, decimal rhs) => new bvec3(lhs.x == rhs, lhs.y == rhs, lhs.z == rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec3 Equal(decimal lhs, decvec3 rhs) => new bvec3(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
+        /// </summary>
+        public static bvec3 Equal(decimal lhs, decimal rhs) => new bvec3(lhs == rhs);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a boolean vector with component-wise not-equal.
