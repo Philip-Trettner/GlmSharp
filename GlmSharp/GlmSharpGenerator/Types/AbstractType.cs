@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace GlmSharpGenerator.Types
@@ -40,7 +41,16 @@ namespace GlmSharpGenerator.Types
         /// Namespace of this type
         /// </summary>
         public virtual string Namespace { get; } = "GlmSharp";
-        
+
+        /// <summary>
+        /// Folder for this type
+        /// </summary>
+        public virtual string Folder { get; } = "";
+        /// <summary>
+        /// Folder with trailing /
+        /// </summary>
+        public string PathOf(string basePath) => string.IsNullOrEmpty(Folder) ? Path.Combine(basePath, Name + ".cs") : Path.Combine(basePath, Folder, Name + ".cs");
+
         /// <summary>
         /// Comment of this type
         /// </summary>

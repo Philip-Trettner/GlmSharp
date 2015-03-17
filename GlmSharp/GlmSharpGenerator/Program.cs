@@ -32,7 +32,7 @@ namespace GlmSharpGenerator
             Console.WriteLine("Generate:");
             foreach (var type in AbstractType.Types.Values)
             {
-                var filename = Path.Combine(path, type.Name + ".cs");
+                var filename = type.PathOf(path);
                 File.WriteAllLines(filename, type.CSharpFile);
                 Console.WriteLine("    " + filename);
             }

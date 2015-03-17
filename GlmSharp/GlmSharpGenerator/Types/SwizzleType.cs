@@ -12,6 +12,8 @@ namespace GlmSharpGenerator.Types
         public string CompString => "xyzw".Substring(0, Components);
         public override string Namespace { get; } = "GlmSharp.Swizzle";
 
+        public override string Folder => "Swizzle";
+
         private IEnumerable<string> Swizzle(int i)
         {
             if (i >= 4)
