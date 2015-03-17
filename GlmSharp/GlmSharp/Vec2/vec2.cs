@@ -499,6 +499,56 @@ namespace GlmSharp
         /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec2 LesserThanEqual(float lhs, float rhs) => new bvec2(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsInfinity (float.IsInfinity(v)).
+        /// </summary>
+        public static bvec2 IsInfinity(vec2 v) => new bvec2(float.IsInfinity(v.x), float.IsInfinity(v.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsInfinity (float.IsInfinity(v)).
+        /// </summary>
+        public static bvec2 IsInfinity(float v) => new bvec2(float.IsInfinity(v));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsFinite (!float.IsNaN(v) &amp;&amp; !float.IsInfinity(v)).
+        /// </summary>
+        public static bvec2 IsFinite(vec2 v) => new bvec2(!float.IsNaN(v.x) && !float.IsInfinity(v.x), !float.IsNaN(v.y) && !float.IsInfinity(v.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsFinite (!float.IsNaN(v) &amp;&amp; !float.IsInfinity(v)).
+        /// </summary>
+        public static bvec2 IsFinite(float v) => new bvec2(!float.IsNaN(v) && !float.IsInfinity(v));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsNaN (float.IsNaN(v)).
+        /// </summary>
+        public static bvec2 IsNaN(vec2 v) => new bvec2(float.IsNaN(v.x), float.IsNaN(v.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsNaN (float.IsNaN(v)).
+        /// </summary>
+        public static bvec2 IsNaN(float v) => new bvec2(float.IsNaN(v));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsNegativeInfinity (float.IsNegativeInfinity(v)).
+        /// </summary>
+        public static bvec2 IsNegativeInfinity(vec2 v) => new bvec2(float.IsNegativeInfinity(v.x), float.IsNegativeInfinity(v.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsNegativeInfinity (float.IsNegativeInfinity(v)).
+        /// </summary>
+        public static bvec2 IsNegativeInfinity(float v) => new bvec2(float.IsNegativeInfinity(v));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsPositiveInfinity (float.IsPositiveInfinity(v)).
+        /// </summary>
+        public static bvec2 IsPositiveInfinity(vec2 v) => new bvec2(float.IsPositiveInfinity(v.x), float.IsPositiveInfinity(v.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of IsPositiveInfinity (float.IsPositiveInfinity(v)).
+        /// </summary>
+        public static bvec2 IsPositiveInfinity(float v) => new bvec2(float.IsPositiveInfinity(v));
 
         #endregion
 
@@ -527,31 +577,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
-        
-        /// <summary>
-        /// Executes a component-wise IsInfinity
-        /// </summary>
-        public static bvec2 IsInfinity(vec2 v) => new bvec2(float.IsInfinity(v.x), float.IsInfinity(v.y));
-        
-        /// <summary>
-        /// Executes a component-wise IsFinite
-        /// </summary>
-        public static bvec2 IsFinite(vec2 v) => new bvec2(!float.IsNaN(v.x) && !float.IsInfinity(v.x), !float.IsNaN(v.y) && !float.IsInfinity(v.y));
-        
-        /// <summary>
-        /// Executes a component-wise IsNaN
-        /// </summary>
-        public static bvec2 IsNaN(vec2 v) => new bvec2(float.IsNaN(v.x), float.IsNaN(v.y));
-        
-        /// <summary>
-        /// Executes a component-wise IsNegativeInfinity
-        /// </summary>
-        public static bvec2 IsNegativeInfinity(vec2 v) => new bvec2(float.IsNegativeInfinity(v.x), float.IsNegativeInfinity(v.y));
-        
-        /// <summary>
-        /// Executes a component-wise IsPositiveInfinity
-        /// </summary>
-        public static bvec2 IsPositiveInfinity(vec2 v) => new bvec2(float.IsPositiveInfinity(v.x), float.IsPositiveInfinity(v.y));
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

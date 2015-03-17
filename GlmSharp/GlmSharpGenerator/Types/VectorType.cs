@@ -382,6 +382,10 @@ namespace GlmSharpGenerator.Types
             {
                 yield return new ComponentWiseStaticFunction(Fields, boolVec, "Not", this, "v", "!{0}");
             }
+            
+            // Basetype test functions
+            foreach (var kvp in BaseType.TypeTestFuncs)
+                yield return new ComponentWiseStaticFunction(Fields, boolVec, kvp.Key, this, "v", kvp.Value);
         }
 
         protected override IEnumerable<string> Body
@@ -408,15 +412,6 @@ namespace GlmSharpGenerator.Types
                         foreach (var line in "Returns a string representation of this vector using a provided seperator and a format and format provider for each component.".AsComment()) yield return line;
                         yield return string.Format("public string ToString(string sep, string format, IFormatProvider provider) => {0};", CompString.Select(c => c + ".ToString(format, provider)").Aggregated(" + sep + "));
                     }
-                }
-
-                // Basetype test functions
-                foreach (var kvp in BaseType.TypeTestFuncs)
-                {
-                    var funcName = kvp.Key;
-                    var funcImpl = kvp.Value;
-                    foreach (var line in string.Format("Executes a component-wise {0}", funcName).AsComment()) yield return line;
-                    yield return string.Format("public static bvec{0} {1}({2} v) => new bvec{0}({3});", Components, funcName, NameThat, CompString.Select(c => string.Format(funcImpl, "v." + c)).CommaSeparated());
                 }
 
                 // Parsing

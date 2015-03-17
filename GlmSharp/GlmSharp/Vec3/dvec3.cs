@@ -528,6 +528,56 @@ namespace GlmSharp
         /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec3 LesserThanEqual(double lhs, double rhs) => new bvec3(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsInfinity (double.IsInfinity(v)).
+        /// </summary>
+        public static bvec3 IsInfinity(dvec3 v) => new bvec3(double.IsInfinity(v.x), double.IsInfinity(v.y), double.IsInfinity(v.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsInfinity (double.IsInfinity(v)).
+        /// </summary>
+        public static bvec3 IsInfinity(double v) => new bvec3(double.IsInfinity(v));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsFinite (!double.IsNaN(v) &amp;&amp; !double.IsInfinity(v)).
+        /// </summary>
+        public static bvec3 IsFinite(dvec3 v) => new bvec3(!double.IsNaN(v.x) && !double.IsInfinity(v.x), !double.IsNaN(v.y) && !double.IsInfinity(v.y), !double.IsNaN(v.z) && !double.IsInfinity(v.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsFinite (!double.IsNaN(v) &amp;&amp; !double.IsInfinity(v)).
+        /// </summary>
+        public static bvec3 IsFinite(double v) => new bvec3(!double.IsNaN(v) && !double.IsInfinity(v));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsNaN (double.IsNaN(v)).
+        /// </summary>
+        public static bvec3 IsNaN(dvec3 v) => new bvec3(double.IsNaN(v.x), double.IsNaN(v.y), double.IsNaN(v.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsNaN (double.IsNaN(v)).
+        /// </summary>
+        public static bvec3 IsNaN(double v) => new bvec3(double.IsNaN(v));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsNegativeInfinity (double.IsNegativeInfinity(v)).
+        /// </summary>
+        public static bvec3 IsNegativeInfinity(dvec3 v) => new bvec3(double.IsNegativeInfinity(v.x), double.IsNegativeInfinity(v.y), double.IsNegativeInfinity(v.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsNegativeInfinity (double.IsNegativeInfinity(v)).
+        /// </summary>
+        public static bvec3 IsNegativeInfinity(double v) => new bvec3(double.IsNegativeInfinity(v));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsPositiveInfinity (double.IsPositiveInfinity(v)).
+        /// </summary>
+        public static bvec3 IsPositiveInfinity(dvec3 v) => new bvec3(double.IsPositiveInfinity(v.x), double.IsPositiveInfinity(v.y), double.IsPositiveInfinity(v.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of IsPositiveInfinity (double.IsPositiveInfinity(v)).
+        /// </summary>
+        public static bvec3 IsPositiveInfinity(double v) => new bvec3(double.IsPositiveInfinity(v));
 
         #endregion
 
@@ -556,31 +606,6 @@ namespace GlmSharp
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
         public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
-        
-        /// <summary>
-        /// Executes a component-wise IsInfinity
-        /// </summary>
-        public static bvec3 IsInfinity(dvec3 v) => new bvec3(double.IsInfinity(v.x), double.IsInfinity(v.y), double.IsInfinity(v.z));
-        
-        /// <summary>
-        /// Executes a component-wise IsFinite
-        /// </summary>
-        public static bvec3 IsFinite(dvec3 v) => new bvec3(!double.IsNaN(v.x) && !double.IsInfinity(v.x), !double.IsNaN(v.y) && !double.IsInfinity(v.y), !double.IsNaN(v.z) && !double.IsInfinity(v.z));
-        
-        /// <summary>
-        /// Executes a component-wise IsNaN
-        /// </summary>
-        public static bvec3 IsNaN(dvec3 v) => new bvec3(double.IsNaN(v.x), double.IsNaN(v.y), double.IsNaN(v.z));
-        
-        /// <summary>
-        /// Executes a component-wise IsNegativeInfinity
-        /// </summary>
-        public static bvec3 IsNegativeInfinity(dvec3 v) => new bvec3(double.IsNegativeInfinity(v.x), double.IsNegativeInfinity(v.y), double.IsNegativeInfinity(v.z));
-        
-        /// <summary>
-        /// Executes a component-wise IsPositiveInfinity
-        /// </summary>
-        public static bvec3 IsPositiveInfinity(dvec3 v) => new bvec3(double.IsPositiveInfinity(v.x), double.IsPositiveInfinity(v.y), double.IsPositiveInfinity(v.z));
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
