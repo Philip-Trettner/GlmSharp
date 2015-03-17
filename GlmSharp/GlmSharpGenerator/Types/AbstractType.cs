@@ -73,6 +73,7 @@ namespace GlmSharpGenerator.Types
         private Property[] staticProperties;
         private ImplicitOperator[] implicitOperators;
         private ExplicitOperator[] explicitOperators;
+        private Operator[] operators;
         private Function[] functions;
         private Function[] staticFunctions;
         private Indexer[] indexer;
@@ -98,6 +99,7 @@ namespace GlmSharpGenerator.Types
             staticProperties = members.Where(m => m.Static).OfType<Property>().ToArray();
             implicitOperators = members.OfType<ImplicitOperator>().ToArray();
             explicitOperators = members.OfType<ExplicitOperator>().ToArray();
+            operators = members.OfType<Operator>().ToArray();
             functions = members.Where(m => !m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
             staticFunctions = members.Where(m => m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
             indexer = members.OfType<Indexer>().ToArray();
@@ -217,6 +219,18 @@ namespace GlmSharpGenerator.Types
                     yield return "        #region Static Properties";
                     foreach (var prop in staticProperties)
                         foreach (var line in prop.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (operators.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Operators";
+                    foreach (var op in operators)
+                        foreach (var line in op.Lines)
                             yield return line.Indent(2);
                     yield return "";
                     yield return "        #endregion";

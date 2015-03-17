@@ -50,6 +50,7 @@
     <Compile Include="Members\ImplicitOperator.cs" />
     <Compile Include="Members\Indexer.cs" />
     <Compile Include="Members\Member.cs" />
+    <Compile Include="Members\Operator.cs" />
     <Compile Include="Members\Property.cs" />
     <Compile Include="Members\StaticProperty.cs" />
     <Compile Include="Types\AnyType.cs" />

@@ -326,6 +326,20 @@ namespace GlmSharpGenerator.Types
                 },
                 Comment = "Returns true iff this equals rhs type- and component-wise."
             };
+
+            yield return new Operator(BuiltinType.TypeBool, "==")
+            {
+                Parameters = this.LhsRhs(),
+                CodeString = "lhs.Equals(rhs)",
+                Comment = "Returns true iff this equals rhs component-wise."
+            };
+
+            yield return new Operator(BuiltinType.TypeBool, "!=")
+            {
+                Parameters = this.LhsRhs(),
+                CodeString = "!lhs.Equals(rhs)",
+                Comment = "Returns true iff this does not equal rhs (component-wise)."
+            };
         }
 
         protected override IEnumerable<string> Body
@@ -333,13 +347,7 @@ namespace GlmSharpGenerator.Types
             get
             {
                 // Equality comparisons
-
-                foreach (var line in "Returns true iff this equals rhs component-wise.".AsComment()) yield return line;
-                yield return string.Format("public static bool operator ==({0} lhs, {0} rhs) => lhs.Equals(rhs);", NameThat);
-
-                foreach (var line in "Returns true iff this does not equal rhs (component-wise).".AsComment()) yield return line;
-                yield return string.Format("public static bool operator !=({0} lhs, {0} rhs) => !lhs.Equals(rhs);", NameThat);
-
+                
                 foreach (var line in "Returns a hash code for this instance.".AsComment()) yield return line;
                 yield return "public override int GetHashCode()";
                 yield return "{";

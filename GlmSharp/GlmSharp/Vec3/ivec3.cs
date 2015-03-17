@@ -317,6 +317,21 @@ namespace GlmSharp
         #endregion
 
 
+        #region Operators
+        
+        /// <summary>
+        /// Returns true iff this equals rhs component-wise.
+        /// </summary>
+        public static bool operator==(ivec3 lhs, ivec3 rhs) => lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns true iff this does not equal rhs (component-wise).
+        /// </summary>
+        public static bool operator!=(ivec3 lhs, ivec3 rhs) => !lhs.Equals(rhs);
+
+        #endregion
+
+
         #region Functions
         
         /// <summary>
@@ -350,16 +365,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns true iff this equals rhs component-wise.
-        /// </summary>
-        public static bool operator ==(ivec3 lhs, ivec3 rhs) => lhs.Equals(rhs);
-        
-        /// <summary>
-        /// Returns true iff this does not equal rhs (component-wise).
-        /// </summary>
-        public static bool operator !=(ivec3 lhs, ivec3 rhs) => !lhs.Equals(rhs);
         
         /// <summary>
         /// Returns a hash code for this instance.
