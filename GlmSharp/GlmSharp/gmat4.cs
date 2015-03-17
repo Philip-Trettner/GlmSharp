@@ -271,7 +271,7 @@ namespace GlmSharp
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
-        /// Returns the number of FieldCount (16).
+        /// Returns the number of Fields (4 x 4 = 16).
         /// </summary>
         public int Count => 16;
         

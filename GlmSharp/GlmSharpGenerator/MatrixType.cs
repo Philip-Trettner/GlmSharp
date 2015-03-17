@@ -245,7 +245,7 @@ namespace GlmSharpGenerator
 
 
                 // Indexer
-                foreach (var line in string.Format("Returns the number of FieldCount ({0}).", FieldCount).AsComment()) yield return line;
+                foreach (var line in string.Format("Returns the number of Fields ({0} x {1} = {2}).", Columns, Rows, FieldCount).AsComment()) yield return line;
                 yield return string.Format("public int Count => {0};", FieldCount);
 
                 foreach (var line in "Gets/Sets a specific indexed component (a bit slower than direct access).".AsComment()) yield return line;
