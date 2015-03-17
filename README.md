@@ -6,7 +6,7 @@ The naming and behavior is inspired by the excellent [OpenGL Mathematics](http:/
 
 ## NuGet
 
-Install via [NuGet](https://www.nuget.org/):
+Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
 
 > PM> Install-Package GlmSharp
 
