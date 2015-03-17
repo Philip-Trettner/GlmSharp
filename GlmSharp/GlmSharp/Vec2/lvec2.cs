@@ -89,45 +89,17 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_lvec2 swizzle => new swizzle_lvec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static lvec2 Zero { get; } = new lvec2(0, 0);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static lvec2 Ones { get; } = new lvec2(1, 1);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static lvec2 UnitX { get; } = new lvec2(1, 0);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static lvec2 UnitY { get; } = new lvec2(0, 1);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public long[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Implicit Operators
         
         /// <summary>
         /// Implicitly converts this to a decvec2.
         /// </summary>
         public static implicit operator decvec2(lvec2 v) => new decvec2((decimal)v.x, (decimal)v.y);
+
+        #endregion
+
+
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a ivec2.
@@ -238,6 +210,49 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(lvec2 v) => new bvec4(v.x != 0, v.y != 0, false, false);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_lvec2 swizzle => new swizzle_lvec2(x, y);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public long[] Values => new[] { x, y };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static lvec2 Zero { get; } = new lvec2(0, 0);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static lvec2 Ones { get; } = new lvec2(1, 1);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static lvec2 UnitX { get; } = new lvec2(1, 0);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static lvec2 UnitY { get; } = new lvec2(0, 1);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

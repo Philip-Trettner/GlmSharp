@@ -110,45 +110,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_decvec3 swizzle => new swizzle_decvec3(x, y, z);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static decvec3 Zero { get; } = new decvec3(0m, 0m, 0m);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static decvec3 Ones { get; } = new decvec3(1m, 1m, 1m);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static decvec3 UnitX { get; } = new decvec3(1m, 0m, 0m);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static decvec3 UnitY { get; } = new decvec3(0m, 1m, 0m);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static decvec3 UnitZ { get; } = new decvec3(0m, 0m, 1m);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public decimal[] Values => new[] { x, y, z };
-
-        #endregion
-
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a ivec2.
@@ -264,6 +226,54 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(decvec3 v) => new bvec4(v.x != 0m, v.y != 0m, v.z != 0m, false);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_decvec3 swizzle => new swizzle_decvec3(x, y, z);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public decimal[] Values => new[] { x, y, z };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static decvec3 Zero { get; } = new decvec3(0m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static decvec3 Ones { get; } = new decvec3(1m, 1m, 1m);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static decvec3 UnitX { get; } = new decvec3(1m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static decvec3 UnitY { get; } = new decvec3(0m, 1m, 0m);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static decvec3 UnitZ { get; } = new decvec3(0m, 0m, 1m);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

@@ -144,12 +144,37 @@ namespace GlmSharp
         #endregion
 
 
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec2.
+        /// </summary>
+        public static explicit operator cvec2(cvec4 v) => new cvec2((Complex)v.x, (Complex)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec3.
+        /// </summary>
+        public static explicit operator cvec3(cvec4 v) => new cvec3((Complex)v.x, (Complex)v.y, (Complex)v.z);
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
         /// </summary>
         public swizzle_cvec4 swizzle => new swizzle_cvec4(x, y, z, w);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public Complex[] Values => new[] { x, y, z, w };
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero vector
@@ -205,24 +230,9 @@ namespace GlmSharp
         /// Predefined unit-imaginary-W vector
         /// </summary>
         public static cvec4 ImaginaryUnitW { get; } = new cvec4(0.0, 0.0, 0.0, Complex.ImaginaryOne);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public Complex[] Values => new[] { x, y, z, w };
 
         #endregion
 
-        
-        /// <summary>
-        /// Explicitly converts this to a cvec2.
-        /// </summary>
-        public static explicit operator cvec2(cvec4 v) => new cvec2((Complex)v.x, (Complex)v.y);
-        
-        /// <summary>
-        /// Explicitly converts this to a cvec3.
-        /// </summary>
-        public static explicit operator cvec3(cvec4 v) => new cvec3((Complex)v.x, (Complex)v.y, (Complex)v.z);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

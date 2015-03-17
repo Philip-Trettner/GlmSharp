@@ -89,40 +89,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_decvec2 swizzle => new swizzle_decvec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static decvec2 Zero { get; } = new decvec2(0m, 0m);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static decvec2 Ones { get; } = new decvec2(1m, 1m);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static decvec2 UnitX { get; } = new decvec2(1m, 0m);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static decvec2 UnitY { get; } = new decvec2(0m, 1m);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public decimal[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a ivec2.
@@ -238,6 +205,49 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(decvec2 v) => new bvec4(v.x != 0m, v.y != 0m, false, false);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_decvec2 swizzle => new swizzle_decvec2(x, y);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public decimal[] Values => new[] { x, y };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static decvec2 Zero { get; } = new decvec2(0m, 0m);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static decvec2 Ones { get; } = new decvec2(1m, 1m);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static decvec2 UnitX { get; } = new decvec2(1m, 0m);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static decvec2 UnitY { get; } = new decvec2(0m, 1m);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

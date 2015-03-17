@@ -110,45 +110,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_ivec3 swizzle => new swizzle_ivec3(x, y, z);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static ivec3 Zero { get; } = new ivec3(0, 0, 0);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static ivec3 Ones { get; } = new ivec3(1, 1, 1);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static ivec3 UnitX { get; } = new ivec3(1, 0, 0);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static ivec3 UnitY { get; } = new ivec3(0, 1, 0);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static ivec3 UnitZ { get; } = new ivec3(0, 0, 1);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public int[] Values => new[] { x, y, z };
-
-        #endregion
-
+        #region Implicit Operators
         
         /// <summary>
         /// Implicitly converts this to a lvec3.
@@ -174,6 +136,11 @@ namespace GlmSharp
         /// Implicitly converts this to a cvec3.
         /// </summary>
         public static implicit operator cvec3(ivec3 v) => new cvec3((Complex)v.x, (Complex)v.y, (Complex)v.z);
+
+        #endregion
+
+
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a ivec2.
@@ -264,6 +231,54 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(ivec3 v) => new bvec4(v.x != 0, v.y != 0, v.z != 0, false);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_ivec3 swizzle => new swizzle_ivec3(x, y, z);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public int[] Values => new[] { x, y, z };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static ivec3 Zero { get; } = new ivec3(0, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static ivec3 Ones { get; } = new ivec3(1, 1, 1);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static ivec3 UnitX { get; } = new ivec3(1, 0, 0);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static ivec3 UnitY { get; } = new ivec3(0, 1, 0);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static ivec3 UnitZ { get; } = new ivec3(0, 0, 1);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

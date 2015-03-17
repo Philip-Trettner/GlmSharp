@@ -144,55 +144,17 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_dvec4 swizzle => new swizzle_dvec4(x, y, z, w);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static dvec4 Zero { get; } = new dvec4(0.0, 0.0, 0.0, 0.0);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static dvec4 Ones { get; } = new dvec4(1.0, 1.0, 1.0, 1.0);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static dvec4 UnitX { get; } = new dvec4(1.0, 0.0, 0.0, 0.0);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static dvec4 UnitY { get; } = new dvec4(0.0, 1.0, 0.0, 0.0);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static dvec4 UnitZ { get; } = new dvec4(0.0, 0.0, 1.0, 0.0);
-        
-        /// <summary>
-        /// Predefined unit-W vector
-        /// </summary>
-        public static dvec4 UnitW { get; } = new dvec4(0.0, 0.0, 0.0, 1.0);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public double[] Values => new[] { x, y, z, w };
-
-        #endregion
-
+        #region Implicit Operators
         
         /// <summary>
         /// Implicitly converts this to a cvec4.
         /// </summary>
         public static implicit operator cvec4(dvec4 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, (Complex)v.w);
+
+        #endregion
+
+
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a ivec2.
@@ -303,6 +265,59 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4.
         /// </summary>
         public static explicit operator bvec4(dvec4 v) => new bvec4(v.x != 0.0, v.y != 0.0, v.z != 0.0, v.w != 0.0);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_dvec4 swizzle => new swizzle_dvec4(x, y, z, w);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public double[] Values => new[] { x, y, z, w };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static dvec4 Zero { get; } = new dvec4(0.0, 0.0, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static dvec4 Ones { get; } = new dvec4(1.0, 1.0, 1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static dvec4 UnitX { get; } = new dvec4(1.0, 0.0, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static dvec4 UnitY { get; } = new dvec4(0.0, 1.0, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static dvec4 UnitZ { get; } = new dvec4(0.0, 0.0, 1.0, 0.0);
+        
+        /// <summary>
+        /// Predefined unit-W vector
+        /// </summary>
+        public static dvec4 UnitW { get; } = new dvec4(0.0, 0.0, 0.0, 1.0);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

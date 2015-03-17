@@ -219,53 +219,59 @@ namespace GlmSharpGenerator.Types
                         Comment = "from-vector-and-value constructor (empty fields are zero/false)"
                     };
             }
+
+            // implicit upcasts
+            var implicits = new HashSet<BuiltinType>();
+            var upcasts = BuiltinType.Upcasts;
+            foreach (var ukvp in upcasts.Where(k => k.Key == BaseType))
+            {
+                var otherType = ukvp.Value;
+                implicits.Add(otherType);
+                var targetType = new VectorType(otherType, Components);
+
+                yield return new ImplicitOperator(targetType)
+                {
+                    ParameterString = NameThat + " v",
+                    CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(Components, otherType.ZeroValue)),
+                    Comment = string.Format("Implicitly converts this to a {0}.", targetType.Name),
+                };
+            }
+
+            // explicit casts
+            foreach (var oType in BuiltinType.BaseTypes)
+            {
+                var otherType = oType;
+                if (otherType.Generic != BaseType.Generic)
+                    continue; // cannot mix generic/non-generic
+                if (BaseType.IsComplex && !otherType.IsComplex)
+                    continue; // cannot "downcast" complex type
+
+                for (var comps = 2; comps <= 4; ++comps)
+                {
+                    if (otherType == BaseType && comps == Components)
+                        continue; // same type and comps not useful
+
+                    if (comps == Components && implicits.Contains(otherType))
+                        continue; // already has an implicit conversion
+
+                    var commentAppendix = "";
+                    if (comps > Components)
+                        commentAppendix = " (Higher components are zeroed)";
+                    var targetType = new VectorType(otherType, comps);
+                    yield return new ExplicitOperator(targetType)
+                    {
+                        ParameterString = NameThat + " v",
+                        CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(comps, otherType.ZeroValue)),
+                        Comment = string.Format("Explicitly converts this to a {0}.{1}", targetType.Name, commentAppendix)
+                    };
+                }
+            }
         }
 
         protected override IEnumerable<string> Body
         {
             get
             {
-                // implicit upcasts
-                var implicits = new HashSet<BuiltinType>();
-                var upcasts = BuiltinType.Upcasts;
-                foreach (var ukvp in upcasts.Where(k => k.Key == BaseType))
-                {
-                    var otherType = ukvp.Value;
-                    implicits.Add(otherType);
-
-                    var targetType = otherType.Prefix + "vec" + Components;
-                    var targetTypeThat = otherType.Prefix + "vec" + Components + GenericSuffix;
-                    foreach (var line in string.Format("Implicitly converts this to a {0}.", targetType).AsComment()) yield return line;
-                    yield return string.Format("public static implicit operator {0}({1} v) => new {0}({2});", targetTypeThat, NameThat, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(Components, otherType.ZeroValue).CommaSeparated());
-                }
-
-                // explicit casts
-                foreach (var oType in BuiltinType.BaseTypes)
-                {
-                    var otherType = oType;
-                    if (otherType.Generic != BaseType.Generic)
-                        continue; // cannot mix generic/non-generic
-                    if (BaseType.IsComplex && !otherType.IsComplex)
-                        continue; // cannot "downcast" complex type
-
-                    for (var comps = 2; comps <= 4; ++comps)
-                    {
-                        if (otherType == BaseType && comps == Components)
-                            continue; // same type and comps not useful
-
-                        if (comps == Components && implicits.Contains(otherType))
-                            continue; // already has an implicit conversion
-
-                        var commentAppendix = "";
-                        if (comps > Components)
-                            commentAppendix = " (Higher components are zeroed)";
-                        var targetType = otherType.Prefix + "vec" + comps;
-                        var targetTypeThat = otherType.Prefix + "vec" + comps + GenericSuffix;
-                        foreach (var line in string.Format("Explicitly converts this to a {0}.{1}", targetType, commentAppendix).AsComment()) yield return line;
-                        yield return string.Format("public static explicit operator {0}({1} v) => new {0}({2});", targetTypeThat, NameThat, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(comps, otherType.ZeroValue).CommaSeparated());
-                    }
-                }
-
                 // IEnumerable
                 foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
                 yield return string.Format("public IEnumerator<{0}> GetEnumerator()", BaseTypeName);
@@ -562,6 +568,7 @@ namespace GlmSharpGenerator.Types
                         yield return ComponentWiseOperatorScalarL(op, BaseTypeName);
 
                         // upcasts
+                        var upcasts = BuiltinType.Upcasts; // TODO: REMOVEME
                         foreach (var ukvp in upcasts.Where(k => k.Key == BaseType))
                         {
                             var upType = ukvp.Value;

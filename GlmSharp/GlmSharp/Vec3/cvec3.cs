@@ -110,12 +110,37 @@ namespace GlmSharp
         #endregion
 
 
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec2.
+        /// </summary>
+        public static explicit operator cvec2(cvec3 v) => new cvec2((Complex)v.x, (Complex)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator cvec4(cvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, 0.0);
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
         /// </summary>
         public swizzle_cvec3 swizzle => new swizzle_cvec3(x, y, z);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public Complex[] Values => new[] { x, y, z };
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero vector
@@ -161,24 +186,9 @@ namespace GlmSharp
         /// Predefined unit-imaginary-Z vector
         /// </summary>
         public static cvec3 ImaginaryUnitZ { get; } = new cvec3(0.0, 0.0, Complex.ImaginaryOne);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public Complex[] Values => new[] { x, y, z };
 
         #endregion
 
-        
-        /// <summary>
-        /// Explicitly converts this to a cvec2.
-        /// </summary>
-        public static explicit operator cvec2(cvec3 v) => new cvec2((Complex)v.x, (Complex)v.y);
-        
-        /// <summary>
-        /// Explicitly converts this to a cvec4. (Higher components are zeroed)
-        /// </summary>
-        public static explicit operator cvec4(cvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, 0.0);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

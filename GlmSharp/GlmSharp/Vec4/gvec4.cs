@@ -144,25 +144,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_gvec4<T> swizzle => new swizzle_gvec4<T>(x, y, z, w);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static gvec4<T> Zero { get; } = new gvec4<T>(default(T), default(T), default(T), default(T));
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public T[] Values => new[] { x, y, z, w };
-
-        #endregion
-
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a gvec2.
@@ -173,6 +155,34 @@ namespace GlmSharp
         /// Explicitly converts this to a gvec3.
         /// </summary>
         public static explicit operator gvec3<T>(gvec4<T> v) => new gvec3<T>((T)v.x, (T)v.y, (T)v.z);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_gvec4<T> swizzle => new swizzle_gvec4<T>(x, y, z, w);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public T[] Values => new[] { x, y, z, w };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static gvec4<T> Zero { get; } = new gvec4<T>(default(T), default(T), default(T), default(T));
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

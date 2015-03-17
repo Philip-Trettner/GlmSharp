@@ -38,7 +38,7 @@ namespace GlmSharpGenerator.Types
         /// Reference to base type
         /// </summary>
         public BuiltinType BaseType { get; set; }
-        
+
         /// <summary>
         /// Namespace of this type
         /// </summary>
@@ -70,6 +70,11 @@ namespace GlmSharpGenerator.Types
         private Field[] fields;
         private Constructor[] constructors;
         private Property[] properties;
+        private Property[] staticProperties;
+        private ImplicitOperator[] implicitOperators;
+        private ExplicitOperator[] explicitOperators;
+        private Function[] functions;
+        private Function[] staticFunctions;
 
         /// <summary>
         /// Generate all members
@@ -88,7 +93,12 @@ namespace GlmSharpGenerator.Types
 
             fields = members.OfType<Field>().ToArray();
             constructors = members.OfType<Constructor>().ToArray();
-            properties = members.OfType<Property>().ToArray();
+            properties = members.Where(m => !m.Static).OfType<Property>().ToArray();
+            staticProperties = members.Where(m => m.Static).OfType<Property>().ToArray();
+            implicitOperators = members.OfType<ImplicitOperator>().ToArray();
+            explicitOperators = members.OfType<ExplicitOperator>().ToArray();
+            functions = members.Where(m => !m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
+            staticFunctions = members.Where(m => m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
         }
 
         /// <summary>
@@ -151,12 +161,72 @@ namespace GlmSharpGenerator.Types
                     yield return "";
                 }
 
+                if (implicitOperators.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Implicit Operators";
+                    foreach (var op in implicitOperators)
+                        foreach (var line in op.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (explicitOperators.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Explicit Operators";
+                    foreach (var op in explicitOperators)
+                        foreach (var line in op.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
                 if (properties.Length > 0)
                 {
                     yield return "";
                     yield return "        #region Properties";
                     foreach (var prop in properties)
                         foreach (var line in prop.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (staticProperties.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Static Properties";
+                    foreach (var prop in staticProperties)
+                        foreach (var line in prop.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (functions.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Functions";
+                    foreach (var func in functions)
+                        foreach (var line in func.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (staticFunctions.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Static Functions";
+                    foreach (var func in staticFunctions)
+                        foreach (var line in func.Lines)
                             yield return line.Indent(2);
                     yield return "";
                     yield return "        #endregion";

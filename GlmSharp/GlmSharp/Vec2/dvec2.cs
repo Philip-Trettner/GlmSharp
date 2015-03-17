@@ -89,45 +89,17 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_dvec2 swizzle => new swizzle_dvec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static dvec2 Zero { get; } = new dvec2(0.0, 0.0);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static dvec2 Ones { get; } = new dvec2(1.0, 1.0);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static dvec2 UnitX { get; } = new dvec2(1.0, 0.0);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static dvec2 UnitY { get; } = new dvec2(0.0, 1.0);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public double[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Implicit Operators
         
         /// <summary>
         /// Implicitly converts this to a cvec2.
         /// </summary>
         public static implicit operator cvec2(dvec2 v) => new cvec2((Complex)v.x, (Complex)v.y);
+
+        #endregion
+
+
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a ivec2.
@@ -238,6 +210,49 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(dvec2 v) => new bvec4(v.x != 0.0, v.y != 0.0, false, false);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_dvec2 swizzle => new swizzle_dvec2(x, y);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public double[] Values => new[] { x, y };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static dvec2 Zero { get; } = new dvec2(0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static dvec2 Ones { get; } = new dvec2(1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static dvec2 UnitX { get; } = new dvec2(1.0, 0.0);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static dvec2 UnitY { get; } = new dvec2(0.0, 1.0);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

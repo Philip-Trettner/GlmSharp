@@ -89,40 +89,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_vec2 swizzle => new swizzle_vec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static vec2 Zero { get; } = new vec2(0f, 0f);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static vec2 Ones { get; } = new vec2(1f, 1f);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static vec2 UnitX { get; } = new vec2(1f, 0f);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static vec2 UnitY { get; } = new vec2(0f, 1f);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public float[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Implicit Operators
         
         /// <summary>
         /// Implicitly converts this to a dvec2.
@@ -133,6 +100,11 @@ namespace GlmSharp
         /// Implicitly converts this to a cvec2.
         /// </summary>
         public static implicit operator cvec2(vec2 v) => new cvec2((Complex)v.x, (Complex)v.y);
+
+        #endregion
+
+
+        #region Explicit Operators
         
         /// <summary>
         /// Explicitly converts this to a ivec2.
@@ -238,6 +210,49 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(vec2 v) => new bvec4(v.x != 0f, v.y != 0f, false, false);
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_vec2 swizzle => new swizzle_vec2(x, y);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public float[] Values => new[] { x, y };
+
+        #endregion
+
+
+        #region Static Properties
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static vec2 Zero { get; } = new vec2(0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static vec2 Ones { get; } = new vec2(1f, 1f);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static vec2 UnitX { get; } = new vec2(1f, 0f);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static vec2 UnitY { get; } = new vec2(0f, 1f);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.

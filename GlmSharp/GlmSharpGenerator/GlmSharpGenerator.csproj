@@ -44,7 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Members\Constructor.cs" />
+    <Compile Include="Members\ExplicitOperator.cs" />
     <Compile Include="Members\Field.cs" />
+    <Compile Include="Members\Function.cs" />
+    <Compile Include="Members\ImplicitOperator.cs" />
     <Compile Include="Members\Member.cs" />
     <Compile Include="Members\Property.cs" />
     <Compile Include="Members\StaticProperty.cs" />

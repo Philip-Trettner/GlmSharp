@@ -89,12 +89,37 @@ namespace GlmSharp
         #endregion
 
 
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator cvec3(cvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, 0.0);
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator cvec4(cvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, 0.0, 0.0);
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
         /// </summary>
         public swizzle_cvec2 swizzle => new swizzle_cvec2(x, y);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public Complex[] Values => new[] { x, y };
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero vector
@@ -130,24 +155,9 @@ namespace GlmSharp
         /// Predefined unit-imaginary-Y vector
         /// </summary>
         public static cvec2 ImaginaryUnitY { get; } = new cvec2(0.0, Complex.ImaginaryOne);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public Complex[] Values => new[] { x, y };
 
         #endregion
 
-        
-        /// <summary>
-        /// Explicitly converts this to a cvec3. (Higher components are zeroed)
-        /// </summary>
-        public static explicit operator cvec3(cvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, 0.0);
-        
-        /// <summary>
-        /// Explicitly converts this to a cvec4. (Higher components are zeroed)
-        /// </summary>
-        public static explicit operator cvec4(cvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, 0.0, 0.0);
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
