@@ -39,40 +39,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_decvec2 swizzle => new swizzle_decvec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static decvec2 Zero { get; } = new decvec2(0m, 0m);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static decvec2 Ones { get; } = new decvec2(1m, 1m);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static decvec2 UnitX { get; } = new decvec2(1m, 0m);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static decvec2 UnitY { get; } = new decvec2(0m, 1m);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public decimal[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -118,6 +85,44 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_decvec2 swizzle => new swizzle_decvec2(x, y);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static decvec2 Zero { get; } = new decvec2(0m, 0m);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static decvec2 Ones { get; } = new decvec2(1m, 1m);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static decvec2 UnitX { get; } = new decvec2(1m, 0m);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static decvec2 UnitY { get; } = new decvec2(0m, 1m);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public decimal[] Values => new[] { x, y };
+
+        #endregion
+
         
         /// <summary>
         /// Explicitly converts this to a ivec2.

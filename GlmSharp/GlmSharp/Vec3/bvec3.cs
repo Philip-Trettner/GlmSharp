@@ -45,45 +45,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_bvec3 swizzle => new swizzle_bvec3(x, y, z);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static bvec3 Zero { get; } = new bvec3(false, false, false);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static bvec3 Ones { get; } = new bvec3(true, true, true);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static bvec3 UnitX { get; } = new bvec3(true, false, false);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static bvec3 UnitY { get; } = new bvec3(false, true, false);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static bvec3 UnitZ { get; } = new bvec3(false, false, true);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public bool[] Values => new[] { x, y, z };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -144,6 +106,49 @@ namespace GlmSharp
             this.y = v.y;
             this.z = v.z;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_bvec3 swizzle => new swizzle_bvec3(x, y, z);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static bvec3 Zero { get; } = new bvec3(false, false, false);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static bvec3 Ones { get; } = new bvec3(true, true, true);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static bvec3 UnitX { get; } = new bvec3(true, false, false);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static bvec3 UnitY { get; } = new bvec3(false, true, false);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static bvec3 UnitZ { get; } = new bvec3(false, false, true);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public bool[] Values => new[] { x, y, z };
+
+        #endregion
+
         
         /// <summary>
         /// Explicitly converts this to a ivec2.

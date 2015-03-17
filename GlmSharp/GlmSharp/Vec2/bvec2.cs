@@ -39,40 +39,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_bvec2 swizzle => new swizzle_bvec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static bvec2 Zero { get; } = new bvec2(false, false);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static bvec2 Ones { get; } = new bvec2(true, true);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static bvec2 UnitX { get; } = new bvec2(true, false);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static bvec2 UnitY { get; } = new bvec2(false, true);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public bool[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -118,6 +85,44 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_bvec2 swizzle => new swizzle_bvec2(x, y);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static bvec2 Zero { get; } = new bvec2(false, false);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static bvec2 Ones { get; } = new bvec2(true, true);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static bvec2 UnitX { get; } = new bvec2(true, false);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static bvec2 UnitY { get; } = new bvec2(false, true);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public bool[] Values => new[] { x, y };
+
+        #endregion
+
         
         /// <summary>
         /// Explicitly converts this to a ivec2.

@@ -51,25 +51,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_gvec4<T> swizzle => new swizzle_gvec4<T>(x, y, z, w);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static gvec4<T> Zero { get; } = new gvec4<T>(default(T), default(T), default(T), default(T));
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public T[] Values => new[] { x, y, z, w };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -158,6 +140,29 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_gvec4<T> swizzle => new swizzle_gvec4<T>(x, y, z, w);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static gvec4<T> Zero { get; } = new gvec4<T>(default(T), default(T), default(T), default(T));
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public T[] Values => new[] { x, y, z, w };
+
+        #endregion
+
         
         /// <summary>
         /// Explicitly converts this to a gvec2.

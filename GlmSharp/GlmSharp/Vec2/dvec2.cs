@@ -39,40 +39,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_dvec2 swizzle => new swizzle_dvec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static dvec2 Zero { get; } = new dvec2(0.0, 0.0);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static dvec2 Ones { get; } = new dvec2(1.0, 1.0);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static dvec2 UnitX { get; } = new dvec2(1.0, 0.0);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static dvec2 UnitY { get; } = new dvec2(0.0, 1.0);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public double[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -118,6 +85,44 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_dvec2 swizzle => new swizzle_dvec2(x, y);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static dvec2 Zero { get; } = new dvec2(0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static dvec2 Ones { get; } = new dvec2(1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static dvec2 UnitX { get; } = new dvec2(1.0, 0.0);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static dvec2 UnitY { get; } = new dvec2(0.0, 1.0);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public double[] Values => new[] { x, y };
+
+        #endregion
+
         
         /// <summary>
         /// Implicitly converts this to a cvec2.

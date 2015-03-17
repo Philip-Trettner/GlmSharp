@@ -45,45 +45,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_dvec3 swizzle => new swizzle_dvec3(x, y, z);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static dvec3 Zero { get; } = new dvec3(0.0, 0.0, 0.0);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static dvec3 Ones { get; } = new dvec3(1.0, 1.0, 1.0);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static dvec3 UnitX { get; } = new dvec3(1.0, 0.0, 0.0);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static dvec3 UnitY { get; } = new dvec3(0.0, 1.0, 0.0);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static dvec3 UnitZ { get; } = new dvec3(0.0, 0.0, 1.0);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public double[] Values => new[] { x, y, z };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -144,6 +106,49 @@ namespace GlmSharp
             this.y = v.y;
             this.z = v.z;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_dvec3 swizzle => new swizzle_dvec3(x, y, z);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static dvec3 Zero { get; } = new dvec3(0.0, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static dvec3 Ones { get; } = new dvec3(1.0, 1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static dvec3 UnitX { get; } = new dvec3(1.0, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static dvec3 UnitY { get; } = new dvec3(0.0, 1.0, 0.0);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static dvec3 UnitZ { get; } = new dvec3(0.0, 0.0, 1.0);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public double[] Values => new[] { x, y, z };
+
+        #endregion
+
         
         /// <summary>
         /// Implicitly converts this to a cvec3.

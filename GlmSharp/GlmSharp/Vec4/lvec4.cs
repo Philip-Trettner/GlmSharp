@@ -51,50 +51,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_lvec4 swizzle => new swizzle_lvec4(x, y, z, w);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static lvec4 Zero { get; } = new lvec4(0, 0, 0, 0);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static lvec4 Ones { get; } = new lvec4(1, 1, 1, 1);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static lvec4 UnitX { get; } = new lvec4(1, 0, 0, 0);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static lvec4 UnitY { get; } = new lvec4(0, 1, 0, 0);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static lvec4 UnitZ { get; } = new lvec4(0, 0, 1, 0);
-        
-        /// <summary>
-        /// Predefined unit-W vector
-        /// </summary>
-        public static lvec4 UnitW { get; } = new lvec4(0, 0, 0, 1);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public long[] Values => new[] { x, y, z, w };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -183,6 +140,54 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_lvec4 swizzle => new swizzle_lvec4(x, y, z, w);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static lvec4 Zero { get; } = new lvec4(0, 0, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static lvec4 Ones { get; } = new lvec4(1, 1, 1, 1);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static lvec4 UnitX { get; } = new lvec4(1, 0, 0, 0);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static lvec4 UnitY { get; } = new lvec4(0, 1, 0, 0);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static lvec4 UnitZ { get; } = new lvec4(0, 0, 1, 0);
+        
+        /// <summary>
+        /// Predefined unit-W vector
+        /// </summary>
+        public static lvec4 UnitW { get; } = new lvec4(0, 0, 0, 1);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public long[] Values => new[] { x, y, z, w };
+
+        #endregion
+
         
         /// <summary>
         /// Implicitly converts this to a decvec4.

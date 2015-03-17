@@ -39,40 +39,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_uvec2 swizzle => new swizzle_uvec2(x, y);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static uvec2 Zero { get; } = new uvec2(0u, 0u);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static uvec2 Ones { get; } = new uvec2(1u, 1u);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static uvec2 UnitX { get; } = new uvec2(1u, 0u);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static uvec2 UnitY { get; } = new uvec2(0u, 1u);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public uint[] Values => new[] { x, y };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -118,6 +85,44 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_uvec2 swizzle => new swizzle_uvec2(x, y);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static uvec2 Zero { get; } = new uvec2(0u, 0u);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static uvec2 Ones { get; } = new uvec2(1u, 1u);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static uvec2 UnitX { get; } = new uvec2(1u, 0u);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static uvec2 UnitY { get; } = new uvec2(0u, 1u);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public uint[] Values => new[] { x, y };
+
+        #endregion
+
         
         /// <summary>
         /// Implicitly converts this to a lvec2.

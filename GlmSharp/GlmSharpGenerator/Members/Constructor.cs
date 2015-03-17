@@ -20,6 +20,11 @@ namespace GlmSharpGenerator.Members
         public IEnumerable<string> Parameters { get; set; }
 
         /// <summary>
+        /// Single parameter
+        /// </summary>
+        public string ParameterString { set { Parameters = new[] { value }; } }
+
+        /// <summary>
         /// Fields to initialize
         /// </summary>
         public IEnumerable<string> Fields { get; set; }

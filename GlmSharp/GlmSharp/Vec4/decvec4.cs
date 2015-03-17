@@ -51,50 +51,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_decvec4 swizzle => new swizzle_decvec4(x, y, z, w);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static decvec4 Zero { get; } = new decvec4(0m, 0m, 0m, 0m);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static decvec4 Ones { get; } = new decvec4(1m, 1m, 1m, 1m);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static decvec4 UnitX { get; } = new decvec4(1m, 0m, 0m, 0m);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static decvec4 UnitY { get; } = new decvec4(0m, 1m, 0m, 0m);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static decvec4 UnitZ { get; } = new decvec4(0m, 0m, 1m, 0m);
-        
-        /// <summary>
-        /// Predefined unit-W vector
-        /// </summary>
-        public static decvec4 UnitW { get; } = new decvec4(0m, 0m, 0m, 1m);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public decimal[] Values => new[] { x, y, z, w };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -183,6 +140,54 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_decvec4 swizzle => new swizzle_decvec4(x, y, z, w);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static decvec4 Zero { get; } = new decvec4(0m, 0m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static decvec4 Ones { get; } = new decvec4(1m, 1m, 1m, 1m);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static decvec4 UnitX { get; } = new decvec4(1m, 0m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static decvec4 UnitY { get; } = new decvec4(0m, 1m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static decvec4 UnitZ { get; } = new decvec4(0m, 0m, 1m, 0m);
+        
+        /// <summary>
+        /// Predefined unit-W vector
+        /// </summary>
+        public static decvec4 UnitW { get; } = new decvec4(0m, 0m, 0m, 1m);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public decimal[] Values => new[] { x, y, z, w };
+
+        #endregion
+
         
         /// <summary>
         /// Explicitly converts this to a ivec2.

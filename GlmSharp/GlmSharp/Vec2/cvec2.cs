@@ -39,6 +39,56 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public cvec2(Complex x, Complex y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+        
+        /// <summary>
+        /// all-same-value constructor
+        /// </summary>
+        public cvec2(Complex v)
+        {
+            this.x = v;
+            this.y = v;
+        }
+        
+        /// <summary>
+        /// from-vector constructor (empty fields are zero/false)
+        /// </summary>
+        public cvec2(cvec2 v)
+        {
+            this.x = v.x;
+            this.y = v.y;
+        }
+        
+        /// <summary>
+        /// from-vector constructor (empty fields are zero/false)
+        /// </summary>
+        public cvec2(cvec3 v)
+        {
+            this.x = v.x;
+            this.y = v.y;
+        }
+        
+        /// <summary>
+        /// from-vector constructor (empty fields are zero/false)
+        /// </summary>
+        public cvec2(cvec4 v)
+        {
+            this.x = v.x;
+            this.y = v.y;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -88,51 +138,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public cvec2(Complex x, Complex y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-        
-        /// <summary>
-        /// all-same-value constructor
-        /// </summary>
-        public cvec2(Complex v)
-        {
-            this.x = v;
-            this.y = v;
-        }
-        
-        /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
-        /// </summary>
-        public cvec2(cvec2 v)
-        {
-            this.x = v.x;
-            this.y = v.y;
-        }
-        
-        /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
-        /// </summary>
-        public cvec2(cvec3 v)
-        {
-            this.x = v.x;
-            this.y = v.y;
-        }
-        
-        /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
-        /// </summary>
-        public cvec2(cvec4 v)
-        {
-            this.x = v.x;
-            this.y = v.y;
-        }
         
         /// <summary>
         /// Explicitly converts this to a cvec3. (Higher components are zeroed)

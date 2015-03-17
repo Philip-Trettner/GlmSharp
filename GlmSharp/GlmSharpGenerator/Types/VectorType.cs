@@ -187,30 +187,44 @@ namespace GlmSharpGenerator.Types
                 GetterLine = string.Format("new[] {{ {0} }}", CompArgString),
                 Comment = "Returns an array with all values"
             };
+
+            // ctors
+            yield return new Constructor(this, Fields)
+            {
+                Parameters = Fields.TypedArgs(BaseType),
+                Initializers = Fields,
+                Comment = "Component-wise constructor"
+            };
+            yield return new Constructor(this, Fields)
+            {
+                ParameterString = BaseTypeName + " v",
+                Initializers = "v".RepeatTimes(Components),
+                Comment = "all-same-value constructor"
+            };
+
+            for (var comps = 2; comps <= 4; ++comps)
+            {
+                yield return new Constructor(this, Fields)
+                {
+                    ParameterString = new VectorType(BaseType, comps).NameThat + " v",
+                    Initializers = "v".DotComp(comps),
+                    Comment = "from-vector constructor (empty fields are zero/false)"
+                };
+
+                for (var ucomps = comps; ucomps < Components; ++ucomps)
+                    yield return new Constructor(this, Fields)
+                    {
+                        ParameterString = new VectorType(BaseType, comps).NameThat + " v, " + SubCompParameterString(comps, ucomps),
+                        Initializers = "v".DotComp(comps).Concat(SubCompArgs(comps, ucomps)),
+                        Comment = "from-vector-and-value constructor (empty fields are zero/false)"
+                    };
+            }
         }
 
         protected override IEnumerable<string> Body
         {
             get
             {
-                // ctors
-                foreach (var line in Constructor("Component-wise constructor", CompParameterString, CompArgs)) yield return line;
-                foreach (var line in Constructor("all-same-value constructor", BaseTypeName + " v", "v".RepeatTimes(Components))) yield return line;
-
-                for (var comps = 2; comps <= 4; ++comps)
-                {
-                    foreach (var line in Constructor("from-vector constructor (empty fields are zero/false)",
-                        BaseName + comps + GenericSuffix + " v",
-                        "v".DotComp(comps)))
-                        yield return line;
-
-                    for (var ucomps = comps; ucomps < Components; ++ucomps)
-                        foreach (var line in Constructor("from-vector-and-value constructor (empty fields are zero/false)",
-                            BaseName + comps + GenericSuffix + " v, " + SubCompParameterString(comps, ucomps),
-                            "v".DotComp(comps).Concat(SubCompArgs(comps, ucomps))))
-                            yield return line;
-                }
-
                 // implicit upcasts
                 var implicits = new HashSet<BuiltinType>();
                 var upcasts = BuiltinType.Upcasts;

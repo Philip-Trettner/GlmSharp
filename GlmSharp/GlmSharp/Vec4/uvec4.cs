@@ -51,50 +51,7 @@ namespace GlmSharp
         #endregion
 
 
-        #region Properties
-        
-        /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
-        /// </summary>
-        public swizzle_uvec4 swizzle => new swizzle_uvec4(x, y, z, w);
-        
-        /// <summary>
-        /// Predefined all-zero vector
-        /// </summary>
-        public static uvec4 Zero { get; } = new uvec4(0u, 0u, 0u, 0u);
-        
-        /// <summary>
-        /// Predefined all-ones vector
-        /// </summary>
-        public static uvec4 Ones { get; } = new uvec4(1u, 1u, 1u, 1u);
-        
-        /// <summary>
-        /// Predefined unit-X vector
-        /// </summary>
-        public static uvec4 UnitX { get; } = new uvec4(1u, 0u, 0u, 0u);
-        
-        /// <summary>
-        /// Predefined unit-Y vector
-        /// </summary>
-        public static uvec4 UnitY { get; } = new uvec4(0u, 1u, 0u, 0u);
-        
-        /// <summary>
-        /// Predefined unit-Z vector
-        /// </summary>
-        public static uvec4 UnitZ { get; } = new uvec4(0u, 0u, 1u, 0u);
-        
-        /// <summary>
-        /// Predefined unit-W vector
-        /// </summary>
-        public static uvec4 UnitW { get; } = new uvec4(0u, 0u, 0u, 1u);
-        
-        /// <summary>
-        /// Returns an array with all values
-        /// </summary>
-        public uint[] Values => new[] { x, y, z, w };
-
-        #endregion
-
+        #region Constructors
         
         /// <summary>
         /// Component-wise constructor
@@ -183,6 +140,54 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+
+        #endregion
+
+
+        #region Properties
+        
+        /// <summary>
+        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// </summary>
+        public swizzle_uvec4 swizzle => new swizzle_uvec4(x, y, z, w);
+        
+        /// <summary>
+        /// Predefined all-zero vector
+        /// </summary>
+        public static uvec4 Zero { get; } = new uvec4(0u, 0u, 0u, 0u);
+        
+        /// <summary>
+        /// Predefined all-ones vector
+        /// </summary>
+        public static uvec4 Ones { get; } = new uvec4(1u, 1u, 1u, 1u);
+        
+        /// <summary>
+        /// Predefined unit-X vector
+        /// </summary>
+        public static uvec4 UnitX { get; } = new uvec4(1u, 0u, 0u, 0u);
+        
+        /// <summary>
+        /// Predefined unit-Y vector
+        /// </summary>
+        public static uvec4 UnitY { get; } = new uvec4(0u, 1u, 0u, 0u);
+        
+        /// <summary>
+        /// Predefined unit-Z vector
+        /// </summary>
+        public static uvec4 UnitZ { get; } = new uvec4(0u, 0u, 1u, 0u);
+        
+        /// <summary>
+        /// Predefined unit-W vector
+        /// </summary>
+        public static uvec4 UnitW { get; } = new uvec4(0u, 0u, 0u, 1u);
+        
+        /// <summary>
+        /// Returns an array with all values
+        /// </summary>
+        public uint[] Values => new[] { x, y, z, w };
+
+        #endregion
+
         
         /// <summary>
         /// Implicitly converts this to a lvec4.
