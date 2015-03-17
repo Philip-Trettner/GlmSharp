@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct bvec4 : IReadOnlyList<bool>, IEquatable<bvec4>
     {
+
+        #region Fields
         
         /// <summary>
         /// x-component
@@ -45,6 +47,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public bool w;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
@@ -80,6 +87,9 @@ namespace GlmSharp
         /// Predefined unit-W vector
         /// </summary>
         public static bvec4 UnitW { get; } = new bvec4(false, false, false, true);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an array with all values

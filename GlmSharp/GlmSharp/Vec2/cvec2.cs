@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct cvec2 : IReadOnlyList<Complex>, IEquatable<cvec2>
     {
+
+        #region Fields
         
         /// <summary>
         /// x-component
@@ -33,6 +35,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public Complex y;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
@@ -73,6 +80,9 @@ namespace GlmSharp
         /// Predefined unit-imaginary-Y vector
         /// </summary>
         public static cvec2 ImaginaryUnitY { get; } = new cvec2(0.0, Complex.ImaginaryOne);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an array with all values

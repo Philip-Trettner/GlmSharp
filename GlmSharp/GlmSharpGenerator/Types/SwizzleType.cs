@@ -6,14 +6,17 @@ namespace GlmSharpGenerator.Types
 {
     class SwizzleType : AbstractType
     {
-        public int Components { get; set; } = 3;
-        public override string Name => BaseName + Components;
-        public string OriginalTypeName { get; set; }
+        public int Components { get; set; }
 
-        public string CompString => "xyzw".Substring(0, Components);
+        public override string Name => BaseName + Components;
+
         public override string Namespace { get; } = "GlmSharp.Swizzle";
 
         public override string Folder => "Swizzle";
+
+        public IEnumerable<string> Fields => "xyzw".Substring(0, Components).Select(c => c.ToString());
+
+        public override string TypeComment => string.Format("Temporary vector of type {0} with {1} components, used for implementing swizzling for {2}.", BaseTypeName, Components, VectorType.Name);
 
         /// <summary>
         /// Type for swizzling
@@ -23,8 +26,6 @@ namespace GlmSharpGenerator.Types
         /// Type for swizzling
         /// </summary>
         public VectorType VectorTypeFor(int comps) => Types[BaseType.Prefix + "vec" + comps] as VectorType;
-
-        public IEnumerable<string> Fields => CompString.Select(c => c.ToString());
 
         private IEnumerable<string> Swizzle(int i)
         {
@@ -58,8 +59,6 @@ namespace GlmSharpGenerator.Types
             return s;
         }
 
-        public override string TypeComment => string.Format("Temporary vector of type {0} with {1} components, used for implementing swizzling for {2}.", BaseTypeName, Components, BaseType.Prefix + "vec" + Components);
-
         public override IEnumerable<Member> GenerateMembers()
         {
             // fields
@@ -84,26 +83,20 @@ namespace GlmSharpGenerator.Types
             foreach (var swizzle in Swizzle(0))
             {
                 var type = VectorTypeFor(swizzle.Length);
+
                 // xyzw
                 yield return new Property(swizzle, type)
                 {
                     GetterLine = Construct(type, swizzle.CommaSeparated()),
                     Comment = string.Format("Returns {0}.{1} swizzling.", VectorType.Name, swizzle)
                 };
+
                 // rgba
                 yield return new Property(ToRgba(swizzle), type)
                 {
                     GetterLine = Construct(type, swizzle.CommaSeparated()),
                     Comment = string.Format("Returns {0}.{1} swizzling (equivalent to {0}.{2}).", VectorType.Name, ToRgba(swizzle), swizzle)
                 };
-            }
-        }
-
-        protected override IEnumerable<string> Body
-        {
-            get
-            {
-                yield break;
             }
         }
     }

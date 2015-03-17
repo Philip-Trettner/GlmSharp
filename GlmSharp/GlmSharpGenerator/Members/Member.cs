@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GlmSharpGenerator.Members
 {
-    class Member
+    abstract class Member
     {
         /// <summary>
         /// Name of the member

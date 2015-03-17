@@ -22,7 +22,7 @@ namespace GlmSharpGenerator.Members
         /// <summary>
         /// Getter code
         /// </summary>
-        public IEnumerable<string> Getter { get; set; } 
+        public IEnumerable<string> Getter { get; set; }
         /// <summary>
         /// Setter code
         /// </summary>
@@ -31,11 +31,16 @@ namespace GlmSharpGenerator.Members
         /// <summary>
         /// Single-Line getter
         /// </summary>
-        public string GetterLine { set { Getter = new[] {value}; } }
+        public string GetterLine { set { Getter = new[] { value }; } }
         /// <summary>
         /// Single-Line setter
         /// </summary>
-        public string SetterLine { set { Setter = new[] {value}; } }
+        public string SetterLine { set { Setter = new[] { value }; } }
+
+        /// <summary>
+        /// Initial value
+        /// </summary>
+        public string Value { get; set; }
 
         public override string MemberPrefix => base.MemberPrefix + (Override ? " override" : "");
 
@@ -52,6 +57,12 @@ namespace GlmSharpGenerator.Members
                 foreach (var line in base.Lines)
                     yield return line;
 
+                if (!string.IsNullOrEmpty(Value))
+                {
+                    yield return string.Format("{0} {1} {2} {{ get; }} = {3};", MemberPrefix, Type.NameThat, Name, Value);
+                    yield break;
+                }
+
                 var getter = Getter?.ToArray();
                 var setter = Setter?.ToArray();
 
@@ -64,7 +75,7 @@ namespace GlmSharpGenerator.Members
                         yield return string.Format("{0} {1} {2} => {3};", MemberPrefix, Type.NameThat, Name, getter[0]);
                     else
                     {
-                        yield return string.Format("{0} {1} {2}", MemberPrefix, Type.NameThat, Name, getter[0]);
+                        yield return string.Format("{0} {1} {2}", MemberPrefix, Type.NameThat, Name);
                         yield return "{";
                         yield return "    get";
                         yield return "    {";

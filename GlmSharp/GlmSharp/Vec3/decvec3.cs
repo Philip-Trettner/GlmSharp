@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct decvec3 : IReadOnlyList<decimal>, IEquatable<decvec3>
     {
+
+        #region Fields
         
         /// <summary>
         /// x-component
@@ -39,6 +41,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public decimal z;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
@@ -69,6 +76,9 @@ namespace GlmSharp
         /// Predefined unit-Z vector
         /// </summary>
         public static decvec3 UnitZ { get; } = new decvec3(0m, 0m, 1m);
+
+        #endregion
+
         
         /// <summary>
         /// Returns an array with all values

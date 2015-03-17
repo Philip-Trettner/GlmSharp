@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct gvec3<T> : IReadOnlyList<T>, IEquatable<gvec3<T>>
     {
+
+        #region Fields
         
         /// <summary>
         /// x-component
@@ -39,6 +41,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public T z;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
@@ -49,6 +56,9 @@ namespace GlmSharp
         /// Predefined all-zero vector
         /// </summary>
         public static gvec3<T> Zero { get; } = new gvec3<T>(default(T), default(T), default(T));
+
+        #endregion
+
         
         /// <summary>
         /// Returns an array with all values

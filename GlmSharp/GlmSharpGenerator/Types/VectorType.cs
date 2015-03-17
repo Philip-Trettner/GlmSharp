@@ -8,6 +8,9 @@ namespace GlmSharpGenerator.Types
     class VectorType : AbstractType
     {
         public int Components { get; set; } = 3;
+
+        public IEnumerable<string> Fields => "xyzw".Substring(0, Components).Select(c => c.ToString());
+
         public override string Name => BaseName + Components;
 
         public override string Folder => "Vec" + Components;
@@ -26,11 +29,6 @@ namespace GlmSharpGenerator.Types
             }
         }
 
-        public override IEnumerable<Member> GenerateMembers()
-        {
-            yield break; // TODO
-        }
-
         public string CompParameterString => CompString.Select(c => BaseTypeName + " " + c).CommaSeparated();
         public IEnumerable<string> CompParameters => CompString.Select(c => BaseTypeName + " " + c);
 
@@ -39,6 +37,7 @@ namespace GlmSharpGenerator.Types
 
 
         public char ArgOf(int c) => "xyzw"[c];
+        public char ArgOfUpper(int c) => char.ToUpper("xyzw"[c]);
         public string ArgOfs(int c) => "xyzw"[c].ToString();
 
         public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseTypeName + " " + c);
@@ -46,7 +45,7 @@ namespace GlmSharpGenerator.Types
         public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
         public string SubCompArgString(int start, int end) => SubCompArgs(start, end).CommaSeparated();
 
-        public SwizzleType SwizzleType => new SwizzleType { OriginalTypeName = BaseName, Components = Components, BaseName = "swizzle_" + BaseName, BaseType = BaseType };
+        public SwizzleType SwizzleType => new SwizzleType { Components = Components, BaseName = "swizzle_" + BaseName, BaseType = BaseType };
 
 
         private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
@@ -120,50 +119,66 @@ namespace GlmSharpGenerator.Types
             => string.Format("public static bvec{3} operator{2}({4} lhs, {0} rhs) => new bvec{3}({1});", NameThat,
                     CompString.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, Components, scalarType);
 
+        public override IEnumerable<Member> GenerateMembers()
+        {
+            // fields
+            foreach (var f in Fields)
+                yield return new Field(f, BaseType)
+                {
+                    Comment = string.Format("{0}-component", f)
+                };
+
+            // swizzle
+            yield return new Property("swizzle", SwizzleType)
+            {
+                GetterLine = Construct(SwizzleType, Fields),
+                Comment = "Returns an object that can be used for swizzling (e.g. swizzle.zy)"
+            };
+
+            // predefs
+            yield return new StaticProperty("Zero", this)
+            {
+                Value = Construct(this, ZeroValue.RepeatTimes(Components)),
+                Comment = "Predefined all-zero vector"
+            };
+
+            if (!string.IsNullOrEmpty(BaseType.OneValue))
+            {
+                yield return new StaticProperty("Ones", this)
+                {
+                    Value = Construct(this, OneValue.RepeatTimes(Components)),
+                    Comment = "Predefined all-ones vector"
+                };
+
+                for (var c = 0; c < Components; ++c)
+                    yield return new StaticProperty("Unit" + ArgOfUpper(c), this)
+                    {
+                        Value = Construct(this, c.ImpulseString(BaseType.OneValue, ZeroValue, Components)),
+                        Comment = string.Format("Predefined unit-{0} vector", ArgOfUpper(c))
+                    };
+            }
+
+            if (BaseType.IsComplex)
+            {
+                yield return new StaticProperty("ImaginaryOnes", this)
+                {
+                    Value = Construct(this, "Complex.ImaginaryOne".RepeatTimes(Components)),
+                    Comment = "Predefined all-imaginary-ones vector"
+                };
+
+                for (var c = 0; c < Components; ++c)
+                    yield return new StaticProperty("ImaginaryUnit" + ArgOfUpper(c), this)
+                    {
+                        Value = Construct(this, c.ImpulseString("Complex.ImaginaryOne", ZeroValue, Components)),
+                        Comment = string.Format("Predefined unit-imaginary-{0} vector", ArgOfUpper(c))
+                    };
+            }
+        }
+
         protected override IEnumerable<string> Body
         {
             get
             {
-                // components
-                for (var i = 0; i < Components; ++i)
-                {
-                    foreach (var line in string.Format("{0}-component", "xyzw"[i]).AsComment()) yield return line;
-                    yield return "[DataMember]";
-                    yield return string.Format("public {0} {1};", BaseTypeName, "xyzw"[i]);
-                }
-
-                // swizzle
-                foreach (var line in "Returns an object that can be used for swizzling (e.g. swizzle.zy)".AsComment()) yield return line;
-                yield return string.Format("public swizzle_{0} swizzle => new swizzle_{0}({1});", NameThat, CompArgString);
-
-                // predefs
-                foreach (var line in "Predefined all-zero vector".AsComment()) yield return line;
-                yield return string.Format("public static {0} Zero {{ get; }} = new {0}({1});", NameThat, ZeroValue.RepeatTimes(Components).CommaSeparated());
-
-                if (!string.IsNullOrEmpty(BaseType.OneValue))
-                {
-                    foreach (var line in "Predefined all-ones vector".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Ones {{ get; }} = new {0}({1});", NameThat, BaseType.OneValue.RepeatTimes(Components).CommaSeparated());
-
-                    for (var c = 0; c < Components; ++c)
-                    {
-                        foreach (var line in string.Format("Predefined unit-{0} vector", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
-                        yield return string.Format("public static {0} Unit{1} {{ get; }} = new {0}({2});", NameThat, char.ToUpper(ArgOf(c)), c.ImpulseString(BaseType.OneValue, ZeroValue, Components).CommaSeparated());
-                    }
-                }
-
-                if (BaseType.IsComplex)
-                {
-                    foreach (var line in "Predefined all-imaginary-ones vector".AsComment()) yield return line;
-                    yield return string.Format("public static {0} ImaginaryOnes {{ get; }} = new {0}({1});", NameThat, "Complex.ImaginaryOne".RepeatTimes(Components).CommaSeparated());
-
-                    for (var c = 0; c < Components; ++c)
-                    {
-                        foreach (var line in string.Format("Predefined unit-imaginary-{0} vector", char.ToUpper(ArgOf(c))).AsComment()) yield return line;
-                        yield return string.Format("public static {0} ImaginaryUnit{1} {{ get; }} = new {0}({2});", NameThat, char.ToUpper(ArgOf(c)), c.ImpulseString("Complex.ImaginaryOne", ZeroValue, Components).CommaSeparated());
-                    }
-                }
-
                 // values
                 foreach (var line in "Returns an array with all values".AsComment()) yield return line;
                 yield return string.Format("public {0}[] Values => new[] {{ {1} }};", BaseTypeName, CompArgString);

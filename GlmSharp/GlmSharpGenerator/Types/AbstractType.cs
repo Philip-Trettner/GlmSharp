@@ -74,7 +74,7 @@ namespace GlmSharpGenerator.Types
         /// <summary>
         /// Generate all members
         /// </summary>
-        public abstract IEnumerable<Member> GenerateMembers(); 
+        public abstract IEnumerable<Member> GenerateMembers();
 
         /// <summary>
         /// Generates type members and sorts them
@@ -170,7 +170,7 @@ namespace GlmSharpGenerator.Types
             }
         }
 
-        protected abstract IEnumerable<string> Body { get; }
+        protected virtual IEnumerable<string> Body { get { yield break; } }
 
         public string Comparer(string val) => BaseType.Generic ?
             string.Format("EqualityComparer<T>.Default.Equals({0}, rhs.{0})", val) :
