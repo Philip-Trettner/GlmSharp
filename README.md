@@ -10,7 +10,7 @@ Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
 
 > PM> Install-Package GlmSharp
 
-Current version: _0.9.2_
+Current version: _0.9.3_
 
 ## Overview
 
@@ -69,6 +69,8 @@ The code itself is written using C# 6 features, the NuGet package however only r
 * Implicit casts for vectors where base types can be casted implicitly
 * Most GLSL functions
 * Radians-only lib
+* Serialization via `[Serializable]`, `[DataContract]` and `[DataMember]` (and thus [Json.NET](https://github.com/JamesNK/Newtonsoft.Json))
+* Marshalling via `[StructLayout(LayoutKind.Sequential)]`
 * Generated library
 
 
@@ -106,5 +108,3 @@ This library is MIT-licensed.
 * ToString, Parse, TryParse for matrices
 * more constructors and casts for matrices
 * some GLU functions (e.g. PickMatrix)
-* Serialization support
-* Marshalling support

@@ -3,7 +3,7 @@
   <metadata>
     <id>GlmSharp</id>
     <title>GlmSharp</title>
-    <version>0.9.2</version>
+    <version>0.9.3</version>
     <authors>Philip Trettner</authors>
     <owners>Philip Trettner</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -16,7 +16,9 @@ Supported types: vec2, vec3, vec4, mat2, mat3, mat4, non-quadratic mats.
 
 Supported base types: int, uint, long, float, double, decimal, complex, long, bool, generic T.
 
-Supports swizzling.
+Supports swizzling, operator overloads, numerous functions.
+
+Supports serialization and marshalling.
 
 The naming and behavior is inspired by the excellent OpenGL Mathematics lib by Christophe Riccio.
 
