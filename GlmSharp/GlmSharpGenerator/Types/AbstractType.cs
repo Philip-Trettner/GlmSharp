@@ -33,7 +33,7 @@ namespace GlmSharpGenerator.Types
         /// <summary>
         /// Suffix for generic types
         /// </summary>
-        public string GenericSuffix => BaseType?.Generic ?? false ? "<T>" : "";
+        public virtual string GenericSuffix => BaseType?.Generic ?? false ? "<T>" : "";
         /// <summary>
         /// Reference to base type
         /// </summary>

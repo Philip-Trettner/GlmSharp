@@ -60,7 +60,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns an array with all values
         /// </summary>
-        public T[]<T> Values => new[] { x, y, z };
+        public T[] Values => new[] { x, y, z };
 
         #endregion
 
