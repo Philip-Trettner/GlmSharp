@@ -10,6 +10,8 @@ namespace GlmSharpGenerator.Types
         public int Columns { get; set; }
         public int FieldCount => Rows * Columns;
 
+        public override string Folder => "Mat" + Columns + "x" + Rows;
+
         public override string TypeComment => string.Format("A matrix of type {0} with {1} columns and {2} rows.", BaseTypeName, Columns, Rows);
 
         public override IEnumerable<string> BaseClasses

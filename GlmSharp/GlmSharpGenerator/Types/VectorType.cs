@@ -9,6 +9,9 @@ namespace GlmSharpGenerator.Types
         public int Components { get; set; } = 3;
         public override string Name => BaseName + Components;
 
+        public override string Folder => "Vec" + Components;
+
+
         public string CompString => "xyzw".Substring(0, Components);
 
         public override string TypeComment => string.Format("A vector of type {0} with {1} components.", BaseTypeName, Components);

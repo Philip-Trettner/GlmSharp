@@ -32,6 +32,8 @@ namespace GlmSharpGenerator
             Console.WriteLine("Generate:");
             foreach (var type in AbstractType.Types.Values)
             {
+                if (!string.IsNullOrEmpty(type.Folder))
+                    Directory.CreateDirectory(Path.Combine(path, type.Folder));
                 var filename = type.PathOf(path);
                 File.WriteAllLines(filename, type.CSharpFile);
                 Console.WriteLine("    " + filename);
