@@ -177,11 +177,11 @@ namespace GlmSharpGenerator
             get
             {
                 // Fields
-                yield return "// Matrix fields mXY";
-                for (var x = 0; x < Columns; ++x)
+                foreach (var f in Fields)
                 {
-                    foreach (var line in string.Format("Column {0}", x).AsComment()) yield return line;
-                    yield return string.Format("public {0} {1};", BaseType, Column(x).CommaSeparated());
+                    foreach (var line in string.Format("Column {0}, Rows {1}", ColOf(f), RowOf(f)).AsComment()) yield return line;
+                    yield return "[DataMember]";
+                    yield return string.Format("public {0} {1};", BaseType, f);
                 }
 
 

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,27 +17,33 @@ namespace GlmSharp.Swizzle
     /// Temporary vector of type long with 4 components, used for implementing swizzling for lvec4.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_lvec4
     {
         
         /// <summary>
         /// x-component
         /// </summary>
+        [DataMember]
         internal readonly long x;
         
         /// <summary>
         /// y-component
         /// </summary>
+        [DataMember]
         internal readonly long y;
         
         /// <summary>
         /// z-component
         /// </summary>
+        [DataMember]
         internal readonly long z;
         
         /// <summary>
         /// w-component
         /// </summary>
+        [DataMember]
         internal readonly long w;
         
         

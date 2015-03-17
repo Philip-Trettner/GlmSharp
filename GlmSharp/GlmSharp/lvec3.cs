@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,22 +17,27 @@ namespace GlmSharp
     /// A vector of type long with 3 components.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct lvec3 : IReadOnlyList<long>, IEquatable<lvec3>
     {
         
         /// <summary>
         /// x-component
         /// </summary>
+        [DataMember]
         public long x;
         
         /// <summary>
         /// y-component
         /// </summary>
+        [DataMember]
         public long y;
         
         /// <summary>
         /// z-component
         /// </summary>
+        [DataMember]
         public long z;
         
         /// <summary>

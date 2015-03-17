@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,19 +17,58 @@ namespace GlmSharp
     /// A matrix of type long with 2 columns and 4 rows.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct lmat2x4 : IReadOnlyList<long>, IEquatable<lmat2x4>
     {
-        // Matrix fields mXY
         
         /// <summary>
-        /// Column 0
+        /// Column 0, Rows 0
         /// </summary>
-        public long m00, m01, m02, m03;
+        [DataMember]
+        public long m00;
         
         /// <summary>
-        /// Column 1
+        /// Column 0, Rows 1
         /// </summary>
-        public long m10, m11, m12, m13;
+        [DataMember]
+        public long m01;
+        
+        /// <summary>
+        /// Column 0, Rows 2
+        /// </summary>
+        [DataMember]
+        public long m02;
+        
+        /// <summary>
+        /// Column 0, Rows 3
+        /// </summary>
+        [DataMember]
+        public long m03;
+        
+        /// <summary>
+        /// Column 1, Rows 0
+        /// </summary>
+        [DataMember]
+        public long m10;
+        
+        /// <summary>
+        /// Column 1, Rows 1
+        /// </summary>
+        [DataMember]
+        public long m11;
+        
+        /// <summary>
+        /// Column 1, Rows 2
+        /// </summary>
+        [DataMember]
+        public long m12;
+        
+        /// <summary>
+        /// Column 1, Rows 3
+        /// </summary>
+        [DataMember]
+        public long m13;
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

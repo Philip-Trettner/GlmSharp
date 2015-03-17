@@ -43,6 +43,12 @@ namespace GlmSharpTest
 
             double d;
             double.TryParse("1", out d);
+
+            var gbvec = new gvec4<bool>(true, false, true, false);
+            var gsvec = new gvec3<string>("", "", null);
+            var gpvec = new gvec2<Program>(null, null);
+            var gopvec = new gvec2<Object>(null, null);
+            var gtpvec = new gvec3<Type>(typeof(int), 1.GetType(), "".GetType());
         }
     }
 }

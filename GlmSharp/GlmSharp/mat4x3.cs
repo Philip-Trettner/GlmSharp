@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,29 +17,82 @@ namespace GlmSharp
     /// A matrix of type float with 4 columns and 3 rows.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct mat4x3 : IReadOnlyList<float>, IEquatable<mat4x3>
     {
-        // Matrix fields mXY
         
         /// <summary>
-        /// Column 0
+        /// Column 0, Rows 0
         /// </summary>
-        public float m00, m01, m02;
+        [DataMember]
+        public float m00;
         
         /// <summary>
-        /// Column 1
+        /// Column 0, Rows 1
         /// </summary>
-        public float m10, m11, m12;
+        [DataMember]
+        public float m01;
         
         /// <summary>
-        /// Column 2
+        /// Column 0, Rows 2
         /// </summary>
-        public float m20, m21, m22;
+        [DataMember]
+        public float m02;
         
         /// <summary>
-        /// Column 3
+        /// Column 1, Rows 0
         /// </summary>
-        public float m30, m31, m32;
+        [DataMember]
+        public float m10;
+        
+        /// <summary>
+        /// Column 1, Rows 1
+        /// </summary>
+        [DataMember]
+        public float m11;
+        
+        /// <summary>
+        /// Column 1, Rows 2
+        /// </summary>
+        [DataMember]
+        public float m12;
+        
+        /// <summary>
+        /// Column 2, Rows 0
+        /// </summary>
+        [DataMember]
+        public float m20;
+        
+        /// <summary>
+        /// Column 2, Rows 1
+        /// </summary>
+        [DataMember]
+        public float m21;
+        
+        /// <summary>
+        /// Column 2, Rows 2
+        /// </summary>
+        [DataMember]
+        public float m22;
+        
+        /// <summary>
+        /// Column 3, Rows 0
+        /// </summary>
+        [DataMember]
+        public float m30;
+        
+        /// <summary>
+        /// Column 3, Rows 1
+        /// </summary>
+        [DataMember]
+        public float m31;
+        
+        /// <summary>
+        /// Column 3, Rows 2
+        /// </summary>
+        [DataMember]
+        public float m32;
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

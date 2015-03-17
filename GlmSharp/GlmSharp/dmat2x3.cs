@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,19 +17,46 @@ namespace GlmSharp
     /// A matrix of type double with 2 columns and 3 rows.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct dmat2x3 : IReadOnlyList<double>, IEquatable<dmat2x3>
     {
-        // Matrix fields mXY
         
         /// <summary>
-        /// Column 0
+        /// Column 0, Rows 0
         /// </summary>
-        public double m00, m01, m02;
+        [DataMember]
+        public double m00;
         
         /// <summary>
-        /// Column 1
+        /// Column 0, Rows 1
         /// </summary>
-        public double m10, m11, m12;
+        [DataMember]
+        public double m01;
+        
+        /// <summary>
+        /// Column 0, Rows 2
+        /// </summary>
+        [DataMember]
+        public double m02;
+        
+        /// <summary>
+        /// Column 1, Rows 0
+        /// </summary>
+        [DataMember]
+        public double m10;
+        
+        /// <summary>
+        /// Column 1, Rows 1
+        /// </summary>
+        [DataMember]
+        public double m11;
+        
+        /// <summary>
+        /// Column 1, Rows 2
+        /// </summary>
+        [DataMember]
+        public double m12;
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

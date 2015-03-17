@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,27 +17,33 @@ namespace GlmSharp
     /// A vector of type int with 4 components.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct ivec4 : IReadOnlyList<int>, IEquatable<ivec4>
     {
         
         /// <summary>
         /// x-component
         /// </summary>
+        [DataMember]
         public int x;
         
         /// <summary>
         /// y-component
         /// </summary>
+        [DataMember]
         public int y;
         
         /// <summary>
         /// z-component
         /// </summary>
+        [DataMember]
         public int z;
         
         /// <summary>
         /// w-component
         /// </summary>
+        [DataMember]
         public int w;
         
         /// <summary>

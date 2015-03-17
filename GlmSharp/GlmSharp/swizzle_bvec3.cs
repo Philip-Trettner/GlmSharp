@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,22 +17,27 @@ namespace GlmSharp.Swizzle
     /// Temporary vector of type bool with 3 components, used for implementing swizzling for bvec3.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_bvec3
     {
         
         /// <summary>
         /// x-component
         /// </summary>
+        [DataMember]
         internal readonly bool x;
         
         /// <summary>
         /// y-component
         /// </summary>
+        [DataMember]
         internal readonly bool y;
         
         /// <summary>
         /// z-component
         /// </summary>
+        [DataMember]
         internal readonly bool z;
         
         

@@ -33,6 +33,8 @@ namespace GlmSharpGenerator
                 yield return "using System.Collections.Generic;";
                 yield return "using System.Globalization;";
                 yield return "using System.Numerics;";
+                yield return "using System.Runtime.InteropServices;";
+                yield return "using System.Runtime.Serialization;";
                 yield return "using System.Linq;";
                 yield return "using GlmSharp.Swizzle;";
                 yield return "";
@@ -42,6 +44,8 @@ namespace GlmSharpGenerator
                 yield return "{";
                 foreach (var line in StructComment.AsComment()) yield return line.Indent();
                 yield return "    [Serializable]";
+                yield return "    [DataContract]";
+                yield return "    [StructLayout(LayoutKind.Sequential)]";
                 yield return "    public struct " + ClassName + GenericSuffix + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";
                 foreach (var line in Body)

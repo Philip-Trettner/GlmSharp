@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,17 +17,21 @@ namespace GlmSharp
     /// A vector of type uint with 2 components.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct uvec2 : IReadOnlyList<uint>, IEquatable<uvec2>
     {
         
         /// <summary>
         /// x-component
         /// </summary>
+        [DataMember]
         public uint x;
         
         /// <summary>
         /// y-component
         /// </summary>
+        [DataMember]
         public uint y;
         
         /// <summary>

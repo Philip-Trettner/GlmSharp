@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,29 +17,106 @@ namespace GlmSharp
     /// A matrix of type Complex with 4 columns and 4 rows.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct cmat4 : IReadOnlyList<Complex>, IEquatable<cmat4>
     {
-        // Matrix fields mXY
         
         /// <summary>
-        /// Column 0
+        /// Column 0, Rows 0
         /// </summary>
-        public Complex m00, m01, m02, m03;
+        [DataMember]
+        public Complex m00;
         
         /// <summary>
-        /// Column 1
+        /// Column 0, Rows 1
         /// </summary>
-        public Complex m10, m11, m12, m13;
+        [DataMember]
+        public Complex m01;
         
         /// <summary>
-        /// Column 2
+        /// Column 0, Rows 2
         /// </summary>
-        public Complex m20, m21, m22, m23;
+        [DataMember]
+        public Complex m02;
         
         /// <summary>
-        /// Column 3
+        /// Column 0, Rows 3
         /// </summary>
-        public Complex m30, m31, m32, m33;
+        [DataMember]
+        public Complex m03;
+        
+        /// <summary>
+        /// Column 1, Rows 0
+        /// </summary>
+        [DataMember]
+        public Complex m10;
+        
+        /// <summary>
+        /// Column 1, Rows 1
+        /// </summary>
+        [DataMember]
+        public Complex m11;
+        
+        /// <summary>
+        /// Column 1, Rows 2
+        /// </summary>
+        [DataMember]
+        public Complex m12;
+        
+        /// <summary>
+        /// Column 1, Rows 3
+        /// </summary>
+        [DataMember]
+        public Complex m13;
+        
+        /// <summary>
+        /// Column 2, Rows 0
+        /// </summary>
+        [DataMember]
+        public Complex m20;
+        
+        /// <summary>
+        /// Column 2, Rows 1
+        /// </summary>
+        [DataMember]
+        public Complex m21;
+        
+        /// <summary>
+        /// Column 2, Rows 2
+        /// </summary>
+        [DataMember]
+        public Complex m22;
+        
+        /// <summary>
+        /// Column 2, Rows 3
+        /// </summary>
+        [DataMember]
+        public Complex m23;
+        
+        /// <summary>
+        /// Column 3, Rows 0
+        /// </summary>
+        [DataMember]
+        public Complex m30;
+        
+        /// <summary>
+        /// Column 3, Rows 1
+        /// </summary>
+        [DataMember]
+        public Complex m31;
+        
+        /// <summary>
+        /// Column 3, Rows 2
+        /// </summary>
+        [DataMember]
+        public Complex m32;
+        
+        /// <summary>
+        /// Column 3, Rows 3
+        /// </summary>
+        [DataMember]
+        public Complex m33;
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

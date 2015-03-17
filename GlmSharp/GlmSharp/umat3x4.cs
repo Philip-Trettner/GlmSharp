@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,24 +17,82 @@ namespace GlmSharp
     /// A matrix of type uint with 3 columns and 4 rows.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct umat3x4 : IReadOnlyList<uint>, IEquatable<umat3x4>
     {
-        // Matrix fields mXY
         
         /// <summary>
-        /// Column 0
+        /// Column 0, Rows 0
         /// </summary>
-        public uint m00, m01, m02, m03;
+        [DataMember]
+        public uint m00;
         
         /// <summary>
-        /// Column 1
+        /// Column 0, Rows 1
         /// </summary>
-        public uint m10, m11, m12, m13;
+        [DataMember]
+        public uint m01;
         
         /// <summary>
-        /// Column 2
+        /// Column 0, Rows 2
         /// </summary>
-        public uint m20, m21, m22, m23;
+        [DataMember]
+        public uint m02;
+        
+        /// <summary>
+        /// Column 0, Rows 3
+        /// </summary>
+        [DataMember]
+        public uint m03;
+        
+        /// <summary>
+        /// Column 1, Rows 0
+        /// </summary>
+        [DataMember]
+        public uint m10;
+        
+        /// <summary>
+        /// Column 1, Rows 1
+        /// </summary>
+        [DataMember]
+        public uint m11;
+        
+        /// <summary>
+        /// Column 1, Rows 2
+        /// </summary>
+        [DataMember]
+        public uint m12;
+        
+        /// <summary>
+        /// Column 1, Rows 3
+        /// </summary>
+        [DataMember]
+        public uint m13;
+        
+        /// <summary>
+        /// Column 2, Rows 0
+        /// </summary>
+        [DataMember]
+        public uint m20;
+        
+        /// <summary>
+        /// Column 2, Rows 1
+        /// </summary>
+        [DataMember]
+        public uint m21;
+        
+        /// <summary>
+        /// Column 2, Rows 2
+        /// </summary>
+        [DataMember]
+        public uint m22;
+        
+        /// <summary>
+        /// Column 2, Rows 3
+        /// </summary>
+        [DataMember]
+        public uint m23;
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])

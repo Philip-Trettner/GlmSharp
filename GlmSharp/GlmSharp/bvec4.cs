@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,27 +17,33 @@ namespace GlmSharp
     /// A vector of type bool with 4 components.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct bvec4 : IReadOnlyList<bool>, IEquatable<bvec4>
     {
         
         /// <summary>
         /// x-component
         /// </summary>
+        [DataMember]
         public bool x;
         
         /// <summary>
         /// y-component
         /// </summary>
+        [DataMember]
         public bool y;
         
         /// <summary>
         /// z-component
         /// </summary>
+        [DataMember]
         public bool z;
         
         /// <summary>
         /// w-component
         /// </summary>
+        [DataMember]
         public bool w;
         
         /// <summary>

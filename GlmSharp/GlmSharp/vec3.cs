@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Numerics;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
 using System.Linq;
 using GlmSharp.Swizzle;
 
@@ -15,22 +17,27 @@ namespace GlmSharp
     /// A vector of type float with 3 components.
     /// </summary>
     [Serializable]
+    [DataContract]
+    [StructLayout(LayoutKind.Sequential)]
     public struct vec3 : IReadOnlyList<float>, IEquatable<vec3>
     {
         
         /// <summary>
         /// x-component
         /// </summary>
+        [DataMember]
         public float x;
         
         /// <summary>
         /// y-component
         /// </summary>
+        [DataMember]
         public float y;
         
         /// <summary>
         /// z-component
         /// </summary>
+        [DataMember]
         public float z;
         
         /// <summary>

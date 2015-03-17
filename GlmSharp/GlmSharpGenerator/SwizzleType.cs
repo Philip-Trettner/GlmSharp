@@ -58,6 +58,7 @@ namespace GlmSharpGenerator
                 for (var i = 0; i < Components; ++i)
                 {
                     foreach (var line in string.Format("{0}-component", "xyzw"[i]).AsComment()) yield return line;
+                    yield return "[DataMember]";
                     yield return string.Format("internal readonly {0} {1};", BaseType, "xyzw"[i]);
                 }
 
