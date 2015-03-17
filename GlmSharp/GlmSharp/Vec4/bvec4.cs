@@ -87,14 +87,14 @@ namespace GlmSharp
         /// Predefined unit-W vector
         /// </summary>
         public static bvec4 UnitW { get; } = new bvec4(false, false, false, true);
-
-        #endregion
-
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
         public bool[] Values => new[] { x, y, z, w };
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

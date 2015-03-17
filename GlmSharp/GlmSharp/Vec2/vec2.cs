@@ -65,14 +65,14 @@ namespace GlmSharp
         /// Predefined unit-Y vector
         /// </summary>
         public static vec2 UnitY { get; } = new vec2(0f, 1f);
-
-        #endregion
-
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
         public float[] Values => new[] { x, y };
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

@@ -7,9 +7,19 @@ namespace GlmSharpGenerator.Types
 {
     class MatrixType : AbstractType
     {
+        public MatrixType(BuiltinType type, int cols, int rows)
+        {
+            Columns = cols;
+            Rows = rows;
+            BaseType = type;
+            BaseName = type.Prefix + "mat";
+        }
+
         public int Rows { get; set; }
         public int Columns { get; set; }
         public int FieldCount => Rows * Columns;
+
+        public override string Name => BaseName + (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows);
 
         public override string Folder => "Mat" + Columns + "x" + Rows;
 
@@ -66,8 +76,6 @@ namespace GlmSharpGenerator.Types
 
             return res;
         }
-
-        public override string Name => BaseName + (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows);
         public string ClassNameTransposed => BaseName + (Rows == Columns ? Columns.ToString() : Rows + "x" + Columns) + GenericSuffix;
 
         public IEnumerable<string> Fields

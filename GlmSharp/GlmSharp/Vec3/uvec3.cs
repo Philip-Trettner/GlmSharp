@@ -76,14 +76,14 @@ namespace GlmSharp
         /// Predefined unit-Z vector
         /// </summary>
         public static uvec3 UnitZ { get; } = new uvec3(0u, 0u, 1u);
-
-        #endregion
-
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
         public uint[] Values => new[] { x, y, z };
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

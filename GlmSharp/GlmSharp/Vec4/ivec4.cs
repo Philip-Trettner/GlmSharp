@@ -87,14 +87,14 @@ namespace GlmSharp
         /// Predefined unit-W vector
         /// </summary>
         public static ivec4 UnitW { get; } = new ivec4(0, 0, 0, 1);
-
-        #endregion
-
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
         public int[] Values => new[] { x, y, z, w };
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

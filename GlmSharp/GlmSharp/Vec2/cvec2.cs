@@ -80,14 +80,14 @@ namespace GlmSharp
         /// Predefined unit-imaginary-Y vector
         /// </summary>
         public static cvec2 ImaginaryUnitY { get; } = new cvec2(0.0, Complex.ImaginaryOne);
-
-        #endregion
-
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
         public Complex[] Values => new[] { x, y };
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

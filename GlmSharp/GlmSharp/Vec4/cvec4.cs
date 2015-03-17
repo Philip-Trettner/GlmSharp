@@ -112,14 +112,14 @@ namespace GlmSharp
         /// Predefined unit-imaginary-W vector
         /// </summary>
         public static cvec4 ImaginaryUnitW { get; } = new cvec4(0.0, 0.0, 0.0, Complex.ImaginaryOne);
-
-        #endregion
-
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
         public Complex[] Values => new[] { x, y, z, w };
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

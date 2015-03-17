@@ -56,14 +56,14 @@ namespace GlmSharp
         /// Predefined all-zero vector
         /// </summary>
         public static gvec3<T> Zero { get; } = new gvec3<T>(default(T), default(T), default(T));
-
-        #endregion
-
         
         /// <summary>
         /// Returns an array with all values
         /// </summary>
-        public T[] Values => new[] { x, y, z };
+        public T[]<T> Values => new[] { x, y, z };
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

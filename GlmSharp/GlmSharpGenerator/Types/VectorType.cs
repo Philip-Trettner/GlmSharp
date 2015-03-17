@@ -7,6 +7,13 @@ namespace GlmSharpGenerator.Types
 {
     class VectorType : AbstractType
     {
+        public VectorType(BuiltinType type, int comps)
+        {
+            Components = comps;
+            BaseType = type;
+            BaseName = type.Prefix + "vec";
+        }
+
         public int Components { get; set; } = 3;
 
         public IEnumerable<string> Fields => "xyzw".Substring(0, Components).Select(c => c.ToString());
@@ -173,16 +180,19 @@ namespace GlmSharpGenerator.Types
                         Comment = string.Format("Predefined unit-imaginary-{0} vector", ArgOfUpper(c))
                     };
             }
+
+            // values
+            yield return new Property("Values", new ArrayType(BaseType))
+            {
+                GetterLine = string.Format("new[] {{ {0} }}", CompArgString),
+                Comment = "Returns an array with all values"
+            };
         }
 
         protected override IEnumerable<string> Body
         {
             get
             {
-                // values
-                foreach (var line in "Returns an array with all values".AsComment()) yield return line;
-                yield return string.Format("public {0}[] Values => new[] {{ {1} }};", BaseTypeName, CompArgString);
-
                 // ctors
                 foreach (var line in Constructor("Component-wise constructor", CompParameterString, CompArgs)) yield return line;
                 foreach (var line in Constructor("all-same-value constructor", BaseTypeName + " v", "v".RepeatTimes(Components))) yield return line;

@@ -38,7 +38,7 @@ namespace GlmSharpGenerator.Types
         /// Reference to base type
         /// </summary>
         public BuiltinType BaseType { get; set; }
-
+        
         /// <summary>
         /// Namespace of this type
         /// </summary>
@@ -212,12 +212,7 @@ namespace GlmSharpGenerator.Types
             foreach (var type in BuiltinType.BaseTypes)
                 for (var comp = 2; comp <= 4; ++comp)
                 {
-                    var vect = new VectorType
-                    {
-                        BaseName = type.Prefix + "vec",
-                        Components = comp,
-                        BaseType = type
-                    };
+                    var vect = new VectorType(type, comp);
                     var swizzler = vect.SwizzleType;
                     Types.Add(vect.Name, vect);
                     Types.Add(swizzler.Name, swizzler);
@@ -228,13 +223,7 @@ namespace GlmSharpGenerator.Types
                 for (var rows = 2; rows <= 4; ++rows)
                     for (var cols = 2; cols <= 4; ++cols)
                     {
-                        var matt = new MatrixType
-                        {
-                            BaseName = type.Prefix + "mat",
-                            Columns = cols,
-                            Rows = rows,
-                            BaseType = type
-                        };
+                        var matt = new MatrixType(type, cols, rows);
                         Types.Add(matt.Name, matt);
                     }
 
