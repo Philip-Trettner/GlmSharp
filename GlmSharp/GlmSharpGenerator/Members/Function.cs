@@ -17,7 +17,7 @@ namespace GlmSharpGenerator.Members
         /// <summary>
         /// Parameters
         /// </summary>
-        public IEnumerable<string> Parameters { get; set; }
+        public IEnumerable<string> Parameters { get; set; } = new string[] { };
 
         /// <summary>
         /// Parameters as a string
@@ -34,6 +34,11 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public string CodeString { set { Code = new[] { value }; } }
 
+        /// <summary>
+        /// If true, generates no return at end
+        /// </summary>
+        public bool NoReturn { get; set; }
+
         public virtual string ReturnName => ReturnType.NameThat;
         public virtual string FunctionName => Name;
 
@@ -41,7 +46,7 @@ namespace GlmSharpGenerator.Members
         {
             ReturnType = returnType;
             Name = name;
-        } 
+        }
 
         public override IEnumerable<string> Lines
         {
@@ -54,14 +59,14 @@ namespace GlmSharpGenerator.Members
 
                 if (code.Length == 1)
                 {
-                    yield return string.Format("{0} {1} {2}({3}) => {4};", MemberPrefix, ReturnName, FunctionName, Parameters.CommaSeparated(), code[0]);
+                    yield return string.Format("{0} {1} {2}({3}) => {4};", MemberPrefix, ReturnName, FunctionName, Parameters.CommaSeparated(), code[0]).Trim();
                 }
                 else
                 {
-                    yield return string.Format("{0} {1} {2}({3});", MemberPrefix, ReturnName, FunctionName, Parameters.CommaSeparated());
+                    yield return string.Format("{0} {1} {2}({3})", MemberPrefix, ReturnName, FunctionName, Parameters.CommaSeparated()).Trim();
                     yield return "{";
                     for (var i = 0; i < code.Length; ++i)
-                        yield return string.Format("{0}{1};", i == code.Length - 1 ? "return " : "", code[i]).Indent();
+                        yield return string.Format("{0}{1};", i == code.Length - 1 && !NoReturn ? "return " : "", code[i]).Indent();
                     yield return "}";
                 }
             }

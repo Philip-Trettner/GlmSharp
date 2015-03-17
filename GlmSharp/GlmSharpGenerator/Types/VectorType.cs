@@ -266,23 +266,27 @@ namespace GlmSharpGenerator.Types
                     };
                 }
             }
+
+            // IEnumerable
+            yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")
+            {
+                NoReturn = true,
+                Code = Fields.Select(f => "yield return " + f),
+                Comment = "Returns an enumerator that iterates through all components."
+            };
+
+            yield return new Function(new AnyType("IEnumerator"), "IEnumerable.GetEnumerator")
+            {
+                Visibility = "",
+                CodeString = "GetEnumerator()",
+                Comment = "Returns an enumerator that iterates through all components."
+            };
         }
 
         protected override IEnumerable<string> Body
         {
             get
             {
-                // IEnumerable
-                foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
-                yield return string.Format("public IEnumerator<{0}> GetEnumerator()", BaseTypeName);
-                yield return "{";
-                foreach (var c in CompString)
-                    yield return string.Format("yield return {0};", c).Indent();
-                yield return "}";
-
-                foreach (var line in "Returns an enumerator that iterates through all components.".AsComment()) yield return line;
-                yield return "IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();";
-
                 // IReadOnlyList
                 foreach (var line in string.Format("Returns the number of components ({0}).", Components).AsComment()) yield return line;
                 yield return string.Format("public int Count => {0};", Components);

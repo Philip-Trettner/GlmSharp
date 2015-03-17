@@ -274,6 +274,8 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Functions
         
         /// <summary>
         /// Returns an enumerator that iterates through all components.
@@ -289,6 +291,9 @@ namespace GlmSharp
         /// Returns an enumerator that iterates through all components.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        #endregion
+
         
         /// <summary>
         /// Returns the number of components (3).
