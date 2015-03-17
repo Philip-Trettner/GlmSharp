@@ -126,6 +126,16 @@ namespace GlmSharpGenerator.Types
             => string.Format("public static bvec{3} operator{2}({4} lhs, {0} rhs) => new bvec{3}({1});", NameThat,
                     CompString.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, Components, scalarType);
 
+        public IEnumerable<string> SwitchIndex(IEnumerable<string> cases)
+        {
+            yield return "switch (index)";
+            yield return "{";
+            foreach (var @case in cases)
+                yield return @case.Indent();
+            yield return "    default: throw new ArgumentOutOfRangeException(\"index\");";
+            yield return "}";
+        }
+
         public override IEnumerable<Member> GenerateMembers()
         {
             // fields
@@ -271,7 +281,7 @@ namespace GlmSharpGenerator.Types
             yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")
             {
                 NoReturn = true,
-                Code = Fields.Select(f => "yield return " + f),
+                Code = Fields.Select(f => string.Format("yield return {0};", f)),
                 Comment = "Returns an enumerator that iterates through all components."
             };
 
@@ -281,39 +291,27 @@ namespace GlmSharpGenerator.Types
                 CodeString = "GetEnumerator()",
                 Comment = "Returns an enumerator that iterates through all components."
             };
+
+            // IReadOnlyList
+            yield return new Property("Count", BuiltinType.TypeInt)
+            {
+                GetterLine = Components.ToString(),
+                Comment = string.Format("Returns the number of components ({0}).", Components)
+            };
+
+            yield return new Indexer(BaseType)
+            {
+                ParameterString = "int index",
+                Getter = SwitchIndex(Components.ForIndexUpTo(i => string.Format("case {0}: return {1};", i, ArgOf(i)))),
+                Setter = SwitchIndex(Components.ForIndexUpTo(i => string.Format("case {0}: {1} = value; break;", i, ArgOf(i)))),
+                Comment = "Gets/Sets a specific indexed component (a bit slower than direct access)."
+            };
         }
 
         protected override IEnumerable<string> Body
         {
             get
             {
-                // IReadOnlyList
-                foreach (var line in string.Format("Returns the number of components ({0}).", Components).AsComment()) yield return line;
-                yield return string.Format("public int Count => {0};", Components);
-
-                foreach (var line in "Gets/Sets a specific indexed component (a bit slower than direct access).".AsComment()) yield return line;
-                yield return string.Format("public {0} this[int index]", BaseTypeName);
-                yield return "{";
-                yield return "    get";
-                yield return "    {";
-                yield return "        switch (index)";
-                yield return "        {";
-                for (var c = 0; c < Components; ++c)
-                    yield return string.Format("            case {0}: return {1};", c, "xyzw"[c]);
-                yield return "            default: throw new ArgumentOutOfRangeException(\"index\");";
-                yield return "        }";
-                yield return "    }";
-                yield return "    set";
-                yield return "    {";
-                yield return "        switch (index)";
-                yield return "        {";
-                for (var c = 0; c < Components; ++c)
-                    yield return string.Format("            case {0}: this.{1} = value; break;", c, "xyzw"[c]);
-                yield return "            default: throw new ArgumentOutOfRangeException(\"index\");";
-                yield return "        }";
-                yield return "    }";
-                yield return "}";
-
                 // Equality comparisons
                 foreach (var line in "Returns true iff this equals rhs component-wise.".AsComment()) yield return line;
                 yield return string.Format("public bool Equals({0} rhs) => {1};", NameThat, CompString.Select(c => Comparer(c.ToString())).Aggregated(" && "));

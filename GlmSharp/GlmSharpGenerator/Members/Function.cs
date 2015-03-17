@@ -65,8 +65,8 @@ namespace GlmSharpGenerator.Members
                 {
                     yield return string.Format("{0} {1} {2}({3})", MemberPrefix, ReturnName, FunctionName, Parameters.CommaSeparated()).Trim();
                     yield return "{";
-                    for (var i = 0; i < code.Length; ++i)
-                        yield return string.Format("{0}{1};", i == code.Length - 1 && !NoReturn ? "return " : "", code[i]).Indent();
+                    foreach (var line in code)
+                        yield return line.Indent();
                     yield return "}";
                 }
             }

@@ -75,6 +75,7 @@ namespace GlmSharpGenerator.Types
         private ExplicitOperator[] explicitOperators;
         private Function[] functions;
         private Function[] staticFunctions;
+        private Indexer[] indexer;
 
         /// <summary>
         /// Generate all members
@@ -99,6 +100,7 @@ namespace GlmSharpGenerator.Types
             explicitOperators = members.OfType<ExplicitOperator>().ToArray();
             functions = members.Where(m => !m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
             staticFunctions = members.Where(m => m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
+            indexer = members.OfType<Indexer>().ToArray();
         }
 
         /// <summary>
@@ -179,6 +181,18 @@ namespace GlmSharpGenerator.Types
                     yield return "        #region Explicit Operators";
                     foreach (var op in explicitOperators)
                         foreach (var line in op.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (indexer.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Indexer";
+                    foreach (var index in indexer)
+                        foreach (var line in index.Lines)
                             yield return line.Indent(2);
                     yield return "";
                     yield return "        #endregion";

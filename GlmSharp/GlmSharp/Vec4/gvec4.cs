@@ -159,6 +159,40 @@ namespace GlmSharp
         #endregion
 
 
+        #region Indexer
+        
+        /// <summary>
+        /// Gets/Sets a specific indexed component (a bit slower than direct access).
+        /// </summary>
+        public T this[int index]
+        {
+            get
+            {
+                switch (index)
+                {
+                    case 0: return x;
+                    case 1: return y;
+                    case 2: return z;
+                    case 3: return w;
+                    default: throw new ArgumentOutOfRangeException("index");
+                }
+            }
+            set
+            {
+                switch (index)
+                {
+                    case 0: x = value; break;
+                    case 1: y = value; break;
+                    case 2: z = value; break;
+                    case 3: w = value; break;
+                    default: throw new ArgumentOutOfRangeException("index");
+                }
+            }
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -170,6 +204,11 @@ namespace GlmSharp
         /// Returns an array with all values
         /// </summary>
         public T[] Values => new[] { x, y, z, w };
+        
+        /// <summary>
+        /// Returns the number of components (4).
+        /// </summary>
+        public int Count => 4;
 
         #endregion
 
@@ -204,40 +243,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns the number of components (4).
-        /// </summary>
-        public int Count => 4;
-        
-        /// <summary>
-        /// Gets/Sets a specific indexed component (a bit slower than direct access).
-        /// </summary>
-        public T this[int index]
-        {
-            get
-            {
-                switch (index)
-                {
-                    case 0: return x;
-                    case 1: return y;
-                    case 2: return z;
-                    case 3: return w;
-                    default: throw new ArgumentOutOfRangeException("index");
-                }
-            }
-            set
-            {
-                switch (index)
-                {
-                    case 0: this.x = value; break;
-                    case 1: this.y = value; break;
-                    case 2: this.z = value; break;
-                    case 3: this.w = value; break;
-                    default: throw new ArgumentOutOfRangeException("index");
-                }
-            }
-        }
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.

@@ -7,7 +7,7 @@ using GlmSharpGenerator.Types;
 
 namespace GlmSharpGenerator.Members
 {
-    class Property : Member
+    class Indexer : Member
     {
         /// <summary>
         /// Property type
@@ -42,11 +42,16 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public string Value { get; set; }
 
+        /// <summary>
+        /// Indexer parameters
+        /// </summary>
+        public IEnumerable<string> Parameters { get; set; }
+        public string ParameterString { set { Parameters = new[] { value }; } }
+
         public override string MemberPrefix => base.MemberPrefix + (Override ? " override" : "");
 
-        public Property(string name, AbstractType type)
+        public Indexer(AbstractType type)
         {
-            Name = name;
             Type = type;
         }
 
@@ -56,13 +61,7 @@ namespace GlmSharpGenerator.Members
             {
                 foreach (var line in base.Lines)
                     yield return line;
-
-                if (!string.IsNullOrEmpty(Value))
-                {
-                    yield return string.Format("{0} {1} {2} {{ get; }} = {3};", MemberPrefix, Type.NameThat, Name, Value);
-                    yield break;
-                }
-
+                
                 var getter = Getter?.ToArray();
                 var setter = Setter?.ToArray();
 
@@ -72,10 +71,10 @@ namespace GlmSharpGenerator.Members
                 if (setter == null) // getter-only
                 {
                     if (getter.Length == 1)
-                        yield return string.Format("{0} {1} {2} => {3};", MemberPrefix, Type.NameThat, Name, getter[0]);
+                        yield return string.Format("{0} {1} this[{2}] => {3};", MemberPrefix, Type.NameThat, Parameters.CommaSeparated(), getter[0]);
                     else
                     {
-                        yield return string.Format("{0} {1} {2}", MemberPrefix, Type.NameThat, Name);
+                        yield return string.Format("{0} {1} this[{2}]", MemberPrefix, Type.NameThat, Parameters.CommaSeparated());
                         yield return "{";
                         yield return "    get";
                         yield return "    {";
@@ -87,7 +86,19 @@ namespace GlmSharpGenerator.Members
                 }
                 else
                 {
-                    throw new NotSupportedException();
+                    yield return string.Format("{0} {1} this[{2}]", MemberPrefix, Type.NameThat, Parameters.CommaSeparated());
+                    yield return "{";
+                    yield return "    get";
+                    yield return "    {";
+                    foreach (var line in getter)
+                        yield return line.Indent(2);
+                    yield return "    }";
+                    yield return "    set";
+                    yield return "    {";
+                    foreach (var line in setter)
+                        yield return line.Indent(2);
+                    yield return "    }";
+                    yield return "}";
                 }
             }
         }
