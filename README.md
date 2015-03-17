@@ -30,7 +30,7 @@ Supported base types:
 * `float` (`vec`)
 * `double` (`dvec`)
 * `decimal` (`decvec`)
-* `complex` (`cvec`)
+* `System.Numerics.Complex` (`cvec`)
 * `long` (`lvec`)
 * `bool` (`bvec`)
 * generic `T` (`gvec<T>`)
