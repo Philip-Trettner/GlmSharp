@@ -721,7 +721,7 @@ namespace GlmSharp
             var cosTheta = (double)Dot(x, y);
             if (cosTheta < 0) { z = -y; cosTheta = -cosTheta; }
             if (cosTheta > 1 - float.Epsilon)
-                return Lerp(x, y, a);
+                return Lerp(x, z, a);
             else
             {
                 var angle = Math.Acos((double)cosTheta);
