@@ -280,6 +280,21 @@ namespace GlmSharp
                 return new dvec3((double)(x * s2), (double)(y * s2), (double)(z * s2));
             }
         }
+        
+        /// <summary>
+        /// Returns the represented yaw angle of this quaternion
+        /// </summary>
+        public double Yaw => Math.Asin(-2.0 * (double)(x * z - w * y));
+        
+        /// <summary>
+        /// Returns the represented pitch angle of this quaternion
+        /// </summary>
+        public double Pitch => Math.Atan2(2.0 * (double)(y * z + w * x), (double)(w * w - x * x - y * y + z * z));
+        
+        /// <summary>
+        /// Returns the represented roll angle of this quaternion
+        /// </summary>
+        public double Roll => Math.Atan2(2.0 * (double)(x * y + w * z), (double)(w * w + x * x - y * y - z * z));
 
         #endregion
 

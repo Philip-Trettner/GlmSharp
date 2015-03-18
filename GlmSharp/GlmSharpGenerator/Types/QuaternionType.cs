@@ -588,6 +588,24 @@ namespace GlmSharpGenerator.Types
                     },
                     Comment = "Returns the represented axis of this quaternion"
                 };
+
+                yield return new Property("Yaw", BuiltinType.TypeDouble)
+                {
+                    GetterLine = "Math.Asin(-2.0 * (double)(x * z - w * y))",
+                    Comment = "Returns the represented yaw angle of this quaternion"
+                };
+
+                yield return new Property("Pitch", BuiltinType.TypeDouble)
+                {
+                    GetterLine = "Math.Atan2(2.0 * (double)(y * z + w * x), (double)(w * w - x * x - y * y + z * z))",
+                    Comment = "Returns the represented pitch angle of this quaternion"
+                };
+
+                yield return new Property("Roll", BuiltinType.TypeDouble)
+                {
+                    GetterLine = "Math.Atan2(2.0 * (double)(x * y + w * z), (double)(w * w + x * x - y * y - z * z))",
+                    Comment = "Returns the represented roll angle of this quaternion"
+                };
             }
         }
     }
