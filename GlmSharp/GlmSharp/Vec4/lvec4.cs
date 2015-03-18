@@ -853,6 +853,16 @@ namespace GlmSharp
         public static lvec4 Sqrt(long v) => new lvec4((long)Math.Sqrt((double)v));
         
         /// <summary>
+        /// Returns a lvec4 from component-wise application of InverseSqrt ((long)(1.0 / Math.Sqrt((double)v))).
+        /// </summary>
+        public static lvec4 InverseSqrt(lvec4 v) => new lvec4((long)(1.0 / Math.Sqrt((double)v.x)), (long)(1.0 / Math.Sqrt((double)v.y)), (long)(1.0 / Math.Sqrt((double)v.z)), (long)(1.0 / Math.Sqrt((double)v.w)));
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of InverseSqrt ((long)(1.0 / Math.Sqrt((double)v))).
+        /// </summary>
+        public static lvec4 InverseSqrt(long v) => new lvec4((long)(1.0 / Math.Sqrt((double)v)));
+        
+        /// <summary>
         /// Returns a ivec4 from component-wise application of Sign (Math.Sign(v)).
         /// </summary>
         public static ivec4 Sign(lvec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));

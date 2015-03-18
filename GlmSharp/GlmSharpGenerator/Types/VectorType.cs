@@ -523,6 +523,7 @@ namespace GlmSharpGenerator.Types
                     yield return new ComponentWiseStaticFunction(Fields, this, "Sin", this, "v", "Complex.Sin({0})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Sinh", this, "v", "Complex.Sinh({0})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Sqrt", this, "v", "Complex.Sqrt({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "InverseSqrt", this, "v", "Complex.One / Complex.Sqrt({0})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Tan", this, "v", "Complex.Tan({0})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Tanh", this, "v", "Complex.Tanh({0})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Conjugate", this, "v", "Complex.Conjugate({0})");
@@ -538,6 +539,7 @@ namespace GlmSharpGenerator.Types
 
                     yield return new ComponentWiseStaticFunction(Fields, this, "Step", this, "v", string.Format("{{0}} >= {0} ? {1} : {0}", ZeroValue, OneValue));
                     yield return new ComponentWiseStaticFunction(Fields, this, "Sqrt", this, "v", string.Format("({0})Math.Sqrt((double){{0}})", BaseTypeName));
+                    yield return new ComponentWiseStaticFunction(Fields, this, "InverseSqrt", this, "v", string.Format("({0})(1.0 / Math.Sqrt((double){{0}}))", BaseTypeName));
                     yield return new ComponentWiseStaticFunction(Fields, integerVType, "Sign", this, "v", "Math.Sign({0})");
 
                     yield return new ComponentWiseStaticFunction(Fields, this, "Max", this, "lhs", this, "rhs", "Math.Max({0}, {1})");

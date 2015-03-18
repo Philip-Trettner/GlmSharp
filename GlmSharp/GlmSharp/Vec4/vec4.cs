@@ -933,6 +933,16 @@ namespace GlmSharp
         public static vec4 Sqrt(float v) => new vec4((float)Math.Sqrt((double)v));
         
         /// <summary>
+        /// Returns a vec4 from component-wise application of InverseSqrt ((float)(1.0 / Math.Sqrt((double)v))).
+        /// </summary>
+        public static vec4 InverseSqrt(vec4 v) => new vec4((float)(1.0 / Math.Sqrt((double)v.x)), (float)(1.0 / Math.Sqrt((double)v.y)), (float)(1.0 / Math.Sqrt((double)v.z)), (float)(1.0 / Math.Sqrt((double)v.w)));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of InverseSqrt ((float)(1.0 / Math.Sqrt((double)v))).
+        /// </summary>
+        public static vec4 InverseSqrt(float v) => new vec4((float)(1.0 / Math.Sqrt((double)v)));
+        
+        /// <summary>
         /// Returns a ivec4 from component-wise application of Sign (Math.Sign(v)).
         /// </summary>
         public static ivec4 Sign(vec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));

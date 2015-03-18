@@ -826,6 +826,16 @@ namespace GlmSharp
         public static decvec3 Sqrt(decimal v) => new decvec3((decimal)Math.Sqrt((double)v));
         
         /// <summary>
+        /// Returns a decvec3 from component-wise application of InverseSqrt ((decimal)(1.0 / Math.Sqrt((double)v))).
+        /// </summary>
+        public static decvec3 InverseSqrt(decvec3 v) => new decvec3((decimal)(1.0 / Math.Sqrt((double)v.x)), (decimal)(1.0 / Math.Sqrt((double)v.y)), (decimal)(1.0 / Math.Sqrt((double)v.z)));
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of InverseSqrt ((decimal)(1.0 / Math.Sqrt((double)v))).
+        /// </summary>
+        public static decvec3 InverseSqrt(decimal v) => new decvec3((decimal)(1.0 / Math.Sqrt((double)v)));
+        
+        /// <summary>
         /// Returns a ivec3 from component-wise application of Sign (Math.Sign(v)).
         /// </summary>
         public static ivec3 Sign(decvec3 v) => new ivec3(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z));

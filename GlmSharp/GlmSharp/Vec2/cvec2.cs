@@ -636,6 +636,16 @@ namespace GlmSharp
         public static cvec2 Sqrt(Complex v) => new cvec2(Complex.Sqrt(v));
         
         /// <summary>
+        /// Returns a cvec2 from component-wise application of InverseSqrt (Complex.One / Complex.Sqrt(v)).
+        /// </summary>
+        public static cvec2 InverseSqrt(cvec2 v) => new cvec2(Complex.One / Complex.Sqrt(v.x), Complex.One / Complex.Sqrt(v.y));
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of InverseSqrt (Complex.One / Complex.Sqrt(v)).
+        /// </summary>
+        public static cvec2 InverseSqrt(Complex v) => new cvec2(Complex.One / Complex.Sqrt(v));
+        
+        /// <summary>
         /// Returns a cvec2 from component-wise application of Tan (Complex.Tan(v)).
         /// </summary>
         public static cvec2 Tan(cvec2 v) => new cvec2(Complex.Tan(v.x), Complex.Tan(v.y));
