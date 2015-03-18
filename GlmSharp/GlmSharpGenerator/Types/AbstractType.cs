@@ -318,6 +318,7 @@ namespace GlmSharpGenerator.Types
         public string SqrtOf(string s) => BaseType.Decimal ? "(" + s + ").Sqrt()" : string.Format("Math.Sqrt({0})", s);
         public string SqrtOf(char s) => SqrOf(s.ToString());
 
+        public string DotFormatString => BaseType.IsComplex ? "lhs.{0} * Complex.Conjugate(rhs.{0})" : "lhs.{0} * rhs.{0}";
 
         public string AbsString(string s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
         public string AbsString(char s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();

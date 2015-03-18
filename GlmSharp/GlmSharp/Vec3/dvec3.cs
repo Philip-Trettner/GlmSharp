@@ -492,6 +492,52 @@ namespace GlmSharp
         #endregion
 
 
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static double Dot(dvec3 lhs, dvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static double Distance(dvec3 lhs, dvec3 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static double DistanceSqr(dvec3 lhs, dvec3 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
+        /// </summary>
+        public static dvec3 Reflect(dvec3 I, dvec3 N) => I - 2 * Dot(N, I) * N;
+        
+        /// <summary>
+        /// Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).
+        /// </summary>
+        public static dvec3 Refract(dvec3 I, dvec3 N, double eta)
+        {
+            var dNI = Dot(N, I);
+            var k = 1 - eta * eta * (1 - dNI * dNI);
+            if (k < 0) return Zero;
+            return eta * I - (eta * dNI + (double)Math.Sqrt(k)) * N;
+        }
+        
+        /// <summary>
+        /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
+        /// </summary>
+        public static dvec3 FaceForward(dvec3 N, dvec3 I, dvec3 Nref) => Dot(Nref, I) < 0 ? N : -N;
+        
+        /// <summary>
+        /// Returns the outer product (cross product, vector product) of the two vectors.
+        /// </summary>
+        public static dvec3 Cross(dvec3 l, dvec3 r) => new dvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+
+        #endregion
+
+
         #region Component-Wise Static Functions
         
         /// <summary>
@@ -1521,46 +1567,5 @@ namespace GlmSharp
             result = ok ? new dvec3(x, y, z) : Zero;
             return ok;
         }
-        
-        /// <summary>
-        /// Returns the inner product (dot product, scalar product) of the two vectors.
-        /// </summary>
-        public static double Dot(dvec3 lhs, dvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
-        
-        /// <summary>
-        /// Returns the euclidean distance between the two vectors.
-        /// </summary>
-        public static double Distance(dvec3 lhs, dvec3 rhs) => (lhs - rhs).Length;
-        
-        /// <summary>
-        /// Returns the squared euclidean distance between the two vectors.
-        /// </summary>
-        public static double DistanceSqr(dvec3 lhs, dvec3 rhs) => (lhs - rhs).LengthSqr;
-        
-        /// <summary>
-        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
-        /// </summary>
-        public static dvec3 Reflect(dvec3 I, dvec3 N) => I - 2 * Dot(N, I) * N;
-        
-        /// <summary>
-        /// Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).
-        /// </summary>
-        public static dvec3 Refract(dvec3 I, dvec3 N, double eta)
-        {
-            var dNI = Dot(N, I);
-            var k = 1 - eta * eta * (1 - dNI * dNI);
-            if (k < 0) return Zero;
-            return eta * I - (eta * dNI + (double)Math.Sqrt(k)) * N;
-        }
-        
-        /// <summary>
-        /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
-        /// </summary>
-        public static dvec3 FaceForward(dvec3 N, dvec3 I, dvec3 Nref) => Dot(Nref, I) < 0 ? N : -N;
-        
-        /// <summary>
-        /// Returns the outer product (cross product, vector product) of the two vectors.
-        /// </summary>
-        public static dvec3 Cross(dvec3 l, dvec3 r) => new dvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
     }
 }

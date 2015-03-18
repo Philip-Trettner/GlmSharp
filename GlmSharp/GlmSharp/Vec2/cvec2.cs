@@ -348,6 +348,36 @@ namespace GlmSharp
         #endregion
 
 
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static Complex Dot(cvec2 lhs, cvec2 rhs) => lhs.x * Complex.Conjugate(rhs.x) + lhs.y * Complex.Conjugate(rhs.y);
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static double Distance(cvec2 lhs, cvec2 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static double DistanceSqr(cvec2 lhs, cvec2 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
+        /// </summary>
+        public static cvec2 Reflect(cvec2 I, cvec2 N) => I - 2 * Dot(N, I) * N;
+        
+        /// <summary>
+        /// Returns the length of the outer product (cross product, vector product) of the two vectors.
+        /// </summary>
+        public static Complex Cross(cvec2 l, cvec2 r) => l.x * r.y - l.y * r.x;
+
+        #endregion
+
+
         #region Component-Wise Static Functions
         
         /// <summary>
@@ -827,30 +857,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns the inner product (dot product, scalar product) of the two vectors.
-        /// </summary>
-        public static Complex Dot(cvec2 lhs, cvec2 rhs) => lhs.x * rhs.x + lhs.y * rhs.y;
-        
-        /// <summary>
-        /// Returns the euclidean distance between the two vectors.
-        /// </summary>
-        public static double Distance(cvec2 lhs, cvec2 rhs) => (lhs - rhs).Length;
-        
-        /// <summary>
-        /// Returns the squared euclidean distance between the two vectors.
-        /// </summary>
-        public static double DistanceSqr(cvec2 lhs, cvec2 rhs) => (lhs - rhs).LengthSqr;
-        
-        /// <summary>
-        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
-        /// </summary>
-        public static cvec2 Reflect(cvec2 I, cvec2 N) => I - 2 * Dot(N, I) * N;
-        
-        /// <summary>
-        /// Returns the length of the outer product (cross product, vector product) of the two vectors.
-        /// </summary>
-        public static Complex Cross(cvec2 l, cvec2 r) => l.x * r.y - l.y * r.x;
     }
 }

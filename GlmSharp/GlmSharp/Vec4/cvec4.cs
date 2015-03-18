@@ -429,6 +429,31 @@ namespace GlmSharp
         #endregion
 
 
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static Complex Dot(cvec4 lhs, cvec4 rhs) => lhs.x * Complex.Conjugate(rhs.x) + lhs.y * Complex.Conjugate(rhs.y) + lhs.z * Complex.Conjugate(rhs.z) + lhs.w * Complex.Conjugate(rhs.w);
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static double Distance(cvec4 lhs, cvec4 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static double DistanceSqr(cvec4 lhs, cvec4 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
+        /// </summary>
+        public static cvec4 Reflect(cvec4 I, cvec4 N) => I - 2 * Dot(N, I) * N;
+
+        #endregion
+
+
         #region Component-Wise Static Functions
         
         /// <summary>
@@ -908,25 +933,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns the inner product (dot product, scalar product) of the two vectors.
-        /// </summary>
-        public static Complex Dot(cvec4 lhs, cvec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
-        
-        /// <summary>
-        /// Returns the euclidean distance between the two vectors.
-        /// </summary>
-        public static double Distance(cvec4 lhs, cvec4 rhs) => (lhs - rhs).Length;
-        
-        /// <summary>
-        /// Returns the squared euclidean distance between the two vectors.
-        /// </summary>
-        public static double DistanceSqr(cvec4 lhs, cvec4 rhs) => (lhs - rhs).LengthSqr;
-        
-        /// <summary>
-        /// Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).
-        /// </summary>
-        public static cvec4 Reflect(cvec4 I, cvec4 N) => I - 2 * Dot(N, I) * N;
     }
 }

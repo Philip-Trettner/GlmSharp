@@ -46,7 +46,15 @@ namespace GlmSharpGenerator
         {
             yield return type.NameThat + " lhs";
             yield return type.NameThat + " rhs";
-        } 
+        }
+        public static IEnumerable<string> TypedArgs(this AbstractType type, params string[] args)
+        {
+            return args.Select(a => type.NameThat + " " + a);
+        }
+        public static IEnumerable<string> SConcat(this IEnumerable<string> coll, params string[] args)
+        {
+            return coll.Concat(args);
+        }
 
         public static IEnumerable<string> AsComment(this string s, bool withTrailingEmptyLine = true)
         {

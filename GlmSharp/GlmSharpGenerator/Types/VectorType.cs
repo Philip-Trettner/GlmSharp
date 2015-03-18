@@ -688,6 +688,101 @@ namespace GlmSharpGenerator.Types
                     Comment = "Returns a vector containing component-wise real parts."
                 };
             }
+
+            // Arithmetic Funcs
+            if (BaseType.HasArithmetics)
+            {
+                // dot
+                yield return new Function(BaseType, "Dot")
+                {
+                    Static = true,
+                    Parameters = this.LhsRhs(),
+                    CodeString = Fields.Format(DotFormatString).Aggregated(" + "),
+                    Comment = "Returns the inner product (dot product, scalar product) of the two vectors."
+                };
+
+                // distance
+                yield return new Function(lengthType, "Distance")
+                {
+                    Static = true,
+                    Parameters = this.LhsRhs(),
+                    CodeString = "(lhs - rhs).Length",
+                    Comment = "Returns the euclidean distance between the two vectors."
+                };
+                yield return new Function(lengthType, "DistanceSqr")
+                {
+                    Static = true,
+                    Parameters = this.LhsRhs(),
+                    CodeString = "(lhs - rhs).LengthSqr",
+                    Comment = "Returns the squared euclidean distance between the two vectors."
+                };
+
+                if (BaseType.IsSigned)
+                {
+                    // reflect
+                    yield return new Function(this, "Reflect")
+                    {
+                        Static = true,
+                        Parameters = this.TypedArgs("I", "N"),
+                        CodeString = "I - 2 * Dot(N, I) * N",
+                        Comment = "Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result)."
+                    };
+
+                    if (!BaseType.IsComplex)
+                    {
+                        // refract
+                        yield return new Function(this, "Refract")
+                        {
+                            Static = true,
+                            Parameters = this.TypedArgs("I", "N").SConcat(BaseTypeName + " eta"),
+                            Code = new[]
+                            {
+                                "var dNI = Dot(N, I);",
+                                "var k = 1 - eta * eta * (1 - dNI * dNI);",
+                                "if (k < 0) return Zero;",
+                                string.Format("return eta * I - (eta * dNI + ({1}){0}) * N;", BaseType.IsComplex ? "Complex.Sqrt(k)" : SqrtOf("k"), BaseTypeName)
+                            },
+                            Comment = "Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result)."
+                        };
+
+                        // faceforward
+                        yield return new Function(this, "FaceForward")
+                        {
+                            Static = true,
+                            Parameters = this.TypedArgs("N", "I", "Nref"),
+                            CodeString = "Dot(Nref, I) < 0 ? N : -N",
+                            Comment = "Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N)."
+                        };
+                    }
+                }
+
+                // cross product
+                if (BaseType.HasArithmetics)
+                {
+                    // cross
+                    switch (Components)
+                    {
+                        case 3:
+                            yield return new Function(this, "Cross")
+                            {
+                                Static = true,
+                                Parameters = this.TypedArgs("l", "r"),
+                                CodeString = Construct(this, "l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x"),
+                                Comment = "Returns the outer product (cross product, vector product) of the two vectors."
+                            };
+                            break;
+                        case 2:
+                            yield return new Function(BaseType, "Cross")
+                            {
+                                Static = true,
+                                Parameters = this.TypedArgs("l", "r"),
+                                CodeString = "l.x * r.y - l.y * r.x",
+                                Comment = "Returns the length of the outer product (cross product, vector product) of the two vectors."
+                            };
+                            break;
+                    }
+                }
+            }
         }
 
         protected override IEnumerable<string> Body
@@ -768,62 +863,6 @@ namespace GlmSharpGenerator.Types
                         yield return string.Format("    result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString);
                         yield return "    return ok;";
                         yield return "}";
-                    }
-                }
-
-
-                // Arithmetics
-                if (BaseType.HasArithmetics)
-                {
-                    var lengthType = BaseType.LengthType;
-
-
-                    // dot
-                    foreach (var line in "Returns the inner product (dot product, scalar product) of the two vectors.".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Dot({1} lhs, {1} rhs) => {2};", BaseTypeName, NameThat, CompString.Select(c => string.Format("lhs.{0} * rhs.{0}", c)).Aggregated(" + "));
-
-                    // distance
-                    foreach (var line in "Returns the euclidean distance between the two vectors.".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Distance({1} lhs, {1} rhs) => (lhs - rhs).Length;", lengthType, NameThat);
-
-                    foreach (var line in "Returns the squared euclidean distance between the two vectors.".AsComment()) yield return line;
-                    yield return string.Format("public static {0} DistanceSqr({1} lhs, {1} rhs) => (lhs - rhs).LengthSqr;", lengthType, NameThat);
-
-                    if (BaseType.IsSigned)
-                    {
-                        // reflect
-                        foreach (var line in "Calculate the reflection direction for an incident vector (N should be normalized in order to achieve the desired result).".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Reflect({0} I, {0} N) => I - 2 * Dot(N, I) * N;", NameThat);
-
-                        // refract
-                        if (!BaseType.IsComplex)
-                        {
-                            foreach (var line in "Calculate the refraction direction for an incident vector (The input parameters I and N should be normalized in order to achieve the desired result).".AsComment()) yield return line;
-                            yield return string.Format("public static {0} Refract({0} I, {0} N, {1} eta)", NameThat, BaseTypeName);
-                            yield return "{";
-                            yield return "    var dNI = Dot(N, I);";
-                            yield return "    var k = 1 - eta * eta * (1 - dNI * dNI);";
-                            yield return "    if (k < 0) return Zero;";
-                            yield return string.Format("    return eta * I - (eta * dNI + ({1}){0}) * N;", BaseType.IsComplex ? "Complex.Sqrt(k)" : SqrtOf("k"), BaseTypeName);
-                            yield return "}";
-
-                            // faceforward
-                            foreach (var line in "Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).".AsComment()) yield return line;
-                            yield return string.Format("public static {0} FaceForward({0} N, {0} I, {0} Nref) => Dot(Nref, I) < 0 ? N : -N;", NameThat);
-                        }
-                    }
-
-                    // cross
-                    switch (Components)
-                    {
-                        case 3:
-                            foreach (var line in "Returns the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
-                            yield return string.Format("public static {0} Cross({0} l, {0} r) => new {0}(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);", NameThat);
-                            break;
-                        case 2:
-                            foreach (var line in "Returns the length of the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
-                            yield return string.Format("public static {1} Cross({0} l, {0} r) => l.x * r.y - l.y * r.x;", NameThat, BaseTypeName);
-                            break;
                     }
                 }
             }

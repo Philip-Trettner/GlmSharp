@@ -433,6 +433,31 @@ namespace GlmSharp
         #endregion
 
 
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static uint Dot(uvec2 lhs, uvec2 rhs) => lhs.x * rhs.x + lhs.y * rhs.y;
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static float Distance(uvec2 lhs, uvec2 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static float DistanceSqr(uvec2 lhs, uvec2 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Returns the length of the outer product (cross product, vector product) of the two vectors.
+        /// </summary>
+        public static uint Cross(uvec2 l, uvec2 r) => l.x * r.y - l.y * r.x;
+
+        #endregion
+
+
         #region Component-Wise Static Functions
         
         /// <summary>
@@ -1412,25 +1437,5 @@ namespace GlmSharp
             result = ok ? new uvec2(x, y) : Zero;
             return ok;
         }
-        
-        /// <summary>
-        /// Returns the inner product (dot product, scalar product) of the two vectors.
-        /// </summary>
-        public static uint Dot(uvec2 lhs, uvec2 rhs) => lhs.x * rhs.x + lhs.y * rhs.y;
-        
-        /// <summary>
-        /// Returns the euclidean distance between the two vectors.
-        /// </summary>
-        public static float Distance(uvec2 lhs, uvec2 rhs) => (lhs - rhs).Length;
-        
-        /// <summary>
-        /// Returns the squared euclidean distance between the two vectors.
-        /// </summary>
-        public static float DistanceSqr(uvec2 lhs, uvec2 rhs) => (lhs - rhs).LengthSqr;
-        
-        /// <summary>
-        /// Returns the length of the outer product (cross product, vector product) of the two vectors.
-        /// </summary>
-        public static uint Cross(uvec2 l, uvec2 r) => l.x * r.y - l.y * r.x;
     }
 }

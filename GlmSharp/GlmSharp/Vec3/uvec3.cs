@@ -462,6 +462,31 @@ namespace GlmSharp
         #endregion
 
 
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static uint Dot(uvec3 lhs, uvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static float Distance(uvec3 lhs, uvec3 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static float DistanceSqr(uvec3 lhs, uvec3 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Returns the outer product (cross product, vector product) of the two vectors.
+        /// </summary>
+        public static uvec3 Cross(uvec3 l, uvec3 r) => new uvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+
+        #endregion
+
+
         #region Component-Wise Static Functions
         
         /// <summary>
@@ -1441,25 +1466,5 @@ namespace GlmSharp
             result = ok ? new uvec3(x, y, z) : Zero;
             return ok;
         }
-        
-        /// <summary>
-        /// Returns the inner product (dot product, scalar product) of the two vectors.
-        /// </summary>
-        public static uint Dot(uvec3 lhs, uvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
-        
-        /// <summary>
-        /// Returns the euclidean distance between the two vectors.
-        /// </summary>
-        public static float Distance(uvec3 lhs, uvec3 rhs) => (lhs - rhs).Length;
-        
-        /// <summary>
-        /// Returns the squared euclidean distance between the two vectors.
-        /// </summary>
-        public static float DistanceSqr(uvec3 lhs, uvec3 rhs) => (lhs - rhs).LengthSqr;
-        
-        /// <summary>
-        /// Returns the outer product (cross product, vector product) of the two vectors.
-        /// </summary>
-        public static uvec3 Cross(uvec3 l, uvec3 r) => new uvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
     }
 }

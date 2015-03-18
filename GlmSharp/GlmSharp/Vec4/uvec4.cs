@@ -504,6 +504,26 @@ namespace GlmSharp
         #endregion
 
 
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two vectors.
+        /// </summary>
+        public static uint Dot(uvec4 lhs, uvec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
+        
+        /// <summary>
+        /// Returns the euclidean distance between the two vectors.
+        /// </summary>
+        public static float Distance(uvec4 lhs, uvec4 rhs) => (lhs - rhs).Length;
+        
+        /// <summary>
+        /// Returns the squared euclidean distance between the two vectors.
+        /// </summary>
+        public static float DistanceSqr(uvec4 lhs, uvec4 rhs) => (lhs - rhs).LengthSqr;
+
+        #endregion
+
+
         #region Component-Wise Static Functions
         
         /// <summary>
@@ -1483,20 +1503,5 @@ namespace GlmSharp
             result = ok ? new uvec4(x, y, z, w) : Zero;
             return ok;
         }
-        
-        /// <summary>
-        /// Returns the inner product (dot product, scalar product) of the two vectors.
-        /// </summary>
-        public static uint Dot(uvec4 lhs, uvec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
-        
-        /// <summary>
-        /// Returns the euclidean distance between the two vectors.
-        /// </summary>
-        public static float Distance(uvec4 lhs, uvec4 rhs) => (lhs - rhs).Length;
-        
-        /// <summary>
-        /// Returns the squared euclidean distance between the two vectors.
-        /// </summary>
-        public static float DistanceSqr(uvec4 lhs, uvec4 rhs) => (lhs - rhs).LengthSqr;
     }
 }
