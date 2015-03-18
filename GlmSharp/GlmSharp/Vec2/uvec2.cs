@@ -516,6 +516,31 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static umat2 OuterProduct(uvec2 c, uvec2 r) => new umat2(c.x * r.x, c.y * r.x, c.x * r.y, c.y * r.y);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static umat2x3 OuterProduct(uvec3 c, uvec2 r) => new umat2x3(c.x * r.x, c.y * r.x, c.z * r.x, c.x * r.y, c.y * r.y, c.z * r.y);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static umat3x2 OuterProduct(uvec2 c, uvec3 r) => new umat3x2(c.x * r.x, c.y * r.x, c.x * r.y, c.y * r.y, c.x * r.z, c.y * r.z);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static umat2x4 OuterProduct(uvec4 c, uvec2 r) => new umat2x4(c.x * r.x, c.y * r.x, c.z * r.x, c.w * r.x, c.x * r.y, c.y * r.y, c.z * r.y, c.w * r.y);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static umat4x2 OuterProduct(uvec2 c, uvec4 r) => new umat4x2(c.x * r.x, c.y * r.x, c.x * r.y, c.y * r.y, c.x * r.z, c.y * r.z, c.x * r.w, c.y * r.w);
+        
+        /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
         public static uint Dot(uvec2 lhs, uvec2 rhs) => lhs.x * rhs.x + lhs.y * rhs.y;

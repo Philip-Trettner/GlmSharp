@@ -40,6 +40,7 @@ namespace GlmSharpGenerator.Types
 
 
         public char ArgOf(int c) => "xyzw"[c];
+        public string ArgOfs(int c) => "xyzw"[c].ToString();
         public char ArgOfUpper(int c) => char.ToUpper("xyzw"[c]);
 
         public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseTypeName + " " + c);
@@ -48,7 +49,7 @@ namespace GlmSharpGenerator.Types
 
         public SwizzleType SwizzleType => new SwizzleType { Components = Components, BaseName = "swizzle_" + BaseName, BaseType = BaseType };
 
-        
+
 
         public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseType.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
 
@@ -64,7 +65,7 @@ namespace GlmSharpGenerator.Types
 
             return string.Format("({0}){1}", otherType.Name, c);
         }
-        
+
         public IEnumerable<string> SwitchIndex(IEnumerable<string> cases)
         {
             yield return "switch (index)";
@@ -398,7 +399,7 @@ namespace GlmSharpGenerator.Types
                     };
                 }
             }
-            
+
             // IReadOnlyList
             yield return new Property("Count", BuiltinType.TypeInt)
             {
@@ -550,6 +551,31 @@ namespace GlmSharpGenerator.Types
                     yield return new ComponentWiseStaticFunction(Fields, this, "Lerp", this, "min", this, "max", this, "a", "{0} * (1-{2}) + {1} * {2}");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Smoothstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder3()");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Smootherstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()");
+                }
+
+                // outer product
+                for (var comps = 2; comps <= 4; ++comps)
+                {
+                    var otherVec = new VectorType(BaseType, comps);
+                    var matThisThat = new MatrixType(BaseType, Components, comps);
+                    var matThatThis = new MatrixType(BaseType, comps, Components);
+
+                    yield return new Function(matThisThat, "OuterProduct")
+                    {
+                        Static = true,
+                        Parameters = new[] { otherVec.Name + " c", this.Name + " r" },
+                        CodeString = Construct(matThisThat, Components.ForIndexUpTo(ArgOfs).SelectMany(c => comps.ForIndexUpTo(ArgOf).Format("c.{0} * r." + c))),
+                        Comment = "OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r."
+                    };
+
+                    if (comps != Components)
+                        yield return new Function(matThatThis, "OuterProduct")
+                        {
+                            Static = true,
+                            Parameters = new[] { this.Name + " c" , otherVec.Name + " r" },
+                            CodeString = Construct(matThatThis, comps.ForIndexUpTo(ArgOfs).SelectMany(c => Components.ForIndexUpTo(ArgOf).Format("c.{0} * r." + c))),
+                            Comment = "OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r."
+                        };
                 }
 
                 // Operators

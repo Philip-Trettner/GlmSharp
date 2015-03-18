@@ -556,6 +556,31 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static dmat2 OuterProduct(dvec2 c, dvec2 r) => new dmat2(c.x * r.x, c.y * r.x, c.x * r.y, c.y * r.y);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static dmat2x3 OuterProduct(dvec3 c, dvec2 r) => new dmat2x3(c.x * r.x, c.y * r.x, c.z * r.x, c.x * r.y, c.y * r.y, c.z * r.y);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static dmat3x2 OuterProduct(dvec2 c, dvec3 r) => new dmat3x2(c.x * r.x, c.y * r.x, c.x * r.y, c.y * r.y, c.x * r.z, c.y * r.z);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static dmat2x4 OuterProduct(dvec4 c, dvec2 r) => new dmat2x4(c.x * r.x, c.y * r.x, c.z * r.x, c.w * r.x, c.x * r.y, c.y * r.y, c.z * r.y, c.w * r.y);
+        
+        /// <summary>
+        /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
+        /// </summary>
+        public static dmat4x2 OuterProduct(dvec2 c, dvec4 r) => new dmat4x2(c.x * r.x, c.y * r.x, c.x * r.y, c.y * r.y, c.x * r.z, c.y * r.z, c.x * r.w, c.y * r.w);
+        
+        /// <summary>
         /// Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types).
         /// </summary>
         public static dvec2 FromAngle(double angleInRad) => new dvec2((double)Math.Cos(angleInRad), (double)Math.Sin(angleInRad));

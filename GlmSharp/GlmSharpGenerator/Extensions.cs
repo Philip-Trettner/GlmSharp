@@ -25,7 +25,7 @@ namespace GlmSharpGenerator
             return ss.Select(s => type.Name + " " + s);
         }
 
-        public static IEnumerable<string> Format(this IEnumerable<string> ss, string format)
+        public static IEnumerable<string> Format<T>(this IEnumerable<T> ss, string format)
         {
             return ss.Select(s => string.Format(format, s));
         }
