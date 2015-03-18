@@ -611,6 +611,7 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseStaticFunction(Fields, this, "Tanh", this, "v", string.Format("({0})Math.Tanh((double){{0}})", BaseTypeName));
                 yield return new ComponentWiseStaticFunction(Fields, this, "Truncate", this, "v", string.Format("({0})Math.Truncate((double){{0}})", BaseTypeName));
                 yield return new ComponentWiseStaticFunction(Fields, this, "Fract", this, "v", string.Format("({0})({{0}} - Math.Floor({{0}}))", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Trunc", this, "v", "(long)({0})");
             }
 
 

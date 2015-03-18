@@ -1425,6 +1425,16 @@ namespace GlmSharp
         /// Returns a dvec2 from component-wise application of Fract ((double)(v - Math.Floor(v))).
         /// </summary>
         public static dvec2 Fract(double v) => new dvec2((double)(v - Math.Floor(v)));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Trunc ((long)(v)).
+        /// </summary>
+        public static dvec2 Trunc(dvec2 v) => new dvec2((long)(v.x), (long)(v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Trunc ((long)(v)).
+        /// </summary>
+        public static dvec2 Trunc(double v) => new dvec2((long)(v));
 
         #endregion
 

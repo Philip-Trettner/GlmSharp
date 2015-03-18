@@ -1439,6 +1439,16 @@ namespace GlmSharp
         /// Returns a vec3 from component-wise application of Fract ((float)(v - Math.Floor(v))).
         /// </summary>
         public static vec3 Fract(float v) => new vec3((float)(v - Math.Floor(v)));
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Trunc ((long)(v)).
+        /// </summary>
+        public static vec3 Trunc(vec3 v) => new vec3((long)(v.x), (long)(v.y), (long)(v.z));
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Trunc ((long)(v)).
+        /// </summary>
+        public static vec3 Trunc(float v) => new vec3((long)(v));
 
         #endregion
 
