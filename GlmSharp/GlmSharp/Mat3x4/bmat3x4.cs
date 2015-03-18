@@ -99,6 +99,315 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public bmat3x4(bool m00, bool m01, bool m02, bool m03, bool m10, bool m11, bool m12, bool m13, bool m20, bool m21, bool m22, bool m23)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m02 = m02;
+            this.m03 = m03;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m12 = m12;
+            this.m13 = m13;
+            this.m20 = m20;
+            this.m21 = m21;
+            this.m22 = m22;
+            this.m23 = m23;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = false;
+            this.m03 = false;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = false;
+            this.m13 = false;
+            this.m20 = false;
+            this.m21 = false;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = false;
+            this.m03 = false;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = false;
+            this.m13 = false;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = false;
+            this.m03 = false;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = false;
+            this.m13 = false;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = false;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = false;
+            this.m20 = false;
+            this.m21 = false;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = false;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = false;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = false;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = false;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+            this.m20 = false;
+            this.m21 = false;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = m.m23;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a bmat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bmat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = m.m23;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bvec2 c0, bvec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = false;
+            this.m03 = false;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = false;
+            this.m13 = false;
+            this.m20 = false;
+            this.m21 = false;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bvec2 c0, bvec2 c1, bvec2 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = false;
+            this.m03 = false;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = false;
+            this.m13 = false;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bvec3 c0, bvec3 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = false;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = false;
+            this.m20 = false;
+            this.m21 = false;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bvec3 c0, bvec3 c1, bvec3 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = false;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = false;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bvec4 c0, bvec4 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = c0.w;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = c1.w;
+            this.m20 = false;
+            this.m21 = false;
+            this.m22 = true;
+            this.m23 = false;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public bmat3x4(bvec4 c0, bvec4 c1, bvec4 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = c0.w;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = c1.w;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m23 = c2.w;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -197,63 +506,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public bmat3x4(bool m00, bool m01, bool m02, bool m03, bool m10, bool m11, bool m12, bool m13, bool m20, bool m21, bool m22, bool m23)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m02 = m02;
-            this.m03 = m03;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m12 = m12;
-            this.m13 = m13;
-            this.m20 = m20;
-            this.m21 = m21;
-            this.m22 = m22;
-            this.m23 = m23;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public bmat3x4(bmat3x4 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m02 = m.m02;
-            this.m03 = m.m03;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m12 = m.m12;
-            this.m13 = m.m13;
-            this.m20 = m.m20;
-            this.m21 = m.m21;
-            this.m22 = m.m22;
-            this.m23 = m.m23;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public bmat3x4(bvec4 c0, bvec4 c1, bvec4 c2)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m02 = c0.z;
-            this.m03 = c0.w;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m12 = c1.z;
-            this.m13 = c1.w;
-            this.m20 = c2.x;
-            this.m21 = c2.y;
-            this.m22 = c2.z;
-            this.m23 = c2.w;
-        }
         
         /// <summary>
         /// Returns the number of Fields (3 x 4 = 12).

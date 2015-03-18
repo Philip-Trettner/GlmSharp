@@ -237,6 +237,16 @@ namespace GlmSharpGenerator.Types
                     }
                 }
             }
+            // mat4-cast
+            /*{
+                var targetType = new MatrixType(BaseType, 4, 4);
+                yield return new ExplicitOperator(targetType)
+                {
+                    ParameterString = NameThat + " v",
+                    CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c))),
+                    Comment = string.Format("Explicitly converts this to a {0}.", targetType.Name)
+                };
+            }*/
 
 
             // IEnumerable

@@ -51,6 +51,132 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public mat2(float m00, float m01, float m10, float m11)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m10 = m10;
+            this.m11 = m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a mat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(mat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public mat2(vec2 c0, vec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -186,39 +312,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public mat2(float m00, float m01, float m10, float m11)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m10 = m10;
-            this.m11 = m11;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public mat2(mat2 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public mat2(vec2 c0, vec2 c1)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-        }
         
         /// <summary>
         /// Returns the number of Fields (2 x 2 = 4).

@@ -99,6 +99,315 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public gmat4x3(T m00, T m01, T m02, T m10, T m11, T m12, T m20, T m21, T m22, T m30, T m31, T m32)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m02 = m02;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m12 = m12;
+            this.m20 = m20;
+            this.m21 = m21;
+            this.m22 = m22;
+            this.m30 = m30;
+            this.m31 = m31;
+            this.m32 = m32;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat2<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = default(T);
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = default(T);
+            this.m20 = default(T);
+            this.m21 = default(T);
+            this.m22 = default(T);
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat3x2<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = default(T);
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = default(T);
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = default(T);
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat4x2<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = default(T);
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = default(T);
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = default(T);
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat2x3<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = default(T);
+            this.m21 = default(T);
+            this.m22 = default(T);
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat3<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat4x3<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+            this.m32 = m.m32;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat2x4<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = default(T);
+            this.m21 = default(T);
+            this.m22 = default(T);
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat3x4<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a gmat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gmat4<T> m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+            this.m32 = m.m32;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gvec2<T> c0, gvec2<T> c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = default(T);
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = default(T);
+            this.m20 = default(T);
+            this.m21 = default(T);
+            this.m22 = default(T);
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gvec2<T> c0, gvec2<T> c1, gvec2<T> c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = default(T);
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = default(T);
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = default(T);
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gvec2<T> c0, gvec2<T> c1, gvec2<T> c2, gvec2<T> c3)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = default(T);
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = default(T);
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = default(T);
+            this.m30 = c3.x;
+            this.m31 = c3.y;
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gvec3<T> c0, gvec3<T> c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m20 = default(T);
+            this.m21 = default(T);
+            this.m22 = default(T);
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gvec3<T> c0, gvec3<T> c1, gvec3<T> c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m30 = default(T);
+            this.m31 = default(T);
+            this.m32 = default(T);
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public gmat4x3(gvec3<T> c0, gvec3<T> c1, gvec3<T> c2, gvec3<T> c3)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m30 = c3.x;
+            this.m31 = c3.y;
+            this.m32 = c3.z;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -187,63 +496,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public gmat4x3(T m00, T m01, T m02, T m10, T m11, T m12, T m20, T m21, T m22, T m30, T m31, T m32)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m02 = m02;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m12 = m12;
-            this.m20 = m20;
-            this.m21 = m21;
-            this.m22 = m22;
-            this.m30 = m30;
-            this.m31 = m31;
-            this.m32 = m32;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public gmat4x3(gmat4x3<T> m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m02 = m.m02;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m12 = m.m12;
-            this.m20 = m.m20;
-            this.m21 = m.m21;
-            this.m22 = m.m22;
-            this.m30 = m.m30;
-            this.m31 = m.m31;
-            this.m32 = m.m32;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public gmat4x3(gvec3<T> c0, gvec3<T> c1, gvec3<T> c2, gvec3<T> c3)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m02 = c0.z;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m12 = c1.z;
-            this.m20 = c2.x;
-            this.m21 = c2.y;
-            this.m22 = c2.z;
-            this.m30 = c3.x;
-            this.m31 = c3.y;
-            this.m32 = c3.z;
-        }
         
         /// <summary>
         /// Returns the number of Fields (4 x 3 = 12).

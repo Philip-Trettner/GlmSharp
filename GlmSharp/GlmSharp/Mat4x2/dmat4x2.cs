@@ -75,6 +75,206 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public dmat4x2(double m00, double m01, double m10, double m11, double m20, double m21, double m30, double m31)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m20 = m20;
+            this.m21 = m21;
+            this.m30 = m30;
+            this.m31 = m31;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a dmat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dmat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dvec2 c0, dvec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dvec2 c0, dvec2 c1, dvec2 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public dmat4x2(dvec2 c0, dvec2 c1, dvec2 c2, dvec2 c3)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m30 = c3.x;
+            this.m31 = c3.y;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -224,51 +424,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public dmat4x2(double m00, double m01, double m10, double m11, double m20, double m21, double m30, double m31)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m20 = m20;
-            this.m21 = m21;
-            this.m30 = m30;
-            this.m31 = m31;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public dmat4x2(dmat4x2 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m20 = m.m20;
-            this.m21 = m.m21;
-            this.m30 = m.m30;
-            this.m31 = m.m31;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public dmat4x2(dvec2 c0, dvec2 c1, dvec2 c2, dvec2 c3)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m20 = c2.x;
-            this.m21 = c2.y;
-            this.m30 = c3.x;
-            this.m31 = c3.y;
-        }
         
         /// <summary>
         /// Returns the number of Fields (4 x 2 = 8).

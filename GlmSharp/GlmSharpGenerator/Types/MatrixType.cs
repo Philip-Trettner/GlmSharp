@@ -26,6 +26,8 @@ namespace GlmSharpGenerator.Types
 
         public override string TypeComment => string.Format("A matrix of type {0} with {1} columns and {2} rows.", BaseTypeName, Columns, Rows);
 
+        public bool HasField(string f) => ColOf(f) < Columns && RowOf(f) < Rows;
+
         public override IEnumerable<string> BaseClasses
         {
             get
@@ -221,6 +223,39 @@ namespace GlmSharpGenerator.Types
                     Comment = string.Format("Returns the row nr {0}", row)
                 };
 
+            // Constructors
+            yield return new Constructor(this, Fields)
+            {
+                Parameters = Fields.TypedArgs(BaseType),
+                Initializers = Fields,
+                Comment = "Component-wise constructor"
+            };
+            // by-mat-ctors
+            for (var rows = 2; rows <= 4; ++rows)
+                for (var cols = 2; cols <= 4; ++cols)
+                {
+                    var matType = new MatrixType(BaseType, cols, rows);
+                    yield return new Constructor(this, Fields)
+                    {
+                        Parameters = matType.TypedArgs("m"),
+                        Initializers = Fields.Select(f => matType.HasField(f) ? "m." + f : IsDiagonal(f) && !string.IsNullOrEmpty(OneValue) ? OneValue : ZeroValue),
+                        Comment = string.Format("Constructs this matrix from a {0}. Non-overwritten fields are from an Identity matrix.", matType.Name)
+                    };
+                }
+            // by-column-vector-ctors
+            for (var rows = 2; rows <= Rows; ++rows)
+                for (var cols = 2; cols <= Columns; ++cols)
+                {
+                    var vecType = new VectorType(BaseType, rows);
+                    var matType = new MatrixType(BaseType, cols, rows);
+                    yield return new Constructor(this, Fields)
+                    {
+                        Parameters = vecType.TypedArgs(cols.ForIndexUpTo(c => "c" + c)),
+                        Initializers = Fields.Select(f => matType.HasField(f) ? "c" + f[1] + "." + ArgOf(RowOf(f)) : IsDiagonal(f) && !string.IsNullOrEmpty(OneValue) ? OneValue : ZeroValue),
+                        Comment = string.Format("Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.")
+                    };
+                }
+
             // predefs
             yield return new StaticProperty("Zero", this)
             {
@@ -294,15 +329,6 @@ namespace GlmSharpGenerator.Types
         {
             get
             {
-
-                // Constructors
-                foreach (var line in Constructor("Component-wise constructor", Fields.Select(f => BaseTypeName + " " + f).CommaSeparated(), Fields)) yield return line;
-                foreach (var line in Constructor("Copy constructor", NameThat + " m", Fields.Select(f => "m." + f))) yield return line;
-                foreach (var line in Constructor("Column constructor", Columns.ForIndexUpTo(col => ColumnType + " c" + col).CommaSeparated(), Fields.Select(f => "c" + ColOf(f) + "." + ArgOf(RowOf(f))))) yield return line;
-
-                // TODO: sub-col init
-                // TODO: sub-mat init
-                
 
                 // Indexer
                 foreach (var line in string.Format("Returns the number of Fields ({0} x {1} = {2}).", Columns, Rows, FieldCount).AsComment()) yield return line;

@@ -81,6 +81,235 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public decmat3(decimal m00, decimal m01, decimal m02, decimal m10, decimal m11, decimal m12, decimal m20, decimal m21, decimal m22)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m02 = m02;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m12 = m12;
+            this.m20 = m20;
+            this.m21 = m21;
+            this.m22 = m22;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0m;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0m;
+            this.m20 = 0m;
+            this.m21 = 0m;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0m;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0m;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0m;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0m;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = 0m;
+            this.m21 = 0m;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = 0m;
+            this.m21 = 0m;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a decmat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decmat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decvec2 c0, decvec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = 0m;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = 0m;
+            this.m20 = 0m;
+            this.m21 = 0m;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decvec2 c0, decvec2 c1, decvec2 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = 0m;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = 0m;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decvec3 c0, decvec3 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m20 = 0m;
+            this.m21 = 0m;
+            this.m22 = 1m;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public decmat3(decvec3 c0, decvec3 c1, decvec3 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -201,54 +430,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public decmat3(decimal m00, decimal m01, decimal m02, decimal m10, decimal m11, decimal m12, decimal m20, decimal m21, decimal m22)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m02 = m02;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m12 = m12;
-            this.m20 = m20;
-            this.m21 = m21;
-            this.m22 = m22;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public decmat3(decmat3 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m02 = m.m02;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m12 = m.m12;
-            this.m20 = m.m20;
-            this.m21 = m.m21;
-            this.m22 = m.m22;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public decmat3(decvec3 c0, decvec3 c1, decvec3 c2)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m02 = c0.z;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m12 = c1.z;
-            this.m20 = c2.x;
-            this.m21 = c2.y;
-            this.m22 = c2.z;
-        }
         
         /// <summary>
         /// Returns the number of Fields (3 x 3 = 9).

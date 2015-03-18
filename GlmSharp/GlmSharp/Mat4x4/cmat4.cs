@@ -123,6 +123,448 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public cmat4(Complex m00, Complex m01, Complex m02, Complex m03, Complex m10, Complex m11, Complex m12, Complex m13, Complex m20, Complex m21, Complex m22, Complex m23, Complex m30, Complex m31, Complex m32, Complex m33)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m02 = m02;
+            this.m03 = m03;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m12 = m12;
+            this.m13 = m13;
+            this.m20 = m20;
+            this.m21 = m21;
+            this.m22 = m22;
+            this.m23 = m23;
+            this.m30 = m30;
+            this.m31 = m31;
+            this.m32 = m32;
+            this.m33 = m33;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0.0;
+            this.m03 = 0.0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0.0;
+            this.m13 = 0.0;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0.0;
+            this.m03 = 0.0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0.0;
+            this.m13 = 0.0;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0.0;
+            this.m03 = 0.0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0.0;
+            this.m13 = 0.0;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = 0.0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = 0.0;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = 0.0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = 0.0;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = 0.0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = 0.0;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = 0.0;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+            this.m32 = m.m32;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = m.m23;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a cmat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cmat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+            this.m22 = m.m22;
+            this.m23 = m.m23;
+            this.m30 = m.m30;
+            this.m31 = m.m31;
+            this.m32 = m.m32;
+            this.m33 = m.m33;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec2 c0, cvec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = 0.0;
+            this.m03 = 0.0;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = 0.0;
+            this.m13 = 0.0;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec2 c0, cvec2 c1, cvec2 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = 0.0;
+            this.m03 = 0.0;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = 0.0;
+            this.m13 = 0.0;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec2 c0, cvec2 c1, cvec2 c2, cvec2 c3)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = 0.0;
+            this.m03 = 0.0;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = 0.0;
+            this.m13 = 0.0;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = c3.x;
+            this.m31 = c3.y;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec3 c0, cvec3 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = 0.0;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = 0.0;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec3 c0, cvec3 c1, cvec3 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = 0.0;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = 0.0;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec3 c0, cvec3 c1, cvec3 c2, cvec3 c3)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = 0.0;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = 0.0;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m23 = 0.0;
+            this.m30 = c3.x;
+            this.m31 = c3.y;
+            this.m32 = c3.z;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec4 c0, cvec4 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = c0.w;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = c1.w;
+            this.m20 = 0.0;
+            this.m21 = 0.0;
+            this.m22 = 1.0;
+            this.m23 = 0.0;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec4 c0, cvec4 c1, cvec4 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = c0.w;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = c1.w;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m23 = c2.w;
+            this.m30 = 0.0;
+            this.m31 = 0.0;
+            this.m32 = 0.0;
+            this.m33 = 1.0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public cmat4(cvec4 c0, cvec4 c1, cvec4 c2, cvec4 c3)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = c0.w;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = c1.w;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+            this.m22 = c2.z;
+            this.m23 = c2.w;
+            this.m30 = c3.x;
+            this.m31 = c3.y;
+            this.m32 = c3.z;
+            this.m33 = c3.w;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -240,75 +682,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public cmat4(Complex m00, Complex m01, Complex m02, Complex m03, Complex m10, Complex m11, Complex m12, Complex m13, Complex m20, Complex m21, Complex m22, Complex m23, Complex m30, Complex m31, Complex m32, Complex m33)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m02 = m02;
-            this.m03 = m03;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m12 = m12;
-            this.m13 = m13;
-            this.m20 = m20;
-            this.m21 = m21;
-            this.m22 = m22;
-            this.m23 = m23;
-            this.m30 = m30;
-            this.m31 = m31;
-            this.m32 = m32;
-            this.m33 = m33;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public cmat4(cmat4 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m02 = m.m02;
-            this.m03 = m.m03;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m12 = m.m12;
-            this.m13 = m.m13;
-            this.m20 = m.m20;
-            this.m21 = m.m21;
-            this.m22 = m.m22;
-            this.m23 = m.m23;
-            this.m30 = m.m30;
-            this.m31 = m.m31;
-            this.m32 = m.m32;
-            this.m33 = m.m33;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public cmat4(cvec4 c0, cvec4 c1, cvec4 c2, cvec4 c3)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m02 = c0.z;
-            this.m03 = c0.w;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m12 = c1.z;
-            this.m13 = c1.w;
-            this.m20 = c2.x;
-            this.m21 = c2.y;
-            this.m22 = c2.z;
-            this.m23 = c2.w;
-            this.m30 = c3.x;
-            this.m31 = c3.y;
-            this.m32 = c3.z;
-            this.m33 = c3.w;
-        }
         
         /// <summary>
         /// Returns the number of Fields (4 x 4 = 16).

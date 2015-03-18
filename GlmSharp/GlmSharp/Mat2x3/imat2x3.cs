@@ -63,6 +63,167 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public imat2x3(int m00, int m01, int m02, int m10, int m11, int m12)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m02 = m02;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m12 = m12;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a imat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(imat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(ivec2 c0, ivec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = 0;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = 0;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public imat2x3(ivec3 c0, ivec3 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -165,45 +326,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public imat2x3(int m00, int m01, int m02, int m10, int m11, int m12)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m02 = m02;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m12 = m12;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public imat2x3(imat2x3 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m02 = m.m02;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m12 = m.m12;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public imat2x3(ivec3 c0, ivec3 c1)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m02 = c0.z;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m12 = c1.z;
-        }
         
         /// <summary>
         /// Returns the number of Fields (2 x 3 = 6).

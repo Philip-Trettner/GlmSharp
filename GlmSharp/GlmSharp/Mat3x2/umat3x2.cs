@@ -63,6 +63,167 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public umat3x2(uint m00, uint m01, uint m10, uint m11, uint m20, uint m21)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m20 = m20;
+            this.m21 = m21;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = 0u;
+            this.m21 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = 0u;
+            this.m21 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = 0u;
+            this.m21 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(umat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m20 = m.m20;
+            this.m21 = m.m21;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(uvec2 c0, uvec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m20 = 0u;
+            this.m21 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat3x2(uvec2 c0, uvec2 c1, uvec2 c2)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m20 = c2.x;
+            this.m21 = c2.y;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -165,45 +326,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public umat3x2(uint m00, uint m01, uint m10, uint m11, uint m20, uint m21)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m20 = m20;
-            this.m21 = m21;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public umat3x2(umat3x2 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m20 = m.m20;
-            this.m21 = m.m21;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public umat3x2(uvec2 c0, uvec2 c1, uvec2 c2)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m20 = c2.x;
-            this.m21 = c2.y;
-        }
         
         /// <summary>
         /// Returns the number of Fields (3 x 2 = 6).

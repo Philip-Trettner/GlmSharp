@@ -75,6 +75,206 @@ namespace GlmSharp
         #endregion
 
 
+        #region Constructors
+        
+        /// <summary>
+        /// Component-wise constructor
+        /// </summary>
+        public umat2x4(uint m00, uint m01, uint m02, uint m03, uint m10, uint m11, uint m12, uint m13)
+        {
+            this.m00 = m00;
+            this.m01 = m01;
+            this.m02 = m02;
+            this.m03 = m03;
+            this.m10 = m10;
+            this.m11 = m11;
+            this.m12 = m12;
+            this.m13 = m13;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0u;
+            this.m03 = 0u;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0u;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat3x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat3x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0u;
+            this.m03 = 0u;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0u;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat4x2. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat4x2 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = 0u;
+            this.m03 = 0u;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = 0u;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat2x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat2x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = 0u;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = 0u;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat4x3. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat4x3 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = 0u;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat2x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat2x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat3x4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat3x4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a umat4. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(umat4 m)
+        {
+            this.m00 = m.m00;
+            this.m01 = m.m01;
+            this.m02 = m.m02;
+            this.m03 = m.m03;
+            this.m10 = m.m10;
+            this.m11 = m.m11;
+            this.m12 = m.m12;
+            this.m13 = m.m13;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(uvec2 c0, uvec2 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = 0u;
+            this.m03 = 0u;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = 0u;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(uvec3 c0, uvec3 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = 0u;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = 0u;
+        }
+        
+        /// <summary>
+        /// Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.
+        /// </summary>
+        public umat2x4(uvec4 c0, uvec4 c1)
+        {
+            this.m00 = c0.x;
+            this.m01 = c0.y;
+            this.m02 = c0.z;
+            this.m03 = c0.w;
+            this.m10 = c1.x;
+            this.m11 = c1.y;
+            this.m12 = c1.z;
+            this.m13 = c1.w;
+        }
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>
@@ -184,51 +384,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Component-wise constructor
-        /// </summary>
-        public umat2x4(uint m00, uint m01, uint m02, uint m03, uint m10, uint m11, uint m12, uint m13)
-        {
-            this.m00 = m00;
-            this.m01 = m01;
-            this.m02 = m02;
-            this.m03 = m03;
-            this.m10 = m10;
-            this.m11 = m11;
-            this.m12 = m12;
-            this.m13 = m13;
-        }
-        
-        /// <summary>
-        /// Copy constructor
-        /// </summary>
-        public umat2x4(umat2x4 m)
-        {
-            this.m00 = m.m00;
-            this.m01 = m.m01;
-            this.m02 = m.m02;
-            this.m03 = m.m03;
-            this.m10 = m.m10;
-            this.m11 = m.m11;
-            this.m12 = m.m12;
-            this.m13 = m.m13;
-        }
-        
-        /// <summary>
-        /// Column constructor
-        /// </summary>
-        public umat2x4(uvec4 c0, uvec4 c1)
-        {
-            this.m00 = c0.x;
-            this.m01 = c0.y;
-            this.m02 = c0.z;
-            this.m03 = c0.w;
-            this.m10 = c1.x;
-            this.m11 = c1.y;
-            this.m12 = c1.z;
-            this.m13 = c1.w;
-        }
         
         /// <summary>
         /// Returns the number of Fields (2 x 4 = 8).
