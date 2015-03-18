@@ -14,9 +14,16 @@ namespace GlmSharpGenerator
 
         private static void Main(string[] args)
         {
-            if (args.Length != 2)
+            if (args.Length != 1)
             {
-                Console.WriteLine("Usage: path/to/gen-folder/net45/ path/to/gen-folder/net20/");
+                Console.WriteLine("Usage: path/to/sln-folder/ path/to/gen-folder/");
+                return;
+            }
+
+            var basePath = args[0];
+            if (!File.Exists(Path.Combine(basePath, "GlmSharp.sln")))
+            {
+                Console.WriteLine("File " + Path.Combine(basePath, "GlmSharp.sln") + " does not exist. Maybe wrong path?");
                 return;
             }
 
@@ -24,13 +31,15 @@ namespace GlmSharpGenerator
             foreach (var version in new[] { 45, 20 })
             {
                 string path;
+                var testpath = "";
                 switch (version)
                 {
                     case 45:
-                        path = args[0];
+                        path = Path.Combine(basePath, "GlmSharp");
+                        testpath = Path.Combine(basePath, "GlmSharpTest");
                         break;
                     case 20:
-                        path = args[1];
+                        path = Path.Combine(basePath, "GlmSharpCompat");
                         break;
                     default:
                         throw new InvalidOperationException();
@@ -41,25 +50,14 @@ namespace GlmSharpGenerator
 
                 // see: https://www.opengl.org/sdk/docs/man4/html/ for functions
 
-                Console.WriteLine();
-                Console.WriteLine("Types:");
-                foreach (var type in AbstractType.Types.Keys)
-                    Console.WriteLine("    " + type);
-
-                Console.WriteLine();
-                Console.WriteLine("Generate:");
                 foreach (var type in AbstractType.Types.Values)
                 {
                     if (!string.IsNullOrEmpty(type.Folder))
                         Directory.CreateDirectory(Path.Combine(path, type.Folder));
+
                     var filename = type.PathOf(path);
-                    var lines = type.CSharpFile.ToArray();
-                    var currLines = File.Exists(filename) ? File.ReadAllLines(filename) : new string[] { };
-                    if (!lines.SequenceEqual(currLines))
-                    {
-                        File.WriteAllLines(filename, lines);
+                    if (type.CSharpFile.WriteToFileIfChanged(filename))
                         Console.WriteLine("    CHANGED " + filename);
-                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -10,6 +11,15 @@ namespace GlmSharpGenerator
 {
     static class Extensions
     {
+        public static bool WriteToFileIfChanged(this IEnumerable<string> flines, string filename)
+        {
+            var lines = flines.ToArray();
+            var currLines = File.Exists(filename) ? File.ReadAllLines(filename) : new string[] { };
+            if (lines.SequenceEqual(currLines)) return false;
+            File.WriteAllLines(filename, lines);
+            return true;
+        }
+
         private static string NestedSymmetricFunction(IReadOnlyList<string> fields, string funcFormat, int start, int end)
         {
             if (start == end)
