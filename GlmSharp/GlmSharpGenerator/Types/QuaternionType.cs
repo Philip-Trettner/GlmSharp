@@ -660,7 +660,7 @@ namespace GlmSharpGenerator.Types
                 yield return new Property("Angle", BuiltinType.TypeDouble)
                 {
                     GetterLine = "Math.Acos((double)w) * 2.0",
-                    Comment = "Returns the represented angle of this quaternion"
+                    Comment = "Returns the represented angle of this quaternion."
                 };
 
                 yield return new Property("Axis", vec3Type)
@@ -672,31 +672,31 @@ namespace GlmSharpGenerator.Types
                         string.Format("var s2 = 1 / {0};", SqrtOf("s1")),
                         string.Format("return {0};", Construct(vec3Type, BaseTypeCast + "(x * s2)", BaseTypeCast + "(y * s2)", BaseTypeCast + "(z * s2)"))
                     },
-                    Comment = "Returns the represented axis of this quaternion"
+                    Comment = "Returns the represented axis of this quaternion."
                 };
 
                 yield return new Property("Yaw", BuiltinType.TypeDouble)
                 {
                     GetterLine = "Math.Asin(-2.0 * (double)(x * z - w * y))",
-                    Comment = "Returns the represented yaw angle of this quaternion"
+                    Comment = "Returns the represented yaw angle of this quaternion."
                 };
 
                 yield return new Property("Pitch", BuiltinType.TypeDouble)
                 {
                     GetterLine = "Math.Atan2(2.0 * (double)(y * z + w * x), (double)(w * w - x * x - y * y + z * z))",
-                    Comment = "Returns the represented pitch angle of this quaternion"
+                    Comment = "Returns the represented pitch angle of this quaternion."
                 };
 
                 yield return new Property("Roll", BuiltinType.TypeDouble)
                 {
                     GetterLine = "Math.Atan2(2.0 * (double)(x * y + w * z), (double)(w * w + x * x - y * y - z * z))",
-                    Comment = "Returns the represented roll angle of this quaternion"
+                    Comment = "Returns the represented roll angle of this quaternion."
                 };
 
                 yield return new Property("EulerAngles", dvec3Type)
                 {
                     GetterLine = Construct(dvec3Type, "Pitch", "Yaw", "Roll"),
-                    Comment = "Returns the represented euler angles (pitch, yaw, roll) of this quaternion"
+                    Comment = "Returns the represented euler angles (pitch, yaw, roll) of this quaternion."
                 };
 
                 yield return new Function(this, "FromAxisAngle")
@@ -709,7 +709,14 @@ namespace GlmSharpGenerator.Types
                         "var c = Math.Cos((double)angle * 0.5);",
                         string.Format("return {0};", Construct(this, BaseTypeCast + "((double)v.x * s)", BaseTypeCast + "((double)v.y * s)", BaseTypeCast + "((double)v.z * s)", BaseTypeCast + "c"))
                     },
-                    Comment = "Creates a quaternion from an axis and an angle (in radians)"
+                    Comment = "Creates a quaternion from an axis and an angle (in radians)."
+                };
+
+                yield return new Function(this, "Rotated")
+                {
+                    Parameters = BaseType.TypedArgs("angle").Concat(vec3Type.TypedArgs("v")),
+                    CodeString = "this * FromAxisAngle(angle, v)",
+                    Comment = "Rotates this quaternion from an axis and an angle (in radians)."
                 };
             }
 

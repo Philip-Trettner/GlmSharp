@@ -300,12 +300,12 @@ namespace GlmSharp
         public decquat NormalizedSafe => this == Zero ? Identity : this / Length;
         
         /// <summary>
-        /// Returns the represented angle of this quaternion
+        /// Returns the represented angle of this quaternion.
         /// </summary>
         public double Angle => Math.Acos((double)w) * 2.0;
         
         /// <summary>
-        /// Returns the represented axis of this quaternion
+        /// Returns the represented axis of this quaternion.
         /// </summary>
         public decvec3 Axis
         {
@@ -319,22 +319,22 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns the represented yaw angle of this quaternion
+        /// Returns the represented yaw angle of this quaternion.
         /// </summary>
         public double Yaw => Math.Asin(-2.0 * (double)(x * z - w * y));
         
         /// <summary>
-        /// Returns the represented pitch angle of this quaternion
+        /// Returns the represented pitch angle of this quaternion.
         /// </summary>
         public double Pitch => Math.Atan2(2.0 * (double)(y * z + w * x), (double)(w * w - x * x - y * y + z * z));
         
         /// <summary>
-        /// Returns the represented roll angle of this quaternion
+        /// Returns the represented roll angle of this quaternion.
         /// </summary>
         public double Roll => Math.Atan2(2.0 * (double)(x * y + w * z), (double)(w * w + x * x - y * y - z * z));
         
         /// <summary>
-        /// Returns the represented euler angles (pitch, yaw, roll) of this quaternion
+        /// Returns the represented euler angles (pitch, yaw, roll) of this quaternion.
         /// </summary>
         public dvec3 EulerAngles => new dvec3(Pitch, Yaw, Roll);
         
@@ -529,6 +529,11 @@ namespace GlmSharp
                 return ((((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode()) * 397) ^ w.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Rotates this quaternion from an axis and an angle (in radians).
+        /// </summary>
+        public decquat Rotated(decimal angle, decvec3 v) => this * FromAxisAngle(angle, v);
 
         #endregion
 
@@ -621,7 +626,7 @@ namespace GlmSharp
         public static decimal Dot(decquat lhs, decquat rhs) => ((lhs.x * rhs.x + lhs.y * rhs.y) + (lhs.z * rhs.z + lhs.w * rhs.w));
         
         /// <summary>
-        /// Creates a quaternion from an axis and an angle (in radians)
+        /// Creates a quaternion from an axis and an angle (in radians).
         /// </summary>
         public static decquat FromAxisAngle(decimal angle, decvec3 v)
         {
