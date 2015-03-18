@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using GlmSharpGenerator.Members;
@@ -185,6 +186,7 @@ namespace GlmSharpGenerator.Types
         {
             var colVecType = new VectorType(BaseType, Rows);
             var rowVecType = new VectorType(BaseType, Columns);
+            var diagonal = Rows == Columns;
 
             // fields
             foreach (var f in Fields)
@@ -271,6 +273,21 @@ namespace GlmSharpGenerator.Types
                     Comment = string.Format("Predefined diagonal-{0} matrix", constant)
                 };
             }
+
+
+            // IEnumerable
+            yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")
+            {
+                Code = Fields.Select(f => string.Format("yield return {0};", f)),
+                Comment = "Returns an enumerator that iterates through all fields."
+            };
+
+            yield return new Function(new AnyType("IEnumerator"), "IEnumerable.GetEnumerator")
+            {
+                Visibility = "",
+                CodeString = "GetEnumerator()",
+                Comment = "Returns an enumerator that iterates through all fields."
+            };
         }
 
         protected override IEnumerable<string> Body
@@ -285,19 +302,7 @@ namespace GlmSharpGenerator.Types
 
                 // TODO: sub-col init
                 // TODO: sub-mat init
-
-
-                // IEnumerable
-                foreach (var line in "Returns an enumerator that iterates through all FieldCount.".AsComment()) yield return line;
-                yield return string.Format("public IEnumerator<{0}> GetEnumerator()", BaseTypeName);
-                yield return "{";
-                foreach (var c in Fields)
-                    yield return string.Format("yield return {0};", c).Indent();
-                yield return "}";
-
-                foreach (var line in "Returns an enumerator that iterates through all FieldCount.".AsComment()) yield return line;
-                yield return "IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();";
-
+                
 
                 // Indexer
                 foreach (var line in string.Format("Returns the number of Fields ({0} x {1} = {2}).", Columns, Rows, FieldCount).AsComment()) yield return line;

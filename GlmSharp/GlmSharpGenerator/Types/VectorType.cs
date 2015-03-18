@@ -236,7 +236,6 @@ namespace GlmSharpGenerator.Types
             // IEnumerable
             yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")
             {
-                NoReturn = true,
                 Code = Fields.Select(f => string.Format("yield return {0};", f)),
                 Comment = "Returns an enumerator that iterates through all components."
             };

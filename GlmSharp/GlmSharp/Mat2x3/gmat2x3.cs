@@ -112,6 +112,29 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Functions
+        
+        /// <summary>
+        /// Returns an enumerator that iterates through all fields.
+        /// </summary>
+        public IEnumerator<T> GetEnumerator()
+        {
+            yield return m00;
+            yield return m01;
+            yield return m02;
+            yield return m10;
+            yield return m11;
+            yield return m12;
+        }
+        
+        /// <summary>
+        /// Returns an enumerator that iterates through all fields.
+        /// </summary>
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor
@@ -151,24 +174,6 @@ namespace GlmSharp
             this.m11 = c1.y;
             this.m12 = c1.z;
         }
-        
-        /// <summary>
-        /// Returns an enumerator that iterates through all FieldCount.
-        /// </summary>
-        public IEnumerator<T> GetEnumerator()
-        {
-            yield return m00;
-            yield return m01;
-            yield return m02;
-            yield return m10;
-            yield return m11;
-            yield return m12;
-        }
-        
-        /// <summary>
-        /// Returns an enumerator that iterates through all FieldCount.
-        /// </summary>
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
         /// Returns the number of Fields (2 x 3 = 6).

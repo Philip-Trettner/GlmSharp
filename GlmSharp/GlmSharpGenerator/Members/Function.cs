@@ -33,12 +33,7 @@ namespace GlmSharpGenerator.Members
         /// Code as a string
         /// </summary>
         public string CodeString { set { Code = new[] { value }; } }
-
-        /// <summary>
-        /// If true, generates no return at end
-        /// </summary>
-        public bool NoReturn { get; set; }
-
+        
         /// <summary>
         /// True if override property
         /// </summary>
