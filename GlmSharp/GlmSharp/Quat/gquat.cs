@@ -76,6 +76,17 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// copy constructor
+        /// </summary>
+        public gquat(gquat<T> q)
+        {
+            this.x = q.x;
+            this.y = q.y;
+            this.z = q.z;
+            this.w = q.w;
+        }
+        
+        /// <summary>
         /// vector-and-scalar constructor (CAUTION: not angle-axis, use FromAngleAxis instead)
         /// </summary>
         public gquat(gvec3<T> v, T s)

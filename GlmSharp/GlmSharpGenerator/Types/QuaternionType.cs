@@ -56,6 +56,8 @@ namespace GlmSharpGenerator.Types
         public override IEnumerable<Member> GenerateMembers()
         {
             var boolVType = new VectorType(BuiltinType.TypeBool, Components);
+            var mat3Type = new MatrixType(BaseType, 3, 3);
+            var mat4Type = new MatrixType(BaseType, 4, 4);
             var vec3Type = new VectorType(BaseType, 3);
             var dvec3Type = new VectorType(BuiltinType.TypeDouble, 3);
             var lengthType = new AnyType(BaseType.LengthType);
@@ -145,12 +147,19 @@ namespace GlmSharpGenerator.Types
             };
             yield return new Constructor(this, Fields)
             {
+                ParameterString = this.NameThat + " q",
+                Initializers = Fields.Select(f => "q." + f),
+                Comment = "copy constructor"
+            };
+            yield return new Constructor(this, Fields)
+            {
                 ParameterString = vec3Type.NameThat + " v, " + BaseTypeName + " s",
                 Initializers = new[] { "v.x", "v.y", "v.z", "s" },
                 Comment = "vector-and-scalar constructor (CAUTION: not angle-axis, use FromAngleAxis instead)"
             };
             if (BaseType.IsFloatingPoint)
             {
+                // from angle between axes
                 yield return new Constructor(this, Fields)
                 {
                     Parameters = vec3Type.TypedArgs("u", "v"),
@@ -164,6 +173,7 @@ namespace GlmSharpGenerator.Types
                     Comment = "Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)"
                 };
 
+                // from euler angle
                 yield return new Constructor(this, Fields)
                 {
                     Parameters = vec3Type.TypedArgs("eulerAngle"),
@@ -180,6 +190,20 @@ namespace GlmSharpGenerator.Types
                         "c.x * c.y * c.z + s.x * s.y * s.z"
                     },
                     Comment = "Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)"
+                };
+
+                // from matrices
+                yield return new Constructor(this, Fields)
+                {
+                    ParameterString = mat3Type.Name + " m",
+                    ConstructorChain = "this(FromMat3(m))",
+                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat3Type.Name)
+                };
+                yield return new Constructor(this, Fields)
+                {
+                    ParameterString = mat4Type.Name + " m",
+                    ConstructorChain = "this(FromMat4(m))",
+                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat4Type.Name)
                 };
             }
 
@@ -631,6 +655,82 @@ namespace GlmSharpGenerator.Types
                         string.Format("return {0};", Construct(this, BaseTypeCast + "((double)v.x * s)", BaseTypeCast + "((double)v.y * s)", BaseTypeCast + "((double)v.z * s)", BaseTypeCast + "c"))
                     },
                     Comment = "Creates a quaternion from an axis and an angle (in radians)"
+                };
+            }
+
+            // mat casts
+            if (BaseType.IsFloatingPoint)
+            {
+                yield return new Property("ToMat3", mat3Type)
+                {
+                    GetterLine = Construct(mat3Type,
+                        "1 - 2 * (y*y + z*z)",
+                        "2 * (x*y + w*z)",
+                        "2 * (x*z - w*y)",
+
+                        "2 * (x*y - w*z)",
+                        "1 - 2 * (x*x + z*z)",
+                        "2 * (y*z + w*x)",
+
+                        "2 * (x*z + w*y)",
+                        "2 * (y*z - w*x)",
+                        "1 - 2 * (x*x + y*y)"
+                        ),
+                    Comment = string.Format("Creates a {0} that realizes the rotation of this quaternion", mat3Type.Name)
+                };
+
+                yield return new Property("ToMat4", mat4Type)
+                {
+                    GetterLine = Construct(mat4Type, "ToMat3"),
+                    Comment = string.Format("Creates a {0} that realizes the rotation of this quaternion", mat4Type.Name)
+                };
+
+                yield return new Function(this, "FromMat3")
+                {
+                    Static = true,
+                    Parameters = mat3Type.TypedArgs("m"),
+                    Code = new[]
+                    {
+                        "var fourXSquaredMinus1 = m.m00 - m.m11 - m.m22;",
+                        "var fourYSquaredMinus1 = m.m11 - m.m00 - m.m22;",
+                        "var fourZSquaredMinus1 = m.m22 - m.m00 - m.m11;",
+                        "var fourWSquaredMinus1 = m.m00 + m.m11 + m.m22;",
+                        "var biggestIndex = 0;",
+                        "var fourBiggestSquaredMinus1 = fourWSquaredMinus1;",
+                        "if(fourXSquaredMinus1 > fourBiggestSquaredMinus1)",
+                        "{",
+                        "    fourBiggestSquaredMinus1 = fourXSquaredMinus1;",
+                        "    biggestIndex = 1;",
+                        "}",
+                        "if(fourYSquaredMinus1 > fourBiggestSquaredMinus1)",
+                        "{",
+                        "    fourBiggestSquaredMinus1 = fourYSquaredMinus1;",
+                        "    biggestIndex = 2;",
+                        "}",
+                        "if(fourZSquaredMinus1 > fourBiggestSquaredMinus1)",
+                        "{",
+                        "    fourBiggestSquaredMinus1 = fourZSquaredMinus1;",
+                        "    biggestIndex = 3;",
+                        "}",
+                        "var biggestVal = Math.Sqrt((double)fourBiggestSquaredMinus1 + 1.0) * 0.5;",
+                        "var mult = 0.25 / biggestVal;",
+                        "switch(biggestIndex)",
+                        "{",
+                        string.Format("    case 0: return {0};", Construct(this, BaseTypeCast + "((double)(m.m12 - m.m21) * mult)", BaseTypeCast + "((double)(m.m20 - m.m02) * mult)", BaseTypeCast + "((double)(m.m01 - m.m10) * mult)", BaseTypeCast + "(biggestVal)")),
+                        string.Format("    case 1: return {0};", Construct(this, BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m01 + m.m10) * mult)", BaseTypeCast + "((double)(m.m20 + m.m02) * mult)", BaseTypeCast + "((double)(m.m12 - m.m21) * mult)")),
+                        string.Format("    case 2: return {0};", Construct(this, BaseTypeCast + "((double)(m.m01 + m.m10) * mult)", BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m12 + m.m21) * mult)", BaseTypeCast + "((double)(m.m20 - m.m02) * mult)")),
+                        string.Format("    default: return {0};", Construct(this, BaseTypeCast + "((double)(m.m20 + m.m02) * mult)", BaseTypeCast + "((double)(m.m12 + m.m21) * mult)", BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m01 - m.m10) * mult)")),
+                        "}"
+                    },
+                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat4Type.Name)
+                };
+
+                yield return new Function(this, "FromMat4")
+                {
+                    Static = true,
+                    Parameters = mat4Type.TypedArgs("m"),
+                    CodeString = string.Format("FromMat3({0})", Construct(mat3Type, "m")),
+                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat3Type.Name)
                 };
             }
 

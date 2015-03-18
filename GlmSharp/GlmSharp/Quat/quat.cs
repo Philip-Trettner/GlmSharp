@@ -76,6 +76,17 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// copy constructor
+        /// </summary>
+        public quat(quat q)
+        {
+            this.x = q.x;
+            this.y = q.y;
+            this.z = q.z;
+            this.w = q.w;
+        }
+        
+        /// <summary>
         /// vector-and-scalar constructor (CAUTION: not angle-axis, use FromAngleAxis instead)
         /// </summary>
         public quat(vec3 v, float s)
@@ -111,6 +122,22 @@ namespace GlmSharp
             this.y = c.x * s.y * c.z + s.x * c.y * s.z;
             this.z = c.x * c.y * s.z - s.x * s.y * c.z;
             this.w = c.x * c.y * c.z + s.x * s.y * s.z;
+        }
+        
+        /// <summary>
+        /// Creates a quaternion from the rotational part of a mat3.
+        /// </summary>
+        public quat(mat3 m)
+            : this(FromMat3(m))
+        {
+        }
+        
+        /// <summary>
+        /// Creates a quaternion from the rotational part of a mat4.
+        /// </summary>
+        public quat(mat4 m)
+            : this(FromMat4(m))
+        {
         }
 
         #endregion
@@ -305,6 +332,16 @@ namespace GlmSharp
         /// Returns the represented euler angles (pitch, yaw, roll) of this quaternion
         /// </summary>
         public dvec3 EulerAngles => new dvec3(Pitch, Yaw, Roll);
+        
+        /// <summary>
+        /// Creates a mat3 that realizes the rotation of this quaternion
+        /// </summary>
+        public mat3 ToMat3 => new mat3(1 - 2 * (y*y + z*z), 2 * (x*y + w*z), 2 * (x*z - w*y), 2 * (x*y - w*z), 1 - 2 * (x*x + z*z), 2 * (y*z + w*x), 2 * (x*z + w*y), 2 * (y*z - w*x), 1 - 2 * (x*x + y*y));
+        
+        /// <summary>
+        /// Creates a mat4 that realizes the rotation of this quaternion
+        /// </summary>
+        public mat4 ToMat4 => new mat4(ToMat3);
         
         /// <summary>
         /// Returns the conjugated quaternion
@@ -571,6 +608,48 @@ namespace GlmSharp
             var c = Math.Cos((double)angle * 0.5);
             return new quat((float)((double)v.x * s), (float)((double)v.y * s), (float)((double)v.z * s), (float)c);
         }
+        
+        /// <summary>
+        /// Creates a quaternion from the rotational part of a mat4.
+        /// </summary>
+        public static quat FromMat3(mat3 m)
+        {
+            var fourXSquaredMinus1 = m.m00 - m.m11 - m.m22;
+            var fourYSquaredMinus1 = m.m11 - m.m00 - m.m22;
+            var fourZSquaredMinus1 = m.m22 - m.m00 - m.m11;
+            var fourWSquaredMinus1 = m.m00 + m.m11 + m.m22;
+            var biggestIndex = 0;
+            var fourBiggestSquaredMinus1 = fourWSquaredMinus1;
+            if(fourXSquaredMinus1 > fourBiggestSquaredMinus1)
+            {
+                fourBiggestSquaredMinus1 = fourXSquaredMinus1;
+                biggestIndex = 1;
+            }
+            if(fourYSquaredMinus1 > fourBiggestSquaredMinus1)
+            {
+                fourBiggestSquaredMinus1 = fourYSquaredMinus1;
+                biggestIndex = 2;
+            }
+            if(fourZSquaredMinus1 > fourBiggestSquaredMinus1)
+            {
+                fourBiggestSquaredMinus1 = fourZSquaredMinus1;
+                biggestIndex = 3;
+            }
+            var biggestVal = Math.Sqrt((double)fourBiggestSquaredMinus1 + 1.0) * 0.5;
+            var mult = 0.25 / biggestVal;
+            switch(biggestIndex)
+            {
+                case 0: return new quat((float)((double)(m.m12 - m.m21) * mult), (float)((double)(m.m20 - m.m02) * mult), (float)((double)(m.m01 - m.m10) * mult), (float)(biggestVal));
+                case 1: return new quat((float)(biggestVal), (float)((double)(m.m01 + m.m10) * mult), (float)((double)(m.m20 + m.m02) * mult), (float)((double)(m.m12 - m.m21) * mult));
+                case 2: return new quat((float)((double)(m.m01 + m.m10) * mult), (float)(biggestVal), (float)((double)(m.m12 + m.m21) * mult), (float)((double)(m.m20 - m.m02) * mult));
+                default: return new quat((float)((double)(m.m20 + m.m02) * mult), (float)((double)(m.m12 + m.m21) * mult), (float)(biggestVal), (float)((double)(m.m01 - m.m10) * mult));
+            }
+        }
+        
+        /// <summary>
+        /// Creates a quaternion from the rotational part of a mat3.
+        /// </summary>
+        public static quat FromMat4(mat4 m) => FromMat3(new mat3(m));
 
         #endregion
 

@@ -25,6 +25,11 @@ namespace GlmSharpGenerator.Members
         public string ParameterString { set { Parameters = new[] { value }; } }
 
         /// <summary>
+        /// Constructor chain
+        /// </summary>
+        public string ConstructorChain { get; set; }
+
+        /// <summary>
         /// Fields to initialize
         /// </summary>
         public IEnumerable<string> Fields { get; set; }
@@ -44,13 +49,18 @@ namespace GlmSharpGenerator.Members
                     yield return line;
 
                 yield return string.Format("{0} {1}({2})", MemberPrefix, Type.Name, Parameters.CommaSeparated());
+                if (!string.IsNullOrEmpty(ConstructorChain))
+                    yield return (": " + ConstructorChain).Indent();
                 yield return "{";
                 if (Code != null)
                     foreach (var code in Code)
                         yield return code.Indent();
-                var it = Initializers.GetEnumerator();
-                foreach (var c in Fields)
-                    yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : Type.ZeroValue).Indent();
+                if (string.IsNullOrEmpty(ConstructorChain))
+                {
+                    var it = Initializers.GetEnumerator();
+                    foreach (var c in Fields)
+                        yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : Type.ZeroValue).Indent();
+                }
                 yield return "}";
             }
         }

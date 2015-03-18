@@ -306,6 +306,14 @@ namespace GlmSharp
             this.m21 = c2.y;
             this.m22 = c2.z;
         }
+        
+        /// <summary>
+        /// Creates a rotation matrix from a decquat.
+        /// </summary>
+        public decmat3(decquat  q)
+            : this(q.ToMat3)
+        {
+        }
 
         #endregion
 
@@ -351,6 +359,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public decvec3 Row2 => new decvec3(m02, m12, m22);
+        
+        /// <summary>
+        /// Creates a quaternion from the rotational part of this matrix.
+        /// </summary>
+        public decquat ToQuaternion => decquat.FromMat3(this);
 
         #endregion
 

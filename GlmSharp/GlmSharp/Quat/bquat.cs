@@ -76,6 +76,17 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// copy constructor
+        /// </summary>
+        public bquat(bquat q)
+        {
+            this.x = q.x;
+            this.y = q.y;
+            this.z = q.z;
+            this.w = q.w;
+        }
+        
+        /// <summary>
         /// vector-and-scalar constructor (CAUTION: not angle-axis, use FromAngleAxis instead)
         /// </summary>
         public bquat(bvec3 v, bool s)

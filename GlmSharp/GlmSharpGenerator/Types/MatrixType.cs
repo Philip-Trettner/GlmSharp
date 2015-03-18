@@ -188,6 +188,7 @@ namespace GlmSharpGenerator.Types
         {
             var colVecType = new VectorType(BaseType, Rows);
             var rowVecType = new VectorType(BaseType, Columns);
+            var quatType = new QuaternionType(BaseType);
             var diagonal = Rows == Columns;
 
             // fields
@@ -255,6 +256,22 @@ namespace GlmSharpGenerator.Types
                         Comment = string.Format("Constructs this matrix from a series of column vectors. Non-overwritten fields are from an Identity matrix.")
                     };
                 }
+            // to or from quaternion
+            if (BaseType.IsFloatingPoint && Rows == Columns && Rows >= 3)
+            {
+                yield return new Constructor(this, Fields)
+                {
+                    Parameters = quatType.TypedArgs(" q"),
+                    ConstructorChain = string.Format("this(q.ToMat{0})", Rows),
+                    Comment = string.Format("Creates a rotation matrix from a {0}.", quatType.Name)
+                };
+
+                yield return new Property("ToQuaternion", quatType)
+                {
+                    GetterLine = quatType.Name + ".FromMat" + Rows + "(this)",
+                    Comment = "Creates a quaternion from the rotational part of this matrix."
+                };
+            }
 
             // predefs
             yield return new StaticProperty("Zero", this)
