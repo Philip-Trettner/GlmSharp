@@ -261,6 +261,25 @@ namespace GlmSharp
         /// Returns a copy of this quaternion with length one (returns zero if length is zero).
         /// </summary>
         public quat NormalizedSafe => this == Zero ? Identity : this / Length;
+        
+        /// <summary>
+        /// Returns the represented angle of this quaternion
+        /// </summary>
+        public double Angle => Math.Acos((double)w) * 2.0;
+        
+        /// <summary>
+        /// Returns the represented axis of this quaternion
+        /// </summary>
+        public vec3 Axis
+        {
+            get
+            {
+                var s1 = 1 - w * w;
+                if (s1 < 0) return vec3.UnitZ;
+                var s2 = 1 / Math.Sqrt(s1);
+                return new vec3((float)(x * s2), (float)(y * s2), (float)(z * s2));
+            }
+        }
 
         #endregion
 

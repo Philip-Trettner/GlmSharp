@@ -256,6 +256,25 @@ namespace GlmSharp
         /// Returns a copy of this quaternion with length one (returns zero if length is zero).
         /// </summary>
         public decquat NormalizedSafe => this == Zero ? Identity : this / Length;
+        
+        /// <summary>
+        /// Returns the represented angle of this quaternion
+        /// </summary>
+        public double Angle => Math.Acos((double)w) * 2.0;
+        
+        /// <summary>
+        /// Returns the represented axis of this quaternion
+        /// </summary>
+        public decvec3 Axis
+        {
+            get
+            {
+                var s1 = 1 - w * w;
+                if (s1 < 0) return decvec3.UnitZ;
+                var s2 = 1 / (s1).Sqrt();
+                return new decvec3((decimal)(x * s2), (decimal)(y * s2), (decimal)(z * s2));
+            }
+        }
 
         #endregion
 

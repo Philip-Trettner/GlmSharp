@@ -120,7 +120,7 @@ namespace GlmSharpGenerator.Types
         /// <summary>
         /// Constructs an object of a given type
         /// </summary>
-        public string Construct(AbstractType type, string args) => string.Format("new {0}({1})", type.NameThat, args);
+        public string Construct(AbstractType type, params string[] args) => string.Format("new {0}({1})", type.NameThat, args.CommaSeparated());
 
 
         public IEnumerable<string> CSharpFile

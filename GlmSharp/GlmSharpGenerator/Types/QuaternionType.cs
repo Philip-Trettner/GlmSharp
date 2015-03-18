@@ -526,7 +526,7 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseOperator(Fields, this, "-", this, "lhs", this, "rhs", "{0} - {1}");
                 yield return new ComponentWiseOperator(Fields, this, "*", this, "lhs", BaseType, "rhs", "{0} * {1}") { CanScalar0 = false, CanScalar1 = false };
                 yield return new ComponentWiseOperator(Fields, this, "/", this, "lhs", BaseType, "rhs", "{0} / {1}") { CanScalar0 = false, CanScalar1 = false };
-                
+
                 // dot
                 yield return new Function(BaseType, "Dot")
                 {
@@ -566,6 +566,28 @@ namespace GlmSharpGenerator.Types
                 yield return new AggregatedProperty(Fields, "MaxElement", BaseType, "||", "Returns the maximal component of this quaternion.");
                 yield return new AggregatedProperty(Fields, "All", BaseType, "&&", "Returns true if all component are true.");
                 yield return new AggregatedProperty(Fields, "Any", BaseType, "||", "Returns true if any component is true.");
+            }
+
+            // floating point
+            if (BaseType.IsFloatingPoint)
+            {
+                yield return new Property("Angle", BuiltinType.TypeDouble)
+                {
+                    GetterLine = "Math.Acos((double)w) * 2.0",
+                    Comment = "Returns the represented angle of this quaternion"
+                };
+
+                yield return new Property("Axis", vec3Type)
+                {
+                    Getter = new[]
+                    {
+                        "var s1 = 1 - w * w;",
+                        string.Format("if (s1 < 0) return {0}.UnitZ;", vec3Type.Name),
+                        string.Format("var s2 = 1 / {0};", SqrtOf("s1")),
+                        string.Format("return {0};", Construct(vec3Type, BaseTypeCast + "(x * s2)", BaseTypeCast + "(y * s2)", BaseTypeCast + "(z * s2)"))
+                    },
+                    Comment = "Returns the represented axis of this quaternion"
+                };
             }
         }
     }

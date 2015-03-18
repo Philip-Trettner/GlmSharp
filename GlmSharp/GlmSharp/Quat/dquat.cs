@@ -261,6 +261,25 @@ namespace GlmSharp
         /// Returns a copy of this quaternion with length one (returns zero if length is zero).
         /// </summary>
         public dquat NormalizedSafe => this == Zero ? Identity : this / Length;
+        
+        /// <summary>
+        /// Returns the represented angle of this quaternion
+        /// </summary>
+        public double Angle => Math.Acos((double)w) * 2.0;
+        
+        /// <summary>
+        /// Returns the represented axis of this quaternion
+        /// </summary>
+        public dvec3 Axis
+        {
+            get
+            {
+                var s1 = 1 - w * w;
+                if (s1 < 0) return dvec3.UnitZ;
+                var s2 = 1 / Math.Sqrt(s1);
+                return new dvec3((double)(x * s2), (double)(y * s2), (double)(z * s2));
+            }
+        }
 
         #endregion
 
