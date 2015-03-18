@@ -507,6 +507,86 @@ namespace GlmSharp
         #region Static Functions
         
         /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static ivec4 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static ivec4 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new ivec4(int.Parse(kvp[0].Trim()), int.Parse(kvp[1].Trim()), int.Parse(kvp[2].Trim()), int.Parse(kvp[3].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static ivec4 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new ivec4(int.Parse(kvp[0].Trim(), provider), int.Parse(kvp[1].Trim(), provider), int.Parse(kvp[2].Trim(), provider), int.Parse(kvp[3].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static ivec4 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new ivec4(int.Parse(kvp[0].Trim(), style), int.Parse(kvp[1].Trim(), style), int.Parse(kvp[2].Trim(), style), int.Parse(kvp[3].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static ivec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new ivec4(int.Parse(kvp[0].Trim(), style, provider), int.Parse(kvp[1].Trim(), style, provider), int.Parse(kvp[2].Trim(), style, provider), int.Parse(kvp[3].Trim(), style, provider));
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out ivec4 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out ivec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            int x = 0, y = 0, z = 0, w = 0;
+            var ok = int.TryParse(kvp[0].Trim(), out x) && int.TryParse(kvp[1].Trim(), out y) && int.TryParse(kvp[2].Trim(), out z) && int.TryParse(kvp[3].Trim(), out w);
+            result = ok ? new ivec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out ivec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            int x = 0, y = 0, z = 0, w = 0;
+            var ok = int.TryParse(kvp[0].Trim(), style, provider, out x) && int.TryParse(kvp[1].Trim(), style, provider, out y) && int.TryParse(kvp[2].Trim(), style, provider, out z) && int.TryParse(kvp[3].Trim(), style, provider, out w);
+            result = ok ? new ivec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
         public static int Dot(ivec4 lhs, ivec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
@@ -1449,85 +1529,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
-        /// </summary>
-        public static ivec4 Parse(string s) => Parse(s, ", ");
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator).
-        /// </summary>
-        public static ivec4 Parse(string s, string sep)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new ivec4(int.Parse(kvp[0].Trim()), int.Parse(kvp[1].Trim()), int.Parse(kvp[2].Trim()), int.Parse(kvp[3].Trim()));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
-        /// </summary>
-        public static ivec4 Parse(string s, string sep, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new ivec4(int.Parse(kvp[0].Trim(), provider), int.Parse(kvp[1].Trim(), provider), int.Parse(kvp[2].Trim(), provider), int.Parse(kvp[3].Trim(), provider));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
-        /// </summary>
-        public static ivec4 Parse(string s, string sep, NumberStyles style)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new ivec4(int.Parse(kvp[0].Trim(), style), int.Parse(kvp[1].Trim(), style), int.Parse(kvp[2].Trim(), style), int.Parse(kvp[3].Trim(), style));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
-        /// </summary>
-        public static ivec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new ivec4(int.Parse(kvp[0].Trim(), style, provider), int.Parse(kvp[1].Trim(), style, provider), int.Parse(kvp[2].Trim(), style, provider), int.Parse(kvp[3].Trim(), style, provider));
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, out ivec4 result) => TryParse(s, ", ", out result);
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, out ivec4 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) return false;
-            int x = 0, y = 0, z = 0, w = 0;
-            var ok = int.TryParse(kvp[0].Trim(), out x) && int.TryParse(kvp[1].Trim(), out y) && int.TryParse(kvp[2].Trim(), out z) && int.TryParse(kvp[3].Trim(), out w);
-            result = ok ? new ivec4(x, y, z, w) : Zero;
-            return ok;
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out ivec4 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) return false;
-            int x = 0, y = 0, z = 0, w = 0;
-            var ok = int.TryParse(kvp[0].Trim(), style, provider, out x) && int.TryParse(kvp[1].Trim(), style, provider, out y) && int.TryParse(kvp[2].Trim(), style, provider, out z) && int.TryParse(kvp[3].Trim(), style, provider, out w);
-            result = ok ? new ivec4(x, y, z, w) : Zero;
-            return ok;
-        }
     }
 }

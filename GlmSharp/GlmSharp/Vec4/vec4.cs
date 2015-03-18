@@ -537,6 +537,86 @@ namespace GlmSharp
         #region Static Functions
         
         /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static vec4 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static vec4 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim()), float.Parse(kvp[1].Trim()), float.Parse(kvp[2].Trim()), float.Parse(kvp[3].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static vec4 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim(), provider), float.Parse(kvp[1].Trim(), provider), float.Parse(kvp[2].Trim(), provider), float.Parse(kvp[3].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static vec4 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim(), style), float.Parse(kvp[1].Trim(), style), float.Parse(kvp[2].Trim(), style), float.Parse(kvp[3].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static vec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new vec4(float.Parse(kvp[0].Trim(), style, provider), float.Parse(kvp[1].Trim(), style, provider), float.Parse(kvp[2].Trim(), style, provider), float.Parse(kvp[3].Trim(), style, provider));
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out vec4 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out vec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            float x = 0f, y = 0f, z = 0f, w = 0f;
+            var ok = float.TryParse(kvp[0].Trim(), out x) && float.TryParse(kvp[1].Trim(), out y) && float.TryParse(kvp[2].Trim(), out z) && float.TryParse(kvp[3].Trim(), out w);
+            result = ok ? new vec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out vec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            float x = 0f, y = 0f, z = 0f, w = 0f;
+            var ok = float.TryParse(kvp[0].Trim(), style, provider, out x) && float.TryParse(kvp[1].Trim(), style, provider, out y) && float.TryParse(kvp[2].Trim(), style, provider, out z) && float.TryParse(kvp[3].Trim(), style, provider, out w);
+            result = ok ? new vec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
         public static float Dot(vec4 lhs, vec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
@@ -1524,85 +1604,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
-        /// </summary>
-        public static vec4 Parse(string s) => Parse(s, ", ");
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator).
-        /// </summary>
-        public static vec4 Parse(string s, string sep)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new vec4(float.Parse(kvp[0].Trim()), float.Parse(kvp[1].Trim()), float.Parse(kvp[2].Trim()), float.Parse(kvp[3].Trim()));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
-        /// </summary>
-        public static vec4 Parse(string s, string sep, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new vec4(float.Parse(kvp[0].Trim(), provider), float.Parse(kvp[1].Trim(), provider), float.Parse(kvp[2].Trim(), provider), float.Parse(kvp[3].Trim(), provider));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
-        /// </summary>
-        public static vec4 Parse(string s, string sep, NumberStyles style)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new vec4(float.Parse(kvp[0].Trim(), style), float.Parse(kvp[1].Trim(), style), float.Parse(kvp[2].Trim(), style), float.Parse(kvp[3].Trim(), style));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
-        /// </summary>
-        public static vec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new vec4(float.Parse(kvp[0].Trim(), style, provider), float.Parse(kvp[1].Trim(), style, provider), float.Parse(kvp[2].Trim(), style, provider), float.Parse(kvp[3].Trim(), style, provider));
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, out vec4 result) => TryParse(s, ", ", out result);
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, out vec4 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) return false;
-            float x = 0f, y = 0f, z = 0f, w = 0f;
-            var ok = float.TryParse(kvp[0].Trim(), out x) && float.TryParse(kvp[1].Trim(), out y) && float.TryParse(kvp[2].Trim(), out z) && float.TryParse(kvp[3].Trim(), out w);
-            result = ok ? new vec4(x, y, z, w) : Zero;
-            return ok;
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out vec4 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) return false;
-            float x = 0f, y = 0f, z = 0f, w = 0f;
-            var ok = float.TryParse(kvp[0].Trim(), style, provider, out x) && float.TryParse(kvp[1].Trim(), style, provider, out y) && float.TryParse(kvp[2].Trim(), style, provider, out z) && float.TryParse(kvp[3].Trim(), style, provider, out w);
-            result = ok ? new vec4(x, y, z, w) : Zero;
-            return ok;
-        }
     }
 }

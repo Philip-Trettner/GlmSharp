@@ -26,7 +26,7 @@ namespace GlmSharpTest
             g = g.Normalized * 3;
 
             cvec3 cg = g;
-
+            
             Complex c = 1.0;
             // FIXME: Upcasting
             //vec2 fv = iv * 1f;

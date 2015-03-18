@@ -346,6 +346,120 @@ namespace GlmSharpGenerator.Types
                 }
             }
 
+            // Parsing
+            if (!BaseType.IsComplex && !BaseType.Generic)
+            {
+                // Parse
+                yield return new Function(this, "Parse")
+                {
+                    Static = true,
+                    ParameterString = "string s",
+                    CodeString = "Parse(s, \", \")",
+                    Comment = "Converts the string representation of the vector into a vector representation (using ', ' as a separator)."
+                };
+
+                yield return new Function(this, "Parse")
+                {
+                    Static = true,
+                    ParameterString = "string s, string sep",
+                    Code = new[]
+                    {
+                        "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
+                        string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
+                        string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim())", BaseTypeName, i)).CommaSeparated())
+                    },
+                    Comment = "Converts the string representation of the vector into a vector representation (using a designated separator)."
+                };
+
+                if (BaseType.Name != "bool")
+                {
+                    yield return new Function(this, "Parse")
+                    {
+                        Static = true,
+                        ParameterString = "string s, string sep, IFormatProvider provider",
+                        Code = new[]
+                        {
+                            "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
+                            string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
+                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), provider)", BaseTypeName, i)).CommaSeparated())
+                        },
+                        Comment = "Converts the string representation of the vector into a vector representation (using a designated separator and a type provider)."
+                    };
+                    yield return new Function(this, "Parse")
+                    {
+                        Static = true,
+                        ParameterString = "string s, string sep, NumberStyles style",
+                        Code = new[]
+                        {
+                            "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
+                            string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
+                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style)", BaseTypeName, i)).CommaSeparated())
+                        },
+                        Comment = "Converts the string representation of the vector into a vector representation (using a designated separator and a number style)."
+                    };
+                    yield return new Function(this, "Parse")
+                    {
+                        Static = true,
+                        ParameterString = "string s, string sep, NumberStyles style, IFormatProvider provider",
+                        Code = new[]
+                        {
+                            "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
+                            string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
+                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style, provider)", BaseTypeName, i)).CommaSeparated())
+                        },
+                        Comment = "Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider)."
+                    };
+                }
+
+                // TryParse
+                yield return new Function(BuiltinType.TypeBool, "TryParse")
+                {
+                    Static = true,
+                    ParameterString = string.Format("string s, out {0} result", NameThat),
+                    CodeString = "TryParse(s, \", \", out result)",
+                    Comment = "Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid."
+                };
+
+                yield return new Function(BuiltinType.TypeBool, "TryParse")
+                {
+                    Static = true,
+                    ParameterString = string.Format("string s, string sep, out {0} result", NameThat),
+                    Code = new[]
+                    {
+                        "result = Zero;",
+                        "if (string.IsNullOrEmpty(s)) return false;",
+                        "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
+                        string.Format("if (kvp.Length != {0}) return false;", Components),
+                        string.Format("{0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()),
+                        string.Format("var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && ")),
+                        string.Format("result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString),
+                        "return ok;"
+                    },
+                    Comment = "Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid."
+                };
+
+                if (!BaseType.IsBool)
+                {
+                    yield return new Function(BuiltinType.TypeBool, "TryParse")
+                    {
+                        Static = true,
+                        ParameterString = string.Format("string s, string sep, NumberStyles style, IFormatProvider provider, out {0} result", NameThat),
+                        Code = new[]
+                        {
+                            "result = Zero;",
+                            "if (string.IsNullOrEmpty(s)) return false;",
+                            "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
+                            string.Format("if (kvp.Length != {0}) return false;", Components),
+                            string.Format("{0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()),
+                            string.Format("var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), style, provider, out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && ")),
+                            string.Format("result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString),
+                            "return ok;"
+                        },
+                        Comment = "Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid."
+                    };
+                }
+            }
+            
             // IReadOnlyList
             yield return new Property("Count", BuiltinType.TypeInt)
             {
@@ -784,89 +898,5 @@ namespace GlmSharpGenerator.Types
                 }
             }
         }
-
-        protected override IEnumerable<string> Body
-        {
-            get
-            {
-
-                // Parsing
-                if (!BaseType.IsComplex && !BaseType.Generic)
-                {
-                    // Parse
-                    foreach (var line in "Converts the string representation of the vector into a vector representation (using ', ' as a separator).".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Parse(string s) => Parse(s, \", \");", NameThat);
-
-                    foreach (var line in "Converts the string representation of the vector into a vector representation (using a designated separator).".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Parse(string s, string sep)", NameThat);
-                    yield return "{";
-                    yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
-                    yield return string.Format("    if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components);
-                    yield return string.Format("    return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim())", BaseTypeName, i)).CommaSeparated());
-                    yield return "}";
-
-                    if (BaseType.Name != "bool")
-                    {
-                        foreach (var line in "Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Parse(string s, string sep, IFormatProvider provider)", NameThat);
-                        yield return "{";
-                        yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
-                        yield return string.Format("    if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components);
-                        yield return string.Format("    return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), provider)", BaseTypeName, i)).CommaSeparated());
-                        yield return "}";
-
-                        foreach (var line in "Converts the string representation of the vector into a vector representation (using a designated separator and a number style).".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Parse(string s, string sep, NumberStyles style)", NameThat);
-                        yield return "{";
-                        yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
-                        yield return string.Format("    if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components);
-                        yield return string.Format("    return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style)", BaseTypeName, i)).CommaSeparated());
-                        yield return "}";
-
-                        foreach (var line in "Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Parse(string s, string sep, NumberStyles style, IFormatProvider provider)", NameThat);
-                        yield return "{";
-                        yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
-                        yield return string.Format("    if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components);
-                        yield return string.Format("    return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style, provider)", BaseTypeName, i)).CommaSeparated());
-                        yield return "}";
-                    }
-
-                    // TryParse
-                    foreach (var line in "Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.".AsComment()) yield return line;
-                    yield return string.Format("public static bool TryParse(string s, out {0} result) => TryParse(s, \", \", out result);", NameThat);
-
-                    foreach (var line in "Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.".AsComment()) yield return line;
-                    yield return string.Format("public static bool TryParse(string s, string sep, out {0} result)", NameThat);
-                    yield return "{";
-                    yield return "    result = Zero;";
-                    yield return "    if (string.IsNullOrEmpty(s)) return false;";
-                    yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
-                    yield return string.Format("    if (kvp.Length != {0}) return false;", Components);
-                    yield return string.Format("    {0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated());
-                    yield return string.Format("    var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && "));
-                    yield return string.Format("    result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString);
-                    yield return "    return ok;";
-                    yield return "}";
-
-                    if (BaseType.Name != "bool")
-                    {
-                        foreach (var line in "Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.".AsComment()) yield return line;
-                        yield return string.Format("public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out {0} result)", NameThat);
-                        yield return "{";
-                        yield return "    result = Zero;";
-                        yield return "    if (string.IsNullOrEmpty(s)) return false;";
-                        yield return "    var kvp = s.Split(new[] { sep }, StringSplitOptions.None);";
-                        yield return string.Format("    if (kvp.Length != {0}) return false;", Components);
-                        yield return string.Format("    {0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated());
-                        yield return string.Format("    var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), style, provider, out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && "));
-                        yield return string.Format("    result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString);
-                        yield return "    return ok;";
-                        yield return "}";
-                    }
-                }
-            }
-        }
-
     }
 }

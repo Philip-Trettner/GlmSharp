@@ -378,6 +378,46 @@ namespace GlmSharp
         #endregion
 
 
+        #region Static Functions
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static bvec2 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static bvec2 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) throw new FormatException("input has not exactly 2 parts");
+            return new bvec2(bool.Parse(kvp[0].Trim()), bool.Parse(kvp[1].Trim()));
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out bvec2 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out bvec2 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 2) return false;
+            bool x = false, y = false;
+            var ok = bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y);
+            result = ok ? new bvec2(x, y) : Zero;
+            return ok;
+        }
+
+        #endregion
+
+
         #region Component-Wise Static Functions
         
         /// <summary>
@@ -592,40 +632,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
-        /// </summary>
-        public static bvec2 Parse(string s) => Parse(s, ", ");
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator).
-        /// </summary>
-        public static bvec2 Parse(string s, string sep)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 2) throw new FormatException("input has not exactly 2 parts");
-            return new bvec2(bool.Parse(kvp[0].Trim()), bool.Parse(kvp[1].Trim()));
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, out bvec2 result) => TryParse(s, ", ", out result);
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, out bvec2 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 2) return false;
-            bool x = false, y = false;
-            var ok = bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y);
-            result = ok ? new bvec2(x, y) : Zero;
-            return ok;
-        }
     }
 }

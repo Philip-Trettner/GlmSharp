@@ -517,6 +517,86 @@ namespace GlmSharp
         #region Static Functions
         
         /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static decvec4 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static decvec4 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new decvec4(decimal.Parse(kvp[0].Trim()), decimal.Parse(kvp[1].Trim()), decimal.Parse(kvp[2].Trim()), decimal.Parse(kvp[3].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static decvec4 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new decvec4(decimal.Parse(kvp[0].Trim(), provider), decimal.Parse(kvp[1].Trim(), provider), decimal.Parse(kvp[2].Trim(), provider), decimal.Parse(kvp[3].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static decvec4 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new decvec4(decimal.Parse(kvp[0].Trim(), style), decimal.Parse(kvp[1].Trim(), style), decimal.Parse(kvp[2].Trim(), style), decimal.Parse(kvp[3].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static decvec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
+            return new decvec4(decimal.Parse(kvp[0].Trim(), style, provider), decimal.Parse(kvp[1].Trim(), style, provider), decimal.Parse(kvp[2].Trim(), style, provider), decimal.Parse(kvp[3].Trim(), style, provider));
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out decvec4 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out decvec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            decimal x = 0m, y = 0m, z = 0m, w = 0m;
+            var ok = decimal.TryParse(kvp[0].Trim(), out x) && decimal.TryParse(kvp[1].Trim(), out y) && decimal.TryParse(kvp[2].Trim(), out z) && decimal.TryParse(kvp[3].Trim(), out w);
+            result = ok ? new decvec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out decvec4 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 4) return false;
+            decimal x = 0m, y = 0m, z = 0m, w = 0m;
+            var ok = decimal.TryParse(kvp[0].Trim(), style, provider, out x) && decimal.TryParse(kvp[1].Trim(), style, provider, out y) && decimal.TryParse(kvp[2].Trim(), style, provider, out z) && decimal.TryParse(kvp[3].Trim(), style, provider, out w);
+            result = ok ? new decvec4(x, y, z, w) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
         public static decimal Dot(decvec4 lhs, decvec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
@@ -1454,85 +1534,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
-        /// </summary>
-        public static decvec4 Parse(string s) => Parse(s, ", ");
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator).
-        /// </summary>
-        public static decvec4 Parse(string s, string sep)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new decvec4(decimal.Parse(kvp[0].Trim()), decimal.Parse(kvp[1].Trim()), decimal.Parse(kvp[2].Trim()), decimal.Parse(kvp[3].Trim()));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
-        /// </summary>
-        public static decvec4 Parse(string s, string sep, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new decvec4(decimal.Parse(kvp[0].Trim(), provider), decimal.Parse(kvp[1].Trim(), provider), decimal.Parse(kvp[2].Trim(), provider), decimal.Parse(kvp[3].Trim(), provider));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
-        /// </summary>
-        public static decvec4 Parse(string s, string sep, NumberStyles style)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new decvec4(decimal.Parse(kvp[0].Trim(), style), decimal.Parse(kvp[1].Trim(), style), decimal.Parse(kvp[2].Trim(), style), decimal.Parse(kvp[3].Trim(), style));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
-        /// </summary>
-        public static decvec4 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) throw new FormatException("input has not exactly 4 parts");
-            return new decvec4(decimal.Parse(kvp[0].Trim(), style, provider), decimal.Parse(kvp[1].Trim(), style, provider), decimal.Parse(kvp[2].Trim(), style, provider), decimal.Parse(kvp[3].Trim(), style, provider));
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, out decvec4 result) => TryParse(s, ", ", out result);
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, out decvec4 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) return false;
-            decimal x = 0m, y = 0m, z = 0m, w = 0m;
-            var ok = decimal.TryParse(kvp[0].Trim(), out x) && decimal.TryParse(kvp[1].Trim(), out y) && decimal.TryParse(kvp[2].Trim(), out z) && decimal.TryParse(kvp[3].Trim(), out w);
-            result = ok ? new decvec4(x, y, z, w) : Zero;
-            return ok;
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out decvec4 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 4) return false;
-            decimal x = 0m, y = 0m, z = 0m, w = 0m;
-            var ok = decimal.TryParse(kvp[0].Trim(), style, provider, out x) && decimal.TryParse(kvp[1].Trim(), style, provider, out y) && decimal.TryParse(kvp[2].Trim(), style, provider, out z) && decimal.TryParse(kvp[3].Trim(), style, provider, out w);
-            result = ok ? new decvec4(x, y, z, w) : Zero;
-            return ok;
-        }
     }
 }

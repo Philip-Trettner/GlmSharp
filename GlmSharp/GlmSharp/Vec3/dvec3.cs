@@ -495,6 +495,86 @@ namespace GlmSharp
         #region Static Functions
         
         /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
+        /// </summary>
+        public static dvec3 Parse(string s) => Parse(s, ", ");
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim()), double.Parse(kvp[1].Trim()), double.Parse(kvp[2].Trim()));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim(), provider), double.Parse(kvp[1].Trim(), provider), double.Parse(kvp[2].Trim(), provider));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep, NumberStyles style)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim(), style), double.Parse(kvp[1].Trim(), style), double.Parse(kvp[2].Trim(), style));
+        }
+        
+        /// <summary>
+        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
+        /// </summary>
+        public static dvec3 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
+        {
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
+            return new dvec3(double.Parse(kvp[0].Trim(), style, provider), double.Parse(kvp[1].Trim(), style, provider), double.Parse(kvp[2].Trim(), style, provider));
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, out dvec3 result) => TryParse(s, ", ", out result);
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, out dvec3 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) return false;
+            double x = 0.0, y = 0.0, z = 0.0;
+            var ok = double.TryParse(kvp[0].Trim(), out x) && double.TryParse(kvp[1].Trim(), out y) && double.TryParse(kvp[2].Trim(), out z);
+            result = ok ? new dvec3(x, y, z) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
+        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
+        /// </summary>
+        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out dvec3 result)
+        {
+            result = Zero;
+            if (string.IsNullOrEmpty(s)) return false;
+            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
+            if (kvp.Length != 3) return false;
+            double x = 0.0, y = 0.0, z = 0.0;
+            var ok = double.TryParse(kvp[0].Trim(), style, provider, out x) && double.TryParse(kvp[1].Trim(), style, provider, out y) && double.TryParse(kvp[2].Trim(), style, provider, out z);
+            result = ok ? new dvec3(x, y, z) : Zero;
+            return ok;
+        }
+        
+        /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
         public static double Dot(dvec3 lhs, dvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
@@ -1487,85 +1567,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).
-        /// </summary>
-        public static dvec3 Parse(string s) => Parse(s, ", ");
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator).
-        /// </summary>
-        public static dvec3 Parse(string s, string sep)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
-            return new dvec3(double.Parse(kvp[0].Trim()), double.Parse(kvp[1].Trim()), double.Parse(kvp[2].Trim()));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a type provider).
-        /// </summary>
-        public static dvec3 Parse(string s, string sep, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
-            return new dvec3(double.Parse(kvp[0].Trim(), provider), double.Parse(kvp[1].Trim(), provider), double.Parse(kvp[2].Trim(), provider));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style).
-        /// </summary>
-        public static dvec3 Parse(string s, string sep, NumberStyles style)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
-            return new dvec3(double.Parse(kvp[0].Trim(), style), double.Parse(kvp[1].Trim(), style), double.Parse(kvp[2].Trim(), style));
-        }
-        
-        /// <summary>
-        /// Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider).
-        /// </summary>
-        public static dvec3 Parse(string s, string sep, NumberStyles style, IFormatProvider provider)
-        {
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 3) throw new FormatException("input has not exactly 3 parts");
-            return new dvec3(double.Parse(kvp[0].Trim(), style, provider), double.Parse(kvp[1].Trim(), style, provider), double.Parse(kvp[2].Trim(), style, provider));
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, out dvec3 result) => TryParse(s, ", ", out result);
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, out dvec3 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 3) return false;
-            double x = 0.0, y = 0.0, z = 0.0;
-            var ok = double.TryParse(kvp[0].Trim(), out x) && double.TryParse(kvp[1].Trim(), out y) && double.TryParse(kvp[2].Trim(), out z);
-            result = ok ? new dvec3(x, y, z) : Zero;
-            return ok;
-        }
-        
-        /// <summary>
-        /// Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid.
-        /// </summary>
-        public static bool TryParse(string s, string sep, NumberStyles style, IFormatProvider provider, out dvec3 result)
-        {
-            result = Zero;
-            if (string.IsNullOrEmpty(s)) return false;
-            var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
-            if (kvp.Length != 3) return false;
-            double x = 0.0, y = 0.0, z = 0.0;
-            var ok = double.TryParse(kvp[0].Trim(), style, provider, out x) && double.TryParse(kvp[1].Trim(), style, provider, out y) && double.TryParse(kvp[2].Trim(), style, provider, out z);
-            result = ok ? new dvec3(x, y, z) : Zero;
-            return ok;
-        }
     }
 }
