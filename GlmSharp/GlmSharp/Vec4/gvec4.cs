@@ -257,6 +257,16 @@ namespace GlmSharp
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
+        /// Returns a string representation of this vector using ', ' as a seperator.
+        /// </summary>
+        public override string ToString() => ToString(", ");
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator.
+        /// </summary>
+        public string ToString(string sep) => x + sep + y + sep + z + sep + w;
+        
+        /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
         public bool Equals(gvec4<T> rhs) => EqualityComparer<T>.Default.Equals(x, rhs.x) && EqualityComparer<T>.Default.Equals(y, rhs.y) && EqualityComparer<T>.Default.Equals(z, rhs.z) && EqualityComparer<T>.Default.Equals(w, rhs.w);
@@ -328,15 +338,5 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns a string representation of this vector using ', ' as a seperator.
-        /// </summary>
-        public override string ToString() => ToString(", ");
-        
-        /// <summary>
-        /// Returns a string representation of this vector using a provided seperator.
-        /// </summary>
-        public string ToString(string sep) => x + sep + y + sep + z + sep + w;
     }
 }

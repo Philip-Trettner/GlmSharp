@@ -380,6 +380,31 @@ namespace GlmSharp
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
         
         /// <summary>
+        /// Returns a string representation of this vector using ', ' as a seperator.
+        /// </summary>
+        public override string ToString() => ToString(", ");
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator.
+        /// </summary>
+        public string ToString(string sep) => x + sep + y + sep + z;
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
+        /// </summary>
+        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider) + sep + z.ToString(provider);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format for each component.
+        /// </summary>
+        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format) + sep + z.ToString(format);
+        
+        /// <summary>
+        /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
+        /// </summary>
+        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
+        
+        /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
         public bool Equals(vec3 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y) && z.Equals(rhs.z);
@@ -1356,31 +1381,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns a string representation of this vector using ', ' as a seperator.
-        /// </summary>
-        public override string ToString() => ToString(", ");
-        
-        /// <summary>
-        /// Returns a string representation of this vector using a provided seperator.
-        /// </summary>
-        public string ToString(string sep) => x + sep + y + sep + z;
-        
-        /// <summary>
-        /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
-        /// </summary>
-        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider) + sep + z.ToString(provider);
-        
-        /// <summary>
-        /// Returns a string representation of this vector using a provided seperator and a format for each component.
-        /// </summary>
-        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format) + sep + z.ToString(format);
-        
-        /// <summary>
-        /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
-        /// </summary>
-        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider);
         
         /// <summary>
         /// Converts the string representation of the vector into a vector representation (using ', ' as a separator).

@@ -302,6 +302,44 @@ namespace GlmSharpGenerator.Types
                 Comment = "Returns an enumerator that iterates through all components."
             };
 
+            // ToString
+            yield return new Function(new AnyType("string"), "ToString")
+            {
+                Override = true,
+                CodeString = "ToString(\", \")",
+                Comment = "Returns a string representation of this vector using ', ' as a seperator."
+            };
+            yield return new Function(new AnyType("string"), "ToString")
+            {
+                ParameterString = "string sep",
+                CodeString = Fields.Aggregated(" + sep + "),
+                Comment = "Returns a string representation of this vector using a provided seperator."
+            };
+            if (!BaseType.Generic)
+            {
+                yield return new Function(new AnyType("string"), "ToString")
+                {
+                    ParameterString = "string sep, IFormatProvider provider",
+                    CodeString = Fields.Select(f => f + ".ToString(provider)").Aggregated(" + sep + "),
+                    Comment = "Returns a string representation of this vector using a provided seperator and a format provider for each component."
+                };
+                if (BaseType.HasFormatString)
+                {
+                    yield return new Function(new AnyType("string"), "ToString")
+                    {
+                        ParameterString = "string sep, string format",
+                        CodeString = Fields.Select(f => f + ".ToString(format)").Aggregated(" + sep + "),
+                        Comment = "Returns a string representation of this vector using a provided seperator and a format for each component."
+                    };
+                    yield return new Function(new AnyType("string"), "ToString")
+                    {
+                        ParameterString = "string sep, string format, IFormatProvider provider",
+                        CodeString = Fields.Select(f => f + ".ToString(format, provider)").Aggregated(" + sep + "),
+                        Comment = "Returns a string representation of this vector using a provided seperator and a format and format provider for each component."
+                    };
+                }
+            }
+
             // IReadOnlyList
             yield return new Property("Count", BuiltinType.TypeInt)
             {
@@ -526,27 +564,6 @@ namespace GlmSharpGenerator.Types
         {
             get
             {
-                // ToString
-                foreach (var line in "Returns a string representation of this vector using ', ' as a seperator.".AsComment()) yield return line;
-                yield return string.Format("public override string ToString() => ToString(\", \");");
-
-                foreach (var line in "Returns a string representation of this vector using a provided seperator.".AsComment()) yield return line;
-                yield return string.Format("public string ToString(string sep) => {0};", CompString.Aggregated(" + sep + "));
-
-                if (!BaseType.Generic)
-                {
-                    foreach (var line in "Returns a string representation of this vector using a provided seperator and a format provider for each component.".AsComment()) yield return line;
-                    yield return string.Format("public string ToString(string sep, IFormatProvider provider) => {0};", CompString.Select(c => c + ".ToString(provider)").Aggregated(" + sep + "));
-
-                    if (BaseType.HasFormatString)
-                    {
-                        foreach (var line in "Returns a string representation of this vector using a provided seperator and a format for each component.".AsComment()) yield return line;
-                        yield return string.Format("public string ToString(string sep, string format) => {0};", CompString.Select(c => c + ".ToString(format)").Aggregated(" + sep + "));
-
-                        foreach (var line in "Returns a string representation of this vector using a provided seperator and a format and format provider for each component.".AsComment()) yield return line;
-                        yield return string.Format("public string ToString(string sep, string format, IFormatProvider provider) => {0};", CompString.Select(c => c + ".ToString(format, provider)").Aggregated(" + sep + "));
-                    }
-                }
 
                 // Parsing
                 if (!BaseType.IsComplex && !BaseType.Generic)
