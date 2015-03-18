@@ -34,7 +34,10 @@ namespace GlmSharpGenerator.Types
         {
             get
             {
-                yield return string.Format("IReadOnlyList<{0}>", BaseTypeName);
+                if (Version >= 45)
+                    yield return string.Format("IReadOnlyList<{0}>", BaseTypeName);
+                else
+                    yield return string.Format("IEnumerable<{0}>", BaseTypeName);
                 yield return string.Format("IEquatable<{0}>", NameThat);
             }
         }

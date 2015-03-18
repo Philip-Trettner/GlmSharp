@@ -15,6 +15,11 @@ namespace GlmSharpGenerator.Types
         public static readonly Dictionary<string, AbstractType> Types = new Dictionary<string, AbstractType>();
 
         /// <summary>
+        /// Currently active version
+        /// </summary>
+        public static int Version { get; set; }
+
+        /// <summary>
         /// Base name (e.g. vec, mat, quat)
         /// </summary>
         public string BaseName { get; set; } = "vec";
@@ -132,10 +137,13 @@ namespace GlmSharpGenerator.Types
                 yield return "using System.Collections;";
                 yield return "using System.Collections.Generic;";
                 yield return "using System.Globalization;";
-                yield return "using System.Numerics;";
                 yield return "using System.Runtime.InteropServices;";
                 yield return "using System.Runtime.Serialization;";
-                yield return "using System.Linq;";
+                if (Version >= 40)
+                {
+                    yield return "using System.Numerics;";
+                    yield return "using System.Linq;";
+                }
                 yield return "using GlmSharp.Swizzle;";
                 yield return "";
                 yield return "// ReSharper disable InconsistentNaming";
@@ -144,6 +152,7 @@ namespace GlmSharpGenerator.Types
                 yield return "{";
                 foreach (var line in TypeComment.AsComment()) yield return line.Indent();
                 yield return "    [Serializable]";
+                if (Version >= 40)
                 yield return "    [DataContract]";
                 yield return "    [StructLayout(LayoutKind.Sequential)]";
                 yield return "    public struct " + Name + GenericSuffix + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
@@ -333,7 +342,7 @@ namespace GlmSharpGenerator.Types
 
             if (BaseType == BuiltinType.TypeDecimal)
                 return s + "m";
-            
+
             throw new InvalidOperationException("unknown type");
         }
 
@@ -349,6 +358,8 @@ namespace GlmSharpGenerator.Types
 
         public static void InitTypes()
         {
+            Types.Clear();
+
             // vectors
             foreach (var type in BuiltinType.BaseTypes)
                 for (var comp = 2; comp <= 4; ++comp)

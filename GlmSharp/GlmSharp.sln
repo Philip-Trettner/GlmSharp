@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharpGenerator", "GlmSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharpTest", "GlmSharpTest\GlmSharpTest.csproj", "{9760B071-A070-4992-A4F0-780FF31E2FE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlmSharpCompat", "GlmSharpCompat\GlmSharpCompat.csproj", "{E8DC311E-9E7B-44C9-9364-8A745FB7A5C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9760B071-A070-4992-A4F0-780FF31E2FE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9760B071-A070-4992-A4F0-780FF31E2FE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9760B071-A070-4992-A4F0-780FF31E2FE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8DC311E-9E7B-44C9-9364-8A745FB7A5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8DC311E-9E7B-44C9-9364-8A745FB7A5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8DC311E-9E7B-44C9-9364-8A745FB7A5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8DC311E-9E7B-44C9-9364-8A745FB7A5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

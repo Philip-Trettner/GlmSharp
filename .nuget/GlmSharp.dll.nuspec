@@ -3,7 +3,7 @@
   <metadata>
     <id>GlmSharp</id>
     <title>GlmSharp</title>
-    <version>0.9.4</version>
+    <version>0.9.5</version>
     <authors>Philip Trettner</authors>
     <owners>Philip Trettner</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -34,5 +34,7 @@ This library is MIT-licensed.
   <files>
     <file src="..\GlmSharp\GlmSharp\bin\Release\GlmSharp.dll" target="lib\Net45" />
     <file src="..\GlmSharp\GlmSharp\bin\Release\GlmSharp.xml" target="lib\Net45" />
+    <file src="..\GlmSharp\GlmSharpCompat\bin\Release\GlmSharp.dll" target="lib\Net20" />
+    <file src="..\GlmSharp\GlmSharpCompat\bin\Release\GlmSharp.xml" target="lib\Net20" />
   </files>
 </package>

@@ -12,38 +12,54 @@ namespace GlmSharpGenerator
     class Program
     {
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            if (args.Length != 1)
+            if (args.Length != 2)
             {
-                Console.WriteLine("Usage: path/to/gen-folder/");
+                Console.WriteLine("Usage: path/to/gen-folder/net45/ path/to/gen-folder/net20/");
                 return;
             }
-            var path = args[0];
 
             Console.WriteLine("GlmSharp Generator");
-            AbstractType.InitTypes();
-
-            // see: https://www.opengl.org/sdk/docs/man4/html/ for functions
-
-            Console.WriteLine();
-            Console.WriteLine("Types:");
-            foreach (var type in AbstractType.Types.Keys)
-                Console.WriteLine("    " + type);
-
-            Console.WriteLine();
-            Console.WriteLine("Generate:");
-            foreach (var type in AbstractType.Types.Values)
+            foreach (var version in new[] { 45, 20 })
             {
-                if (!string.IsNullOrEmpty(type.Folder))
-                    Directory.CreateDirectory(Path.Combine(path, type.Folder));
-                var filename = type.PathOf(path);
-                var lines = type.CSharpFile.ToArray();
-                var currLines = File.Exists(filename) ? File.ReadAllLines(filename) : new string[] {};
-                if (!lines.SequenceEqual(currLines))
+                string path;
+                switch (version)
                 {
-                    File.WriteAllLines(filename, lines);
-                    Console.WriteLine("    CHANGED " + filename);
+                    case 45:
+                        path = args[0];
+                        break;
+                    case 20:
+                        path = args[1];
+                        break;
+                    default:
+                        throw new InvalidOperationException();
+                }
+
+                AbstractType.Version = version;
+                AbstractType.InitTypes();
+
+                // see: https://www.opengl.org/sdk/docs/man4/html/ for functions
+
+                Console.WriteLine();
+                Console.WriteLine("Types:");
+                foreach (var type in AbstractType.Types.Keys)
+                    Console.WriteLine("    " + type);
+
+                Console.WriteLine();
+                Console.WriteLine("Generate:");
+                foreach (var type in AbstractType.Types.Values)
+                {
+                    if (!string.IsNullOrEmpty(type.Folder))
+                        Directory.CreateDirectory(Path.Combine(path, type.Folder));
+                    var filename = type.PathOf(path);
+                    var lines = type.CSharpFile.ToArray();
+                    var currLines = File.Exists(filename) ? File.ReadAllLines(filename) : new string[] { };
+                    if (!lines.SequenceEqual(currLines))
+                    {
+                        File.WriteAllLines(filename, lines);
+                        Console.WriteLine("    CHANGED " + filename);
+                    }
                 }
             }
         }

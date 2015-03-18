@@ -36,7 +36,7 @@ namespace GlmSharpGenerator.Members
         {
             Name = name;
             Type = type;
-            Attributes = new[] { "DataMember" };
+            Attributes = AbstractType.Version >= 40 ? new[] { "DataMember" } : new string[] { };
         }
     }
 }

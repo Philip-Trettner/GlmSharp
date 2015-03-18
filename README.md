@@ -10,7 +10,7 @@ Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
 
 > PM> Install-Package GlmSharp
 
-Current version: _0.9.4_
+Current version: _0.9.5_
 
 ## Overview
 
@@ -21,6 +21,7 @@ Supported types:
 * `mat2`
 * `mat3`
 * `mat4`
+* `quat`
 * non-quadratic mats (`mat2x3`, `mat2x4`, `mat3x4`, `mat3x2`, `mat4x2`, `mat4x3`)
 
 Supported base types:
@@ -30,12 +31,12 @@ Supported base types:
 * `float` (`vec`)
 * `double` (`dvec`)
 * `decimal` (`decvec`)
-* `System.Numerics.Complex` (`cvec`)
+* `System.Numerics.Complex` (`cvec`, only in .NET 4.5 and higher)
 * `long` (`lvec`)
 * `bool` (`bvec`)
 * generic `T` (`gvec<T>`)
 
-(Currently a total of 108 types in about 25k LOC)
+(Currently a total of 144 types in about 40k LOC)
 
 Supports swizzling, e.g. `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
 
@@ -48,7 +49,8 @@ For example, `glm.dot(v1, v2)` for `vec3` is now `vec3.Dot(v1, v2)`.
 
 ## Requirements
 
-The code itself is written using C# 6 features, the NuGet package however only requires .NET 4.5 (due to IReadOnlyList).
+The code itself is written using C# 6 features, the NuGet package however only requires .NET 2.0 (with some restrictions).
+Starting with .NET 4.5, `System.Numerics.Complex` and `IReadOnlyList<T>` are supported in GlmSharp.
 
 
 ## Features
@@ -72,6 +74,7 @@ The code itself is written using C# 6 features, the NuGet package however only r
 * Serialization via `[Serializable]`, `[DataContract]` and `[DataMember]` (and thus [Json.NET](https://github.com/JamesNK/Newtonsoft.Json))
 * Marshalling via `[StructLayout(LayoutKind.Sequential)]`
 * Quaternions
+* Support for .NET 2.0 (with new features since .NET 4.5)
 * Generated library
 
 
@@ -108,7 +111,6 @@ This library is MIT-licensed.
 * ToString, Parse, TryParse for matrices
 * some GLU functions (e.g. PickMatrix)
 * advanced glsl/glm functions
-* .net 2 support
 * extensive documentation (parameters, return values, formulas)
 * inline-swizzle and swizzle as L-ref?
 * noise functions

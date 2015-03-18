@@ -15,7 +15,8 @@ namespace GlmSharpGenerator.Types
                 yield return TypeFloat;
                 yield return TypeDouble;
                 yield return TypeDecimal;
-                yield return TypeComplex;
+                if (Version >= 30)
+                    yield return TypeComplex;
                 yield return TypeLong;
                 yield return TypeBool;
                 yield return TypeGeneric;
@@ -33,21 +34,23 @@ namespace GlmSharpGenerator.Types
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeFloat),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeDouble),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeDecimal),
-                    new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeComplex),
 
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeLong),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeFloat),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeDouble),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeDecimal),
-                    new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeComplex),
 
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeFloat, TypeDouble),
-                    new KeyValuePair<BuiltinType, BuiltinType>(TypeFloat, TypeComplex),
-
-                    new KeyValuePair<BuiltinType, BuiltinType>(TypeDouble, TypeComplex),
 
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeLong, TypeDecimal)
                 };
+                if (Version >= 30)
+                {
+                    dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeComplex));
+                    dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeComplex));
+                    dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeFloat, TypeComplex));
+                    dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeDouble, TypeComplex));
+                }
                 return dic;
             }
         }

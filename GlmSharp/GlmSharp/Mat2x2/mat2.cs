@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using System.Numerics;
 using System.Linq;
 using GlmSharp.Swizzle;
 
