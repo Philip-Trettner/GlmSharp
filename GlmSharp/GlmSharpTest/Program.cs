@@ -28,7 +28,6 @@ namespace GlmSharpTest
             cvec3 cg = g;
 
             Complex c = 1.0;
-
             // FIXME: Upcasting
             //vec2 fv = iv * 1f;
             //dvec2 dv = iv * 1.0;

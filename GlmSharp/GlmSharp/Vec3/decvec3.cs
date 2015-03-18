@@ -278,6 +278,61 @@ namespace GlmSharp
         /// Returns the number of components (3).
         /// </summary>
         public int Count => 3;
+        
+        /// <summary>
+        /// Returns the minimal component of this vector.
+        /// </summary>
+        public decimal MinElement => Math.Min(Math.Min(x, y), z);
+        
+        /// <summary>
+        /// Returns the maximal component of this vector.
+        /// </summary>
+        public decimal MaxElement => Math.Max(Math.Max(x, y), z);
+        
+        /// <summary>
+        /// Returns the euclidean length of this vector.
+        /// </summary>
+        public decimal Length => (decimal)(x*x + y*y + z*z).Sqrt();
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this vector.
+        /// </summary>
+        public decimal LengthSqr => x*x + y*y + z*z;
+        
+        /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public decimal Sum => x + y + z;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this vector.
+        /// </summary>
+        public decimal Norm => (decimal)(x*x + y*y + z*z).Sqrt();
+        
+        /// <summary>
+        /// Returns the one-norm of this vector.
+        /// </summary>
+        public decimal Norm1 => Math.Abs(x) + Math.Abs(y) + Math.Abs(z);
+        
+        /// <summary>
+        /// Returns the two-norm (euclidean length) of this vector.
+        /// </summary>
+        public decimal Norm2 => (decimal)(x*x + y*y + z*z).Sqrt();
+        
+        /// <summary>
+        /// Returns the max-norm of this vector.
+        /// </summary>
+        public decimal NormMax => Math.Max(Math.Max(Math.Abs(x), Math.Abs(y)), Math.Abs(z));
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (undefined if this has zero length).
+        /// </summary>
+        public decvec3 Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (returns zero if length is zero).
+        /// </summary>
+        public decvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
 
         #endregion
 
@@ -408,6 +463,11 @@ namespace GlmSharp
                 return ((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the p-norm of this vector.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p), 1 / p);
 
         #endregion
 
@@ -1300,7 +1360,7 @@ namespace GlmSharp
         public static decvec3 operator/(decimal lhs, decvec3 rhs) => new decvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of operator+ (~~~).
+        /// Returns a decvec3 from component-wise application of operator+ (identity).
         /// </summary>
         public static decvec3 operator+(decvec3 v) => v;
         
@@ -1393,66 +1453,6 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns the minimal component of this vector.
-        /// </summary>
-        public decimal MinElement => Math.Min(Math.Min(x, y), z);
-        
-        /// <summary>
-        /// Returns the maximal component of this vector.
-        /// </summary>
-        public decimal MaxElement => Math.Max(Math.Max(x, y), z);
-        
-        /// <summary>
-        /// Returns the euclidean length of this vector.
-        /// </summary>
-        public decimal Length => (decimal)x*x + y*y + z*z.Sqrt();
-        
-        /// <summary>
-        /// Returns the squared euclidean length of this vector.
-        /// </summary>
-        public decimal LengthSqr => x*x + y*y + z*z;
-        
-        /// <summary>
-        /// Returns the sum of all components.
-        /// </summary>
-        public decimal Sum => x + y + z;
-        
-        /// <summary>
-        /// Returns the euclidean norm of this vector.
-        /// </summary>
-        public decimal Norm => (decimal)x*x + y*y + z*z.Sqrt();
-        
-        /// <summary>
-        /// Returns the one-norm of this vector.
-        /// </summary>
-        public decimal Norm1 => Math.Abs(x) + Math.Abs(y) + Math.Abs(z);
-        
-        /// <summary>
-        /// Returns the two-norm of this vector.
-        /// </summary>
-        public decimal Norm2 => (decimal)x*x + y*y + z*z.Sqrt();
-        
-        /// <summary>
-        /// Returns the max-norm of this vector.
-        /// </summary>
-        public decimal NormMax => Math.Max(Math.Max(Math.Abs(x), Math.Abs(y)), Math.Abs(z));
-        
-        /// <summary>
-        /// Returns the p-norm of this vector.
-        /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p), 1 / p);
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (undefined if this has zero length).
-        /// </summary>
-        public decvec3 Normalized => this / Length;
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (returns zero if length is zero).
-        /// </summary>
-        public decvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
-        
-        /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
         public static decimal Dot(decvec3 lhs, decvec3 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z;
@@ -1480,7 +1480,7 @@ namespace GlmSharp
             var dNI = Dot(N, I);
             var k = 1 - eta * eta * (1 - dNI * dNI);
             if (k < 0) return Zero;
-            return eta * I - (eta * dNI + (decimal)k.Sqrt()) * N;
+            return eta * I - (eta * dNI + (decimal)(k).Sqrt()) * N;
         }
         
         /// <summary>

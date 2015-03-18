@@ -142,6 +142,7 @@ namespace GlmSharpGenerator.Types
             var doubleVType = new VectorType(BuiltinType.TypeDouble, Components);
             var integerVType = new VectorType(BuiltinType.TypeInt, Components);
             var absVType = !string.IsNullOrEmpty(BaseType.AbsOverrideType) ? Types[BaseType.AbsOverrideTypePrefix + "vec" + Components] : this;
+            var lengthType = new AnyType(BaseType.LengthType);
 
             // fields
             foreach (var f in Fields)
@@ -509,7 +510,7 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseOperator(Fields, this, "*", this, "lhs", this, "rhs", "{0} * {1}");
                 yield return new ComponentWiseOperator(Fields, this, "/", this, "lhs", this, "rhs", "{0} / {1}");
 
-                yield return new ComponentWiseOperator(Fields, this, "+", this, "v", "~~~") { ReturnOverride = "v" };
+                yield return new ComponentWiseOperator(Fields, this, "+", this, "v", "identity") { ReturnOverride = "v" };
 
                 if (BaseType.IsSigned)
                     yield return new ComponentWiseOperator(Fields, this, "-", this, "v", "-{0}");
@@ -566,6 +567,75 @@ namespace GlmSharpGenerator.Types
                 yield return new AggregatedProperty(Fields, "MaxElement", BaseType, "||", "Returns the maximal component of this vector.");
                 yield return new AggregatedProperty(Fields, "All", BaseType, "&&", "Returns true if all component are true.");
                 yield return new AggregatedProperty(Fields, "Any", BaseType, "||", "Returns true if any component is true.");
+            }
+
+            // Aggregated Properties
+            if (BaseType.HasArithmetics)
+            {
+                if (!BaseType.IsComplex)
+                {
+                    yield return new Property("MinElement", BaseType)
+                    {
+                        GetterLine = NestedSymmetricFunction(Fields, "Math.Min({0}, {1})"),
+                        Comment = "Returns the minimal component of this vector."
+                    };
+                    yield return new Property("MaxElement", BaseType)
+                    {
+                        GetterLine = NestedSymmetricFunction(Fields, "Math.Max({0}, {1})"),
+                        Comment = "Returns the maximal component of this vector."
+                    };
+                }
+
+                yield return new Property("Length", lengthType)
+                {
+                    GetterLine = "(" + lengthType.Name + ")" + SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")),
+                    Comment = "Returns the euclidean length of this vector."
+                };
+
+                yield return new AggregatedProperty(Fields.Select(SqrOf), "LengthSqr", lengthType, "+", "Returns the squared euclidean length of this vector.");
+                yield return new AggregatedProperty(Fields, "Sum", BaseType, "+", "Returns the sum of all components.");
+
+                yield return new Property("Norm", lengthType)
+                {
+                    GetterLine = "(" + lengthType.Name + ")" + SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")),
+                    Comment = "Returns the euclidean norm of this vector."
+                };
+                yield return new Property("Norm1", lengthType)
+                {
+                    GetterLine = Fields.Select(AbsString).Aggregated(" + "),
+                    Comment = "Returns the one-norm of this vector."
+                };
+                yield return new Property("Norm2", lengthType)
+                {
+                    GetterLine = "(" + lengthType.Name + ")" + SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")),
+                    Comment = "Returns the two-norm (euclidean length) of this vector."
+                };
+                yield return new Property("NormMax", lengthType)
+                {
+                    GetterLine = NestedSymmetricFunction(Fields.Select(AbsString), "Math.Max({0}, {1})"),
+                    Comment = "Returns the max-norm of this vector."
+                };
+                yield return new Function(new AnyType("double"), "NormP")
+                {
+                    ParameterString = "double p",
+                    CodeString = string.Format("Math.Pow({0}, 1 / p)", Fields.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + ")),
+                    Comment = "Returns the p-norm of this vector."
+                };
+
+                // normalized
+                if (!BaseType.IsInteger)
+                {
+                    yield return new Property("Normalized", this)
+                    {
+                        GetterLine = "this / Length",
+                        Comment = "Returns a copy of this vector with length one (undefined if this has zero length)."
+                    };
+                    yield return new Property("NormalizedSafe", this)
+                    {
+                        GetterLine = "this == Zero ? Zero : this / Length",
+                        Comment = "Returns a copy of this vector with length one (returns zero if length is zero)."
+                    };
+                }
             }
         }
 
@@ -672,49 +742,6 @@ namespace GlmSharpGenerator.Types
                 {
                     var lengthType = BaseType.LengthType;
 
-                    if (!BaseType.IsComplex)
-                    {
-                        foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
-                        yield return string.Format("public {0} MinElement => {1};", BaseTypeName, NestedBiFuncFor("Math.Min({0}, {1})", Components - 1, ArgOfs));
-
-                        foreach (var line in "Returns the maximal component of this vector.".AsComment()) yield return line;
-                        yield return string.Format("public {0} MaxElement => {1};", BaseTypeName, NestedBiFuncFor("Math.Max({0}, {1})", Components - 1, ArgOfs));
-                    }
-
-                    foreach (var line in "Returns the euclidean length of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Length => ({0}){1};", lengthType, SqrtOf(CompString.Select(SqrOf).Aggregated(" + ")));
-
-                    foreach (var line in "Returns the squared euclidean length of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} LengthSqr => {1};", lengthType, CompString.Select(SqrOf).Aggregated(" + "));
-
-                    foreach (var line in "Returns the sum of all components.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Sum => {1};", BaseTypeName, CompString.Aggregated(" + "));
-
-                    foreach (var line in "Returns the euclidean norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Norm => ({0}){1};", lengthType, SqrtOf(CompString.Select(SqrOf).Aggregated(" + ")));
-
-                    foreach (var line in "Returns the one-norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Norm1 => {1};", lengthType, CompString.Select(AbsString).Aggregated(" + "));
-
-                    foreach (var line in "Returns the two-norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Norm2 => ({0}){1};", lengthType, SqrtOf(CompString.Select(SqrOf).Aggregated(" + ")));
-
-                    foreach (var line in "Returns the max-norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} NormMax => {1};", BaseTypeName, NestedBiFuncFor("Math.Max({0}, {1})", Components - 1, c => AbsString(ArgOfs(c))));
-
-                    foreach (var line in "Returns the p-norm of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", CompString.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
-
-
-                    // normalized
-                    if (!BaseType.IsInteger)
-                    {
-                        foreach (var line in "Returns a copy of this vector with length one (undefined if this has zero length).".AsComment()) yield return line;
-                        yield return string.Format("public {0} Normalized => this / Length;", NameThat);
-
-                        foreach (var line in "Returns a copy of this vector with length one (returns zero if length is zero).".AsComment()) yield return line;
-                        yield return string.Format("public {0} NormalizedSafe => this == Zero ? Zero : this / Length;", NameThat);
-                    }
 
                     // dot
                     foreach (var line in "Returns the inner product (dot product, scalar product) of the two vectors.".AsComment()) yield return line;

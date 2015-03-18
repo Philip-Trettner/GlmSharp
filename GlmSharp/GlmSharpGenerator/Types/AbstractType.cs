@@ -315,7 +315,7 @@ namespace GlmSharpGenerator.Types
         public string SqrOf(string s) => BaseType.IsComplex ? s + ".LengthSqr()" : s + "*" + s;
         public string SqrOf(char s) => SqrOf(s.ToString());
 
-        public string SqrtOf(string s) => BaseType.Decimal ? s + ".Sqrt()" : string.Format("Math.Sqrt({0})", s);
+        public string SqrtOf(string s) => BaseType.Decimal ? "(" + s + ").Sqrt()" : string.Format("Math.Sqrt({0})", s);
         public string SqrtOf(char s) => SqrOf(s.ToString());
 
 
@@ -362,5 +362,20 @@ namespace GlmSharpGenerator.Types
                 type.Generate();
         }
 
+        private static string NestedSymmetricFunction(IReadOnlyList<string> fields, string funcFormat, int start, int end)
+        {
+            if (start == end)
+                return fields[start];
+
+            var mid = (start + end) / 2;
+            return string.Format(funcFormat,
+                NestedSymmetricFunction(fields, funcFormat, start, mid),
+                NestedSymmetricFunction(fields, funcFormat, mid + 1, end));
+        }
+        public static string NestedSymmetricFunction(IEnumerable<string> ffs, string funcFormat)
+        {
+            var fs = ffs.ToArray();
+            return NestedSymmetricFunction(fs, funcFormat, 0, fs.Length - 1);
+        }
     }
 }

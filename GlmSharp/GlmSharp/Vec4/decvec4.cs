@@ -314,6 +314,61 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the minimal component of this vector.
+        /// </summary>
+        public decimal MinElement => Math.Min(Math.Min(x, y), Math.Min(z, w));
+        
+        /// <summary>
+        /// Returns the maximal component of this vector.
+        /// </summary>
+        public decimal MaxElement => Math.Max(Math.Max(x, y), Math.Max(z, w));
+        
+        /// <summary>
+        /// Returns the euclidean length of this vector.
+        /// </summary>
+        public decimal Length => (decimal)(x*x + y*y + z*z + w*w).Sqrt();
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this vector.
+        /// </summary>
+        public decimal LengthSqr => x*x + y*y + z*z + w*w;
+        
+        /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public decimal Sum => x + y + z + w;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this vector.
+        /// </summary>
+        public decimal Norm => (decimal)(x*x + y*y + z*z + w*w).Sqrt();
+        
+        /// <summary>
+        /// Returns the one-norm of this vector.
+        /// </summary>
+        public decimal Norm1 => Math.Abs(x) + Math.Abs(y) + Math.Abs(z) + Math.Abs(w);
+        
+        /// <summary>
+        /// Returns the two-norm (euclidean length) of this vector.
+        /// </summary>
+        public decimal Norm2 => (decimal)(x*x + y*y + z*z + w*w).Sqrt();
+        
+        /// <summary>
+        /// Returns the max-norm of this vector.
+        /// </summary>
+        public decimal NormMax => Math.Max(Math.Max(Math.Abs(x), Math.Abs(y)), Math.Max(Math.Abs(z), Math.Abs(w)));
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (undefined if this has zero length).
+        /// </summary>
+        public decvec4 Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (returns zero if length is zero).
+        /// </summary>
+        public decvec4 NormalizedSafe => this == Zero ? Zero : this / Length;
 
         #endregion
 
@@ -450,6 +505,11 @@ namespace GlmSharp
                 return ((((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode()) * 397) ^ w.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the p-norm of this vector.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p) + Math.Pow((double)Math.Abs(w), p), 1 / p);
 
         #endregion
 
@@ -1342,7 +1402,7 @@ namespace GlmSharp
         public static decvec4 operator/(decimal lhs, decvec4 rhs) => new decvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
         
         /// <summary>
-        /// Returns a decvec4 from component-wise application of operator+ (~~~).
+        /// Returns a decvec4 from component-wise application of operator+ (identity).
         /// </summary>
         public static decvec4 operator+(decvec4 v) => v;
         
@@ -1435,66 +1495,6 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// Returns the minimal component of this vector.
-        /// </summary>
-        public decimal MinElement => Math.Min(Math.Min(Math.Min(x, y), z), w);
-        
-        /// <summary>
-        /// Returns the maximal component of this vector.
-        /// </summary>
-        public decimal MaxElement => Math.Max(Math.Max(Math.Max(x, y), z), w);
-        
-        /// <summary>
-        /// Returns the euclidean length of this vector.
-        /// </summary>
-        public decimal Length => (decimal)x*x + y*y + z*z + w*w.Sqrt();
-        
-        /// <summary>
-        /// Returns the squared euclidean length of this vector.
-        /// </summary>
-        public decimal LengthSqr => x*x + y*y + z*z + w*w;
-        
-        /// <summary>
-        /// Returns the sum of all components.
-        /// </summary>
-        public decimal Sum => x + y + z + w;
-        
-        /// <summary>
-        /// Returns the euclidean norm of this vector.
-        /// </summary>
-        public decimal Norm => (decimal)x*x + y*y + z*z + w*w.Sqrt();
-        
-        /// <summary>
-        /// Returns the one-norm of this vector.
-        /// </summary>
-        public decimal Norm1 => Math.Abs(x) + Math.Abs(y) + Math.Abs(z) + Math.Abs(w);
-        
-        /// <summary>
-        /// Returns the two-norm of this vector.
-        /// </summary>
-        public decimal Norm2 => (decimal)x*x + y*y + z*z + w*w.Sqrt();
-        
-        /// <summary>
-        /// Returns the max-norm of this vector.
-        /// </summary>
-        public decimal NormMax => Math.Max(Math.Max(Math.Max(Math.Abs(x), Math.Abs(y)), Math.Abs(z)), Math.Abs(w));
-        
-        /// <summary>
-        /// Returns the p-norm of this vector.
-        /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p) + Math.Pow((double)Math.Abs(w), p), 1 / p);
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (undefined if this has zero length).
-        /// </summary>
-        public decvec4 Normalized => this / Length;
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (returns zero if length is zero).
-        /// </summary>
-        public decvec4 NormalizedSafe => this == Zero ? Zero : this / Length;
-        
-        /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
         public static decimal Dot(decvec4 lhs, decvec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
@@ -1522,7 +1522,7 @@ namespace GlmSharp
             var dNI = Dot(N, I);
             var k = 1 - eta * eta * (1 - dNI * dNI);
             if (k < 0) return Zero;
-            return eta * I - (eta * dNI + (decimal)k.Sqrt()) * N;
+            return eta * I - (eta * dNI + (decimal)(k).Sqrt()) * N;
         }
         
         /// <summary>

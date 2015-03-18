@@ -260,6 +260,61 @@ namespace GlmSharp
         /// Returns the number of components (2).
         /// </summary>
         public int Count => 2;
+        
+        /// <summary>
+        /// Returns the minimal component of this vector.
+        /// </summary>
+        public float MinElement => Math.Min(x, y);
+        
+        /// <summary>
+        /// Returns the maximal component of this vector.
+        /// </summary>
+        public float MaxElement => Math.Max(x, y);
+        
+        /// <summary>
+        /// Returns the euclidean length of this vector.
+        /// </summary>
+        public float Length => (float)Math.Sqrt(x*x + y*y);
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this vector.
+        /// </summary>
+        public float LengthSqr => x*x + y*y;
+        
+        /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public float Sum => x + y;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this vector.
+        /// </summary>
+        public float Norm => (float)Math.Sqrt(x*x + y*y);
+        
+        /// <summary>
+        /// Returns the one-norm of this vector.
+        /// </summary>
+        public float Norm1 => Math.Abs(x) + Math.Abs(y);
+        
+        /// <summary>
+        /// Returns the two-norm (euclidean length) of this vector.
+        /// </summary>
+        public float Norm2 => (float)Math.Sqrt(x*x + y*y);
+        
+        /// <summary>
+        /// Returns the max-norm of this vector.
+        /// </summary>
+        public float NormMax => Math.Max(Math.Abs(x), Math.Abs(y));
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (undefined if this has zero length).
+        /// </summary>
+        public vec2 Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (returns zero if length is zero).
+        /// </summary>
+        public vec2 NormalizedSafe => this == Zero ? Zero : this / Length;
 
         #endregion
 
@@ -399,6 +454,11 @@ namespace GlmSharp
                 return ((x.GetHashCode()) * 397) ^ y.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the p-norm of this vector.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p), 1 / p);
 
         #endregion
 
@@ -1341,7 +1401,7 @@ namespace GlmSharp
         public static vec2 operator/(float lhs, vec2 rhs) => new vec2(lhs / rhs.x, lhs / rhs.y);
         
         /// <summary>
-        /// Returns a vec2 from component-wise application of operator+ (~~~).
+        /// Returns a vec2 from component-wise application of operator+ (identity).
         /// </summary>
         public static vec2 operator+(vec2 v) => v;
         
@@ -1432,66 +1492,6 @@ namespace GlmSharp
             result = ok ? new vec2(x, y) : Zero;
             return ok;
         }
-        
-        /// <summary>
-        /// Returns the minimal component of this vector.
-        /// </summary>
-        public float MinElement => Math.Min(x, y);
-        
-        /// <summary>
-        /// Returns the maximal component of this vector.
-        /// </summary>
-        public float MaxElement => Math.Max(x, y);
-        
-        /// <summary>
-        /// Returns the euclidean length of this vector.
-        /// </summary>
-        public float Length => (float)Math.Sqrt(x*x + y*y);
-        
-        /// <summary>
-        /// Returns the squared euclidean length of this vector.
-        /// </summary>
-        public float LengthSqr => x*x + y*y;
-        
-        /// <summary>
-        /// Returns the sum of all components.
-        /// </summary>
-        public float Sum => x + y;
-        
-        /// <summary>
-        /// Returns the euclidean norm of this vector.
-        /// </summary>
-        public float Norm => (float)Math.Sqrt(x*x + y*y);
-        
-        /// <summary>
-        /// Returns the one-norm of this vector.
-        /// </summary>
-        public float Norm1 => Math.Abs(x) + Math.Abs(y);
-        
-        /// <summary>
-        /// Returns the two-norm of this vector.
-        /// </summary>
-        public float Norm2 => (float)Math.Sqrt(x*x + y*y);
-        
-        /// <summary>
-        /// Returns the max-norm of this vector.
-        /// </summary>
-        public float NormMax => Math.Max(Math.Abs(x), Math.Abs(y));
-        
-        /// <summary>
-        /// Returns the p-norm of this vector.
-        /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p), 1 / p);
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (undefined if this has zero length).
-        /// </summary>
-        public vec2 Normalized => this / Length;
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (returns zero if length is zero).
-        /// </summary>
-        public vec2 NormalizedSafe => this == Zero ? Zero : this / Length;
         
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.

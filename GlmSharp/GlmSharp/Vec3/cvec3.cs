@@ -173,6 +173,51 @@ namespace GlmSharp
         /// Returns the number of components (3).
         /// </summary>
         public int Count => 3;
+        
+        /// <summary>
+        /// Returns the euclidean length of this vector.
+        /// </summary>
+        public double Length => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr() + z.LengthSqr());
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this vector.
+        /// </summary>
+        public double LengthSqr => x.LengthSqr() + y.LengthSqr() + z.LengthSqr();
+        
+        /// <summary>
+        /// Returns the sum of all components.
+        /// </summary>
+        public Complex Sum => x + y + z;
+        
+        /// <summary>
+        /// Returns the euclidean norm of this vector.
+        /// </summary>
+        public double Norm => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr() + z.LengthSqr());
+        
+        /// <summary>
+        /// Returns the one-norm of this vector.
+        /// </summary>
+        public double Norm1 => x.Magnitude + y.Magnitude + z.Magnitude;
+        
+        /// <summary>
+        /// Returns the two-norm (euclidean length) of this vector.
+        /// </summary>
+        public double Norm2 => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr() + z.LengthSqr());
+        
+        /// <summary>
+        /// Returns the max-norm of this vector.
+        /// </summary>
+        public double NormMax => Math.Max(Math.Max(x.Magnitude, y.Magnitude), z.Magnitude);
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (undefined if this has zero length).
+        /// </summary>
+        public cvec3 Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this vector with length one (returns zero if length is zero).
+        /// </summary>
+        public cvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
 
         #endregion
 
@@ -308,6 +353,11 @@ namespace GlmSharp
                 return ((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode();
             }
         }
+        
+        /// <summary>
+        /// Returns the p-norm of this vector.
+        /// </summary>
+        public double NormP(double p) => Math.Pow(Math.Pow((double)x.Magnitude, p) + Math.Pow((double)y.Magnitude, p) + Math.Pow((double)z.Magnitude, p), 1 / p);
 
         #endregion
 
@@ -780,7 +830,7 @@ namespace GlmSharp
         public static cvec3 operator/(Complex lhs, cvec3 rhs) => new cvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of operator+ (~~~).
+        /// Returns a cvec3 from component-wise application of operator+ (identity).
         /// </summary>
         public static cvec3 operator+(cvec3 v) => v;
         
@@ -811,56 +861,6 @@ namespace GlmSharp
         /// Returns a vector containing component-wise real parts.
         /// </summary>
         public dvec3 Real => new dvec3(x.Real, y.Real, z.Real);
-        
-        /// <summary>
-        /// Returns the euclidean length of this vector.
-        /// </summary>
-        public double Length => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr() + z.LengthSqr());
-        
-        /// <summary>
-        /// Returns the squared euclidean length of this vector.
-        /// </summary>
-        public double LengthSqr => x.LengthSqr() + y.LengthSqr() + z.LengthSqr();
-        
-        /// <summary>
-        /// Returns the sum of all components.
-        /// </summary>
-        public Complex Sum => x + y + z;
-        
-        /// <summary>
-        /// Returns the euclidean norm of this vector.
-        /// </summary>
-        public double Norm => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr() + z.LengthSqr());
-        
-        /// <summary>
-        /// Returns the one-norm of this vector.
-        /// </summary>
-        public double Norm1 => x.Magnitude + y.Magnitude + z.Magnitude;
-        
-        /// <summary>
-        /// Returns the two-norm of this vector.
-        /// </summary>
-        public double Norm2 => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr() + z.LengthSqr());
-        
-        /// <summary>
-        /// Returns the max-norm of this vector.
-        /// </summary>
-        public Complex NormMax => Math.Max(Math.Max(x.Magnitude, y.Magnitude), z.Magnitude);
-        
-        /// <summary>
-        /// Returns the p-norm of this vector.
-        /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)x.Magnitude, p) + Math.Pow((double)y.Magnitude, p) + Math.Pow((double)z.Magnitude, p), 1 / p);
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (undefined if this has zero length).
-        /// </summary>
-        public cvec3 Normalized => this / Length;
-        
-        /// <summary>
-        /// Returns a copy of this vector with length one (returns zero if length is zero).
-        /// </summary>
-        public cvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
         
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.

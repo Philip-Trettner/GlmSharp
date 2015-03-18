@@ -353,7 +353,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the euclidean length of this matrix.
         /// </summary>
-        public decimal Length => (decimal)m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23.Sqrt();
+        public decimal Length => (decimal)(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23).Sqrt();
         
         /// <summary>
         /// Returns the squared euclidean length of this matrix.
@@ -368,7 +368,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the euclidean norm of this matrix.
         /// </summary>
-        public decimal Norm => (decimal)m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23.Sqrt();
+        public decimal Norm => (decimal)(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23).Sqrt();
         
         /// <summary>
         /// Returns the one-norm of this matrix.
@@ -378,7 +378,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the two-norm of this matrix.
         /// </summary>
-        public decimal Norm2 => (decimal)m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23.Sqrt();
+        public decimal Norm2 => (decimal)(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13 + m20*m20 + m21*m21 + m22*m22 + m23*m23).Sqrt();
         
         /// <summary>
         /// Returns the max-norm of this matrix.
