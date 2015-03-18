@@ -549,6 +549,566 @@ namespace GlmSharp
         /// Returns a bvec2 from component-wise application of IsPositiveInfinity (double.IsPositiveInfinity(v)).
         /// </summary>
         public static bvec2 IsPositiveInfinity(double v) => new bvec2(double.IsPositiveInfinity(v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static dvec2 Abs(dvec2 v) => new dvec2(Math.Abs(v.x), Math.Abs(v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static dvec2 Abs(double v) => new dvec2(Math.Abs(v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static dvec2 HermiteInterpolationOrder3(dvec2 v) => new dvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static dvec2 HermiteInterpolationOrder3(double v) => new dvec2((3 - 2 * v) * v * v);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static dvec2 HermiteInterpolationOrder5(dvec2 v) => new dvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static dvec2 HermiteInterpolationOrder5(double v) => new dvec2(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static dvec2 Sqr(dvec2 v) => new dvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static dvec2 Sqr(double v) => new dvec2(v * v);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static dvec2 Pow2(dvec2 v) => new dvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static dvec2 Pow2(double v) => new dvec2(v * v);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static dvec2 Pow3(dvec2 v) => new dvec2(v.x * v.x * v.x, v.y * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static dvec2 Pow3(double v) => new dvec2(v * v * v);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Step (v &gt;= 0.0 ? 1.0 : 0.0).
+        /// </summary>
+        public static dvec2 Step(dvec2 v) => new dvec2(v.x >= 0.0 ? 1.0 : 0.0, v.y >= 0.0 ? 1.0 : 0.0);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Step (v &gt;= 0.0 ? 1.0 : 0.0).
+        /// </summary>
+        public static dvec2 Step(double v) => new dvec2(v >= 0.0 ? 1.0 : 0.0);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sqrt ((double)Math.Sqrt((double)v)).
+        /// </summary>
+        public static dvec2 Sqrt(dvec2 v) => new dvec2((double)Math.Sqrt((double)v.x), (double)Math.Sqrt((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sqrt ((double)Math.Sqrt((double)v)).
+        /// </summary>
+        public static dvec2 Sqrt(double v) => new dvec2((double)Math.Sqrt((double)v));
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec2 Sign(dvec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec2 Sign(double v) => new ivec2(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Max(dvec2 lhs, dvec2 rhs) => new dvec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Max(dvec2 lhs, double rhs) => new dvec2(Math.Max(lhs.x, rhs), Math.Max(lhs.y, rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Max(double lhs, dvec2 rhs) => new dvec2(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Max(double lhs, double rhs) => new dvec2(Math.Max(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Min(dvec2 lhs, dvec2 rhs) => new dvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Min(dvec2 lhs, double rhs) => new dvec2(Math.Min(lhs.x, rhs), Math.Min(lhs.y, rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Min(double lhs, dvec2 rhs) => new dvec2(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static dvec2 Min(double lhs, double rhs) => new dvec2(Math.Min(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow ((double)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Pow(dvec2 lhs, dvec2 rhs) => new dvec2((double)Math.Pow((double)lhs.x, (double)rhs.x), (double)Math.Pow((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow ((double)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Pow(dvec2 lhs, double rhs) => new dvec2((double)Math.Pow((double)lhs.x, (double)rhs), (double)Math.Pow((double)lhs.y, (double)rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow ((double)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Pow(double lhs, dvec2 rhs) => new dvec2((double)Math.Pow((double)lhs, (double)rhs.x), (double)Math.Pow((double)lhs, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Pow ((double)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Pow(double lhs, double rhs) => new dvec2((double)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Log(dvec2 lhs, dvec2 rhs) => new dvec2((double)Math.Log((double)lhs.x, (double)rhs.x), (double)Math.Log((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Log(dvec2 lhs, double rhs) => new dvec2((double)Math.Log((double)lhs.x, (double)rhs), (double)Math.Log((double)lhs.y, (double)rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Log(double lhs, dvec2 rhs) => new dvec2((double)Math.Log((double)lhs, (double)rhs.x), (double)Math.Log((double)lhs, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static dvec2 Log(double lhs, double rhs) => new dvec2((double)Math.Log((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, dvec2 min, dvec2 max) => new dvec2(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, dvec2 min, double max) => new dvec2(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, double min, dvec2 max) => new dvec2(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(dvec2 v, double min, double max) => new dvec2(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(double v, dvec2 min, dvec2 max) => new dvec2(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(double v, dvec2 min, double max) => new dvec2(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(double v, double min, dvec2 max) => new dvec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static dvec2 Clamp(double v, double min, double max) => new dvec2(Math.Min(Math.Max(v, min), max));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, dvec2 max, dvec2 a) => new dvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, dvec2 max, double a) => new dvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, double max, dvec2 a) => new dvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(dvec2 min, double max, double a) => new dvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(double min, dvec2 max, dvec2 a) => new dvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(double min, dvec2 max, double a) => new dvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Mix(double min, double max, double a) => new dvec2(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, dvec2 max, dvec2 a) => new dvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, dvec2 max, double a) => new dvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, double max, dvec2 a) => new dvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(dvec2 min, double max, double a) => new dvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(double min, dvec2 max, dvec2 a) => new dvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(double min, dvec2 max, double a) => new dvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dvec2 Lerp(double min, double max, double a) => new dvec2(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, dvec2 edge1, double v) => new dvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(dvec2 edge0, double edge1, double v) => new dvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(double edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(double edge0, dvec2 edge1, double v) => new dvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static dvec2 Smoothstep(double edge0, double edge1, double v) => new dvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, dvec2 edge1, double v) => new dvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(dvec2 edge0, double edge1, double v) => new dvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(double edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(double edge0, dvec2 edge1, double v) => new dvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static dvec2 Smootherstep(double edge0, double edge1, double v) => new dvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// </summary>
+        public static dvec2 Degrees(dvec2 v) => new dvec2(v.x * 57.295779513082320876798154814105170332405472466564321d, v.y * 57.295779513082320876798154814105170332405472466564321d);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// </summary>
+        public static dvec2 Degrees(double v) => new dvec2(v * 57.295779513082320876798154814105170332405472466564321d);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static dvec2 Radians(dvec2 v) => new dvec2(v.x * 0.0174532925199432957692369076848861271344287188854172d, v.y * 0.0174532925199432957692369076848861271344287188854172d);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static dvec2 Radians(double v) => new dvec2(v * 0.0174532925199432957692369076848861271344287188854172d);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Acos ((double)Math.Acos((double)v)).
+        /// </summary>
+        public static dvec2 Acos(dvec2 v) => new dvec2((double)Math.Acos((double)v.x), (double)Math.Acos((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Acos ((double)Math.Acos((double)v)).
+        /// </summary>
+        public static dvec2 Acos(double v) => new dvec2((double)Math.Acos((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Asin ((double)Math.Asin((double)v)).
+        /// </summary>
+        public static dvec2 Asin(dvec2 v) => new dvec2((double)Math.Asin((double)v.x), (double)Math.Asin((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Asin ((double)Math.Asin((double)v)).
+        /// </summary>
+        public static dvec2 Asin(double v) => new dvec2((double)Math.Asin((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Atan ((double)Math.Atan((double)v)).
+        /// </summary>
+        public static dvec2 Atan(dvec2 v) => new dvec2((double)Math.Atan((double)v.x), (double)Math.Atan((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Atan ((double)Math.Atan((double)v)).
+        /// </summary>
+        public static dvec2 Atan(double v) => new dvec2((double)Math.Atan((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Cos ((double)Math.Cos((double)v)).
+        /// </summary>
+        public static dvec2 Cos(dvec2 v) => new dvec2((double)Math.Cos((double)v.x), (double)Math.Cos((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Cos ((double)Math.Cos((double)v)).
+        /// </summary>
+        public static dvec2 Cos(double v) => new dvec2((double)Math.Cos((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Cosh ((double)Math.Cosh((double)v)).
+        /// </summary>
+        public static dvec2 Cosh(dvec2 v) => new dvec2((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Cosh ((double)Math.Cosh((double)v)).
+        /// </summary>
+        public static dvec2 Cosh(double v) => new dvec2((double)Math.Cosh((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Exp ((double)Math.Exp((double)v)).
+        /// </summary>
+        public static dvec2 Exp(dvec2 v) => new dvec2((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Exp ((double)Math.Exp((double)v)).
+        /// </summary>
+        public static dvec2 Exp(double v) => new dvec2((double)Math.Exp((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)v)).
+        /// </summary>
+        public static dvec2 Log(dvec2 v) => new dvec2((double)Math.Log((double)v.x), (double)Math.Log((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)v)).
+        /// </summary>
+        public static dvec2 Log(double v) => new dvec2((double)Math.Log((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log2 ((double)Math.Log((double)v, 2)).
+        /// </summary>
+        public static dvec2 Log2(dvec2 v) => new dvec2((double)Math.Log((double)v.x, 2), (double)Math.Log((double)v.y, 2));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log2 ((double)Math.Log((double)v, 2)).
+        /// </summary>
+        public static dvec2 Log2(double v) => new dvec2((double)Math.Log((double)v, 2));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log10 ((double)Math.Log10((double)v)).
+        /// </summary>
+        public static dvec2 Log10(dvec2 v) => new dvec2((double)Math.Log10((double)v.x), (double)Math.Log10((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Log10 ((double)Math.Log10((double)v)).
+        /// </summary>
+        public static dvec2 Log10(double v) => new dvec2((double)Math.Log10((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Floor ((double)Math.Floor(v)).
+        /// </summary>
+        public static dvec2 Floor(dvec2 v) => new dvec2((double)Math.Floor(v.x), (double)Math.Floor(v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Floor ((double)Math.Floor(v)).
+        /// </summary>
+        public static dvec2 Floor(double v) => new dvec2((double)Math.Floor(v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Ceiling ((double)Math.Ceiling(v)).
+        /// </summary>
+        public static dvec2 Ceiling(dvec2 v) => new dvec2((double)Math.Ceiling(v.x), (double)Math.Ceiling(v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Ceiling ((double)Math.Ceiling(v)).
+        /// </summary>
+        public static dvec2 Ceiling(double v) => new dvec2((double)Math.Ceiling(v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Round ((double)Math.Round(v)).
+        /// </summary>
+        public static dvec2 Round(dvec2 v) => new dvec2((double)Math.Round(v.x), (double)Math.Round(v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Round ((double)Math.Round(v)).
+        /// </summary>
+        public static dvec2 Round(double v) => new dvec2((double)Math.Round(v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sin ((double)Math.Sin((double)v)).
+        /// </summary>
+        public static dvec2 Sin(dvec2 v) => new dvec2((double)Math.Sin((double)v.x), (double)Math.Sin((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sin ((double)Math.Sin((double)v)).
+        /// </summary>
+        public static dvec2 Sin(double v) => new dvec2((double)Math.Sin((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sinh ((double)Math.Sinh((double)v)).
+        /// </summary>
+        public static dvec2 Sinh(dvec2 v) => new dvec2((double)Math.Sinh((double)v.x), (double)Math.Sinh((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Sinh ((double)Math.Sinh((double)v)).
+        /// </summary>
+        public static dvec2 Sinh(double v) => new dvec2((double)Math.Sinh((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Tan ((double)Math.Tan((double)v)).
+        /// </summary>
+        public static dvec2 Tan(dvec2 v) => new dvec2((double)Math.Tan((double)v.x), (double)Math.Tan((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Tan ((double)Math.Tan((double)v)).
+        /// </summary>
+        public static dvec2 Tan(double v) => new dvec2((double)Math.Tan((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Tanh ((double)Math.Tanh((double)v)).
+        /// </summary>
+        public static dvec2 Tanh(dvec2 v) => new dvec2((double)Math.Tanh((double)v.x), (double)Math.Tanh((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Tanh ((double)Math.Tanh((double)v)).
+        /// </summary>
+        public static dvec2 Tanh(double v) => new dvec2((double)Math.Tanh((double)v));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Truncate ((double)Math.Truncate((double)v)).
+        /// </summary>
+        public static dvec2 Truncate(dvec2 v) => new dvec2((double)Math.Truncate((double)v.x), (double)Math.Truncate((double)v.y));
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Truncate ((double)Math.Truncate((double)v)).
+        /// </summary>
+        public static dvec2 Truncate(double v) => new dvec2((double)Math.Truncate((double)v));
 
         #endregion
 
@@ -983,555 +1543,5 @@ namespace GlmSharp
         /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
         /// </summary>
         public dvec2 Rotated(double angleInRad) => (dvec2)(dvec2.FromAngle(Angle) * (double)Length);
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs.
-        /// </summary>
-        public static dvec2 Abs(dvec2 v) => new dvec2(Math.Abs(v.x), Math.Abs(v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs with a scalar.
-        /// </summary>
-        public static dvec2 Abs(double v) => new dvec2(Math.Abs(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3.
-        /// </summary>
-        public static dvec2 HermiteInterpolationOrder3(dvec2 v) => new dvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
-        /// </summary>
-        public static dvec2 HermiteInterpolationOrder3(double v) => new dvec2((3 - 2 * v) * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5.
-        /// </summary>
-        public static dvec2 HermiteInterpolationOrder5(dvec2 v) => new dvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
-        /// </summary>
-        public static dvec2 HermiteInterpolationOrder5(double v) => new dvec2(((6 * v - 15) * v + 10) * v * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Step.
-        /// </summary>
-        public static dvec2 Step(dvec2 v) => new dvec2(v.x >= 0.0 ? 1.0 : 0.0, v.y >= 0.0 ? 1.0 : 0.0);
-        
-        /// <summary>
-        /// Returns a component-wise executed Step with a scalar.
-        /// </summary>
-        public static dvec2 Step(double v) => new dvec2(v >= 0.0 ? 1.0 : 0.0);
-        
-        /// <summary>
-        /// Returns a component-wise executed Acos.
-        /// </summary>
-        public static dvec2 Acos(dvec2 v) => new dvec2((double)Math.Acos((double)v.x), (double)Math.Acos((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Acos with a scalar.
-        /// </summary>
-        public static dvec2 Acos(double v) => new dvec2((double)Math.Acos((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Asin.
-        /// </summary>
-        public static dvec2 Asin(dvec2 v) => new dvec2((double)Math.Asin((double)v.x), (double)Math.Asin((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Asin with a scalar.
-        /// </summary>
-        public static dvec2 Asin(double v) => new dvec2((double)Math.Asin((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Atan.
-        /// </summary>
-        public static dvec2 Atan(dvec2 v) => new dvec2((double)Math.Atan((double)v.x), (double)Math.Atan((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Atan with a scalar.
-        /// </summary>
-        public static dvec2 Atan(double v) => new dvec2((double)Math.Atan((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cos.
-        /// </summary>
-        public static dvec2 Cos(dvec2 v) => new dvec2((double)Math.Cos((double)v.x), (double)Math.Cos((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cos with a scalar.
-        /// </summary>
-        public static dvec2 Cos(double v) => new dvec2((double)Math.Cos((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cosh.
-        /// </summary>
-        public static dvec2 Cosh(dvec2 v) => new dvec2((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cosh with a scalar.
-        /// </summary>
-        public static dvec2 Cosh(double v) => new dvec2((double)Math.Cosh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Exp.
-        /// </summary>
-        public static dvec2 Exp(dvec2 v) => new dvec2((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Exp with a scalar.
-        /// </summary>
-        public static dvec2 Exp(double v) => new dvec2((double)Math.Exp((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static dvec2 Log(dvec2 v) => new dvec2((double)Math.Log((double)v.x), (double)Math.Log((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static dvec2 Log(double v) => new dvec2((double)Math.Log((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log2.
-        /// </summary>
-        public static dvec2 Log2(dvec2 v) => new dvec2((double)Math.Log((double)v.x, 2), (double)Math.Log((double)v.y, 2));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log2 with a scalar.
-        /// </summary>
-        public static dvec2 Log2(double v) => new dvec2((double)Math.Log((double)v, 2));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log10.
-        /// </summary>
-        public static dvec2 Log10(dvec2 v) => new dvec2((double)Math.Log10((double)v.x), (double)Math.Log10((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log10 with a scalar.
-        /// </summary>
-        public static dvec2 Log10(double v) => new dvec2((double)Math.Log10((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Floor.
-        /// </summary>
-        public static dvec2 Floor(dvec2 v) => new dvec2((double)Math.Floor(v.x), (double)Math.Floor(v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Floor with a scalar.
-        /// </summary>
-        public static dvec2 Floor(double v) => new dvec2((double)Math.Floor(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Ceiling.
-        /// </summary>
-        public static dvec2 Ceiling(dvec2 v) => new dvec2((double)Math.Ceiling(v.x), (double)Math.Ceiling(v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Ceiling with a scalar.
-        /// </summary>
-        public static dvec2 Ceiling(double v) => new dvec2((double)Math.Ceiling(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Round.
-        /// </summary>
-        public static dvec2 Round(dvec2 v) => new dvec2((double)Math.Round(v.x), (double)Math.Round(v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Round with a scalar.
-        /// </summary>
-        public static dvec2 Round(double v) => new dvec2((double)Math.Round(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sin.
-        /// </summary>
-        public static dvec2 Sin(dvec2 v) => new dvec2((double)Math.Sin((double)v.x), (double)Math.Sin((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sin with a scalar.
-        /// </summary>
-        public static dvec2 Sin(double v) => new dvec2((double)Math.Sin((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sinh.
-        /// </summary>
-        public static dvec2 Sinh(dvec2 v) => new dvec2((double)Math.Sinh((double)v.x), (double)Math.Sinh((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sinh with a scalar.
-        /// </summary>
-        public static dvec2 Sinh(double v) => new dvec2((double)Math.Sinh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqrt.
-        /// </summary>
-        public static dvec2 Sqrt(dvec2 v) => new dvec2((double)Math.Sqrt((double)v.x), (double)Math.Sqrt((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqrt with a scalar.
-        /// </summary>
-        public static dvec2 Sqrt(double v) => new dvec2((double)Math.Sqrt((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tan.
-        /// </summary>
-        public static dvec2 Tan(dvec2 v) => new dvec2((double)Math.Tan((double)v.x), (double)Math.Tan((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tan with a scalar.
-        /// </summary>
-        public static dvec2 Tan(double v) => new dvec2((double)Math.Tan((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tanh.
-        /// </summary>
-        public static dvec2 Tanh(dvec2 v) => new dvec2((double)Math.Tanh((double)v.x), (double)Math.Tanh((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tanh with a scalar.
-        /// </summary>
-        public static dvec2 Tanh(double v) => new dvec2((double)Math.Tanh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Truncate.
-        /// </summary>
-        public static dvec2 Truncate(dvec2 v) => new dvec2((double)Math.Truncate((double)v.x), (double)Math.Truncate((double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Truncate with a scalar.
-        /// </summary>
-        public static dvec2 Truncate(double v) => new dvec2((double)Math.Truncate((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sign.
-        /// </summary>
-        public static ivec2 Sign(dvec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sign with a scalar.
-        /// </summary>
-        public static ivec2 Sign(double v) => new ivec2(Math.Sign(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed radians-to-degrees conversion.
-        /// </summary>
-        public static dvec2 Degrees(dvec2 v) => v * 57.295779513082320876798154814105170332405472466564321d;
-        
-        /// <summary>
-        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
-        /// </summary>
-        public static dvec2 Degrees(double v) => new dvec2(v * 57.295779513082320876798154814105170332405472466564321d);
-        
-        /// <summary>
-        /// Returns a component-wise executed degrees-to-radians conversion.
-        /// </summary>
-        public static dvec2 Radians(dvec2 v) => v * 0.0174532925199432957692369076848861271344287188854172d;
-        
-        /// <summary>
-        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
-        /// </summary>
-        public static dvec2 Radians(double v) => new dvec2(v * 0.0174532925199432957692369076848861271344287188854172d);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr.
-        /// </summary>
-        public static dvec2 Sqr(dvec2 v) => new dvec2(v.x * v.x, v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr with a scalar.
-        /// </summary>
-        public static dvec2 Sqr(double v) => new dvec2(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2.
-        /// </summary>
-        public static dvec2 Pow2(dvec2 v) => new dvec2(v.x * v.x, v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2 with a scalar.
-        /// </summary>
-        public static dvec2 Pow2(double v) => new dvec2(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Max.
-        /// </summary>
-        public static dvec2 Max(dvec2 lhs, dvec2 rhs) => new dvec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static dvec2 Max(dvec2 v, double s) => new dvec2(Math.Max(v.x, s), Math.Max(v.y, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static dvec2 Max(double s, dvec2 v) => new dvec2(Math.Max(s, v.x), Math.Max(s, v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with scalars.
-        /// </summary>
-        public static dvec2 Max(double lhs, double rhs) => new dvec2(Math.Max(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min.
-        /// </summary>
-        public static dvec2 Min(dvec2 lhs, dvec2 rhs) => new dvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static dvec2 Min(dvec2 v, double s) => new dvec2(Math.Min(v.x, s), Math.Min(v.y, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static dvec2 Min(double s, dvec2 v) => new dvec2(Math.Min(s, v.x), Math.Min(s, v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with scalars.
-        /// </summary>
-        public static dvec2 Min(double lhs, double rhs) => new dvec2(Math.Min(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow.
-        /// </summary>
-        public static dvec2 Pow(dvec2 lhs, dvec2 rhs) => new dvec2((double)Math.Pow((double)lhs.x, (double)rhs.x), (double)Math.Pow((double)lhs.y, (double)rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static dvec2 Pow(dvec2 v, double s) => new dvec2((double)Math.Pow((double)v.x, (double)s), (double)Math.Pow((double)v.y, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static dvec2 Pow(double s, dvec2 v) => new dvec2((double)Math.Pow((double)s, (double)v.x), (double)Math.Pow((double)s, (double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with scalars.
-        /// </summary>
-        public static dvec2 Pow(double lhs, double rhs) => new dvec2((double)Math.Pow((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static dvec2 Log(dvec2 lhs, dvec2 rhs) => new dvec2((double)Math.Log((double)lhs.x, (double)rhs.x), (double)Math.Log((double)lhs.y, (double)rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static dvec2 Log(dvec2 v, double s) => new dvec2((double)Math.Log((double)v.x, (double)s), (double)Math.Log((double)v.y, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static dvec2 Log(double s, dvec2 v) => new dvec2((double)Math.Log((double)s, (double)v.x), (double)Math.Log((double)s, (double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with scalars.
-        /// </summary>
-        public static dvec2 Log(double lhs, double rhs) => new dvec2((double)Math.Log((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp.
-        /// </summary>
-        public static dvec2 Clamp(dvec2 v, dvec2 min, dvec2 max) => new dvec2(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static dvec2 Clamp(double v, dvec2 min, dvec2 max) => new dvec2(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static dvec2 Clamp(dvec2 v, double min, dvec2 max) => new dvec2(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static dvec2 Clamp(dvec2 v, dvec2 min, double max) => new dvec2(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static dvec2 Clamp(double v, double min, dvec2 max) => new dvec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static dvec2 Clamp(dvec2 v, double min, double max) => new dvec2(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static dvec2 Clamp(double v, dvec2 min, double max) => new dvec2(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static dvec2 Clamp(double v, double min, double max) => new dvec2(Math.Min(Math.Max(v, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix.
-        /// </summary>
-        public static dvec2 Mix(dvec2 min, dvec2 max, dvec2 a) => new dvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static dvec2 Mix(double min, dvec2 max, dvec2 a) => new dvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static dvec2 Mix(dvec2 min, double max, dvec2 a) => new dvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static dvec2 Mix(dvec2 min, dvec2 max, double a) => new dvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static dvec2 Mix(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static dvec2 Mix(dvec2 min, double max, double a) => new dvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static dvec2 Mix(double min, dvec2 max, double a) => new dvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static dvec2 Mix(double min, double max, double a) => new dvec2(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp.
-        /// </summary>
-        public static dvec2 Lerp(dvec2 min, dvec2 max, dvec2 a) => new dvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static dvec2 Lerp(double min, dvec2 max, dvec2 a) => new dvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static dvec2 Lerp(dvec2 min, double max, dvec2 a) => new dvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static dvec2 Lerp(dvec2 min, dvec2 max, double a) => new dvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static dvec2 Lerp(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static dvec2 Lerp(dvec2 min, double max, double a) => new dvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static dvec2 Lerp(double min, dvec2 max, double a) => new dvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static dvec2 Lerp(double min, double max, double a) => new dvec2(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep.
-        /// </summary>
-        public static dvec2 Smoothstep(dvec2 edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static dvec2 Smoothstep(double edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static dvec2 Smoothstep(dvec2 edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static dvec2 Smoothstep(dvec2 edge0, dvec2 edge1, double v) => new dvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static dvec2 Smoothstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static dvec2 Smoothstep(dvec2 edge0, double edge1, double v) => new dvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static dvec2 Smoothstep(double edge0, dvec2 edge1, double v) => new dvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static dvec2 Smoothstep(double edge0, double edge1, double v) => new dvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep.
-        /// </summary>
-        public static dvec2 Smootherstep(dvec2 edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static dvec2 Smootherstep(double edge0, dvec2 edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static dvec2 Smootherstep(dvec2 edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static dvec2 Smootherstep(dvec2 edge0, dvec2 edge1, double v) => new dvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static dvec2 Smootherstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static dvec2 Smootherstep(dvec2 edge0, double edge1, double v) => new dvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static dvec2 Smootherstep(double edge0, dvec2 edge1, double v) => new dvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static dvec2 Smootherstep(double edge0, double edge1, double v) => new dvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

@@ -23,6 +23,10 @@ namespace GlmSharpGenerator.Types
         /// </summary>
         public string BaseTypeName => BaseType.Name;
         /// <summary>
+        /// Cast to basetype
+        /// </summary>
+        public string BaseTypeCast => "(" + BaseTypeName + ")";
+        /// <summary>
         /// Actual name of the type (e.g. the C# class name)
         /// </summary>
         public abstract string Name { get; }

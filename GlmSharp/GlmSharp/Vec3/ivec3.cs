@@ -508,6 +508,376 @@ namespace GlmSharp
         /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec3 LesserThanEqual(int lhs, int rhs) => new bvec3(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static ivec3 Abs(ivec3 v) => new ivec3(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static ivec3 Abs(int v) => new ivec3(Math.Abs(v));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static ivec3 HermiteInterpolationOrder3(ivec3 v) => new ivec3((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static ivec3 HermiteInterpolationOrder3(int v) => new ivec3((3 - 2 * v) * v * v);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static ivec3 HermiteInterpolationOrder5(ivec3 v) => new ivec3(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static ivec3 HermiteInterpolationOrder5(int v) => new ivec3(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static ivec3 Sqr(ivec3 v) => new ivec3(v.x * v.x, v.y * v.y, v.z * v.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static ivec3 Sqr(int v) => new ivec3(v * v);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static ivec3 Pow2(ivec3 v) => new ivec3(v.x * v.x, v.y * v.y, v.z * v.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static ivec3 Pow2(int v) => new ivec3(v * v);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static ivec3 Pow3(ivec3 v) => new ivec3(v.x * v.x * v.x, v.y * v.y * v.y, v.z * v.z * v.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static ivec3 Pow3(int v) => new ivec3(v * v * v);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Step (v &gt;= 0 ? 1 : 0).
+        /// </summary>
+        public static ivec3 Step(ivec3 v) => new ivec3(v.x >= 0 ? 1 : 0, v.y >= 0 ? 1 : 0, v.z >= 0 ? 1 : 0);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Step (v &gt;= 0 ? 1 : 0).
+        /// </summary>
+        public static ivec3 Step(int v) => new ivec3(v >= 0 ? 1 : 0);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Sqrt ((int)Math.Sqrt((double)v)).
+        /// </summary>
+        public static ivec3 Sqrt(ivec3 v) => new ivec3((int)Math.Sqrt((double)v.x), (int)Math.Sqrt((double)v.y), (int)Math.Sqrt((double)v.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Sqrt ((int)Math.Sqrt((double)v)).
+        /// </summary>
+        public static ivec3 Sqrt(int v) => new ivec3((int)Math.Sqrt((double)v));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec3 Sign(ivec3 v) => new ivec3(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec3 Sign(int v) => new ivec3(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Max(ivec3 lhs, ivec3 rhs) => new ivec3(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Max(ivec3 lhs, int rhs) => new ivec3(Math.Max(lhs.x, rhs), Math.Max(lhs.y, rhs), Math.Max(lhs.z, rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Max(int lhs, ivec3 rhs) => new ivec3(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y), Math.Max(lhs, rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Max(int lhs, int rhs) => new ivec3(Math.Max(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Min(ivec3 lhs, ivec3 rhs) => new ivec3(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Min(ivec3 lhs, int rhs) => new ivec3(Math.Min(lhs.x, rhs), Math.Min(lhs.y, rhs), Math.Min(lhs.z, rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Min(int lhs, ivec3 rhs) => new ivec3(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y), Math.Min(lhs, rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static ivec3 Min(int lhs, int rhs) => new ivec3(Math.Min(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow ((int)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Pow(ivec3 lhs, ivec3 rhs) => new ivec3((int)Math.Pow((double)lhs.x, (double)rhs.x), (int)Math.Pow((double)lhs.y, (double)rhs.y), (int)Math.Pow((double)lhs.z, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow ((int)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Pow(ivec3 lhs, int rhs) => new ivec3((int)Math.Pow((double)lhs.x, (double)rhs), (int)Math.Pow((double)lhs.y, (double)rhs), (int)Math.Pow((double)lhs.z, (double)rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow ((int)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Pow(int lhs, ivec3 rhs) => new ivec3((int)Math.Pow((double)lhs, (double)rhs.x), (int)Math.Pow((double)lhs, (double)rhs.y), (int)Math.Pow((double)lhs, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Pow ((int)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Pow(int lhs, int rhs) => new ivec3((int)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Log ((int)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Log(ivec3 lhs, ivec3 rhs) => new ivec3((int)Math.Log((double)lhs.x, (double)rhs.x), (int)Math.Log((double)lhs.y, (double)rhs.y), (int)Math.Log((double)lhs.z, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Log ((int)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Log(ivec3 lhs, int rhs) => new ivec3((int)Math.Log((double)lhs.x, (double)rhs), (int)Math.Log((double)lhs.y, (double)rhs), (int)Math.Log((double)lhs.z, (double)rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Log ((int)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Log(int lhs, ivec3 rhs) => new ivec3((int)Math.Log((double)lhs, (double)rhs.x), (int)Math.Log((double)lhs, (double)rhs.y), (int)Math.Log((double)lhs, (double)rhs.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Log ((int)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static ivec3 Log(int lhs, int rhs) => new ivec3((int)Math.Log((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(ivec3 v, ivec3 min, ivec3 max) => new ivec3(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y), Math.Min(Math.Max(v.z, min.z), max.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(ivec3 v, ivec3 min, int max) => new ivec3(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max), Math.Min(Math.Max(v.z, min.z), max));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(ivec3 v, int min, ivec3 max) => new ivec3(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y), Math.Min(Math.Max(v.z, min), max.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(ivec3 v, int min, int max) => new ivec3(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max), Math.Min(Math.Max(v.z, min), max));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(int v, ivec3 min, ivec3 max) => new ivec3(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y), Math.Min(Math.Max(v, min.z), max.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(int v, ivec3 min, int max) => new ivec3(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(int v, int min, ivec3 max) => new ivec3(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static ivec3 Clamp(int v, int min, int max) => new ivec3(Math.Min(Math.Max(v, min), max));
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(ivec3 min, ivec3 max, ivec3 a) => new ivec3(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(ivec3 min, ivec3 max, int a) => new ivec3(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(ivec3 min, int max, ivec3 a) => new ivec3(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(ivec3 min, int max, int a) => new ivec3(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(int min, ivec3 max, ivec3 a) => new ivec3(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(int min, ivec3 max, int a) => new ivec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(int min, int max, ivec3 a) => new ivec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Mix(int min, int max, int a) => new ivec3(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, ivec3 max, ivec3 a) => new ivec3(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, ivec3 max, int a) => new ivec3(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, int max, ivec3 a) => new ivec3(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(ivec3 min, int max, int a) => new ivec3(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(int min, ivec3 max, ivec3 a) => new ivec3(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(int min, ivec3 max, int a) => new ivec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(int min, int max, ivec3 a) => new ivec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static ivec3 Lerp(int min, int max, int a) => new ivec3(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(ivec3 edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(ivec3 edge0, ivec3 edge1, int v) => new ivec3(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(ivec3 edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(ivec3 edge0, int edge1, int v) => new ivec3(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(int edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(int edge0, ivec3 edge1, int v) => new ivec3(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(int edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static ivec3 Smoothstep(int edge0, int edge1, int v) => new ivec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(ivec3 edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(ivec3 edge0, ivec3 edge1, int v) => new ivec3(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(ivec3 edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(ivec3 edge0, int edge1, int v) => new ivec3(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(int edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(int edge0, ivec3 edge1, int v) => new ivec3(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(int edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static ivec3 Smootherstep(int edge0, int edge1, int v) => new ivec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
 
         #endregion
 
@@ -1312,335 +1682,5 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static ivec3 Cross(ivec3 l, ivec3 r) => new ivec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs.
-        /// </summary>
-        public static ivec3 Abs(ivec3 v) => new ivec3(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs with a scalar.
-        /// </summary>
-        public static ivec3 Abs(int v) => new ivec3(Math.Abs(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3.
-        /// </summary>
-        public static ivec3 HermiteInterpolationOrder3(ivec3 v) => new ivec3((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
-        /// </summary>
-        public static ivec3 HermiteInterpolationOrder3(int v) => new ivec3((3 - 2 * v) * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5.
-        /// </summary>
-        public static ivec3 HermiteInterpolationOrder5(ivec3 v) => new ivec3(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
-        /// </summary>
-        public static ivec3 HermiteInterpolationOrder5(int v) => new ivec3(((6 * v - 15) * v + 10) * v * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr.
-        /// </summary>
-        public static ivec3 Sqr(ivec3 v) => new ivec3(v.x * v.x, v.y * v.y, v.z * v.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr with a scalar.
-        /// </summary>
-        public static ivec3 Sqr(int v) => new ivec3(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2.
-        /// </summary>
-        public static ivec3 Pow2(ivec3 v) => new ivec3(v.x * v.x, v.y * v.y, v.z * v.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2 with a scalar.
-        /// </summary>
-        public static ivec3 Pow2(int v) => new ivec3(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Max.
-        /// </summary>
-        public static ivec3 Max(ivec3 lhs, ivec3 rhs) => new ivec3(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static ivec3 Max(ivec3 v, int s) => new ivec3(Math.Max(v.x, s), Math.Max(v.y, s), Math.Max(v.z, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static ivec3 Max(int s, ivec3 v) => new ivec3(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with scalars.
-        /// </summary>
-        public static ivec3 Max(int lhs, int rhs) => new ivec3(Math.Max(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min.
-        /// </summary>
-        public static ivec3 Min(ivec3 lhs, ivec3 rhs) => new ivec3(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static ivec3 Min(ivec3 v, int s) => new ivec3(Math.Min(v.x, s), Math.Min(v.y, s), Math.Min(v.z, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static ivec3 Min(int s, ivec3 v) => new ivec3(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with scalars.
-        /// </summary>
-        public static ivec3 Min(int lhs, int rhs) => new ivec3(Math.Min(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow.
-        /// </summary>
-        public static ivec3 Pow(ivec3 lhs, ivec3 rhs) => new ivec3((int)Math.Pow((double)lhs.x, (double)rhs.x), (int)Math.Pow((double)lhs.y, (double)rhs.y), (int)Math.Pow((double)lhs.z, (double)rhs.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static ivec3 Pow(ivec3 v, int s) => new ivec3((int)Math.Pow((double)v.x, (double)s), (int)Math.Pow((double)v.y, (double)s), (int)Math.Pow((double)v.z, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static ivec3 Pow(int s, ivec3 v) => new ivec3((int)Math.Pow((double)s, (double)v.x), (int)Math.Pow((double)s, (double)v.y), (int)Math.Pow((double)s, (double)v.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with scalars.
-        /// </summary>
-        public static ivec3 Pow(int lhs, int rhs) => new ivec3((int)Math.Pow((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static ivec3 Log(ivec3 lhs, ivec3 rhs) => new ivec3((int)Math.Log((double)lhs.x, (double)rhs.x), (int)Math.Log((double)lhs.y, (double)rhs.y), (int)Math.Log((double)lhs.z, (double)rhs.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static ivec3 Log(ivec3 v, int s) => new ivec3((int)Math.Log((double)v.x, (double)s), (int)Math.Log((double)v.y, (double)s), (int)Math.Log((double)v.z, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static ivec3 Log(int s, ivec3 v) => new ivec3((int)Math.Log((double)s, (double)v.x), (int)Math.Log((double)s, (double)v.y), (int)Math.Log((double)s, (double)v.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with scalars.
-        /// </summary>
-        public static ivec3 Log(int lhs, int rhs) => new ivec3((int)Math.Log((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp.
-        /// </summary>
-        public static ivec3 Clamp(ivec3 v, ivec3 min, ivec3 max) => new ivec3(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y), Math.Min(Math.Max(v.z, min.z), max.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static ivec3 Clamp(int v, ivec3 min, ivec3 max) => new ivec3(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y), Math.Min(Math.Max(v, min.z), max.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static ivec3 Clamp(ivec3 v, int min, ivec3 max) => new ivec3(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y), Math.Min(Math.Max(v.z, min), max.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static ivec3 Clamp(ivec3 v, ivec3 min, int max) => new ivec3(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max), Math.Min(Math.Max(v.z, min.z), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static ivec3 Clamp(int v, int min, ivec3 max) => new ivec3(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static ivec3 Clamp(ivec3 v, int min, int max) => new ivec3(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max), Math.Min(Math.Max(v.z, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static ivec3 Clamp(int v, ivec3 min, int max) => new ivec3(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static ivec3 Clamp(int v, int min, int max) => new ivec3(Math.Min(Math.Max(v, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix.
-        /// </summary>
-        public static ivec3 Mix(ivec3 min, ivec3 max, ivec3 a) => new ivec3(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static ivec3 Mix(int min, ivec3 max, ivec3 a) => new ivec3(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static ivec3 Mix(ivec3 min, int max, ivec3 a) => new ivec3(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static ivec3 Mix(ivec3 min, ivec3 max, int a) => new ivec3(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static ivec3 Mix(int min, int max, ivec3 a) => new ivec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static ivec3 Mix(ivec3 min, int max, int a) => new ivec3(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static ivec3 Mix(int min, ivec3 max, int a) => new ivec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static ivec3 Mix(int min, int max, int a) => new ivec3(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp.
-        /// </summary>
-        public static ivec3 Lerp(ivec3 min, ivec3 max, ivec3 a) => new ivec3(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static ivec3 Lerp(int min, ivec3 max, ivec3 a) => new ivec3(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static ivec3 Lerp(ivec3 min, int max, ivec3 a) => new ivec3(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static ivec3 Lerp(ivec3 min, ivec3 max, int a) => new ivec3(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static ivec3 Lerp(int min, int max, ivec3 a) => new ivec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static ivec3 Lerp(ivec3 min, int max, int a) => new ivec3(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static ivec3 Lerp(int min, ivec3 max, int a) => new ivec3(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static ivec3 Lerp(int min, int max, int a) => new ivec3(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep.
-        /// </summary>
-        public static ivec3 Smoothstep(ivec3 edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static ivec3 Smoothstep(int edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static ivec3 Smoothstep(ivec3 edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static ivec3 Smoothstep(ivec3 edge0, ivec3 edge1, int v) => new ivec3(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static ivec3 Smoothstep(int edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static ivec3 Smoothstep(ivec3 edge0, int edge1, int v) => new ivec3(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static ivec3 Smoothstep(int edge0, ivec3 edge1, int v) => new ivec3(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static ivec3 Smoothstep(int edge0, int edge1, int v) => new ivec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep.
-        /// </summary>
-        public static ivec3 Smootherstep(ivec3 edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static ivec3 Smootherstep(int edge0, ivec3 edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static ivec3 Smootherstep(ivec3 edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static ivec3 Smootherstep(ivec3 edge0, ivec3 edge1, int v) => new ivec3(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static ivec3 Smootherstep(int edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static ivec3 Smootherstep(ivec3 edge0, int edge1, int v) => new ivec3(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static ivec3 Smootherstep(int edge0, ivec3 edge1, int v) => new ivec3(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static ivec3 Smootherstep(int edge0, int edge1, int v) => new ivec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

@@ -41,16 +41,16 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public string[] ParameterNames { get; set; }
 
+        public string AdditionalComment { get; set; }
+
         /// <summary>
         /// Fields
         /// </summary>
         public IEnumerable<string> Fields { get; set; }
-
-        private IEnumerable<string> Paras => ParameterTypes.Select((t, i) => t.NameThat + " " + ParameterNames[i]);
-
+        
         private void BuildComment()
         {
-            Comment = "Returns a " + ReturnType.Name + " from component-wise application of " + Name + " (" + string.Format(CompString, ParameterNames.OfType<object>().ToArray()) + ").";
+            Comment = "Returns a " + ReturnType.Name + " from component-wise application of " + Name + " (" + (!string.IsNullOrEmpty(AdditionalComment) ? AdditionalComment : string.Format(CompString, ParameterNames.OfType<object>().ToArray())) + ").";
             Comment = Comment.Replace("&", "&amp;");
             Comment = Comment.Replace(">", "&gt;");
             Comment = Comment.Replace("<", "&lt;");
@@ -66,7 +66,7 @@ namespace GlmSharpGenerator.Members
             CompString = compString;
             Static = true;
 
-            BuildComment();
+            Comment = "DUMMY << >> &&";
         }
 
         public ComponentWiseStaticFunction(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, AbstractType para1, string paraName1, string compString)
@@ -79,7 +79,7 @@ namespace GlmSharpGenerator.Members
             CompString = compString;
             Static = true;
 
-            BuildComment();
+            Comment = "DUMMY << >> &&";
         }
 
         public ComponentWiseStaticFunction(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, AbstractType para1, string paraName1, AbstractType para2, string paraName2, string compString)
@@ -92,7 +92,7 @@ namespace GlmSharpGenerator.Members
             CompString = compString;
             Static = true;
 
-            BuildComment();
+            Comment = "DUMMY << >> &&";
         }
 
         private class ArgInfo
@@ -150,6 +150,7 @@ namespace GlmSharpGenerator.Members
                 {
                     var arginfo = ParaInfos(pis);
 
+                    BuildComment();
                     foreach (var line in base.Lines)
                         yield return line;
 

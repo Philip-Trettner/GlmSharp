@@ -479,6 +479,376 @@ namespace GlmSharp
         /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec2 LesserThanEqual(long lhs, long rhs) => new bvec2(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static lvec2 Abs(lvec2 v) => new lvec2(Math.Abs(v.x), Math.Abs(v.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static lvec2 Abs(long v) => new lvec2(Math.Abs(v));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static lvec2 HermiteInterpolationOrder3(lvec2 v) => new lvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static lvec2 HermiteInterpolationOrder3(long v) => new lvec2((3 - 2 * v) * v * v);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static lvec2 HermiteInterpolationOrder5(lvec2 v) => new lvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static lvec2 HermiteInterpolationOrder5(long v) => new lvec2(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static lvec2 Sqr(lvec2 v) => new lvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static lvec2 Sqr(long v) => new lvec2(v * v);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static lvec2 Pow2(lvec2 v) => new lvec2(v.x * v.x, v.y * v.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static lvec2 Pow2(long v) => new lvec2(v * v);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static lvec2 Pow3(lvec2 v) => new lvec2(v.x * v.x * v.x, v.y * v.y * v.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static lvec2 Pow3(long v) => new lvec2(v * v * v);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Step (v &gt;= 0 ? 1 : 0).
+        /// </summary>
+        public static lvec2 Step(lvec2 v) => new lvec2(v.x >= 0 ? 1 : 0, v.y >= 0 ? 1 : 0);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Step (v &gt;= 0 ? 1 : 0).
+        /// </summary>
+        public static lvec2 Step(long v) => new lvec2(v >= 0 ? 1 : 0);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Sqrt ((long)Math.Sqrt((double)v)).
+        /// </summary>
+        public static lvec2 Sqrt(lvec2 v) => new lvec2((long)Math.Sqrt((double)v.x), (long)Math.Sqrt((double)v.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Sqrt ((long)Math.Sqrt((double)v)).
+        /// </summary>
+        public static lvec2 Sqrt(long v) => new lvec2((long)Math.Sqrt((double)v));
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec2 Sign(lvec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec2 Sign(long v) => new ivec2(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Max(lvec2 lhs, lvec2 rhs) => new lvec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Max(lvec2 lhs, long rhs) => new lvec2(Math.Max(lhs.x, rhs), Math.Max(lhs.y, rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Max(long lhs, lvec2 rhs) => new lvec2(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Max(long lhs, long rhs) => new lvec2(Math.Max(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Min(lvec2 lhs, lvec2 rhs) => new lvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Min(lvec2 lhs, long rhs) => new lvec2(Math.Min(lhs.x, rhs), Math.Min(lhs.y, rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Min(long lhs, lvec2 rhs) => new lvec2(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static lvec2 Min(long lhs, long rhs) => new lvec2(Math.Min(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow ((long)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Pow(lvec2 lhs, lvec2 rhs) => new lvec2((long)Math.Pow((double)lhs.x, (double)rhs.x), (long)Math.Pow((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow ((long)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Pow(lvec2 lhs, long rhs) => new lvec2((long)Math.Pow((double)lhs.x, (double)rhs), (long)Math.Pow((double)lhs.y, (double)rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow ((long)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Pow(long lhs, lvec2 rhs) => new lvec2((long)Math.Pow((double)lhs, (double)rhs.x), (long)Math.Pow((double)lhs, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Pow ((long)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Pow(long lhs, long rhs) => new lvec2((long)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Log ((long)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Log(lvec2 lhs, lvec2 rhs) => new lvec2((long)Math.Log((double)lhs.x, (double)rhs.x), (long)Math.Log((double)lhs.y, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Log ((long)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Log(lvec2 lhs, long rhs) => new lvec2((long)Math.Log((double)lhs.x, (double)rhs), (long)Math.Log((double)lhs.y, (double)rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Log ((long)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Log(long lhs, lvec2 rhs) => new lvec2((long)Math.Log((double)lhs, (double)rhs.x), (long)Math.Log((double)lhs, (double)rhs.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Log ((long)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static lvec2 Log(long lhs, long rhs) => new lvec2((long)Math.Log((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(lvec2 v, lvec2 min, lvec2 max) => new lvec2(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(lvec2 v, lvec2 min, long max) => new lvec2(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(lvec2 v, long min, lvec2 max) => new lvec2(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(lvec2 v, long min, long max) => new lvec2(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(long v, lvec2 min, lvec2 max) => new lvec2(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(long v, lvec2 min, long max) => new lvec2(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(long v, long min, lvec2 max) => new lvec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static lvec2 Clamp(long v, long min, long max) => new lvec2(Math.Min(Math.Max(v, min), max));
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(lvec2 min, lvec2 max, lvec2 a) => new lvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(lvec2 min, lvec2 max, long a) => new lvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(lvec2 min, long max, lvec2 a) => new lvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(lvec2 min, long max, long a) => new lvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(long min, lvec2 max, lvec2 a) => new lvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(long min, lvec2 max, long a) => new lvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(long min, long max, lvec2 a) => new lvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Mix(long min, long max, long a) => new lvec2(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(lvec2 min, lvec2 max, lvec2 a) => new lvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(lvec2 min, lvec2 max, long a) => new lvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(lvec2 min, long max, lvec2 a) => new lvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(lvec2 min, long max, long a) => new lvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(long min, lvec2 max, lvec2 a) => new lvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(long min, lvec2 max, long a) => new lvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(long min, long max, lvec2 a) => new lvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static lvec2 Lerp(long min, long max, long a) => new lvec2(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(lvec2 edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(lvec2 edge0, lvec2 edge1, long v) => new lvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(lvec2 edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(lvec2 edge0, long edge1, long v) => new lvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(long edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(long edge0, lvec2 edge1, long v) => new lvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(long edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static lvec2 Smoothstep(long edge0, long edge1, long v) => new lvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(lvec2 edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(lvec2 edge0, lvec2 edge1, long v) => new lvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(lvec2 edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(lvec2 edge0, long edge1, long v) => new lvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(long edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(long edge0, lvec2 edge1, long v) => new lvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(long edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static lvec2 Smootherstep(long edge0, long edge1, long v) => new lvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
 
         #endregion
 
@@ -978,335 +1348,5 @@ namespace GlmSharp
         /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
         /// </summary>
         public lvec2 Rotated(double angleInRad) => (lvec2)(dvec2.FromAngle(Angle) * (double)Length);
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs.
-        /// </summary>
-        public static lvec2 Abs(lvec2 v) => new lvec2(Math.Abs(v.x), Math.Abs(v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs with a scalar.
-        /// </summary>
-        public static lvec2 Abs(long v) => new lvec2(Math.Abs(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3.
-        /// </summary>
-        public static lvec2 HermiteInterpolationOrder3(lvec2 v) => new lvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
-        /// </summary>
-        public static lvec2 HermiteInterpolationOrder3(long v) => new lvec2((3 - 2 * v) * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5.
-        /// </summary>
-        public static lvec2 HermiteInterpolationOrder5(lvec2 v) => new lvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
-        /// </summary>
-        public static lvec2 HermiteInterpolationOrder5(long v) => new lvec2(((6 * v - 15) * v + 10) * v * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr.
-        /// </summary>
-        public static lvec2 Sqr(lvec2 v) => new lvec2(v.x * v.x, v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr with a scalar.
-        /// </summary>
-        public static lvec2 Sqr(long v) => new lvec2(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2.
-        /// </summary>
-        public static lvec2 Pow2(lvec2 v) => new lvec2(v.x * v.x, v.y * v.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2 with a scalar.
-        /// </summary>
-        public static lvec2 Pow2(long v) => new lvec2(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Max.
-        /// </summary>
-        public static lvec2 Max(lvec2 lhs, lvec2 rhs) => new lvec2(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static lvec2 Max(lvec2 v, long s) => new lvec2(Math.Max(v.x, s), Math.Max(v.y, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static lvec2 Max(long s, lvec2 v) => new lvec2(Math.Max(s, v.x), Math.Max(s, v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with scalars.
-        /// </summary>
-        public static lvec2 Max(long lhs, long rhs) => new lvec2(Math.Max(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min.
-        /// </summary>
-        public static lvec2 Min(lvec2 lhs, lvec2 rhs) => new lvec2(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static lvec2 Min(lvec2 v, long s) => new lvec2(Math.Min(v.x, s), Math.Min(v.y, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static lvec2 Min(long s, lvec2 v) => new lvec2(Math.Min(s, v.x), Math.Min(s, v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with scalars.
-        /// </summary>
-        public static lvec2 Min(long lhs, long rhs) => new lvec2(Math.Min(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow.
-        /// </summary>
-        public static lvec2 Pow(lvec2 lhs, lvec2 rhs) => new lvec2((long)Math.Pow((double)lhs.x, (double)rhs.x), (long)Math.Pow((double)lhs.y, (double)rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static lvec2 Pow(lvec2 v, long s) => new lvec2((long)Math.Pow((double)v.x, (double)s), (long)Math.Pow((double)v.y, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static lvec2 Pow(long s, lvec2 v) => new lvec2((long)Math.Pow((double)s, (double)v.x), (long)Math.Pow((double)s, (double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with scalars.
-        /// </summary>
-        public static lvec2 Pow(long lhs, long rhs) => new lvec2((long)Math.Pow((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static lvec2 Log(lvec2 lhs, lvec2 rhs) => new lvec2((long)Math.Log((double)lhs.x, (double)rhs.x), (long)Math.Log((double)lhs.y, (double)rhs.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static lvec2 Log(lvec2 v, long s) => new lvec2((long)Math.Log((double)v.x, (double)s), (long)Math.Log((double)v.y, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static lvec2 Log(long s, lvec2 v) => new lvec2((long)Math.Log((double)s, (double)v.x), (long)Math.Log((double)s, (double)v.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with scalars.
-        /// </summary>
-        public static lvec2 Log(long lhs, long rhs) => new lvec2((long)Math.Log((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp.
-        /// </summary>
-        public static lvec2 Clamp(lvec2 v, lvec2 min, lvec2 max) => new lvec2(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static lvec2 Clamp(long v, lvec2 min, lvec2 max) => new lvec2(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static lvec2 Clamp(lvec2 v, long min, lvec2 max) => new lvec2(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static lvec2 Clamp(lvec2 v, lvec2 min, long max) => new lvec2(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static lvec2 Clamp(long v, long min, lvec2 max) => new lvec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static lvec2 Clamp(lvec2 v, long min, long max) => new lvec2(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static lvec2 Clamp(long v, lvec2 min, long max) => new lvec2(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static lvec2 Clamp(long v, long min, long max) => new lvec2(Math.Min(Math.Max(v, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix.
-        /// </summary>
-        public static lvec2 Mix(lvec2 min, lvec2 max, lvec2 a) => new lvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static lvec2 Mix(long min, lvec2 max, lvec2 a) => new lvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static lvec2 Mix(lvec2 min, long max, lvec2 a) => new lvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static lvec2 Mix(lvec2 min, lvec2 max, long a) => new lvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static lvec2 Mix(long min, long max, lvec2 a) => new lvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static lvec2 Mix(lvec2 min, long max, long a) => new lvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static lvec2 Mix(long min, lvec2 max, long a) => new lvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static lvec2 Mix(long min, long max, long a) => new lvec2(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp.
-        /// </summary>
-        public static lvec2 Lerp(lvec2 min, lvec2 max, lvec2 a) => new lvec2(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static lvec2 Lerp(long min, lvec2 max, lvec2 a) => new lvec2(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static lvec2 Lerp(lvec2 min, long max, lvec2 a) => new lvec2(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static lvec2 Lerp(lvec2 min, lvec2 max, long a) => new lvec2(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static lvec2 Lerp(long min, long max, lvec2 a) => new lvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static lvec2 Lerp(lvec2 min, long max, long a) => new lvec2(min.x * (1-a) + max * a, min.y * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static lvec2 Lerp(long min, lvec2 max, long a) => new lvec2(min * (1-a) + max.x * a, min * (1-a) + max.y * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static lvec2 Lerp(long min, long max, long a) => new lvec2(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep.
-        /// </summary>
-        public static lvec2 Smoothstep(lvec2 edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static lvec2 Smoothstep(long edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static lvec2 Smoothstep(lvec2 edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static lvec2 Smoothstep(lvec2 edge0, lvec2 edge1, long v) => new lvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static lvec2 Smoothstep(long edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static lvec2 Smoothstep(lvec2 edge0, long edge1, long v) => new lvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static lvec2 Smoothstep(long edge0, lvec2 edge1, long v) => new lvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static lvec2 Smoothstep(long edge0, long edge1, long v) => new lvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep.
-        /// </summary>
-        public static lvec2 Smootherstep(lvec2 edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static lvec2 Smootherstep(long edge0, lvec2 edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static lvec2 Smootherstep(lvec2 edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static lvec2 Smootherstep(lvec2 edge0, lvec2 edge1, long v) => new lvec2(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static lvec2 Smootherstep(long edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static lvec2 Smootherstep(lvec2 edge0, long edge1, long v) => new lvec2(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static lvec2 Smootherstep(long edge0, lvec2 edge1, long v) => new lvec2(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static lvec2 Smootherstep(long edge0, long edge1, long v) => new lvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

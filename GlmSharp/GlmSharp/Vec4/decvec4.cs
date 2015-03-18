@@ -550,6 +550,566 @@ namespace GlmSharp
         /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(decimal lhs, decimal rhs) => new bvec4(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static decvec4 Abs(decvec4 v) => new decvec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static decvec4 Abs(decimal v) => new decvec4(Math.Abs(v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static decvec4 HermiteInterpolationOrder3(decvec4 v) => new decvec4((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z, (3 - 2 * v.w) * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static decvec4 HermiteInterpolationOrder3(decimal v) => new decvec4((3 - 2 * v) * v * v);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static decvec4 HermiteInterpolationOrder5(decvec4 v) => new decvec4(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z, ((6 * v.w - 15) * v.w + 10) * v.w * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static decvec4 HermiteInterpolationOrder5(decimal v) => new decvec4(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static decvec4 Sqr(decvec4 v) => new decvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static decvec4 Sqr(decimal v) => new decvec4(v * v);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static decvec4 Pow2(decvec4 v) => new decvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static decvec4 Pow2(decimal v) => new decvec4(v * v);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static decvec4 Pow3(decvec4 v) => new decvec4(v.x * v.x * v.x, v.y * v.y * v.y, v.z * v.z * v.z, v.w * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static decvec4 Pow3(decimal v) => new decvec4(v * v * v);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Step (v &gt;= 0m ? 1m : 0m).
+        /// </summary>
+        public static decvec4 Step(decvec4 v) => new decvec4(v.x >= 0m ? 1m : 0m, v.y >= 0m ? 1m : 0m, v.z >= 0m ? 1m : 0m, v.w >= 0m ? 1m : 0m);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Step (v &gt;= 0m ? 1m : 0m).
+        /// </summary>
+        public static decvec4 Step(decimal v) => new decvec4(v >= 0m ? 1m : 0m);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sqrt ((decimal)Math.Sqrt((double)v)).
+        /// </summary>
+        public static decvec4 Sqrt(decvec4 v) => new decvec4((decimal)Math.Sqrt((double)v.x), (decimal)Math.Sqrt((double)v.y), (decimal)Math.Sqrt((double)v.z), (decimal)Math.Sqrt((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sqrt ((decimal)Math.Sqrt((double)v)).
+        /// </summary>
+        public static decvec4 Sqrt(decimal v) => new decvec4((decimal)Math.Sqrt((double)v));
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec4 Sign(decvec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec4 Sign(decimal v) => new ivec4(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Max(decvec4 lhs, decvec4 rhs) => new decvec4(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z), Math.Max(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Max(decvec4 lhs, decimal rhs) => new decvec4(Math.Max(lhs.x, rhs), Math.Max(lhs.y, rhs), Math.Max(lhs.z, rhs), Math.Max(lhs.w, rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Max(decimal lhs, decvec4 rhs) => new decvec4(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y), Math.Max(lhs, rhs.z), Math.Max(lhs, rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Max(decimal lhs, decimal rhs) => new decvec4(Math.Max(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Min(decvec4 lhs, decvec4 rhs) => new decvec4(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z), Math.Min(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Min(decvec4 lhs, decimal rhs) => new decvec4(Math.Min(lhs.x, rhs), Math.Min(lhs.y, rhs), Math.Min(lhs.z, rhs), Math.Min(lhs.w, rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Min(decimal lhs, decvec4 rhs) => new decvec4(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y), Math.Min(lhs, rhs.z), Math.Min(lhs, rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static decvec4 Min(decimal lhs, decimal rhs) => new decvec4(Math.Min(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow ((decimal)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Pow(decvec4 lhs, decvec4 rhs) => new decvec4((decimal)Math.Pow((double)lhs.x, (double)rhs.x), (decimal)Math.Pow((double)lhs.y, (double)rhs.y), (decimal)Math.Pow((double)lhs.z, (double)rhs.z), (decimal)Math.Pow((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow ((decimal)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Pow(decvec4 lhs, decimal rhs) => new decvec4((decimal)Math.Pow((double)lhs.x, (double)rhs), (decimal)Math.Pow((double)lhs.y, (double)rhs), (decimal)Math.Pow((double)lhs.z, (double)rhs), (decimal)Math.Pow((double)lhs.w, (double)rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow ((decimal)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Pow(decimal lhs, decvec4 rhs) => new decvec4((decimal)Math.Pow((double)lhs, (double)rhs.x), (decimal)Math.Pow((double)lhs, (double)rhs.y), (decimal)Math.Pow((double)lhs, (double)rhs.z), (decimal)Math.Pow((double)lhs, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Pow ((decimal)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Pow(decimal lhs, decimal rhs) => new decvec4((decimal)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log ((decimal)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Log(decvec4 lhs, decvec4 rhs) => new decvec4((decimal)Math.Log((double)lhs.x, (double)rhs.x), (decimal)Math.Log((double)lhs.y, (double)rhs.y), (decimal)Math.Log((double)lhs.z, (double)rhs.z), (decimal)Math.Log((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log ((decimal)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Log(decvec4 lhs, decimal rhs) => new decvec4((decimal)Math.Log((double)lhs.x, (double)rhs), (decimal)Math.Log((double)lhs.y, (double)rhs), (decimal)Math.Log((double)lhs.z, (double)rhs), (decimal)Math.Log((double)lhs.w, (double)rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log ((decimal)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Log(decimal lhs, decvec4 rhs) => new decvec4((decimal)Math.Log((double)lhs, (double)rhs.x), (decimal)Math.Log((double)lhs, (double)rhs.y), (decimal)Math.Log((double)lhs, (double)rhs.z), (decimal)Math.Log((double)lhs, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log ((decimal)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static decvec4 Log(decimal lhs, decimal rhs) => new decvec4((decimal)Math.Log((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decvec4 v, decvec4 min, decvec4 max) => new decvec4(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y), Math.Min(Math.Max(v.z, min.z), max.z), Math.Min(Math.Max(v.w, min.w), max.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decvec4 v, decvec4 min, decimal max) => new decvec4(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max), Math.Min(Math.Max(v.z, min.z), max), Math.Min(Math.Max(v.w, min.w), max));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decvec4 v, decimal min, decvec4 max) => new decvec4(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y), Math.Min(Math.Max(v.z, min), max.z), Math.Min(Math.Max(v.w, min), max.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decvec4 v, decimal min, decimal max) => new decvec4(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max), Math.Min(Math.Max(v.z, min), max), Math.Min(Math.Max(v.w, min), max));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decimal v, decvec4 min, decvec4 max) => new decvec4(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y), Math.Min(Math.Max(v, min.z), max.z), Math.Min(Math.Max(v, min.w), max.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decimal v, decvec4 min, decimal max) => new decvec4(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max), Math.Min(Math.Max(v, min.w), max));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decimal v, decimal min, decvec4 max) => new decvec4(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z), Math.Min(Math.Max(v, min), max.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static decvec4 Clamp(decimal v, decimal min, decimal max) => new decvec4(Math.Min(Math.Max(v, min), max));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decvec4 min, decvec4 max, decvec4 a) => new decvec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decvec4 min, decvec4 max, decimal a) => new decvec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decvec4 min, decimal max, decvec4 a) => new decvec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decvec4 min, decimal max, decimal a) => new decvec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decimal min, decvec4 max, decvec4 a) => new decvec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decimal min, decvec4 max, decimal a) => new decvec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decimal min, decimal max, decvec4 a) => new decvec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Mix(decimal min, decimal max, decimal a) => new decvec4(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decvec4 min, decvec4 max, decvec4 a) => new decvec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decvec4 min, decvec4 max, decimal a) => new decvec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decvec4 min, decimal max, decvec4 a) => new decvec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decvec4 min, decimal max, decimal a) => new decvec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decimal min, decvec4 max, decvec4 a) => new decvec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decimal min, decvec4 max, decimal a) => new decvec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decimal min, decimal max, decvec4 a) => new decvec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decvec4 Lerp(decimal min, decimal max, decimal a) => new decvec4(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decvec4 edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decvec4 edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decvec4 edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decvec4 edge0, decimal edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decimal edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decimal edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decimal edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static decvec4 Smoothstep(decimal edge0, decimal edge1, decimal v) => new decvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decvec4 edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decvec4 edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decvec4 edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decvec4 edge0, decimal edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decimal edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decimal edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decimal edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static decvec4 Smootherstep(decimal edge0, decimal edge1, decimal v) => new decvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// </summary>
+        public static decvec4 Degrees(decvec4 v) => new decvec4(v.x * 57.295779513082320876798154814105170332405472466564321m, v.y * 57.295779513082320876798154814105170332405472466564321m, v.z * 57.295779513082320876798154814105170332405472466564321m, v.w * 57.295779513082320876798154814105170332405472466564321m);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// </summary>
+        public static decvec4 Degrees(decimal v) => new decvec4(v * 57.295779513082320876798154814105170332405472466564321m);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static decvec4 Radians(decvec4 v) => new decvec4(v.x * 0.0174532925199432957692369076848861271344287188854172m, v.y * 0.0174532925199432957692369076848861271344287188854172m, v.z * 0.0174532925199432957692369076848861271344287188854172m, v.w * 0.0174532925199432957692369076848861271344287188854172m);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static decvec4 Radians(decimal v) => new decvec4(v * 0.0174532925199432957692369076848861271344287188854172m);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Acos ((decimal)Math.Acos((double)v)).
+        /// </summary>
+        public static decvec4 Acos(decvec4 v) => new decvec4((decimal)Math.Acos((double)v.x), (decimal)Math.Acos((double)v.y), (decimal)Math.Acos((double)v.z), (decimal)Math.Acos((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Acos ((decimal)Math.Acos((double)v)).
+        /// </summary>
+        public static decvec4 Acos(decimal v) => new decvec4((decimal)Math.Acos((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Asin ((decimal)Math.Asin((double)v)).
+        /// </summary>
+        public static decvec4 Asin(decvec4 v) => new decvec4((decimal)Math.Asin((double)v.x), (decimal)Math.Asin((double)v.y), (decimal)Math.Asin((double)v.z), (decimal)Math.Asin((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Asin ((decimal)Math.Asin((double)v)).
+        /// </summary>
+        public static decvec4 Asin(decimal v) => new decvec4((decimal)Math.Asin((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Atan ((decimal)Math.Atan((double)v)).
+        /// </summary>
+        public static decvec4 Atan(decvec4 v) => new decvec4((decimal)Math.Atan((double)v.x), (decimal)Math.Atan((double)v.y), (decimal)Math.Atan((double)v.z), (decimal)Math.Atan((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Atan ((decimal)Math.Atan((double)v)).
+        /// </summary>
+        public static decvec4 Atan(decimal v) => new decvec4((decimal)Math.Atan((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Cos ((decimal)Math.Cos((double)v)).
+        /// </summary>
+        public static decvec4 Cos(decvec4 v) => new decvec4((decimal)Math.Cos((double)v.x), (decimal)Math.Cos((double)v.y), (decimal)Math.Cos((double)v.z), (decimal)Math.Cos((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Cos ((decimal)Math.Cos((double)v)).
+        /// </summary>
+        public static decvec4 Cos(decimal v) => new decvec4((decimal)Math.Cos((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Cosh ((decimal)Math.Cosh((double)v)).
+        /// </summary>
+        public static decvec4 Cosh(decvec4 v) => new decvec4((decimal)Math.Cosh((double)v.x), (decimal)Math.Cosh((double)v.y), (decimal)Math.Cosh((double)v.z), (decimal)Math.Cosh((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Cosh ((decimal)Math.Cosh((double)v)).
+        /// </summary>
+        public static decvec4 Cosh(decimal v) => new decvec4((decimal)Math.Cosh((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Exp ((decimal)Math.Exp((double)v)).
+        /// </summary>
+        public static decvec4 Exp(decvec4 v) => new decvec4((decimal)Math.Exp((double)v.x), (decimal)Math.Exp((double)v.y), (decimal)Math.Exp((double)v.z), (decimal)Math.Exp((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Exp ((decimal)Math.Exp((double)v)).
+        /// </summary>
+        public static decvec4 Exp(decimal v) => new decvec4((decimal)Math.Exp((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log ((decimal)Math.Log((double)v)).
+        /// </summary>
+        public static decvec4 Log(decvec4 v) => new decvec4((decimal)Math.Log((double)v.x), (decimal)Math.Log((double)v.y), (decimal)Math.Log((double)v.z), (decimal)Math.Log((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log ((decimal)Math.Log((double)v)).
+        /// </summary>
+        public static decvec4 Log(decimal v) => new decvec4((decimal)Math.Log((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log2 ((decimal)Math.Log((double)v, 2)).
+        /// </summary>
+        public static decvec4 Log2(decvec4 v) => new decvec4((decimal)Math.Log((double)v.x, 2), (decimal)Math.Log((double)v.y, 2), (decimal)Math.Log((double)v.z, 2), (decimal)Math.Log((double)v.w, 2));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log2 ((decimal)Math.Log((double)v, 2)).
+        /// </summary>
+        public static decvec4 Log2(decimal v) => new decvec4((decimal)Math.Log((double)v, 2));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log10 ((decimal)Math.Log10((double)v)).
+        /// </summary>
+        public static decvec4 Log10(decvec4 v) => new decvec4((decimal)Math.Log10((double)v.x), (decimal)Math.Log10((double)v.y), (decimal)Math.Log10((double)v.z), (decimal)Math.Log10((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Log10 ((decimal)Math.Log10((double)v)).
+        /// </summary>
+        public static decvec4 Log10(decimal v) => new decvec4((decimal)Math.Log10((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Floor ((decimal)Math.Floor(v)).
+        /// </summary>
+        public static decvec4 Floor(decvec4 v) => new decvec4((decimal)Math.Floor(v.x), (decimal)Math.Floor(v.y), (decimal)Math.Floor(v.z), (decimal)Math.Floor(v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Floor ((decimal)Math.Floor(v)).
+        /// </summary>
+        public static decvec4 Floor(decimal v) => new decvec4((decimal)Math.Floor(v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Ceiling ((decimal)Math.Ceiling(v)).
+        /// </summary>
+        public static decvec4 Ceiling(decvec4 v) => new decvec4((decimal)Math.Ceiling(v.x), (decimal)Math.Ceiling(v.y), (decimal)Math.Ceiling(v.z), (decimal)Math.Ceiling(v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Ceiling ((decimal)Math.Ceiling(v)).
+        /// </summary>
+        public static decvec4 Ceiling(decimal v) => new decvec4((decimal)Math.Ceiling(v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Round ((decimal)Math.Round(v)).
+        /// </summary>
+        public static decvec4 Round(decvec4 v) => new decvec4((decimal)Math.Round(v.x), (decimal)Math.Round(v.y), (decimal)Math.Round(v.z), (decimal)Math.Round(v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Round ((decimal)Math.Round(v)).
+        /// </summary>
+        public static decvec4 Round(decimal v) => new decvec4((decimal)Math.Round(v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sin ((decimal)Math.Sin((double)v)).
+        /// </summary>
+        public static decvec4 Sin(decvec4 v) => new decvec4((decimal)Math.Sin((double)v.x), (decimal)Math.Sin((double)v.y), (decimal)Math.Sin((double)v.z), (decimal)Math.Sin((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sin ((decimal)Math.Sin((double)v)).
+        /// </summary>
+        public static decvec4 Sin(decimal v) => new decvec4((decimal)Math.Sin((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sinh ((decimal)Math.Sinh((double)v)).
+        /// </summary>
+        public static decvec4 Sinh(decvec4 v) => new decvec4((decimal)Math.Sinh((double)v.x), (decimal)Math.Sinh((double)v.y), (decimal)Math.Sinh((double)v.z), (decimal)Math.Sinh((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sinh ((decimal)Math.Sinh((double)v)).
+        /// </summary>
+        public static decvec4 Sinh(decimal v) => new decvec4((decimal)Math.Sinh((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Tan ((decimal)Math.Tan((double)v)).
+        /// </summary>
+        public static decvec4 Tan(decvec4 v) => new decvec4((decimal)Math.Tan((double)v.x), (decimal)Math.Tan((double)v.y), (decimal)Math.Tan((double)v.z), (decimal)Math.Tan((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Tan ((decimal)Math.Tan((double)v)).
+        /// </summary>
+        public static decvec4 Tan(decimal v) => new decvec4((decimal)Math.Tan((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Tanh ((decimal)Math.Tanh((double)v)).
+        /// </summary>
+        public static decvec4 Tanh(decvec4 v) => new decvec4((decimal)Math.Tanh((double)v.x), (decimal)Math.Tanh((double)v.y), (decimal)Math.Tanh((double)v.z), (decimal)Math.Tanh((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Tanh ((decimal)Math.Tanh((double)v)).
+        /// </summary>
+        public static decvec4 Tanh(decimal v) => new decvec4((decimal)Math.Tanh((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Truncate ((decimal)Math.Truncate((double)v)).
+        /// </summary>
+        public static decvec4 Truncate(decvec4 v) => new decvec4((decimal)Math.Truncate((double)v.x), (decimal)Math.Truncate((double)v.y), (decimal)Math.Truncate((double)v.z), (decimal)Math.Truncate((double)v.w));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Truncate ((decimal)Math.Truncate((double)v)).
+        /// </summary>
+        public static decvec4 Truncate(decimal v) => new decvec4((decimal)Math.Truncate((double)v));
 
         #endregion
 
@@ -884,555 +1444,5 @@ namespace GlmSharp
         /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
         /// </summary>
         public static decvec4 FaceForward(decvec4 N, decvec4 I, decvec4 Nref) => Dot(Nref, I) < 0 ? N : -N;
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs.
-        /// </summary>
-        public static decvec4 Abs(decvec4 v) => new decvec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs with a scalar.
-        /// </summary>
-        public static decvec4 Abs(decimal v) => new decvec4(Math.Abs(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3.
-        /// </summary>
-        public static decvec4 HermiteInterpolationOrder3(decvec4 v) => new decvec4((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z, (3 - 2 * v.w) * v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
-        /// </summary>
-        public static decvec4 HermiteInterpolationOrder3(decimal v) => new decvec4((3 - 2 * v) * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5.
-        /// </summary>
-        public static decvec4 HermiteInterpolationOrder5(decvec4 v) => new decvec4(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z, ((6 * v.w - 15) * v.w + 10) * v.w * v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
-        /// </summary>
-        public static decvec4 HermiteInterpolationOrder5(decimal v) => new decvec4(((6 * v - 15) * v + 10) * v * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Step.
-        /// </summary>
-        public static decvec4 Step(decvec4 v) => new decvec4(v.x >= 0m ? 1m : 0m, v.y >= 0m ? 1m : 0m, v.z >= 0m ? 1m : 0m, v.w >= 0m ? 1m : 0m);
-        
-        /// <summary>
-        /// Returns a component-wise executed Step with a scalar.
-        /// </summary>
-        public static decvec4 Step(decimal v) => new decvec4(v >= 0m ? 1m : 0m);
-        
-        /// <summary>
-        /// Returns a component-wise executed Acos.
-        /// </summary>
-        public static decvec4 Acos(decvec4 v) => new decvec4((decimal)Math.Acos((double)v.x), (decimal)Math.Acos((double)v.y), (decimal)Math.Acos((double)v.z), (decimal)Math.Acos((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Acos with a scalar.
-        /// </summary>
-        public static decvec4 Acos(decimal v) => new decvec4((decimal)Math.Acos((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Asin.
-        /// </summary>
-        public static decvec4 Asin(decvec4 v) => new decvec4((decimal)Math.Asin((double)v.x), (decimal)Math.Asin((double)v.y), (decimal)Math.Asin((double)v.z), (decimal)Math.Asin((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Asin with a scalar.
-        /// </summary>
-        public static decvec4 Asin(decimal v) => new decvec4((decimal)Math.Asin((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Atan.
-        /// </summary>
-        public static decvec4 Atan(decvec4 v) => new decvec4((decimal)Math.Atan((double)v.x), (decimal)Math.Atan((double)v.y), (decimal)Math.Atan((double)v.z), (decimal)Math.Atan((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Atan with a scalar.
-        /// </summary>
-        public static decvec4 Atan(decimal v) => new decvec4((decimal)Math.Atan((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cos.
-        /// </summary>
-        public static decvec4 Cos(decvec4 v) => new decvec4((decimal)Math.Cos((double)v.x), (decimal)Math.Cos((double)v.y), (decimal)Math.Cos((double)v.z), (decimal)Math.Cos((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cos with a scalar.
-        /// </summary>
-        public static decvec4 Cos(decimal v) => new decvec4((decimal)Math.Cos((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cosh.
-        /// </summary>
-        public static decvec4 Cosh(decvec4 v) => new decvec4((decimal)Math.Cosh((double)v.x), (decimal)Math.Cosh((double)v.y), (decimal)Math.Cosh((double)v.z), (decimal)Math.Cosh((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cosh with a scalar.
-        /// </summary>
-        public static decvec4 Cosh(decimal v) => new decvec4((decimal)Math.Cosh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Exp.
-        /// </summary>
-        public static decvec4 Exp(decvec4 v) => new decvec4((decimal)Math.Exp((double)v.x), (decimal)Math.Exp((double)v.y), (decimal)Math.Exp((double)v.z), (decimal)Math.Exp((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Exp with a scalar.
-        /// </summary>
-        public static decvec4 Exp(decimal v) => new decvec4((decimal)Math.Exp((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static decvec4 Log(decvec4 v) => new decvec4((decimal)Math.Log((double)v.x), (decimal)Math.Log((double)v.y), (decimal)Math.Log((double)v.z), (decimal)Math.Log((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static decvec4 Log(decimal v) => new decvec4((decimal)Math.Log((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log2.
-        /// </summary>
-        public static decvec4 Log2(decvec4 v) => new decvec4((decimal)Math.Log((double)v.x, 2), (decimal)Math.Log((double)v.y, 2), (decimal)Math.Log((double)v.z, 2), (decimal)Math.Log((double)v.w, 2));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log2 with a scalar.
-        /// </summary>
-        public static decvec4 Log2(decimal v) => new decvec4((decimal)Math.Log((double)v, 2));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log10.
-        /// </summary>
-        public static decvec4 Log10(decvec4 v) => new decvec4((decimal)Math.Log10((double)v.x), (decimal)Math.Log10((double)v.y), (decimal)Math.Log10((double)v.z), (decimal)Math.Log10((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log10 with a scalar.
-        /// </summary>
-        public static decvec4 Log10(decimal v) => new decvec4((decimal)Math.Log10((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Floor.
-        /// </summary>
-        public static decvec4 Floor(decvec4 v) => new decvec4((decimal)Math.Floor(v.x), (decimal)Math.Floor(v.y), (decimal)Math.Floor(v.z), (decimal)Math.Floor(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Floor with a scalar.
-        /// </summary>
-        public static decvec4 Floor(decimal v) => new decvec4((decimal)Math.Floor(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Ceiling.
-        /// </summary>
-        public static decvec4 Ceiling(decvec4 v) => new decvec4((decimal)Math.Ceiling(v.x), (decimal)Math.Ceiling(v.y), (decimal)Math.Ceiling(v.z), (decimal)Math.Ceiling(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Ceiling with a scalar.
-        /// </summary>
-        public static decvec4 Ceiling(decimal v) => new decvec4((decimal)Math.Ceiling(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Round.
-        /// </summary>
-        public static decvec4 Round(decvec4 v) => new decvec4((decimal)Math.Round(v.x), (decimal)Math.Round(v.y), (decimal)Math.Round(v.z), (decimal)Math.Round(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Round with a scalar.
-        /// </summary>
-        public static decvec4 Round(decimal v) => new decvec4((decimal)Math.Round(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sin.
-        /// </summary>
-        public static decvec4 Sin(decvec4 v) => new decvec4((decimal)Math.Sin((double)v.x), (decimal)Math.Sin((double)v.y), (decimal)Math.Sin((double)v.z), (decimal)Math.Sin((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sin with a scalar.
-        /// </summary>
-        public static decvec4 Sin(decimal v) => new decvec4((decimal)Math.Sin((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sinh.
-        /// </summary>
-        public static decvec4 Sinh(decvec4 v) => new decvec4((decimal)Math.Sinh((double)v.x), (decimal)Math.Sinh((double)v.y), (decimal)Math.Sinh((double)v.z), (decimal)Math.Sinh((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sinh with a scalar.
-        /// </summary>
-        public static decvec4 Sinh(decimal v) => new decvec4((decimal)Math.Sinh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqrt.
-        /// </summary>
-        public static decvec4 Sqrt(decvec4 v) => new decvec4((decimal)Math.Sqrt((double)v.x), (decimal)Math.Sqrt((double)v.y), (decimal)Math.Sqrt((double)v.z), (decimal)Math.Sqrt((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqrt with a scalar.
-        /// </summary>
-        public static decvec4 Sqrt(decimal v) => new decvec4((decimal)Math.Sqrt((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tan.
-        /// </summary>
-        public static decvec4 Tan(decvec4 v) => new decvec4((decimal)Math.Tan((double)v.x), (decimal)Math.Tan((double)v.y), (decimal)Math.Tan((double)v.z), (decimal)Math.Tan((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tan with a scalar.
-        /// </summary>
-        public static decvec4 Tan(decimal v) => new decvec4((decimal)Math.Tan((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tanh.
-        /// </summary>
-        public static decvec4 Tanh(decvec4 v) => new decvec4((decimal)Math.Tanh((double)v.x), (decimal)Math.Tanh((double)v.y), (decimal)Math.Tanh((double)v.z), (decimal)Math.Tanh((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tanh with a scalar.
-        /// </summary>
-        public static decvec4 Tanh(decimal v) => new decvec4((decimal)Math.Tanh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Truncate.
-        /// </summary>
-        public static decvec4 Truncate(decvec4 v) => new decvec4((decimal)Math.Truncate((double)v.x), (decimal)Math.Truncate((double)v.y), (decimal)Math.Truncate((double)v.z), (decimal)Math.Truncate((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Truncate with a scalar.
-        /// </summary>
-        public static decvec4 Truncate(decimal v) => new decvec4((decimal)Math.Truncate((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sign.
-        /// </summary>
-        public static ivec4 Sign(decvec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sign with a scalar.
-        /// </summary>
-        public static ivec4 Sign(decimal v) => new ivec4(Math.Sign(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed radians-to-degrees conversion.
-        /// </summary>
-        public static decvec4 Degrees(decvec4 v) => v * 57.295779513082320876798154814105170332405472466564321m;
-        
-        /// <summary>
-        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
-        /// </summary>
-        public static decvec4 Degrees(decimal v) => new decvec4(v * 57.295779513082320876798154814105170332405472466564321m);
-        
-        /// <summary>
-        /// Returns a component-wise executed degrees-to-radians conversion.
-        /// </summary>
-        public static decvec4 Radians(decvec4 v) => v * 0.0174532925199432957692369076848861271344287188854172m;
-        
-        /// <summary>
-        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
-        /// </summary>
-        public static decvec4 Radians(decimal v) => new decvec4(v * 0.0174532925199432957692369076848861271344287188854172m);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr.
-        /// </summary>
-        public static decvec4 Sqr(decvec4 v) => new decvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr with a scalar.
-        /// </summary>
-        public static decvec4 Sqr(decimal v) => new decvec4(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2.
-        /// </summary>
-        public static decvec4 Pow2(decvec4 v) => new decvec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2 with a scalar.
-        /// </summary>
-        public static decvec4 Pow2(decimal v) => new decvec4(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Max.
-        /// </summary>
-        public static decvec4 Max(decvec4 lhs, decvec4 rhs) => new decvec4(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z), Math.Max(lhs.w, rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static decvec4 Max(decvec4 v, decimal s) => new decvec4(Math.Max(v.x, s), Math.Max(v.y, s), Math.Max(v.z, s), Math.Max(v.w, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static decvec4 Max(decimal s, decvec4 v) => new decvec4(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z), Math.Max(s, v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with scalars.
-        /// </summary>
-        public static decvec4 Max(decimal lhs, decimal rhs) => new decvec4(Math.Max(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min.
-        /// </summary>
-        public static decvec4 Min(decvec4 lhs, decvec4 rhs) => new decvec4(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z), Math.Min(lhs.w, rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static decvec4 Min(decvec4 v, decimal s) => new decvec4(Math.Min(v.x, s), Math.Min(v.y, s), Math.Min(v.z, s), Math.Min(v.w, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static decvec4 Min(decimal s, decvec4 v) => new decvec4(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z), Math.Min(s, v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with scalars.
-        /// </summary>
-        public static decvec4 Min(decimal lhs, decimal rhs) => new decvec4(Math.Min(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow.
-        /// </summary>
-        public static decvec4 Pow(decvec4 lhs, decvec4 rhs) => new decvec4((decimal)Math.Pow((double)lhs.x, (double)rhs.x), (decimal)Math.Pow((double)lhs.y, (double)rhs.y), (decimal)Math.Pow((double)lhs.z, (double)rhs.z), (decimal)Math.Pow((double)lhs.w, (double)rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static decvec4 Pow(decvec4 v, decimal s) => new decvec4((decimal)Math.Pow((double)v.x, (double)s), (decimal)Math.Pow((double)v.y, (double)s), (decimal)Math.Pow((double)v.z, (double)s), (decimal)Math.Pow((double)v.w, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static decvec4 Pow(decimal s, decvec4 v) => new decvec4((decimal)Math.Pow((double)s, (double)v.x), (decimal)Math.Pow((double)s, (double)v.y), (decimal)Math.Pow((double)s, (double)v.z), (decimal)Math.Pow((double)s, (double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with scalars.
-        /// </summary>
-        public static decvec4 Pow(decimal lhs, decimal rhs) => new decvec4((decimal)Math.Pow((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static decvec4 Log(decvec4 lhs, decvec4 rhs) => new decvec4((decimal)Math.Log((double)lhs.x, (double)rhs.x), (decimal)Math.Log((double)lhs.y, (double)rhs.y), (decimal)Math.Log((double)lhs.z, (double)rhs.z), (decimal)Math.Log((double)lhs.w, (double)rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static decvec4 Log(decvec4 v, decimal s) => new decvec4((decimal)Math.Log((double)v.x, (double)s), (decimal)Math.Log((double)v.y, (double)s), (decimal)Math.Log((double)v.z, (double)s), (decimal)Math.Log((double)v.w, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static decvec4 Log(decimal s, decvec4 v) => new decvec4((decimal)Math.Log((double)s, (double)v.x), (decimal)Math.Log((double)s, (double)v.y), (decimal)Math.Log((double)s, (double)v.z), (decimal)Math.Log((double)s, (double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with scalars.
-        /// </summary>
-        public static decvec4 Log(decimal lhs, decimal rhs) => new decvec4((decimal)Math.Log((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp.
-        /// </summary>
-        public static decvec4 Clamp(decvec4 v, decvec4 min, decvec4 max) => new decvec4(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y), Math.Min(Math.Max(v.z, min.z), max.z), Math.Min(Math.Max(v.w, min.w), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static decvec4 Clamp(decimal v, decvec4 min, decvec4 max) => new decvec4(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y), Math.Min(Math.Max(v, min.z), max.z), Math.Min(Math.Max(v, min.w), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static decvec4 Clamp(decvec4 v, decimal min, decvec4 max) => new decvec4(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y), Math.Min(Math.Max(v.z, min), max.z), Math.Min(Math.Max(v.w, min), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static decvec4 Clamp(decvec4 v, decvec4 min, decimal max) => new decvec4(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max), Math.Min(Math.Max(v.z, min.z), max), Math.Min(Math.Max(v.w, min.w), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static decvec4 Clamp(decimal v, decimal min, decvec4 max) => new decvec4(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z), Math.Min(Math.Max(v, min), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static decvec4 Clamp(decvec4 v, decimal min, decimal max) => new decvec4(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max), Math.Min(Math.Max(v.z, min), max), Math.Min(Math.Max(v.w, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static decvec4 Clamp(decimal v, decvec4 min, decimal max) => new decvec4(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max), Math.Min(Math.Max(v, min.w), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static decvec4 Clamp(decimal v, decimal min, decimal max) => new decvec4(Math.Min(Math.Max(v, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix.
-        /// </summary>
-        public static decvec4 Mix(decvec4 min, decvec4 max, decvec4 a) => new decvec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static decvec4 Mix(decimal min, decvec4 max, decvec4 a) => new decvec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static decvec4 Mix(decvec4 min, decimal max, decvec4 a) => new decvec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static decvec4 Mix(decvec4 min, decvec4 max, decimal a) => new decvec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static decvec4 Mix(decimal min, decimal max, decvec4 a) => new decvec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static decvec4 Mix(decvec4 min, decimal max, decimal a) => new decvec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static decvec4 Mix(decimal min, decvec4 max, decimal a) => new decvec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static decvec4 Mix(decimal min, decimal max, decimal a) => new decvec4(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp.
-        /// </summary>
-        public static decvec4 Lerp(decvec4 min, decvec4 max, decvec4 a) => new decvec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static decvec4 Lerp(decimal min, decvec4 max, decvec4 a) => new decvec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static decvec4 Lerp(decvec4 min, decimal max, decvec4 a) => new decvec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static decvec4 Lerp(decvec4 min, decvec4 max, decimal a) => new decvec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static decvec4 Lerp(decimal min, decimal max, decvec4 a) => new decvec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static decvec4 Lerp(decvec4 min, decimal max, decimal a) => new decvec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static decvec4 Lerp(decimal min, decvec4 max, decimal a) => new decvec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static decvec4 Lerp(decimal min, decimal max, decimal a) => new decvec4(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep.
-        /// </summary>
-        public static decvec4 Smoothstep(decvec4 edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static decvec4 Smoothstep(decimal edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static decvec4 Smoothstep(decvec4 edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static decvec4 Smoothstep(decvec4 edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static decvec4 Smoothstep(decimal edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static decvec4 Smoothstep(decvec4 edge0, decimal edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static decvec4 Smoothstep(decimal edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static decvec4 Smoothstep(decimal edge0, decimal edge1, decimal v) => new decvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep.
-        /// </summary>
-        public static decvec4 Smootherstep(decvec4 edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static decvec4 Smootherstep(decimal edge0, decvec4 edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static decvec4 Smootherstep(decvec4 edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static decvec4 Smootherstep(decvec4 edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static decvec4 Smootherstep(decimal edge0, decimal edge1, decvec4 v) => new decvec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static decvec4 Smootherstep(decvec4 edge0, decimal edge1, decimal v) => new decvec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static decvec4 Smootherstep(decimal edge0, decvec4 edge1, decimal v) => new decvec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static decvec4 Smootherstep(decimal edge0, decimal edge1, decimal v) => new decvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }

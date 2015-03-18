@@ -365,27 +365,111 @@ namespace GlmSharpGenerator.Types
             };
 
             // Component-wise static functions
-            var boolVec = new VectorType(BuiltinType.TypeBool, Components);
+            var boolVType = new VectorType(BuiltinType.TypeBool, Components);
+            var doubleVType = new VectorType(BuiltinType.TypeDouble, Components);
+            var integerVType = new VectorType(BuiltinType.TypeInt, Components);
+            var absVType = !string.IsNullOrEmpty(BaseType.AbsOverrideType) ? Types[BaseType.AbsOverrideTypePrefix + "vec" + Components] : this;
 
-            yield return new ComponentWiseStaticFunction(Fields, boolVec, "Equal", this, "lhs", this, "rhs", BaseType.EqualFormat);
-            yield return new ComponentWiseStaticFunction(Fields, boolVec, "NotEqual", this, "lhs", this, "rhs", BaseType.NotEqualFormat);
+
+            yield return new ComponentWiseStaticFunction(Fields, boolVType, "Equal", this, "lhs", this, "rhs", BaseType.EqualFormat);
+            yield return new ComponentWiseStaticFunction(Fields, boolVType, "NotEqual", this, "lhs", this, "rhs", BaseType.NotEqualFormat);
 
             if (BaseType.HasComparisons)
             {
-                yield return new ComponentWiseStaticFunction(Fields, boolVec, "GreaterThan", this, "lhs", this, "rhs", "{0} > {1}");
-                yield return new ComponentWiseStaticFunction(Fields, boolVec, "GreaterThanEqual", this, "lhs", this, "rhs", "{0} >= {1}");
-                yield return new ComponentWiseStaticFunction(Fields, boolVec, "LesserThan", this, "lhs", this, "rhs", "{0} < {1}");
-                yield return new ComponentWiseStaticFunction(Fields, boolVec, "LesserThanEqual", this, "lhs", this, "rhs", "{0} <= {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVType, "GreaterThan", this, "lhs", this, "rhs", "{0} > {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVType, "GreaterThanEqual", this, "lhs", this, "rhs", "{0} >= {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVType, "LesserThan", this, "lhs", this, "rhs", "{0} < {1}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVType, "LesserThanEqual", this, "lhs", this, "rhs", "{0} <= {1}");
             }
 
             if (BaseType.IsBool)
             {
-                yield return new ComponentWiseStaticFunction(Fields, boolVec, "Not", this, "v", "!{0}");
+                yield return new ComponentWiseStaticFunction(Fields, boolVType, "Not", this, "v", "!{0}");
             }
-            
+
             // Basetype test functions
             foreach (var kvp in BaseType.TypeTestFuncs)
-                yield return new ComponentWiseStaticFunction(Fields, boolVec, kvp.Key, this, "v", kvp.Value);
+                yield return new ComponentWiseStaticFunction(Fields, boolVType, kvp.Key, this, "v", kvp.Value);
+
+            if (BaseType.HasArithmetics)
+            {
+                yield return new ComponentWiseStaticFunction(Fields, absVType, "Abs", this, "v", AbsString("{0}"));
+                yield return new ComponentWiseStaticFunction(Fields, this, "HermiteInterpolationOrder3", this, "v", "(3 - 2 * {0}) * {0} * {0}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "HermiteInterpolationOrder5", this, "v", "((6 * {0} - 15) * {0} + 10) * {0} * {0} * {0}");
+
+                yield return new ComponentWiseStaticFunction(Fields, this, "Sqr", this, "v", "{0} * {0}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Pow2", this, "v", "{0} * {0}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Pow3", this, "v", "{0} * {0} * {0}");
+
+                if (BaseType.IsComplex)
+                {
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Acos", this, "v", "Complex.Acos({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Asin", this, "v", "Complex.Asin({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Atan", this, "v", "Complex.Atan({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Cos", this, "v", "Complex.Cos({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Cosh", this, "v", "Complex.Cosh({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Exp", this, "v", "Complex.Exp({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Log", this, "v", "Complex.Log({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Log2", this, "v", "Complex.Log({0}, 2.0)");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Log10", this, "v", "Complex.Log10({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Reciprocal", this, "v", "Complex.Reciprocal({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Sin", this, "v", "Complex.Sin({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Sinh", this, "v", "Complex.Sinh({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Sqrt", this, "v", "Complex.Sqrt({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Tan", this, "v", "Complex.Tan({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Tanh", this, "v", "Complex.Tanh({0})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Conjugate", this, "v", "Complex.Conjugate({0})");
+
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Pow", this, "lhs", this, "rhs", "Complex.Pow({0}, {1})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Log", this, "lhs", doubleVType, "rhs", "Complex.Log({0}, {1})");
+
+                    yield return new ComponentWiseStaticFunction(Fields, this, "FromPolarCoordinates", doubleVType, "magnitude", doubleVType, "phase", "Complex.FromPolarCoordinates({0}, {1})");
+                }
+                else
+                {
+                    // TODO: Acosh, Asinh, Atanh
+
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Step", this, "v", string.Format("{{0}} >= {0} ? {1} : {0}", ZeroValue, OneValue));
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Sqrt", this, "v", string.Format("({0})Math.Sqrt((double){{0}})", BaseTypeName));
+                    yield return new ComponentWiseStaticFunction(Fields, integerVType, "Sign", this, "v", "Math.Sign({0})");
+
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Max", this, "lhs", this, "rhs", "Math.Max({0}, {1})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Min", this, "lhs", this, "rhs", "Math.Min({0}, {1})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Pow", this, "lhs", this, "rhs", BaseTypeCast + "Math.Pow((double){0}, (double){1})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Log", this, "lhs", this, "rhs", BaseTypeCast + "Math.Log((double){0}, (double){1})");
+
+                    // TODO: Check if v > max ? max : v < min ? min : v is faster
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Clamp", this, "v", this, "min", this, "max", "Math.Min(Math.Max({0}, {1}), {2})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Mix", this, "min", this, "max", this, "a", "{0} * (1-{2}) + {1} * {2}");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Lerp", this, "min", this, "max", this, "a", "{0} * (1-{2}) + {1} * {2}");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Smoothstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder3()");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Smootherstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()");
+                }
+            }
+
+            if (BaseType.IsFloatingPoint)
+            {
+                yield return new ComponentWiseStaticFunction(Fields, this, "Degrees", this, "v", "{0} * " + ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321")) { AdditionalComment = "Radians-To-Degrees Conversion" };
+                yield return new ComponentWiseStaticFunction(Fields, this, "Radians", this, "v", "{0} * " + ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172")) { AdditionalComment = "Degrees-To-Radians Conversion" };
+
+                yield return new ComponentWiseStaticFunction(Fields, this, "Acos", this, "v", string.Format("({0})Math.Acos((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Asin", this, "v", string.Format("({0})Math.Asin((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Atan", this, "v", string.Format("({0})Math.Atan((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Cos", this, "v", string.Format("({0})Math.Cos((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Cosh", this, "v", string.Format("({0})Math.Cosh((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Exp", this, "v", string.Format("({0})Math.Exp((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Log", this, "v", string.Format("({0})Math.Log((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Log2", this, "v", string.Format("({0})Math.Log((double){{0}}, 2)", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Log10", this, "v", string.Format("({0})Math.Log10((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Floor", this, "v", string.Format("({0})Math.Floor({{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Ceiling", this, "v", string.Format("({0})Math.Ceiling({{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Round", this, "v", string.Format("({0})Math.Round({{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Sin", this, "v", string.Format("({0})Math.Sin((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Sinh", this, "v", string.Format("({0})Math.Sinh((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Tan", this, "v", string.Format("({0})Math.Tan((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Tanh", this, "v", string.Format("({0})Math.Tanh((double){{0}})", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Truncate", this, "v", string.Format("({0})Math.Truncate((double){{0}})", BaseTypeName));
+            }
         }
 
         protected override IEnumerable<string> Body
@@ -762,279 +846,6 @@ namespace GlmSharpGenerator.Types
 
                         foreach (var line in "Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).".AsComment()) yield return line;
                         yield return string.Format("public {0} Rotated(double angleInRad) => ({0})(dvec2.FromAngle(Angle) * (double)Length);", NameThat);
-                    }
-
-                    // component-wise unary functions
-                    foreach (var kvp in new Dictionary<string, Func<string, string>>
-                    {
-                        {"Abs", AbsString},
-                    })
-                    {
-                        var op = kvp.Key;
-                        var opFunc = kvp.Value;
-
-                        var retType = NameThat;
-                        if (op == "Abs" && !string.IsNullOrEmpty(BaseType.AbsOverrideType))
-                            retType = BaseType.AbsOverrideTypePrefix + "vec" + Components + GenericSuffix;
-
-                        foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
-
-                        foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseTypeName, opFunc("v"));
-                    }
-
-                    foreach (var kvp in new Dictionary<string, Func<string, string>>
-                    {
-                        {"HermiteInterpolationOrder3", s => string.Format("(3 - 2 * {0}) * {0} * {0}", s)},
-                        {"HermiteInterpolationOrder5", s => string.Format("((6 * {0} - 15) * {0} + 10) * {0} * {0} * {0}", s)},
-                    })
-                    {
-                        var op = kvp.Key;
-                        var opFunc = kvp.Value;
-
-                        var retType = NameThat;
-
-                        foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
-
-                        foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseTypeName, opFunc("v"));
-                    }
-
-                    if (BaseType.IsFloatingPoint)
-                    {
-                        // TODO: Acosh, Asinh, Atanh
-
-                        foreach (var kvp in new Dictionary<string, Func<string, string>>
-                        {
-                            {"Step", s => string.Format("{0} >= {1} ? {2} : {1}", s, ZeroValue, OneValue)},
-                            {"Acos", s => string.Format("({1})Math.Acos((double){0})", s, BaseTypeName)},
-                            {"Asin", s => string.Format("({1})Math.Asin((double){0})", s, BaseTypeName)},
-                            {"Atan", s => string.Format("({1})Math.Atan((double){0})", s, BaseTypeName)},
-                            {"Cos", s => string.Format("({1})Math.Cos((double){0})", s, BaseTypeName)},
-                            {"Cosh", s => string.Format("({1})Math.Cosh((double){0})", s, BaseTypeName)},
-                            {"Exp", s => string.Format("({1})Math.Exp((double){0})", s, BaseTypeName)},
-                            {"Log", s => string.Format("({1})Math.Log((double){0})", s, BaseTypeName)},
-                            {"Log2", s => string.Format("({1})Math.Log((double){0}, 2)", s, BaseTypeName)},
-                            {"Log10", s => string.Format("({1})Math.Log10((double){0})", s, BaseTypeName)},
-                            {"Floor", s => string.Format("({1})Math.Floor({0})", s, BaseTypeName)},
-                            {"Ceiling", s => string.Format("({1})Math.Ceiling({0})", s, BaseTypeName)},
-                            {"Round", s => string.Format("({1})Math.Round({0})", s, BaseTypeName)},
-                            {"Sin", s => string.Format("({1})Math.Sin((double){0})", s, BaseTypeName)},
-                            {"Sinh", s => string.Format("({1})Math.Sinh((double){0})", s, BaseTypeName)},
-                            {"Sqrt", s => string.Format("({1})Math.Sqrt((double){0})", s, BaseTypeName)},
-                            {"Tan", s => string.Format("({1})Math.Tan((double){0})", s, BaseTypeName)},
-                            {"Tanh", s => string.Format("({1})Math.Tanh((double){0})", s, BaseTypeName)},
-                            {"Truncate", s => string.Format("({1})Math.Truncate((double){0})", s, BaseTypeName)},
-                            {"Sign", s => string.Format("Math.Sign({0})", s)},
-                        })
-                        {
-                            var op = kvp.Key;
-                            var opFunc = kvp.Value;
-
-                            var retType = NameThat;
-
-                            if (op == "Sign")
-                                retType = "ivec" + Components;
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseTypeName, opFunc("v"));
-                        }
-
-                        foreach (var line in "Returns a component-wise executed radians-to-degrees conversion.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => v * {3};", NameThat, "Degrees", NameThat, ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321"));
-
-                        foreach (var line in "Returns a component-wise executed radians-to-degrees conversion with a scalar.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}(v * {3});", NameThat, "Degrees", BaseTypeName, ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321"));
-
-                        foreach (var line in "Returns a component-wise executed degrees-to-radians conversion.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => v * {3};", NameThat, "Radians", NameThat, ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172"));
-
-                        foreach (var line in "Returns a component-wise executed degrees-to-radians conversion with a scalar.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}(v * {3});", NameThat, "Radians", BaseTypeName, ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172"));
-                    }
-
-                    if (BaseType.IsComplex)
-                    {
-                        foreach (var kvp in new Dictionary<string, Func<string, string>>
-                        {
-                            {"Acos", s => string.Format("Complex.Acos({0})", s)},
-                            {"Asin", s => string.Format("Complex.Asin({0})", s)},
-                            {"Atan", s => string.Format("Complex.Atan({0})", s)},
-                            {"Cos", s => string.Format("Complex.Cos({0})", s)},
-                            {"Cosh", s => string.Format("Complex.Cosh({0})", s)},
-                            {"Exp", s => string.Format("Complex.Exp({0})", s)},
-                            {"Log", s => string.Format("Complex.Log({0})", s)},
-                            {"Log2", s => string.Format("Complex.Log({0}, 2.0)", s)},
-                            {"Log10", s => string.Format("Complex.Log10({0})", s)},
-                            {"Reciprocal", s => string.Format("Complex.Reciprocal({0})", s)},
-                            {"Sin", s => string.Format("Complex.Sin({0})", s)},
-                            {"Sinh", s => string.Format("Complex.Sinh({0})", s)},
-                            {"Sqrt", s => string.Format("Complex.Sqrt({0})", s)},
-                            {"Tan", s => string.Format("Complex.Tan({0})", s)},
-                            {"Tanh", s => string.Format("Complex.Tanh({0})", s)},
-                            {"Conjugate", s => string.Format("Complex.Conjugate({0})", s)},
-                        })
-                        {
-                            var op = kvp.Key;
-                            var opFunc = kvp.Value;
-
-                            var retType = NameThat;
-
-                            foreach (var line in string.Format("Returns a component-wise executed complex {0}.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
-
-                            foreach (var line in string.Format("Returns a component-wise executed complex {0} with a scalar.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({4} s) => new {0}({3});", retType, op, NameThat, opFunc("s"), BaseTypeName);
-                        }
-
-                        foreach (var kvp in new Dictionary<string, Func<string, string, string>>
-                        {
-                            {"Pow", (s1, s2) => string.Format("Complex.Pow({0}, {1})", s1, s2)},
-                            {"Log", (s1, s2) => string.Format("Complex.Log({0}, {1})", s1, s2)},
-                        })
-                        {
-                            var op = kvp.Key;
-                            var opFunc = kvp.Value;
-
-                            var retType = NameThat;
-
-                            var complexRhs = op != "Log";
-
-                            // complex rhs
-                            if (complexRhs)
-                            {
-                                foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
-                                yield return string.Format("public static {0} {1}({2} lhs, {2} rhs) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("lhs." + c, "rhs." + c)).CommaSeparated());
-
-                                foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                                yield return string.Format("public static {0} {1}({2} v, {4} s) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c, "s")).CommaSeparated(), BaseTypeName);
-
-                                foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                                yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), BaseTypeName);
-
-                                foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                                yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), "double");
-
-                                foreach (var line in string.Format("Returns a component-wise executed {0} with scalars.", op).AsComment()) yield return line;
-                                yield return string.Format("public static {0} {1}({4} lhs, {4} rhs) => new {0}({3});", retType, op, NameThat, opFunc("lhs", "rhs"), BaseTypeName);
-                            }
-
-                            // double rhs
-                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} lhs, {4} rhs) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("lhs." + c, "rhs." + c)).CommaSeparated(), "dvec" + Components);
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} v, {4} s) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c, "s")).CommaSeparated(), "double");
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0} with scalars.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({4} lhs, {4} rhs) => new {0}({3});", retType, op, NameThat, opFunc("lhs", "rhs"), "double");
-                        }
-
-                        // from polar coordinates
-                        foreach (var line in "Returns a component-wise executed FromPolarCoordinates.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} FromPolarCoordinates({1} lhs, {1} rhs) => new {0}({2});", NameThat, "dvec" + Components, CompString.Select(c => string.Format("Complex.FromPolarCoordinates({0}, {1})", "lhs." + c, "rhs." + c)).CommaSeparated());
-
-                        foreach (var line in "Returns a component-wise executed FromPolarCoordinates with a scalar.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} FromPolarCoordinates(double s, {1} v) => new {0}({2});", NameThat, "dvec" + Components, CompString.Select(c => string.Format("Complex.FromPolarCoordinates({0}, {1})", "s", "v." + c)).CommaSeparated());
-
-                        foreach (var line in "Returns a component-wise executed FromPolarCoordinates with a scalar.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} FromPolarCoordinates({1} v, double s) => new {0}({2});", NameThat, "dvec" + Components, CompString.Select(c => string.Format("Complex.FromPolarCoordinates({0}, {1})", "v." + c, "s")).CommaSeparated());
-                    }
-
-                    foreach (var kvp in new Dictionary<string, Func<string, string>>
-                    {
-                        {"Sqr", s => string.Format("{0} * {0}", s)},
-                        {"Pow2", s => string.Format("{0} * {0}", s)},
-                    })
-                    {
-                        var op = kvp.Key;
-                        var opFunc = kvp.Value;
-
-                        var retType = NameThat;
-
-                        foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c)).CommaSeparated());
-
-                        foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                        yield return string.Format("public static {0} {1}({2} v) => new {0}({3});", retType, op, BaseTypeName, opFunc("v"));
-                    }
-
-                    if (!BaseType.IsComplex)
-                        foreach (var kvp in new Dictionary<string, Func<string, string, string>>
-                        {
-                            {"Max", (s1, s2) => string.Format("Math.Max({0}, {1})", s1, s2)},
-                            {"Min", (s1, s2) => string.Format("Math.Min({0}, {1})", s1, s2)},
-                            {"Pow", (s1, s2) => string.Format("({2})Math.Pow((double){0}, (double){1})", s1, s2, BaseTypeName)},
-                            {"Log", (s1, s2) => string.Format("({2})Math.Log((double){0}, (double){1})", s1, s2, BaseTypeName)},
-                        })
-                        {
-                            var op = kvp.Key;
-                            var opFunc = kvp.Value;
-
-                            var retType = NameThat;
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0}.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} lhs, {2} rhs) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("lhs." + c, "rhs." + c)).CommaSeparated());
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} v, {4} s) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("v." + c, "s")).CommaSeparated(), BaseTypeName);
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0} with a scalar.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({4} s, {2} v) => new {0}({3});", retType, op, NameThat, CompString.Select(c => opFunc("s", "v." + c)).CommaSeparated(), BaseTypeName);
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0} with scalars.", op).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({4} lhs, {4} rhs) => new {0}({3});", retType, op, NameThat, opFunc("lhs", "rhs"), BaseTypeName);
-                        }
-
-                    foreach (var kvp in new Dictionary<string[], Func<string, string, string, string>>
-                    {
-                        {new []{"Clamp", "v", "min", "max"}, (s1, s2, s3) => string.Format("Math.Min(Math.Max({0}, {1}), {2})", s1, s2, s3)},
-                        {new []{"Mix", "min", "max", "a"}, (s1, s2, s3) => string.Format("{0} * (1-{2}) + {1} * {2}", s1, s2, s3)},
-                        {new []{"Lerp", "min", "max", "a"}, (s1, s2, s3) => string.Format("{0} * (1-{2}) + {1} * {2}", s1, s2, s3)},
-                        {new []{"Smoothstep", "edge0", "edge1", "v"}, (s1, s2, s3) => string.Format("(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder3()", s1, s2, s3)},
-                        {new []{"Smootherstep", "edge0", "edge1", "v"}, (s1, s2, s3) => string.Format("(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()", s1, s2, s3)},
-                    })
-                    {
-                        var op = kvp.Key;
-                        var opFunc = kvp.Value;
-
-                        if (BaseType.IsComplex && op[0] != "Mix")
-                            continue; // no clamp for complex
-
-                        var retType = NameThat;
-
-                        foreach (var scalars in new[]
-                        {
-                            new[] { false, false, false }, // no scalar
-                            new[] { true, false, false },
-                            new[] { false, true, false },
-                            new[] { false, false, true },
-                            new[] { true, true, false },
-                            new[] { false, true, true },
-                            new[] { true, false, true },
-                            new[] { true, true, true }, // all scalar
-                        })
-                        {
-                            var opt0 = scalars[0] ? BaseTypeName : NameThat;
-                            var opt1 = scalars[1] ? BaseTypeName : NameThat;
-                            var opt2 = scalars[2] ? BaseTypeName : NameThat;
-
-                            Func<char, string> op0 = c => scalars[0] ? op[1] : op[1] + "." + c;
-                            Func<char, string> op1 = c => scalars[1] ? op[2] : op[2] + "." + c;
-                            Func<char, string> op2 = c => scalars[2] ? op[3] : op[3] + "." + c;
-
-                            var comm = scalars.All(b => !b) ? "" : " with scalars";
-
-                            var compStr = scalars.All(b => b) ? "_" : CompString;
-
-                            foreach (var line in string.Format("Returns a component-wise executed {0}{1}.", op[0], comm).AsComment()) yield return line;
-                            yield return string.Format("public static {0} {1}({2} {6}, {3} {7}, {4} {8}) => new {0}({5});", retType, op[0], opt0, opt1, opt2, compStr.Select(c => opFunc(op0(c), op1(c), op2(c))).CommaSeparated(), op[1], op[2], op[3]);
-                        }
                     }
                 }
             }

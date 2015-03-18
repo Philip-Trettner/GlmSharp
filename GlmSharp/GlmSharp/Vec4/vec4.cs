@@ -620,6 +620,566 @@ namespace GlmSharp
         /// Returns a bvec4 from component-wise application of IsPositiveInfinity (float.IsPositiveInfinity(v)).
         /// </summary>
         public static bvec4 IsPositiveInfinity(float v) => new bvec4(float.IsPositiveInfinity(v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static vec4 Abs(vec4 v) => new vec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Abs (Math.Abs(v)).
+        /// </summary>
+        public static vec4 Abs(float v) => new vec4(Math.Abs(v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static vec4 HermiteInterpolationOrder3(vec4 v) => new vec4((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z, (3 - 2 * v.w) * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// </summary>
+        public static vec4 HermiteInterpolationOrder3(float v) => new vec4((3 - 2 * v) * v * v);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static vec4 HermiteInterpolationOrder5(vec4 v) => new vec4(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z, ((6 * v.w - 15) * v.w + 10) * v.w * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// </summary>
+        public static vec4 HermiteInterpolationOrder5(float v) => new vec4(((6 * v - 15) * v + 10) * v * v * v);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static vec4 Sqr(vec4 v) => new vec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sqr (v * v).
+        /// </summary>
+        public static vec4 Sqr(float v) => new vec4(v * v);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static vec4 Pow2(vec4 v) => new vec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow2 (v * v).
+        /// </summary>
+        public static vec4 Pow2(float v) => new vec4(v * v);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static vec4 Pow3(vec4 v) => new vec4(v.x * v.x * v.x, v.y * v.y * v.y, v.z * v.z * v.z, v.w * v.w * v.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow3 (v * v * v).
+        /// </summary>
+        public static vec4 Pow3(float v) => new vec4(v * v * v);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Step (v &gt;= 0f ? 1f : 0f).
+        /// </summary>
+        public static vec4 Step(vec4 v) => new vec4(v.x >= 0f ? 1f : 0f, v.y >= 0f ? 1f : 0f, v.z >= 0f ? 1f : 0f, v.w >= 0f ? 1f : 0f);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Step (v &gt;= 0f ? 1f : 0f).
+        /// </summary>
+        public static vec4 Step(float v) => new vec4(v >= 0f ? 1f : 0f);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sqrt ((float)Math.Sqrt((double)v)).
+        /// </summary>
+        public static vec4 Sqrt(vec4 v) => new vec4((float)Math.Sqrt((double)v.x), (float)Math.Sqrt((double)v.y), (float)Math.Sqrt((double)v.z), (float)Math.Sqrt((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sqrt ((float)Math.Sqrt((double)v)).
+        /// </summary>
+        public static vec4 Sqrt(float v) => new vec4((float)Math.Sqrt((double)v));
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec4 Sign(vec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Sign (Math.Sign(v)).
+        /// </summary>
+        public static ivec4 Sign(float v) => new ivec4(Math.Sign(v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static vec4 Max(vec4 lhs, vec4 rhs) => new vec4(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z), Math.Max(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static vec4 Max(vec4 lhs, float rhs) => new vec4(Math.Max(lhs.x, rhs), Math.Max(lhs.y, rhs), Math.Max(lhs.z, rhs), Math.Max(lhs.w, rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static vec4 Max(float lhs, vec4 rhs) => new vec4(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y), Math.Max(lhs, rhs.z), Math.Max(lhs, rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// </summary>
+        public static vec4 Max(float lhs, float rhs) => new vec4(Math.Max(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static vec4 Min(vec4 lhs, vec4 rhs) => new vec4(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z), Math.Min(lhs.w, rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static vec4 Min(vec4 lhs, float rhs) => new vec4(Math.Min(lhs.x, rhs), Math.Min(lhs.y, rhs), Math.Min(lhs.z, rhs), Math.Min(lhs.w, rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static vec4 Min(float lhs, vec4 rhs) => new vec4(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y), Math.Min(lhs, rhs.z), Math.Min(lhs, rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// </summary>
+        public static vec4 Min(float lhs, float rhs) => new vec4(Math.Min(lhs, rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow ((float)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Pow(vec4 lhs, vec4 rhs) => new vec4((float)Math.Pow((double)lhs.x, (double)rhs.x), (float)Math.Pow((double)lhs.y, (double)rhs.y), (float)Math.Pow((double)lhs.z, (double)rhs.z), (float)Math.Pow((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow ((float)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Pow(vec4 lhs, float rhs) => new vec4((float)Math.Pow((double)lhs.x, (double)rhs), (float)Math.Pow((double)lhs.y, (double)rhs), (float)Math.Pow((double)lhs.z, (double)rhs), (float)Math.Pow((double)lhs.w, (double)rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow ((float)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Pow(float lhs, vec4 rhs) => new vec4((float)Math.Pow((double)lhs, (double)rhs.x), (float)Math.Pow((double)lhs, (double)rhs.y), (float)Math.Pow((double)lhs, (double)rhs.z), (float)Math.Pow((double)lhs, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Pow ((float)Math.Pow((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Pow(float lhs, float rhs) => new vec4((float)Math.Pow((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log ((float)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Log(vec4 lhs, vec4 rhs) => new vec4((float)Math.Log((double)lhs.x, (double)rhs.x), (float)Math.Log((double)lhs.y, (double)rhs.y), (float)Math.Log((double)lhs.z, (double)rhs.z), (float)Math.Log((double)lhs.w, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log ((float)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Log(vec4 lhs, float rhs) => new vec4((float)Math.Log((double)lhs.x, (double)rhs), (float)Math.Log((double)lhs.y, (double)rhs), (float)Math.Log((double)lhs.z, (double)rhs), (float)Math.Log((double)lhs.w, (double)rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log ((float)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Log(float lhs, vec4 rhs) => new vec4((float)Math.Log((double)lhs, (double)rhs.x), (float)Math.Log((double)lhs, (double)rhs.y), (float)Math.Log((double)lhs, (double)rhs.z), (float)Math.Log((double)lhs, (double)rhs.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log ((float)Math.Log((double)lhs, (double)rhs)).
+        /// </summary>
+        public static vec4 Log(float lhs, float rhs) => new vec4((float)Math.Log((double)lhs, (double)rhs));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(vec4 v, vec4 min, vec4 max) => new vec4(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y), Math.Min(Math.Max(v.z, min.z), max.z), Math.Min(Math.Max(v.w, min.w), max.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(vec4 v, vec4 min, float max) => new vec4(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max), Math.Min(Math.Max(v.z, min.z), max), Math.Min(Math.Max(v.w, min.w), max));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(vec4 v, float min, vec4 max) => new vec4(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y), Math.Min(Math.Max(v.z, min), max.z), Math.Min(Math.Max(v.w, min), max.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(vec4 v, float min, float max) => new vec4(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max), Math.Min(Math.Max(v.z, min), max), Math.Min(Math.Max(v.w, min), max));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(float v, vec4 min, vec4 max) => new vec4(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y), Math.Min(Math.Max(v, min.z), max.z), Math.Min(Math.Max(v, min.w), max.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(float v, vec4 min, float max) => new vec4(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max), Math.Min(Math.Max(v, min.w), max));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(float v, float min, vec4 max) => new vec4(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z), Math.Min(Math.Max(v, min), max.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// </summary>
+        public static vec4 Clamp(float v, float min, float max) => new vec4(Math.Min(Math.Max(v, min), max));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(vec4 min, vec4 max, vec4 a) => new vec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(vec4 min, vec4 max, float a) => new vec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(vec4 min, float max, vec4 a) => new vec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(vec4 min, float max, float a) => new vec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(float min, vec4 max, vec4 a) => new vec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(float min, vec4 max, float a) => new vec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(float min, float max, vec4 a) => new vec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Mix (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Mix(float min, float max, float a) => new vec4(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(vec4 min, vec4 max, vec4 a) => new vec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(vec4 min, vec4 max, float a) => new vec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(vec4 min, float max, vec4 a) => new vec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(vec4 min, float max, float a) => new vec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(float min, vec4 max, vec4 a) => new vec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(float min, vec4 max, float a) => new vec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(float min, float max, vec4 a) => new vec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static vec4 Lerp(float min, float max, float a) => new vec4(min * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(vec4 edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(vec4 edge0, vec4 edge1, float v) => new vec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(vec4 edge0, float edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(vec4 edge0, float edge1, float v) => new vec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(float edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(float edge0, vec4 edge1, float v) => new vec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(float edge0, float edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// </summary>
+        public static vec4 Smoothstep(float edge0, float edge1, float v) => new vec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(vec4 edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(vec4 edge0, vec4 edge1, float v) => new vec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(vec4 edge0, float edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(vec4 edge0, float edge1, float v) => new vec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(float edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(float edge0, vec4 edge1, float v) => new vec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(float edge0, float edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// </summary>
+        public static vec4 Smootherstep(float edge0, float edge1, float v) => new vec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// </summary>
+        public static vec4 Degrees(vec4 v) => new vec4(v.x * 57.295779513082320876798154814105170332405472466564321f, v.y * 57.295779513082320876798154814105170332405472466564321f, v.z * 57.295779513082320876798154814105170332405472466564321f, v.w * 57.295779513082320876798154814105170332405472466564321f);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// </summary>
+        public static vec4 Degrees(float v) => new vec4(v * 57.295779513082320876798154814105170332405472466564321f);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static vec4 Radians(vec4 v) => new vec4(v.x * 0.0174532925199432957692369076848861271344287188854172f, v.y * 0.0174532925199432957692369076848861271344287188854172f, v.z * 0.0174532925199432957692369076848861271344287188854172f, v.w * 0.0174532925199432957692369076848861271344287188854172f);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static vec4 Radians(float v) => new vec4(v * 0.0174532925199432957692369076848861271344287188854172f);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Acos ((float)Math.Acos((double)v)).
+        /// </summary>
+        public static vec4 Acos(vec4 v) => new vec4((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y), (float)Math.Acos((double)v.z), (float)Math.Acos((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Acos ((float)Math.Acos((double)v)).
+        /// </summary>
+        public static vec4 Acos(float v) => new vec4((float)Math.Acos((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Asin ((float)Math.Asin((double)v)).
+        /// </summary>
+        public static vec4 Asin(vec4 v) => new vec4((float)Math.Asin((double)v.x), (float)Math.Asin((double)v.y), (float)Math.Asin((double)v.z), (float)Math.Asin((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Asin ((float)Math.Asin((double)v)).
+        /// </summary>
+        public static vec4 Asin(float v) => new vec4((float)Math.Asin((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Atan ((float)Math.Atan((double)v)).
+        /// </summary>
+        public static vec4 Atan(vec4 v) => new vec4((float)Math.Atan((double)v.x), (float)Math.Atan((double)v.y), (float)Math.Atan((double)v.z), (float)Math.Atan((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Atan ((float)Math.Atan((double)v)).
+        /// </summary>
+        public static vec4 Atan(float v) => new vec4((float)Math.Atan((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Cos ((float)Math.Cos((double)v)).
+        /// </summary>
+        public static vec4 Cos(vec4 v) => new vec4((float)Math.Cos((double)v.x), (float)Math.Cos((double)v.y), (float)Math.Cos((double)v.z), (float)Math.Cos((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Cos ((float)Math.Cos((double)v)).
+        /// </summary>
+        public static vec4 Cos(float v) => new vec4((float)Math.Cos((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Cosh ((float)Math.Cosh((double)v)).
+        /// </summary>
+        public static vec4 Cosh(vec4 v) => new vec4((float)Math.Cosh((double)v.x), (float)Math.Cosh((double)v.y), (float)Math.Cosh((double)v.z), (float)Math.Cosh((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Cosh ((float)Math.Cosh((double)v)).
+        /// </summary>
+        public static vec4 Cosh(float v) => new vec4((float)Math.Cosh((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Exp ((float)Math.Exp((double)v)).
+        /// </summary>
+        public static vec4 Exp(vec4 v) => new vec4((float)Math.Exp((double)v.x), (float)Math.Exp((double)v.y), (float)Math.Exp((double)v.z), (float)Math.Exp((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Exp ((float)Math.Exp((double)v)).
+        /// </summary>
+        public static vec4 Exp(float v) => new vec4((float)Math.Exp((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log ((float)Math.Log((double)v)).
+        /// </summary>
+        public static vec4 Log(vec4 v) => new vec4((float)Math.Log((double)v.x), (float)Math.Log((double)v.y), (float)Math.Log((double)v.z), (float)Math.Log((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log ((float)Math.Log((double)v)).
+        /// </summary>
+        public static vec4 Log(float v) => new vec4((float)Math.Log((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log2 ((float)Math.Log((double)v, 2)).
+        /// </summary>
+        public static vec4 Log2(vec4 v) => new vec4((float)Math.Log((double)v.x, 2), (float)Math.Log((double)v.y, 2), (float)Math.Log((double)v.z, 2), (float)Math.Log((double)v.w, 2));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log2 ((float)Math.Log((double)v, 2)).
+        /// </summary>
+        public static vec4 Log2(float v) => new vec4((float)Math.Log((double)v, 2));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log10 ((float)Math.Log10((double)v)).
+        /// </summary>
+        public static vec4 Log10(vec4 v) => new vec4((float)Math.Log10((double)v.x), (float)Math.Log10((double)v.y), (float)Math.Log10((double)v.z), (float)Math.Log10((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Log10 ((float)Math.Log10((double)v)).
+        /// </summary>
+        public static vec4 Log10(float v) => new vec4((float)Math.Log10((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Floor ((float)Math.Floor(v)).
+        /// </summary>
+        public static vec4 Floor(vec4 v) => new vec4((float)Math.Floor(v.x), (float)Math.Floor(v.y), (float)Math.Floor(v.z), (float)Math.Floor(v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Floor ((float)Math.Floor(v)).
+        /// </summary>
+        public static vec4 Floor(float v) => new vec4((float)Math.Floor(v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Ceiling ((float)Math.Ceiling(v)).
+        /// </summary>
+        public static vec4 Ceiling(vec4 v) => new vec4((float)Math.Ceiling(v.x), (float)Math.Ceiling(v.y), (float)Math.Ceiling(v.z), (float)Math.Ceiling(v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Ceiling ((float)Math.Ceiling(v)).
+        /// </summary>
+        public static vec4 Ceiling(float v) => new vec4((float)Math.Ceiling(v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Round ((float)Math.Round(v)).
+        /// </summary>
+        public static vec4 Round(vec4 v) => new vec4((float)Math.Round(v.x), (float)Math.Round(v.y), (float)Math.Round(v.z), (float)Math.Round(v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Round ((float)Math.Round(v)).
+        /// </summary>
+        public static vec4 Round(float v) => new vec4((float)Math.Round(v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sin ((float)Math.Sin((double)v)).
+        /// </summary>
+        public static vec4 Sin(vec4 v) => new vec4((float)Math.Sin((double)v.x), (float)Math.Sin((double)v.y), (float)Math.Sin((double)v.z), (float)Math.Sin((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sin ((float)Math.Sin((double)v)).
+        /// </summary>
+        public static vec4 Sin(float v) => new vec4((float)Math.Sin((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sinh ((float)Math.Sinh((double)v)).
+        /// </summary>
+        public static vec4 Sinh(vec4 v) => new vec4((float)Math.Sinh((double)v.x), (float)Math.Sinh((double)v.y), (float)Math.Sinh((double)v.z), (float)Math.Sinh((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Sinh ((float)Math.Sinh((double)v)).
+        /// </summary>
+        public static vec4 Sinh(float v) => new vec4((float)Math.Sinh((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Tan ((float)Math.Tan((double)v)).
+        /// </summary>
+        public static vec4 Tan(vec4 v) => new vec4((float)Math.Tan((double)v.x), (float)Math.Tan((double)v.y), (float)Math.Tan((double)v.z), (float)Math.Tan((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Tan ((float)Math.Tan((double)v)).
+        /// </summary>
+        public static vec4 Tan(float v) => new vec4((float)Math.Tan((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Tanh ((float)Math.Tanh((double)v)).
+        /// </summary>
+        public static vec4 Tanh(vec4 v) => new vec4((float)Math.Tanh((double)v.x), (float)Math.Tanh((double)v.y), (float)Math.Tanh((double)v.z), (float)Math.Tanh((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Tanh ((float)Math.Tanh((double)v)).
+        /// </summary>
+        public static vec4 Tanh(float v) => new vec4((float)Math.Tanh((double)v));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Truncate ((float)Math.Truncate((double)v)).
+        /// </summary>
+        public static vec4 Truncate(vec4 v) => new vec4((float)Math.Truncate((double)v.x), (float)Math.Truncate((double)v.y), (float)Math.Truncate((double)v.z), (float)Math.Truncate((double)v.w));
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Truncate ((float)Math.Truncate((double)v)).
+        /// </summary>
+        public static vec4 Truncate(float v) => new vec4((float)Math.Truncate((double)v));
 
         #endregion
 
@@ -1114,555 +1674,5 @@ namespace GlmSharp
         /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
         /// </summary>
         public static vec4 FaceForward(vec4 N, vec4 I, vec4 Nref) => Dot(Nref, I) < 0 ? N : -N;
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs.
-        /// </summary>
-        public static vec4 Abs(vec4 v) => new vec4(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z), Math.Abs(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Abs with a scalar.
-        /// </summary>
-        public static vec4 Abs(float v) => new vec4(Math.Abs(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3.
-        /// </summary>
-        public static vec4 HermiteInterpolationOrder3(vec4 v) => new vec4((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z, (3 - 2 * v.w) * v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder3 with a scalar.
-        /// </summary>
-        public static vec4 HermiteInterpolationOrder3(float v) => new vec4((3 - 2 * v) * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5.
-        /// </summary>
-        public static vec4 HermiteInterpolationOrder5(vec4 v) => new vec4(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z, ((6 * v.w - 15) * v.w + 10) * v.w * v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed HermiteInterpolationOrder5 with a scalar.
-        /// </summary>
-        public static vec4 HermiteInterpolationOrder5(float v) => new vec4(((6 * v - 15) * v + 10) * v * v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Step.
-        /// </summary>
-        public static vec4 Step(vec4 v) => new vec4(v.x >= 0f ? 1f : 0f, v.y >= 0f ? 1f : 0f, v.z >= 0f ? 1f : 0f, v.w >= 0f ? 1f : 0f);
-        
-        /// <summary>
-        /// Returns a component-wise executed Step with a scalar.
-        /// </summary>
-        public static vec4 Step(float v) => new vec4(v >= 0f ? 1f : 0f);
-        
-        /// <summary>
-        /// Returns a component-wise executed Acos.
-        /// </summary>
-        public static vec4 Acos(vec4 v) => new vec4((float)Math.Acos((double)v.x), (float)Math.Acos((double)v.y), (float)Math.Acos((double)v.z), (float)Math.Acos((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Acos with a scalar.
-        /// </summary>
-        public static vec4 Acos(float v) => new vec4((float)Math.Acos((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Asin.
-        /// </summary>
-        public static vec4 Asin(vec4 v) => new vec4((float)Math.Asin((double)v.x), (float)Math.Asin((double)v.y), (float)Math.Asin((double)v.z), (float)Math.Asin((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Asin with a scalar.
-        /// </summary>
-        public static vec4 Asin(float v) => new vec4((float)Math.Asin((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Atan.
-        /// </summary>
-        public static vec4 Atan(vec4 v) => new vec4((float)Math.Atan((double)v.x), (float)Math.Atan((double)v.y), (float)Math.Atan((double)v.z), (float)Math.Atan((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Atan with a scalar.
-        /// </summary>
-        public static vec4 Atan(float v) => new vec4((float)Math.Atan((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cos.
-        /// </summary>
-        public static vec4 Cos(vec4 v) => new vec4((float)Math.Cos((double)v.x), (float)Math.Cos((double)v.y), (float)Math.Cos((double)v.z), (float)Math.Cos((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cos with a scalar.
-        /// </summary>
-        public static vec4 Cos(float v) => new vec4((float)Math.Cos((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cosh.
-        /// </summary>
-        public static vec4 Cosh(vec4 v) => new vec4((float)Math.Cosh((double)v.x), (float)Math.Cosh((double)v.y), (float)Math.Cosh((double)v.z), (float)Math.Cosh((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Cosh with a scalar.
-        /// </summary>
-        public static vec4 Cosh(float v) => new vec4((float)Math.Cosh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Exp.
-        /// </summary>
-        public static vec4 Exp(vec4 v) => new vec4((float)Math.Exp((double)v.x), (float)Math.Exp((double)v.y), (float)Math.Exp((double)v.z), (float)Math.Exp((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Exp with a scalar.
-        /// </summary>
-        public static vec4 Exp(float v) => new vec4((float)Math.Exp((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static vec4 Log(vec4 v) => new vec4((float)Math.Log((double)v.x), (float)Math.Log((double)v.y), (float)Math.Log((double)v.z), (float)Math.Log((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static vec4 Log(float v) => new vec4((float)Math.Log((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log2.
-        /// </summary>
-        public static vec4 Log2(vec4 v) => new vec4((float)Math.Log((double)v.x, 2), (float)Math.Log((double)v.y, 2), (float)Math.Log((double)v.z, 2), (float)Math.Log((double)v.w, 2));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log2 with a scalar.
-        /// </summary>
-        public static vec4 Log2(float v) => new vec4((float)Math.Log((double)v, 2));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log10.
-        /// </summary>
-        public static vec4 Log10(vec4 v) => new vec4((float)Math.Log10((double)v.x), (float)Math.Log10((double)v.y), (float)Math.Log10((double)v.z), (float)Math.Log10((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log10 with a scalar.
-        /// </summary>
-        public static vec4 Log10(float v) => new vec4((float)Math.Log10((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Floor.
-        /// </summary>
-        public static vec4 Floor(vec4 v) => new vec4((float)Math.Floor(v.x), (float)Math.Floor(v.y), (float)Math.Floor(v.z), (float)Math.Floor(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Floor with a scalar.
-        /// </summary>
-        public static vec4 Floor(float v) => new vec4((float)Math.Floor(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Ceiling.
-        /// </summary>
-        public static vec4 Ceiling(vec4 v) => new vec4((float)Math.Ceiling(v.x), (float)Math.Ceiling(v.y), (float)Math.Ceiling(v.z), (float)Math.Ceiling(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Ceiling with a scalar.
-        /// </summary>
-        public static vec4 Ceiling(float v) => new vec4((float)Math.Ceiling(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Round.
-        /// </summary>
-        public static vec4 Round(vec4 v) => new vec4((float)Math.Round(v.x), (float)Math.Round(v.y), (float)Math.Round(v.z), (float)Math.Round(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Round with a scalar.
-        /// </summary>
-        public static vec4 Round(float v) => new vec4((float)Math.Round(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sin.
-        /// </summary>
-        public static vec4 Sin(vec4 v) => new vec4((float)Math.Sin((double)v.x), (float)Math.Sin((double)v.y), (float)Math.Sin((double)v.z), (float)Math.Sin((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sin with a scalar.
-        /// </summary>
-        public static vec4 Sin(float v) => new vec4((float)Math.Sin((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sinh.
-        /// </summary>
-        public static vec4 Sinh(vec4 v) => new vec4((float)Math.Sinh((double)v.x), (float)Math.Sinh((double)v.y), (float)Math.Sinh((double)v.z), (float)Math.Sinh((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sinh with a scalar.
-        /// </summary>
-        public static vec4 Sinh(float v) => new vec4((float)Math.Sinh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqrt.
-        /// </summary>
-        public static vec4 Sqrt(vec4 v) => new vec4((float)Math.Sqrt((double)v.x), (float)Math.Sqrt((double)v.y), (float)Math.Sqrt((double)v.z), (float)Math.Sqrt((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqrt with a scalar.
-        /// </summary>
-        public static vec4 Sqrt(float v) => new vec4((float)Math.Sqrt((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tan.
-        /// </summary>
-        public static vec4 Tan(vec4 v) => new vec4((float)Math.Tan((double)v.x), (float)Math.Tan((double)v.y), (float)Math.Tan((double)v.z), (float)Math.Tan((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tan with a scalar.
-        /// </summary>
-        public static vec4 Tan(float v) => new vec4((float)Math.Tan((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tanh.
-        /// </summary>
-        public static vec4 Tanh(vec4 v) => new vec4((float)Math.Tanh((double)v.x), (float)Math.Tanh((double)v.y), (float)Math.Tanh((double)v.z), (float)Math.Tanh((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Tanh with a scalar.
-        /// </summary>
-        public static vec4 Tanh(float v) => new vec4((float)Math.Tanh((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Truncate.
-        /// </summary>
-        public static vec4 Truncate(vec4 v) => new vec4((float)Math.Truncate((double)v.x), (float)Math.Truncate((double)v.y), (float)Math.Truncate((double)v.z), (float)Math.Truncate((double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Truncate with a scalar.
-        /// </summary>
-        public static vec4 Truncate(float v) => new vec4((float)Math.Truncate((double)v));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sign.
-        /// </summary>
-        public static ivec4 Sign(vec4 v) => new ivec4(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z), Math.Sign(v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Sign with a scalar.
-        /// </summary>
-        public static ivec4 Sign(float v) => new ivec4(Math.Sign(v));
-        
-        /// <summary>
-        /// Returns a component-wise executed radians-to-degrees conversion.
-        /// </summary>
-        public static vec4 Degrees(vec4 v) => v * 57.295779513082320876798154814105170332405472466564321f;
-        
-        /// <summary>
-        /// Returns a component-wise executed radians-to-degrees conversion with a scalar.
-        /// </summary>
-        public static vec4 Degrees(float v) => new vec4(v * 57.295779513082320876798154814105170332405472466564321f);
-        
-        /// <summary>
-        /// Returns a component-wise executed degrees-to-radians conversion.
-        /// </summary>
-        public static vec4 Radians(vec4 v) => v * 0.0174532925199432957692369076848861271344287188854172f;
-        
-        /// <summary>
-        /// Returns a component-wise executed degrees-to-radians conversion with a scalar.
-        /// </summary>
-        public static vec4 Radians(float v) => new vec4(v * 0.0174532925199432957692369076848861271344287188854172f);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr.
-        /// </summary>
-        public static vec4 Sqr(vec4 v) => new vec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Sqr with a scalar.
-        /// </summary>
-        public static vec4 Sqr(float v) => new vec4(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2.
-        /// </summary>
-        public static vec4 Pow2(vec4 v) => new vec4(v.x * v.x, v.y * v.y, v.z * v.z, v.w * v.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow2 with a scalar.
-        /// </summary>
-        public static vec4 Pow2(float v) => new vec4(v * v);
-        
-        /// <summary>
-        /// Returns a component-wise executed Max.
-        /// </summary>
-        public static vec4 Max(vec4 lhs, vec4 rhs) => new vec4(Math.Max(lhs.x, rhs.x), Math.Max(lhs.y, rhs.y), Math.Max(lhs.z, rhs.z), Math.Max(lhs.w, rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static vec4 Max(vec4 v, float s) => new vec4(Math.Max(v.x, s), Math.Max(v.y, s), Math.Max(v.z, s), Math.Max(v.w, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with a scalar.
-        /// </summary>
-        public static vec4 Max(float s, vec4 v) => new vec4(Math.Max(s, v.x), Math.Max(s, v.y), Math.Max(s, v.z), Math.Max(s, v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Max with scalars.
-        /// </summary>
-        public static vec4 Max(float lhs, float rhs) => new vec4(Math.Max(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min.
-        /// </summary>
-        public static vec4 Min(vec4 lhs, vec4 rhs) => new vec4(Math.Min(lhs.x, rhs.x), Math.Min(lhs.y, rhs.y), Math.Min(lhs.z, rhs.z), Math.Min(lhs.w, rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static vec4 Min(vec4 v, float s) => new vec4(Math.Min(v.x, s), Math.Min(v.y, s), Math.Min(v.z, s), Math.Min(v.w, s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with a scalar.
-        /// </summary>
-        public static vec4 Min(float s, vec4 v) => new vec4(Math.Min(s, v.x), Math.Min(s, v.y), Math.Min(s, v.z), Math.Min(s, v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Min with scalars.
-        /// </summary>
-        public static vec4 Min(float lhs, float rhs) => new vec4(Math.Min(lhs, rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow.
-        /// </summary>
-        public static vec4 Pow(vec4 lhs, vec4 rhs) => new vec4((float)Math.Pow((double)lhs.x, (double)rhs.x), (float)Math.Pow((double)lhs.y, (double)rhs.y), (float)Math.Pow((double)lhs.z, (double)rhs.z), (float)Math.Pow((double)lhs.w, (double)rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static vec4 Pow(vec4 v, float s) => new vec4((float)Math.Pow((double)v.x, (double)s), (float)Math.Pow((double)v.y, (double)s), (float)Math.Pow((double)v.z, (double)s), (float)Math.Pow((double)v.w, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with a scalar.
-        /// </summary>
-        public static vec4 Pow(float s, vec4 v) => new vec4((float)Math.Pow((double)s, (double)v.x), (float)Math.Pow((double)s, (double)v.y), (float)Math.Pow((double)s, (double)v.z), (float)Math.Pow((double)s, (double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Pow with scalars.
-        /// </summary>
-        public static vec4 Pow(float lhs, float rhs) => new vec4((float)Math.Pow((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log.
-        /// </summary>
-        public static vec4 Log(vec4 lhs, vec4 rhs) => new vec4((float)Math.Log((double)lhs.x, (double)rhs.x), (float)Math.Log((double)lhs.y, (double)rhs.y), (float)Math.Log((double)lhs.z, (double)rhs.z), (float)Math.Log((double)lhs.w, (double)rhs.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static vec4 Log(vec4 v, float s) => new vec4((float)Math.Log((double)v.x, (double)s), (float)Math.Log((double)v.y, (double)s), (float)Math.Log((double)v.z, (double)s), (float)Math.Log((double)v.w, (double)s));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with a scalar.
-        /// </summary>
-        public static vec4 Log(float s, vec4 v) => new vec4((float)Math.Log((double)s, (double)v.x), (float)Math.Log((double)s, (double)v.y), (float)Math.Log((double)s, (double)v.z), (float)Math.Log((double)s, (double)v.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Log with scalars.
-        /// </summary>
-        public static vec4 Log(float lhs, float rhs) => new vec4((float)Math.Log((double)lhs, (double)rhs));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp.
-        /// </summary>
-        public static vec4 Clamp(vec4 v, vec4 min, vec4 max) => new vec4(Math.Min(Math.Max(v.x, min.x), max.x), Math.Min(Math.Max(v.y, min.y), max.y), Math.Min(Math.Max(v.z, min.z), max.z), Math.Min(Math.Max(v.w, min.w), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static vec4 Clamp(float v, vec4 min, vec4 max) => new vec4(Math.Min(Math.Max(v, min.x), max.x), Math.Min(Math.Max(v, min.y), max.y), Math.Min(Math.Max(v, min.z), max.z), Math.Min(Math.Max(v, min.w), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static vec4 Clamp(vec4 v, float min, vec4 max) => new vec4(Math.Min(Math.Max(v.x, min), max.x), Math.Min(Math.Max(v.y, min), max.y), Math.Min(Math.Max(v.z, min), max.z), Math.Min(Math.Max(v.w, min), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static vec4 Clamp(vec4 v, vec4 min, float max) => new vec4(Math.Min(Math.Max(v.x, min.x), max), Math.Min(Math.Max(v.y, min.y), max), Math.Min(Math.Max(v.z, min.z), max), Math.Min(Math.Max(v.w, min.w), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static vec4 Clamp(float v, float min, vec4 max) => new vec4(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z), Math.Min(Math.Max(v, min), max.w));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static vec4 Clamp(vec4 v, float min, float max) => new vec4(Math.Min(Math.Max(v.x, min), max), Math.Min(Math.Max(v.y, min), max), Math.Min(Math.Max(v.z, min), max), Math.Min(Math.Max(v.w, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static vec4 Clamp(float v, vec4 min, float max) => new vec4(Math.Min(Math.Max(v, min.x), max), Math.Min(Math.Max(v, min.y), max), Math.Min(Math.Max(v, min.z), max), Math.Min(Math.Max(v, min.w), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Clamp with scalars.
-        /// </summary>
-        public static vec4 Clamp(float v, float min, float max) => new vec4(Math.Min(Math.Max(v, min), max));
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix.
-        /// </summary>
-        public static vec4 Mix(vec4 min, vec4 max, vec4 a) => new vec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static vec4 Mix(float min, vec4 max, vec4 a) => new vec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static vec4 Mix(vec4 min, float max, vec4 a) => new vec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static vec4 Mix(vec4 min, vec4 max, float a) => new vec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static vec4 Mix(float min, float max, vec4 a) => new vec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static vec4 Mix(vec4 min, float max, float a) => new vec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static vec4 Mix(float min, vec4 max, float a) => new vec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Mix with scalars.
-        /// </summary>
-        public static vec4 Mix(float min, float max, float a) => new vec4(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp.
-        /// </summary>
-        public static vec4 Lerp(vec4 min, vec4 max, vec4 a) => new vec4(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static vec4 Lerp(float min, vec4 max, vec4 a) => new vec4(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static vec4 Lerp(vec4 min, float max, vec4 a) => new vec4(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static vec4 Lerp(vec4 min, vec4 max, float a) => new vec4(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static vec4 Lerp(float min, float max, vec4 a) => new vec4(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static vec4 Lerp(vec4 min, float max, float a) => new vec4(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static vec4 Lerp(float min, vec4 max, float a) => new vec4(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Lerp with scalars.
-        /// </summary>
-        public static vec4 Lerp(float min, float max, float a) => new vec4(min * (1-a) + max * a);
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep.
-        /// </summary>
-        public static vec4 Smoothstep(vec4 edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static vec4 Smoothstep(float edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static vec4 Smoothstep(vec4 edge0, float edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static vec4 Smoothstep(vec4 edge0, vec4 edge1, float v) => new vec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static vec4 Smoothstep(float edge0, float edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static vec4 Smoothstep(vec4 edge0, float edge1, float v) => new vec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder3(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static vec4 Smoothstep(float edge0, vec4 edge1, float v) => new vec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder3(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smoothstep with scalars.
-        /// </summary>
-        public static vec4 Smoothstep(float edge0, float edge1, float v) => new vec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep.
-        /// </summary>
-        public static vec4 Smootherstep(vec4 edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static vec4 Smootherstep(float edge0, vec4 edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static vec4 Smootherstep(vec4 edge0, float edge1, vec4 v) => new vec4(((v.x - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static vec4 Smootherstep(vec4 edge0, vec4 edge1, float v) => new vec4(((v - edge0.x) / (edge1.x - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1.y - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1.z - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1.w - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static vec4 Smootherstep(float edge0, float edge1, vec4 v) => new vec4(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.w - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static vec4 Smootherstep(vec4 edge0, float edge1, float v) => new vec4(((v - edge0.x) / (edge1 - edge0.x)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.y) / (edge1 - edge0.y)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.z) / (edge1 - edge0.z)).Clamp().HermiteInterpolationOrder5(), ((v - edge0.w) / (edge1 - edge0.w)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static vec4 Smootherstep(float edge0, vec4 edge1, float v) => new vec4(((v - edge0) / (edge1.x - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.y - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.z - edge0)).Clamp().HermiteInterpolationOrder5(), ((v - edge0) / (edge1.w - edge0)).Clamp().HermiteInterpolationOrder5());
-        
-        /// <summary>
-        /// Returns a component-wise executed Smootherstep with scalars.
-        /// </summary>
-        public static vec4 Smootherstep(float edge0, float edge1, float v) => new vec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
     }
 }
