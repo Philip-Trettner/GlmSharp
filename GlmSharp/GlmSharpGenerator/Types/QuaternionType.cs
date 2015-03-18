@@ -870,6 +870,14 @@ namespace GlmSharpGenerator.Types
                         },
                         Comment = "Calculates a proper spherical interpolation between two quaternions (only works for normalized quaternions)."
                     };
+
+                    yield return new Function(this, "Squad")
+                    {
+                        Static = true,
+                        Parameters = this.TypedArgs("q1", "q2", "s1", "s2").Concat(BaseType.TypedArgs("h")),
+                        CodeString = "Mix(Mix(q1, q2, h), Mix(s1, s2, h), 2 * (1 - h) * h)",
+                        Comment = "Applies squad interpolation of these quaternions"
+                    };
                 }
 
                 // linear interpolation

@@ -733,6 +733,11 @@ namespace GlmSharp
                 return (quat)( (Math.Sin((1 - (double)a) * angle) * (dquat)x + Math.Sin((double)a * angle) * (dquat)z) / Math.Sin(angle) );
             }
         }
+        
+        /// <summary>
+        /// Applies squad interpolation of these quaternions
+        /// </summary>
+        public static quat Squad(quat q1, quat q2, quat s1, quat s2, float h) => Mix(Mix(q1, q2, h), Mix(s1, s2, h), 2 * (1 - h) * h);
 
         #endregion
 
