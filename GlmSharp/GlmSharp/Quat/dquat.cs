@@ -696,6 +696,38 @@ namespace GlmSharp
         /// Returns the cross product between two quaternions.
         /// </summary>
         public static dquat Cross(dquat q1, dquat q2) => new dquat(q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y, q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z, q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x, q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z);
+        
+        /// <summary>
+        /// Calculates a proper spherical interpolation between two quaternions (only works for normalized quaternions).
+        /// </summary>
+        public static dquat Mix(dquat x, dquat y, double a)
+        {
+            var cosTheta = (double)Dot(x, y);
+            if (cosTheta > 1 - float.Epsilon)
+                return Lerp(x, y, a);
+            else
+            {
+                var angle = Math.Acos((double)cosTheta);
+                return ( (Math.Sin((1 - (double)a) * angle) * x + Math.Sin((double)a * angle) * y) / Math.Sin(angle) );
+            }
+        }
+        
+        /// <summary>
+        /// Calculates a proper spherical interpolation between two quaternions (only works for normalized quaternions).
+        /// </summary>
+        public static dquat SLerp(dquat x, dquat y, double a)
+        {
+            var z = y;
+            var cosTheta = (double)Dot(x, y);
+            if (cosTheta < 0) { z = -y; cosTheta = -cosTheta; }
+            if (cosTheta > 1 - float.Epsilon)
+                return Lerp(x, y, a);
+            else
+            {
+                var angle = Math.Acos((double)cosTheta);
+                return ( (Math.Sin((1 - (double)a) * angle) * x + Math.Sin((double)a * angle) * z) / Math.Sin(angle) );
+            }
+        }
 
         #endregion
 
@@ -871,6 +903,46 @@ namespace GlmSharp
         /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(double lhs, double rhs) => new bvec4(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(dquat min, dquat max, dquat a) => new dquat(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(dquat min, dquat max, double a) => new dquat(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(dquat min, double max, dquat a) => new dquat(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(dquat min, double max, double a) => new dquat(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(double min, dquat max, dquat a) => new dquat(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(double min, dquat max, double a) => new dquat(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(double min, double max, dquat a) => new dquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static dquat Lerp(double min, double max, double a) => new dquat(min * (1-a) + max * a);
 
         #endregion
 

@@ -617,6 +617,46 @@ namespace GlmSharp
         /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(uint lhs, uint rhs) => new bvec4(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uquat min, uquat max, uquat a) => new uquat(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uquat min, uquat max, uint a) => new uquat(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uquat min, uint max, uquat a) => new uquat(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uquat min, uint max, uint a) => new uquat(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uint min, uquat max, uquat a) => new uquat(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uint min, uquat max, uint a) => new uquat(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uint min, uint max, uquat a) => new uquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static uquat Lerp(uint min, uint max, uint a) => new uquat(min * (1-a) + max * a);
 
         #endregion
 

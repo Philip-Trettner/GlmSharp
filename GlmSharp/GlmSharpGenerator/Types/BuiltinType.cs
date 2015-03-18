@@ -112,6 +112,7 @@ namespace GlmSharpGenerator.Types
             ZeroValueConstant = "0m",
             Decimal = true,
             IsFloatingPoint = true,
+            EpsilonFormat = "double.Epsilon",
             TypeConstants = new[] { "MaxValue", "MinValue", "MinusOne" }
         };
         public static readonly BuiltinType TypeComplex = new BuiltinType
@@ -172,6 +173,9 @@ namespace GlmSharpGenerator.Types
         public bool IsSigned { get; set; } = true;
         public bool IsInteger { get; set; } = false;
         public bool IsFloatingPoint { get; set; }
+
+        public string EpsilonFormat { get; set; } = "{0}.Epsilon";
+
 
         public string EqualFormat { get; set; } = "{0} == {1}";
         public string NotEqualFormat { get; set; } = "{0} != {1}";

@@ -676,6 +676,38 @@ namespace GlmSharp
         /// Returns the cross product between two quaternions.
         /// </summary>
         public static decquat Cross(decquat q1, decquat q2) => new decquat(q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y, q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z, q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x, q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z);
+        
+        /// <summary>
+        /// Calculates a proper spherical interpolation between two quaternions (only works for normalized quaternions).
+        /// </summary>
+        public static decquat Mix(decquat x, decquat y, decimal a)
+        {
+            var cosTheta = (double)Dot(x, y);
+            if (cosTheta > 1 - float.Epsilon)
+                return Lerp(x, y, a);
+            else
+            {
+                var angle = Math.Acos((double)cosTheta);
+                return (decquat)( (Math.Sin((1 - (double)a) * angle) * (dquat)x + Math.Sin((double)a * angle) * (dquat)y) / Math.Sin(angle) );
+            }
+        }
+        
+        /// <summary>
+        /// Calculates a proper spherical interpolation between two quaternions (only works for normalized quaternions).
+        /// </summary>
+        public static decquat SLerp(decquat x, decquat y, decimal a)
+        {
+            var z = y;
+            var cosTheta = (double)Dot(x, y);
+            if (cosTheta < 0) { z = -y; cosTheta = -cosTheta; }
+            if (cosTheta > 1 - float.Epsilon)
+                return Lerp(x, y, a);
+            else
+            {
+                var angle = Math.Acos((double)cosTheta);
+                return (decquat)( (Math.Sin((1 - (double)a) * angle) * (dquat)x + Math.Sin((double)a * angle) * (dquat)z) / Math.Sin(angle) );
+            }
+        }
 
         #endregion
 
@@ -801,6 +833,46 @@ namespace GlmSharp
         /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(decimal lhs, decimal rhs) => new bvec4(lhs <= rhs);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decquat min, decquat max, decquat a) => new decquat(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decquat min, decquat max, decimal a) => new decquat(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decquat min, decimal max, decquat a) => new decquat(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decquat min, decimal max, decimal a) => new decquat(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decimal min, decquat max, decquat a) => new decquat(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decimal min, decquat max, decimal a) => new decquat(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decimal min, decimal max, decquat a) => new decquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static decquat Lerp(decimal min, decimal max, decimal a) => new decquat(min * (1-a) + max * a);
 
         #endregion
 

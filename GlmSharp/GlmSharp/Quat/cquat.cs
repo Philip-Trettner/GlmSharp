@@ -427,6 +427,46 @@ namespace GlmSharp
         /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(Complex lhs, Complex rhs) => new bvec4(lhs != rhs);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(cquat min, cquat max, cquat a) => new cquat(min.x * (1-a.x) + max.x * a.x, min.y * (1-a.y) + max.y * a.y, min.z * (1-a.z) + max.z * a.z, min.w * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(cquat min, cquat max, Complex a) => new cquat(min.x * (1-a) + max.x * a, min.y * (1-a) + max.y * a, min.z * (1-a) + max.z * a, min.w * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(cquat min, Complex max, cquat a) => new cquat(min.x * (1-a.x) + max * a.x, min.y * (1-a.y) + max * a.y, min.z * (1-a.z) + max * a.z, min.w * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(cquat min, Complex max, Complex a) => new cquat(min.x * (1-a) + max * a, min.y * (1-a) + max * a, min.z * (1-a) + max * a, min.w * (1-a) + max * a);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(Complex min, cquat max, cquat a) => new cquat(min * (1-a.x) + max.x * a.x, min * (1-a.y) + max.y * a.y, min * (1-a.z) + max.z * a.z, min * (1-a.w) + max.w * a.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(Complex min, cquat max, Complex a) => new cquat(min * (1-a) + max.x * a, min * (1-a) + max.y * a, min * (1-a) + max.z * a, min * (1-a) + max.w * a);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(Complex min, Complex max, cquat a) => new cquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// </summary>
+        public static cquat Lerp(Complex min, Complex max, Complex a) => new cquat(min * (1-a) + max * a);
 
         #endregion
 

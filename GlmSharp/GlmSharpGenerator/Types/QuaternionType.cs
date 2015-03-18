@@ -60,6 +60,7 @@ namespace GlmSharpGenerator.Types
             var mat4Type = new MatrixType(BaseType, 4, 4);
             var vec3Type = new VectorType(BaseType, 3);
             var vec4Type = new VectorType(BaseType, 4);
+            var dquatType = new QuaternionType(BuiltinType.TypeDouble);
             var dvec3Type = new VectorType(BuiltinType.TypeDouble, 3);
             var lengthType = new AnyType(BaseType.LengthType);
 
@@ -803,9 +804,9 @@ namespace GlmSharpGenerator.Types
                 };
             }
 
-            // cross
             if (BaseType.HasArithmetics)
             {
+                // cross
                 yield return new Function(this, "Cross")
                 {
                     Static = true,
@@ -817,6 +818,55 @@ namespace GlmSharpGenerator.Types
                         "q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z"),
                     Comment = "Returns the cross product between two quaternions."
                 };
+
+                // mix
+                if (BaseType.IsFloatingPoint)
+                {
+                    yield return new Function(this, "Mix")
+                    {
+                        Static = true,
+                        Parameters = this.TypedArgs("x", "y").Concat(BaseType.TypedArgs("a")),
+                        Code = new[]
+                        {
+                            "var cosTheta = (double)Dot(x, y);",
+                            "if (cosTheta > 1 - float.Epsilon)",
+                            "    return Lerp(x, y, a);",
+                            "else",
+                            "{",
+                            "    var angle = Math.Acos((double)cosTheta);",
+                            string.Format("    return {0}( (Math.Sin((1 - (double)a) * angle) * {1}x + Math.Sin((double)a * angle) * {1}y) / Math.Sin(angle) );",
+                                BaseType.Name == "double" ? "" : "(" + this.Name + ")",
+                                BaseType.Name == "double" ? "" : "(" + dquatType.Name + ")"),
+                            "}",
+                        },
+                        Comment = "Calculates a proper spherical interpolation between two quaternions (only works for normalized quaternions)."
+                    };
+
+                    yield return new Function(this, "SLerp")
+                    {
+                        Static = true,
+                        Parameters = this.TypedArgs("x", "y").Concat(BaseType.TypedArgs("a")),
+                        Code = new[]
+                        {
+                            "var z = y;",
+                            "var cosTheta = (double)Dot(x, y);",
+                            "if (cosTheta < 0) { z = -y; cosTheta = -cosTheta; }",
+                            "if (cosTheta > 1 - float.Epsilon)",
+                            "    return Lerp(x, y, a);",
+                            "else",
+                            "{",
+                            "    var angle = Math.Acos((double)cosTheta);",
+                            string.Format("    return {0}( (Math.Sin((1 - (double)a) * angle) * {1}x + Math.Sin((double)a * angle) * {1}z) / Math.Sin(angle) );",
+                                BaseType.Name == "double" ? "" : "(" + this.Name + ")",
+                                BaseType.Name == "double" ? "" : "(" + dquatType.Name + ")"),
+                            "}",
+                        },
+                        Comment = "Calculates a proper spherical interpolation between two quaternions (only works for normalized quaternions)."
+                    };
+                }
+
+                // linear interpolation
+                yield return new ComponentWiseStaticFunction(Fields, this, "Lerp", this, "min", this, "max", this, "a", "{0} * (1-{2}) + {1} * {2}");
             }
         }
     }
