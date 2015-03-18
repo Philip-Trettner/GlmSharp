@@ -767,6 +767,22 @@ namespace GlmSharpGenerator.Types
                     Comment = "Returns the inverse quaternion"
                 };
             }
+
+            // cross
+            if (BaseType.HasArithmetics)
+            {
+                yield return new Function(this, "Cross")
+                {
+                    Static = true,
+                    Parameters = this.TypedArgs("q1", "q2"),
+                    CodeString = Construct(this,
+                        "q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y",
+                        "q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z",
+                        "q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x",
+                        "q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z"),
+                    Comment = "Returns the cross product between two quaternions."
+                };
+            }
         }
     }
 }

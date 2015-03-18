@@ -481,6 +481,11 @@ namespace GlmSharp
         /// Returns the inner product (dot product, scalar product) of the two quaternions.
         /// </summary>
         public static int Dot(iquat lhs, iquat rhs) => ((lhs.x * rhs.x + lhs.y * rhs.y) + (lhs.z * rhs.z + lhs.w * rhs.w));
+        
+        /// <summary>
+        /// Returns the cross product between two quaternions.
+        /// </summary>
+        public static iquat Cross(iquat q1, iquat q2) => new iquat(q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y, q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z, q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x, q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z);
 
         #endregion
 

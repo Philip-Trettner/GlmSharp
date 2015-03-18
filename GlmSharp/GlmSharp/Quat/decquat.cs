@@ -645,6 +645,11 @@ namespace GlmSharp
         /// Creates a quaternion from the rotational part of a decmat3.
         /// </summary>
         public static decquat FromMat4(decmat4 m) => FromMat3(new decmat3(m));
+        
+        /// <summary>
+        /// Returns the cross product between two quaternions.
+        /// </summary>
+        public static decquat Cross(decquat q1, decquat q2) => new decquat(q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y, q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z, q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x, q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z);
 
         #endregion
 

@@ -665,6 +665,11 @@ namespace GlmSharp
         /// Creates a quaternion from the rotational part of a mat3.
         /// </summary>
         public static quat FromMat4(mat4 m) => FromMat3(new mat3(m));
+        
+        /// <summary>
+        /// Returns the cross product between two quaternions.
+        /// </summary>
+        public static quat Cross(quat q1, quat q2) => new quat(q1.w * q2.x + q1.x * q2.w + q1.y * q2.z - q1.z * q2.y, q1.w * q2.y + q1.y * q2.w + q1.z * q2.x - q1.x * q2.z, q1.w * q2.z + q1.z * q2.w + q1.x * q2.y - q1.y * q2.x, q1.w * q2.w - q1.x * q2.x - q1.y * q2.y - q1.z * q2.z);
 
         #endregion
 
