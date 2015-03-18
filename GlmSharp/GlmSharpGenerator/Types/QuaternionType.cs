@@ -550,7 +550,20 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseOperator(Fields, this, "+", this, "lhs", this, "rhs", "{0} + {1}");
                 yield return new ComponentWiseOperator(Fields, this, "-", this, "lhs", this, "rhs", "{0} - {1}");
                 yield return new ComponentWiseOperator(Fields, this, "*", this, "lhs", BaseType, "rhs", "{0} * {1}") { CanScalar0 = false, CanScalar1 = false };
+                yield return new ComponentWiseOperator(Fields, this, "*", BaseType, "lhs", this, "rhs", "{0} * {1}") { CanScalar0 = false, CanScalar1 = false };
                 yield return new ComponentWiseOperator(Fields, this, "/", this, "lhs", BaseType, "rhs", "{0} / {1}") { CanScalar0 = false, CanScalar1 = false };
+
+                // quat-quat-mult
+                yield return new Operator(this, "*")
+                {
+                    Parameters = this.TypedArgs("p", "q"),
+                    CodeString = Construct(this,
+                        "p.w * q.x + p.x * q.w + p.y * q.z - p.z * q.y",
+                        "p.w * q.y + p.y * q.w + p.z * q.x - p.x * q.z",
+                        "p.w * q.z + p.z * q.w + p.x * q.y - p.y * q.x",
+                        "p.w * q.w - p.x * q.x - p.y * q.y - p.z * q.z"),
+                    Comment = "Returns proper multiplication of two quaternions"
+                };
 
                 // dot
                 yield return new Function(BaseType, "Dot")

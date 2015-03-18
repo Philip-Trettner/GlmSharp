@@ -437,6 +437,11 @@ namespace GlmSharp
         /// Returns true iff this does not equal rhs (component-wise).
         /// </summary>
         public static bool operator!=(dquat lhs, dquat rhs) => !lhs.Equals(rhs);
+        
+        /// <summary>
+        /// Returns proper multiplication of two quaternions
+        /// </summary>
+        public static dquat operator*(dquat p, dquat q) => new dquat(p.w * q.x + p.x * q.w + p.y * q.z - p.z * q.y, p.w * q.y + p.y * q.w + p.z * q.x - p.x * q.z, p.w * q.z + p.z * q.w + p.x * q.y - p.y * q.x, p.w * q.w - p.x * q.x - p.y * q.y - p.z * q.z);
 
         #endregion
 
@@ -935,6 +940,11 @@ namespace GlmSharp
         /// Returns a dquat from component-wise application of operator* (lhs * rhs).
         /// </summary>
         public static dquat operator*(dquat lhs, double rhs) => new dquat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static dquat operator*(double lhs, dquat rhs) => new dquat(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
         
         /// <summary>
         /// Returns a dquat from component-wise application of operator/ (lhs / rhs).
