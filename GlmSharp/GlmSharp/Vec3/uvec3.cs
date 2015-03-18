@@ -1165,26 +1165,6 @@ namespace GlmSharp
         public static uvec3 Div(uint lhs, uint rhs) => new uvec3(lhs / rhs);
         
         /// <summary>
-        /// Returns a uvec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec3 Modulo(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
-        
-        /// <summary>
-        /// Returns a uvec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec3 Modulo(uvec3 lhs, uint rhs) => new uvec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
-        
-        /// <summary>
-        /// Returns a uvec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec3 Modulo(uint lhs, uvec3 rhs) => new uvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
-        
-        /// <summary>
-        /// Returns a uvec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec3 Modulo(uint lhs, uint rhs) => new uvec3(lhs % rhs);
-        
-        /// <summary>
         /// Returns a uvec3 from component-wise application of Xor (lhs ^ rhs).
         /// </summary>
         public static uvec3 Xor(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z);
@@ -1418,21 +1398,6 @@ namespace GlmSharp
         /// Returns a uvec3 from component-wise application of operator~ (~v).
         /// </summary>
         public static uvec3 operator~(uvec3 v) => new uvec3(~v.x, ~v.y, ~v.z);
-        
-        /// <summary>
-        /// Returns a uvec3 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec3 operator%(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
-        
-        /// <summary>
-        /// Returns a uvec3 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec3 operator%(uvec3 lhs, uint rhs) => new uvec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
-        
-        /// <summary>
-        /// Returns a uvec3 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec3 operator%(uint lhs, uvec3 rhs) => new uvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
         
         /// <summary>
         /// Returns a uvec3 from component-wise application of operator^ (lhs ^ rhs).

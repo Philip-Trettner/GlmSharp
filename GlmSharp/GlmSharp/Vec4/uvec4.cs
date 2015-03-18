@@ -1202,26 +1202,6 @@ namespace GlmSharp
         public static uvec4 Div(uint lhs, uint rhs) => new uvec4(lhs / rhs);
         
         /// <summary>
-        /// Returns a uvec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec4 Modulo(uvec4 lhs, uvec4 rhs) => new uvec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
-        
-        /// <summary>
-        /// Returns a uvec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec4 Modulo(uvec4 lhs, uint rhs) => new uvec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
-        
-        /// <summary>
-        /// Returns a uvec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec4 Modulo(uint lhs, uvec4 rhs) => new uvec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
-        
-        /// <summary>
-        /// Returns a uvec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec4 Modulo(uint lhs, uint rhs) => new uvec4(lhs % rhs);
-        
-        /// <summary>
         /// Returns a uvec4 from component-wise application of Xor (lhs ^ rhs).
         /// </summary>
         public static uvec4 Xor(uvec4 lhs, uvec4 rhs) => new uvec4(lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z, lhs.w ^ rhs.w);
@@ -1455,21 +1435,6 @@ namespace GlmSharp
         /// Returns a uvec4 from component-wise application of operator~ (~v).
         /// </summary>
         public static uvec4 operator~(uvec4 v) => new uvec4(~v.x, ~v.y, ~v.z, ~v.w);
-        
-        /// <summary>
-        /// Returns a uvec4 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec4 operator%(uvec4 lhs, uvec4 rhs) => new uvec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
-        
-        /// <summary>
-        /// Returns a uvec4 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec4 operator%(uvec4 lhs, uint rhs) => new uvec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
-        
-        /// <summary>
-        /// Returns a uvec4 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec4 operator%(uint lhs, uvec4 rhs) => new uvec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
         
         /// <summary>
         /// Returns a uvec4 from component-wise application of operator^ (lhs ^ rhs).

@@ -23,6 +23,8 @@ namespace GlmSharpGenerator
             Console.WriteLine("GlmSharp Generator");
             AbstractType.InitTypes();
 
+            // see: https://www.opengl.org/sdk/docs/man4/html/ for functions
+
             Console.WriteLine();
             Console.WriteLine("Types:");
             foreach (var type in AbstractType.Types.Keys)

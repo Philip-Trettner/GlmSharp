@@ -1196,6 +1196,26 @@ namespace GlmSharp
         public static decvec3 Div(decimal lhs, decimal rhs) => new decvec3(lhs / rhs);
         
         /// <summary>
+        /// Returns a decvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec3 Modulo(decvec3 lhs, decvec3 rhs) => new decvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec3 Modulo(decvec3 lhs, decimal rhs) => new decvec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec3 Modulo(decimal lhs, decvec3 rhs) => new decvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec3 Modulo(decimal lhs, decimal rhs) => new decvec3(lhs % rhs);
+        
+        /// <summary>
         /// Returns a decvec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static decvec3 Degrees(decvec3 v) => new decvec3(v.x * 57.295779513082320876798154814105170332405472466564321m, v.y * 57.295779513082320876798154814105170332405472466564321m, v.z * 57.295779513082320876798154814105170332405472466564321m);
@@ -1539,6 +1559,21 @@ namespace GlmSharp
         /// Returns a decvec3 from component-wise application of operator- (-v).
         /// </summary>
         public static decvec3 operator-(decvec3 v) => new decvec3(-v.x, -v.y, -v.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static decvec3 operator%(decvec3 lhs, decvec3 rhs) => new decvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static decvec3 operator%(decvec3 lhs, decimal rhs) => new decvec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static decvec3 operator%(decimal lhs, decvec3 rhs) => new decvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
 
         #endregion
 

@@ -1223,26 +1223,6 @@ namespace GlmSharp
         public static ivec4 Div(int lhs, int rhs) => new ivec4(lhs / rhs);
         
         /// <summary>
-        /// Returns a ivec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec4 Modulo(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
-        
-        /// <summary>
-        /// Returns a ivec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec4 Modulo(ivec4 lhs, int rhs) => new ivec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
-        
-        /// <summary>
-        /// Returns a ivec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec4 Modulo(int lhs, ivec4 rhs) => new ivec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
-        
-        /// <summary>
-        /// Returns a ivec4 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec4 Modulo(int lhs, int rhs) => new ivec4(lhs % rhs);
-        
-        /// <summary>
         /// Returns a ivec4 from component-wise application of Xor (lhs ^ rhs).
         /// </summary>
         public static ivec4 Xor(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z, lhs.w ^ rhs.w);
@@ -1481,21 +1461,6 @@ namespace GlmSharp
         /// Returns a ivec4 from component-wise application of operator~ (~v).
         /// </summary>
         public static ivec4 operator~(ivec4 v) => new ivec4(~v.x, ~v.y, ~v.z, ~v.w);
-        
-        /// <summary>
-        /// Returns a ivec4 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec4 operator%(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
-        
-        /// <summary>
-        /// Returns a ivec4 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec4 operator%(ivec4 lhs, int rhs) => new ivec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
-        
-        /// <summary>
-        /// Returns a ivec4 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec4 operator%(int lhs, ivec4 rhs) => new ivec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
         
         /// <summary>
         /// Returns a ivec4 from component-wise application of operator^ (lhs ^ rhs).

@@ -1136,26 +1136,6 @@ namespace GlmSharp
         public static uvec2 Div(uint lhs, uint rhs) => new uvec2(lhs / rhs);
         
         /// <summary>
-        /// Returns a uvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec2 Modulo(uvec2 lhs, uvec2 rhs) => new uvec2(lhs.x % rhs.x, lhs.y % rhs.y);
-        
-        /// <summary>
-        /// Returns a uvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec2 Modulo(uvec2 lhs, uint rhs) => new uvec2(lhs.x % rhs, lhs.y % rhs);
-        
-        /// <summary>
-        /// Returns a uvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec2 Modulo(uint lhs, uvec2 rhs) => new uvec2(lhs % rhs.x, lhs % rhs.y);
-        
-        /// <summary>
-        /// Returns a uvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static uvec2 Modulo(uint lhs, uint rhs) => new uvec2(lhs % rhs);
-        
-        /// <summary>
         /// Returns a uvec2 from component-wise application of Xor (lhs ^ rhs).
         /// </summary>
         public static uvec2 Xor(uvec2 lhs, uvec2 rhs) => new uvec2(lhs.x ^ rhs.x, lhs.y ^ rhs.y);
@@ -1389,21 +1369,6 @@ namespace GlmSharp
         /// Returns a uvec2 from component-wise application of operator~ (~v).
         /// </summary>
         public static uvec2 operator~(uvec2 v) => new uvec2(~v.x, ~v.y);
-        
-        /// <summary>
-        /// Returns a uvec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec2 operator%(uvec2 lhs, uvec2 rhs) => new uvec2(lhs.x % rhs.x, lhs.y % rhs.y);
-        
-        /// <summary>
-        /// Returns a uvec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec2 operator%(uvec2 lhs, uint rhs) => new uvec2(lhs.x % rhs, lhs.y % rhs);
-        
-        /// <summary>
-        /// Returns a uvec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static uvec2 operator%(uint lhs, uvec2 rhs) => new uvec2(lhs % rhs.x, lhs % rhs.y);
         
         /// <summary>
         /// Returns a uvec2 from component-wise application of operator^ (lhs ^ rhs).

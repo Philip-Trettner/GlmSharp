@@ -1252,6 +1252,26 @@ namespace GlmSharp
         public static vec2 Div(float lhs, float rhs) => new vec2(lhs / rhs);
         
         /// <summary>
+        /// Returns a vec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec2 Modulo(vec2 lhs, vec2 rhs) => new vec2(lhs.x % rhs.x, lhs.y % rhs.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec2 Modulo(vec2 lhs, float rhs) => new vec2(lhs.x % rhs, lhs.y % rhs);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec2 Modulo(float lhs, vec2 rhs) => new vec2(lhs % rhs.x, lhs % rhs.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec2 Modulo(float lhs, float rhs) => new vec2(lhs % rhs);
+        
+        /// <summary>
         /// Returns a vec2 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static vec2 Degrees(vec2 v) => new vec2(v.x * 57.295779513082320876798154814105170332405472466564321f, v.y * 57.295779513082320876798154814105170332405472466564321f);
@@ -1595,6 +1615,21 @@ namespace GlmSharp
         /// Returns a vec2 from component-wise application of operator- (-v).
         /// </summary>
         public static vec2 operator-(vec2 v) => new vec2(-v.x, -v.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec2 operator%(vec2 lhs, vec2 rhs) => new vec2(lhs.x % rhs.x, lhs.y % rhs.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec2 operator%(vec2 lhs, float rhs) => new vec2(lhs.x % rhs, lhs.y % rhs);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec2 operator%(float lhs, vec2 rhs) => new vec2(lhs % rhs.x, lhs % rhs.y);
 
         #endregion
 

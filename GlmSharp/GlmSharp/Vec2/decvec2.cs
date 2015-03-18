@@ -1182,6 +1182,26 @@ namespace GlmSharp
         public static decvec2 Div(decimal lhs, decimal rhs) => new decvec2(lhs / rhs);
         
         /// <summary>
+        /// Returns a decvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec2 Modulo(decvec2 lhs, decvec2 rhs) => new decvec2(lhs.x % rhs.x, lhs.y % rhs.y);
+        
+        /// <summary>
+        /// Returns a decvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec2 Modulo(decvec2 lhs, decimal rhs) => new decvec2(lhs.x % rhs, lhs.y % rhs);
+        
+        /// <summary>
+        /// Returns a decvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec2 Modulo(decimal lhs, decvec2 rhs) => new decvec2(lhs % rhs.x, lhs % rhs.y);
+        
+        /// <summary>
+        /// Returns a decvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static decvec2 Modulo(decimal lhs, decimal rhs) => new decvec2(lhs % rhs);
+        
+        /// <summary>
         /// Returns a decvec2 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static decvec2 Degrees(decvec2 v) => new decvec2(v.x * 57.295779513082320876798154814105170332405472466564321m, v.y * 57.295779513082320876798154814105170332405472466564321m);
@@ -1525,6 +1545,21 @@ namespace GlmSharp
         /// Returns a decvec2 from component-wise application of operator- (-v).
         /// </summary>
         public static decvec2 operator-(decvec2 v) => new decvec2(-v.x, -v.y);
+        
+        /// <summary>
+        /// Returns a decvec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static decvec2 operator%(decvec2 lhs, decvec2 rhs) => new decvec2(lhs.x % rhs.x, lhs.y % rhs.y);
+        
+        /// <summary>
+        /// Returns a decvec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static decvec2 operator%(decvec2 lhs, decimal rhs) => new decvec2(lhs.x % rhs, lhs.y % rhs);
+        
+        /// <summary>
+        /// Returns a decvec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static decvec2 operator%(decimal lhs, decvec2 rhs) => new decvec2(lhs % rhs.x, lhs % rhs.y);
 
         #endregion
 

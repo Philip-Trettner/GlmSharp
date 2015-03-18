@@ -1303,6 +1303,26 @@ namespace GlmSharp
         public static vec4 Div(float lhs, float rhs) => new vec4(lhs / rhs);
         
         /// <summary>
+        /// Returns a vec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec4 Modulo(vec4 lhs, vec4 rhs) => new vec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec4 Modulo(vec4 lhs, float rhs) => new vec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec4 Modulo(float lhs, vec4 rhs) => new vec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec4 Modulo(float lhs, float rhs) => new vec4(lhs % rhs);
+        
+        /// <summary>
         /// Returns a vec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static vec4 Degrees(vec4 v) => new vec4(v.x * 57.295779513082320876798154814105170332405472466564321f, v.y * 57.295779513082320876798154814105170332405472466564321f, v.z * 57.295779513082320876798154814105170332405472466564321f, v.w * 57.295779513082320876798154814105170332405472466564321f);
@@ -1646,6 +1666,21 @@ namespace GlmSharp
         /// Returns a vec4 from component-wise application of operator- (-v).
         /// </summary>
         public static vec4 operator-(vec4 v) => new vec4(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec4 operator%(vec4 lhs, vec4 rhs) => new vec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec4 operator%(vec4 lhs, float rhs) => new vec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec4 operator%(float lhs, vec4 rhs) => new vec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
 
         #endregion
 

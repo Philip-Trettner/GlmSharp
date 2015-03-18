@@ -1157,26 +1157,6 @@ namespace GlmSharp
         public static lvec2 Div(long lhs, long rhs) => new lvec2(lhs / rhs);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static lvec2 Modulo(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x % rhs.x, lhs.y % rhs.y);
-        
-        /// <summary>
-        /// Returns a lvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static lvec2 Modulo(lvec2 lhs, long rhs) => new lvec2(lhs.x % rhs, lhs.y % rhs);
-        
-        /// <summary>
-        /// Returns a lvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static lvec2 Modulo(long lhs, lvec2 rhs) => new lvec2(lhs % rhs.x, lhs % rhs.y);
-        
-        /// <summary>
-        /// Returns a lvec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static lvec2 Modulo(long lhs, long rhs) => new lvec2(lhs % rhs);
-        
-        /// <summary>
         /// Returns a lvec2 from component-wise application of Xor (lhs ^ rhs).
         /// </summary>
         public static lvec2 Xor(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x ^ rhs.x, lhs.y ^ rhs.y);
@@ -1415,21 +1395,6 @@ namespace GlmSharp
         /// Returns a lvec2 from component-wise application of operator~ (~v).
         /// </summary>
         public static lvec2 operator~(lvec2 v) => new lvec2(~v.x, ~v.y);
-        
-        /// <summary>
-        /// Returns a lvec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static lvec2 operator%(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x % rhs.x, lhs.y % rhs.y);
-        
-        /// <summary>
-        /// Returns a lvec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static lvec2 operator%(lvec2 lhs, long rhs) => new lvec2(lhs.x % rhs, lhs.y % rhs);
-        
-        /// <summary>
-        /// Returns a lvec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static lvec2 operator%(long lhs, lvec2 rhs) => new lvec2(lhs % rhs.x, lhs % rhs.y);
         
         /// <summary>
         /// Returns a lvec2 from component-wise application of operator^ (lhs ^ rhs).

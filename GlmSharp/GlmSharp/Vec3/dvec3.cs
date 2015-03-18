@@ -1266,6 +1266,26 @@ namespace GlmSharp
         public static dvec3 Div(double lhs, double rhs) => new dvec3(lhs / rhs);
         
         /// <summary>
+        /// Returns a dvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec3 Modulo(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        
+        /// <summary>
+        /// Returns a dvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec3 Modulo(dvec3 lhs, double rhs) => new dvec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        
+        /// <summary>
+        /// Returns a dvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec3 Modulo(double lhs, dvec3 rhs) => new dvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
+        
+        /// <summary>
+        /// Returns a dvec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec3 Modulo(double lhs, double rhs) => new dvec3(lhs % rhs);
+        
+        /// <summary>
         /// Returns a dvec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static dvec3 Degrees(dvec3 v) => new dvec3(v.x * 57.295779513082320876798154814105170332405472466564321d, v.y * 57.295779513082320876798154814105170332405472466564321d, v.z * 57.295779513082320876798154814105170332405472466564321d);
@@ -1609,6 +1629,21 @@ namespace GlmSharp
         /// Returns a dvec3 from component-wise application of operator- (-v).
         /// </summary>
         public static dvec3 operator-(dvec3 v) => new dvec3(-v.x, -v.y, -v.z);
+        
+        /// <summary>
+        /// Returns a dvec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec3 operator%(dvec3 lhs, dvec3 rhs) => new dvec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        
+        /// <summary>
+        /// Returns a dvec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec3 operator%(dvec3 lhs, double rhs) => new dvec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        
+        /// <summary>
+        /// Returns a dvec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec3 operator%(double lhs, dvec3 rhs) => new dvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
 
         #endregion
 

@@ -1186,26 +1186,6 @@ namespace GlmSharp
         public static ivec3 Div(int lhs, int rhs) => new ivec3(lhs / rhs);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec3 Modulo(ivec3 lhs, ivec3 rhs) => new ivec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
-        
-        /// <summary>
-        /// Returns a ivec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec3 Modulo(ivec3 lhs, int rhs) => new ivec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
-        
-        /// <summary>
-        /// Returns a ivec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec3 Modulo(int lhs, ivec3 rhs) => new ivec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
-        
-        /// <summary>
-        /// Returns a ivec3 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec3 Modulo(int lhs, int rhs) => new ivec3(lhs % rhs);
-        
-        /// <summary>
         /// Returns a ivec3 from component-wise application of Xor (lhs ^ rhs).
         /// </summary>
         public static ivec3 Xor(ivec3 lhs, ivec3 rhs) => new ivec3(lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z);
@@ -1444,21 +1424,6 @@ namespace GlmSharp
         /// Returns a ivec3 from component-wise application of operator~ (~v).
         /// </summary>
         public static ivec3 operator~(ivec3 v) => new ivec3(~v.x, ~v.y, ~v.z);
-        
-        /// <summary>
-        /// Returns a ivec3 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec3 operator%(ivec3 lhs, ivec3 rhs) => new ivec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
-        
-        /// <summary>
-        /// Returns a ivec3 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec3 operator%(ivec3 lhs, int rhs) => new ivec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
-        
-        /// <summary>
-        /// Returns a ivec3 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec3 operator%(int lhs, ivec3 rhs) => new ivec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
         
         /// <summary>
         /// Returns a ivec3 from component-wise application of operator^ (lhs ^ rhs).

@@ -1266,6 +1266,26 @@ namespace GlmSharp
         public static vec3 Div(float lhs, float rhs) => new vec3(lhs / rhs);
         
         /// <summary>
+        /// Returns a vec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec3 Modulo(vec3 lhs, vec3 rhs) => new vec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec3 Modulo(vec3 lhs, float rhs) => new vec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec3 Modulo(float lhs, vec3 rhs) => new vec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static vec3 Modulo(float lhs, float rhs) => new vec3(lhs % rhs);
+        
+        /// <summary>
         /// Returns a vec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static vec3 Degrees(vec3 v) => new vec3(v.x * 57.295779513082320876798154814105170332405472466564321f, v.y * 57.295779513082320876798154814105170332405472466564321f, v.z * 57.295779513082320876798154814105170332405472466564321f);
@@ -1609,6 +1629,21 @@ namespace GlmSharp
         /// Returns a vec3 from component-wise application of operator- (-v).
         /// </summary>
         public static vec3 operator-(vec3 v) => new vec3(-v.x, -v.y, -v.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec3 operator%(vec3 lhs, vec3 rhs) => new vec3(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec3 operator%(vec3 lhs, float rhs) => new vec3(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static vec3 operator%(float lhs, vec3 rhs) => new vec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
 
         #endregion
 

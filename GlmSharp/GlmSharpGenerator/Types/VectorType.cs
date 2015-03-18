@@ -553,7 +553,9 @@ namespace GlmSharpGenerator.Types
                     yield return new ComponentWiseStaticFunction(Fields, this, "Smootherstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()");
                 }
 
+
                 // outer product
+                // TODO: add to respective matrices
                 for (var comps = 2; comps <= 4; ++comps)
                 {
                     var otherVec = new VectorType(BaseType, comps);
@@ -572,7 +574,7 @@ namespace GlmSharpGenerator.Types
                         yield return new Function(matThatThis, "OuterProduct")
                         {
                             Static = true,
-                            Parameters = new[] { this.Name + " c" , otherVec.Name + " r" },
+                            Parameters = new[] { this.Name + " c", otherVec.Name + " r" },
                             CodeString = Construct(matThatThis, comps.ForIndexUpTo(ArgOfs).SelectMany(c => Components.ForIndexUpTo(ArgOf).Format("c.{0} * r." + c))),
                             Comment = "OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r."
                         };
@@ -596,13 +598,11 @@ namespace GlmSharpGenerator.Types
 
                 if (BaseType.IsInteger)
                 {
-                    yield return new ComponentWiseStaticFunction(Fields, this, "Modulo", this, "lhs", this, "rhs", "{0} % {1}");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Xor", this, "lhs", this, "rhs", "{0} ^ {1}");
                     yield return new ComponentWiseStaticFunction(Fields, this, "BitwiseOr", this, "lhs", this, "rhs", "{0} | {1}");
                     yield return new ComponentWiseStaticFunction(Fields, this, "BitwiseAnd", this, "lhs", this, "rhs", "{0} & {1}");
 
                     yield return new ComponentWiseOperator(Fields, this, "~", this, "v", "~{0}");
-                    yield return new ComponentWiseOperator(Fields, this, "%", this, "lhs", this, "rhs", "{0} % {1}");
                     yield return new ComponentWiseOperator(Fields, this, "^", this, "lhs", this, "rhs", "{0} ^ {1}");
                     yield return new ComponentWiseOperator(Fields, this, "|", this, "lhs", this, "rhs", "{0} | {1}");
                     yield return new ComponentWiseOperator(Fields, this, "&", this, "lhs", this, "rhs", "{0} & {1}");
@@ -616,6 +616,9 @@ namespace GlmSharpGenerator.Types
 
             if (BaseType.IsFloatingPoint)
             {
+                yield return new ComponentWiseStaticFunction(Fields, this, "Modulo", this, "lhs", this, "rhs", "{0} % {1}");
+                yield return new ComponentWiseOperator(Fields, this, "%", this, "lhs", this, "rhs", "{0} % {1}");
+
                 yield return new ComponentWiseStaticFunction(Fields, this, "Degrees", this, "v", "{0} * " + ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321")) { AdditionalComment = "Radians-To-Degrees Conversion" };
                 yield return new ComponentWiseStaticFunction(Fields, this, "Radians", this, "v", "{0} * " + ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172")) { AdditionalComment = "Degrees-To-Radians Conversion" };
 

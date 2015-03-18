@@ -1157,26 +1157,6 @@ namespace GlmSharp
         public static ivec2 Div(int lhs, int rhs) => new ivec2(lhs / rhs);
         
         /// <summary>
-        /// Returns a ivec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec2 Modulo(ivec2 lhs, ivec2 rhs) => new ivec2(lhs.x % rhs.x, lhs.y % rhs.y);
-        
-        /// <summary>
-        /// Returns a ivec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec2 Modulo(ivec2 lhs, int rhs) => new ivec2(lhs.x % rhs, lhs.y % rhs);
-        
-        /// <summary>
-        /// Returns a ivec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec2 Modulo(int lhs, ivec2 rhs) => new ivec2(lhs % rhs.x, lhs % rhs.y);
-        
-        /// <summary>
-        /// Returns a ivec2 from component-wise application of Modulo (lhs % rhs).
-        /// </summary>
-        public static ivec2 Modulo(int lhs, int rhs) => new ivec2(lhs % rhs);
-        
-        /// <summary>
         /// Returns a ivec2 from component-wise application of Xor (lhs ^ rhs).
         /// </summary>
         public static ivec2 Xor(ivec2 lhs, ivec2 rhs) => new ivec2(lhs.x ^ rhs.x, lhs.y ^ rhs.y);
@@ -1415,21 +1395,6 @@ namespace GlmSharp
         /// Returns a ivec2 from component-wise application of operator~ (~v).
         /// </summary>
         public static ivec2 operator~(ivec2 v) => new ivec2(~v.x, ~v.y);
-        
-        /// <summary>
-        /// Returns a ivec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec2 operator%(ivec2 lhs, ivec2 rhs) => new ivec2(lhs.x % rhs.x, lhs.y % rhs.y);
-        
-        /// <summary>
-        /// Returns a ivec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec2 operator%(ivec2 lhs, int rhs) => new ivec2(lhs.x % rhs, lhs.y % rhs);
-        
-        /// <summary>
-        /// Returns a ivec2 from component-wise application of operator% (lhs % rhs).
-        /// </summary>
-        public static ivec2 operator%(int lhs, ivec2 rhs) => new ivec2(lhs % rhs.x, lhs % rhs.y);
         
         /// <summary>
         /// Returns a ivec2 from component-wise application of operator^ (lhs ^ rhs).

@@ -1303,6 +1303,26 @@ namespace GlmSharp
         public static dvec4 Div(double lhs, double rhs) => new dvec4(lhs / rhs);
         
         /// <summary>
+        /// Returns a dvec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec4 Modulo(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec4 Modulo(dvec4 lhs, double rhs) => new dvec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec4 Modulo(double lhs, dvec4 rhs) => new dvec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec4 Modulo(double lhs, double rhs) => new dvec4(lhs % rhs);
+        
+        /// <summary>
         /// Returns a dvec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static dvec4 Degrees(dvec4 v) => new dvec4(v.x * 57.295779513082320876798154814105170332405472466564321d, v.y * 57.295779513082320876798154814105170332405472466564321d, v.z * 57.295779513082320876798154814105170332405472466564321d, v.w * 57.295779513082320876798154814105170332405472466564321d);
@@ -1646,6 +1666,21 @@ namespace GlmSharp
         /// Returns a dvec4 from component-wise application of operator- (-v).
         /// </summary>
         public static dvec4 operator-(dvec4 v) => new dvec4(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec4 operator%(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x % rhs.x, lhs.y % rhs.y, lhs.z % rhs.z, lhs.w % rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec4 operator%(dvec4 lhs, double rhs) => new dvec4(lhs.x % rhs, lhs.y % rhs, lhs.z % rhs, lhs.w % rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec4 operator%(double lhs, dvec4 rhs) => new dvec4(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z, lhs % rhs.w);
 
         #endregion
 

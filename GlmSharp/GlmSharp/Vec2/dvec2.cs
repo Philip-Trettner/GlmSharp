@@ -1252,6 +1252,26 @@ namespace GlmSharp
         public static dvec2 Div(double lhs, double rhs) => new dvec2(lhs / rhs);
         
         /// <summary>
+        /// Returns a dvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec2 Modulo(dvec2 lhs, dvec2 rhs) => new dvec2(lhs.x % rhs.x, lhs.y % rhs.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec2 Modulo(dvec2 lhs, double rhs) => new dvec2(lhs.x % rhs, lhs.y % rhs);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec2 Modulo(double lhs, dvec2 rhs) => new dvec2(lhs % rhs.x, lhs % rhs.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Modulo (lhs % rhs).
+        /// </summary>
+        public static dvec2 Modulo(double lhs, double rhs) => new dvec2(lhs % rhs);
+        
+        /// <summary>
         /// Returns a dvec2 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static dvec2 Degrees(dvec2 v) => new dvec2(v.x * 57.295779513082320876798154814105170332405472466564321d, v.y * 57.295779513082320876798154814105170332405472466564321d);
@@ -1595,6 +1615,21 @@ namespace GlmSharp
         /// Returns a dvec2 from component-wise application of operator- (-v).
         /// </summary>
         public static dvec2 operator-(dvec2 v) => new dvec2(-v.x, -v.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec2 operator%(dvec2 lhs, dvec2 rhs) => new dvec2(lhs.x % rhs.x, lhs.y % rhs.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec2 operator%(dvec2 lhs, double rhs) => new dvec2(lhs.x % rhs, lhs.y % rhs);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of operator% (lhs % rhs).
+        /// </summary>
+        public static dvec2 operator%(double lhs, dvec2 rhs) => new dvec2(lhs % rhs.x, lhs % rhs.y);
 
         #endregion
 
