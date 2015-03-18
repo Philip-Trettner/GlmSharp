@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct gmat3x2<T> : IReadOnlyList<T>, IEquatable<gmat3x2<T>>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -57,6 +59,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public T m21;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -92,11 +99,19 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public gvec3<T> Row1 => new gvec3<T>(m01, m11, m21);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
         public static gmat3x2<T> Zero { get; } = new gmat3x2<T>(default(T), default(T), default(T), default(T), default(T), default(T));
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

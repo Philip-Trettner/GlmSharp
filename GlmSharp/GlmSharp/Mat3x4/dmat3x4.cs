@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct dmat3x4 : IReadOnlyList<double>, IEquatable<dmat3x4>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -93,6 +95,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public double m23;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -138,6 +145,11 @@ namespace GlmSharp
         /// Returns the row nr 3
         /// </summary>
         public dvec3 Row3 => new dvec3(m03, m13, m23);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -153,6 +165,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static dmat3x4 Identity { get; } = new dmat3x4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static dmat3x4 AllMaxValue { get; } = new dmat3x4(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static dmat3x4 DiagonalMaxValue { get; } = new dmat3x4(double.MaxValue, 0.0, 0.0, 0.0, 0.0, double.MaxValue, 0.0, 0.0, 0.0, 0.0, double.MaxValue, 0.0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static dmat3x4 AllMinValue { get; } = new dmat3x4(double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static dmat3x4 DiagonalMinValue { get; } = new dmat3x4(double.MinValue, 0.0, 0.0, 0.0, 0.0, double.MinValue, 0.0, 0.0, 0.0, 0.0, double.MinValue, 0.0);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static dmat3x4 AllEpsilon { get; } = new dmat3x4(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static dmat3x4 DiagonalEpsilon { get; } = new dmat3x4(double.Epsilon, 0.0, 0.0, 0.0, 0.0, double.Epsilon, 0.0, 0.0, 0.0, 0.0, double.Epsilon, 0.0);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static dmat3x4 AllNaN { get; } = new dmat3x4(double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static dmat3x4 DiagonalNaN { get; } = new dmat3x4(double.NaN, 0.0, 0.0, 0.0, 0.0, double.NaN, 0.0, 0.0, 0.0, 0.0, double.NaN, 0.0);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static dmat3x4 AllNegativeInfinity { get; } = new dmat3x4(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static dmat3x4 DiagonalNegativeInfinity { get; } = new dmat3x4(double.NegativeInfinity, 0.0, 0.0, 0.0, 0.0, double.NegativeInfinity, 0.0, 0.0, 0.0, 0.0, double.NegativeInfinity, 0.0);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static dmat3x4 AllPositiveInfinity { get; } = new dmat3x4(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static dmat3x4 DiagonalPositiveInfinity { get; } = new dmat3x4(double.PositiveInfinity, 0.0, 0.0, 0.0, 0.0, double.PositiveInfinity, 0.0, 0.0, 0.0, 0.0, double.PositiveInfinity, 0.0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

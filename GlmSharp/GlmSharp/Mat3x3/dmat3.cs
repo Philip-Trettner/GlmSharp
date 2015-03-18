@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct dmat3 : IReadOnlyList<double>, IEquatable<dmat3>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -75,6 +77,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public double m22;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -115,6 +122,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public dvec3 Row2 => new dvec3(m02, m12, m22);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -130,6 +142,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static dmat3 Identity { get; } = new dmat3(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static dmat3 AllMaxValue { get; } = new dmat3(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static dmat3 DiagonalMaxValue { get; } = new dmat3(double.MaxValue, 0.0, 0.0, 0.0, double.MaxValue, 0.0, 0.0, 0.0, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static dmat3 AllMinValue { get; } = new dmat3(double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static dmat3 DiagonalMinValue { get; } = new dmat3(double.MinValue, 0.0, 0.0, 0.0, double.MinValue, 0.0, 0.0, 0.0, double.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static dmat3 AllEpsilon { get; } = new dmat3(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static dmat3 DiagonalEpsilon { get; } = new dmat3(double.Epsilon, 0.0, 0.0, 0.0, double.Epsilon, 0.0, 0.0, 0.0, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static dmat3 AllNaN { get; } = new dmat3(double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static dmat3 DiagonalNaN { get; } = new dmat3(double.NaN, 0.0, 0.0, 0.0, double.NaN, 0.0, 0.0, 0.0, double.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static dmat3 AllNegativeInfinity { get; } = new dmat3(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static dmat3 DiagonalNegativeInfinity { get; } = new dmat3(double.NegativeInfinity, 0.0, 0.0, 0.0, double.NegativeInfinity, 0.0, 0.0, 0.0, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static dmat3 AllPositiveInfinity { get; } = new dmat3(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static dmat3 DiagonalPositiveInfinity { get; } = new dmat3(double.PositiveInfinity, 0.0, 0.0, 0.0, double.PositiveInfinity, 0.0, 0.0, 0.0, double.PositiveInfinity);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

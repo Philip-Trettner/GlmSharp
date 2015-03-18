@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct bmat2x4 : IReadOnlyList<bool>, IEquatable<bmat2x4>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -69,6 +71,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public bool m13;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -109,6 +116,11 @@ namespace GlmSharp
         /// Returns the row nr 3
         /// </summary>
         public bvec2 Row3 => new bvec2(m03, m13);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -124,6 +136,9 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static bmat2x4 Identity { get; } = new bmat2x4(true, false, false, false, false, true, false, false);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

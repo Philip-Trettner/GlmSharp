@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct lmat4x3 : IReadOnlyList<long>, IEquatable<lmat4x3>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -93,6 +95,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public long m32;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -138,6 +145,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public lvec4 Row2 => new lvec4(m02, m12, m22, m32);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -153,6 +165,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static lmat4x3 Identity { get; } = new lmat4x3(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static lmat4x3 AllMaxValue { get; } = new lmat4x3(long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static lmat4x3 DiagonalMaxValue { get; } = new lmat4x3(long.MaxValue, 0, 0, 0, long.MaxValue, 0, 0, 0, long.MaxValue, 0, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static lmat4x3 AllMinValue { get; } = new lmat4x3(long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static lmat4x3 DiagonalMinValue { get; } = new lmat4x3(long.MinValue, 0, 0, 0, long.MinValue, 0, 0, 0, long.MinValue, 0, 0, 0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

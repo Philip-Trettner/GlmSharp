@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct imat3 : IReadOnlyList<int>, IEquatable<imat3>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -75,6 +77,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public int m22;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -115,6 +122,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public ivec3 Row2 => new ivec3(m02, m12, m22);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -130,6 +142,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static imat3 Identity { get; } = new imat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static imat3 AllMaxValue { get; } = new imat3(int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static imat3 DiagonalMaxValue { get; } = new imat3(int.MaxValue, 0, 0, 0, int.MaxValue, 0, 0, 0, int.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static imat3 AllMinValue { get; } = new imat3(int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static imat3 DiagonalMinValue { get; } = new imat3(int.MinValue, 0, 0, 0, int.MinValue, 0, 0, 0, int.MinValue);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

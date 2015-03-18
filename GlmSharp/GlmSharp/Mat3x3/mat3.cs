@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct mat3 : IReadOnlyList<float>, IEquatable<mat3>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -75,6 +77,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public float m22;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -115,6 +122,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public vec3 Row2 => new vec3(m02, m12, m22);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -130,6 +142,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static mat3 Identity { get; } = new mat3(1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static mat3 AllMaxValue { get; } = new mat3(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static mat3 DiagonalMaxValue { get; } = new mat3(float.MaxValue, 0f, 0f, 0f, float.MaxValue, 0f, 0f, 0f, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static mat3 AllMinValue { get; } = new mat3(float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static mat3 DiagonalMinValue { get; } = new mat3(float.MinValue, 0f, 0f, 0f, float.MinValue, 0f, 0f, 0f, float.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static mat3 AllEpsilon { get; } = new mat3(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static mat3 DiagonalEpsilon { get; } = new mat3(float.Epsilon, 0f, 0f, 0f, float.Epsilon, 0f, 0f, 0f, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static mat3 AllNaN { get; } = new mat3(float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static mat3 DiagonalNaN { get; } = new mat3(float.NaN, 0f, 0f, 0f, float.NaN, 0f, 0f, 0f, float.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static mat3 AllNegativeInfinity { get; } = new mat3(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static mat3 DiagonalNegativeInfinity { get; } = new mat3(float.NegativeInfinity, 0f, 0f, 0f, float.NegativeInfinity, 0f, 0f, 0f, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static mat3 AllPositiveInfinity { get; } = new mat3(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static mat3 DiagonalPositiveInfinity { get; } = new mat3(float.PositiveInfinity, 0f, 0f, 0f, float.PositiveInfinity, 0f, 0f, 0f, float.PositiveInfinity);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

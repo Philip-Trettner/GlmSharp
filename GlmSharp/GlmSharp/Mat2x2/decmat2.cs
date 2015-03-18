@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct decmat2 : IReadOnlyList<decimal>, IEquatable<decmat2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -45,6 +47,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public decimal m11;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -75,6 +82,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public decvec2 Row1 => new decvec2(m01, m11);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -90,6 +102,39 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static decmat2 Identity { get; } = new decmat2(1m, 0m, 0m, 1m);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static decmat2 AllMaxValue { get; } = new decmat2(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static decmat2 DiagonalMaxValue { get; } = new decmat2(decimal.MaxValue, 0m, 0m, decimal.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static decmat2 AllMinValue { get; } = new decmat2(decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static decmat2 DiagonalMinValue { get; } = new decmat2(decimal.MinValue, 0m, 0m, decimal.MinValue);
+        
+        /// <summary>
+        /// Predefined all-MinusOne matrix
+        /// </summary>
+        public static decmat2 AllMinusOne { get; } = new decmat2(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
+        
+        /// <summary>
+        /// Predefined diagonal-MinusOne matrix
+        /// </summary>
+        public static decmat2 DiagonalMinusOne { get; } = new decmat2(decimal.MinusOne, 0m, 0m, decimal.MinusOne);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

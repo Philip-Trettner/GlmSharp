@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct umat4x2 : IReadOnlyList<uint>, IEquatable<umat4x2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -69,6 +71,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public uint m31;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -109,6 +116,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public uvec4 Row1 => new uvec4(m01, m11, m21, m31);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -124,6 +136,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static umat4x2 Identity { get; } = new umat4x2(1u, 0u, 0u, 1u, 0u, 0u, 0u, 0u);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static umat4x2 AllMaxValue { get; } = new umat4x2(uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static umat4x2 DiagonalMaxValue { get; } = new umat4x2(uint.MaxValue, 0u, 0u, uint.MaxValue, 0u, 0u, 0u, 0u);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static umat4x2 AllMinValue { get; } = new umat4x2(uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static umat4x2 DiagonalMinValue { get; } = new umat4x2(uint.MinValue, 0u, 0u, uint.MinValue, 0u, 0u, 0u, 0u);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct umat2 : IReadOnlyList<uint>, IEquatable<umat2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -45,6 +47,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public uint m11;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -75,6 +82,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public uvec2 Row1 => new uvec2(m01, m11);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -90,6 +102,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static umat2 Identity { get; } = new umat2(1u, 0u, 0u, 1u);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static umat2 AllMaxValue { get; } = new umat2(uint.MaxValue, uint.MaxValue, uint.MaxValue, uint.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static umat2 DiagonalMaxValue { get; } = new umat2(uint.MaxValue, 0u, 0u, uint.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static umat2 AllMinValue { get; } = new umat2(uint.MinValue, uint.MinValue, uint.MinValue, uint.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static umat2 DiagonalMinValue { get; } = new umat2(uint.MinValue, 0u, 0u, uint.MinValue);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

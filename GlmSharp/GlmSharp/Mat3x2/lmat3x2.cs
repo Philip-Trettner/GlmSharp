@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct lmat3x2 : IReadOnlyList<long>, IEquatable<lmat3x2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -57,6 +59,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public long m21;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -92,6 +99,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public lvec3 Row1 => new lvec3(m01, m11, m21);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -107,6 +119,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static lmat3x2 Identity { get; } = new lmat3x2(1, 0, 0, 1, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static lmat3x2 AllMaxValue { get; } = new lmat3x2(long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static lmat3x2 DiagonalMaxValue { get; } = new lmat3x2(long.MaxValue, 0, 0, long.MaxValue, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static lmat3x2 AllMinValue { get; } = new lmat3x2(long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static lmat3x2 DiagonalMinValue { get; } = new lmat3x2(long.MinValue, 0, 0, long.MinValue, 0, 0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

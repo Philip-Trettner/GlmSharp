@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct lmat3 : IReadOnlyList<long>, IEquatable<lmat3>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -75,6 +77,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public long m22;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -115,6 +122,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public lvec3 Row2 => new lvec3(m02, m12, m22);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -130,6 +142,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static lmat3 Identity { get; } = new lmat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static lmat3 AllMaxValue { get; } = new lmat3(long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static lmat3 DiagonalMaxValue { get; } = new lmat3(long.MaxValue, 0, 0, 0, long.MaxValue, 0, 0, 0, long.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static lmat3 AllMinValue { get; } = new lmat3(long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static lmat3 DiagonalMinValue { get; } = new lmat3(long.MinValue, 0, 0, 0, long.MinValue, 0, 0, 0, long.MinValue);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct cmat2x3 : IReadOnlyList<Complex>, IEquatable<cmat2x3>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -57,6 +59,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public Complex m12;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -92,6 +99,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public cvec2 Row2 => new cvec2(m02, m12);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -107,6 +119,19 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static cmat2x3 Identity { get; } = new cmat2x3(1.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-imaginary-ones matrix
+        /// </summary>
+        public static cmat2x3 ImaginaryOnes { get; } = new cmat2x3(Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne);
+        
+        /// <summary>
+        /// Predefined diagonal-imaginary-one matrix
+        /// </summary>
+        public static cmat2x3 ImaginaryIdentity { get; } = new cmat2x3(Complex.ImaginaryOne, 0.0, 0.0, 0.0, Complex.ImaginaryOne, 0.0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

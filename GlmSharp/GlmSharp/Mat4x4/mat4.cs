@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct mat4 : IReadOnlyList<float>, IEquatable<mat4>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -117,6 +119,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public float m33;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -167,6 +174,11 @@ namespace GlmSharp
         /// Returns the row nr 3
         /// </summary>
         public vec4 Row3 => new vec4(m03, m13, m23, m33);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -182,6 +194,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static mat4 Identity { get; } = new mat4(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 0f, 1f);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static mat4 AllMaxValue { get; } = new mat4(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static mat4 DiagonalMaxValue { get; } = new mat4(float.MaxValue, 0f, 0f, 0f, 0f, float.MaxValue, 0f, 0f, 0f, 0f, float.MaxValue, 0f, 0f, 0f, 0f, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static mat4 AllMinValue { get; } = new mat4(float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static mat4 DiagonalMinValue { get; } = new mat4(float.MinValue, 0f, 0f, 0f, 0f, float.MinValue, 0f, 0f, 0f, 0f, float.MinValue, 0f, 0f, 0f, 0f, float.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static mat4 AllEpsilon { get; } = new mat4(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static mat4 DiagonalEpsilon { get; } = new mat4(float.Epsilon, 0f, 0f, 0f, 0f, float.Epsilon, 0f, 0f, 0f, 0f, float.Epsilon, 0f, 0f, 0f, 0f, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static mat4 AllNaN { get; } = new mat4(float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static mat4 DiagonalNaN { get; } = new mat4(float.NaN, 0f, 0f, 0f, 0f, float.NaN, 0f, 0f, 0f, 0f, float.NaN, 0f, 0f, 0f, 0f, float.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static mat4 AllNegativeInfinity { get; } = new mat4(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static mat4 DiagonalNegativeInfinity { get; } = new mat4(float.NegativeInfinity, 0f, 0f, 0f, 0f, float.NegativeInfinity, 0f, 0f, 0f, 0f, float.NegativeInfinity, 0f, 0f, 0f, 0f, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static mat4 AllPositiveInfinity { get; } = new mat4(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static mat4 DiagonalPositiveInfinity { get; } = new mat4(float.PositiveInfinity, 0f, 0f, 0f, 0f, float.PositiveInfinity, 0f, 0f, 0f, 0f, float.PositiveInfinity, 0f, 0f, 0f, 0f, float.PositiveInfinity);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

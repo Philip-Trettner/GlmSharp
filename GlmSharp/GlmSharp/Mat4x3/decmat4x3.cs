@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct decmat4x3 : IReadOnlyList<decimal>, IEquatable<decmat4x3>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -93,6 +95,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public decimal m32;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -138,6 +145,11 @@ namespace GlmSharp
         /// Returns the row nr 2
         /// </summary>
         public decvec4 Row2 => new decvec4(m02, m12, m22, m32);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -153,6 +165,39 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static decmat4x3 Identity { get; } = new decmat4x3(1m, 0m, 0m, 0m, 1m, 0m, 0m, 0m, 1m, 0m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static decmat4x3 AllMaxValue { get; } = new decmat4x3(decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue, decimal.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static decmat4x3 DiagonalMaxValue { get; } = new decmat4x3(decimal.MaxValue, 0m, 0m, 0m, decimal.MaxValue, 0m, 0m, 0m, decimal.MaxValue, 0m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static decmat4x3 AllMinValue { get; } = new decmat4x3(decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue, decimal.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static decmat4x3 DiagonalMinValue { get; } = new decmat4x3(decimal.MinValue, 0m, 0m, 0m, decimal.MinValue, 0m, 0m, 0m, decimal.MinValue, 0m, 0m, 0m);
+        
+        /// <summary>
+        /// Predefined all-MinusOne matrix
+        /// </summary>
+        public static decmat4x3 AllMinusOne { get; } = new decmat4x3(decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne, decimal.MinusOne);
+        
+        /// <summary>
+        /// Predefined diagonal-MinusOne matrix
+        /// </summary>
+        public static decmat4x3 DiagonalMinusOne { get; } = new decmat4x3(decimal.MinusOne, 0m, 0m, 0m, decimal.MinusOne, 0m, 0m, 0m, decimal.MinusOne, 0m, 0m, 0m);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

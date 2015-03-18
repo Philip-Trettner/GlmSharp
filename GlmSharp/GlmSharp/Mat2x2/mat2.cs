@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct mat2 : IReadOnlyList<float>, IEquatable<mat2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -45,6 +47,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public float m11;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -75,6 +82,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public vec2 Row1 => new vec2(m01, m11);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -90,6 +102,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static mat2 Identity { get; } = new mat2(1f, 0f, 0f, 1f);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static mat2 AllMaxValue { get; } = new mat2(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static mat2 DiagonalMaxValue { get; } = new mat2(float.MaxValue, 0f, 0f, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static mat2 AllMinValue { get; } = new mat2(float.MinValue, float.MinValue, float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static mat2 DiagonalMinValue { get; } = new mat2(float.MinValue, 0f, 0f, float.MinValue);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static mat2 AllEpsilon { get; } = new mat2(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static mat2 DiagonalEpsilon { get; } = new mat2(float.Epsilon, 0f, 0f, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static mat2 AllNaN { get; } = new mat2(float.NaN, float.NaN, float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static mat2 DiagonalNaN { get; } = new mat2(float.NaN, 0f, 0f, float.NaN);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static mat2 AllNegativeInfinity { get; } = new mat2(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static mat2 DiagonalNegativeInfinity { get; } = new mat2(float.NegativeInfinity, 0f, 0f, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static mat2 AllPositiveInfinity { get; } = new mat2(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static mat2 DiagonalPositiveInfinity { get; } = new mat2(float.PositiveInfinity, 0f, 0f, float.PositiveInfinity);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

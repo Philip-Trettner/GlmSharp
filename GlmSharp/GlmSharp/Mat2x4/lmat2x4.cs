@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct lmat2x4 : IReadOnlyList<long>, IEquatable<lmat2x4>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -69,6 +71,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public long m13;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -109,6 +116,11 @@ namespace GlmSharp
         /// Returns the row nr 3
         /// </summary>
         public lvec2 Row3 => new lvec2(m03, m13);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -124,6 +136,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static lmat2x4 Identity { get; } = new lmat2x4(1, 0, 0, 0, 0, 1, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static lmat2x4 AllMaxValue { get; } = new lmat2x4(long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static lmat2x4 DiagonalMaxValue { get; } = new lmat2x4(long.MaxValue, 0, 0, 0, 0, long.MaxValue, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static lmat2x4 AllMinValue { get; } = new lmat2x4(long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static lmat2x4 DiagonalMinValue { get; } = new lmat2x4(long.MinValue, 0, 0, 0, 0, long.MinValue, 0, 0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

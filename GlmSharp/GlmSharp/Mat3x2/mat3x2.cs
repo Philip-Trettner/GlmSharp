@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct mat3x2 : IReadOnlyList<float>, IEquatable<mat3x2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -57,6 +59,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public float m21;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -92,6 +99,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public vec3 Row1 => new vec3(m01, m11, m21);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -107,6 +119,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static mat3x2 Identity { get; } = new mat3x2(1f, 0f, 0f, 1f, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static mat3x2 AllMaxValue { get; } = new mat3x2(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static mat3x2 DiagonalMaxValue { get; } = new mat3x2(float.MaxValue, 0f, 0f, float.MaxValue, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static mat3x2 AllMinValue { get; } = new mat3x2(float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static mat3x2 DiagonalMinValue { get; } = new mat3x2(float.MinValue, 0f, 0f, float.MinValue, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static mat3x2 AllEpsilon { get; } = new mat3x2(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static mat3x2 DiagonalEpsilon { get; } = new mat3x2(float.Epsilon, 0f, 0f, float.Epsilon, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static mat3x2 AllNaN { get; } = new mat3x2(float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static mat3x2 DiagonalNaN { get; } = new mat3x2(float.NaN, 0f, 0f, float.NaN, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static mat3x2 AllNegativeInfinity { get; } = new mat3x2(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static mat3x2 DiagonalNegativeInfinity { get; } = new mat3x2(float.NegativeInfinity, 0f, 0f, float.NegativeInfinity, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static mat3x2 AllPositiveInfinity { get; } = new mat3x2(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static mat3x2 DiagonalPositiveInfinity { get; } = new mat3x2(float.PositiveInfinity, 0f, 0f, float.PositiveInfinity, 0f, 0f);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

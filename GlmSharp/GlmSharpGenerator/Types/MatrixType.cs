@@ -34,11 +34,6 @@ namespace GlmSharpGenerator.Types
             }
         }
 
-        public override IEnumerable<Member> GenerateMembers()
-        {
-            yield break; // TODO
-        }
-
         public static string[,] HelperFieldsOf(int s)
         {
             var f = new string[s, s];
@@ -186,56 +181,102 @@ namespace GlmSharpGenerator.Types
                     yield return "m" + x + y;
         }
 
+        public override IEnumerable<Member> GenerateMembers()
+        {
+            var colVecType = new VectorType(BaseType, Rows);
+            var rowVecType = new VectorType(BaseType, Columns);
+
+            // fields
+            foreach (var f in Fields)
+                yield return new Field(f, BaseType)
+                {
+                    Comment = string.Format("Column {0}, Rows {1}", ColOf(f), RowOf(f))
+                };
+
+            // Values
+            yield return new Property("Values", new ArrayType(BaseType, "[,]"))
+            {
+                GetterLine = string.Format("new[,] {{ {0} }}", Columns.ForIndexUpTo(col => "{ " + Column(col).CommaSeparated() + " }").CommaSeparated()),
+                Comment = "Creates a 2D array with all values (address: Values[x, y])"
+            };
+            yield return new Property("Values1D", new ArrayType(BaseType))
+            {
+                GetterLine = string.Format("new[] {{ {0} }}", Fields.CommaSeparated()),
+                Comment = "Creates a 1D array with all values (internal order)"
+            };
+
+            // Columns
+            for (var col = 0; col < Columns; ++col)
+                yield return new Property("Column" + col, colVecType)
+                {
+                    GetterLine = Construct(colVecType, Column(col)),
+                    Comment = string.Format("Returns the column nr {0}", col)
+                };
+            for (var row = 0; row < Rows; ++row)
+                yield return new Property("Row" + row, rowVecType)
+                {
+                    GetterLine = Construct(rowVecType, Row(row)),
+                    Comment = string.Format("Returns the row nr {0}", row)
+                };
+
+            // predefs
+            yield return new StaticProperty("Zero", this)
+            {
+                Value = Construct(this, ZeroValue.RepeatTimes(FieldCount)),
+                Comment = "Predefined all-zero matrix"
+            };
+
+            if (!string.IsNullOrEmpty(BaseType.OneValue))
+            {
+                yield return new StaticProperty("Ones", this)
+                {
+                    Value = Construct(this, OneValue.RepeatTimes(FieldCount)),
+                    Comment = "Predefined all-ones matrix"
+                };
+
+                yield return new StaticProperty("Identity", this)
+                {
+                    Value = Construct(this, Fields.Select(f => IsDiagonal(f) ? OneValue : ZeroValue)),
+                    Comment = "Predefined identity matrix"
+                };
+            }
+
+            if (BaseType.IsComplex)
+            {
+                yield return new StaticProperty("ImaginaryOnes", this)
+                {
+                    Value = Construct(this, "Complex.ImaginaryOne".RepeatTimes(FieldCount)),
+                    Comment = "Predefined all-imaginary-ones matrix"
+                };
+
+                yield return new StaticProperty("ImaginaryIdentity", this)
+                {
+                    Value = Construct(this, Fields.Select(f => IsDiagonal(f) ? "Complex.ImaginaryOne" : ZeroValue)),
+                    Comment = string.Format("Predefined diagonal-imaginary-one matrix")
+                };
+            }
+
+            // Basetype constants
+            foreach (var constant in BaseType.TypeConstants)
+            {
+                yield return new StaticProperty("All" + constant, this)
+                {
+                    Value = Construct(this, string.Format("{0}.{1}", BaseTypeName, constant).RepeatTimes(FieldCount)),
+                    Comment = string.Format("Predefined all-{0} matrix", constant)
+                };
+
+                yield return new StaticProperty("Diagonal" + constant, this)
+                {
+                    Value = Construct(this, Fields.Select(f => IsDiagonal(f) ? string.Format("{0}.{1}", BaseTypeName, constant) : ZeroValue)),
+                    Comment = string.Format("Predefined diagonal-{0} matrix", constant)
+                };
+            }
+        }
+
         protected override IEnumerable<string> Body
         {
             get
             {
-                // Fields
-                foreach (var f in Fields)
-                {
-                    foreach (var line in string.Format("Column {0}, Rows {1}", ColOf(f), RowOf(f)).AsComment()) yield return line;
-                    yield return "[DataMember]";
-                    yield return string.Format("public {0} {1};", BaseTypeName, f);
-                }
-
-
-                // Values
-                foreach (var line in "Creates a 2D array with all values (address: Values[x, y])".AsComment()) yield return line;
-                yield return string.Format("public {0}[,] Values => new[,] {{ {1} }};", BaseTypeName, Columns.ForIndexUpTo(col => "{ " + Column(col).CommaSeparated() + " }").CommaSeparated());
-
-                foreach (var line in "Creates a 1D array with all values (internal order)".AsComment()) yield return line;
-                yield return string.Format("public {0}[] Values1D => new[] {{ {1} }};", BaseTypeName, Fields.CommaSeparated());
-
-
-                // Columns
-                for (var x = 0; x < Columns; ++x)
-                {
-                    foreach (var line in string.Format("Returns the column nr {0}", x).AsComment()) yield return line;
-                    yield return string.Format("public {0} Column{1} => new {0}({2});", ColumnType, x, Column(x).CommaSeparated());
-                }
-
-
-                // Rows
-                for (var y = 0; y < Rows; ++y)
-                {
-                    foreach (var line in string.Format("Returns the row nr {0}", y).AsComment()) yield return line;
-                    yield return string.Format("public {0} Row{1} => new {0}({2});", RowType, y, Row(y).CommaSeparated());
-                }
-
-
-                // predefs
-                foreach (var line in "Predefined all-zero matrix".AsComment()) yield return line;
-                yield return string.Format("public static {0} Zero {{ get; }} = new {0}({1});", NameThat, ZeroValue.RepeatTimes(FieldCount).CommaSeparated());
-
-                if (!string.IsNullOrEmpty(BaseType.OneValue))
-                {
-                    foreach (var line in "Predefined all-ones matrix".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Ones {{ get; }} = new {0}({1});", NameThat, OneValue.RepeatTimes(FieldCount).CommaSeparated());
-
-                    foreach (var line in "Predefined identity matrix".AsComment()) yield return line;
-                    yield return string.Format("public static {0} Identity {{ get; }} = new {0}({1});", NameThat, Fields.Select(f => IsDiagonal(f) ? OneValue : ZeroValue).CommaSeparated());
-                }
-
 
                 // Constructors
                 foreach (var line in Constructor("Component-wise constructor", Fields.Select(f => BaseTypeName + " " + f).CommaSeparated(), Fields)) yield return line;

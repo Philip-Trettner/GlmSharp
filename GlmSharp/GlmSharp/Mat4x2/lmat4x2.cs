@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct lmat4x2 : IReadOnlyList<long>, IEquatable<lmat4x2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -69,6 +71,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public long m31;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -109,6 +116,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public lvec4 Row1 => new lvec4(m01, m11, m21, m31);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -124,6 +136,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static lmat4x2 Identity { get; } = new lmat4x2(1, 0, 0, 1, 0, 0, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static lmat4x2 AllMaxValue { get; } = new lmat4x2(long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue, long.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static lmat4x2 DiagonalMaxValue { get; } = new lmat4x2(long.MaxValue, 0, 0, long.MaxValue, 0, 0, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static lmat4x2 AllMinValue { get; } = new lmat4x2(long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue, long.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static lmat4x2 DiagonalMinValue { get; } = new lmat4x2(long.MinValue, 0, 0, long.MinValue, 0, 0, 0, 0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

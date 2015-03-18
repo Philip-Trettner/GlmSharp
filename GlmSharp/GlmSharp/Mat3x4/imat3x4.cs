@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct imat3x4 : IReadOnlyList<int>, IEquatable<imat3x4>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -93,6 +95,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public int m23;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -138,6 +145,11 @@ namespace GlmSharp
         /// Returns the row nr 3
         /// </summary>
         public ivec3 Row3 => new ivec3(m03, m13, m23);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -153,6 +165,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static imat3x4 Identity { get; } = new imat3x4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static imat3x4 AllMaxValue { get; } = new imat3x4(int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static imat3x4 DiagonalMaxValue { get; } = new imat3x4(int.MaxValue, 0, 0, 0, 0, int.MaxValue, 0, 0, 0, 0, int.MaxValue, 0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static imat3x4 AllMinValue { get; } = new imat3x4(int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static imat3x4 DiagonalMinValue { get; } = new imat3x4(int.MinValue, 0, 0, 0, 0, int.MinValue, 0, 0, 0, 0, int.MinValue, 0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

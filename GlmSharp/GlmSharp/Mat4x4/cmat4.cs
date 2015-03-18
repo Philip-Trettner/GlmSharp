@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct cmat4 : IReadOnlyList<Complex>, IEquatable<cmat4>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -117,6 +119,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public Complex m33;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -167,6 +174,11 @@ namespace GlmSharp
         /// Returns the row nr 3
         /// </summary>
         public cvec4 Row3 => new cvec4(m03, m13, m23, m33);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -182,6 +194,19 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static cmat4 Identity { get; } = new cmat4(1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+        
+        /// <summary>
+        /// Predefined all-imaginary-ones matrix
+        /// </summary>
+        public static cmat4 ImaginaryOnes { get; } = new cmat4(Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne, Complex.ImaginaryOne);
+        
+        /// <summary>
+        /// Predefined diagonal-imaginary-one matrix
+        /// </summary>
+        public static cmat4 ImaginaryIdentity { get; } = new cmat4(Complex.ImaginaryOne, 0.0, 0.0, 0.0, 0.0, Complex.ImaginaryOne, 0.0, 0.0, 0.0, 0.0, Complex.ImaginaryOne, 0.0, 0.0, 0.0, 0.0, Complex.ImaginaryOne);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

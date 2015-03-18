@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct dmat3x2 : IReadOnlyList<double>, IEquatable<dmat3x2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -57,6 +59,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public double m21;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -92,6 +99,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public dvec3 Row1 => new dvec3(m01, m11, m21);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -107,6 +119,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static dmat3x2 Identity { get; } = new dmat3x2(1.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static dmat3x2 AllMaxValue { get; } = new dmat3x2(double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue, double.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static dmat3x2 DiagonalMaxValue { get; } = new dmat3x2(double.MaxValue, 0.0, 0.0, double.MaxValue, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static dmat3x2 AllMinValue { get; } = new dmat3x2(double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue, double.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static dmat3x2 DiagonalMinValue { get; } = new dmat3x2(double.MinValue, 0.0, 0.0, double.MinValue, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static dmat3x2 AllEpsilon { get; } = new dmat3x2(double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon, double.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static dmat3x2 DiagonalEpsilon { get; } = new dmat3x2(double.Epsilon, 0.0, 0.0, double.Epsilon, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static dmat3x2 AllNaN { get; } = new dmat3x2(double.NaN, double.NaN, double.NaN, double.NaN, double.NaN, double.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static dmat3x2 DiagonalNaN { get; } = new dmat3x2(double.NaN, 0.0, 0.0, double.NaN, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static dmat3x2 AllNegativeInfinity { get; } = new dmat3x2(double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity, double.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static dmat3x2 DiagonalNegativeInfinity { get; } = new dmat3x2(double.NegativeInfinity, 0.0, 0.0, double.NegativeInfinity, 0.0, 0.0);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static dmat3x2 AllPositiveInfinity { get; } = new dmat3x2(double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity, double.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static dmat3x2 DiagonalPositiveInfinity { get; } = new dmat3x2(double.PositiveInfinity, 0.0, 0.0, double.PositiveInfinity, 0.0, 0.0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

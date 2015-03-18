@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct imat3x2 : IReadOnlyList<int>, IEquatable<imat3x2>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -57,6 +59,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public int m21;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -92,6 +99,11 @@ namespace GlmSharp
         /// Returns the row nr 1
         /// </summary>
         public ivec3 Row1 => new ivec3(m01, m11, m21);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -107,6 +119,29 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static imat3x2 Identity { get; } = new imat3x2(1, 0, 0, 1, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static imat3x2 AllMaxValue { get; } = new imat3x2(int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue, int.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static imat3x2 DiagonalMaxValue { get; } = new imat3x2(int.MaxValue, 0, 0, int.MaxValue, 0, 0);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static imat3x2 AllMinValue { get; } = new imat3x2(int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue, int.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static imat3x2 DiagonalMinValue { get; } = new imat3x2(int.MinValue, 0, 0, int.MinValue, 0, 0);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

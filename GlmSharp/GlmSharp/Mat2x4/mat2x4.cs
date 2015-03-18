@@ -21,6 +21,8 @@ namespace GlmSharp
     [StructLayout(LayoutKind.Sequential)]
     public struct mat2x4 : IReadOnlyList<float>, IEquatable<mat2x4>
     {
+
+        #region Fields
         
         /// <summary>
         /// Column 0, Rows 0
@@ -69,6 +71,11 @@ namespace GlmSharp
         /// </summary>
         [DataMember]
         public float m13;
+
+        #endregion
+
+
+        #region Properties
         
         /// <summary>
         /// Creates a 2D array with all values (address: Values[x, y])
@@ -109,6 +116,11 @@ namespace GlmSharp
         /// Returns the row nr 3
         /// </summary>
         public vec2 Row3 => new vec2(m03, m13);
+
+        #endregion
+
+
+        #region Static Properties
         
         /// <summary>
         /// Predefined all-zero matrix
@@ -124,6 +136,69 @@ namespace GlmSharp
         /// Predefined identity matrix
         /// </summary>
         public static mat2x4 Identity { get; } = new mat2x4(1f, 0f, 0f, 0f, 0f, 1f, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-MaxValue matrix
+        /// </summary>
+        public static mat2x4 AllMaxValue { get; } = new mat2x4(float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue, float.MaxValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MaxValue matrix
+        /// </summary>
+        public static mat2x4 DiagonalMaxValue { get; } = new mat2x4(float.MaxValue, 0f, 0f, 0f, 0f, float.MaxValue, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-MinValue matrix
+        /// </summary>
+        public static mat2x4 AllMinValue { get; } = new mat2x4(float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue, float.MinValue);
+        
+        /// <summary>
+        /// Predefined diagonal-MinValue matrix
+        /// </summary>
+        public static mat2x4 DiagonalMinValue { get; } = new mat2x4(float.MinValue, 0f, 0f, 0f, 0f, float.MinValue, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-Epsilon matrix
+        /// </summary>
+        public static mat2x4 AllEpsilon { get; } = new mat2x4(float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon, float.Epsilon);
+        
+        /// <summary>
+        /// Predefined diagonal-Epsilon matrix
+        /// </summary>
+        public static mat2x4 DiagonalEpsilon { get; } = new mat2x4(float.Epsilon, 0f, 0f, 0f, 0f, float.Epsilon, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-NaN matrix
+        /// </summary>
+        public static mat2x4 AllNaN { get; } = new mat2x4(float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN, float.NaN);
+        
+        /// <summary>
+        /// Predefined diagonal-NaN matrix
+        /// </summary>
+        public static mat2x4 DiagonalNaN { get; } = new mat2x4(float.NaN, 0f, 0f, 0f, 0f, float.NaN, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-NegativeInfinity matrix
+        /// </summary>
+        public static mat2x4 AllNegativeInfinity { get; } = new mat2x4(float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity, float.NegativeInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-NegativeInfinity matrix
+        /// </summary>
+        public static mat2x4 DiagonalNegativeInfinity { get; } = new mat2x4(float.NegativeInfinity, 0f, 0f, 0f, 0f, float.NegativeInfinity, 0f, 0f);
+        
+        /// <summary>
+        /// Predefined all-PositiveInfinity matrix
+        /// </summary>
+        public static mat2x4 AllPositiveInfinity { get; } = new mat2x4(float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity, float.PositiveInfinity);
+        
+        /// <summary>
+        /// Predefined diagonal-PositiveInfinity matrix
+        /// </summary>
+        public static mat2x4 DiagonalPositiveInfinity { get; } = new mat2x4(float.PositiveInfinity, 0f, 0f, 0f, 0f, float.PositiveInfinity, 0f, 0f);
+
+        #endregion
+
         
         /// <summary>
         /// Component-wise constructor

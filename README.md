@@ -114,5 +114,3 @@ This library is MIT-licensed.
 * inline-swizzle and swizzle as L-ref?
 * noise functions
 * random extensions
-* non-operator And, Or, Not, ... for bool
-* property version of unary static functions
