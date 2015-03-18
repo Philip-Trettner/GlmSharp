@@ -74,6 +74,17 @@ namespace GlmSharp
             this.z = v;
             this.w = v;
         }
+        
+        /// <summary>
+        /// vector-and-scalar constructor
+        /// </summary>
+        public dquat(dvec3 v, double s)
+        {
+            this.x = v.x;
+            this.y = v.y;
+            this.z = v.z;
+            this.w = s;
+        }
 
         #endregion
 

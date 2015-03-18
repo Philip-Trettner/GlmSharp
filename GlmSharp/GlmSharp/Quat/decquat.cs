@@ -74,6 +74,17 @@ namespace GlmSharp
             this.z = v;
             this.w = v;
         }
+        
+        /// <summary>
+        /// vector-and-scalar constructor
+        /// </summary>
+        public decquat(decvec3 v, decimal s)
+        {
+            this.x = v.x;
+            this.y = v.y;
+            this.z = v.z;
+            this.w = s;
+        }
 
         #endregion
 

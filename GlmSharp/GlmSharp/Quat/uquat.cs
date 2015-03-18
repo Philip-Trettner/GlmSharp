@@ -74,6 +74,17 @@ namespace GlmSharp
             this.z = v;
             this.w = v;
         }
+        
+        /// <summary>
+        /// vector-and-scalar constructor
+        /// </summary>
+        public uquat(uvec3 v, uint s)
+        {
+            this.x = v.x;
+            this.y = v.y;
+            this.z = v.z;
+            this.w = s;
+        }
 
         #endregion
 

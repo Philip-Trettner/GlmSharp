@@ -23,10 +23,10 @@ namespace GlmSharpGenerator.Types
 
 
         public IEnumerable<string> Fields => "xyzw".Substring(0, Components).Select(c => c.ToString());
-        
+
 
         public override string Folder => "Quat";
-        
+
         public string CompString => "xyzw".Substring(0, Components);
 
 
@@ -56,6 +56,8 @@ namespace GlmSharpGenerator.Types
         public override IEnumerable<Member> GenerateMembers()
         {
             var boolVType = new VectorType(BuiltinType.TypeBool, Components);
+            var vec4Type = new VectorType(BaseType, Components);
+            var vec3Type = new VectorType(BaseType, 3);
 
             // fields
             foreach (var f in Fields)
@@ -139,6 +141,12 @@ namespace GlmSharpGenerator.Types
                 ParameterString = BaseTypeName + " v",
                 Initializers = "v".RepeatTimes(Components),
                 Comment = "all-same-value constructor"
+            };
+            yield return new Constructor(this, Fields)
+            {
+                ParameterString = vec3Type.NameThat + " v, " + BaseTypeName + " s",
+                Initializers = new[] { "v.x", "v.y", "v.z", "s" },
+                Comment = "vector-and-scalar constructor"
             };
 
 
