@@ -66,16 +66,6 @@ namespace GlmSharpGenerator.Types
             return string.Format("({0}){1}", otherType.Name, c);
         }
 
-        public IEnumerable<string> SwitchIndex(IEnumerable<string> cases)
-        {
-            yield return "switch (index)";
-            yield return "{";
-            foreach (var @case in cases)
-                yield return @case.Indent();
-            yield return "    default: throw new ArgumentOutOfRangeException(\"index\");";
-            yield return "}";
-        }
-
         public override IEnumerable<Member> GenerateMembers()
         {
             var boolVType = new VectorType(BuiltinType.TypeBool, Components);

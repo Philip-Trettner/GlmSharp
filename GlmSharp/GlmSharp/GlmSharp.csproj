@@ -128,6 +128,15 @@
     <Compile Include="Mat4x4\mat4.cs" />
     <Compile Include="Mat4x4\umat4.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quat\bquat.cs" />
+    <Compile Include="Quat\cquat.cs" />
+    <Compile Include="Quat\decquat.cs" />
+    <Compile Include="Quat\dquat.cs" />
+    <Compile Include="Quat\gquat.cs" />
+    <Compile Include="Quat\iquat.cs" />
+    <Compile Include="Quat\lquat.cs" />
+    <Compile Include="Quat\quat.cs" />
+    <Compile Include="Quat\uquat.cs" />
     <Compile Include="Swizzle\swizzle_bvec2.cs" />
     <Compile Include="Swizzle\swizzle_bvec3.cs" />
     <Compile Include="Swizzle\swizzle_bvec4.cs" />

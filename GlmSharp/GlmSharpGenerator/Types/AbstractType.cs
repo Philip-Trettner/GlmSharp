@@ -337,6 +337,16 @@ namespace GlmSharpGenerator.Types
             throw new InvalidOperationException("unknown type");
         }
 
+        public IEnumerable<string> SwitchIndex(IEnumerable<string> cases)
+        {
+            yield return "switch (index)";
+            yield return "{";
+            foreach (var @case in cases)
+                yield return @case.Indent();
+            yield return "    default: throw new ArgumentOutOfRangeException(\"index\");";
+            yield return "}";
+        }
+
         public static void InitTypes()
         {
             // vectors
@@ -348,6 +358,13 @@ namespace GlmSharpGenerator.Types
                     Types.Add(vect.Name, vect);
                     Types.Add(swizzler.Name, swizzler);
                 }
+
+            // quat
+            foreach (var type in BuiltinType.BaseTypes)
+            {
+                var quat = new QuaternionType(type);
+                Types.Add(quat.Name, quat);
+            }
 
             // matrices
             foreach (var type in BuiltinType.BaseTypes)

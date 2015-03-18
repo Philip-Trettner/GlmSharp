@@ -61,6 +61,7 @@
     <Compile Include="Types\BuiltinType.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Types\MatrixType.cs" />
+    <Compile Include="Types\QuaternionType.cs" />
     <Compile Include="Types\SwizzleType.cs" />
     <Compile Include="Types\AbstractType.cs" />
     <Compile Include="Program.cs" />

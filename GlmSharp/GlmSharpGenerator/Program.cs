@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,8 +38,13 @@ namespace GlmSharpGenerator
                 if (!string.IsNullOrEmpty(type.Folder))
                     Directory.CreateDirectory(Path.Combine(path, type.Folder));
                 var filename = type.PathOf(path);
-                File.WriteAllLines(filename, type.CSharpFile);
-                Console.WriteLine("    " + filename);
+                var lines = type.CSharpFile.ToArray();
+                var currLines = File.Exists(filename) ? File.ReadAllLines(filename) : new string[] {};
+                if (!lines.SequenceEqual(currLines))
+                {
+                    File.WriteAllLines(filename, lines);
+                    Console.WriteLine("    CHANGED " + filename);
+                }
             }
         }
     }
