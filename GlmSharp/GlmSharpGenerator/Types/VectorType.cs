@@ -637,6 +637,57 @@ namespace GlmSharpGenerator.Types
                     };
                 }
             }
+
+
+            // angle
+            if (Components == 2 && BaseType.IsFloatingPoint)
+            {
+                yield return new Property("Angle", BuiltinType.TypeDouble)
+                {
+                    GetterLine = "Math.Atan2((double)y, (double)x)",
+                    Comment = "Returns the vector angle (atan2(y, x)) in radians."
+                };
+
+                yield return new Function(this, "FromAngle")
+                {
+                    Static = true,
+                    ParameterString = "double angleInRad",
+                    CodeString = Construct(this, string.Format("({0})Math.Cos(angleInRad), ({0})Math.Sin(angleInRad)", BaseTypeName)),
+                    Comment = "Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types)."
+                };
+
+                yield return new Function(this, "Rotated")
+                {
+                    ParameterString = "double angleInRad",
+                    CodeString = "(" + Name + ")(dvec2.FromAngle(Angle) * (double)Length)",
+                    Comment = "Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated)."
+                };
+            }
+
+            // Complex properties
+            if (BaseType.IsComplex)
+            {
+                yield return new Property("Magnitude", doubleVType)
+                {
+                    GetterLine = Construct(doubleVType, Fields.Format("{0}.Magnitude")),
+                    Comment = "Returns a vector containing component-wise magnitudes."
+                };
+                yield return new Property("Phase", doubleVType)
+                {
+                    GetterLine = Construct(doubleVType, Fields.Format("{0}.Phase")),
+                    Comment = "Returns a vector containing component-wise phases."
+                };
+                yield return new Property("Imaginary", doubleVType)
+                {
+                    GetterLine = Construct(doubleVType, Fields.Format("{0}.Imaginary")),
+                    Comment = "Returns a vector containing component-wise imaginary parts."
+                };
+                yield return new Property("Real", doubleVType)
+                {
+                    GetterLine = Construct(doubleVType, Fields.Format("{0}.Real")),
+                    Comment = "Returns a vector containing component-wise real parts."
+                };
+            }
         }
 
         protected override IEnumerable<string> Body
@@ -721,22 +772,6 @@ namespace GlmSharpGenerator.Types
                 }
 
 
-                // Complex properties
-                if (BaseType.IsComplex)
-                {
-                    foreach (var line in "Returns a vector containing component-wise magnitudes.".AsComment()) yield return line;
-                    yield return string.Format("public dvec{0} Magnitude => new dvec{0}({1});", Components, CompString.Select(c => c + ".Magnitude").CommaSeparated());
-
-                    foreach (var line in "Returns a vector containing component-wise phases.".AsComment()) yield return line;
-                    yield return string.Format("public dvec{0} Phase => new dvec{0}({1});", Components, CompString.Select(c => c + ".Phase").CommaSeparated());
-
-                    foreach (var line in "Returns a vector containing component-wise imaginary parts.".AsComment()) yield return line;
-                    yield return string.Format("public dvec{0} Imaginary => new dvec{0}({1});", Components, CompString.Select(c => c + ".Imaginary").CommaSeparated());
-
-                    foreach (var line in "Returns a vector containing component-wise real parts.".AsComment()) yield return line;
-                    yield return string.Format("public dvec{0} Real => new dvec{0}({1});", Components, CompString.Select(c => c + ".Real").CommaSeparated());
-                }
-
                 // Arithmetics
                 if (BaseType.HasArithmetics)
                 {
@@ -789,19 +824,6 @@ namespace GlmSharpGenerator.Types
                             foreach (var line in "Returns the length of the outer product (cross product, vector product) of the two vectors.".AsComment()) yield return line;
                             yield return string.Format("public static {1} Cross({0} l, {0} r) => l.x * r.y - l.y * r.x;", NameThat, BaseTypeName);
                             break;
-                    }
-
-                    // angle
-                    if (Components == 2 && !BaseType.IsComplex)
-                    {
-                        foreach (var line in "Returns the vector angle (atan2(y, x)) in radians.".AsComment()) yield return line;
-                        yield return string.Format("public double Angle => Math.Atan2((double)y, (double)x);");
-
-                        foreach (var line in "Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types).".AsComment()) yield return line;
-                        yield return string.Format("public static {0} FromAngle(double angleInRad) => new {0}(({1})Math.Cos(angleInRad), ({1})Math.Sin(angleInRad));", NameThat, BaseTypeName);
-
-                        foreach (var line in "Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).".AsComment()) yield return line;
-                        yield return string.Format("public {0} Rotated(double angleInRad) => ({0})(dvec2.FromAngle(Angle) * (double)Length);", NameThat);
                     }
                 }
             }

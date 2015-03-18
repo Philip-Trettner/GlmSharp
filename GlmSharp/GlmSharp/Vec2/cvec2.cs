@@ -195,6 +195,26 @@ namespace GlmSharp
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
         public cvec2 NormalizedSafe => this == Zero ? Zero : this / Length;
+        
+        /// <summary>
+        /// Returns a vector containing component-wise magnitudes.
+        /// </summary>
+        public dvec2 Magnitude => new dvec2(x.Magnitude, y.Magnitude);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise phases.
+        /// </summary>
+        public dvec2 Phase => new dvec2(x.Phase, y.Phase);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise imaginary parts.
+        /// </summary>
+        public dvec2 Imaginary => new dvec2(x.Imaginary, y.Imaginary);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise real parts.
+        /// </summary>
+        public dvec2 Real => new dvec2(x.Real, y.Real);
 
         #endregion
 
@@ -807,26 +827,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns a vector containing component-wise magnitudes.
-        /// </summary>
-        public dvec2 Magnitude => new dvec2(x.Magnitude, y.Magnitude);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise phases.
-        /// </summary>
-        public dvec2 Phase => new dvec2(x.Phase, y.Phase);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise imaginary parts.
-        /// </summary>
-        public dvec2 Imaginary => new dvec2(x.Imaginary, y.Imaginary);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise real parts.
-        /// </summary>
-        public dvec2 Real => new dvec2(x.Real, y.Real);
         
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.

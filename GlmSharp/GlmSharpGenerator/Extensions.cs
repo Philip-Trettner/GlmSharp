@@ -25,6 +25,11 @@ namespace GlmSharpGenerator
             return ss.Select(s => type.Name + " " + s);
         }
 
+        public static IEnumerable<string> Format(this IEnumerable<string> ss, string format)
+        {
+            return ss.Select(s => string.Format(format, s));
+        }
+
         public static string CommaSeparated<T>(this IEnumerable<T> coll)
         {
             var cc = coll.Select(c => c.ToString()).ToArray();

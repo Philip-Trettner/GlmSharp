@@ -218,6 +218,26 @@ namespace GlmSharp
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
         public cvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
+        
+        /// <summary>
+        /// Returns a vector containing component-wise magnitudes.
+        /// </summary>
+        public dvec3 Magnitude => new dvec3(x.Magnitude, y.Magnitude, z.Magnitude);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise phases.
+        /// </summary>
+        public dvec3 Phase => new dvec3(x.Phase, y.Phase, z.Phase);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise imaginary parts.
+        /// </summary>
+        public dvec3 Imaginary => new dvec3(x.Imaginary, y.Imaginary, z.Imaginary);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise real parts.
+        /// </summary>
+        public dvec3 Real => new dvec3(x.Real, y.Real, z.Real);
 
         #endregion
 
@@ -841,26 +861,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns a vector containing component-wise magnitudes.
-        /// </summary>
-        public dvec3 Magnitude => new dvec3(x.Magnitude, y.Magnitude, z.Magnitude);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise phases.
-        /// </summary>
-        public dvec3 Phase => new dvec3(x.Phase, y.Phase, z.Phase);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise imaginary parts.
-        /// </summary>
-        public dvec3 Imaginary => new dvec3(x.Imaginary, y.Imaginary, z.Imaginary);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise real parts.
-        /// </summary>
-        public dvec3 Real => new dvec3(x.Real, y.Real, z.Real);
         
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.

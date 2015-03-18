@@ -254,6 +254,26 @@ namespace GlmSharp
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
         public cvec4 NormalizedSafe => this == Zero ? Zero : this / Length;
+        
+        /// <summary>
+        /// Returns a vector containing component-wise magnitudes.
+        /// </summary>
+        public dvec4 Magnitude => new dvec4(x.Magnitude, y.Magnitude, z.Magnitude, w.Magnitude);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise phases.
+        /// </summary>
+        public dvec4 Phase => new dvec4(x.Phase, y.Phase, z.Phase, w.Phase);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise imaginary parts.
+        /// </summary>
+        public dvec4 Imaginary => new dvec4(x.Imaginary, y.Imaginary, z.Imaginary, w.Imaginary);
+        
+        /// <summary>
+        /// Returns a vector containing component-wise real parts.
+        /// </summary>
+        public dvec4 Real => new dvec4(x.Real, y.Real, z.Real, w.Real);
 
         #endregion
 
@@ -888,26 +908,6 @@ namespace GlmSharp
 
         #endregion
 
-        
-        /// <summary>
-        /// Returns a vector containing component-wise magnitudes.
-        /// </summary>
-        public dvec4 Magnitude => new dvec4(x.Magnitude, y.Magnitude, z.Magnitude, w.Magnitude);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise phases.
-        /// </summary>
-        public dvec4 Phase => new dvec4(x.Phase, y.Phase, z.Phase, w.Phase);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise imaginary parts.
-        /// </summary>
-        public dvec4 Imaginary => new dvec4(x.Imaginary, y.Imaginary, z.Imaginary, w.Imaginary);
-        
-        /// <summary>
-        /// Returns a vector containing component-wise real parts.
-        /// </summary>
-        public dvec4 Real => new dvec4(x.Real, y.Real, z.Real, w.Real);
         
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.

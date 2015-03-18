@@ -1458,20 +1458,5 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static long Cross(lvec2 l, lvec2 r) => l.x * r.y - l.y * r.x;
-        
-        /// <summary>
-        /// Returns the vector angle (atan2(y, x)) in radians.
-        /// </summary>
-        public double Angle => Math.Atan2((double)y, (double)x);
-        
-        /// <summary>
-        /// Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types).
-        /// </summary>
-        public static lvec2 FromAngle(double angleInRad) => new lvec2((long)Math.Cos(angleInRad), (long)Math.Sin(angleInRad));
-        
-        /// <summary>
-        /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
-        /// </summary>
-        public lvec2 Rotated(double angleInRad) => (lvec2)(dvec2.FromAngle(Angle) * (double)Length);
     }
 }

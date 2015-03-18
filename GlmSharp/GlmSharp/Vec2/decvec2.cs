@@ -310,6 +310,11 @@ namespace GlmSharp
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
         public decvec2 NormalizedSafe => this == Zero ? Zero : this / Length;
+        
+        /// <summary>
+        /// Returns the vector angle (atan2(y, x)) in radians.
+        /// </summary>
+        public double Angle => Math.Atan2((double)y, (double)x);
 
         #endregion
 
@@ -439,6 +444,21 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p), 1 / p);
+        
+        /// <summary>
+        /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
+        /// </summary>
+        public decvec2 Rotated(double angleInRad) => (decvec2)(dvec2.FromAngle(Angle) * (double)Length);
+
+        #endregion
+
+
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types).
+        /// </summary>
+        public static decvec2 FromAngle(double angleInRad) => new decvec2((decimal)Math.Cos(angleInRad), (decimal)Math.Sin(angleInRad));
 
         #endregion
 
@@ -1463,20 +1483,5 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static decimal Cross(decvec2 l, decvec2 r) => l.x * r.y - l.y * r.x;
-        
-        /// <summary>
-        /// Returns the vector angle (atan2(y, x)) in radians.
-        /// </summary>
-        public double Angle => Math.Atan2((double)y, (double)x);
-        
-        /// <summary>
-        /// Returns a unit 2D vector with a given angle in radians (CAUTION: result may be truncated for integer types).
-        /// </summary>
-        public static decvec2 FromAngle(double angleInRad) => new decvec2((decimal)Math.Cos(angleInRad), (decimal)Math.Sin(angleInRad));
-        
-        /// <summary>
-        /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
-        /// </summary>
-        public decvec2 Rotated(double angleInRad) => (decvec2)(dvec2.FromAngle(Angle) * (double)Length);
     }
 }
