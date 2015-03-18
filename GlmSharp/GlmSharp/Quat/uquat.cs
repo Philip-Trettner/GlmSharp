@@ -307,9 +307,25 @@ namespace GlmSharp
         public static bool operator!=(uquat lhs, uquat rhs) => !lhs.Equals(rhs);
         
         /// <summary>
-        /// Returns proper multiplication of two quaternions
+        /// Returns proper multiplication of two quaternions.
         /// </summary>
         public static uquat operator*(uquat p, uquat q) => new uquat(p.w * q.x + p.x * q.w + p.y * q.z - p.z * q.y, p.w * q.y + p.y * q.w + p.z * q.x - p.x * q.z, p.w * q.z + p.z * q.w + p.x * q.y - p.y * q.x, p.w * q.w - p.x * q.x - p.y * q.y - p.z * q.z);
+        
+        /// <summary>
+        /// Returns a vector rotated by the quaternion.
+        /// </summary>
+        public static uvec3 operator*(uquat q, uvec3 v)
+        {
+            var qv = new uvec3(q.x, q.y, q.z);
+            var uv = uvec3.Cross(qv, v);
+            var uuv = uvec3.Cross(qv, uv);
+            return v + ((uv * q.w) + uuv) * 2;
+        }
+        
+        /// <summary>
+        /// Returns a vector rotated by the quaternion (preserves v.w).
+        /// </summary>
+        public static uvec4 operator*(uquat q, uvec4 v) => new uvec4(q * new uvec3(v), v.w);
 
         #endregion
 

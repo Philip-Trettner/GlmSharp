@@ -317,9 +317,35 @@ namespace GlmSharp
         public static bool operator!=(iquat lhs, iquat rhs) => !lhs.Equals(rhs);
         
         /// <summary>
-        /// Returns proper multiplication of two quaternions
+        /// Returns proper multiplication of two quaternions.
         /// </summary>
         public static iquat operator*(iquat p, iquat q) => new iquat(p.w * q.x + p.x * q.w + p.y * q.z - p.z * q.y, p.w * q.y + p.y * q.w + p.z * q.x - p.x * q.z, p.w * q.z + p.z * q.w + p.x * q.y - p.y * q.x, p.w * q.w - p.x * q.x - p.y * q.y - p.z * q.z);
+        
+        /// <summary>
+        /// Returns a vector rotated by the quaternion.
+        /// </summary>
+        public static ivec3 operator*(iquat q, ivec3 v)
+        {
+            var qv = new ivec3(q.x, q.y, q.z);
+            var uv = ivec3.Cross(qv, v);
+            var uuv = ivec3.Cross(qv, uv);
+            return v + ((uv * q.w) + uuv) * 2;
+        }
+        
+        /// <summary>
+        /// Returns a vector rotated by the quaternion (preserves v.w).
+        /// </summary>
+        public static ivec4 operator*(iquat q, ivec4 v) => new ivec4(q * new ivec3(v), v.w);
+        
+        /// <summary>
+        /// Returns a vector rotated by the inverted quaternion.
+        /// </summary>
+        public static ivec3 operator*(ivec3 v, iquat q) => q.Inverse * v;
+        
+        /// <summary>
+        /// Returns a vector rotated by the inverted quaternion (preserves v.w).
+        /// </summary>
+        public static ivec4 operator*(ivec4 v, iquat q) => q.Inverse * v;
 
         #endregion
 

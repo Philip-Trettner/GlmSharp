@@ -59,6 +59,7 @@ namespace GlmSharpGenerator.Types
             var mat3Type = new MatrixType(BaseType, 3, 3);
             var mat4Type = new MatrixType(BaseType, 4, 4);
             var vec3Type = new VectorType(BaseType, 3);
+            var vec4Type = new VectorType(BaseType, 4);
             var dvec3Type = new VectorType(BuiltinType.TypeDouble, 3);
             var lengthType = new AnyType(BaseType.LengthType);
 
@@ -568,8 +569,42 @@ namespace GlmSharpGenerator.Types
                         "p.w * q.y + p.y * q.w + p.z * q.x - p.x * q.z",
                         "p.w * q.z + p.z * q.w + p.x * q.y - p.y * q.x",
                         "p.w * q.w - p.x * q.x - p.y * q.y - p.z * q.z"),
-                    Comment = "Returns proper multiplication of two quaternions"
+                    Comment = "Returns proper multiplication of two quaternions."
                 };
+                // quat-vec-mult, vec-quat-mult
+                yield return new Operator(vec3Type, "*")
+                {
+                    Parameters = this.TypedArgs("q").Concat(vec3Type.TypedArgs("v")),
+                    Code = new[]
+                    {
+                        string.Format("var qv = {0};", Construct(vec3Type, "q.x", "q.y", "q.z")),
+                        string.Format("var uv = {0}.Cross(qv, v);", vec3Type.Name),
+                        string.Format("var uuv = {0}.Cross(qv, uv);", vec3Type.Name),
+                        "return v + ((uv * q.w) + uuv) * 2;"
+                    },
+                    Comment = "Returns a vector rotated by the quaternion."
+                };
+                yield return new Operator(vec4Type, "*")
+                {
+                    Parameters = this.TypedArgs("q").Concat(vec4Type.TypedArgs("v")),
+                    CodeString = Construct(vec4Type, "q * " + Construct(vec3Type, "v"), "v.w"),
+                    Comment = "Returns a vector rotated by the quaternion (preserves v.w)."
+                };
+                if (BaseType.IsSigned)
+                {
+                    yield return new Operator(vec3Type, "*")
+                    {
+                        Parameters = vec3Type.TypedArgs("v").Concat(this.TypedArgs("q")),
+                        CodeString = "q.Inverse * v",
+                        Comment = "Returns a vector rotated by the inverted quaternion."
+                    };
+                    yield return new Operator(vec4Type, "*")
+                    {
+                        Parameters = vec4Type.TypedArgs("v").Concat(this.TypedArgs("q")),
+                        CodeString = "q.Inverse * v",
+                        Comment = "Returns a vector rotated by the inverted quaternion (preserves v.w)."
+                    };
+                }
 
                 // dot
                 yield return new Function(BaseType, "Dot")
