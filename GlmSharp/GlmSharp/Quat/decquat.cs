@@ -248,6 +248,11 @@ namespace GlmSharp
         public decimal Length => (decimal)(((x*x + y*y) + (z*z + w*w))).Sqrt();
         
         /// <summary>
+        /// Returns the squared euclidean length of this quaternion.
+        /// </summary>
+        public decimal LengthSqr => ((x*x + y*y) + (z*z + w*w));
+        
+        /// <summary>
         /// Returns a copy of this quaternion with length one (undefined if this has zero length).
         /// </summary>
         public decquat Normalized => this / Length;
@@ -295,6 +300,16 @@ namespace GlmSharp
         /// Returns the represented euler angles (pitch, yaw, roll) of this quaternion
         /// </summary>
         public dvec3 EulerAngles => new dvec3(Pitch, Yaw, Roll);
+        
+        /// <summary>
+        /// Returns the conjugated quaternion
+        /// </summary>
+        public decquat Conjugate => new decquat(-x, -y, -z, w);
+        
+        /// <summary>
+        /// Returns the inverse quaternion
+        /// </summary>
+        public decquat Inverse => Conjugate / LengthSqr;
 
         #endregion
 

@@ -142,7 +142,8 @@ namespace GlmSharpGenerator.Types
             OneValueConstant = "true",
             ZeroValueConstant = "false",
             HasFormatString = false,
-            IsBool = true
+            IsBool = true,
+            IsSigned = false
         };
         public static readonly BuiltinType TypeGeneric = new BuiltinType
         {
@@ -153,7 +154,8 @@ namespace GlmSharpGenerator.Types
             OneValueConstant = null,
             ZeroValueConstant = "default(T)",
             EqualFormat = "EqualityComparer<T>.Default.Equals({0}, {1})",
-            NotEqualFormat = "!EqualityComparer<T>.Default.Equals({0}, {1})"
+            NotEqualFormat = "!EqualityComparer<T>.Default.Equals({0}, {1})",
+            IsSigned = false
         };
 
         public string TypeName { get; set; }
@@ -199,7 +201,7 @@ namespace GlmSharpGenerator.Types
         {
             get { throw new InvalidOperationException("No body for builtin types"); }
         }
-        
+
         public string[] TypeConstants { get; set; } = new string[] { };
 
         public Dictionary<string, string> TypeTestFuncs { get; set; } = new Dictionary<string, string>();

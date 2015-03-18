@@ -543,6 +543,11 @@ namespace GlmSharpGenerator.Types
                     GetterLine = "(" + lengthType.Name + ")" + SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")),
                     Comment = "Returns the euclidean length of this quaternion."
                 };
+                yield return new Property("LengthSqr", BaseType)
+                {
+                    GetterLine = Fields.Select(SqrOf).Aggregated(" + "),
+                    Comment = "Returns the squared euclidean length of this quaternion."
+                };
 
                 // normalized
                 if (!BaseType.IsInteger)
@@ -612,6 +617,21 @@ namespace GlmSharpGenerator.Types
                 {
                     GetterLine = Construct(dvec3Type, "Pitch", "Yaw", "Roll"),
                     Comment = "Returns the represented euler angles (pitch, yaw, roll) of this quaternion"
+                };
+            }
+
+            if (BaseType.IsSigned)
+            {
+                yield return new Property("Conjugate", this)
+                {
+                    GetterLine = Construct(this, "-x", "-y", "-z", "w"),
+                    Comment = "Returns the conjugated quaternion"
+                };
+
+                yield return new Property("Inverse", this)
+                {
+                    GetterLine = "Conjugate / LengthSqr",
+                    Comment = "Returns the inverse quaternion"
                 };
             }
         }

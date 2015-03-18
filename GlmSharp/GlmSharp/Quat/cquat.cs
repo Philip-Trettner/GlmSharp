@@ -151,6 +151,11 @@ namespace GlmSharp
         public double Length => (double)Math.Sqrt(((x.LengthSqr() + y.LengthSqr()) + (z.LengthSqr() + w.LengthSqr())));
         
         /// <summary>
+        /// Returns the squared euclidean length of this quaternion.
+        /// </summary>
+        public Complex LengthSqr => ((x.LengthSqr() + y.LengthSqr()) + (z.LengthSqr() + w.LengthSqr()));
+        
+        /// <summary>
         /// Returns a copy of this quaternion with length one (undefined if this has zero length).
         /// </summary>
         public cquat Normalized => this / Length;
@@ -159,6 +164,16 @@ namespace GlmSharp
         /// Returns a copy of this quaternion with length one (returns zero if length is zero).
         /// </summary>
         public cquat NormalizedSafe => this == Zero ? Identity : this / Length;
+        
+        /// <summary>
+        /// Returns the conjugated quaternion
+        /// </summary>
+        public cquat Conjugate => new cquat(-x, -y, -z, w);
+        
+        /// <summary>
+        /// Returns the inverse quaternion
+        /// </summary>
+        public cquat Inverse => Conjugate / LengthSqr;
 
         #endregion
 

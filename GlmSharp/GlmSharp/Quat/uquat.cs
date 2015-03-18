@@ -224,6 +224,11 @@ namespace GlmSharp
         /// Returns the euclidean length of this quaternion.
         /// </summary>
         public float Length => (float)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this quaternion.
+        /// </summary>
+        public uint LengthSqr => ((x*x + y*y) + (z*z + w*w));
 
         #endregion
 

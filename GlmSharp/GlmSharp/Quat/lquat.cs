@@ -224,6 +224,21 @@ namespace GlmSharp
         /// Returns the euclidean length of this quaternion.
         /// </summary>
         public double Length => (double)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
+        
+        /// <summary>
+        /// Returns the squared euclidean length of this quaternion.
+        /// </summary>
+        public long LengthSqr => ((x*x + y*y) + (z*z + w*w));
+        
+        /// <summary>
+        /// Returns the conjugated quaternion
+        /// </summary>
+        public lquat Conjugate => new lquat(-x, -y, -z, w);
+        
+        /// <summary>
+        /// Returns the inverse quaternion
+        /// </summary>
+        public lquat Inverse => Conjugate / LengthSqr;
 
         #endregion
 
