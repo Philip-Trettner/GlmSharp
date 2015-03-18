@@ -10,6 +10,22 @@ namespace GlmSharpGenerator
 {
     static class Extensions
     {
+        private static string NestedSymmetricFunction(IReadOnlyList<string> fields, string funcFormat, int start, int end)
+        {
+            if (start == end)
+                return fields[start];
+
+            var mid = (start + end) / 2;
+            return string.Format(funcFormat,
+                NestedSymmetricFunction(fields, funcFormat, start, mid),
+                NestedSymmetricFunction(fields, funcFormat, mid + 1, end));
+        }
+        private static string NestedSymmetricFunction(IEnumerable<string> ffs, string funcFormat)
+        {
+            var fs = ffs.ToArray();
+            return NestedSymmetricFunction(fs, funcFormat, 0, fs.Length - 1);
+        }
+
         public static string Indent(this string s, int lvl = 1)
         {
             return new string(' ', lvl * 4) + s;
@@ -39,7 +55,7 @@ namespace GlmSharpGenerator
         public static string Aggregated<T>(this IEnumerable<T> coll, string seperator)
         {
             var cc = coll.Select(c => c.ToString()).ToArray();
-            return cc.Length == 0 ? "" : cc.Aggregate((s1, s2) => s1 + seperator + s2);
+            return cc.Length == 0 ? "" : NestedSymmetricFunction(cc, "({0}" + seperator + "{1})");// cc.Aggregate((s1, s2) => s1 + seperator + s2);
         }
 
         public static IEnumerable<string> LhsRhs(this AbstractType type)

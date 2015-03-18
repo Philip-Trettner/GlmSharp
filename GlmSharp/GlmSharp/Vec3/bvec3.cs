@@ -282,22 +282,22 @@ namespace GlmSharp
         /// <summary>
         /// Returns the minimal component of this vector.
         /// </summary>
-        public bool MinElement => x && y && z;
+        public bool MinElement => ((x && y) && z);
         
         /// <summary>
         /// Returns the maximal component of this vector.
         /// </summary>
-        public bool MaxElement => x || y || z;
+        public bool MaxElement => ((x || y) || z);
         
         /// <summary>
         /// Returns true if all component are true.
         /// </summary>
-        public bool All => x && y && z;
+        public bool All => ((x && y) && z);
         
         /// <summary>
         /// Returns true if any component is true.
         /// </summary>
-        public bool Any => x || y || z;
+        public bool Any => ((x || y) || z);
 
         #endregion
 
@@ -372,17 +372,17 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y + sep + z;
+        public string ToString(string sep) => ((x + sep + y) + sep + z);
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
         /// </summary>
-        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider) + sep + z.ToString(provider);
+        public string ToString(string sep, IFormatProvider provider) => ((x.ToString(provider) + sep + y.ToString(provider)) + sep + z.ToString(provider));
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(bvec3 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y) && z.Equals(rhs.z);
+        public bool Equals(bvec3 rhs) => ((x.Equals(rhs.x) && y.Equals(rhs.y)) && z.Equals(rhs.z));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -439,7 +439,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 3) return false;
             bool x = false, y = false, z = false;
-            var ok = bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y) && bool.TryParse(kvp[2].Trim(), out z);
+            var ok = ((bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y)) && bool.TryParse(kvp[2].Trim(), out z));
             result = ok ? new bvec3(x, y, z) : Zero;
             return ok;
         }

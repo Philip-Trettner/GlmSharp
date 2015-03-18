@@ -274,32 +274,32 @@ namespace GlmSharp
         /// <summary>
         /// Returns the euclidean length of this vector.
         /// </summary>
-        public float Length => (float)Math.Sqrt(x*x + y*y);
+        public float Length => (float)Math.Sqrt((x*x + y*y));
         
         /// <summary>
         /// Returns the squared euclidean length of this vector.
         /// </summary>
-        public float LengthSqr => x*x + y*y;
+        public float LengthSqr => (x*x + y*y);
         
         /// <summary>
         /// Returns the sum of all components.
         /// </summary>
-        public uint Sum => x + y;
+        public uint Sum => (x + y);
         
         /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
-        public float Norm => (float)Math.Sqrt(x*x + y*y);
+        public float Norm => (float)Math.Sqrt((x*x + y*y));
         
         /// <summary>
         /// Returns the one-norm of this vector.
         /// </summary>
-        public float Norm1 => x + y;
+        public float Norm1 => (x + y);
         
         /// <summary>
         /// Returns the two-norm (euclidean length) of this vector.
         /// </summary>
-        public float Norm2 => (float)Math.Sqrt(x*x + y*y);
+        public float Norm2 => (float)Math.Sqrt((x*x + y*y));
         
         /// <summary>
         /// Returns the max-norm of this vector.
@@ -383,27 +383,27 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y;
+        public string ToString(string sep) => (x + sep + y);
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
         /// </summary>
-        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider);
+        public string ToString(string sep, IFormatProvider provider) => (x.ToString(provider) + sep + y.ToString(provider));
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format for each component.
         /// </summary>
-        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format);
+        public string ToString(string sep, string format) => (x.ToString(format) + sep + y.ToString(format));
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
-        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
+        public string ToString(string sep, string format, IFormatProvider provider) => (x.ToString(format, provider) + sep + y.ToString(format, provider));
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(uvec2 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y);
+        public bool Equals(uvec2 rhs) => (x.Equals(rhs.x) && y.Equals(rhs.y));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -428,7 +428,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the p-norm of this vector.
         /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)x, p) + Math.Pow((double)y, p), 1 / p);
+        public double NormP(double p) => Math.Pow((Math.Pow((double)x, p) + Math.Pow((double)y, p)), 1 / p);
 
         #endregion
 
@@ -495,7 +495,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 2) return false;
             uint x = 0u, y = 0u;
-            var ok = uint.TryParse(kvp[0].Trim(), out x) && uint.TryParse(kvp[1].Trim(), out y);
+            var ok = (uint.TryParse(kvp[0].Trim(), out x) && uint.TryParse(kvp[1].Trim(), out y));
             result = ok ? new uvec2(x, y) : Zero;
             return ok;
         }
@@ -510,7 +510,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 2) return false;
             uint x = 0u, y = 0u;
-            var ok = uint.TryParse(kvp[0].Trim(), style, provider, out x) && uint.TryParse(kvp[1].Trim(), style, provider, out y);
+            var ok = (uint.TryParse(kvp[0].Trim(), style, provider, out x) && uint.TryParse(kvp[1].Trim(), style, provider, out y));
             result = ok ? new uvec2(x, y) : Zero;
             return ok;
         }
@@ -543,7 +543,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
-        public static uint Dot(uvec2 lhs, uvec2 rhs) => lhs.x * rhs.x + lhs.y * rhs.y;
+        public static uint Dot(uvec2 lhs, uvec2 rhs) => (lhs.x * rhs.x + lhs.y * rhs.y);
         
         /// <summary>
         /// Returns the euclidean distance between the two vectors.

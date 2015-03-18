@@ -231,7 +231,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(gmat3x2<T> rhs) => EqualityComparer<T>.Default.Equals(m00, rhs.m00) && EqualityComparer<T>.Default.Equals(m01, rhs.m01) && EqualityComparer<T>.Default.Equals(m10, rhs.m10) && EqualityComparer<T>.Default.Equals(m11, rhs.m11) && EqualityComparer<T>.Default.Equals(m20, rhs.m20) && EqualityComparer<T>.Default.Equals(m21, rhs.m21);
+        public bool Equals(gmat3x2<T> rhs) => (((EqualityComparer<T>.Default.Equals(m00, rhs.m00) && EqualityComparer<T>.Default.Equals(m01, rhs.m01)) && EqualityComparer<T>.Default.Equals(m10, rhs.m10)) && ((EqualityComparer<T>.Default.Equals(m11, rhs.m11) && EqualityComparer<T>.Default.Equals(m20, rhs.m20)) && EqualityComparer<T>.Default.Equals(m21, rhs.m21)));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.

@@ -227,12 +227,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y + sep + z;
+        public string ToString(string sep) => ((x + sep + y) + sep + z);
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(gvec3<T> rhs) => EqualityComparer<T>.Default.Equals(x, rhs.x) && EqualityComparer<T>.Default.Equals(y, rhs.y) && EqualityComparer<T>.Default.Equals(z, rhs.z);
+        public bool Equals(gvec3<T> rhs) => ((EqualityComparer<T>.Default.Equals(x, rhs.x) && EqualityComparer<T>.Default.Equals(y, rhs.y)) && EqualityComparer<T>.Default.Equals(z, rhs.z));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.

@@ -330,7 +330,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(dmat2x4 rhs) => m00.Equals(rhs.m00) && m01.Equals(rhs.m01) && m02.Equals(rhs.m02) && m03.Equals(rhs.m03) && m10.Equals(rhs.m10) && m11.Equals(rhs.m11) && m12.Equals(rhs.m12) && m13.Equals(rhs.m13);
+        public bool Equals(dmat2x4 rhs) => (((m00.Equals(rhs.m00) && m01.Equals(rhs.m01)) && (m02.Equals(rhs.m02) && m03.Equals(rhs.m03))) && ((m10.Equals(rhs.m10) && m11.Equals(rhs.m11)) && (m12.Equals(rhs.m12) && m13.Equals(rhs.m13))));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -380,32 +380,32 @@ namespace GlmSharp
         /// <summary>
         /// Returns the euclidean length of this matrix.
         /// </summary>
-        public double Length => (double)Math.Sqrt(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13);
+        public double Length => (double)Math.Sqrt((((m00*m00 + m01*m01) + (m02*m02 + m03*m03)) + ((m10*m10 + m11*m11) + (m12*m12 + m13*m13))));
         
         /// <summary>
         /// Returns the squared euclidean length of this matrix.
         /// </summary>
-        public double LengthSqr => m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13;
+        public double LengthSqr => (((m00*m00 + m01*m01) + (m02*m02 + m03*m03)) + ((m10*m10 + m11*m11) + (m12*m12 + m13*m13)));
         
         /// <summary>
-        /// Returns the sum of all FieldCount.
+        /// Returns the sum of all fields.
         /// </summary>
-        public double Sum => m00 + m01 + m02 + m03 + m10 + m11 + m12 + m13;
+        public double Sum => (((m00 + m01) + (m02 + m03)) + ((m10 + m11) + (m12 + m13)));
         
         /// <summary>
         /// Returns the euclidean norm of this matrix.
         /// </summary>
-        public double Norm => (double)Math.Sqrt(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13);
+        public double Norm => (double)Math.Sqrt((((m00*m00 + m01*m01) + (m02*m02 + m03*m03)) + ((m10*m10 + m11*m11) + (m12*m12 + m13*m13))));
         
         /// <summary>
         /// Returns the one-norm of this matrix.
         /// </summary>
-        public double Norm1 => Math.Abs(m00) + Math.Abs(m01) + Math.Abs(m02) + Math.Abs(m03) + Math.Abs(m10) + Math.Abs(m11) + Math.Abs(m12) + Math.Abs(m13);
+        public double Norm1 => (((Math.Abs(m00) + Math.Abs(m01)) + (Math.Abs(m02) + Math.Abs(m03))) + ((Math.Abs(m10) + Math.Abs(m11)) + (Math.Abs(m12) + Math.Abs(m13))));
         
         /// <summary>
         /// Returns the two-norm of this matrix.
         /// </summary>
-        public double Norm2 => (double)Math.Sqrt(m00*m00 + m01*m01 + m02*m02 + m03*m03 + m10*m10 + m11*m11 + m12*m12 + m13*m13);
+        public double Norm2 => (double)Math.Sqrt((((m00*m00 + m01*m01) + (m02*m02 + m03*m03)) + ((m10*m10 + m11*m11) + (m12*m12 + m13*m13))));
         
         /// <summary>
         /// Returns the max-norm of this matrix.
@@ -415,27 +415,27 @@ namespace GlmSharp
         /// <summary>
         /// Returns the p-norm of this matrix.
         /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(m00), p) + Math.Pow((double)Math.Abs(m01), p) + Math.Pow((double)Math.Abs(m02), p) + Math.Pow((double)Math.Abs(m03), p) + Math.Pow((double)Math.Abs(m10), p) + Math.Pow((double)Math.Abs(m11), p) + Math.Pow((double)Math.Abs(m12), p) + Math.Pow((double)Math.Abs(m13), p), 1 / p);
+        public double NormP(double p) => Math.Pow((((Math.Pow((double)Math.Abs(m00), p) + Math.Pow((double)Math.Abs(m01), p)) + (Math.Pow((double)Math.Abs(m02), p) + Math.Pow((double)Math.Abs(m03), p))) + ((Math.Pow((double)Math.Abs(m10), p) + Math.Pow((double)Math.Abs(m11), p)) + (Math.Pow((double)Math.Abs(m12), p) + Math.Pow((double)Math.Abs(m13), p)))), 1 / p);
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication dmat2x4 * dmat2 -> dmat2x4.
         /// </summary>
-        public static dmat2x4 operator*(dmat2x4 lhs, dmat2 rhs) => new dmat2x4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11);
+        public static dmat2x4 operator*(dmat2x4 lhs, dmat2 rhs) => new dmat2x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication dmat2x4 * dmat3x2 -> dmat3x4.
         /// </summary>
-        public static dmat3x4 operator*(dmat2x4 lhs, dmat3x2 rhs) => new dmat3x4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11, lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21);
+        public static dmat3x4 operator*(dmat2x4 lhs, dmat3x2 rhs) => new dmat3x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication dmat2x4 * dmat4x2 -> dmat4.
         /// </summary>
-        public static dmat4 operator*(dmat2x4 lhs, dmat4x2 rhs) => new dmat4(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31, lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01, lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11, lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21, lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31, lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01, lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11, lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21, lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31);
+        public static dmat4 operator*(dmat2x4 lhs, dmat4x2 rhs) => new dmat4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21), (lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31));
         
         /// <summary>
         /// Executes a matrix-vector-multiplication.
         /// </summary>
-        public static dvec4 operator*(dmat2x4 m, dvec2 v) => new dvec4(m.m00 * v.x + m.m10 * v.y, m.m01 * v.x + m.m11 * v.y, m.m02 * v.x + m.m12 * v.y, m.m03 * v.x + m.m13 * v.y);
+        public static dvec4 operator*(dmat2x4 m, dvec2 v) => new dvec4((m.m00 * v.x + m.m10 * v.y), (m.m01 * v.x + m.m11 * v.y), (m.m02 * v.x + m.m12 * v.y), (m.m03 * v.x + m.m13 * v.y));
         
         /// <summary>
         /// Executes a component-wise * (multiply).

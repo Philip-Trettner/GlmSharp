@@ -261,7 +261,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(lmat3x2 rhs) => m00.Equals(rhs.m00) && m01.Equals(rhs.m01) && m10.Equals(rhs.m10) && m11.Equals(rhs.m11) && m20.Equals(rhs.m20) && m21.Equals(rhs.m21);
+        public bool Equals(lmat3x2 rhs) => (((m00.Equals(rhs.m00) && m01.Equals(rhs.m01)) && m10.Equals(rhs.m10)) && ((m11.Equals(rhs.m11) && m20.Equals(rhs.m20)) && m21.Equals(rhs.m21)));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -311,32 +311,32 @@ namespace GlmSharp
         /// <summary>
         /// Returns the euclidean length of this matrix.
         /// </summary>
-        public double Length => (double)Math.Sqrt(m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21);
+        public double Length => (double)Math.Sqrt((((m00*m00 + m01*m01) + m10*m10) + ((m11*m11 + m20*m20) + m21*m21)));
         
         /// <summary>
         /// Returns the squared euclidean length of this matrix.
         /// </summary>
-        public double LengthSqr => m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21;
+        public double LengthSqr => (((m00*m00 + m01*m01) + m10*m10) + ((m11*m11 + m20*m20) + m21*m21));
         
         /// <summary>
-        /// Returns the sum of all FieldCount.
+        /// Returns the sum of all fields.
         /// </summary>
-        public long Sum => m00 + m01 + m10 + m11 + m20 + m21;
+        public long Sum => (((m00 + m01) + m10) + ((m11 + m20) + m21));
         
         /// <summary>
         /// Returns the euclidean norm of this matrix.
         /// </summary>
-        public double Norm => (double)Math.Sqrt(m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21);
+        public double Norm => (double)Math.Sqrt((((m00*m00 + m01*m01) + m10*m10) + ((m11*m11 + m20*m20) + m21*m21)));
         
         /// <summary>
         /// Returns the one-norm of this matrix.
         /// </summary>
-        public double Norm1 => Math.Abs(m00) + Math.Abs(m01) + Math.Abs(m10) + Math.Abs(m11) + Math.Abs(m20) + Math.Abs(m21);
+        public double Norm1 => (((Math.Abs(m00) + Math.Abs(m01)) + Math.Abs(m10)) + ((Math.Abs(m11) + Math.Abs(m20)) + Math.Abs(m21)));
         
         /// <summary>
         /// Returns the two-norm of this matrix.
         /// </summary>
-        public double Norm2 => (double)Math.Sqrt(m00*m00 + m01*m01 + m10*m10 + m11*m11 + m20*m20 + m21*m21);
+        public double Norm2 => (double)Math.Sqrt((((m00*m00 + m01*m01) + m10*m10) + ((m11*m11 + m20*m20) + m21*m21)));
         
         /// <summary>
         /// Returns the max-norm of this matrix.
@@ -346,27 +346,27 @@ namespace GlmSharp
         /// <summary>
         /// Returns the p-norm of this matrix.
         /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(m00), p) + Math.Pow((double)Math.Abs(m01), p) + Math.Pow((double)Math.Abs(m10), p) + Math.Pow((double)Math.Abs(m11), p) + Math.Pow((double)Math.Abs(m20), p) + Math.Pow((double)Math.Abs(m21), p), 1 / p);
+        public double NormP(double p) => Math.Pow((((Math.Pow((double)Math.Abs(m00), p) + Math.Pow((double)Math.Abs(m01), p)) + Math.Pow((double)Math.Abs(m10), p)) + ((Math.Pow((double)Math.Abs(m11), p) + Math.Pow((double)Math.Abs(m20), p)) + Math.Pow((double)Math.Abs(m21), p))), 1 / p);
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication lmat3x2 * lmat2x3 -> lmat2.
         /// </summary>
-        public static lmat2 operator*(lmat3x2 lhs, lmat2x3 rhs) => new lmat2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12);
+        public static lmat2 operator*(lmat3x2 lhs, lmat2x3 rhs) => new lmat2(((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01) + lhs.m20 * rhs.m02), ((lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11) + lhs.m20 * rhs.m12), ((lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01) + lhs.m21 * rhs.m02), ((lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11) + lhs.m21 * rhs.m12));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication lmat3x2 * lmat3 -> lmat3x2.
         /// </summary>
-        public static lmat3x2 operator*(lmat3x2 lhs, lmat3 rhs) => new lmat3x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21 + lhs.m20 * rhs.m22, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21 + lhs.m21 * rhs.m22);
+        public static lmat3x2 operator*(lmat3x2 lhs, lmat3 rhs) => new lmat3x2(((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01) + lhs.m20 * rhs.m02), ((lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11) + lhs.m20 * rhs.m12), ((lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21) + lhs.m20 * rhs.m22), ((lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01) + lhs.m21 * rhs.m02), ((lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11) + lhs.m21 * rhs.m12), ((lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21) + lhs.m21 * rhs.m22));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication lmat3x2 * lmat4x3 -> lmat4x2.
         /// </summary>
-        public static lmat4x2 operator*(lmat3x2 lhs, lmat4x3 rhs) => new lmat4x2(lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01 + lhs.m20 * rhs.m02, lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11 + lhs.m20 * rhs.m12, lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21 + lhs.m20 * rhs.m22, lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31 + lhs.m20 * rhs.m32, lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01 + lhs.m21 * rhs.m02, lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11 + lhs.m21 * rhs.m12, lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21 + lhs.m21 * rhs.m22, lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31 + lhs.m21 * rhs.m32);
+        public static lmat4x2 operator*(lmat3x2 lhs, lmat4x3 rhs) => new lmat4x2(((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01) + lhs.m20 * rhs.m02), ((lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11) + lhs.m20 * rhs.m12), ((lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21) + lhs.m20 * rhs.m22), ((lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31) + lhs.m20 * rhs.m32), ((lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01) + lhs.m21 * rhs.m02), ((lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11) + lhs.m21 * rhs.m12), ((lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21) + lhs.m21 * rhs.m22), ((lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31) + lhs.m21 * rhs.m32));
         
         /// <summary>
         /// Executes a matrix-vector-multiplication.
         /// </summary>
-        public static lvec2 operator*(lmat3x2 m, lvec3 v) => new lvec2(m.m00 * v.x + m.m10 * v.y + m.m20 * v.z, m.m01 * v.x + m.m11 * v.y + m.m21 * v.z);
+        public static lvec2 operator*(lmat3x2 m, lvec3 v) => new lvec2(((m.m00 * v.x + m.m10 * v.y) + m.m20 * v.z), ((m.m01 * v.x + m.m11 * v.y) + m.m21 * v.z));
         
         /// <summary>
         /// Executes a component-wise * (multiply).

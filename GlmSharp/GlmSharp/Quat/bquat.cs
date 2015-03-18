@@ -127,22 +127,22 @@ namespace GlmSharp
         /// <summary>
         /// Returns the minimal component of this quaternion.
         /// </summary>
-        public bool MinElement => x && y && z && w;
+        public bool MinElement => ((x && y) && (z && w));
         
         /// <summary>
         /// Returns the maximal component of this quaternion.
         /// </summary>
-        public bool MaxElement => x || y || z || w;
+        public bool MaxElement => ((x || y) || (z || w));
         
         /// <summary>
         /// Returns true if all component are true.
         /// </summary>
-        public bool All => x && y && z && w;
+        public bool All => ((x && y) && (z && w));
         
         /// <summary>
         /// Returns true if any component is true.
         /// </summary>
-        public bool Any => x || y || z || w;
+        public bool Any => ((x || y) || (z || w));
 
         #endregion
 
@@ -223,17 +223,17 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this quaternion using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y + sep + z + sep + w;
+        public string ToString(string sep) => ((x + sep + y) + sep + (z + sep + w));
         
         /// <summary>
         /// Returns a string representation of this quaternion using a provided seperator and a format provider for each component.
         /// </summary>
-        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider) + sep + z.ToString(provider) + sep + w.ToString(provider);
+        public string ToString(string sep, IFormatProvider provider) => ((x.ToString(provider) + sep + y.ToString(provider)) + sep + (z.ToString(provider) + sep + w.ToString(provider)));
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(bquat rhs) => x.Equals(rhs.x) && y.Equals(rhs.y) && z.Equals(rhs.z) && w.Equals(rhs.w);
+        public bool Equals(bquat rhs) => ((x.Equals(rhs.x) && y.Equals(rhs.y)) && (z.Equals(rhs.z) && w.Equals(rhs.w)));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -290,7 +290,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
             bool x = false, y = false, z = false, w = false;
-            var ok = bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y) && bool.TryParse(kvp[2].Trim(), out z) && bool.TryParse(kvp[3].Trim(), out w);
+            var ok = ((bool.TryParse(kvp[0].Trim(), out x) && bool.TryParse(kvp[1].Trim(), out y)) && (bool.TryParse(kvp[2].Trim(), out z) && bool.TryParse(kvp[3].Trim(), out w)));
             result = ok ? new bquat(x, y, z, w) : Zero;
             return ok;
         }

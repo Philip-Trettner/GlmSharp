@@ -203,12 +203,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y;
+        public string ToString(string sep) => (x + sep + y);
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(gvec2<T> rhs) => EqualityComparer<T>.Default.Equals(x, rhs.x) && EqualityComparer<T>.Default.Equals(y, rhs.y);
+        public bool Equals(gvec2<T> rhs) => (EqualityComparer<T>.Default.Equals(x, rhs.x) && EqualityComparer<T>.Default.Equals(y, rhs.y));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.

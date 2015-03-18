@@ -154,32 +154,32 @@ namespace GlmSharp
         /// <summary>
         /// Returns the euclidean length of this vector.
         /// </summary>
-        public double Length => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr());
+        public double Length => (double)Math.Sqrt((x.LengthSqr() + y.LengthSqr()));
         
         /// <summary>
         /// Returns the squared euclidean length of this vector.
         /// </summary>
-        public double LengthSqr => x.LengthSqr() + y.LengthSqr();
+        public double LengthSqr => (x.LengthSqr() + y.LengthSqr());
         
         /// <summary>
         /// Returns the sum of all components.
         /// </summary>
-        public Complex Sum => x + y;
+        public Complex Sum => (x + y);
         
         /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
-        public double Norm => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr());
+        public double Norm => (double)Math.Sqrt((x.LengthSqr() + y.LengthSqr()));
         
         /// <summary>
         /// Returns the one-norm of this vector.
         /// </summary>
-        public double Norm1 => x.Magnitude + y.Magnitude;
+        public double Norm1 => (x.Magnitude + y.Magnitude);
         
         /// <summary>
         /// Returns the two-norm (euclidean length) of this vector.
         /// </summary>
-        public double Norm2 => (double)Math.Sqrt(x.LengthSqr() + y.LengthSqr());
+        public double Norm2 => (double)Math.Sqrt((x.LengthSqr() + y.LengthSqr()));
         
         /// <summary>
         /// Returns the max-norm of this vector.
@@ -298,27 +298,27 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y;
+        public string ToString(string sep) => (x + sep + y);
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
         /// </summary>
-        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider);
+        public string ToString(string sep, IFormatProvider provider) => (x.ToString(provider) + sep + y.ToString(provider));
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format for each component.
         /// </summary>
-        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format);
+        public string ToString(string sep, string format) => (x.ToString(format) + sep + y.ToString(format));
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
-        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider);
+        public string ToString(string sep, string format, IFormatProvider provider) => (x.ToString(format, provider) + sep + y.ToString(format, provider));
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(cvec2 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y);
+        public bool Equals(cvec2 rhs) => (x.Equals(rhs.x) && y.Equals(rhs.y));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -343,7 +343,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the p-norm of this vector.
         /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)x.Magnitude, p) + Math.Pow((double)y.Magnitude, p), 1 / p);
+        public double NormP(double p) => Math.Pow((Math.Pow((double)x.Magnitude, p) + Math.Pow((double)y.Magnitude, p)), 1 / p);
 
         #endregion
 
@@ -378,7 +378,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
-        public static Complex Dot(cvec2 lhs, cvec2 rhs) => lhs.x * Complex.Conjugate(rhs.x) + lhs.y * Complex.Conjugate(rhs.y);
+        public static Complex Dot(cvec2 lhs, cvec2 rhs) => (lhs.x * Complex.Conjugate(rhs.x) + lhs.y * Complex.Conjugate(rhs.y));
         
         /// <summary>
         /// Returns the euclidean distance between the two vectors.

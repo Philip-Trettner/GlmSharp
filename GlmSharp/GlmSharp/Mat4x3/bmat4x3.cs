@@ -323,7 +323,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(bmat4x3 rhs) => m00.Equals(rhs.m00) && m01.Equals(rhs.m01) && m02.Equals(rhs.m02) && m10.Equals(rhs.m10) && m11.Equals(rhs.m11) && m12.Equals(rhs.m12) && m20.Equals(rhs.m20) && m21.Equals(rhs.m21) && m22.Equals(rhs.m22) && m30.Equals(rhs.m30) && m31.Equals(rhs.m31) && m32.Equals(rhs.m32);
+        public bool Equals(bmat4x3 rhs) => ((((m00.Equals(rhs.m00) && m01.Equals(rhs.m01)) && m02.Equals(rhs.m02)) && ((m10.Equals(rhs.m10) && m11.Equals(rhs.m11)) && m12.Equals(rhs.m12))) && (((m20.Equals(rhs.m20) && m21.Equals(rhs.m21)) && m22.Equals(rhs.m22)) && ((m30.Equals(rhs.m30) && m31.Equals(rhs.m31)) && m32.Equals(rhs.m32))));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -363,22 +363,22 @@ namespace GlmSharp
         /// <summary>
         /// Returns the minimal component of this matrix.
         /// </summary>
-        public bool MinElement => m00 && m01 && m02 && m10 && m11 && m12 && m20 && m21 && m22 && m30 && m31 && m32;
+        public bool MinElement => ((((m00 && m01) && m02) && ((m10 && m11) && m12)) && (((m20 && m21) && m22) && ((m30 && m31) && m32)));
         
         /// <summary>
         /// Returns the maximal component of this matrix.
         /// </summary>
-        public bool MaxElement => m00 || m01 || m02 || m10 || m11 || m12 || m20 || m21 || m22 || m30 || m31 || m32;
+        public bool MaxElement => ((((m00 || m01) || m02) || ((m10 || m11) || m12)) || (((m20 || m21) || m22) || ((m30 || m31) || m32)));
         
         /// <summary>
         /// Returns true if all component are true.
         /// </summary>
-        public bool All => m00 && m01 && m02 && m10 && m11 && m12 && m20 && m21 && m22 && m30 && m31 && m32;
+        public bool All => ((((m00 && m01) && m02) && ((m10 && m11) && m12)) && (((m20 && m21) && m22) && ((m30 && m31) && m32)));
         
         /// <summary>
         /// Returns true if any component is true.
         /// </summary>
-        public bool Any => m00 || m01 || m02 || m10 || m11 || m12 || m20 || m21 || m22 || m30 || m31 || m32;
+        public bool Any => ((((m00 || m01) || m02) || ((m10 || m11) || m12)) || (((m20 || m21) || m22) || ((m30 || m31) || m32)));
         
         /// <summary>
         /// Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)

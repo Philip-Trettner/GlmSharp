@@ -333,32 +333,32 @@ namespace GlmSharp
         /// <summary>
         /// Returns the euclidean length of this vector.
         /// </summary>
-        public float Length => (float)Math.Sqrt(x*x + y*y + z*z + w*w);
+        public float Length => (float)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
         
         /// <summary>
         /// Returns the squared euclidean length of this vector.
         /// </summary>
-        public float LengthSqr => x*x + y*y + z*z + w*w;
+        public float LengthSqr => ((x*x + y*y) + (z*z + w*w));
         
         /// <summary>
         /// Returns the sum of all components.
         /// </summary>
-        public float Sum => x + y + z + w;
+        public float Sum => ((x + y) + (z + w));
         
         /// <summary>
         /// Returns the euclidean norm of this vector.
         /// </summary>
-        public float Norm => (float)Math.Sqrt(x*x + y*y + z*z + w*w);
+        public float Norm => (float)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
         
         /// <summary>
         /// Returns the one-norm of this vector.
         /// </summary>
-        public float Norm1 => Math.Abs(x) + Math.Abs(y) + Math.Abs(z) + Math.Abs(w);
+        public float Norm1 => ((Math.Abs(x) + Math.Abs(y)) + (Math.Abs(z) + Math.Abs(w)));
         
         /// <summary>
         /// Returns the two-norm (euclidean length) of this vector.
         /// </summary>
-        public float Norm2 => (float)Math.Sqrt(x*x + y*y + z*z + w*w);
+        public float Norm2 => (float)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
         
         /// <summary>
         /// Returns the max-norm of this vector.
@@ -484,27 +484,27 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y + sep + z + sep + w;
+        public string ToString(string sep) => ((x + sep + y) + sep + (z + sep + w));
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format provider for each component.
         /// </summary>
-        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider) + sep + z.ToString(provider) + sep + w.ToString(provider);
+        public string ToString(string sep, IFormatProvider provider) => ((x.ToString(provider) + sep + y.ToString(provider)) + sep + (z.ToString(provider) + sep + w.ToString(provider)));
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format for each component.
         /// </summary>
-        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format) + sep + z.ToString(format) + sep + w.ToString(format);
+        public string ToString(string sep, string format) => ((x.ToString(format) + sep + y.ToString(format)) + sep + (z.ToString(format) + sep + w.ToString(format)));
         
         /// <summary>
         /// Returns a string representation of this vector using a provided seperator and a format and format provider for each component.
         /// </summary>
-        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
+        public string ToString(string sep, string format, IFormatProvider provider) => ((x.ToString(format, provider) + sep + y.ToString(format, provider)) + sep + (z.ToString(format, provider) + sep + w.ToString(format, provider)));
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(vec4 rhs) => x.Equals(rhs.x) && y.Equals(rhs.y) && z.Equals(rhs.z) && w.Equals(rhs.w);
+        public bool Equals(vec4 rhs) => ((x.Equals(rhs.x) && y.Equals(rhs.y)) && (z.Equals(rhs.z) && w.Equals(rhs.w)));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -529,7 +529,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the p-norm of this vector.
         /// </summary>
-        public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p) + Math.Pow((double)Math.Abs(w), p), 1 / p);
+        public double NormP(double p) => Math.Pow(((Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p)) + (Math.Pow((double)Math.Abs(z), p) + Math.Pow((double)Math.Abs(w), p))), 1 / p);
 
         #endregion
 
@@ -596,7 +596,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
             float x = 0f, y = 0f, z = 0f, w = 0f;
-            var ok = float.TryParse(kvp[0].Trim(), out x) && float.TryParse(kvp[1].Trim(), out y) && float.TryParse(kvp[2].Trim(), out z) && float.TryParse(kvp[3].Trim(), out w);
+            var ok = ((float.TryParse(kvp[0].Trim(), out x) && float.TryParse(kvp[1].Trim(), out y)) && (float.TryParse(kvp[2].Trim(), out z) && float.TryParse(kvp[3].Trim(), out w)));
             result = ok ? new vec4(x, y, z, w) : Zero;
             return ok;
         }
@@ -611,7 +611,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
             float x = 0f, y = 0f, z = 0f, w = 0f;
-            var ok = float.TryParse(kvp[0].Trim(), style, provider, out x) && float.TryParse(kvp[1].Trim(), style, provider, out y) && float.TryParse(kvp[2].Trim(), style, provider, out z) && float.TryParse(kvp[3].Trim(), style, provider, out w);
+            var ok = ((float.TryParse(kvp[0].Trim(), style, provider, out x) && float.TryParse(kvp[1].Trim(), style, provider, out y)) && (float.TryParse(kvp[2].Trim(), style, provider, out z) && float.TryParse(kvp[3].Trim(), style, provider, out w)));
             result = ok ? new vec4(x, y, z, w) : Zero;
             return ok;
         }
@@ -644,7 +644,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns the inner product (dot product, scalar product) of the two vectors.
         /// </summary>
-        public static float Dot(vec4 lhs, vec4 rhs) => lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z + lhs.w * rhs.w;
+        public static float Dot(vec4 lhs, vec4 rhs) => ((lhs.x * rhs.x + lhs.y * rhs.y) + (lhs.z * rhs.z + lhs.w * rhs.w));
         
         /// <summary>
         /// Returns the euclidean distance between the two vectors.

@@ -420,7 +420,7 @@ namespace GlmSharpGenerator.Types
                     foreach (var line in "Returns the squared euclidean length of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public {0} LengthSqr => {1};", lengthType, Fields.Select(SqrOf).Aggregated(" + "));
 
-                    foreach (var line in "Returns the sum of all FieldCount.".AsComment()) yield return line;
+                    foreach (var line in "Returns the sum of all fields.".AsComment()) yield return line;
                     yield return string.Format("public {0} Sum => {1};", BaseTypeName, Fields.Aggregated(" + "));
 
                     foreach (var line in "Returns the euclidean norm of this matrix.".AsComment()) yield return line;

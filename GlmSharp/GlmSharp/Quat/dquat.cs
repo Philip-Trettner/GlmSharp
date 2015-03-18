@@ -233,27 +233,27 @@ namespace GlmSharp
         /// <summary>
         /// Returns a string representation of this quaternion using a provided seperator.
         /// </summary>
-        public string ToString(string sep) => x + sep + y + sep + z + sep + w;
+        public string ToString(string sep) => ((x + sep + y) + sep + (z + sep + w));
         
         /// <summary>
         /// Returns a string representation of this quaternion using a provided seperator and a format provider for each component.
         /// </summary>
-        public string ToString(string sep, IFormatProvider provider) => x.ToString(provider) + sep + y.ToString(provider) + sep + z.ToString(provider) + sep + w.ToString(provider);
+        public string ToString(string sep, IFormatProvider provider) => ((x.ToString(provider) + sep + y.ToString(provider)) + sep + (z.ToString(provider) + sep + w.ToString(provider)));
         
         /// <summary>
         /// Returns a string representation of this quaternion using a provided seperator and a format for each component.
         /// </summary>
-        public string ToString(string sep, string format) => x.ToString(format) + sep + y.ToString(format) + sep + z.ToString(format) + sep + w.ToString(format);
+        public string ToString(string sep, string format) => ((x.ToString(format) + sep + y.ToString(format)) + sep + (z.ToString(format) + sep + w.ToString(format)));
         
         /// <summary>
         /// Returns a string representation of this quaternion using a provided seperator and a format and format provider for each component.
         /// </summary>
-        public string ToString(string sep, string format, IFormatProvider provider) => x.ToString(format, provider) + sep + y.ToString(format, provider) + sep + z.ToString(format, provider) + sep + w.ToString(format, provider);
+        public string ToString(string sep, string format, IFormatProvider provider) => ((x.ToString(format, provider) + sep + y.ToString(format, provider)) + sep + (z.ToString(format, provider) + sep + w.ToString(format, provider)));
         
         /// <summary>
         /// Returns true iff this equals rhs component-wise.
         /// </summary>
-        public bool Equals(dquat rhs) => x.Equals(rhs.x) && y.Equals(rhs.y) && z.Equals(rhs.z) && w.Equals(rhs.w);
+        public bool Equals(dquat rhs) => ((x.Equals(rhs.x) && y.Equals(rhs.y)) && (z.Equals(rhs.z) && w.Equals(rhs.w)));
         
         /// <summary>
         /// Returns true iff this equals rhs type- and component-wise.
@@ -340,7 +340,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
             double x = 0.0, y = 0.0, z = 0.0, w = 0.0;
-            var ok = double.TryParse(kvp[0].Trim(), out x) && double.TryParse(kvp[1].Trim(), out y) && double.TryParse(kvp[2].Trim(), out z) && double.TryParse(kvp[3].Trim(), out w);
+            var ok = ((double.TryParse(kvp[0].Trim(), out x) && double.TryParse(kvp[1].Trim(), out y)) && (double.TryParse(kvp[2].Trim(), out z) && double.TryParse(kvp[3].Trim(), out w)));
             result = ok ? new dquat(x, y, z, w) : Zero;
             return ok;
         }
@@ -355,7 +355,7 @@ namespace GlmSharp
             var kvp = s.Split(new[] { sep }, StringSplitOptions.None);
             if (kvp.Length != 4) return false;
             double x = 0.0, y = 0.0, z = 0.0, w = 0.0;
-            var ok = double.TryParse(kvp[0].Trim(), style, provider, out x) && double.TryParse(kvp[1].Trim(), style, provider, out y) && double.TryParse(kvp[2].Trim(), style, provider, out z) && double.TryParse(kvp[3].Trim(), style, provider, out w);
+            var ok = ((double.TryParse(kvp[0].Trim(), style, provider, out x) && double.TryParse(kvp[1].Trim(), style, provider, out y)) && (double.TryParse(kvp[2].Trim(), style, provider, out z) && double.TryParse(kvp[3].Trim(), style, provider, out w)));
             result = ok ? new dquat(x, y, z, w) : Zero;
             return ok;
         }
