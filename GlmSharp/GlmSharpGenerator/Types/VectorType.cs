@@ -36,36 +36,19 @@ namespace GlmSharpGenerator.Types
             }
         }
 
-        public string CompParameterString => CompString.Select(c => BaseTypeName + " " + c).CommaSeparated();
-        public IEnumerable<string> CompParameters => CompString.Select(c => BaseTypeName + " " + c);
-
         public string CompArgString => CompString.CommaSeparated();
-        public IEnumerable<string> CompArgs => CompString.Select(c => c.ToString());
 
 
         public char ArgOf(int c) => "xyzw"[c];
         public char ArgOfUpper(int c) => char.ToUpper("xyzw"[c]);
-        public string ArgOfs(int c) => "xyzw"[c].ToString();
 
         public IEnumerable<string> SubCompParameters(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => BaseTypeName + " " + c);
         public string SubCompParameterString(int start, int end) => SubCompParameters(start, end).CommaSeparated();
         public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
-        public string SubCompArgString(int start, int end) => SubCompArgs(start, end).CommaSeparated();
 
         public SwizzleType SwizzleType => new SwizzleType { Components = Components, BaseName = "swizzle_" + BaseName, BaseType = BaseType };
 
-
-        private IEnumerable<string> Constructor(string comment, string args, IEnumerable<string> assignments)
-        {
-            foreach (var line in comment.AsComment())
-                yield return line;
-            yield return string.Format("public {0}({1})", Name, args);
-            yield return "{";
-            var it = assignments.GetEnumerator();
-            foreach (var c in CompString)
-                yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : ZeroValue).Indent();
-            yield return "}";
-        }
+        
 
         public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseType.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
 
@@ -81,51 +64,7 @@ namespace GlmSharpGenerator.Types
 
             return string.Format("({0}){1}", otherType.Name, c);
         }
-
-
-        public string ComponentWiseOperator(string op)
-            => string.Format("public static {0} operator{2}({0} lhs, {0} rhs) => new {0}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op);
-
-        public string ComponentWiseOperator(string op, string internalOp)
-            => string.Format("public static {0} operator{2}({0} lhs, {0} rhs) => new {0}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, internalOp)).CommaSeparated(), op);
-
-        public string ComponentWiseOperatorScalar(string op, string scalarType)
-            => string.Format("public static {0} operator{2}({0} lhs, {3} rhs) => new {0}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, scalarType);
-
-        public string ComponentWiseOperatorScalarL(string op, string scalarType)
-            => string.Format("public static {0} operator{2}({3} lhs, {0} rhs) => new {0}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, scalarType);
-
-        public string ComponentWiseOperatorForeign(string op, string returnType)
-            => string.Format("public static {3} operator{2}({0} lhs, {3} rhs) => new {3}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, returnType);
-        public string ComponentWiseOperatorForeignL(string op, string returnType)
-            => string.Format("public static {3} operator{2}({3} lhs, {0} rhs) => new {3}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, returnType);
-
-        public string ComponentWiseOperatorForeignScalar(string op, string scalarType, string returnType)
-            => string.Format("public static {4} operator{2}({0} lhs, {3} rhs) => new {4}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, scalarType, returnType);
-
-        public string ComponentWiseOperatorForeignScalarL(string op, string scalarType, string returnType)
-            => string.Format("public static {4} operator{2}({3} lhs, {0} rhs) => new {4}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, scalarType, returnType);
-
-        public string ComparisonOperator(string op)
-            => string.Format("public static bvec{3} operator{2}({0} lhs, {0} rhs) => new bvec{3}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs.{0}", c, op)).CommaSeparated(), op, Components);
-
-        public string ComparisonOperatorScalar(string op, string scalarType)
-            => string.Format("public static bvec{3} operator{2}({0} lhs, {4} rhs) => new bvec{3}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, Components, scalarType);
-
-        public string ComparisonOperatorScalarL(string op, string scalarType)
-            => string.Format("public static bvec{3} operator{2}({4} lhs, {0} rhs) => new bvec{3}({1});", NameThat,
-                    CompString.Select(c => string.Format("lhs {1} rhs.{0}", c, op)).CommaSeparated(), op, Components, scalarType);
-
+        
         public IEnumerable<string> SwitchIndex(IEnumerable<string> cases)
         {
             yield return "switch (index)";
