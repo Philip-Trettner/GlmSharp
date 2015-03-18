@@ -10,7 +10,7 @@ Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
 
 > PM> Install-Package GlmSharp
 
-Current version: _0.9.3_
+Current version: _0.9.4_
 
 ## Overview
 
@@ -65,12 +65,13 @@ The code itself is written using C# 6 features, the NuGet package however only r
 * Proper `ToString`, `Parse`, `TryParse` for vectors (including format providers)
 * Most `Math` and basetype functions work component-wise for vectors (e.g. `float.IsInfinite(v)` => `vec3.IsInfinite(v)`)
 * Vectors and matrices implement `IReadOnlyList<>` and `IEquatable<>`
-* Various constructors and explicit casts for vectors
+* Various constructors and explicit casts for vectors and matrices
 * Implicit casts for vectors where base types can be casted implicitly
 * Most GLSL functions
 * Radians-only lib
 * Serialization via `[Serializable]`, `[DataContract]` and `[DataMember]` (and thus [Json.NET](https://github.com/JamesNK/Newtonsoft.Json))
 * Marshalling via `[StructLayout(LayoutKind.Sequential)]`
+* Quaternions
 * Generated library
 
 
@@ -102,11 +103,9 @@ This library is MIT-licensed.
 
 ## TODO-List
 
-* quaternions
 * test generation
 * basetype functions (e.g. Smoothstep on floats)
 * ToString, Parse, TryParse for matrices
-* more constructors and casts for matrices
 * some GLU functions (e.g. PickMatrix)
 * advanced glsl/glm functions
 * .net 2 support

@@ -3,7 +3,7 @@
   <metadata>
     <id>GlmSharp</id>
     <title>GlmSharp</title>
-    <version>0.9.3</version>
+    <version>0.9.4</version>
     <authors>Philip Trettner</authors>
     <owners>Philip Trettner</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -25,9 +25,9 @@ The naming and behavior is inspired by the excellent OpenGL Mathematics lib by C
 This library is MIT-licensed.
     </description>
     <summary>Open-source semi-generated GLM-flavored math library for .NET/C#</summary>
-    <releaseNotes>Initial working version at around 25k LOC, several supported types, quite extensive functionality. Includes XML documentation.</releaseNotes>
+    <releaseNotes>Working version at around 40k LOC, several supported types (vectors, matrices, quaternions), quite extensive functionality. Includes XML documentation.</releaseNotes>
     <copyright>Copyright 2015</copyright>
-    <tags>glm C# math .NET linear algebra glsl opengl vec mat</tags>
+    <tags>glm C# math .NET linear algebra glsl opengl vec mat quat</tags>
     <dependencies>
     </dependencies>
   </metadata>
