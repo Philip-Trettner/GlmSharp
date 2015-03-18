@@ -57,6 +57,7 @@ namespace GlmSharpGenerator.Types
         {
             var boolVType = new VectorType(BuiltinType.TypeBool, Components);
             var vec3Type = new VectorType(BaseType, 3);
+            var dvec3Type = new VectorType(BuiltinType.TypeDouble, 3);
             var lengthType = new AnyType(BaseType.LengthType);
 
             // fields
@@ -605,6 +606,12 @@ namespace GlmSharpGenerator.Types
                 {
                     GetterLine = "Math.Atan2(2.0 * (double)(x * y + w * z), (double)(w * w + x * x - y * y - z * z))",
                     Comment = "Returns the represented roll angle of this quaternion"
+                };
+
+                yield return new Property("EulerAngles", dvec3Type)
+                {
+                    GetterLine = Construct(dvec3Type, "Pitch", "Yaw", "Roll"),
+                    Comment = "Returns the represented euler angles (pitch, yaw, roll) of this quaternion"
                 };
             }
         }

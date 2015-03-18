@@ -290,6 +290,11 @@ namespace GlmSharp
         /// Returns the represented roll angle of this quaternion
         /// </summary>
         public double Roll => Math.Atan2(2.0 * (double)(x * y + w * z), (double)(w * w + x * x - y * y - z * z));
+        
+        /// <summary>
+        /// Returns the represented euler angles (pitch, yaw, roll) of this quaternion
+        /// </summary>
+        public dvec3 EulerAngles => new dvec3(Pitch, Yaw, Roll);
 
         #endregion
 
