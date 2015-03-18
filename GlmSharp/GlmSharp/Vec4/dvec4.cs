@@ -1233,6 +1233,46 @@ namespace GlmSharp
         public static dvec4 Smootherstep(double edge0, double edge1, double v) => new dvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(dvec4 a, dvec4 b, dvec4 c) => new dvec4(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z, a.w * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(dvec4 a, dvec4 b, double c) => new dvec4(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c, a.w * b.w + c);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(dvec4 a, double b, dvec4 c) => new dvec4(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z, a.w * b + c.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(dvec4 a, double b, double c) => new dvec4(a.x * b + c, a.y * b + c, a.z * b + c, a.w * b + c);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(double a, dvec4 b, dvec4 c) => new dvec4(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z, a * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(double a, dvec4 b, double c) => new dvec4(a * b.x + c, a * b.y + c, a * b.z + c, a * b.w + c);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(double a, double b, dvec4 c) => new dvec4(a * b + c.x, a * b + c.y, a * b + c.z, a * b + c.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec4 Fma(double a, double b, double c) => new dvec4(a * b + c);
+        
+        /// <summary>
         /// Returns a dvec4 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static dvec4 Add(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);

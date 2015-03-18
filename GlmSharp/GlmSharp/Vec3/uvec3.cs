@@ -1095,6 +1095,46 @@ namespace GlmSharp
         public static uvec3 Smootherstep(uint edge0, uint edge1, uint v) => new uvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uvec3 a, uvec3 b, uvec3 c) => new uvec3(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z);
+        
+        /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uvec3 a, uvec3 b, uint c) => new uvec3(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c);
+        
+        /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uvec3 a, uint b, uvec3 c) => new uvec3(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z);
+        
+        /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uvec3 a, uint b, uint c) => new uvec3(a.x * b + c, a.y * b + c, a.z * b + c);
+        
+        /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uint a, uvec3 b, uvec3 c) => new uvec3(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z);
+        
+        /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uint a, uvec3 b, uint c) => new uvec3(a * b.x + c, a * b.y + c, a * b.z + c);
+        
+        /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uint a, uint b, uvec3 c) => new uvec3(a * b + c.x, a * b + c.y, a * b + c.z);
+        
+        /// <summary>
+        /// Returns a uvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec3 Fma(uint a, uint b, uint c) => new uvec3(a * b + c);
+        
+        /// <summary>
         /// Returns a uvec3 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static uvec3 Add(uvec3 lhs, uvec3 rhs) => new uvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);

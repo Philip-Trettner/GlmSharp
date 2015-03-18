@@ -1153,6 +1153,46 @@ namespace GlmSharp
         public static ivec4 Smootherstep(int edge0, int edge1, int v) => new ivec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(ivec4 a, ivec4 b, ivec4 c) => new ivec4(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z, a.w * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(ivec4 a, ivec4 b, int c) => new ivec4(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c, a.w * b.w + c);
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(ivec4 a, int b, ivec4 c) => new ivec4(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z, a.w * b + c.w);
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(ivec4 a, int b, int c) => new ivec4(a.x * b + c, a.y * b + c, a.z * b + c, a.w * b + c);
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(int a, ivec4 b, ivec4 c) => new ivec4(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z, a * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(int a, ivec4 b, int c) => new ivec4(a * b.x + c, a * b.y + c, a * b.z + c, a * b.w + c);
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(int a, int b, ivec4 c) => new ivec4(a * b + c.x, a * b + c.y, a * b + c.z, a * b + c.w);
+        
+        /// <summary>
+        /// Returns a ivec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec4 Fma(int a, int b, int c) => new ivec4(a * b + c);
+        
+        /// <summary>
         /// Returns a ivec4 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static ivec4 Add(ivec4 lhs, ivec4 rhs) => new ivec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);

@@ -1182,6 +1182,46 @@ namespace GlmSharp
         public static vec2 Smootherstep(float edge0, float edge1, float v) => new vec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(vec2 a, vec2 b, vec2 c) => new vec2(a.x * b.x + c.x, a.y * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(vec2 a, vec2 b, float c) => new vec2(a.x * b.x + c, a.y * b.y + c);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(vec2 a, float b, vec2 c) => new vec2(a.x * b + c.x, a.y * b + c.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(vec2 a, float b, float c) => new vec2(a.x * b + c, a.y * b + c);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(float a, vec2 b, vec2 c) => new vec2(a * b.x + c.x, a * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(float a, vec2 b, float c) => new vec2(a * b.x + c, a * b.y + c);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(float a, float b, vec2 c) => new vec2(a * b + c.x, a * b + c.y);
+        
+        /// <summary>
+        /// Returns a vec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec2 Fma(float a, float b, float c) => new vec2(a * b + c);
+        
+        /// <summary>
         /// Returns a vec2 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static vec2 Add(vec2 lhs, vec2 rhs) => new vec2(lhs.x + rhs.x, lhs.y + rhs.y);

@@ -1087,6 +1087,46 @@ namespace GlmSharp
         public static lvec2 Smootherstep(long edge0, long edge1, long v) => new lvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(lvec2 a, lvec2 b, lvec2 c) => new lvec2(a.x * b.x + c.x, a.y * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(lvec2 a, lvec2 b, long c) => new lvec2(a.x * b.x + c, a.y * b.y + c);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(lvec2 a, long b, lvec2 c) => new lvec2(a.x * b + c.x, a.y * b + c.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(lvec2 a, long b, long c) => new lvec2(a.x * b + c, a.y * b + c);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(long a, lvec2 b, lvec2 c) => new lvec2(a * b.x + c.x, a * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(long a, lvec2 b, long c) => new lvec2(a * b.x + c, a * b.y + c);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(long a, long b, lvec2 c) => new lvec2(a * b + c.x, a * b + c.y);
+        
+        /// <summary>
+        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec2 Fma(long a, long b, long c) => new lvec2(a * b + c);
+        
+        /// <summary>
         /// Returns a lvec2 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static lvec2 Add(lvec2 lhs, lvec2 rhs) => new lvec2(lhs.x + rhs.x, lhs.y + rhs.y);

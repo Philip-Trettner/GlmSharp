@@ -1126,6 +1126,46 @@ namespace GlmSharp
         public static decvec3 Smootherstep(decimal edge0, decimal edge1, decimal v) => new decvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decvec3 a, decvec3 b, decvec3 c) => new decvec3(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decvec3 a, decvec3 b, decimal c) => new decvec3(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decvec3 a, decimal b, decvec3 c) => new decvec3(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decvec3 a, decimal b, decimal c) => new decvec3(a.x * b + c, a.y * b + c, a.z * b + c);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decimal a, decvec3 b, decvec3 c) => new decvec3(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decimal a, decvec3 b, decimal c) => new decvec3(a * b.x + c, a * b.y + c, a * b.z + c);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decimal a, decimal b, decvec3 c) => new decvec3(a * b + c.x, a * b + c.y, a * b + c.z);
+        
+        /// <summary>
+        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static decvec3 Fma(decimal a, decimal b, decimal c) => new decvec3(a * b + c);
+        
+        /// <summary>
         /// Returns a decvec3 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static decvec3 Add(decvec3 lhs, decvec3 rhs) => new decvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);

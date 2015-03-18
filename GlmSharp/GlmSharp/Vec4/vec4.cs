@@ -1233,6 +1233,46 @@ namespace GlmSharp
         public static vec4 Smootherstep(float edge0, float edge1, float v) => new vec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(vec4 a, vec4 b, vec4 c) => new vec4(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z, a.w * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(vec4 a, vec4 b, float c) => new vec4(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c, a.w * b.w + c);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(vec4 a, float b, vec4 c) => new vec4(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z, a.w * b + c.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(vec4 a, float b, float c) => new vec4(a.x * b + c, a.y * b + c, a.z * b + c, a.w * b + c);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(float a, vec4 b, vec4 c) => new vec4(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z, a * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(float a, vec4 b, float c) => new vec4(a * b.x + c, a * b.y + c, a * b.z + c, a * b.w + c);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(float a, float b, vec4 c) => new vec4(a * b + c.x, a * b + c.y, a * b + c.z, a * b + c.w);
+        
+        /// <summary>
+        /// Returns a vec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static vec4 Fma(float a, float b, float c) => new vec4(a * b + c);
+        
+        /// <summary>
         /// Returns a vec4 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static vec4 Add(vec4 lhs, vec4 rhs) => new vec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);

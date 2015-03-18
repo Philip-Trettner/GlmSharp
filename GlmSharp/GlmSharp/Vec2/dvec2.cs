@@ -1182,6 +1182,46 @@ namespace GlmSharp
         public static dvec2 Smootherstep(double edge0, double edge1, double v) => new dvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(dvec2 a, dvec2 b, dvec2 c) => new dvec2(a.x * b.x + c.x, a.y * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(dvec2 a, dvec2 b, double c) => new dvec2(a.x * b.x + c, a.y * b.y + c);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(dvec2 a, double b, dvec2 c) => new dvec2(a.x * b + c.x, a.y * b + c.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(dvec2 a, double b, double c) => new dvec2(a.x * b + c, a.y * b + c);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(double a, dvec2 b, dvec2 c) => new dvec2(a * b.x + c.x, a * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(double a, dvec2 b, double c) => new dvec2(a * b.x + c, a * b.y + c);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(double a, double b, dvec2 c) => new dvec2(a * b + c.x, a * b + c.y);
+        
+        /// <summary>
+        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static dvec2 Fma(double a, double b, double c) => new dvec2(a * b + c);
+        
+        /// <summary>
         /// Returns a dvec2 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static dvec2 Add(dvec2 lhs, dvec2 rhs) => new dvec2(lhs.x + rhs.x, lhs.y + rhs.y);

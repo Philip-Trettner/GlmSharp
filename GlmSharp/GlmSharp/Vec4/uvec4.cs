@@ -1132,6 +1132,46 @@ namespace GlmSharp
         public static uvec4 Smootherstep(uint edge0, uint edge1, uint v) => new uvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uvec4 a, uvec4 b, uvec4 c) => new uvec4(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z, a.w * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uvec4 a, uvec4 b, uint c) => new uvec4(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c, a.w * b.w + c);
+        
+        /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uvec4 a, uint b, uvec4 c) => new uvec4(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z, a.w * b + c.w);
+        
+        /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uvec4 a, uint b, uint c) => new uvec4(a.x * b + c, a.y * b + c, a.z * b + c, a.w * b + c);
+        
+        /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uint a, uvec4 b, uvec4 c) => new uvec4(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z, a * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uint a, uvec4 b, uint c) => new uvec4(a * b.x + c, a * b.y + c, a * b.z + c, a * b.w + c);
+        
+        /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uint a, uint b, uvec4 c) => new uvec4(a * b + c.x, a * b + c.y, a * b + c.z, a * b + c.w);
+        
+        /// <summary>
+        /// Returns a uvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec4 Fma(uint a, uint b, uint c) => new uvec4(a * b + c);
+        
+        /// <summary>
         /// Returns a uvec4 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static uvec4 Add(uvec4 lhs, uvec4 rhs) => new uvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);

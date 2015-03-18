@@ -1087,6 +1087,46 @@ namespace GlmSharp
         public static ivec2 Smootherstep(int edge0, int edge1, int v) => new ivec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(ivec2 a, ivec2 b, ivec2 c) => new ivec2(a.x * b.x + c.x, a.y * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(ivec2 a, ivec2 b, int c) => new ivec2(a.x * b.x + c, a.y * b.y + c);
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(ivec2 a, int b, ivec2 c) => new ivec2(a.x * b + c.x, a.y * b + c.y);
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(ivec2 a, int b, int c) => new ivec2(a.x * b + c, a.y * b + c);
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(int a, ivec2 b, ivec2 c) => new ivec2(a * b.x + c.x, a * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(int a, ivec2 b, int c) => new ivec2(a * b.x + c, a * b.y + c);
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(int a, int b, ivec2 c) => new ivec2(a * b + c.x, a * b + c.y);
+        
+        /// <summary>
+        /// Returns a ivec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static ivec2 Fma(int a, int b, int c) => new ivec2(a * b + c);
+        
+        /// <summary>
         /// Returns a ivec2 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static ivec2 Add(ivec2 lhs, ivec2 rhs) => new ivec2(lhs.x + rhs.x, lhs.y + rhs.y);

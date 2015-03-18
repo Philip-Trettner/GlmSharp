@@ -555,6 +555,7 @@ namespace GlmSharpGenerator.Types
                     yield return new ComponentWiseStaticFunction(Fields, this, "Smootherstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()");
                 }
 
+                yield return new ComponentWiseStaticFunction(Fields, this, "Fma", this, "a", this, "b", this, "c", "{0} * {1} + {2}");
 
                 // outer product
                 // TODO: add to respective matrices

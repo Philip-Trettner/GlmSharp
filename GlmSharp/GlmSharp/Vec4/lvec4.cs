@@ -1153,6 +1153,46 @@ namespace GlmSharp
         public static lvec4 Smootherstep(long edge0, long edge1, long v) => new lvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(lvec4 a, lvec4 b, lvec4 c) => new lvec4(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z, a.w * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(lvec4 a, lvec4 b, long c) => new lvec4(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c, a.w * b.w + c);
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(lvec4 a, long b, lvec4 c) => new lvec4(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z, a.w * b + c.w);
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(lvec4 a, long b, long c) => new lvec4(a.x * b + c, a.y * b + c, a.z * b + c, a.w * b + c);
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(long a, lvec4 b, lvec4 c) => new lvec4(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z, a * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(long a, lvec4 b, long c) => new lvec4(a * b.x + c, a * b.y + c, a * b.z + c, a * b.w + c);
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(long a, long b, lvec4 c) => new lvec4(a * b + c.x, a * b + c.y, a * b + c.z, a * b + c.w);
+        
+        /// <summary>
+        /// Returns a lvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec4 Fma(long a, long b, long c) => new lvec4(a * b + c);
+        
+        /// <summary>
         /// Returns a lvec4 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static lvec4 Add(lvec4 lhs, lvec4 rhs) => new lvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);

@@ -812,6 +812,46 @@ namespace GlmSharp
         public static cvec4 FromPolarCoordinates(double magnitude, double phase) => new cvec4(Complex.FromPolarCoordinates(magnitude, phase));
         
         /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(cvec4 a, cvec4 b, cvec4 c) => new cvec4(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z, a.w * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(cvec4 a, cvec4 b, Complex c) => new cvec4(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c, a.w * b.w + c);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(cvec4 a, Complex b, cvec4 c) => new cvec4(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z, a.w * b + c.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(cvec4 a, Complex b, Complex c) => new cvec4(a.x * b + c, a.y * b + c, a.z * b + c, a.w * b + c);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(Complex a, cvec4 b, cvec4 c) => new cvec4(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z, a * b.w + c.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(Complex a, cvec4 b, Complex c) => new cvec4(a * b.x + c, a * b.y + c, a * b.z + c, a * b.w + c);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(Complex a, Complex b, cvec4 c) => new cvec4(a * b + c.x, a * b + c.y, a * b + c.z, a * b + c.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec4 Fma(Complex a, Complex b, Complex c) => new cvec4(a * b + c);
+        
+        /// <summary>
         /// Returns a cvec4 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static cvec4 Add(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);

@@ -736,6 +736,46 @@ namespace GlmSharp
         public static cvec2 FromPolarCoordinates(double magnitude, double phase) => new cvec2(Complex.FromPolarCoordinates(magnitude, phase));
         
         /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(cvec2 a, cvec2 b, cvec2 c) => new cvec2(a.x * b.x + c.x, a.y * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(cvec2 a, cvec2 b, Complex c) => new cvec2(a.x * b.x + c, a.y * b.y + c);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(cvec2 a, Complex b, cvec2 c) => new cvec2(a.x * b + c.x, a.y * b + c.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(cvec2 a, Complex b, Complex c) => new cvec2(a.x * b + c, a.y * b + c);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(Complex a, cvec2 b, cvec2 c) => new cvec2(a * b.x + c.x, a * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(Complex a, cvec2 b, Complex c) => new cvec2(a * b.x + c, a * b.y + c);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(Complex a, Complex b, cvec2 c) => new cvec2(a * b + c.x, a * b + c.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static cvec2 Fma(Complex a, Complex b, Complex c) => new cvec2(a * b + c);
+        
+        /// <summary>
         /// Returns a cvec2 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static cvec2 Add(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x + rhs.x, lhs.y + rhs.y);

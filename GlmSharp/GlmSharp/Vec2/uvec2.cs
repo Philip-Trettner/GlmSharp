@@ -1066,6 +1066,46 @@ namespace GlmSharp
         public static uvec2 Smootherstep(uint edge0, uint edge1, uint v) => new uvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uvec2 a, uvec2 b, uvec2 c) => new uvec2(a.x * b.x + c.x, a.y * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uvec2 a, uvec2 b, uint c) => new uvec2(a.x * b.x + c, a.y * b.y + c);
+        
+        /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uvec2 a, uint b, uvec2 c) => new uvec2(a.x * b + c.x, a.y * b + c.y);
+        
+        /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uvec2 a, uint b, uint c) => new uvec2(a.x * b + c, a.y * b + c);
+        
+        /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uint a, uvec2 b, uvec2 c) => new uvec2(a * b.x + c.x, a * b.y + c.y);
+        
+        /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uint a, uvec2 b, uint c) => new uvec2(a * b.x + c, a * b.y + c);
+        
+        /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uint a, uint b, uvec2 c) => new uvec2(a * b + c.x, a * b + c.y);
+        
+        /// <summary>
+        /// Returns a uvec2 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static uvec2 Fma(uint a, uint b, uint c) => new uvec2(a * b + c);
+        
+        /// <summary>
         /// Returns a uvec2 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static uvec2 Add(uvec2 lhs, uvec2 rhs) => new uvec2(lhs.x + rhs.x, lhs.y + rhs.y);

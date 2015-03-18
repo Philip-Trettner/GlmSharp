@@ -1116,6 +1116,46 @@ namespace GlmSharp
         public static lvec3 Smootherstep(long edge0, long edge1, long v) => new lvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(lvec3 a, lvec3 b, lvec3 c) => new lvec3(a.x * b.x + c.x, a.y * b.y + c.y, a.z * b.z + c.z);
+        
+        /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(lvec3 a, lvec3 b, long c) => new lvec3(a.x * b.x + c, a.y * b.y + c, a.z * b.z + c);
+        
+        /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(lvec3 a, long b, lvec3 c) => new lvec3(a.x * b + c.x, a.y * b + c.y, a.z * b + c.z);
+        
+        /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(lvec3 a, long b, long c) => new lvec3(a.x * b + c, a.y * b + c, a.z * b + c);
+        
+        /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(long a, lvec3 b, lvec3 c) => new lvec3(a * b.x + c.x, a * b.y + c.y, a * b.z + c.z);
+        
+        /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(long a, lvec3 b, long c) => new lvec3(a * b.x + c, a * b.y + c, a * b.z + c);
+        
+        /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(long a, long b, lvec3 c) => new lvec3(a * b + c.x, a * b + c.y, a * b + c.z);
+        
+        /// <summary>
+        /// Returns a lvec3 from component-wise application of Fma (a * b + c).
+        /// </summary>
+        public static lvec3 Fma(long a, long b, long c) => new lvec3(a * b + c);
+        
+        /// <summary>
         /// Returns a lvec3 from component-wise application of Add (lhs + rhs).
         /// </summary>
         public static lvec3 Add(lvec3 lhs, lvec3 rhs) => new lvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
