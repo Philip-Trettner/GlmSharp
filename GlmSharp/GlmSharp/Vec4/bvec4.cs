@@ -314,6 +314,26 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the minimal component of this vector.
+        /// </summary>
+        public bool MinElement => x && y && z && w;
+        
+        /// <summary>
+        /// Returns the maximal component of this vector.
+        /// </summary>
+        public bool MaxElement => x || y || z || w;
+        
+        /// <summary>
+        /// Returns true if all component are true.
+        /// </summary>
+        public bool All => x && y && z && w;
+        
+        /// <summary>
+        /// Returns true if any component is true.
+        /// </summary>
+        public bool Any => x || y || z || w;
 
         #endregion
 
@@ -678,25 +698,5 @@ namespace GlmSharp
             result = ok ? new bvec4(x, y, z, w) : Zero;
             return ok;
         }
-        
-        /// <summary>
-        /// Returns the minimal component of this vector.
-        /// </summary>
-        public bool MinElement => x && y && z && w;
-        
-        /// <summary>
-        /// Returns the maximal component of this vector.
-        /// </summary>
-        public bool MaxElement => x || y || z || w;
-        
-        /// <summary>
-        /// Returns true if all component are true.
-        /// </summary>
-        public bool All => x && y && z && w;
-        
-        /// <summary>
-        /// Returns true if any component is true.
-        /// </summary>
-        public bool Any => x || y || z || w;
     }
 }

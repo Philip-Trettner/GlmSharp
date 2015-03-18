@@ -138,6 +138,11 @@ namespace GlmSharpGenerator.Types
 
         public override IEnumerable<Member> GenerateMembers()
         {
+            var boolVType = new VectorType(BuiltinType.TypeBool, Components);
+            var doubleVType = new VectorType(BuiltinType.TypeDouble, Components);
+            var integerVType = new VectorType(BuiltinType.TypeInt, Components);
+            var absVType = !string.IsNullOrEmpty(BaseType.AbsOverrideType) ? Types[BaseType.AbsOverrideTypePrefix + "vec" + Components] : this;
+
             // fields
             foreach (var f in Fields)
                 yield return new Field(f, BaseType)
@@ -403,12 +408,6 @@ namespace GlmSharpGenerator.Types
             };
 
             // Component-wise static functions
-            var boolVType = new VectorType(BuiltinType.TypeBool, Components);
-            var doubleVType = new VectorType(BuiltinType.TypeDouble, Components);
-            var integerVType = new VectorType(BuiltinType.TypeInt, Components);
-            var absVType = !string.IsNullOrEmpty(BaseType.AbsOverrideType) ? Types[BaseType.AbsOverrideTypePrefix + "vec" + Components] : this;
-
-
             yield return new ComponentWiseStaticFunction(Fields, boolVType, "Equal", this, "lhs", this, "rhs", BaseType.EqualFormat);
             yield return new ComponentWiseStaticFunction(Fields, boolVType, "NotEqual", this, "lhs", this, "rhs", BaseType.NotEqualFormat);
 
@@ -558,6 +557,16 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseStaticFunction(Fields, this, "Tanh", this, "v", string.Format("({0})Math.Tanh((double){{0}})", BaseTypeName));
                 yield return new ComponentWiseStaticFunction(Fields, this, "Truncate", this, "v", string.Format("({0})Math.Truncate((double){{0}})", BaseTypeName));
             }
+
+
+            // Logicals
+            if (BaseType.IsBool)
+            {
+                yield return new AggregatedProperty(Fields, "MinElement", BaseType, "&&", "Returns the minimal component of this vector.");
+                yield return new AggregatedProperty(Fields, "MaxElement", BaseType, "||", "Returns the maximal component of this vector.");
+                yield return new AggregatedProperty(Fields, "All", BaseType, "&&", "Returns true if all component are true.");
+                yield return new AggregatedProperty(Fields, "Any", BaseType, "||", "Returns true if any component is true.");
+            }
         }
 
         protected override IEnumerable<string> Body
@@ -656,22 +665,6 @@ namespace GlmSharpGenerator.Types
 
                     foreach (var line in "Returns a vector containing component-wise real parts.".AsComment()) yield return line;
                     yield return string.Format("public dvec{0} Real => new dvec{0}({1});", Components, CompString.Select(c => c + ".Real").CommaSeparated());
-                }
-
-                // Logicals
-                if (BaseType.IsBool)
-                {
-                    foreach (var line in "Returns the minimal component of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} MinElement => {1};", BaseTypeName, CompString.Aggregated(" && "));
-
-                    foreach (var line in "Returns the maximal component of this vector.".AsComment()) yield return line;
-                    yield return string.Format("public {0} MaxElement => {1};", BaseTypeName, CompString.Aggregated(" || "));
-
-                    foreach (var line in "Returns true if all component are true.".AsComment()) yield return line;
-                    yield return string.Format("public {0} All => {1};", BaseTypeName, CompString.Aggregated(" && "));
-
-                    foreach (var line in "Returns true if any component is true.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Any => {1};", BaseTypeName, CompString.Aggregated(" || "));
                 }
 
                 // Arithmetics
