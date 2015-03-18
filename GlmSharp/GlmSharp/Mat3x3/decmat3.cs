@@ -318,6 +318,16 @@ namespace GlmSharp
         #endregion
 
 
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Creates a rotation matrix from a decquat.
+        /// </summary>
+        public static explicit operator decmat3(decquat  q) => q.ToMat3;
+
+        #endregion
+
+
         #region Properties
         
         /// <summary>

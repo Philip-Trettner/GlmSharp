@@ -262,16 +262,22 @@ namespace GlmSharpGenerator.Types
                     }
                 }
             }
-            // mat4-cast
-            /*{
-                var targetType = new MatrixType(BaseType, 4, 4);
-                yield return new ExplicitOperator(targetType)
+            // from matrices
+            if (BaseType.IsFloatingPoint)
+            {
+                yield return new ExplicitOperator(this)
                 {
-                    ParameterString = NameThat + " v",
-                    CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c))),
-                    Comment = string.Format("Explicitly converts this to a {0}.", targetType.Name)
+                    ParameterString = mat3Type.Name + " m",
+                    CodeString = "FromMat3(m)",
+                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat3Type.Name)
                 };
-            }*/
+                yield return new ExplicitOperator(this)
+                {
+                    ParameterString = mat4Type.Name + " m",
+                    CodeString = "FromMat4(m)",
+                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat4Type.Name)
+                };
+            }
 
 
             // IEnumerable

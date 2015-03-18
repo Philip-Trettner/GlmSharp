@@ -224,6 +224,16 @@ namespace GlmSharp
         /// Explicitly converts this to a bquat.
         /// </summary>
         public static explicit operator bquat(quat v) => new bquat(v.x != 0f, v.y != 0f, v.z != 0f, v.w != 0f);
+        
+        /// <summary>
+        /// Creates a quaternion from the rotational part of a mat3.
+        /// </summary>
+        public static explicit operator quat(mat3 m) => FromMat3(m);
+        
+        /// <summary>
+        /// Creates a quaternion from the rotational part of a mat4.
+        /// </summary>
+        public static explicit operator quat(mat4 m) => FromMat4(m);
 
         #endregion
 

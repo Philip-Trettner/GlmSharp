@@ -266,6 +266,13 @@ namespace GlmSharpGenerator.Types
                     Comment = string.Format("Creates a rotation matrix from a {0}.", quatType.Name)
                 };
 
+                yield return new ExplicitOperator(this)
+                {
+                    Parameters = quatType.TypedArgs(" q"),
+                    CodeString = string.Format("q.ToMat{0}", Rows),
+                    Comment = string.Format("Creates a rotation matrix from a {0}.", quatType.Name)
+                };
+
                 yield return new Property("ToQuaternion", quatType)
                 {
                     GetterLine = quatType.Name + ".FromMat" + Rows + "(this)",
