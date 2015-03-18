@@ -1396,6 +1396,16 @@ namespace GlmSharp
         /// Returns a decvec4 from component-wise application of Truncate ((decimal)Math.Truncate((double)v)).
         /// </summary>
         public static decvec4 Truncate(decimal v) => new decvec4((decimal)Math.Truncate((double)v));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Fract ((decimal)(v - Math.Floor(v))).
+        /// </summary>
+        public static decvec4 Fract(decvec4 v) => new decvec4((decimal)(v.x - Math.Floor(v.x)), (decimal)(v.y - Math.Floor(v.y)), (decimal)(v.z - Math.Floor(v.z)), (decimal)(v.w - Math.Floor(v.w)));
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Fract ((decimal)(v - Math.Floor(v))).
+        /// </summary>
+        public static decvec4 Fract(decimal v) => new decvec4((decimal)(v - Math.Floor(v)));
 
         #endregion
 
