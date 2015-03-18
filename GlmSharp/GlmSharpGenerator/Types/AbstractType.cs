@@ -395,5 +395,15 @@ namespace GlmSharpGenerator.Types
             var fs = ffs.ToArray();
             return NestedSymmetricFunction(fs, funcFormat, 0, fs.Length - 1);
         }
+        public string TypeCast(BuiltinType otherType, string c)
+        {
+            if (otherType.HasArithmetics && BaseType.IsBool)
+                return string.Format("{0} ? {1} : {2}", c, otherType.OneValue, otherType.ZeroValue);
+
+            if (otherType.IsBool && BaseType.HasArithmetics)
+                return string.Format("{0} != {1}", c, BaseType.ZeroValue);
+
+            return string.Format("({0}){1}", otherType.Name, c);
+        }
     }
 }

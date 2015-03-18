@@ -78,6 +78,16 @@ namespace GlmSharp
         #endregion
 
 
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Explicitly converts this to a gvec4.
+        /// </summary>
+        public static explicit operator gvec4<T>(gquat<T> v) => new gvec4<T>((T)v.x, (T)v.y, (T)v.z, (T)v.w);
+
+        #endregion
+
+
         #region Indexer
         
         /// <summary>

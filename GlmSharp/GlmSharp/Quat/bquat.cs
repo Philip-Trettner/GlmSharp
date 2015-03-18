@@ -78,6 +78,86 @@ namespace GlmSharp
         #endregion
 
 
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Explicitly converts this to a ivec4.
+        /// </summary>
+        public static explicit operator ivec4(bquat v) => new ivec4(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0, v.w ? 1 : 0);
+        
+        /// <summary>
+        /// Explicitly converts this to a iquat.
+        /// </summary>
+        public static explicit operator iquat(bquat v) => new iquat(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0, v.w ? 1 : 0);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec4.
+        /// </summary>
+        public static explicit operator uvec4(bquat v) => new uvec4(v.x ? 1u : 0u, v.y ? 1u : 0u, v.z ? 1u : 0u, v.w ? 1u : 0u);
+        
+        /// <summary>
+        /// Explicitly converts this to a uquat.
+        /// </summary>
+        public static explicit operator uquat(bquat v) => new uquat(v.x ? 1u : 0u, v.y ? 1u : 0u, v.z ? 1u : 0u, v.w ? 1u : 0u);
+        
+        /// <summary>
+        /// Explicitly converts this to a vec4.
+        /// </summary>
+        public static explicit operator vec4(bquat v) => new vec4(v.x ? 1f : 0f, v.y ? 1f : 0f, v.z ? 1f : 0f, v.w ? 1f : 0f);
+        
+        /// <summary>
+        /// Explicitly converts this to a quat.
+        /// </summary>
+        public static explicit operator quat(bquat v) => new quat(v.x ? 1f : 0f, v.y ? 1f : 0f, v.z ? 1f : 0f, v.w ? 1f : 0f);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec4.
+        /// </summary>
+        public static explicit operator dvec4(bquat v) => new dvec4(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
+        
+        /// <summary>
+        /// Explicitly converts this to a dquat.
+        /// </summary>
+        public static explicit operator dquat(bquat v) => new dquat(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
+        
+        /// <summary>
+        /// Explicitly converts this to a decvec4.
+        /// </summary>
+        public static explicit operator decvec4(bquat v) => new decvec4(v.x ? 1m : 0m, v.y ? 1m : 0m, v.z ? 1m : 0m, v.w ? 1m : 0m);
+        
+        /// <summary>
+        /// Explicitly converts this to a decquat.
+        /// </summary>
+        public static explicit operator decquat(bquat v) => new decquat(v.x ? 1m : 0m, v.y ? 1m : 0m, v.z ? 1m : 0m, v.w ? 1m : 0m);
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec4.
+        /// </summary>
+        public static explicit operator cvec4(bquat v) => new cvec4(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
+        
+        /// <summary>
+        /// Explicitly converts this to a cquat.
+        /// </summary>
+        public static explicit operator cquat(bquat v) => new cquat(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec4.
+        /// </summary>
+        public static explicit operator lvec4(bquat v) => new lvec4(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0, v.w ? 1 : 0);
+        
+        /// <summary>
+        /// Explicitly converts this to a lquat.
+        /// </summary>
+        public static explicit operator lquat(bquat v) => new lquat(v.x ? 1 : 0, v.y ? 1 : 0, v.z ? 1 : 0, v.w ? 1 : 0);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec4.
+        /// </summary>
+        public static explicit operator bvec4(bquat v) => new bvec4((bool)v.x, (bool)v.y, (bool)v.z, (bool)v.w);
+
+        #endregion
+
+
         #region Indexer
         
         /// <summary>
@@ -158,6 +238,11 @@ namespace GlmSharp
         /// Predefined all-ones quaternion
         /// </summary>
         public static bquat Ones { get; } = new bquat(true, true, true, true);
+        
+        /// <summary>
+        /// Predefined identity quaternion
+        /// </summary>
+        public static bquat Identity { get; } = new bquat(false, false, false, true);
         
         /// <summary>
         /// Predefined unit-X quaternion

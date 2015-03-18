@@ -55,16 +55,6 @@ namespace GlmSharpGenerator.Types
 
         public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
 
-        public string TypeCast(BuiltinType otherType, string c)
-        {
-            if (otherType.HasArithmetics && BaseType.IsBool)
-                return string.Format("{0} ? {1} : {2}", c, otherType.OneValue, otherType.ZeroValue);
-
-            if (otherType.IsBool && BaseType.HasArithmetics)
-                return string.Format("{0} != {1}", c, BaseType.ZeroValue);
-
-            return string.Format("({0}){1}", otherType.Name, c);
-        }
 
         public override IEnumerable<Member> GenerateMembers()
         {

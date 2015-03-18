@@ -78,6 +78,16 @@ namespace GlmSharp
         #endregion
 
 
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec4.
+        /// </summary>
+        public static explicit operator cvec4(cquat v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, (Complex)v.w);
+
+        #endregion
+
+
         #region Indexer
         
         /// <summary>
@@ -138,6 +148,11 @@ namespace GlmSharp
         /// Predefined all-ones quaternion
         /// </summary>
         public static cquat Ones { get; } = new cquat(1.0, 1.0, 1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined identity quaternion
+        /// </summary>
+        public static cquat Identity { get; } = new cquat(0.0, 0.0, 0.0, 1.0);
         
         /// <summary>
         /// Predefined unit-X quaternion
@@ -269,6 +284,16 @@ namespace GlmSharp
                 return ((((((x.GetHashCode()) * 397) ^ y.GetHashCode()) * 397) ^ z.GetHashCode()) * 397) ^ w.GetHashCode();
             }
         }
+
+        #endregion
+
+
+        #region Static Functions
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two quaternions.
+        /// </summary>
+        public static Complex Dot(cquat lhs, cquat rhs) => ((lhs.x * Complex.Conjugate(rhs.x) + lhs.y * Complex.Conjugate(rhs.y)) + (lhs.z * Complex.Conjugate(rhs.z) + lhs.w * Complex.Conjugate(rhs.w)));
 
         #endregion
 

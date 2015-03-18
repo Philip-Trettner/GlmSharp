@@ -80,6 +80,12 @@ namespace GlmSharpGenerator.Types
                     Comment = "Predefined all-ones quaternion"
                 };
 
+                yield return new StaticProperty("Identity", this)
+                {
+                    Value = Construct(this, Fields.Select(f => f == "w" ? OneValue : ZeroValue)),
+                    Comment = "Predefined identity quaternion"
+                };
+
                 for (var c = 0; c < Components; ++c)
                     yield return new StaticProperty("Unit" + ArgOfUpper(c), this)
                     {
@@ -134,6 +140,62 @@ namespace GlmSharpGenerator.Types
                 Initializers = "v".RepeatTimes(Components),
                 Comment = "all-same-value constructor"
             };
+
+
+            // implicit upcasts
+            var implicits = new HashSet<BuiltinType>();
+            var upcasts = BuiltinType.Upcasts;
+            foreach (var ukvp in upcasts.Where(k => k.Key == BaseType))
+            {
+                var otherType = ukvp.Value;
+                implicits.Add(otherType);
+                var targetType = new QuaternionType(otherType);
+
+                yield return new ImplicitOperator(targetType)
+                {
+                    ParameterString = NameThat + " v",
+                    CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(Components, otherType.ZeroValue)),
+                    Comment = string.Format("Implicitly converts this to a {0}.", targetType.Name),
+                };
+            }
+
+            // explicit casts
+            foreach (var oType in BuiltinType.BaseTypes)
+            {
+                var otherType = oType;
+                if (otherType.Generic != BaseType.Generic)
+                    continue; // cannot mix generic/non-generic
+                if (BaseType.IsComplex && !otherType.IsComplex)
+                    continue; // cannot "downcast" complex type
+
+                {
+                    {
+                        var targetType = new VectorType(otherType, Components);
+                        yield return new ExplicitOperator(targetType)
+                        {
+                            ParameterString = NameThat + " v",
+                            CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c))),
+                            Comment = string.Format("Explicitly converts this to a {0}.", targetType.Name)
+                        };
+                    }
+
+                    if (otherType == BaseType)
+                        continue; // same type and comps not useful
+
+                    if (implicits.Contains(otherType))
+                        continue; // already has an implicit conversion
+
+                    {
+                        var targetType = new QuaternionType(otherType);
+                        yield return new ExplicitOperator(targetType)
+                        {
+                            ParameterString = NameThat + " v",
+                            CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c))),
+                            Comment = string.Format("Explicitly converts this to a {0}.", targetType.Name)
+                        };
+                    }
+                }
+            }
 
 
             // IEnumerable
@@ -407,6 +469,15 @@ namespace GlmSharpGenerator.Types
 
                 if (BaseType.IsSigned)
                     yield return new ComponentWiseOperator(Fields, this, "-", this, "v", "-{0}");
+
+                // dot
+                yield return new Function(BaseType, "Dot")
+                {
+                    Static = true,
+                    Parameters = this.LhsRhs(),
+                    CodeString = Fields.Format(DotFormatString).Aggregated(" + "),
+                    Comment = "Returns the inner product (dot product, scalar product) of the two quaternions."
+                };
             }
 
             // Logicals

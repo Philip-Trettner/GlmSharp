@@ -78,6 +78,91 @@ namespace GlmSharp
         #endregion
 
 
+        #region Implicit Operators
+        
+        /// <summary>
+        /// Implicitly converts this to a cquat.
+        /// </summary>
+        public static implicit operator cquat(dquat v) => new cquat((Complex)v.x, (Complex)v.y, (Complex)v.z, (Complex)v.w);
+
+        #endregion
+
+
+        #region Explicit Operators
+        
+        /// <summary>
+        /// Explicitly converts this to a ivec4.
+        /// </summary>
+        public static explicit operator ivec4(dquat v) => new ivec4((int)v.x, (int)v.y, (int)v.z, (int)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a iquat.
+        /// </summary>
+        public static explicit operator iquat(dquat v) => new iquat((int)v.x, (int)v.y, (int)v.z, (int)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a uvec4.
+        /// </summary>
+        public static explicit operator uvec4(dquat v) => new uvec4((uint)v.x, (uint)v.y, (uint)v.z, (uint)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a uquat.
+        /// </summary>
+        public static explicit operator uquat(dquat v) => new uquat((uint)v.x, (uint)v.y, (uint)v.z, (uint)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a vec4.
+        /// </summary>
+        public static explicit operator vec4(dquat v) => new vec4((float)v.x, (float)v.y, (float)v.z, (float)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a quat.
+        /// </summary>
+        public static explicit operator quat(dquat v) => new quat((float)v.x, (float)v.y, (float)v.z, (float)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a dvec4.
+        /// </summary>
+        public static explicit operator dvec4(dquat v) => new dvec4((double)v.x, (double)v.y, (double)v.z, (double)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a decvec4.
+        /// </summary>
+        public static explicit operator decvec4(dquat v) => new decvec4((decimal)v.x, (decimal)v.y, (decimal)v.z, (decimal)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a decquat.
+        /// </summary>
+        public static explicit operator decquat(dquat v) => new decquat((decimal)v.x, (decimal)v.y, (decimal)v.z, (decimal)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a cvec4.
+        /// </summary>
+        public static explicit operator cvec4(dquat v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, (Complex)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a lvec4.
+        /// </summary>
+        public static explicit operator lvec4(dquat v) => new lvec4((long)v.x, (long)v.y, (long)v.z, (long)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a lquat.
+        /// </summary>
+        public static explicit operator lquat(dquat v) => new lquat((long)v.x, (long)v.y, (long)v.z, (long)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a bvec4.
+        /// </summary>
+        public static explicit operator bvec4(dquat v) => new bvec4(v.x != 0.0, v.y != 0.0, v.z != 0.0, v.w != 0.0);
+        
+        /// <summary>
+        /// Explicitly converts this to a bquat.
+        /// </summary>
+        public static explicit operator bquat(dquat v) => new bquat(v.x != 0.0, v.y != 0.0, v.z != 0.0, v.w != 0.0);
+
+        #endregion
+
+
         #region Indexer
         
         /// <summary>
@@ -138,6 +223,11 @@ namespace GlmSharp
         /// Predefined all-ones quaternion
         /// </summary>
         public static dquat Ones { get; } = new dquat(1.0, 1.0, 1.0, 1.0);
+        
+        /// <summary>
+        /// Predefined identity quaternion
+        /// </summary>
+        public static dquat Identity { get; } = new dquat(0.0, 0.0, 0.0, 1.0);
         
         /// <summary>
         /// Predefined unit-X quaternion
@@ -359,6 +449,11 @@ namespace GlmSharp
             result = ok ? new dquat(x, y, z, w) : Zero;
             return ok;
         }
+        
+        /// <summary>
+        /// Returns the inner product (dot product, scalar product) of the two quaternions.
+        /// </summary>
+        public static double Dot(dquat lhs, dquat rhs) => ((lhs.x * rhs.x + lhs.y * rhs.y) + (lhs.z * rhs.z + lhs.w * rhs.w));
 
         #endregion
 
