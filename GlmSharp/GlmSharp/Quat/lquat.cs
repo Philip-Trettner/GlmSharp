@@ -219,6 +219,11 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the euclidean length of this quaternion.
+        /// </summary>
+        public double Length => (double)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
 
         #endregion
 
@@ -645,6 +650,46 @@ namespace GlmSharp
         /// Returns a lquat from component-wise application of operator- (-v).
         /// </summary>
         public static lquat operator-(lquat v) => new lquat(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static lquat operator+(lquat lhs, lquat rhs) => new lquat(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static lquat operator+(lquat lhs, long rhs) => new lquat(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static lquat operator+(long lhs, lquat rhs) => new lquat(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static lquat operator-(lquat lhs, lquat rhs) => new lquat(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static lquat operator-(lquat lhs, long rhs) => new lquat(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static lquat operator-(long lhs, lquat rhs) => new lquat(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static lquat operator*(lquat lhs, long rhs) => new lquat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a lquat from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static lquat operator/(lquat lhs, long rhs) => new lquat(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
 
         #endregion
 

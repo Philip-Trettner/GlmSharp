@@ -219,6 +219,11 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the euclidean length of this quaternion.
+        /// </summary>
+        public float Length => (float)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
 
         #endregion
 
@@ -645,6 +650,46 @@ namespace GlmSharp
         /// Returns a iquat from component-wise application of operator- (-v).
         /// </summary>
         public static iquat operator-(iquat v) => new iquat(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static iquat operator+(iquat lhs, iquat rhs) => new iquat(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static iquat operator+(iquat lhs, int rhs) => new iquat(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static iquat operator+(int lhs, iquat rhs) => new iquat(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static iquat operator-(iquat lhs, iquat rhs) => new iquat(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static iquat operator-(iquat lhs, int rhs) => new iquat(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static iquat operator-(int lhs, iquat rhs) => new iquat(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static iquat operator*(iquat lhs, int rhs) => new iquat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a iquat from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static iquat operator/(iquat lhs, int rhs) => new iquat(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
 
         #endregion
 

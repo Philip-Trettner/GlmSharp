@@ -85,6 +85,33 @@ namespace GlmSharp
             this.z = v.z;
             this.w = s;
         }
+        
+        /// <summary>
+        /// Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)
+        /// </summary>
+        public dquat(dvec3 u, dvec3 v)
+        {
+            var localW = dvec3.Cross(u, v);
+            var dot = dvec3.Dot(u, v);
+            var q = new dquat(localW.x, localW.y, localW.z, 1.0 + dot).Normalized;
+            this.x = q.x;
+            this.y = q.y;
+            this.z = q.z;
+            this.w = q.w;
+        }
+        
+        /// <summary>
+        /// Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)
+        /// </summary>
+        public dquat(dvec3 eulerAngle)
+        {
+            var c = dvec3.Cos(eulerAngle / 2);
+            var s = dvec3.Sin(eulerAngle / 2);
+            this.x = s.x * c.y * c.z - c.x * s.y * s.z;
+            this.y = c.x * s.y * c.z + s.x * c.y * s.z;
+            this.z = c.x * c.y * s.z - s.x * s.y * c.z;
+            this.w = c.x * c.y * c.z + s.x * s.y * s.z;
+        }
 
         #endregion
 
@@ -219,6 +246,21 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the euclidean length of this quaternion.
+        /// </summary>
+        public double Length => (double)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (undefined if this has zero length).
+        /// </summary>
+        public dquat Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (returns zero if length is zero).
+        /// </summary>
+        public dquat NormalizedSafe => this == Zero ? Identity : this / Length;
 
         #endregion
 
@@ -715,6 +757,46 @@ namespace GlmSharp
         /// Returns a dquat from component-wise application of operator- (-v).
         /// </summary>
         public static dquat operator-(dquat v) => new dquat(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static dquat operator+(dquat lhs, dquat rhs) => new dquat(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static dquat operator+(dquat lhs, double rhs) => new dquat(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static dquat operator+(double lhs, dquat rhs) => new dquat(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static dquat operator-(dquat lhs, dquat rhs) => new dquat(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static dquat operator-(dquat lhs, double rhs) => new dquat(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static dquat operator-(double lhs, dquat rhs) => new dquat(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static dquat operator*(dquat lhs, double rhs) => new dquat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a dquat from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static dquat operator/(dquat lhs, double rhs) => new dquat(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
 
         #endregion
 

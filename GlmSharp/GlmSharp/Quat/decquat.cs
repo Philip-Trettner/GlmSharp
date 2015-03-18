@@ -85,6 +85,33 @@ namespace GlmSharp
             this.z = v.z;
             this.w = s;
         }
+        
+        /// <summary>
+        /// Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)
+        /// </summary>
+        public decquat(decvec3 u, decvec3 v)
+        {
+            var localW = decvec3.Cross(u, v);
+            var dot = decvec3.Dot(u, v);
+            var q = new decquat(localW.x, localW.y, localW.z, 1m + dot).Normalized;
+            this.x = q.x;
+            this.y = q.y;
+            this.z = q.z;
+            this.w = q.w;
+        }
+        
+        /// <summary>
+        /// Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)
+        /// </summary>
+        public decquat(decvec3 eulerAngle)
+        {
+            var c = decvec3.Cos(eulerAngle / 2);
+            var s = decvec3.Sin(eulerAngle / 2);
+            this.x = s.x * c.y * c.z - c.x * s.y * s.z;
+            this.y = c.x * s.y * c.z + s.x * c.y * s.z;
+            this.z = c.x * c.y * s.z - s.x * s.y * c.z;
+            this.w = c.x * c.y * c.z + s.x * s.y * s.z;
+        }
 
         #endregion
 
@@ -214,6 +241,21 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the euclidean length of this quaternion.
+        /// </summary>
+        public decimal Length => (decimal)(((x*x + y*y) + (z*z + w*w))).Sqrt();
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (undefined if this has zero length).
+        /// </summary>
+        public decquat Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (returns zero if length is zero).
+        /// </summary>
+        public decquat NormalizedSafe => this == Zero ? Identity : this / Length;
 
         #endregion
 
@@ -645,6 +687,46 @@ namespace GlmSharp
         /// Returns a decquat from component-wise application of operator- (-v).
         /// </summary>
         public static decquat operator-(decquat v) => new decquat(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static decquat operator+(decquat lhs, decquat rhs) => new decquat(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static decquat operator+(decquat lhs, decimal rhs) => new decquat(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static decquat operator+(decimal lhs, decquat rhs) => new decquat(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static decquat operator-(decquat lhs, decquat rhs) => new decquat(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static decquat operator-(decquat lhs, decimal rhs) => new decquat(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static decquat operator-(decimal lhs, decquat rhs) => new decquat(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static decquat operator*(decquat lhs, decimal rhs) => new decquat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a decquat from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static decquat operator/(decquat lhs, decimal rhs) => new decquat(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
 
         #endregion
 

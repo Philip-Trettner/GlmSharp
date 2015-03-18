@@ -34,6 +34,8 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public IEnumerable<string> Initializers { get; set; }
 
+        public IEnumerable<string> Code { get; set; }
+
         public override IEnumerable<string> Lines
         {
             get
@@ -43,6 +45,9 @@ namespace GlmSharpGenerator.Members
 
                 yield return string.Format("{0} {1}({2})", MemberPrefix, Type.Name, Parameters.CommaSeparated());
                 yield return "{";
+                if (Code != null)
+                    foreach (var code in Code)
+                        yield return code.Indent();
                 var it = Initializers.GetEnumerator();
                 foreach (var c in Fields)
                     yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : Type.ZeroValue).Indent();

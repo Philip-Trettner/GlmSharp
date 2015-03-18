@@ -333,7 +333,7 @@ namespace GlmSharpGenerator.Types
 
             if (BaseType == BuiltinType.TypeDecimal)
                 return s + "m";
-
+            
             throw new InvalidOperationException("unknown type");
         }
 

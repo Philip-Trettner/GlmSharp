@@ -56,8 +56,8 @@ namespace GlmSharpGenerator.Types
         public override IEnumerable<Member> GenerateMembers()
         {
             var boolVType = new VectorType(BuiltinType.TypeBool, Components);
-            var vec4Type = new VectorType(BaseType, Components);
             var vec3Type = new VectorType(BaseType, 3);
+            var lengthType = new AnyType(BaseType.LengthType);
 
             // fields
             foreach (var f in Fields)
@@ -148,6 +148,39 @@ namespace GlmSharpGenerator.Types
                 Initializers = new[] { "v.x", "v.y", "v.z", "s" },
                 Comment = "vector-and-scalar constructor"
             };
+            if (BaseType.IsFloatingPoint)
+            {
+                yield return new Constructor(this, Fields)
+                {
+                    Parameters = vec3Type.TypedArgs("u", "v"),
+                    Code = new[]
+                    {
+                        string.Format("var localW = {0}.Cross(u, v);", vec3Type.NameThat),
+                        string.Format("var dot = {0}.Dot(u, v);", vec3Type.NameThat),
+                        string.Format("var q = new {0}(localW.x, localW.y, localW.z, {1} + dot).Normalized;", NameThat, OneValue)
+                    },
+                    Initializers = new[] { "q.x", "q.y", "q.z", "q.w" },
+                    Comment = "Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)"
+                };
+
+                yield return new Constructor(this, Fields)
+                {
+                    Parameters = vec3Type.TypedArgs("eulerAngle"),
+                    Code = new[]
+                    {
+                        string.Format("var c = {0}.Cos(eulerAngle / 2);", vec3Type.NameThat),
+                        string.Format("var s = {0}.Sin(eulerAngle / 2);", vec3Type.NameThat),
+                    },
+                    Initializers = new[]
+                    {
+                        "s.x * c.y * c.z - c.x * s.y * s.z",
+                        "c.x * s.y * c.z + s.x * c.y * s.z",
+                        "c.x * c.y * s.z - s.x * s.y * c.z",
+                        "c.x * c.y * c.z + s.x * s.y * s.z"
+                    },
+                    Comment = "Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)"
+                };
+            }
 
 
             // implicit upcasts
@@ -473,11 +506,17 @@ namespace GlmSharpGenerator.Types
 
             if (BaseType.HasArithmetics)
             {
+                // ops
                 yield return new ComponentWiseOperator(Fields, this, "+", this, "v", "identity") { ReturnOverride = "v" };
 
                 if (BaseType.IsSigned)
                     yield return new ComponentWiseOperator(Fields, this, "-", this, "v", "-{0}");
 
+                yield return new ComponentWiseOperator(Fields, this, "+", this, "lhs", this, "rhs", "{0} + {1}");
+                yield return new ComponentWiseOperator(Fields, this, "-", this, "lhs", this, "rhs", "{0} - {1}");
+                yield return new ComponentWiseOperator(Fields, this, "*", this, "lhs", BaseType, "rhs", "{0} * {1}") { CanScalar0 = false, CanScalar1 = false };
+                yield return new ComponentWiseOperator(Fields, this, "/", this, "lhs", BaseType, "rhs", "{0} / {1}") { CanScalar0 = false, CanScalar1 = false };
+                
                 // dot
                 yield return new Function(BaseType, "Dot")
                 {
@@ -486,6 +525,28 @@ namespace GlmSharpGenerator.Types
                     CodeString = Fields.Format(DotFormatString).Aggregated(" + "),
                     Comment = "Returns the inner product (dot product, scalar product) of the two quaternions."
                 };
+
+                // length
+                yield return new Property("Length", lengthType)
+                {
+                    GetterLine = "(" + lengthType.Name + ")" + SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")),
+                    Comment = "Returns the euclidean length of this quaternion."
+                };
+
+                // normalized
+                if (!BaseType.IsInteger)
+                {
+                    yield return new Property("Normalized", this)
+                    {
+                        GetterLine = "this / Length",
+                        Comment = "Returns a copy of this quaternion with length one (undefined if this has zero length)."
+                    };
+                    yield return new Property("NormalizedSafe", this)
+                    {
+                        GetterLine = "this == Zero ? Identity : this / Length",
+                        Comment = "Returns a copy of this quaternion with length one (returns zero if length is zero)."
+                    };
+                }
             }
 
             // Logicals

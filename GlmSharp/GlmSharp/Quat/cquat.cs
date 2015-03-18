@@ -144,6 +144,21 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the euclidean length of this quaternion.
+        /// </summary>
+        public double Length => (double)Math.Sqrt(((x.LengthSqr() + y.LengthSqr()) + (z.LengthSqr() + w.LengthSqr())));
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (undefined if this has zero length).
+        /// </summary>
+        public cquat Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (returns zero if length is zero).
+        /// </summary>
+        public cquat NormalizedSafe => this == Zero ? Identity : this / Length;
 
         #endregion
 
@@ -365,6 +380,46 @@ namespace GlmSharp
         /// Returns a cquat from component-wise application of operator- (-v).
         /// </summary>
         public static cquat operator-(cquat v) => new cquat(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cquat operator+(cquat lhs, cquat rhs) => new cquat(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cquat operator+(cquat lhs, Complex rhs) => new cquat(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cquat operator+(Complex lhs, cquat rhs) => new cquat(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cquat operator-(cquat lhs, cquat rhs) => new cquat(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cquat operator-(cquat lhs, Complex rhs) => new cquat(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cquat operator-(Complex lhs, cquat rhs) => new cquat(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cquat operator*(cquat lhs, Complex rhs) => new cquat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a cquat from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cquat operator/(cquat lhs, Complex rhs) => new cquat(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
 
         #endregion
 

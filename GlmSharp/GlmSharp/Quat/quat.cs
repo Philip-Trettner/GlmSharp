@@ -85,6 +85,33 @@ namespace GlmSharp
             this.z = v.z;
             this.w = s;
         }
+        
+        /// <summary>
+        /// Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)
+        /// </summary>
+        public quat(vec3 u, vec3 v)
+        {
+            var localW = vec3.Cross(u, v);
+            var dot = vec3.Dot(u, v);
+            var q = new quat(localW.x, localW.y, localW.z, 1f + dot).Normalized;
+            this.x = q.x;
+            this.y = q.y;
+            this.z = q.z;
+            this.w = q.w;
+        }
+        
+        /// <summary>
+        /// Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)
+        /// </summary>
+        public quat(vec3 eulerAngle)
+        {
+            var c = vec3.Cos(eulerAngle / 2);
+            var s = vec3.Sin(eulerAngle / 2);
+            this.x = s.x * c.y * c.z - c.x * s.y * s.z;
+            this.y = c.x * s.y * c.z + s.x * c.y * s.z;
+            this.z = c.x * c.y * s.z - s.x * s.y * c.z;
+            this.w = c.x * c.y * c.z + s.x * s.y * s.z;
+        }
 
         #endregion
 
@@ -219,6 +246,21 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the euclidean length of this quaternion.
+        /// </summary>
+        public float Length => (float)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (undefined if this has zero length).
+        /// </summary>
+        public quat Normalized => this / Length;
+        
+        /// <summary>
+        /// Returns a copy of this quaternion with length one (returns zero if length is zero).
+        /// </summary>
+        public quat NormalizedSafe => this == Zero ? Identity : this / Length;
 
         #endregion
 
@@ -715,6 +757,46 @@ namespace GlmSharp
         /// Returns a quat from component-wise application of operator- (-v).
         /// </summary>
         public static quat operator-(quat v) => new quat(-v.x, -v.y, -v.z, -v.w);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static quat operator+(quat lhs, quat rhs) => new quat(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static quat operator+(quat lhs, float rhs) => new quat(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static quat operator+(float lhs, quat rhs) => new quat(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static quat operator-(quat lhs, quat rhs) => new quat(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static quat operator-(quat lhs, float rhs) => new quat(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static quat operator-(float lhs, quat rhs) => new quat(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static quat operator*(quat lhs, float rhs) => new quat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a quat from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static quat operator/(quat lhs, float rhs) => new quat(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
 
         #endregion
 

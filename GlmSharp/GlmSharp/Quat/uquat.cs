@@ -219,6 +219,11 @@ namespace GlmSharp
         /// Returns the number of components (4).
         /// </summary>
         public int Count => 4;
+        
+        /// <summary>
+        /// Returns the euclidean length of this quaternion.
+        /// </summary>
+        public float Length => (float)Math.Sqrt(((x*x + y*y) + (z*z + w*w)));
 
         #endregion
 
@@ -640,6 +645,46 @@ namespace GlmSharp
         /// Returns a uquat from component-wise application of operator+ (identity).
         /// </summary>
         public static uquat operator+(uquat v) => v;
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static uquat operator+(uquat lhs, uquat rhs) => new uquat(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static uquat operator+(uquat lhs, uint rhs) => new uquat(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static uquat operator+(uint lhs, uquat rhs) => new uquat(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static uquat operator-(uquat lhs, uquat rhs) => new uquat(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static uquat operator-(uquat lhs, uint rhs) => new uquat(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static uquat operator-(uint lhs, uquat rhs) => new uquat(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static uquat operator*(uquat lhs, uint rhs) => new uquat(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a uquat from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static uquat operator/(uquat lhs, uint rhs) => new uquat(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
 
         #endregion
 
