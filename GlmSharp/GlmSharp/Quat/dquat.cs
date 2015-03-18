@@ -76,7 +76,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// vector-and-scalar constructor
+        /// vector-and-scalar constructor (CAUTION: not angle-axis, use FromAngleAxis instead)
         /// </summary>
         public dquat(dvec3 v, double s)
         {
@@ -561,6 +561,16 @@ namespace GlmSharp
         /// Returns the inner product (dot product, scalar product) of the two quaternions.
         /// </summary>
         public static double Dot(dquat lhs, dquat rhs) => ((lhs.x * rhs.x + lhs.y * rhs.y) + (lhs.z * rhs.z + lhs.w * rhs.w));
+        
+        /// <summary>
+        /// Creates a quaternion from an axis and an angle (in radians)
+        /// </summary>
+        public static dquat FromAxisAngle(double angle, dvec3 v)
+        {
+            var s = Math.Sin((double)angle * 0.5);
+            var c = Math.Cos((double)angle * 0.5);
+            return new dquat((double)((double)v.x * s), (double)((double)v.y * s), (double)((double)v.z * s), (double)c);
+        }
 
         #endregion
 

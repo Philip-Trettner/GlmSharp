@@ -147,7 +147,7 @@ namespace GlmSharpGenerator.Types
             {
                 ParameterString = vec3Type.NameThat + " v, " + BaseTypeName + " s",
                 Initializers = new[] { "v.x", "v.y", "v.z", "s" },
-                Comment = "vector-and-scalar constructor"
+                Comment = "vector-and-scalar constructor (CAUTION: not angle-axis, use FromAngleAxis instead)"
             };
             if (BaseType.IsFloatingPoint)
             {
@@ -577,6 +577,7 @@ namespace GlmSharpGenerator.Types
             // floating point
             if (BaseType.IsFloatingPoint)
             {
+                // angles
                 yield return new Property("Angle", BuiltinType.TypeDouble)
                 {
                     GetterLine = "Math.Acos((double)w) * 2.0",
@@ -617,6 +618,19 @@ namespace GlmSharpGenerator.Types
                 {
                     GetterLine = Construct(dvec3Type, "Pitch", "Yaw", "Roll"),
                     Comment = "Returns the represented euler angles (pitch, yaw, roll) of this quaternion"
+                };
+
+                yield return new Function(this, "FromAxisAngle")
+                {
+                    Static = true,
+                    Parameters = BaseType.TypedArgs("angle").Concat(vec3Type.TypedArgs("v")),
+                    Code = new[]
+                    {
+                        "var s = Math.Sin((double)angle * 0.5);",
+                        "var c = Math.Cos((double)angle * 0.5);",
+                        string.Format("return {0};", Construct(this, BaseTypeCast + "((double)v.x * s)", BaseTypeCast + "((double)v.y * s)", BaseTypeCast + "((double)v.z * s)", BaseTypeCast + "c"))
+                    },
+                    Comment = "Creates a quaternion from an axis and an angle (in radians)"
                 };
             }
 

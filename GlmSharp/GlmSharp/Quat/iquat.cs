@@ -76,7 +76,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// vector-and-scalar constructor
+        /// vector-and-scalar constructor (CAUTION: not angle-axis, use FromAngleAxis instead)
         /// </summary>
         public iquat(ivec3 v, int s)
         {
