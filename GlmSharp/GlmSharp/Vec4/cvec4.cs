@@ -655,6 +655,161 @@ namespace GlmSharp
         /// Returns a cvec4 from component-wise application of FromPolarCoordinates (Complex.FromPolarCoordinates(magnitude, phase)).
         /// </summary>
         public static cvec4 FromPolarCoordinates(double magnitude, double phase) => new cvec4(Complex.FromPolarCoordinates(magnitude, phase));
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec4 Add(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec4 Add(cvec4 lhs, Complex rhs) => new cvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec4 Add(Complex lhs, cvec4 rhs) => new cvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec4 Add(Complex lhs, Complex rhs) => new cvec4(lhs + rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec4 Sub(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec4 Sub(cvec4 lhs, Complex rhs) => new cvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec4 Sub(Complex lhs, cvec4 rhs) => new cvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec4 Sub(Complex lhs, Complex rhs) => new cvec4(lhs - rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec4 Mul(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec4 Mul(cvec4 lhs, Complex rhs) => new cvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec4 Mul(Complex lhs, cvec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec4 Mul(Complex lhs, Complex rhs) => new cvec4(lhs * rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec4 Div(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec4 Div(cvec4 lhs, Complex rhs) => new cvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec4 Div(Complex lhs, cvec4 rhs) => new cvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec4 Div(Complex lhs, Complex rhs) => new cvec4(lhs / rhs);
+
+        #endregion
+
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec4 operator+(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec4 operator+(cvec4 lhs, Complex rhs) => new cvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec4 operator+(Complex lhs, cvec4 rhs) => new cvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec4 operator-(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec4 operator-(cvec4 lhs, Complex rhs) => new cvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec4 operator-(Complex lhs, cvec4 rhs) => new cvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec4 operator*(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec4 operator*(cvec4 lhs, Complex rhs) => new cvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec4 operator*(Complex lhs, cvec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec4 operator/(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec4 operator/(cvec4 lhs, Complex rhs) => new cvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec4 operator/(Complex lhs, cvec4 rhs) => new cvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator+ (~~~).
+        /// </summary>
+        public static cvec4 operator+(cvec4 v) => v;
+        
+        /// <summary>
+        /// Returns a cvec4 from component-wise application of operator- (-v).
+        /// </summary>
+        public static cvec4 operator-(cvec4 v) => new cvec4(-v.x, -v.y, -v.z, -v.w);
 
         #endregion
 
@@ -743,76 +898,6 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow((double)x.Magnitude, p) + Math.Pow((double)y.Magnitude, p) + Math.Pow((double)z.Magnitude, p) + Math.Pow((double)w.Magnitude, p), 1 / p);
-        
-        /// <summary>
-        /// Executes a component-wise + (add).
-        /// </summary>
-        public static cvec4 operator+(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static cvec4 operator+(cvec4 lhs, Complex rhs) => new cvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static cvec4 operator+(Complex lhs, cvec4 rhs) => new cvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract).
-        /// </summary>
-        public static cvec4 operator-(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static cvec4 operator-(cvec4 lhs, Complex rhs) => new cvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static cvec4 operator-(Complex lhs, cvec4 rhs) => new cvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide).
-        /// </summary>
-        public static cvec4 operator/(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static cvec4 operator/(cvec4 lhs, Complex rhs) => new cvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static cvec4 operator/(Complex lhs, cvec4 rhs) => new cvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply).
-        /// </summary>
-        public static cvec4 operator*(cvec4 lhs, cvec4 rhs) => new cvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static cvec4 operator*(cvec4 lhs, Complex rhs) => new cvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static cvec4 operator*(Complex lhs, cvec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise unary + (add).
-        /// </summary>
-        public static cvec4 operator+(cvec4 v) => v;
-        
-        /// <summary>
-        /// Executes a component-wise unary - (subtract).
-        /// </summary>
-        public static cvec4 operator-(cvec4 v) => new cvec4(-v.x, -v.y, -v.z, -v.w);
         
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).

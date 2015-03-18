@@ -29,12 +29,14 @@ namespace GlmSharpTest
 
             Complex c = 1.0;
 
-            vec2 fv = iv * 1f;
-            dvec2 dv = iv * 1.0;
-            dv += c.Imaginary;
+            // FIXME: Upcasting
+            //vec2 fv = iv * 1f;
+            //dvec2 dv = iv * 1.0;
+            //dv += c.Imaginary;
 
-            cvec4 cv = v * c;
+            //cvec4 cv = v * c;
             //c.Magnitude
+            cvec4 cv = cvec4.ImaginaryOnes;
 
             dvec4 acv = cvec4.Abs(cv);
             acv = dvec4.Tanh(acv);

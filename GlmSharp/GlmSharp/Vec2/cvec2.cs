@@ -574,6 +574,161 @@ namespace GlmSharp
         /// Returns a cvec2 from component-wise application of FromPolarCoordinates (Complex.FromPolarCoordinates(magnitude, phase)).
         /// </summary>
         public static cvec2 FromPolarCoordinates(double magnitude, double phase) => new cvec2(Complex.FromPolarCoordinates(magnitude, phase));
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec2 Add(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x + rhs.x, lhs.y + rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec2 Add(cvec2 lhs, Complex rhs) => new cvec2(lhs.x + rhs, lhs.y + rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec2 Add(Complex lhs, cvec2 rhs) => new cvec2(lhs + rhs.x, lhs + rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec2 Add(Complex lhs, Complex rhs) => new cvec2(lhs + rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec2 Sub(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x - rhs.x, lhs.y - rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec2 Sub(cvec2 lhs, Complex rhs) => new cvec2(lhs.x - rhs, lhs.y - rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec2 Sub(Complex lhs, cvec2 rhs) => new cvec2(lhs - rhs.x, lhs - rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec2 Sub(Complex lhs, Complex rhs) => new cvec2(lhs - rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec2 Mul(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x * rhs.x, lhs.y * rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec2 Mul(cvec2 lhs, Complex rhs) => new cvec2(lhs.x * rhs, lhs.y * rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec2 Mul(Complex lhs, cvec2 rhs) => new cvec2(lhs * rhs.x, lhs * rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec2 Mul(Complex lhs, Complex rhs) => new cvec2(lhs * rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec2 Div(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x / rhs.x, lhs.y / rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec2 Div(cvec2 lhs, Complex rhs) => new cvec2(lhs.x / rhs, lhs.y / rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec2 Div(Complex lhs, cvec2 rhs) => new cvec2(lhs / rhs.x, lhs / rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec2 Div(Complex lhs, Complex rhs) => new cvec2(lhs / rhs);
+
+        #endregion
+
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec2 operator+(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x + rhs.x, lhs.y + rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec2 operator+(cvec2 lhs, Complex rhs) => new cvec2(lhs.x + rhs, lhs.y + rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec2 operator+(Complex lhs, cvec2 rhs) => new cvec2(lhs + rhs.x, lhs + rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec2 operator-(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x - rhs.x, lhs.y - rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec2 operator-(cvec2 lhs, Complex rhs) => new cvec2(lhs.x - rhs, lhs.y - rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec2 operator-(Complex lhs, cvec2 rhs) => new cvec2(lhs - rhs.x, lhs - rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec2 operator*(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x * rhs.x, lhs.y * rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec2 operator*(cvec2 lhs, Complex rhs) => new cvec2(lhs.x * rhs, lhs.y * rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec2 operator*(Complex lhs, cvec2 rhs) => new cvec2(lhs * rhs.x, lhs * rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec2 operator/(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x / rhs.x, lhs.y / rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec2 operator/(cvec2 lhs, Complex rhs) => new cvec2(lhs.x / rhs, lhs.y / rhs);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec2 operator/(Complex lhs, cvec2 rhs) => new cvec2(lhs / rhs.x, lhs / rhs.y);
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator+ (~~~).
+        /// </summary>
+        public static cvec2 operator+(cvec2 v) => v;
+        
+        /// <summary>
+        /// Returns a cvec2 from component-wise application of operator- (-v).
+        /// </summary>
+        public static cvec2 operator-(cvec2 v) => new cvec2(-v.x, -v.y);
 
         #endregion
 
@@ -662,76 +817,6 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow((double)x.Magnitude, p) + Math.Pow((double)y.Magnitude, p), 1 / p);
-        
-        /// <summary>
-        /// Executes a component-wise + (add).
-        /// </summary>
-        public static cvec2 operator+(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x + rhs.x, lhs.y + rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static cvec2 operator+(cvec2 lhs, Complex rhs) => new cvec2(lhs.x + rhs, lhs.y + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static cvec2 operator+(Complex lhs, cvec2 rhs) => new cvec2(lhs + rhs.x, lhs + rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract).
-        /// </summary>
-        public static cvec2 operator-(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x - rhs.x, lhs.y - rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static cvec2 operator-(cvec2 lhs, Complex rhs) => new cvec2(lhs.x - rhs, lhs.y - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static cvec2 operator-(Complex lhs, cvec2 rhs) => new cvec2(lhs - rhs.x, lhs - rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide).
-        /// </summary>
-        public static cvec2 operator/(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x / rhs.x, lhs.y / rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static cvec2 operator/(cvec2 lhs, Complex rhs) => new cvec2(lhs.x / rhs, lhs.y / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static cvec2 operator/(Complex lhs, cvec2 rhs) => new cvec2(lhs / rhs.x, lhs / rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply).
-        /// </summary>
-        public static cvec2 operator*(cvec2 lhs, cvec2 rhs) => new cvec2(lhs.x * rhs.x, lhs.y * rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static cvec2 operator*(cvec2 lhs, Complex rhs) => new cvec2(lhs.x * rhs, lhs.y * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static cvec2 operator*(Complex lhs, cvec2 rhs) => new cvec2(lhs * rhs.x, lhs * rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise unary + (add).
-        /// </summary>
-        public static cvec2 operator+(cvec2 v) => v;
-        
-        /// <summary>
-        /// Executes a component-wise unary - (subtract).
-        /// </summary>
-        public static cvec2 operator-(cvec2 v) => new cvec2(-v.x, -v.y);
         
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).

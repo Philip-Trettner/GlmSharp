@@ -922,6 +922,86 @@ namespace GlmSharp
         public static decvec4 Smootherstep(decimal edge0, decimal edge1, decimal v) => new decvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a decvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static decvec4 Add(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static decvec4 Add(decvec4 lhs, decimal rhs) => new decvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static decvec4 Add(decimal lhs, decvec4 rhs) => new decvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static decvec4 Add(decimal lhs, decimal rhs) => new decvec4(lhs + rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static decvec4 Sub(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static decvec4 Sub(decvec4 lhs, decimal rhs) => new decvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static decvec4 Sub(decimal lhs, decvec4 rhs) => new decvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static decvec4 Sub(decimal lhs, decimal rhs) => new decvec4(lhs - rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static decvec4 Mul(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static decvec4 Mul(decvec4 lhs, decimal rhs) => new decvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static decvec4 Mul(decimal lhs, decvec4 rhs) => new decvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static decvec4 Mul(decimal lhs, decimal rhs) => new decvec4(lhs * rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static decvec4 Div(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static decvec4 Div(decvec4 lhs, decimal rhs) => new decvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static decvec4 Div(decimal lhs, decvec4 rhs) => new decvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static decvec4 Div(decimal lhs, decimal rhs) => new decvec4(lhs / rhs);
+        
+        /// <summary>
         /// Returns a decvec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static decvec4 Degrees(decvec4 v) => new decvec4(v.x * 57.295779513082320876798154814105170332405472466564321m, v.y * 57.295779513082320876798154814105170332405472466564321m, v.z * 57.295779513082320876798154814105170332405472466564321m, v.w * 57.295779513082320876798154814105170332405472466564321m);
@@ -1113,6 +1193,141 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 operator<(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 operator<(decvec4 lhs, decimal rhs) => new bvec4(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 operator<(decimal lhs, decvec4 rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 operator<=(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 operator<=(decvec4 lhs, decimal rhs) => new bvec4(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 operator<=(decimal lhs, decvec4 rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 operator>(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 operator>(decvec4 lhs, decimal rhs) => new bvec4(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 operator>(decimal lhs, decvec4 rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 operator>=(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 operator>=(decvec4 lhs, decimal rhs) => new bvec4(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 operator>=(decimal lhs, decvec4 rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static decvec4 operator+(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static decvec4 operator+(decvec4 lhs, decimal rhs) => new decvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static decvec4 operator+(decimal lhs, decvec4 rhs) => new decvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static decvec4 operator-(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static decvec4 operator-(decvec4 lhs, decimal rhs) => new decvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static decvec4 operator-(decimal lhs, decvec4 rhs) => new decvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static decvec4 operator*(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static decvec4 operator*(decvec4 lhs, decimal rhs) => new decvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static decvec4 operator*(decimal lhs, decvec4 rhs) => new decvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static decvec4 operator/(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static decvec4 operator/(decvec4 lhs, decimal rhs) => new decvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static decvec4 operator/(decimal lhs, decvec4 rhs) => new decvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator+ (~~~).
+        /// </summary>
+        public static decvec4 operator+(decvec4 v) => v;
+        
+        /// <summary>
+        /// Returns a decvec4 from component-wise application of operator- (-v).
+        /// </summary>
+        public static decvec4 operator-(decvec4 v) => new decvec4(-v.x, -v.y, -v.z, -v.w);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
@@ -1268,136 +1483,6 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p) + Math.Pow((double)Math.Abs(w), p), 1 / p);
-        
-        /// <summary>
-        /// Executes a component-wise + (add).
-        /// </summary>
-        public static decvec4 operator+(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static decvec4 operator+(decvec4 lhs, decimal rhs) => new decvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static decvec4 operator+(decimal lhs, decvec4 rhs) => new decvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract).
-        /// </summary>
-        public static decvec4 operator-(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static decvec4 operator-(decvec4 lhs, decimal rhs) => new decvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static decvec4 operator-(decimal lhs, decvec4 rhs) => new decvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide).
-        /// </summary>
-        public static decvec4 operator/(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static decvec4 operator/(decvec4 lhs, decimal rhs) => new decvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static decvec4 operator/(decimal lhs, decvec4 rhs) => new decvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply).
-        /// </summary>
-        public static decvec4 operator*(decvec4 lhs, decvec4 rhs) => new decvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static decvec4 operator*(decvec4 lhs, decimal rhs) => new decvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static decvec4 operator*(decimal lhs, decvec4 rhs) => new decvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise unary + (add).
-        /// </summary>
-        public static decvec4 operator+(decvec4 v) => v;
-        
-        /// <summary>
-        /// Executes a component-wise unary - (subtract).
-        /// </summary>
-        public static decvec4 operator-(decvec4 v) => new decvec4(-v.x, -v.y, -v.z, -v.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison.
-        /// </summary>
-        public static bvec4 operator<(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<(decvec4 lhs, decimal rhs) => new bvec4(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<(decimal lhs, decvec4 rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison.
-        /// </summary>
-        public static bvec4 operator<=(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<=(decvec4 lhs, decimal rhs) => new bvec4(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<=(decimal lhs, decvec4 rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison.
-        /// </summary>
-        public static bvec4 operator>(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>(decvec4 lhs, decimal rhs) => new bvec4(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>(decimal lhs, decvec4 rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison.
-        /// </summary>
-        public static bvec4 operator>=(decvec4 lhs, decvec4 rhs) => new bvec4(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>=(decvec4 lhs, decimal rhs) => new bvec4(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>=(decimal lhs, decvec4 rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
         
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).

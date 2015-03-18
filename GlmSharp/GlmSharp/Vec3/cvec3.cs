@@ -608,6 +608,161 @@ namespace GlmSharp
         /// Returns a cvec3 from component-wise application of FromPolarCoordinates (Complex.FromPolarCoordinates(magnitude, phase)).
         /// </summary>
         public static cvec3 FromPolarCoordinates(double magnitude, double phase) => new cvec3(Complex.FromPolarCoordinates(magnitude, phase));
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec3 Add(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec3 Add(cvec3 lhs, Complex rhs) => new cvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec3 Add(Complex lhs, cvec3 rhs) => new cvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static cvec3 Add(Complex lhs, Complex rhs) => new cvec3(lhs + rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec3 Sub(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec3 Sub(cvec3 lhs, Complex rhs) => new cvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec3 Sub(Complex lhs, cvec3 rhs) => new cvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static cvec3 Sub(Complex lhs, Complex rhs) => new cvec3(lhs - rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec3 Mul(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec3 Mul(cvec3 lhs, Complex rhs) => new cvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec3 Mul(Complex lhs, cvec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static cvec3 Mul(Complex lhs, Complex rhs) => new cvec3(lhs * rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec3 Div(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec3 Div(cvec3 lhs, Complex rhs) => new cvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec3 Div(Complex lhs, cvec3 rhs) => new cvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static cvec3 Div(Complex lhs, Complex rhs) => new cvec3(lhs / rhs);
+
+        #endregion
+
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec3 operator+(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec3 operator+(cvec3 lhs, Complex rhs) => new cvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static cvec3 operator+(Complex lhs, cvec3 rhs) => new cvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec3 operator-(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec3 operator-(cvec3 lhs, Complex rhs) => new cvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static cvec3 operator-(Complex lhs, cvec3 rhs) => new cvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec3 operator*(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec3 operator*(cvec3 lhs, Complex rhs) => new cvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static cvec3 operator*(Complex lhs, cvec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec3 operator/(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec3 operator/(cvec3 lhs, Complex rhs) => new cvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static cvec3 operator/(Complex lhs, cvec3 rhs) => new cvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator+ (~~~).
+        /// </summary>
+        public static cvec3 operator+(cvec3 v) => v;
+        
+        /// <summary>
+        /// Returns a cvec3 from component-wise application of operator- (-v).
+        /// </summary>
+        public static cvec3 operator-(cvec3 v) => new cvec3(-v.x, -v.y, -v.z);
 
         #endregion
 
@@ -696,76 +851,6 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow((double)x.Magnitude, p) + Math.Pow((double)y.Magnitude, p) + Math.Pow((double)z.Magnitude, p), 1 / p);
-        
-        /// <summary>
-        /// Executes a component-wise + (add).
-        /// </summary>
-        public static cvec3 operator+(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static cvec3 operator+(cvec3 lhs, Complex rhs) => new cvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static cvec3 operator+(Complex lhs, cvec3 rhs) => new cvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract).
-        /// </summary>
-        public static cvec3 operator-(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static cvec3 operator-(cvec3 lhs, Complex rhs) => new cvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static cvec3 operator-(Complex lhs, cvec3 rhs) => new cvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide).
-        /// </summary>
-        public static cvec3 operator/(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static cvec3 operator/(cvec3 lhs, Complex rhs) => new cvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static cvec3 operator/(Complex lhs, cvec3 rhs) => new cvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply).
-        /// </summary>
-        public static cvec3 operator*(cvec3 lhs, cvec3 rhs) => new cvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static cvec3 operator*(cvec3 lhs, Complex rhs) => new cvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static cvec3 operator*(Complex lhs, cvec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise unary + (add).
-        /// </summary>
-        public static cvec3 operator+(cvec3 v) => v;
-        
-        /// <summary>
-        /// Executes a component-wise unary - (subtract).
-        /// </summary>
-        public static cvec3 operator-(cvec3 v) => new cvec3(-v.x, -v.y, -v.z);
         
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).

@@ -950,6 +950,86 @@ namespace GlmSharp
         public static vec3 Smootherstep(float edge0, float edge1, float v) => new vec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a vec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static vec3 Add(vec3 lhs, vec3 rhs) => new vec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static vec3 Add(vec3 lhs, float rhs) => new vec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static vec3 Add(float lhs, vec3 rhs) => new vec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static vec3 Add(float lhs, float rhs) => new vec3(lhs + rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static vec3 Sub(vec3 lhs, vec3 rhs) => new vec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static vec3 Sub(vec3 lhs, float rhs) => new vec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static vec3 Sub(float lhs, vec3 rhs) => new vec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static vec3 Sub(float lhs, float rhs) => new vec3(lhs - rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static vec3 Mul(vec3 lhs, vec3 rhs) => new vec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static vec3 Mul(vec3 lhs, float rhs) => new vec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static vec3 Mul(float lhs, vec3 rhs) => new vec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static vec3 Mul(float lhs, float rhs) => new vec3(lhs * rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static vec3 Div(vec3 lhs, vec3 rhs) => new vec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static vec3 Div(vec3 lhs, float rhs) => new vec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static vec3 Div(float lhs, vec3 rhs) => new vec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static vec3 Div(float lhs, float rhs) => new vec3(lhs / rhs);
+        
+        /// <summary>
         /// Returns a vec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static vec3 Degrees(vec3 v) => new vec3(v.x * 57.295779513082320876798154814105170332405472466564321f, v.y * 57.295779513082320876798154814105170332405472466564321f, v.z * 57.295779513082320876798154814105170332405472466564321f);
@@ -1141,6 +1221,141 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec3 operator<(vec3 lhs, vec3 rhs) => new bvec3(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec3 operator<(vec3 lhs, float rhs) => new bvec3(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec3 operator<(float lhs, vec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec3 operator<=(vec3 lhs, vec3 rhs) => new bvec3(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec3 operator<=(vec3 lhs, float rhs) => new bvec3(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec3 operator<=(float lhs, vec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec3 operator>(vec3 lhs, vec3 rhs) => new bvec3(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec3 operator>(vec3 lhs, float rhs) => new bvec3(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec3 operator>(float lhs, vec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec3 operator>=(vec3 lhs, vec3 rhs) => new bvec3(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec3 operator>=(vec3 lhs, float rhs) => new bvec3(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec3 operator>=(float lhs, vec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static vec3 operator+(vec3 lhs, vec3 rhs) => new vec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static vec3 operator+(vec3 lhs, float rhs) => new vec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static vec3 operator+(float lhs, vec3 rhs) => new vec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static vec3 operator-(vec3 lhs, vec3 rhs) => new vec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static vec3 operator-(vec3 lhs, float rhs) => new vec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static vec3 operator-(float lhs, vec3 rhs) => new vec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static vec3 operator*(vec3 lhs, vec3 rhs) => new vec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static vec3 operator*(vec3 lhs, float rhs) => new vec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static vec3 operator*(float lhs, vec3 rhs) => new vec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static vec3 operator/(vec3 lhs, vec3 rhs) => new vec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static vec3 operator/(vec3 lhs, float rhs) => new vec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static vec3 operator/(float lhs, vec3 rhs) => new vec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator+ (~~~).
+        /// </summary>
+        public static vec3 operator+(vec3 v) => v;
+        
+        /// <summary>
+        /// Returns a vec3 from component-wise application of operator- (-v).
+        /// </summary>
+        public static vec3 operator-(vec3 v) => new vec3(-v.x, -v.y, -v.z);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
@@ -1296,296 +1511,6 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p), 1 / p);
-        
-        /// <summary>
-        /// Executes a component-wise + (add).
-        /// </summary>
-        public static vec3 operator+(vec3 lhs, vec3 rhs) => new vec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static vec3 operator+(vec3 lhs, float rhs) => new vec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static vec3 operator+(float lhs, vec3 rhs) => new vec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator+(vec3 lhs, dvec3 rhs) => new dvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator+(dvec3 lhs, vec3 rhs) => new dvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator+(vec3 lhs, double rhs) => new dvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator+(double lhs, vec3 rhs) => new dvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator+(vec3 lhs, cvec3 rhs) => new cvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator+(cvec3 lhs, vec3 rhs) => new cvec3(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator+(vec3 lhs, Complex rhs) => new cvec3(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator+(Complex lhs, vec3 rhs) => new cvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract).
-        /// </summary>
-        public static vec3 operator-(vec3 lhs, vec3 rhs) => new vec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static vec3 operator-(vec3 lhs, float rhs) => new vec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static vec3 operator-(float lhs, vec3 rhs) => new vec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator-(vec3 lhs, dvec3 rhs) => new dvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator-(dvec3 lhs, vec3 rhs) => new dvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator-(vec3 lhs, double rhs) => new dvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator-(double lhs, vec3 rhs) => new dvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator-(vec3 lhs, cvec3 rhs) => new cvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator-(cvec3 lhs, vec3 rhs) => new cvec3(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator-(vec3 lhs, Complex rhs) => new cvec3(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator-(Complex lhs, vec3 rhs) => new cvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide).
-        /// </summary>
-        public static vec3 operator/(vec3 lhs, vec3 rhs) => new vec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static vec3 operator/(vec3 lhs, float rhs) => new vec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static vec3 operator/(float lhs, vec3 rhs) => new vec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator/(vec3 lhs, dvec3 rhs) => new dvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator/(dvec3 lhs, vec3 rhs) => new dvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator/(vec3 lhs, double rhs) => new dvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator/(double lhs, vec3 rhs) => new dvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator/(vec3 lhs, cvec3 rhs) => new cvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator/(cvec3 lhs, vec3 rhs) => new cvec3(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator/(vec3 lhs, Complex rhs) => new cvec3(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator/(Complex lhs, vec3 rhs) => new cvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply).
-        /// </summary>
-        public static vec3 operator*(vec3 lhs, vec3 rhs) => new vec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static vec3 operator*(vec3 lhs, float rhs) => new vec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static vec3 operator*(float lhs, vec3 rhs) => new vec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator*(vec3 lhs, dvec3 rhs) => new dvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator*(dvec3 lhs, vec3 rhs) => new dvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator*(vec3 lhs, double rhs) => new dvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar (upcast to dvec3).
-        /// </summary>
-        public static dvec3 operator*(double lhs, vec3 rhs) => new dvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator*(vec3 lhs, cvec3 rhs) => new cvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator*(cvec3 lhs, vec3 rhs) => new cvec3(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator*(vec3 lhs, Complex rhs) => new cvec3(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar (upcast to cvec3).
-        /// </summary>
-        public static cvec3 operator*(Complex lhs, vec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise unary + (add).
-        /// </summary>
-        public static vec3 operator+(vec3 v) => v;
-        
-        /// <summary>
-        /// Executes a component-wise unary - (subtract).
-        /// </summary>
-        public static vec3 operator-(vec3 v) => new vec3(-v.x, -v.y, -v.z);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison.
-        /// </summary>
-        public static bvec3 operator<(vec3 lhs, vec3 rhs) => new bvec3(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator<(vec3 lhs, float rhs) => new bvec3(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator<(float lhs, vec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison.
-        /// </summary>
-        public static bvec3 operator<=(vec3 lhs, vec3 rhs) => new bvec3(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator<=(vec3 lhs, float rhs) => new bvec3(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator<=(float lhs, vec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison.
-        /// </summary>
-        public static bvec3 operator>(vec3 lhs, vec3 rhs) => new bvec3(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator>(vec3 lhs, float rhs) => new bvec3(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator>(float lhs, vec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison.
-        /// </summary>
-        public static bvec3 operator>=(vec3 lhs, vec3 rhs) => new bvec3(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator>=(vec3 lhs, float rhs) => new bvec3(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec3 operator>=(float lhs, vec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
         
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).

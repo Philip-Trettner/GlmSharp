@@ -992,6 +992,86 @@ namespace GlmSharp
         public static dvec4 Smootherstep(double edge0, double edge1, double v) => new dvec4(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
+        /// Returns a dvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static dvec4 Add(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static dvec4 Add(dvec4 lhs, double rhs) => new dvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static dvec4 Add(double lhs, dvec4 rhs) => new dvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Add (lhs + rhs).
+        /// </summary>
+        public static dvec4 Add(double lhs, double rhs) => new dvec4(lhs + rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static dvec4 Sub(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static dvec4 Sub(dvec4 lhs, double rhs) => new dvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static dvec4 Sub(double lhs, dvec4 rhs) => new dvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Sub (lhs - rhs).
+        /// </summary>
+        public static dvec4 Sub(double lhs, double rhs) => new dvec4(lhs - rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static dvec4 Mul(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static dvec4 Mul(dvec4 lhs, double rhs) => new dvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static dvec4 Mul(double lhs, dvec4 rhs) => new dvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Mul (lhs * rhs).
+        /// </summary>
+        public static dvec4 Mul(double lhs, double rhs) => new dvec4(lhs * rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static dvec4 Div(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static dvec4 Div(dvec4 lhs, double rhs) => new dvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static dvec4 Div(double lhs, dvec4 rhs) => new dvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of Div (lhs / rhs).
+        /// </summary>
+        public static dvec4 Div(double lhs, double rhs) => new dvec4(lhs / rhs);
+        
+        /// <summary>
         /// Returns a dvec4 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
         public static dvec4 Degrees(dvec4 v) => new dvec4(v.x * 57.295779513082320876798154814105170332405472466564321d, v.y * 57.295779513082320876798154814105170332405472466564321d, v.z * 57.295779513082320876798154814105170332405472466564321d, v.w * 57.295779513082320876798154814105170332405472466564321d);
@@ -1183,6 +1263,141 @@ namespace GlmSharp
 
         #endregion
 
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 operator<(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 operator<(dvec4 lhs, double rhs) => new bvec4(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt; (lhs &lt; rhs).
+        /// </summary>
+        public static bvec4 operator<(double lhs, dvec4 rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 operator<=(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 operator<=(dvec4 lhs, double rhs) => new bvec4(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&lt;= (lhs &lt;= rhs).
+        /// </summary>
+        public static bvec4 operator<=(double lhs, dvec4 rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 operator>(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 operator>(dvec4 lhs, double rhs) => new bvec4(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt; (lhs &gt; rhs).
+        /// </summary>
+        public static bvec4 operator>(double lhs, dvec4 rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 operator>=(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 operator>=(dvec4 lhs, double rhs) => new bvec4(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs);
+        
+        /// <summary>
+        /// Returns a bvec4 from component-wise application of operator&gt;= (lhs &gt;= rhs).
+        /// </summary>
+        public static bvec4 operator>=(double lhs, dvec4 rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static dvec4 operator+(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static dvec4 operator+(dvec4 lhs, double rhs) => new dvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator+ (lhs + rhs).
+        /// </summary>
+        public static dvec4 operator+(double lhs, dvec4 rhs) => new dvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static dvec4 operator-(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static dvec4 operator-(dvec4 lhs, double rhs) => new dvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator- (lhs - rhs).
+        /// </summary>
+        public static dvec4 operator-(double lhs, dvec4 rhs) => new dvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static dvec4 operator*(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static dvec4 operator*(dvec4 lhs, double rhs) => new dvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator* (lhs * rhs).
+        /// </summary>
+        public static dvec4 operator*(double lhs, dvec4 rhs) => new dvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static dvec4 operator/(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static dvec4 operator/(dvec4 lhs, double rhs) => new dvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator/ (lhs / rhs).
+        /// </summary>
+        public static dvec4 operator/(double lhs, dvec4 rhs) => new dvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator+ (~~~).
+        /// </summary>
+        public static dvec4 operator+(dvec4 v) => v;
+        
+        /// <summary>
+        /// Returns a dvec4 from component-wise application of operator- (-v).
+        /// </summary>
+        public static dvec4 operator-(dvec4 v) => new dvec4(-v.x, -v.y, -v.z, -v.w);
+
+        #endregion
+
         
         /// <summary>
         /// Returns a string representation of this vector using ', ' as a seperator.
@@ -1338,216 +1553,6 @@ namespace GlmSharp
         /// Returns the p-norm of this vector.
         /// </summary>
         public double NormP(double p) => Math.Pow(Math.Pow((double)Math.Abs(x), p) + Math.Pow((double)Math.Abs(y), p) + Math.Pow((double)Math.Abs(z), p) + Math.Pow((double)Math.Abs(w), p), 1 / p);
-        
-        /// <summary>
-        /// Executes a component-wise + (add).
-        /// </summary>
-        public static dvec4 operator+(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static dvec4 operator+(dvec4 lhs, double rhs) => new dvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar.
-        /// </summary>
-        public static dvec4 operator+(double lhs, dvec4 rhs) => new dvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator+(dvec4 lhs, cvec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator+(cvec4 lhs, dvec4 rhs) => new cvec4(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z, lhs.w + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator+(dvec4 lhs, Complex rhs) => new cvec4(lhs.x + rhs, lhs.y + rhs, lhs.z + rhs, lhs.w + rhs);
-        
-        /// <summary>
-        /// Executes a component-wise + (add) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator+(Complex lhs, dvec4 rhs) => new cvec4(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z, lhs + rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract).
-        /// </summary>
-        public static dvec4 operator-(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static dvec4 operator-(dvec4 lhs, double rhs) => new dvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar.
-        /// </summary>
-        public static dvec4 operator-(double lhs, dvec4 rhs) => new dvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator-(dvec4 lhs, cvec4 rhs) => new cvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator-(cvec4 lhs, dvec4 rhs) => new cvec4(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z, lhs.w - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator-(dvec4 lhs, Complex rhs) => new cvec4(lhs.x - rhs, lhs.y - rhs, lhs.z - rhs, lhs.w - rhs);
-        
-        /// <summary>
-        /// Executes a component-wise - (subtract) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator-(Complex lhs, dvec4 rhs) => new cvec4(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z, lhs - rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide).
-        /// </summary>
-        public static dvec4 operator/(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static dvec4 operator/(dvec4 lhs, double rhs) => new dvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar.
-        /// </summary>
-        public static dvec4 operator/(double lhs, dvec4 rhs) => new dvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator/(dvec4 lhs, cvec4 rhs) => new cvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator/(cvec4 lhs, dvec4 rhs) => new cvec4(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z, lhs.w / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator/(dvec4 lhs, Complex rhs) => new cvec4(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs, lhs.w / rhs);
-        
-        /// <summary>
-        /// Executes a component-wise / (divide) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator/(Complex lhs, dvec4 rhs) => new cvec4(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z, lhs / rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply).
-        /// </summary>
-        public static dvec4 operator*(dvec4 lhs, dvec4 rhs) => new dvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static dvec4 operator*(dvec4 lhs, double rhs) => new dvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar.
-        /// </summary>
-        public static dvec4 operator*(double lhs, dvec4 rhs) => new dvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator*(dvec4 lhs, cvec4 rhs) => new cvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator*(cvec4 lhs, dvec4 rhs) => new cvec4(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z, lhs.w * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator*(dvec4 lhs, Complex rhs) => new cvec4(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs, lhs.w * rhs);
-        
-        /// <summary>
-        /// Executes a component-wise * (multiply) with a scalar (upcast to cvec4).
-        /// </summary>
-        public static cvec4 operator*(Complex lhs, dvec4 rhs) => new cvec4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise unary + (add).
-        /// </summary>
-        public static dvec4 operator+(dvec4 v) => v;
-        
-        /// <summary>
-        /// Executes a component-wise unary - (subtract).
-        /// </summary>
-        public static dvec4 operator-(dvec4 v) => new dvec4(-v.x, -v.y, -v.z, -v.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison.
-        /// </summary>
-        public static bvec4 operator<(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<(dvec4 lhs, double rhs) => new bvec4(lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<(double lhs, dvec4 rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison.
-        /// </summary>
-        public static bvec4 operator<=(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<=(dvec4 lhs, double rhs) => new bvec4(lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs);
-        
-        /// <summary>
-        /// Executes a component-wise lesser-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator<=(double lhs, dvec4 rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison.
-        /// </summary>
-        public static bvec4 operator>(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>(dvec4 lhs, double rhs) => new bvec4(lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs);
-        
-        /// <summary>
-        /// Executes a component-wise greater-than comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>(double lhs, dvec4 rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison.
-        /// </summary>
-        public static bvec4 operator>=(dvec4 lhs, dvec4 rhs) => new bvec4(lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>=(dvec4 lhs, double rhs) => new bvec4(lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs);
-        
-        /// <summary>
-        /// Executes a component-wise greater-or-equal comparison with a scalar.
-        /// </summary>
-        public static bvec4 operator>=(double lhs, dvec4 rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
         
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).

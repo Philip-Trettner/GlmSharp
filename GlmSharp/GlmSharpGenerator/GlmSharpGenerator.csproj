@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Members\ComponentWiseOperator.cs" />
     <Compile Include="Members\ComponentWiseStaticFunction.cs" />
     <Compile Include="Members\Constructor.cs" />
     <Compile Include="Members\ExplicitOperator.cs" />

@@ -82,6 +82,7 @@ namespace GlmSharpGenerator.Types
         private Function[] staticFunctions;
         private Indexer[] indexer;
         private ComponentWiseStaticFunction[] componentWiseStaticFunctions;
+        private ComponentWiseOperator[] componentWiseOp;
 
         /// <summary>
         /// Generate all members
@@ -109,6 +110,7 @@ namespace GlmSharpGenerator.Types
             staticFunctions = members.Where(m => m.Static && m.GetType() == typeof(Function)).OfType<Function>().ToArray();
             indexer = members.OfType<Indexer>().ToArray();
             componentWiseStaticFunctions = members.OfType<ComponentWiseStaticFunction>().ToArray();
+            componentWiseOp = members.OfType<ComponentWiseOperator>().ToArray();
         }
 
         /// <summary>
@@ -273,6 +275,18 @@ namespace GlmSharpGenerator.Types
                     yield return "        #region Component-Wise Static Functions";
                     foreach (var func in componentWiseStaticFunctions)
                         foreach (var line in func.Lines)
+                            yield return line.Indent(2);
+                    yield return "";
+                    yield return "        #endregion";
+                    yield return "";
+                }
+
+                if (componentWiseOp.Length > 0)
+                {
+                    yield return "";
+                    yield return "        #region Component-Wise Operator Overloads";
+                    foreach (var op in componentWiseOp)
+                        foreach (var line in op.Lines)
                             yield return line.Indent(2);
                     yield return "";
                     yield return "        #endregion";

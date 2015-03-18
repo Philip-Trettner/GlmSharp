@@ -380,11 +380,26 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseStaticFunction(Fields, boolVType, "GreaterThanEqual", this, "lhs", this, "rhs", "{0} >= {1}");
                 yield return new ComponentWiseStaticFunction(Fields, boolVType, "LesserThan", this, "lhs", this, "rhs", "{0} < {1}");
                 yield return new ComponentWiseStaticFunction(Fields, boolVType, "LesserThanEqual", this, "lhs", this, "rhs", "{0} <= {1}");
+
+                yield return new ComponentWiseOperator(Fields, boolVType, "<", this, "lhs", this, "rhs", "{0} < {1}");
+                yield return new ComponentWiseOperator(Fields, boolVType, "<=", this, "lhs", this, "rhs", "{0} <= {1}");
+                yield return new ComponentWiseOperator(Fields, boolVType, ">", this, "lhs", this, "rhs", "{0} > {1}");
+                yield return new ComponentWiseOperator(Fields, boolVType, ">=", this, "lhs", this, "rhs", "{0} >= {1}");
             }
 
             if (BaseType.IsBool)
             {
                 yield return new ComponentWiseStaticFunction(Fields, boolVType, "Not", this, "v", "!{0}");
+                yield return new ComponentWiseOperator(Fields, this, "!", this, "v", "!{0}");
+
+                yield return new ComponentWiseStaticFunction(Fields, this, "And", this, "lhs", this, "rhs", "{0} && {1}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Nand", this, "lhs", this, "rhs", "!({0} && {1})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Or", this, "lhs", this, "rhs", "{0} || {1}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Nor", this, "lhs", this, "rhs", "!({0} || {1})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Xor", this, "lhs", this, "rhs", "{0} != {1}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Xnor", this, "lhs", this, "rhs", "{0} == {1}");
+                yield return new ComponentWiseOperator(Fields, this, "&", this, "lhs", this, "rhs", "{0} && {1}");
+                yield return new ComponentWiseOperator(Fields, this, "|", this, "lhs", this, "rhs", "{0} || {1}");
             }
 
             // Basetype test functions
@@ -444,6 +459,41 @@ namespace GlmSharpGenerator.Types
                     yield return new ComponentWiseStaticFunction(Fields, this, "Lerp", this, "min", this, "max", this, "a", "{0} * (1-{2}) + {1} * {2}");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Smoothstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder3()");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Smootherstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder5()");
+                }
+
+                // Operators
+                yield return new ComponentWiseStaticFunction(Fields, this, "Add", this, "lhs", this, "rhs", "{0} + {1}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Sub", this, "lhs", this, "rhs", "{0} - {1}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Mul", this, "lhs", this, "rhs", "{0} * {1}");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Div", this, "lhs", this, "rhs", "{0} / {1}");
+
+                yield return new ComponentWiseOperator(Fields, this, "+", this, "lhs", this, "rhs", "{0} + {1}");
+                yield return new ComponentWiseOperator(Fields, this, "-", this, "lhs", this, "rhs", "{0} - {1}");
+                yield return new ComponentWiseOperator(Fields, this, "*", this, "lhs", this, "rhs", "{0} * {1}");
+                yield return new ComponentWiseOperator(Fields, this, "/", this, "lhs", this, "rhs", "{0} / {1}");
+
+                yield return new ComponentWiseOperator(Fields, this, "+", this, "v", "~~~") { ReturnOverride = "v" };
+
+                if (BaseType.IsSigned)
+                    yield return new ComponentWiseOperator(Fields, this, "-", this, "v", "-{0}");
+
+                if (BaseType.IsInteger)
+                {
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Modulo", this, "lhs", this, "rhs", "{0} % {1}");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Xor", this, "lhs", this, "rhs", "{0} ^ {1}");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "BitwiseOr", this, "lhs", this, "rhs", "{0} | {1}");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "BitwiseAnd", this, "lhs", this, "rhs", "{0} & {1}");
+
+                    yield return new ComponentWiseOperator(Fields, this, "~", this, "v", "~{0}");
+                    yield return new ComponentWiseOperator(Fields, this, "%", this, "lhs", this, "rhs", "{0} % {1}");
+                    yield return new ComponentWiseOperator(Fields, this, "^", this, "lhs", this, "rhs", "{0} ^ {1}");
+                    yield return new ComponentWiseOperator(Fields, this, "|", this, "lhs", this, "rhs", "{0} | {1}");
+                    yield return new ComponentWiseOperator(Fields, this, "&", this, "lhs", this, "rhs", "{0} & {1}");
+
+                    yield return new ComponentWiseStaticFunction(Fields, this, "LeftShift", this, "lhs", integerVType, "rhs", "{0} << {1}");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "RightShift", this, "lhs", integerVType, "rhs", "{0} >> {1}");
+                    yield return new ComponentWiseOperator(Fields, this, "<<", this, "lhs", BuiltinType.TypeInt, "rhs", "{0} << {1}") { CanScalar0 = false, CanScalar1 = false };
+                    yield return new ComponentWiseOperator(Fields, this, ">>", this, "lhs", BuiltinType.TypeInt, "rhs", "{0} >> {1}") { CanScalar0 = false, CanScalar1 = false };
                 }
             }
 
@@ -605,25 +655,6 @@ namespace GlmSharpGenerator.Types
 
                     foreach (var line in "Returns true if any component is true.".AsComment()) yield return line;
                     yield return string.Format("public {0} Any => {1};", BaseTypeName, CompString.Aggregated(" || "));
-
-                    foreach (var line in "Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)".AsComment()) yield return line;
-                    yield return ComponentWiseOperator("&", "&&");
-
-                    foreach (var line in "Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)".AsComment()) yield return line;
-                    yield return ComponentWiseOperator("|", "||");
-
-                    // unary arithmetic operators
-                    foreach (var kvp in new Dictionary<string, string>
-                    {
-                        {"!", "! (not)"},
-                    })
-                    {
-                        var op = kvp.Key;
-                        var opComment = kvp.Value;
-
-                        foreach (var line in string.Format("Executes a component-wise unary {0}.", opComment).AsComment()) yield return line;
-                        yield return string.Format("public static {0} operator{1}({0} v) => new {0}({2});", NameThat, op, CompString.Select(c => op + "v." + c).CommaSeparated());
-                    }
                 }
 
                 // Arithmetics
@@ -664,118 +695,6 @@ namespace GlmSharpGenerator.Types
                     foreach (var line in "Returns the p-norm of this vector.".AsComment()) yield return line;
                     yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", CompString.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
 
-                    // binary arithmetic operators
-                    foreach (var kvp in new Dictionary<string, string>
-                    {
-                        {"+", "+ (add)"},
-                        {"-", "- (subtract)"},
-                        {"/", "/ (divide)"},
-                        {"*", "* (multiply)"}
-                    })
-                    {
-                        var op = kvp.Key;
-                        var opComment = kvp.Value;
-
-                        foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
-                        yield return ComponentWiseOperator(op);
-                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalar(op, BaseTypeName);
-                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalarL(op, BaseTypeName);
-
-                        // upcasts
-                        var upcasts = BuiltinType.Upcasts; // TODO: REMOVEME
-                        foreach (var ukvp in upcasts.Where(k => k.Key == BaseType))
-                        {
-                            var upType = ukvp.Value;
-                            var foreignType = upType.Prefix + "vec" + Components + GenericSuffix;
-
-                            foreach (var line in string.Format("Executes a component-wise {0} (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
-                            yield return ComponentWiseOperatorForeign(op, foreignType);
-                            foreach (var line in string.Format("Executes a component-wise {0} (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
-                            yield return ComponentWiseOperatorForeignL(op, foreignType);
-                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
-                            yield return ComponentWiseOperatorForeignScalar(op, upType.Name, foreignType);
-                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar (upcast to {1}).", opComment, foreignType).AsComment()) yield return line;
-                            yield return ComponentWiseOperatorForeignScalarL(op, upType.Name, foreignType);
-                        }
-                    }
-
-                    // unary arithmetic operators
-                    foreach (var kvp in new Dictionary<string, string>
-                    {
-                        {"+", "+ (add)"},
-                        {"-", "- (subtract)"},
-                        {"~", "~ (bitwise-not)"}
-                    })
-                    {
-                        var op = kvp.Key;
-                        var opComment = kvp.Value;
-
-                        if (op == "-" && !BaseType.IsSigned)
-                            continue; // unsigned
-
-                        if (op == "~" && !BaseType.IsInteger)
-                            continue;
-
-                        foreach (var line in string.Format("Executes a component-wise unary {0}.", opComment).AsComment()) yield return line;
-                        if (op == "+")
-                            yield return string.Format("public static {0} operator{1}({0} v) => v;", NameThat, op);
-                        else
-                            yield return string.Format("public static {0} operator{1}({0} v) => new {0}({2});", NameThat, op, CompString.Select(c => op + "v." + c).CommaSeparated());
-                    }
-
-                    // integer-only operators
-                    if (BaseType.IsInteger)
-                    {
-                        foreach (var kvp in new Dictionary<string, string>
-                        {
-                            {"%", "% (modulo)"},
-                            {"^", "^ (xor)"},
-                            {"|", "bitwise-or"},
-                            {"&", "bitwise-and"}
-                        })
-                        {
-                            var op = kvp.Key;
-                            var opComment = kvp.Value;
-
-                            foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
-                            yield return ComponentWiseOperator(op);
-                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
-                            yield return ComponentWiseOperatorScalar(op, BaseTypeName);
-                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
-                            yield return ComponentWiseOperatorScalarL(op, BaseTypeName);
-                        }
-
-                        foreach (var line in "Executes a component-wise left-shift with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalar("<<", "int");
-
-                        foreach (var line in "Executes a component-wise right-shift with a scalar.".AsComment()) yield return line;
-                        yield return ComponentWiseOperatorScalar(">>", "int");
-                    }
-
-                    // comparisons
-                    if (!BaseType.IsComplex)
-                    {
-                        foreach (var kvp in new Dictionary<string, string>
-                        {
-                            {"<", "lesser-than"},
-                            {"<=", "lesser-or-equal"},
-                            {">", "greater-than"},
-                            {">=", "greater-or-equal"}
-                        })
-                        {
-                            var op = kvp.Key;
-                            var opComment = kvp.Value;
-
-                            foreach (var line in string.Format("Executes a component-wise {0} comparison.", opComment).AsComment()) yield return line;
-                            yield return ComparisonOperator(op);
-                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
-                            yield return ComparisonOperatorScalar(op, BaseTypeName);
-                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
-                            yield return ComparisonOperatorScalarL(op, BaseTypeName);
-                        }
-                    }
 
                     // normalized
                     if (!BaseType.IsInteger)

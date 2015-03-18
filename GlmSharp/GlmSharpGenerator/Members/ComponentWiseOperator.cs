@@ -7,7 +7,7 @@ using GlmSharpGenerator.Types;
 
 namespace GlmSharpGenerator.Members
 {
-    class ComponentWiseStaticFunction : Member
+    class ComponentWiseOperator : Member
     {
         /// <summary>
         /// Func return type
@@ -45,10 +45,15 @@ namespace GlmSharpGenerator.Members
         public string AdditionalComment { get; set; }
 
         /// <summary>
+        /// If non-null, overrides return value
+        /// </summary>
+        public string ReturnOverride { get; set; }
+
+        /// <summary>
         /// Fields
         /// </summary>
         public IEnumerable<string> Fields { get; set; }
-        
+
         private void BuildComment()
         {
             Comment = "Returns a " + ReturnType.Name + " from component-wise application of " + Name + " (" + (!string.IsNullOrEmpty(AdditionalComment) ? AdditionalComment : string.Format(CompString, ParameterNames.OfType<object>().ToArray())) + ").";
@@ -57,11 +62,11 @@ namespace GlmSharpGenerator.Members
             Comment = Comment.Replace("<", "&lt;");
         }
 
-        public ComponentWiseStaticFunction(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, string compString)
+        public ComponentWiseOperator(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, string compString)
         {
             Fields = fields;
             ReturnType = returnType;
-            Name = name;
+            Name = "operator" + name;
             ParameterTypes = new[] { para0 };
             ParameterNames = new[] { paraName0 };
             CompString = compString;
@@ -70,11 +75,11 @@ namespace GlmSharpGenerator.Members
             Comment = "DUMMY << >> &&";
         }
 
-        public ComponentWiseStaticFunction(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, AbstractType para1, string paraName1, string compString)
+        public ComponentWiseOperator(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, AbstractType para1, string paraName1, string compString)
         {
             Fields = fields;
             ReturnType = returnType;
-            Name = name;
+            Name = "operator" + name;
             ParameterTypes = new[] { para0, para1 };
             ParameterNames = new[] { paraName0, paraName1 };
             CompString = compString;
@@ -83,11 +88,11 @@ namespace GlmSharpGenerator.Members
             Comment = "DUMMY << >> &&";
         }
 
-        public ComponentWiseStaticFunction(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, AbstractType para1, string paraName1, AbstractType para2, string paraName2, string compString)
+        public ComponentWiseOperator(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, AbstractType para1, string paraName1, AbstractType para2, string paraName2, string compString)
         {
             Fields = fields;
             ReturnType = returnType;
-            Name = name;
+            Name = "operator" + name;
             ParameterTypes = new[] { para0, para1, para2 };
             ParameterNames = new[] { paraName0, paraName1, paraName2 };
             CompString = compString;
@@ -137,7 +142,7 @@ namespace GlmSharpGenerator.Members
                     ParaName = ParameterNames[i],
                     Type = s[i] == '0' ? ParameterTypes[i] : ParameterTypes[i].BaseType,
                     Scalar = s[i] != '0',
-                    ParaInvoke = s[i] == '0' ? "{0}.{1}" : "{0}"
+                    ParaInvoke = s[i] == '0' && !(ParameterTypes[i] is BuiltinType) ? "{0}.{1}" : "{0}"
                 };
             }
             return info;
@@ -147,9 +152,13 @@ namespace GlmSharpGenerator.Members
         {
             get
             {
+                // TODO: Upcasts
+
                 foreach (var pis in ParaInfosS(0))
                 {
                     var arginfo = ParaInfos(pis);
+                    if (arginfo.All(a => a.Scalar))
+                        continue; // not all scalars for ops
 
                     BuildComment();
                     foreach (var line in base.Lines)
@@ -160,11 +169,22 @@ namespace GlmSharpGenerator.Members
                         invok = string.Format(CompString, arginfo.Select(a => (object)a.ParaName).ToArray());
                     else invok = Fields.Select(f => string.Format(CompString, arginfo.Select(a => (object)string.Format(a.ParaInvoke, a.ParaName, f)).ToArray())).CommaSeparated();
 
-                    yield return string.Format("{0} {1} {2}({3}) => new {1}({4});",
-                        MemberPrefix, ReturnType.NameThat, Name,
-                        arginfo.Select(a => a.Type.NameThat + " " + a.ParaName).CommaSeparated(),
-                        invok
-                        ).Trim();
+                    if (!string.IsNullOrEmpty(ReturnOverride))
+                    {
+                        yield return string.Format("{0} {1} {2}({3}) => {4};",
+                            MemberPrefix, ReturnType.NameThat, Name,
+                            arginfo.Select(a => a.Type.NameThat + " " + a.ParaName).CommaSeparated(),
+                            ReturnOverride
+                            ).Trim();
+                    }
+                    else
+                    {
+                        yield return string.Format("{0} {1} {2}({3}) => new {1}({4});",
+                            MemberPrefix, ReturnType.NameThat, Name,
+                            arginfo.Select(a => a.Type.NameThat + " " + a.ParaName).CommaSeparated(),
+                            invok
+                            ).Trim();
+                    }
                 }
             }
         }

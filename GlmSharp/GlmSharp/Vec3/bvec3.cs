@@ -423,6 +423,166 @@ namespace GlmSharp
         /// Returns a bvec3 from component-wise application of Not (!v).
         /// </summary>
         public static bvec3 Not(bool v) => new bvec3(!v);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec3 And(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x && rhs.x, lhs.y && rhs.y, lhs.z && rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec3 And(bvec3 lhs, bool rhs) => new bvec3(lhs.x && rhs, lhs.y && rhs, lhs.z && rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec3 And(bool lhs, bvec3 rhs) => new bvec3(lhs && rhs.x, lhs && rhs.y, lhs && rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec3 And(bool lhs, bool rhs) => new bvec3(lhs && rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec3 Nand(bvec3 lhs, bvec3 rhs) => new bvec3(!(lhs.x && rhs.x), !(lhs.y && rhs.y), !(lhs.z && rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec3 Nand(bvec3 lhs, bool rhs) => new bvec3(!(lhs.x && rhs), !(lhs.y && rhs), !(lhs.z && rhs));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec3 Nand(bool lhs, bvec3 rhs) => new bvec3(!(lhs && rhs.x), !(lhs && rhs.y), !(lhs && rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec3 Nand(bool lhs, bool rhs) => new bvec3(!(lhs && rhs));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec3 Or(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x || rhs.x, lhs.y || rhs.y, lhs.z || rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec3 Or(bvec3 lhs, bool rhs) => new bvec3(lhs.x || rhs, lhs.y || rhs, lhs.z || rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec3 Or(bool lhs, bvec3 rhs) => new bvec3(lhs || rhs.x, lhs || rhs.y, lhs || rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec3 Or(bool lhs, bool rhs) => new bvec3(lhs || rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec3 Nor(bvec3 lhs, bvec3 rhs) => new bvec3(!(lhs.x || rhs.x), !(lhs.y || rhs.y), !(lhs.z || rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec3 Nor(bvec3 lhs, bool rhs) => new bvec3(!(lhs.x || rhs), !(lhs.y || rhs), !(lhs.z || rhs));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec3 Nor(bool lhs, bvec3 rhs) => new bvec3(!(lhs || rhs.x), !(lhs || rhs.y), !(lhs || rhs.z));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec3 Nor(bool lhs, bool rhs) => new bvec3(!(lhs || rhs));
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec3 Xor(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec3 Xor(bvec3 lhs, bool rhs) => new bvec3(lhs.x != rhs, lhs.y != rhs, lhs.z != rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec3 Xor(bool lhs, bvec3 rhs) => new bvec3(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec3 Xor(bool lhs, bool rhs) => new bvec3(lhs != rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec3 Xnor(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec3 Xnor(bvec3 lhs, bool rhs) => new bvec3(lhs.x == rhs, lhs.y == rhs, lhs.z == rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec3 Xnor(bool lhs, bvec3 rhs) => new bvec3(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec3 Xnor(bool lhs, bool rhs) => new bvec3(lhs == rhs);
+
+        #endregion
+
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator! (!v).
+        /// </summary>
+        public static bvec3 operator!(bvec3 v) => new bvec3(!v.x, !v.y, !v.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&amp; (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec3 operator&(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x && rhs.x, lhs.y && rhs.y, lhs.z && rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&amp; (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec3 operator&(bvec3 lhs, bool rhs) => new bvec3(lhs.x && rhs, lhs.y && rhs, lhs.z && rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator&amp; (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec3 operator&(bool lhs, bvec3 rhs) => new bvec3(lhs && rhs.x, lhs && rhs.y, lhs && rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator| (lhs || rhs).
+        /// </summary>
+        public static bvec3 operator|(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x || rhs.x, lhs.y || rhs.y, lhs.z || rhs.z);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator| (lhs || rhs).
+        /// </summary>
+        public static bvec3 operator|(bvec3 lhs, bool rhs) => new bvec3(lhs.x || rhs, lhs.y || rhs, lhs.z || rhs);
+        
+        /// <summary>
+        /// Returns a bvec3 from component-wise application of operator| (lhs || rhs).
+        /// </summary>
+        public static bvec3 operator|(bool lhs, bvec3 rhs) => new bvec3(lhs || rhs.x, lhs || rhs.y, lhs || rhs.z);
 
         #endregion
 
@@ -496,20 +656,5 @@ namespace GlmSharp
         /// Returns true if any component is true.
         /// </summary>
         public bool Any => x || y || z;
-        
-        /// <summary>
-        /// Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)
-        /// </summary>
-        public static bvec3 operator&(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x && rhs.x, lhs.y && rhs.y, lhs.z && rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)
-        /// </summary>
-        public static bvec3 operator|(bvec3 lhs, bvec3 rhs) => new bvec3(lhs.x || rhs.x, lhs.y || rhs.y, lhs.z || rhs.z);
-        
-        /// <summary>
-        /// Executes a component-wise unary ! (not).
-        /// </summary>
-        public static bvec3 operator!(bvec3 v) => new bvec3(!v.x, !v.y, !v.z);
     }
 }

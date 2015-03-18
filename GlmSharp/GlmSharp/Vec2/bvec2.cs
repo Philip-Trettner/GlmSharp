@@ -394,6 +394,166 @@ namespace GlmSharp
         /// Returns a bvec2 from component-wise application of Not (!v).
         /// </summary>
         public static bvec2 Not(bool v) => new bvec2(!v);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec2 And(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x && rhs.x, lhs.y && rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec2 And(bvec2 lhs, bool rhs) => new bvec2(lhs.x && rhs, lhs.y && rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec2 And(bool lhs, bvec2 rhs) => new bvec2(lhs && rhs.x, lhs && rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec2 And(bool lhs, bool rhs) => new bvec2(lhs && rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec2 Nand(bvec2 lhs, bvec2 rhs) => new bvec2(!(lhs.x && rhs.x), !(lhs.y && rhs.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec2 Nand(bvec2 lhs, bool rhs) => new bvec2(!(lhs.x && rhs), !(lhs.y && rhs));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec2 Nand(bool lhs, bvec2 rhs) => new bvec2(!(lhs && rhs.x), !(lhs && rhs.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// </summary>
+        public static bvec2 Nand(bool lhs, bool rhs) => new bvec2(!(lhs && rhs));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec2 Or(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x || rhs.x, lhs.y || rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec2 Or(bvec2 lhs, bool rhs) => new bvec2(lhs.x || rhs, lhs.y || rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec2 Or(bool lhs, bvec2 rhs) => new bvec2(lhs || rhs.x, lhs || rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Or (lhs || rhs).
+        /// </summary>
+        public static bvec2 Or(bool lhs, bool rhs) => new bvec2(lhs || rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec2 Nor(bvec2 lhs, bvec2 rhs) => new bvec2(!(lhs.x || rhs.x), !(lhs.y || rhs.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec2 Nor(bvec2 lhs, bool rhs) => new bvec2(!(lhs.x || rhs), !(lhs.y || rhs));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec2 Nor(bool lhs, bvec2 rhs) => new bvec2(!(lhs || rhs.x), !(lhs || rhs.y));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Nor (!(lhs || rhs)).
+        /// </summary>
+        public static bvec2 Nor(bool lhs, bool rhs) => new bvec2(!(lhs || rhs));
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec2 Xor(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x != rhs.x, lhs.y != rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec2 Xor(bvec2 lhs, bool rhs) => new bvec2(lhs.x != rhs, lhs.y != rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec2 Xor(bool lhs, bvec2 rhs) => new bvec2(lhs != rhs.x, lhs != rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xor (lhs != rhs).
+        /// </summary>
+        public static bvec2 Xor(bool lhs, bool rhs) => new bvec2(lhs != rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec2 Xnor(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x == rhs.x, lhs.y == rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec2 Xnor(bvec2 lhs, bool rhs) => new bvec2(lhs.x == rhs, lhs.y == rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec2 Xnor(bool lhs, bvec2 rhs) => new bvec2(lhs == rhs.x, lhs == rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of Xnor (lhs == rhs).
+        /// </summary>
+        public static bvec2 Xnor(bool lhs, bool rhs) => new bvec2(lhs == rhs);
+
+        #endregion
+
+
+        #region Component-Wise Operator Overloads
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of operator! (!v).
+        /// </summary>
+        public static bvec2 operator!(bvec2 v) => new bvec2(!v.x, !v.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of operator&amp; (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec2 operator&(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x && rhs.x, lhs.y && rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of operator&amp; (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec2 operator&(bvec2 lhs, bool rhs) => new bvec2(lhs.x && rhs, lhs.y && rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of operator&amp; (lhs &amp;&amp; rhs).
+        /// </summary>
+        public static bvec2 operator&(bool lhs, bvec2 rhs) => new bvec2(lhs && rhs.x, lhs && rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of operator| (lhs || rhs).
+        /// </summary>
+        public static bvec2 operator|(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x || rhs.x, lhs.y || rhs.y);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of operator| (lhs || rhs).
+        /// </summary>
+        public static bvec2 operator|(bvec2 lhs, bool rhs) => new bvec2(lhs.x || rhs, lhs.y || rhs);
+        
+        /// <summary>
+        /// Returns a bvec2 from component-wise application of operator| (lhs || rhs).
+        /// </summary>
+        public static bvec2 operator|(bool lhs, bvec2 rhs) => new bvec2(lhs || rhs.x, lhs || rhs.y);
 
         #endregion
 
@@ -467,20 +627,5 @@ namespace GlmSharp
         /// Returns true if any component is true.
         /// </summary>
         public bool Any => x || y;
-        
-        /// <summary>
-        /// Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)
-        /// </summary>
-        public static bvec2 operator&(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x && rhs.x, lhs.y && rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise ||. (sorry for different overload but || cannot be overloaded directly)
-        /// </summary>
-        public static bvec2 operator|(bvec2 lhs, bvec2 rhs) => new bvec2(lhs.x || rhs.x, lhs.y || rhs.y);
-        
-        /// <summary>
-        /// Executes a component-wise unary ! (not).
-        /// </summary>
-        public static bvec2 operator!(bvec2 v) => new bvec2(!v.x, !v.y);
     }
 }
