@@ -203,5 +203,51 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.That(v2 != v3);
         }
 
+        [Test]
+        public void StringInterop()
+        {
+            var v = new dvec2(-6.5d, 4.5d);
+            
+            var s0 = v.ToString();
+            var s1 = v.ToString("#");
+            
+            var v0 = dvec2.Parse(s0);
+            var v1 = dvec2.Parse(s1, "#");
+            Assert.AreEqual(v, v0);
+            Assert.AreEqual(v, v1);
+            
+            var b0 = dvec2.TryParse(s0, out v0);
+            var b1 = dvec2.TryParse(s1, "#", out v1);
+            Assert.That(b0);
+            Assert.That(b1);
+            Assert.AreEqual(v, v0);
+            Assert.AreEqual(v, v1);
+            
+            b0 = dvec2.TryParse(null, out v0);
+            Assert.False(b0);
+            b0 = dvec2.TryParse("", out v0);
+            Assert.False(b0);
+            b0 = dvec2.TryParse(s0 + ", 0", out v0);
+            Assert.False(b0);
+            
+            Assert.Throws<NullReferenceException>(() => { dvec2.Parse(null); });
+            Assert.Throws<FormatException>(() => { dvec2.Parse(""); });
+            Assert.Throws<FormatException>(() => { dvec2.Parse(s0 + ", 0"); });
+            
+            var s2 = v.ToString(";", CultureInfo.InvariantCulture);
+            Assert.That(s2.Length > 0);
+            
+            var s3 = v.ToString("; ", "G");
+            var s4 = v.ToString("; ", "G", CultureInfo.InvariantCulture);
+            var v3 = dvec2.Parse(s3, "; ", NumberStyles.Number);
+            var v4 = dvec2.Parse(s4, "; ", NumberStyles.Number, CultureInfo.InvariantCulture);
+            Assert.AreEqual(v, v3);
+            Assert.AreEqual(v, v4);
+            
+            var b4 = dvec2.TryParse(s4, "; ", NumberStyles.Number, CultureInfo.InvariantCulture, out v4);
+            Assert.That(b4);
+            Assert.AreEqual(v, v4);
+        }
+
     }
 }

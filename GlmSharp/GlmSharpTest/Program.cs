@@ -22,7 +22,7 @@ namespace GlmSharpTest
             iv /= 3;
             iv *= iv;
             iv = 2 + iv;
-            
+
             vec3 g = vec3.UnitY;
             g = g.Normalized * 3;
 

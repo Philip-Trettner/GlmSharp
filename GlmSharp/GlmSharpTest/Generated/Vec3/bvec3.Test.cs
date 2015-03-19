@@ -126,5 +126,40 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.That(v2 != v3);
         }
 
+        [Test]
+        public void StringInterop()
+        {
+            var v = new bvec3(true, false, false);
+            
+            var s0 = v.ToString();
+            var s1 = v.ToString("#");
+            
+            var v0 = bvec3.Parse(s0);
+            var v1 = bvec3.Parse(s1, "#");
+            Assert.AreEqual(v, v0);
+            Assert.AreEqual(v, v1);
+            
+            var b0 = bvec3.TryParse(s0, out v0);
+            var b1 = bvec3.TryParse(s1, "#", out v1);
+            Assert.That(b0);
+            Assert.That(b1);
+            Assert.AreEqual(v, v0);
+            Assert.AreEqual(v, v1);
+            
+            b0 = bvec3.TryParse(null, out v0);
+            Assert.False(b0);
+            b0 = bvec3.TryParse("", out v0);
+            Assert.False(b0);
+            b0 = bvec3.TryParse(s0 + ", 0", out v0);
+            Assert.False(b0);
+            
+            Assert.Throws<NullReferenceException>(() => { bvec3.Parse(null); });
+            Assert.Throws<FormatException>(() => { bvec3.Parse(""); });
+            Assert.Throws<FormatException>(() => { bvec3.Parse(s0 + ", 0"); });
+            
+            var s2 = v.ToString(";", CultureInfo.InvariantCulture);
+            Assert.That(s2.Length > 0);
+        }
+
     }
 }

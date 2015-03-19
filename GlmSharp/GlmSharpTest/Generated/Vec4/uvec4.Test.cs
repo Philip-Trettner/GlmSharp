@@ -169,5 +169,51 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.That(v2 != v3);
         }
 
+        [Test]
+        public void StringInterop()
+        {
+            var v = new uvec4(7, 7, 0u, 9);
+            
+            var s0 = v.ToString();
+            var s1 = v.ToString("#");
+            
+            var v0 = uvec4.Parse(s0);
+            var v1 = uvec4.Parse(s1, "#");
+            Assert.AreEqual(v, v0);
+            Assert.AreEqual(v, v1);
+            
+            var b0 = uvec4.TryParse(s0, out v0);
+            var b1 = uvec4.TryParse(s1, "#", out v1);
+            Assert.That(b0);
+            Assert.That(b1);
+            Assert.AreEqual(v, v0);
+            Assert.AreEqual(v, v1);
+            
+            b0 = uvec4.TryParse(null, out v0);
+            Assert.False(b0);
+            b0 = uvec4.TryParse("", out v0);
+            Assert.False(b0);
+            b0 = uvec4.TryParse(s0 + ", 0", out v0);
+            Assert.False(b0);
+            
+            Assert.Throws<NullReferenceException>(() => { uvec4.Parse(null); });
+            Assert.Throws<FormatException>(() => { uvec4.Parse(""); });
+            Assert.Throws<FormatException>(() => { uvec4.Parse(s0 + ", 0"); });
+            
+            var s2 = v.ToString(";", CultureInfo.InvariantCulture);
+            Assert.That(s2.Length > 0);
+            
+            var s3 = v.ToString("; ", "G");
+            var s4 = v.ToString("; ", "G", CultureInfo.InvariantCulture);
+            var v3 = uvec4.Parse(s3, "; ", NumberStyles.Number);
+            var v4 = uvec4.Parse(s4, "; ", NumberStyles.Number, CultureInfo.InvariantCulture);
+            Assert.AreEqual(v, v3);
+            Assert.AreEqual(v, v4);
+            
+            var b4 = uvec4.TryParse(s4, "; ", NumberStyles.Number, CultureInfo.InvariantCulture, out v4);
+            Assert.That(b4);
+            Assert.AreEqual(v, v4);
+        }
+
     }
 }

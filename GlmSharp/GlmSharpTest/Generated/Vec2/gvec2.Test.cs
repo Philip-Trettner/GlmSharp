@@ -120,5 +120,14 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.That(v2 != v3);
         }
 
+        [Test]
+        public void StringInterop()
+        {
+            var v = new gvec2<string>("((69)8)", "(-63)");
+            
+            var s0 = v.ToString();
+            var s1 = v.ToString("#");
+        }
+
     }
 }

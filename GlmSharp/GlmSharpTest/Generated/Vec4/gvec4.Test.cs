@@ -136,5 +136,14 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.That(v2 != v3);
         }
 
+        [Test]
+        public void StringInterop()
+        {
+            var v = new gvec4<string>("5", "((75)9)", "-9", "5");
+            
+            var s0 = v.ToString();
+            var s1 = v.ToString("#");
+        }
+
     }
 }

@@ -3185,5 +3185,17 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.That(v2 != v3);
         }
 
+        [Test]
+        public void StringInterop()
+        {
+            var v = new cvec4(new Complex(5, 1.0), new Complex(8, -8.5d), new Complex(-9.5d, 2), new Complex(5.5d, 0.0));
+            
+            var s0 = v.ToString();
+            var s1 = v.ToString("#");
+            
+            var s2 = v.ToString(";", CultureInfo.InvariantCulture);
+            Assert.That(s2.Length > 0);
+        }
+
     }
 }
