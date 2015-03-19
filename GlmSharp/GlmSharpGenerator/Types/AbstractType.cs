@@ -4,11 +4,22 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using GlmSharpGenerator.Members;
+using GlmSharpGenerator.Tests;
 
 namespace GlmSharpGenerator.Types
 {
     abstract class AbstractType
     {
+        /// <summary>
+        /// true iff test generation is active
+        /// </summary>
+        public static bool TestMode { get; set; }
+
+        /// <summary>
+        /// Random
+        /// </summary>
+        public static Random Random = new Random(1234);
+
         /// <summary>
         /// All known types
         /// </summary>
@@ -42,7 +53,7 @@ namespace GlmSharpGenerator.Types
         /// <summary>
         /// Suffix for generic types
         /// </summary>
-        public virtual string GenericSuffix => BaseType?.Generic ?? false ? "<T>" : "";
+        public virtual string GenericSuffix => BaseType?.Generic ?? false ? (TestMode ? "<string>" : "<T>") : "";
         /// <summary>
         /// Reference to base type
         /// </summary>
@@ -58,9 +69,14 @@ namespace GlmSharpGenerator.Types
         /// </summary>
         public virtual string Folder { get; } = "";
         /// <summary>
+        /// Class name for tests
+        /// </summary>
+        public virtual string TestClassName => BaseTypeName.Capitalized() + Folder + "Test";
+        /// <summary>
         /// Folder with trailing /
         /// </summary>
         public string PathOf(string basePath) => string.IsNullOrEmpty(Folder) ? Path.Combine(basePath, Name + ".cs") : Path.Combine(basePath, Folder, Name + ".cs");
+        public string TestPathOf(string basePath) => string.IsNullOrEmpty(Folder) ? Path.Combine(basePath, Name + ".cs") : Path.Combine(basePath, Folder, Name + ".Test.cs");
 
         /// <summary>
         /// Comment of this type
@@ -127,6 +143,54 @@ namespace GlmSharpGenerator.Types
         /// </summary>
         public string Construct(AbstractType type, params string[] args) => string.Format("new {0}({1})", type.NameThat, args.CommaSeparated());
 
+        /// <summary>
+        /// Generate tests for this class
+        /// </summary>
+        public virtual IEnumerable<TestFunc> GenerateTests() { yield break; }
+
+        public IEnumerable<string> TestFile
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Folder))
+                    throw new NotSupportedException();
+
+                yield return "using System;";
+                yield return "using System.Collections;";
+                yield return "using System.Collections.Generic;";
+                yield return "using System.Globalization;";
+                yield return "using System.Runtime.InteropServices;";
+                yield return "using System.Runtime.Serialization;";
+                if (Version >= 40)
+                {
+                    yield return "using System.Numerics;";
+                    yield return "using System.Linq;";
+                }
+                yield return "using NUnit.Framework;";
+                yield return "using GlmSharp;";
+                yield return "";
+                yield return "// ReSharper disable InconsistentNaming";
+                yield return "";
+                yield return "namespace GlmSharpTest.Generated." + Folder;
+                yield return "{";
+                yield return "    [TestFixture]";
+                yield return "    public class " + TestClassName;
+                yield return "    {";
+                foreach (var test in GenerateTests())
+                {
+                    yield return "";
+                    yield return "[Test]".Indent(2);
+                    yield return string.Format("public void {0}()", test.Name).Indent(2);
+                    yield return "{".Indent(2);
+                    foreach (var line in test.Code)
+                        yield return line.Indent(3);
+                    yield return "}".Indent(2);
+                }
+                yield return "";
+                yield return "    }";
+                yield return "}";
+            }
+        }
 
         public IEnumerable<string> CSharpFile
         {
@@ -153,7 +217,7 @@ namespace GlmSharpGenerator.Types
                 foreach (var line in TypeComment.AsComment()) yield return line.Indent();
                 yield return "    [Serializable]";
                 if (Version >= 40)
-                yield return "    [DataContract]";
+                    yield return "    [DataContract]";
                 yield return "    [StructLayout(LayoutKind.Sequential)]";
                 yield return "    public struct " + Name + GenericSuffix + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";
@@ -334,14 +398,25 @@ namespace GlmSharpGenerator.Types
 
         public string ConstantSuffixFor(string s)
         {
-            if (BaseType == BuiltinType.TypeFloat)
+            var type = BaseType ?? this;
+
+            if (type == BuiltinType.TypeFloat)
                 return s + "f";
 
-            if (BaseType == BuiltinType.TypeDouble)
+            if (type == BuiltinType.TypeDouble)
                 return s + "d";
 
-            if (BaseType == BuiltinType.TypeDecimal)
+            if (type == BuiltinType.TypeDecimal)
                 return s + "m";
+
+            if (type == BuiltinType.TypeInt)
+                return s + "";
+
+            if (type == BuiltinType.TypeUint)
+                return s + "u";
+
+            if (type == BuiltinType.TypeLong)
+                return s + "L";
 
             throw new InvalidOperationException("unknown type");
         }

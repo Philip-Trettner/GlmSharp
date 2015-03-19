@@ -19,6 +19,11 @@ namespace GlmSharpGenerator.Types
         public override string TypeComment => string.Format("Temporary vector of type {0} with {1} components, used for implementing swizzling for {2}.", BaseTypeName, Components, VectorType.Name);
 
         /// <summary>
+        /// Class name for tests
+        /// </summary>
+        public override string TestClassName => BaseTypeName.Capitalized() + Folder + VectorType.Folder + "Test";
+
+        /// <summary>
         /// Type for swizzling
         /// </summary>
         public VectorType VectorType => Types[BaseType.Prefix + "vec" + Components] as VectorType;

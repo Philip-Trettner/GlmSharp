@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using GlmSharpGenerator.Members;
 
 namespace GlmSharpGenerator.Types
@@ -123,8 +125,8 @@ namespace GlmSharpGenerator.Types
             TypeName = "Complex",
             Prefix = "c",
             LengthType = "double",
-            OneValueConstant = "1.0",
-            ZeroValueConstant = "0.0",
+            OneValueConstant = "Complex.One",
+            ZeroValueConstant = "Complex.Zero",
             IsComplex = true,
             AbsOverrideType = "double",
             AbsOverrideTypePrefix = "d"
@@ -191,7 +193,7 @@ namespace GlmSharpGenerator.Types
         public string ZeroValueConstant { get; set; } = "0";
 
         public override string OneValue => OneValueConstant;
-        public override string ZeroValue => ZeroValueConstant;
+        public override string ZeroValue => TestMode && Generic ? "null" : ZeroValueConstant;
 
         public int HashCodeMultiplier { get; set; } = 397;
 
@@ -212,5 +214,63 @@ namespace GlmSharpGenerator.Types
         public string[] TypeConstants { get; set; } = new string[] { };
 
         public Dictionary<string, string> TypeTestFuncs { get; set; } = new Dictionary<string, string>();
+
+        public IEnumerable<string> ValuesBorder
+        {
+            get
+            {
+                yield return ZeroValue;
+                if (!string.IsNullOrEmpty(OneValue))
+                    yield return OneValue;
+                if (IsSigned)
+                    yield return "-1";
+                foreach (var constant in TypeConstants)
+                    yield return Name + "." + constant;
+            }
+        }
+
+        public string[] RandomSmallVals(int count)
+        {
+            var vals = ValuesSmallVals.ToArray();
+            return count.ForIndexUpTo(f => vals[Random.Next(0, vals.Length)]).ToArray();
+        }
+
+        public IEnumerable<string> ValuesSmallVals
+        {
+            get
+            {
+                yield return ZeroValue;
+
+                if (!string.IsNullOrEmpty(OneValue))
+                    yield return OneValue;
+
+                if (Generic)
+                {
+                    yield return "\"\"";
+                    for (int i = 1; i <= 3; ++i)
+                        for (int l = 1; l <= 3; ++l)
+                            yield return string.Format("\"{0}\"", TypeInt.RandomSmallVals(l).Aggregated(""));
+                }
+
+                if (!HasArithmetics)
+                    yield break;
+
+                for (var i = 2; i < 10; ++i)
+                    yield return i.ToString();
+
+                if (IsSigned)
+                    for (var i = 1; i < 10; ++i)
+                        yield return (-i).ToString();
+
+                if (IsFloatingPoint)
+                    for (var i = -10; i < 10; ++i)
+                        yield return ConstantSuffixFor((i + 0.5).ToString(CultureInfo.InvariantCulture));
+
+                if (IsComplex)
+                    foreach (var r in TypeDouble.ValuesSmallVals)
+                        foreach (var i in TypeDouble.ValuesSmallVals)
+                            yield return string.Format("new Complex({0}, {1})", r, i);
+            }
+        }
     }
 }

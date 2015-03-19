@@ -217,17 +217,17 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static cmat2 Zero { get; } = new cmat2(0.0, 0.0, 0.0, 0.0);
+        public static cmat2 Zero { get; } = new cmat2(Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined all-ones matrix
         /// </summary>
-        public static cmat2 Ones { get; } = new cmat2(1.0, 1.0, 1.0, 1.0);
+        public static cmat2 Ones { get; } = new cmat2(Complex.One, Complex.One, Complex.One, Complex.One);
         
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static cmat2 Identity { get; } = new cmat2(1.0, 0.0, 0.0, 1.0);
+        public static cmat2 Identity { get; } = new cmat2(Complex.One, Complex.Zero, Complex.Zero, Complex.One);
         
         /// <summary>
         /// Predefined all-imaginary-ones matrix
@@ -237,7 +237,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined diagonal-imaginary-one matrix
         /// </summary>
-        public static cmat2 ImaginaryIdentity { get; } = new cmat2(Complex.ImaginaryOne, 0.0, 0.0, Complex.ImaginaryOne);
+        public static cmat2 ImaginaryIdentity { get; } = new cmat2(Complex.ImaginaryOne, Complex.Zero, Complex.Zero, Complex.ImaginaryOne);
 
         #endregion
 

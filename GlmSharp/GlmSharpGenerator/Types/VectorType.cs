@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GlmSharpGenerator.Members;
+using GlmSharpGenerator.Tests;
 
 namespace GlmSharpGenerator.Types
 {
@@ -57,6 +58,49 @@ namespace GlmSharpGenerator.Types
         public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseType.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
 
         public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
+
+        private IEnumerable<string> TestConstructor
+        {
+            get
+            {
+                {
+                    yield return "{";
+                    var vals = BaseType.RandomSmallVals(1);
+                    yield return string.Format("var v = {0};", Construct(this, vals)).Indent();
+                    foreach (var field in Fields)
+                        yield return string.Format("Assert.AreEqual({1}, v.{0});", field, vals[0]).Indent();
+                    yield return "}";
+                }
+                {
+                    yield return "{";
+                    var vals = BaseType.RandomSmallVals(Components);
+                    yield return string.Format("var v = {0};", Construct(this, vals)).Indent();
+                    var it = vals.GetEnumerator();
+                    foreach (var field in Fields)
+                        yield return string.Format("Assert.AreEqual({1}, v.{0});", field, it.MoveNext() ? it.Current : ZeroValue).Indent();
+                    yield return "}";
+                }
+                for (var comps = 2; comps <= 4; ++comps)
+                {
+                    yield return "{";
+                    var vals = BaseType.RandomSmallVals(comps);
+                    yield return string.Format("var v = {0};", Construct(this, Construct(new VectorType(BaseType, comps), vals))).Indent();
+                    var it = vals.GetEnumerator();
+                    foreach (var field in Fields)
+                        yield return string.Format("Assert.AreEqual({1}, v.{0});", field, it.MoveNext() ? it.Current : ZeroValue).Indent();
+                    yield return "}";
+                }
+            }
+        }
+
+        public override IEnumerable<TestFunc> GenerateTests()
+        {
+            TestMode = true;
+
+            yield return new TestFunc("Constructors", TestConstructor);
+
+            TestMode = false;
+        }
 
 
         public override IEnumerable<Member> GenerateMembers()

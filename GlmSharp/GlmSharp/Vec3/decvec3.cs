@@ -195,7 +195,7 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec4(decvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, 0.0);
+        public static explicit operator cvec4(decvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, Complex.Zero);
         
         /// <summary>
         /// Explicitly converts this to a lvec2.

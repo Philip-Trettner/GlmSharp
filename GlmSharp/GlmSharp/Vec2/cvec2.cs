@@ -94,12 +94,12 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a cvec3. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec3(cvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, 0.0);
+        public static explicit operator cvec3(cvec2 v) => new cvec3((Complex)v.x, (Complex)v.y, Complex.Zero);
         
         /// <summary>
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec4(cvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, 0.0, 0.0);
+        public static explicit operator cvec4(cvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, Complex.Zero, Complex.Zero);
 
         #endregion
 
@@ -224,22 +224,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static cvec2 Zero { get; } = new cvec2(0.0, 0.0);
+        public static cvec2 Zero { get; } = new cvec2(Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined all-ones vector
         /// </summary>
-        public static cvec2 Ones { get; } = new cvec2(1.0, 1.0);
+        public static cvec2 Ones { get; } = new cvec2(Complex.One, Complex.One);
         
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static cvec2 UnitX { get; } = new cvec2(1.0, 0.0);
+        public static cvec2 UnitX { get; } = new cvec2(Complex.One, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static cvec2 UnitY { get; } = new cvec2(0.0, 1.0);
+        public static cvec2 UnitY { get; } = new cvec2(Complex.Zero, Complex.One);
         
         /// <summary>
         /// Predefined all-imaginary-ones vector
@@ -249,12 +249,12 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static cvec2 ImaginaryUnitX { get; } = new cvec2(Complex.ImaginaryOne, 0.0);
+        public static cvec2 ImaginaryUnitX { get; } = new cvec2(Complex.ImaginaryOne, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static cvec2 ImaginaryUnitY { get; } = new cvec2(0.0, Complex.ImaginaryOne);
+        public static cvec2 ImaginaryUnitY { get; } = new cvec2(Complex.Zero, Complex.ImaginaryOne);
 
         #endregion
 

@@ -194,37 +194,37 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero quaternion
         /// </summary>
-        public static cquat Zero { get; } = new cquat(0.0, 0.0, 0.0, 0.0);
+        public static cquat Zero { get; } = new cquat(Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined all-ones quaternion
         /// </summary>
-        public static cquat Ones { get; } = new cquat(1.0, 1.0, 1.0, 1.0);
+        public static cquat Ones { get; } = new cquat(Complex.One, Complex.One, Complex.One, Complex.One);
         
         /// <summary>
         /// Predefined identity quaternion
         /// </summary>
-        public static cquat Identity { get; } = new cquat(0.0, 0.0, 0.0, 1.0);
+        public static cquat Identity { get; } = new cquat(Complex.Zero, Complex.Zero, Complex.Zero, Complex.One);
         
         /// <summary>
         /// Predefined unit-X quaternion
         /// </summary>
-        public static cquat UnitX { get; } = new cquat(1.0, 0.0, 0.0, 0.0);
+        public static cquat UnitX { get; } = new cquat(Complex.One, Complex.Zero, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-Y quaternion
         /// </summary>
-        public static cquat UnitY { get; } = new cquat(0.0, 1.0, 0.0, 0.0);
+        public static cquat UnitY { get; } = new cquat(Complex.Zero, Complex.One, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-Z quaternion
         /// </summary>
-        public static cquat UnitZ { get; } = new cquat(0.0, 0.0, 1.0, 0.0);
+        public static cquat UnitZ { get; } = new cquat(Complex.Zero, Complex.Zero, Complex.One, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-W quaternion
         /// </summary>
-        public static cquat UnitW { get; } = new cquat(0.0, 0.0, 0.0, 1.0);
+        public static cquat UnitW { get; } = new cquat(Complex.Zero, Complex.Zero, Complex.Zero, Complex.One);
         
         /// <summary>
         /// Predefined all-imaginary-ones quaternion
@@ -234,22 +234,22 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-imaginary-X quaternion
         /// </summary>
-        public static cquat ImaginaryUnitX { get; } = new cquat(Complex.ImaginaryOne, 0.0, 0.0, 0.0);
+        public static cquat ImaginaryUnitX { get; } = new cquat(Complex.ImaginaryOne, Complex.Zero, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-imaginary-Y quaternion
         /// </summary>
-        public static cquat ImaginaryUnitY { get; } = new cquat(0.0, Complex.ImaginaryOne, 0.0, 0.0);
+        public static cquat ImaginaryUnitY { get; } = new cquat(Complex.Zero, Complex.ImaginaryOne, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-imaginary-Z quaternion
         /// </summary>
-        public static cquat ImaginaryUnitZ { get; } = new cquat(0.0, 0.0, Complex.ImaginaryOne, 0.0);
+        public static cquat ImaginaryUnitZ { get; } = new cquat(Complex.Zero, Complex.Zero, Complex.ImaginaryOne, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-imaginary-W quaternion
         /// </summary>
-        public static cquat ImaginaryUnitW { get; } = new cquat(0.0, 0.0, 0.0, Complex.ImaginaryOne);
+        public static cquat ImaginaryUnitW { get; } = new cquat(Complex.Zero, Complex.Zero, Complex.Zero, Complex.ImaginaryOne);
 
         #endregion
 

@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.0.0-alpha-5\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -44,11 +47,157 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generated\Mat2x2\bmat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\cmat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\decmat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\dmat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\gmat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\imat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\lmat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\mat2.Test.cs" />
+    <Compile Include="Generated\Mat2x2\umat2.Test.cs" />
+    <Compile Include="Generated\Mat2x3\bmat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\cmat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\decmat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\dmat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\gmat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\imat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\lmat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\mat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x3\umat2x3.Test.cs" />
+    <Compile Include="Generated\Mat2x4\bmat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\cmat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\decmat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\dmat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\gmat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\imat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\lmat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\mat2x4.Test.cs" />
+    <Compile Include="Generated\Mat2x4\umat2x4.Test.cs" />
+    <Compile Include="Generated\Mat3x2\bmat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\cmat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\decmat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\dmat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\gmat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\imat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\lmat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\mat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x2\umat3x2.Test.cs" />
+    <Compile Include="Generated\Mat3x3\bmat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\cmat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\decmat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\dmat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\gmat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\imat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\lmat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\mat3.Test.cs" />
+    <Compile Include="Generated\Mat3x3\umat3.Test.cs" />
+    <Compile Include="Generated\Mat3x4\bmat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\cmat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\decmat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\dmat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\gmat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\imat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\lmat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\mat3x4.Test.cs" />
+    <Compile Include="Generated\Mat3x4\umat3x4.Test.cs" />
+    <Compile Include="Generated\Mat4x2\bmat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\cmat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\decmat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\dmat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\gmat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\imat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\lmat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\mat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x2\umat4x2.Test.cs" />
+    <Compile Include="Generated\Mat4x3\bmat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\cmat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\decmat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\dmat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\gmat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\imat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\lmat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\mat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x3\umat4x3.Test.cs" />
+    <Compile Include="Generated\Mat4x4\bmat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\cmat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\decmat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\dmat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\gmat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\imat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\lmat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\mat4.Test.cs" />
+    <Compile Include="Generated\Mat4x4\umat4.Test.cs" />
+    <Compile Include="Generated\Quat\bquat.Test.cs" />
+    <Compile Include="Generated\Quat\cquat.Test.cs" />
+    <Compile Include="Generated\Quat\decquat.Test.cs" />
+    <Compile Include="Generated\Quat\dquat.Test.cs" />
+    <Compile Include="Generated\Quat\gquat.Test.cs" />
+    <Compile Include="Generated\Quat\iquat.Test.cs" />
+    <Compile Include="Generated\Quat\lquat.Test.cs" />
+    <Compile Include="Generated\Quat\quat.Test.cs" />
+    <Compile Include="Generated\Quat\uquat.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_bvec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_bvec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_bvec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_cvec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_cvec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_cvec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_decvec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_decvec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_decvec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_dvec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_dvec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_dvec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_gvec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_gvec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_gvec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_ivec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_ivec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_ivec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_lvec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_lvec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_lvec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_uvec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_uvec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_uvec4.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_vec2.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_vec3.Test.cs" />
+    <Compile Include="Generated\Swizzle\swizzle_vec4.Test.cs" />
+    <Compile Include="Generated\Vec2\bvec2.Test.cs" />
+    <Compile Include="Generated\Vec2\cvec2.Test.cs" />
+    <Compile Include="Generated\Vec2\decvec2.Test.cs" />
+    <Compile Include="Generated\Vec2\dvec2.Test.cs" />
+    <Compile Include="Generated\Vec2\gvec2.Test.cs" />
+    <Compile Include="Generated\Vec2\ivec2.Test.cs" />
+    <Compile Include="Generated\Vec2\lvec2.Test.cs" />
+    <Compile Include="Generated\Vec2\uvec2.Test.cs" />
+    <Compile Include="Generated\Vec2\vec2.Test.cs" />
+    <Compile Include="Generated\Vec3\bvec3.Test.cs" />
+    <Compile Include="Generated\Vec3\cvec3.Test.cs" />
+    <Compile Include="Generated\Vec3\decvec3.Test.cs" />
+    <Compile Include="Generated\Vec3\dvec3.Test.cs" />
+    <Compile Include="Generated\Vec3\gvec3.Test.cs" />
+    <Compile Include="Generated\Vec3\ivec3.Test.cs" />
+    <Compile Include="Generated\Vec3\lvec3.Test.cs" />
+    <Compile Include="Generated\Vec3\uvec3.Test.cs" />
+    <Compile Include="Generated\Vec3\vec3.Test.cs" />
+    <Compile Include="Generated\Vec4\bvec4.Test.cs" />
+    <Compile Include="Generated\Vec4\cvec4.Test.cs" />
+    <Compile Include="Generated\Vec4\decvec4.Test.cs" />
+    <Compile Include="Generated\Vec4\dvec4.Test.cs" />
+    <Compile Include="Generated\Vec4\gvec4.Test.cs" />
+    <Compile Include="Generated\Vec4\ivec4.Test.cs" />
+    <Compile Include="Generated\Vec4\lvec4.Test.cs" />
+    <Compile Include="Generated\Vec4\uvec4.Test.cs" />
+    <Compile Include="Generated\Vec4\vec4.Test.cs" />
+    <Compile Include="Manual\ManualTestTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GlmSharp\GlmSharp.csproj">
@@ -56,6 +205,7 @@
       <Name>GlmSharp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -74,7 +74,7 @@ namespace GlmSharp
         {
             this.x = v.x;
             this.y = v.y;
-            this.z = 0.0;
+            this.z = Complex.Zero;
         }
         
         /// <summary>
@@ -120,7 +120,7 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
-        public static explicit operator cvec4(cvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, 0.0);
+        public static explicit operator cvec4(cvec3 v) => new cvec4((Complex)v.x, (Complex)v.y, (Complex)v.z, Complex.Zero);
 
         #endregion
 
@@ -247,27 +247,27 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero vector
         /// </summary>
-        public static cvec3 Zero { get; } = new cvec3(0.0, 0.0, 0.0);
+        public static cvec3 Zero { get; } = new cvec3(Complex.Zero, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined all-ones vector
         /// </summary>
-        public static cvec3 Ones { get; } = new cvec3(1.0, 1.0, 1.0);
+        public static cvec3 Ones { get; } = new cvec3(Complex.One, Complex.One, Complex.One);
         
         /// <summary>
         /// Predefined unit-X vector
         /// </summary>
-        public static cvec3 UnitX { get; } = new cvec3(1.0, 0.0, 0.0);
+        public static cvec3 UnitX { get; } = new cvec3(Complex.One, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-Y vector
         /// </summary>
-        public static cvec3 UnitY { get; } = new cvec3(0.0, 1.0, 0.0);
+        public static cvec3 UnitY { get; } = new cvec3(Complex.Zero, Complex.One, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-Z vector
         /// </summary>
-        public static cvec3 UnitZ { get; } = new cvec3(0.0, 0.0, 1.0);
+        public static cvec3 UnitZ { get; } = new cvec3(Complex.Zero, Complex.Zero, Complex.One);
         
         /// <summary>
         /// Predefined all-imaginary-ones vector
@@ -277,17 +277,17 @@ namespace GlmSharp
         /// <summary>
         /// Predefined unit-imaginary-X vector
         /// </summary>
-        public static cvec3 ImaginaryUnitX { get; } = new cvec3(Complex.ImaginaryOne, 0.0, 0.0);
+        public static cvec3 ImaginaryUnitX { get; } = new cvec3(Complex.ImaginaryOne, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-imaginary-Y vector
         /// </summary>
-        public static cvec3 ImaginaryUnitY { get; } = new cvec3(0.0, Complex.ImaginaryOne, 0.0);
+        public static cvec3 ImaginaryUnitY { get; } = new cvec3(Complex.Zero, Complex.ImaginaryOne, Complex.Zero);
         
         /// <summary>
         /// Predefined unit-imaginary-Z vector
         /// </summary>
-        public static cvec3 ImaginaryUnitZ { get; } = new cvec3(0.0, 0.0, Complex.ImaginaryOne);
+        public static cvec3 ImaginaryUnitZ { get; } = new cvec3(Complex.Zero, Complex.Zero, Complex.ImaginaryOne);
 
         #endregion
 

@@ -127,16 +127,16 @@ namespace GlmSharp
         {
             this.m00 = m.m00;
             this.m01 = m.m01;
-            this.m02 = 0.0;
+            this.m02 = Complex.Zero;
             this.m10 = m.m10;
             this.m11 = m.m11;
-            this.m12 = 0.0;
-            this.m20 = 0.0;
-            this.m21 = 0.0;
-            this.m22 = 1.0;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m12 = Complex.Zero;
+            this.m20 = Complex.Zero;
+            this.m21 = Complex.Zero;
+            this.m22 = Complex.One;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -146,16 +146,16 @@ namespace GlmSharp
         {
             this.m00 = m.m00;
             this.m01 = m.m01;
-            this.m02 = 0.0;
+            this.m02 = Complex.Zero;
             this.m10 = m.m10;
             this.m11 = m.m11;
-            this.m12 = 0.0;
+            this.m12 = Complex.Zero;
             this.m20 = m.m20;
             this.m21 = m.m21;
-            this.m22 = 1.0;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m22 = Complex.One;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -165,16 +165,16 @@ namespace GlmSharp
         {
             this.m00 = m.m00;
             this.m01 = m.m01;
-            this.m02 = 0.0;
+            this.m02 = Complex.Zero;
             this.m10 = m.m10;
             this.m11 = m.m11;
-            this.m12 = 0.0;
+            this.m12 = Complex.Zero;
             this.m20 = m.m20;
             this.m21 = m.m21;
-            this.m22 = 1.0;
+            this.m22 = Complex.One;
             this.m30 = m.m30;
             this.m31 = m.m31;
-            this.m32 = 0.0;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -188,12 +188,12 @@ namespace GlmSharp
             this.m10 = m.m10;
             this.m11 = m.m11;
             this.m12 = m.m12;
-            this.m20 = 0.0;
-            this.m21 = 0.0;
-            this.m22 = 1.0;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m20 = Complex.Zero;
+            this.m21 = Complex.Zero;
+            this.m22 = Complex.One;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -210,9 +210,9 @@ namespace GlmSharp
             this.m20 = m.m20;
             this.m21 = m.m21;
             this.m22 = m.m22;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -245,12 +245,12 @@ namespace GlmSharp
             this.m10 = m.m10;
             this.m11 = m.m11;
             this.m12 = m.m12;
-            this.m20 = 0.0;
-            this.m21 = 0.0;
-            this.m22 = 1.0;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m20 = Complex.Zero;
+            this.m21 = Complex.Zero;
+            this.m22 = Complex.One;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -267,9 +267,9 @@ namespace GlmSharp
             this.m20 = m.m20;
             this.m21 = m.m21;
             this.m22 = m.m22;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -298,16 +298,16 @@ namespace GlmSharp
         {
             this.m00 = c0.x;
             this.m01 = c0.y;
-            this.m02 = 0.0;
+            this.m02 = Complex.Zero;
             this.m10 = c1.x;
             this.m11 = c1.y;
-            this.m12 = 0.0;
-            this.m20 = 0.0;
-            this.m21 = 0.0;
-            this.m22 = 1.0;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m12 = Complex.Zero;
+            this.m20 = Complex.Zero;
+            this.m21 = Complex.Zero;
+            this.m22 = Complex.One;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -317,16 +317,16 @@ namespace GlmSharp
         {
             this.m00 = c0.x;
             this.m01 = c0.y;
-            this.m02 = 0.0;
+            this.m02 = Complex.Zero;
             this.m10 = c1.x;
             this.m11 = c1.y;
-            this.m12 = 0.0;
+            this.m12 = Complex.Zero;
             this.m20 = c2.x;
             this.m21 = c2.y;
-            this.m22 = 1.0;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m22 = Complex.One;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -336,16 +336,16 @@ namespace GlmSharp
         {
             this.m00 = c0.x;
             this.m01 = c0.y;
-            this.m02 = 0.0;
+            this.m02 = Complex.Zero;
             this.m10 = c1.x;
             this.m11 = c1.y;
-            this.m12 = 0.0;
+            this.m12 = Complex.Zero;
             this.m20 = c2.x;
             this.m21 = c2.y;
-            this.m22 = 1.0;
+            this.m22 = Complex.One;
             this.m30 = c3.x;
             this.m31 = c3.y;
-            this.m32 = 0.0;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -359,12 +359,12 @@ namespace GlmSharp
             this.m10 = c1.x;
             this.m11 = c1.y;
             this.m12 = c1.z;
-            this.m20 = 0.0;
-            this.m21 = 0.0;
-            this.m22 = 1.0;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m20 = Complex.Zero;
+            this.m21 = Complex.Zero;
+            this.m22 = Complex.One;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -381,9 +381,9 @@ namespace GlmSharp
             this.m20 = c2.x;
             this.m21 = c2.y;
             this.m22 = c2.z;
-            this.m30 = 0.0;
-            this.m31 = 0.0;
-            this.m32 = 0.0;
+            this.m30 = Complex.Zero;
+            this.m31 = Complex.Zero;
+            this.m32 = Complex.Zero;
         }
         
         /// <summary>
@@ -463,17 +463,17 @@ namespace GlmSharp
         /// <summary>
         /// Predefined all-zero matrix
         /// </summary>
-        public static cmat4x3 Zero { get; } = new cmat4x3(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+        public static cmat4x3 Zero { get; } = new cmat4x3(Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined all-ones matrix
         /// </summary>
-        public static cmat4x3 Ones { get; } = new cmat4x3(1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0);
+        public static cmat4x3 Ones { get; } = new cmat4x3(Complex.One, Complex.One, Complex.One, Complex.One, Complex.One, Complex.One, Complex.One, Complex.One, Complex.One, Complex.One, Complex.One, Complex.One);
         
         /// <summary>
         /// Predefined identity matrix
         /// </summary>
-        public static cmat4x3 Identity { get; } = new cmat4x3(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0);
+        public static cmat4x3 Identity { get; } = new cmat4x3(Complex.One, Complex.Zero, Complex.Zero, Complex.Zero, Complex.One, Complex.Zero, Complex.Zero, Complex.Zero, Complex.One, Complex.Zero, Complex.Zero, Complex.Zero);
         
         /// <summary>
         /// Predefined all-imaginary-ones matrix
@@ -483,7 +483,7 @@ namespace GlmSharp
         /// <summary>
         /// Predefined diagonal-imaginary-one matrix
         /// </summary>
-        public static cmat4x3 ImaginaryIdentity { get; } = new cmat4x3(Complex.ImaginaryOne, 0.0, 0.0, 0.0, Complex.ImaginaryOne, 0.0, 0.0, 0.0, Complex.ImaginaryOne, 0.0, 0.0, 0.0);
+        public static cmat4x3 ImaginaryIdentity { get; } = new cmat4x3(Complex.ImaginaryOne, Complex.Zero, Complex.Zero, Complex.Zero, Complex.ImaginaryOne, Complex.Zero, Complex.Zero, Complex.Zero, Complex.ImaginaryOne, Complex.Zero, Complex.Zero, Complex.Zero);
 
         #endregion
 

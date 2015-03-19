@@ -52,12 +52,20 @@ namespace GlmSharpGenerator
 
                 foreach (var type in AbstractType.Types.Values)
                 {
-                    if (!string.IsNullOrEmpty(type.Folder))
-                        Directory.CreateDirectory(Path.Combine(path, type.Folder));
-
+                    // generate lib code
                     var filename = type.PathOf(path);
+                    new FileInfo(filename).Directory?.Create();
                     if (type.CSharpFile.WriteToFileIfChanged(filename))
                         Console.WriteLine("    CHANGED " + filename);
+
+                    // generate test code
+                    if (!string.IsNullOrEmpty(testpath))
+                    {
+                        filename = type.TestPathOf(Path.Combine(testpath, "Generated"));
+                        new FileInfo(filename).Directory?.Create();
+                        if (type.TestFile.WriteToFileIfChanged(filename))
+                            Console.WriteLine("    CHANGED " + filename);
+                    }
                 }
             }
         }

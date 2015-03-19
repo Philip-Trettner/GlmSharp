@@ -155,12 +155,12 @@ namespace GlmSharp
         /// <summary>
         /// Explicitly converts this to a cvec4.
         /// </summary>
-        public static explicit operator cvec4(bquat v) => new cvec4(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
+        public static explicit operator cvec4(bquat v) => new cvec4(v.x ? Complex.One : Complex.Zero, v.y ? Complex.One : Complex.Zero, v.z ? Complex.One : Complex.Zero, v.w ? Complex.One : Complex.Zero);
         
         /// <summary>
         /// Explicitly converts this to a cquat.
         /// </summary>
-        public static explicit operator cquat(bquat v) => new cquat(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
+        public static explicit operator cquat(bquat v) => new cquat(v.x ? Complex.One : Complex.Zero, v.y ? Complex.One : Complex.Zero, v.z ? Complex.One : Complex.Zero, v.w ? Complex.One : Complex.Zero);
         
         /// <summary>
         /// Explicitly converts this to a lvec4.
