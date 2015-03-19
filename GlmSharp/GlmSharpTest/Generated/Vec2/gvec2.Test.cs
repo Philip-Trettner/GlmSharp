@@ -96,6 +96,7 @@ namespace GlmSharpTest.Generated.Vec2
             var vals = v.Values;
             Assert.AreEqual("((-18)-7)", vals[0]);
             Assert.AreEqual("-9", vals[1]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]

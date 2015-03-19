@@ -3134,6 +3134,7 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(new Complex(4.5d, -5.5d), vals[1]);
             Assert.AreEqual(new Complex(8.5d, -5.5d), vals[2]);
             Assert.AreEqual(new Complex(-1, -3), vals[3]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]

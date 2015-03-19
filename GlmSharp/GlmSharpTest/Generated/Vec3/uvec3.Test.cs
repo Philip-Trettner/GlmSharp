@@ -101,6 +101,7 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(5, vals[0]);
             Assert.AreEqual(2, vals[1]);
             Assert.AreEqual(9, vals[2]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]

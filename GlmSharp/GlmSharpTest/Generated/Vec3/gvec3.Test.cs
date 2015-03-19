@@ -103,6 +103,7 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual("(72)", vals[0]);
             Assert.AreEqual("-3", vals[1]);
             Assert.AreEqual("((-22)5)", vals[2]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]

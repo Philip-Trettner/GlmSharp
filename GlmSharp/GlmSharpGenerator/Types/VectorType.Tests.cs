@@ -79,6 +79,8 @@ namespace GlmSharpGenerator.Types
                 yield return "var vals = v.Values;";
                 for (var i = 0; i < vals.Length; ++i)
                     yield return string.Format("Assert.AreEqual({0}, vals[{1}]);", vals[i], i);
+                
+                yield return string.Format("Assert.That(vals.SequenceEqual(v.ToArray()));");
             }
         }
 

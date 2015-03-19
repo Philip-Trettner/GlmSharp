@@ -166,6 +166,7 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(8, vals[1]);
             Assert.AreEqual(1.0, vals[2]);
             Assert.AreEqual(6, vals[3]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]

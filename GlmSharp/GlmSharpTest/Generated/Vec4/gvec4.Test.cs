@@ -110,6 +110,7 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual("(-2-9)", vals[1]);
             Assert.AreEqual("(-5-4)", vals[2]);
             Assert.AreEqual(null, vals[3]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]

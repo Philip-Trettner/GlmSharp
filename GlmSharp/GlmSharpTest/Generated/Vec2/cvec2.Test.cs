@@ -3120,6 +3120,7 @@ namespace GlmSharpTest.Generated.Vec2
             var vals = v.Values;
             Assert.AreEqual(new Complex(-0.5d, 6.5d), vals[0]);
             Assert.AreEqual(new Complex(4, -0.5d), vals[1]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]

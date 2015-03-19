@@ -159,6 +159,7 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(-7, vals[0]);
             Assert.AreEqual(7, vals[1]);
             Assert.AreEqual(0.5m, vals[2]);
+            Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
         [Test]
