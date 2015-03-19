@@ -112,5 +112,19 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(true, bvec3.UnitZ.z);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new bvec3(true, true, false);
+            var v2 = new bvec3(true, true, false);
+            var v3 = new bvec3(false, true, true);
+            Assert.That(v1 == new bvec3(v1));
+            Assert.That(v2 == new bvec3(v2));
+            Assert.That(v3 == new bvec3(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

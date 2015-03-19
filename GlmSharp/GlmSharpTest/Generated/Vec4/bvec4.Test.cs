@@ -129,5 +129,19 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(true, bvec4.UnitW.w);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new bvec4(false, false, true, false);
+            var v2 = new bvec4(false, false, true, false);
+            var v3 = new bvec4(false, true, false, false);
+            Assert.That(v1 == new bvec4(v1));
+            Assert.That(v2 == new bvec4(v2));
+            Assert.That(v3 == new bvec4(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

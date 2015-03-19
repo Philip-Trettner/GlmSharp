@@ -106,5 +106,19 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(null, gvec2<string>.Zero.y);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new gvec2<string>("3", "(1-8)");
+            var v2 = new gvec2<string>("3", "(1-8)");
+            var v3 = new gvec2<string>("(1-8)", "3");
+            Assert.That(v1 == new gvec2<string>(v1));
+            Assert.That(v2 == new gvec2<string>(v2));
+            Assert.That(v3 == new gvec2<string>(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

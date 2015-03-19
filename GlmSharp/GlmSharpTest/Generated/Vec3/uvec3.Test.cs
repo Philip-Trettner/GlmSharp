@@ -136,5 +136,19 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(uint.MinValue, uvec3.MinValue.z);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new uvec3(3, 5, 6);
+            var v2 = new uvec3(3, 5, 6);
+            var v3 = new uvec3(6, 5, 3);
+            Assert.That(v1 == new uvec3(v1));
+            Assert.That(v2 == new uvec3(v2));
+            Assert.That(v3 == new uvec3(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

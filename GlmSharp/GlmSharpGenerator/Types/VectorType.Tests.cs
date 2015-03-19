@@ -114,12 +114,33 @@ namespace GlmSharpGenerator.Types
             }
         }
 
+        private IEnumerable<string> TestOperators
+        {
+            get
+            {
+                var vals = BaseType.RandomSmallVals(Components);
+                while(vals.All(v => v == vals[0]))
+                    vals = BaseType.RandomSmallVals(Components);
+
+                yield return string.Format("var v1 = {0};", Construct(this, vals));
+                yield return string.Format("var v2 = {0};", Construct(this, vals));
+                yield return string.Format("var v3 = {0};", Construct(this, vals.Reverse()));
+                yield return string.Format("Assert.That(v1 == {0});", Construct(this, "v1"));
+                yield return string.Format("Assert.That(v2 == {0});", Construct(this, "v2"));
+                yield return string.Format("Assert.That(v3 == {0});", Construct(this, "v3"));
+                yield return string.Format("Assert.That(v1 == v2);");
+                yield return string.Format("Assert.That(v1 != v3);");
+                yield return string.Format("Assert.That(v2 != v3);");
+            }
+        }
+
         public override IEnumerable<TestFunc> GenerateTests()
         {
             yield return new TestFunc(this, "Constructors", TestConstructor);
             yield return new TestFunc(this, "Indexer", TestIndexer);
             yield return new TestFunc(this, "PropertyValues", TestPropertyValue);
             yield return new TestFunc(this, "StaticProperties", TestStaticProperties);
+            yield return new TestFunc(this, "Operators", TestOperators);
         }
     }
 }

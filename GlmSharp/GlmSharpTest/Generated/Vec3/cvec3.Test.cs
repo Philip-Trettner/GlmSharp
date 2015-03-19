@@ -3154,5 +3154,19 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(Complex.One, cvec3.UnitZ.z);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new cvec3(new Complex(-7, -6), new Complex(-6, 8.5d), new Complex(-4.5d, -3));
+            var v2 = new cvec3(new Complex(-7, -6), new Complex(-6, 8.5d), new Complex(-4.5d, -3));
+            var v3 = new cvec3(new Complex(-4.5d, -3), new Complex(-6, 8.5d), new Complex(-7, -6));
+            Assert.That(v1 == new cvec3(v1));
+            Assert.That(v2 == new cvec3(v2));
+            Assert.That(v3 == new cvec3(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

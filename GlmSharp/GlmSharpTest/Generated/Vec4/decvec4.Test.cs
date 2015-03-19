@@ -218,5 +218,19 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(decimal.MinusOne, decvec4.MinusOne.w);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new decvec4(1m, -2.5m, 1.5m, -0.5m);
+            var v2 = new decvec4(1m, -2.5m, 1.5m, -0.5m);
+            var v3 = new decvec4(-0.5m, 1.5m, -2.5m, 1m);
+            Assert.That(v1 == new decvec4(v1));
+            Assert.That(v2 == new decvec4(v2));
+            Assert.That(v3 == new decvec4(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

@@ -233,5 +233,19 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(float.PositiveInfinity, vec4.PositiveInfinity.w);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new vec4(-8.5f, -3, -8.5f, 7.5f);
+            var v2 = new vec4(-8.5f, -3, -8.5f, 7.5f);
+            var v3 = new vec4(7.5f, -8.5f, -3, -8.5f);
+            Assert.That(v1 == new vec4(v1));
+            Assert.That(v2 == new vec4(v2));
+            Assert.That(v3 == new vec4(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

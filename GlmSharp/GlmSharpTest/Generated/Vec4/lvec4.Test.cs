@@ -173,5 +173,19 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(long.MinValue, lvec4.MinValue.w);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new lvec4(1, -8, 9, 5);
+            var v2 = new lvec4(1, -8, 9, 5);
+            var v3 = new lvec4(5, 9, -8, 1);
+            Assert.That(v1 == new lvec4(v1));
+            Assert.That(v2 == new lvec4(v2));
+            Assert.That(v3 == new lvec4(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

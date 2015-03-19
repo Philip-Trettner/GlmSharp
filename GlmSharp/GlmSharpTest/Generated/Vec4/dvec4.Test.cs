@@ -233,5 +233,19 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(double.PositiveInfinity, dvec4.PositiveInfinity.w);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new dvec4(4, 3.5d, 5.5d, -6);
+            var v2 = new dvec4(4, 3.5d, 5.5d, -6);
+            var v3 = new dvec4(-6, 5.5d, 3.5d, 4);
+            Assert.That(v1 == new dvec4(v1));
+            Assert.That(v2 == new dvec4(v2));
+            Assert.That(v3 == new dvec4(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

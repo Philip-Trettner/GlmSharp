@@ -122,5 +122,19 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(null, gvec4<string>.Zero.w);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new gvec4<string>("((2-9)-2)", "-5", "((2-9)-2)", "(-2-4)");
+            var v2 = new gvec4<string>("((2-9)-2)", "-5", "((2-9)-2)", "(-2-4)");
+            var v3 = new gvec4<string>("(-2-4)", "((2-9)-2)", "-5", "((2-9)-2)");
+            Assert.That(v1 == new gvec4<string>(v1));
+            Assert.That(v2 == new gvec4<string>(v2));
+            Assert.That(v3 == new gvec4<string>(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

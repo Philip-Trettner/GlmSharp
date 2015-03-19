@@ -189,5 +189,19 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(double.PositiveInfinity, dvec2.PositiveInfinity.y);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new dvec2(-7.5d, 1.0);
+            var v2 = new dvec2(-7.5d, 1.0);
+            var v3 = new dvec2(1.0, -7.5d);
+            Assert.That(v1 == new dvec2(v1));
+            Assert.That(v2 == new dvec2(v2));
+            Assert.That(v3 == new dvec2(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

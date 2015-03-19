@@ -210,5 +210,19 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(float.PositiveInfinity, vec3.PositiveInfinity.z);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new vec3(-1.5f, -7, 7);
+            var v2 = new vec3(-1.5f, -7, 7);
+            var v3 = new vec3(7, -7, -1.5f);
+            Assert.That(v1 == new vec3(v1));
+            Assert.That(v2 == new vec3(v2));
+            Assert.That(v3 == new vec3(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

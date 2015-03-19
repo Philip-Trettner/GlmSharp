@@ -3171,5 +3171,19 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(Complex.One, cvec4.UnitW.w);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new cvec4(new Complex(-8, -8), new Complex(8.5d, 3), new Complex(-6.5d, -2.5d), new Complex(2.5d, 9.5d));
+            var v2 = new cvec4(new Complex(-8, -8), new Complex(8.5d, 3), new Complex(-6.5d, -2.5d), new Complex(2.5d, 9.5d));
+            var v3 = new cvec4(new Complex(2.5d, 9.5d), new Complex(-6.5d, -2.5d), new Complex(8.5d, 3), new Complex(-8, -8));
+            Assert.That(v1 == new cvec4(v1));
+            Assert.That(v2 == new cvec4(v2));
+            Assert.That(v3 == new cvec4(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

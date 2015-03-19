@@ -97,5 +97,19 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(true, bvec2.UnitY.y);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new bvec2(false, true);
+            var v2 = new bvec2(false, true);
+            var v3 = new bvec2(true, false);
+            Assert.That(v1 == new bvec2(v1));
+            Assert.That(v2 == new bvec2(v2));
+            Assert.That(v3 == new bvec2(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

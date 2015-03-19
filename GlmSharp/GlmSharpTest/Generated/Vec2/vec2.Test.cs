@@ -189,5 +189,19 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(float.PositiveInfinity, vec2.PositiveInfinity.y);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new vec2(6.5f, -8.5f);
+            var v2 = new vec2(6.5f, -8.5f);
+            var v3 = new vec2(-8.5f, 6.5f);
+            Assert.That(v1 == new vec2(v1));
+            Assert.That(v2 == new vec2(v2));
+            Assert.That(v3 == new vec2(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

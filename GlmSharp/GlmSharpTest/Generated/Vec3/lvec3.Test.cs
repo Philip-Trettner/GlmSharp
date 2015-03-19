@@ -154,5 +154,19 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(long.MinValue, lvec3.MinValue.z);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new lvec3(6, -5, 3);
+            var v2 = new lvec3(6, -5, 3);
+            var v3 = new lvec3(3, -5, 6);
+            Assert.That(v1 == new lvec3(v1));
+            Assert.That(v2 == new lvec3(v2));
+            Assert.That(v3 == new lvec3(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }

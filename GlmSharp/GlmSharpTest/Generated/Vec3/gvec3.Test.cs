@@ -114,5 +114,19 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(null, gvec3<string>.Zero.z);
         }
 
+        [Test]
+        public void Operators()
+        {
+            var v1 = new gvec3<string>("((-9-6)2)", "(-94)", "((-4-1)-4)");
+            var v2 = new gvec3<string>("((-9-6)2)", "(-94)", "((-4-1)-4)");
+            var v3 = new gvec3<string>("((-4-1)-4)", "(-94)", "((-9-6)2)");
+            Assert.That(v1 == new gvec3<string>(v1));
+            Assert.That(v2 == new gvec3<string>(v2));
+            Assert.That(v3 == new gvec3<string>(v3));
+            Assert.That(v1 == v2);
+            Assert.That(v1 != v3);
+            Assert.That(v2 != v3);
+        }
+
     }
 }
