@@ -21,40 +21,79 @@ namespace GlmSharpTest.Generated.Vec4
         public void Constructors()
         {
             {
-                var v = new gvec4<string>("((-48)-2)");
-                Assert.AreEqual("((-48)-2)", v.x);
-                Assert.AreEqual("((-48)-2)", v.y);
-                Assert.AreEqual("((-48)-2)", v.z);
-                Assert.AreEqual("((-48)-2)", v.w);
+                var v = new gvec4<string>("((-35)-9)");
+                Assert.AreEqual("((-35)-9)", v.x);
+                Assert.AreEqual("((-35)-9)", v.y);
+                Assert.AreEqual("((-35)-9)", v.z);
+                Assert.AreEqual("((-35)-9)", v.w);
             }
             {
-                var v = new gvec4<string>("(-40)", "", "", "((-59)3)");
-                Assert.AreEqual("(-40)", v.x);
-                Assert.AreEqual("", v.y);
-                Assert.AreEqual("", v.z);
-                Assert.AreEqual("((-59)3)", v.w);
+                var v = new gvec4<string>("((8-6)3)", "(56)", "(1-1)", "(1-1)");
+                Assert.AreEqual("((8-6)3)", v.x);
+                Assert.AreEqual("(56)", v.y);
+                Assert.AreEqual("(1-1)", v.z);
+                Assert.AreEqual("(1-1)", v.w);
             }
             {
-                var v = new gvec4<string>(new gvec2<string>("(89)", "(89)"));
-                Assert.AreEqual("(89)", v.x);
-                Assert.AreEqual("(89)", v.y);
+                var v = new gvec4<string>(new gvec2<string>("-2", "(-14)"));
+                Assert.AreEqual("-2", v.x);
+                Assert.AreEqual("(-14)", v.y);
                 Assert.AreEqual(null, v.z);
                 Assert.AreEqual(null, v.w);
             }
             {
-                var v = new gvec4<string>(new gvec3<string>("((8-3)-4)", "5", "(-4-5)"));
-                Assert.AreEqual("((8-3)-4)", v.x);
-                Assert.AreEqual("5", v.y);
-                Assert.AreEqual("(-4-5)", v.z);
+                var v = new gvec4<string>(new gvec3<string>("((-4-7)-6)", "(-4-3)", "-4"));
+                Assert.AreEqual("((-4-7)-6)", v.x);
+                Assert.AreEqual("(-4-3)", v.y);
+                Assert.AreEqual("-4", v.z);
                 Assert.AreEqual(null, v.w);
             }
             {
-                var v = new gvec4<string>(new gvec4<string>(null, "((-41)5)", "2", "(-24)"));
-                Assert.AreEqual(null, v.x);
-                Assert.AreEqual("((-41)5)", v.y);
-                Assert.AreEqual("2", v.z);
-                Assert.AreEqual("(-24)", v.w);
+                var v = new gvec4<string>(new gvec4<string>("(-7-3)", "((28)-8)", "-1", "(-3-9)"));
+                Assert.AreEqual("(-7-3)", v.x);
+                Assert.AreEqual("((28)-8)", v.y);
+                Assert.AreEqual("-1", v.z);
+                Assert.AreEqual("(-3-9)", v.w);
             }
+        }
+
+        [Test]
+        public void Indexer()
+        {
+            var v = new gvec4<string>("8", "8", "((16)-8)", "2");
+            Assert.AreEqual("8", v[0]);
+            Assert.AreEqual("8", v[1]);
+            Assert.AreEqual("((16)-8)", v[2]);
+            Assert.AreEqual("2", v[3]);
+            
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = v[-2147483648]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-1] = v[-1]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[4] = v[4]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2147483647] = v[2147483647]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[5] = v[5]; } );
+            
+            v[3] = null;
+            Assert.AreEqual(null, v[3]);
+            v[2] = "";
+            Assert.AreEqual("", v[2]);
+            v[2] = "0";
+            Assert.AreEqual("0", v[2]);
+            v[1] = "(-9-2)";
+            Assert.AreEqual("(-9-2)", v[1]);
+            v[3] = "((-3-5)2)";
+            Assert.AreEqual("((-3-5)2)", v[3]);
+            v[3] = "3";
+            Assert.AreEqual("3", v[3]);
+            v[1] = "(8-6)";
+            Assert.AreEqual("(8-6)", v[1]);
+            v[0] = "((-1-3)-5)";
+            Assert.AreEqual("((-1-3)-5)", v[0]);
+            v[3] = "-4";
+            Assert.AreEqual("-4", v[3]);
+            v[2] = "(70)";
+            Assert.AreEqual("(70)", v[2]);
+            v[2] = "((7-5)0)";
+            Assert.AreEqual("((7-5)0)", v[2]);
         }
 
     }

@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using GlmSharp;
+using NUnit.Framework;
 
 namespace GlmSharpTest
 {
@@ -21,7 +22,7 @@ namespace GlmSharpTest
             iv /= 3;
             iv *= iv;
             iv = 2 + iv;
-
+            
             vec3 g = vec3.UnitY;
             g = g.Normalized * 3;
 

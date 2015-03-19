@@ -244,12 +244,21 @@ namespace GlmSharpGenerator.Types
                 if (!string.IsNullOrEmpty(OneValue))
                     yield return OneValue;
 
+                if (IsComplex)
+                {
+                    foreach (var r in TypeDouble.ValuesSmallVals)
+                        foreach (var i in TypeDouble.ValuesSmallVals)
+                            yield return string.Format("new Complex({0}, {1})", r, i);
+                    yield break;
+                }
+
                 if (Generic)
                 {
                     yield return "\"\"";
                     for (int i = 1; i <= 3; ++i)
                         for (int l = 1; l <= 3; ++l)
                             yield return string.Format("\"{0}\"", TypeInt.RandomSmallVals(l).Aggregated(""));
+                    yield break;
                 }
 
                 if (!HasArithmetics)
@@ -266,10 +275,6 @@ namespace GlmSharpGenerator.Types
                     for (var i = -10; i < 10; ++i)
                         yield return ConstantSuffixFor((i + 0.5).ToString(CultureInfo.InvariantCulture));
 
-                if (IsComplex)
-                    foreach (var r in TypeDouble.ValuesSmallVals)
-                        foreach (var i in TypeDouble.ValuesSmallVals)
-                            yield return string.Format("new Complex({0}, {1})", r, i);
             }
         }
     }

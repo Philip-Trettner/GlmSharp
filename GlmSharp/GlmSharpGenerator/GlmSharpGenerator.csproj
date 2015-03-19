@@ -67,7 +67,9 @@
     <Compile Include="Types\AbstractType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\VectorType.Code.cs" />
     <Compile Include="Types\VectorType.cs" />
+    <Compile Include="Types\VectorType.Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

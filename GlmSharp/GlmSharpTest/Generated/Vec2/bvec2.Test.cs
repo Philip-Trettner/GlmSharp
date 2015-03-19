@@ -26,25 +26,44 @@ namespace GlmSharpTest.Generated.Vec2
                 Assert.AreEqual(false, v.y);
             }
             {
-                var v = new bvec2(true, false);
+                var v = new bvec2(true, true);
+                Assert.AreEqual(true, v.x);
+                Assert.AreEqual(true, v.y);
+            }
+            {
+                var v = new bvec2(new bvec2(true, false));
                 Assert.AreEqual(true, v.x);
                 Assert.AreEqual(false, v.y);
             }
             {
-                var v = new bvec2(new bvec2(true, true));
-                Assert.AreEqual(true, v.x);
-                Assert.AreEqual(true, v.y);
-            }
-            {
-                var v = new bvec2(new bvec3(true, true, false));
-                Assert.AreEqual(true, v.x);
-                Assert.AreEqual(true, v.y);
-            }
-            {
-                var v = new bvec2(new bvec4(false, false, true, true));
+                var v = new bvec2(new bvec3(false, false, true));
                 Assert.AreEqual(false, v.x);
                 Assert.AreEqual(false, v.y);
             }
+            {
+                var v = new bvec2(new bvec4(true, false, false, true));
+                Assert.AreEqual(true, v.x);
+                Assert.AreEqual(false, v.y);
+            }
+        }
+
+        [Test]
+        public void Indexer()
+        {
+            var v = new bvec2(false, false);
+            Assert.AreEqual(false, v[0]);
+            Assert.AreEqual(false, v[1]);
+            
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = v[-2147483648]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-1] = v[-1]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2] = v[2]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2147483647] = v[2147483647]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[5] = v[5]; } );
+            
+            v[1] = false;
+            Assert.AreEqual(false, v[1]);
+            v[0] = true;
+            Assert.AreEqual(true, v[0]);
         }
 
     }
