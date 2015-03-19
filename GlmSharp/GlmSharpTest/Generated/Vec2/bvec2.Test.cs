@@ -26,13 +26,13 @@ namespace GlmSharpTest.Generated.Vec2
                 Assert.AreEqual(false, v.y);
             }
             {
-                var v = new bvec2(true, true);
+                var v = new bvec2(true, false);
                 Assert.AreEqual(true, v.x);
-                Assert.AreEqual(true, v.y);
+                Assert.AreEqual(false, v.y);
             }
             {
-                var v = new bvec2(new bvec2(true, false));
-                Assert.AreEqual(true, v.x);
+                var v = new bvec2(new bvec2(false, false));
+                Assert.AreEqual(false, v.x);
                 Assert.AreEqual(false, v.y);
             }
             {
@@ -50,9 +50,9 @@ namespace GlmSharpTest.Generated.Vec2
         [Test]
         public void Indexer()
         {
-            var v = new bvec2(false, false);
+            var v = new bvec2(false, true);
             Assert.AreEqual(false, v[0]);
-            Assert.AreEqual(false, v[1]);
+            Assert.AreEqual(true, v[1]);
             
             Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-2147483648]; } );
             Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = false; } );
@@ -67,8 +67,8 @@ namespace GlmSharpTest.Generated.Vec2
             
             v[1] = false;
             Assert.AreEqual(false, v[1]);
-            v[0] = true;
-            Assert.AreEqual(true, v[0]);
+            v[1] = true;
+            Assert.AreEqual(true, v[1]);
         }
 
     }

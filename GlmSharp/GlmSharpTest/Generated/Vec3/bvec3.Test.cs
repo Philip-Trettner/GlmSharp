@@ -27,9 +27,9 @@ namespace GlmSharpTest.Generated.Vec3
                 Assert.AreEqual(false, v.z);
             }
             {
-                var v = new bvec3(false, false, false);
+                var v = new bvec3(false, true, false);
                 Assert.AreEqual(false, v.x);
-                Assert.AreEqual(false, v.y);
+                Assert.AreEqual(true, v.y);
                 Assert.AreEqual(false, v.z);
             }
             {
@@ -39,26 +39,26 @@ namespace GlmSharpTest.Generated.Vec3
                 Assert.AreEqual(false, v.z);
             }
             {
-                var v = new bvec3(new bvec3(false, false, true));
-                Assert.AreEqual(false, v.x);
+                var v = new bvec3(new bvec3(true, false, true));
+                Assert.AreEqual(true, v.x);
                 Assert.AreEqual(false, v.y);
                 Assert.AreEqual(true, v.z);
             }
             {
-                var v = new bvec3(new bvec4(true, true, false, false));
-                Assert.AreEqual(true, v.x);
-                Assert.AreEqual(true, v.y);
-                Assert.AreEqual(false, v.z);
+                var v = new bvec3(new bvec4(false, false, true, false));
+                Assert.AreEqual(false, v.x);
+                Assert.AreEqual(false, v.y);
+                Assert.AreEqual(true, v.z);
             }
         }
 
         [Test]
         public void Indexer()
         {
-            var v = new bvec3(true, true, true);
-            Assert.AreEqual(true, v[0]);
+            var v = new bvec3(false, true, false);
+            Assert.AreEqual(false, v[0]);
             Assert.AreEqual(true, v[1]);
-            Assert.AreEqual(true, v[2]);
+            Assert.AreEqual(false, v[2]);
             
             Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-2147483648]; } );
             Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = false; } );
@@ -71,10 +71,10 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[5]; } );
             Assert.Throws<ArgumentOutOfRangeException>(() => { v[5] = false; } );
             
-            v[0] = false;
-            Assert.AreEqual(false, v[0]);
-            v[2] = true;
-            Assert.AreEqual(true, v[2]);
+            v[1] = false;
+            Assert.AreEqual(false, v[1]);
+            v[1] = true;
+            Assert.AreEqual(true, v[1]);
         }
 
     }

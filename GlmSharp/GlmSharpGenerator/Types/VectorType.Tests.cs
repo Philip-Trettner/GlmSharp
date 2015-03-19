@@ -71,13 +71,8 @@ namespace GlmSharpGenerator.Types
 
         public override IEnumerable<TestFunc> GenerateTests()
         {
-            TestMode = true;
-            Random = new Random(1234 + Components * 397 + TestClassName.GetHashCode());
-
-            yield return new TestFunc("Constructors", TestConstructor);
-            yield return new TestFunc("Indexer", TestIndexer);
-
-            TestMode = false;
+            yield return new TestFunc(this, "Constructors", TestConstructor);
+            yield return new TestFunc(this, "Indexer", TestIndexer);
         }
     }
 }

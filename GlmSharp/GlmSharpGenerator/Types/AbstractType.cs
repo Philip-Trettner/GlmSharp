@@ -148,6 +148,11 @@ namespace GlmSharpGenerator.Types
         /// </summary>
         public virtual IEnumerable<TestFunc> GenerateTests() { yield break; }
 
+        public void ResetRandom(int x)
+        {
+            Random = new Random(x + TestClassName.GetHashCode());
+        }
+
         public IEnumerable<string> TestFile
         {
             get
@@ -176,6 +181,8 @@ namespace GlmSharpGenerator.Types
                 yield return "    [TestFixture]";
                 yield return "    public class " + TestClassName;
                 yield return "    {";
+                TestMode = true;
+                ResetRandom(1234);
                 foreach (var test in GenerateTests())
                 {
                     yield return "";
@@ -186,6 +193,7 @@ namespace GlmSharpGenerator.Types
                         yield return line.Indent(3);
                     yield return "}".Indent(2);
                 }
+                TestMode = false;
                 yield return "";
                 yield return "    }";
                 yield return "}";

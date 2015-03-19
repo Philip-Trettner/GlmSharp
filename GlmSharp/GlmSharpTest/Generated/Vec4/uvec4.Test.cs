@@ -21,50 +21,50 @@ namespace GlmSharpTest.Generated.Vec4
         public void Constructors()
         {
             {
-                var v = new uvec4(0u);
+                var v = new uvec4(1u);
+                Assert.AreEqual(1u, v.x);
+                Assert.AreEqual(1u, v.y);
+                Assert.AreEqual(1u, v.z);
+                Assert.AreEqual(1u, v.w);
+            }
+            {
+                var v = new uvec4(0u, 2, 0u, 8);
+                Assert.AreEqual(0u, v.x);
+                Assert.AreEqual(2, v.y);
+                Assert.AreEqual(0u, v.z);
+                Assert.AreEqual(8, v.w);
+            }
+            {
+                var v = new uvec4(new uvec2(1u, 5));
+                Assert.AreEqual(1u, v.x);
+                Assert.AreEqual(5, v.y);
+                Assert.AreEqual(0u, v.z);
+                Assert.AreEqual(0u, v.w);
+            }
+            {
+                var v = new uvec4(new uvec3(0u, 0u, 1u));
                 Assert.AreEqual(0u, v.x);
                 Assert.AreEqual(0u, v.y);
-                Assert.AreEqual(0u, v.z);
-                Assert.AreEqual(0u, v.w);
-            }
-            {
-                var v = new uvec4(2, 5, 2, 0u);
-                Assert.AreEqual(2, v.x);
-                Assert.AreEqual(5, v.y);
-                Assert.AreEqual(2, v.z);
-                Assert.AreEqual(0u, v.w);
-            }
-            {
-                var v = new uvec4(new uvec2(2, 4));
-                Assert.AreEqual(2, v.x);
-                Assert.AreEqual(4, v.y);
-                Assert.AreEqual(0u, v.z);
-                Assert.AreEqual(0u, v.w);
-            }
-            {
-                var v = new uvec4(new uvec3(5, 4, 1u));
-                Assert.AreEqual(5, v.x);
-                Assert.AreEqual(4, v.y);
                 Assert.AreEqual(1u, v.z);
                 Assert.AreEqual(0u, v.w);
             }
             {
-                var v = new uvec4(new uvec4(2, 3, 9, 6));
+                var v = new uvec4(new uvec4(2, 6, 2, 1u));
                 Assert.AreEqual(2, v.x);
-                Assert.AreEqual(3, v.y);
-                Assert.AreEqual(9, v.z);
-                Assert.AreEqual(6, v.w);
+                Assert.AreEqual(6, v.y);
+                Assert.AreEqual(2, v.z);
+                Assert.AreEqual(1u, v.w);
             }
         }
 
         [Test]
         public void Indexer()
         {
-            var v = new uvec4(4, 4, 8, 8);
-            Assert.AreEqual(4, v[0]);
+            var v = new uvec4(2, 4, 8, 2);
+            Assert.AreEqual(2, v[0]);
             Assert.AreEqual(4, v[1]);
             Assert.AreEqual(8, v[2]);
-            Assert.AreEqual(8, v[3]);
+            Assert.AreEqual(2, v[3]);
             
             Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-2147483648]; } );
             Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = 0u; } );
@@ -79,24 +79,24 @@ namespace GlmSharpTest.Generated.Vec4
             
             v[3] = 0u;
             Assert.AreEqual(0u, v[3]);
-            v[1] = 1u;
-            Assert.AreEqual(1u, v[1]);
-            v[2] = 2;
-            Assert.AreEqual(2, v[2]);
-            v[3] = 3;
-            Assert.AreEqual(3, v[3]);
-            v[3] = 4;
-            Assert.AreEqual(4, v[3]);
-            v[2] = 5;
-            Assert.AreEqual(5, v[2]);
+            v[2] = 1u;
+            Assert.AreEqual(1u, v[2]);
+            v[3] = 2;
+            Assert.AreEqual(2, v[3]);
+            v[0] = 3;
+            Assert.AreEqual(3, v[0]);
+            v[2] = 4;
+            Assert.AreEqual(4, v[2]);
+            v[1] = 5;
+            Assert.AreEqual(5, v[1]);
             v[2] = 6;
             Assert.AreEqual(6, v[2]);
-            v[2] = 7;
-            Assert.AreEqual(7, v[2]);
-            v[2] = 8;
-            Assert.AreEqual(8, v[2]);
-            v[1] = 9;
-            Assert.AreEqual(9, v[1]);
+            v[0] = 7;
+            Assert.AreEqual(7, v[0]);
+            v[0] = 8;
+            Assert.AreEqual(8, v[0]);
+            v[3] = 9;
+            Assert.AreEqual(9, v[3]);
         }
 
     }

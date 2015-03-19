@@ -21,38 +21,38 @@ namespace GlmSharpTest.Generated.Vec2
         public void Constructors()
         {
             {
-                var v = new lvec2(7);
-                Assert.AreEqual(7, v.x);
-                Assert.AreEqual(7, v.y);
+                var v = new lvec2(2);
+                Assert.AreEqual(2, v.x);
+                Assert.AreEqual(2, v.y);
             }
             {
-                var v = new lvec2(9, 3);
-                Assert.AreEqual(9, v.x);
-                Assert.AreEqual(3, v.y);
+                var v = new lvec2(1, 9);
+                Assert.AreEqual(1, v.x);
+                Assert.AreEqual(9, v.y);
             }
             {
-                var v = new lvec2(new lvec2(-2, -4));
-                Assert.AreEqual(-2, v.x);
-                Assert.AreEqual(-4, v.y);
+                var v = new lvec2(new lvec2(3, -2));
+                Assert.AreEqual(3, v.x);
+                Assert.AreEqual(-2, v.y);
             }
             {
-                var v = new lvec2(new lvec3(-1, 3, 9));
-                Assert.AreEqual(-1, v.x);
-                Assert.AreEqual(3, v.y);
+                var v = new lvec2(new lvec3(-8, 1, -9));
+                Assert.AreEqual(-8, v.x);
+                Assert.AreEqual(1, v.y);
             }
             {
-                var v = new lvec2(new lvec4(9, 0, 1, -1));
-                Assert.AreEqual(9, v.x);
-                Assert.AreEqual(0, v.y);
+                var v = new lvec2(new lvec4(6, 6, -9, -4));
+                Assert.AreEqual(6, v.x);
+                Assert.AreEqual(6, v.y);
             }
         }
 
         [Test]
         public void Indexer()
         {
-            var v = new lvec2(4, 8);
-            Assert.AreEqual(4, v[0]);
-            Assert.AreEqual(8, v[1]);
+            var v = new lvec2(2, -2);
+            Assert.AreEqual(2, v[0]);
+            Assert.AreEqual(-2, v[1]);
             
             Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-2147483648]; } );
             Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = 0; } );
@@ -67,10 +67,10 @@ namespace GlmSharpTest.Generated.Vec2
             
             v[1] = 0;
             Assert.AreEqual(0, v[1]);
-            v[1] = 1;
-            Assert.AreEqual(1, v[1]);
-            v[1] = 2;
-            Assert.AreEqual(2, v[1]);
+            v[0] = 1;
+            Assert.AreEqual(1, v[0]);
+            v[0] = 2;
+            Assert.AreEqual(2, v[0]);
             v[0] = 3;
             Assert.AreEqual(3, v[0]);
             v[1] = 4;
@@ -79,14 +79,14 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(5, v[0]);
             v[1] = 6;
             Assert.AreEqual(6, v[1]);
-            v[1] = 7;
-            Assert.AreEqual(7, v[1]);
-            v[0] = 8;
-            Assert.AreEqual(8, v[0]);
+            v[0] = 7;
+            Assert.AreEqual(7, v[0]);
+            v[1] = 8;
+            Assert.AreEqual(8, v[1]);
             v[0] = 9;
             Assert.AreEqual(9, v[0]);
-            v[1] = -1;
-            Assert.AreEqual(-1, v[1]);
+            v[0] = -1;
+            Assert.AreEqual(-1, v[0]);
             v[0] = -2;
             Assert.AreEqual(-2, v[0]);
             v[1] = -3;
@@ -99,10 +99,10 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(-6, v[0]);
             v[0] = -7;
             Assert.AreEqual(-7, v[0]);
-            v[0] = -8;
-            Assert.AreEqual(-8, v[0]);
-            v[0] = -9;
-            Assert.AreEqual(-9, v[0]);
+            v[1] = -8;
+            Assert.AreEqual(-8, v[1]);
+            v[1] = -9;
+            Assert.AreEqual(-9, v[1]);
         }
 
     }

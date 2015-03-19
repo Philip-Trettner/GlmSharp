@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GlmSharpGenerator.Types;
 
 namespace GlmSharpGenerator.Tests
 {
@@ -11,14 +12,16 @@ namespace GlmSharpGenerator.Tests
         public string Name { get; set; }
         public IEnumerable<string> Code { get; set; }
 
-        public TestFunc(string name, params string[] code)
-            : this(name, code as IEnumerable<string>)
+
+        public TestFunc(AbstractType type, string name, params string[] code)
+            : this(type, name, code as IEnumerable<string>)
         {
         }
-        public TestFunc(string name, IEnumerable<string> code)
+        public TestFunc(AbstractType type, string name, IEnumerable<string> code)
         {
+            type.ResetRandom(name.GetHashCode());
             Name = name;
-            Code = code;
+            Code = code.ToArray();
         }
     }
 }
