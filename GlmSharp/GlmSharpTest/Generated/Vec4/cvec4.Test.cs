@@ -66,11 +66,16 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(new Complex(-7, -9.5d), v[2]);
             Assert.AreEqual(new Complex(-4, 7), v[3]);
             
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = v[-2147483648]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-1] = v[-1]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[4] = v[4]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2147483647] = v[2147483647]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[5] = v[5]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-2147483648]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = Complex.Zero; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-1]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-1] = Complex.Zero; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[4]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[4] = Complex.Zero; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[2147483647]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2147483647] = Complex.Zero; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[5]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[5] = Complex.Zero; } );
             
             v[2] = Complex.Zero;
             Assert.AreEqual(Complex.Zero, v[2]);

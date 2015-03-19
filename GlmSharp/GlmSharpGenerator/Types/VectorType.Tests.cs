@@ -46,24 +46,25 @@ namespace GlmSharpGenerator.Types
         {
             get
             {
+                var vals = BaseType.RandomSmallVals(Components);
+                yield return string.Format("var v = {0};", Construct(this, vals));
+
+                for (var i = 0; i < vals.Length; ++i)
+                    yield return string.Format("Assert.AreEqual({0}, v[{1}]);", vals[i], i);
+
+                yield return "";
+                foreach (var index in new[] { int.MinValue, -1, Components, int.MaxValue, 5 })
                 {
-                    var vals = BaseType.RandomSmallVals(Components);
-                    yield return string.Format("var v = {0};", Construct(this, vals));
+                    yield return string.Format("Assert.Throws<ArgumentOutOfRangeException>(() => {{ var s = v[{0}]; }} );", index);
+                    yield return string.Format("Assert.Throws<ArgumentOutOfRangeException>(() => {{ v[{0}] = {1}; }} );", index, ZeroValue);
+                }
 
-                    for (var i = 0; i < vals.Length; ++i)
-                        yield return string.Format("Assert.AreEqual({0}, v[{1}]);", vals[i], i);
-
-                    yield return "";
-                    foreach (var index in new[] { int.MinValue, -1, Components, int.MaxValue, 5 })
-                        yield return string.Format("Assert.Throws<ArgumentOutOfRangeException>(() => {{ v[{0}] = v[{0}]; }} );", index);
-
-                    yield return "";
-                    foreach (var val in BaseType.ValuesSmallVals)
-                    {
-                        var i = Random.Next(Components);
-                        yield return string.Format("v[{0}] = {1};", i, val);
-                        yield return string.Format("Assert.AreEqual({0}, v[{1}]);", val, i);
-                    }
+                yield return "";
+                foreach (var val in BaseType.ValuesSmallVals)
+                {
+                    var i = Random.Next(Components);
+                    yield return string.Format("v[{0}] = {1};", i, val);
+                    yield return string.Format("Assert.AreEqual({0}, v[{1}]);", val, i);
                 }
             }
         }

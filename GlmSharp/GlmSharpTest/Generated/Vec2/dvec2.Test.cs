@@ -54,11 +54,16 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(4, v[0]);
             Assert.AreEqual(-9, v[1]);
             
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = v[-2147483648]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-1] = v[-1]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2] = v[2]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2147483647] = v[2147483647]; } );
-            Assert.Throws<ArgumentOutOfRangeException>(() => { v[5] = v[5]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-2147483648]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = 0.0; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-1]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[-1] = 0.0; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[2]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2] = 0.0; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[2147483647]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[2147483647] = 0.0; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[5]; } );
+            Assert.Throws<ArgumentOutOfRangeException>(() => { v[5] = 0.0; } );
             
             v[1] = 0.0;
             Assert.AreEqual(0.0, v[1]);
