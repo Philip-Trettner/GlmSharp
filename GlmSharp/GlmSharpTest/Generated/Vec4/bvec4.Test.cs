@@ -83,5 +83,50 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(true, v[3]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new bvec4(true, false, true, false);
+            var vals = v.Values;
+            Assert.AreEqual(true, vals[0]);
+            Assert.AreEqual(false, vals[1]);
+            Assert.AreEqual(true, vals[2]);
+            Assert.AreEqual(false, vals[3]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(false, bvec4.Zero.x);
+            Assert.AreEqual(false, bvec4.Zero.y);
+            Assert.AreEqual(false, bvec4.Zero.z);
+            Assert.AreEqual(false, bvec4.Zero.w);
+            
+            Assert.AreEqual(true, bvec4.Ones.x);
+            Assert.AreEqual(true, bvec4.Ones.y);
+            Assert.AreEqual(true, bvec4.Ones.z);
+            Assert.AreEqual(true, bvec4.Ones.w);
+            
+            Assert.AreEqual(true, bvec4.UnitX.x);
+            Assert.AreEqual(false, bvec4.UnitX.y);
+            Assert.AreEqual(false, bvec4.UnitX.z);
+            Assert.AreEqual(false, bvec4.UnitX.w);
+            
+            Assert.AreEqual(false, bvec4.UnitY.x);
+            Assert.AreEqual(true, bvec4.UnitY.y);
+            Assert.AreEqual(false, bvec4.UnitY.z);
+            Assert.AreEqual(false, bvec4.UnitY.w);
+            
+            Assert.AreEqual(false, bvec4.UnitZ.x);
+            Assert.AreEqual(false, bvec4.UnitZ.y);
+            Assert.AreEqual(true, bvec4.UnitZ.z);
+            Assert.AreEqual(false, bvec4.UnitZ.w);
+            
+            Assert.AreEqual(false, bvec4.UnitW.x);
+            Assert.AreEqual(false, bvec4.UnitW.y);
+            Assert.AreEqual(false, bvec4.UnitW.z);
+            Assert.AreEqual(true, bvec4.UnitW.w);
+        }
+
     }
 }

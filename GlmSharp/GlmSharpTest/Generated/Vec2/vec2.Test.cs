@@ -145,5 +145,48 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(9.5f, v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new vec2(0f, -2);
+            var vals = v.Values;
+            Assert.AreEqual(0f, vals[0]);
+            Assert.AreEqual(-2, vals[1]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0f, vec2.Zero.x);
+            Assert.AreEqual(0f, vec2.Zero.y);
+            
+            Assert.AreEqual(1f, vec2.Ones.x);
+            Assert.AreEqual(1f, vec2.Ones.y);
+            
+            Assert.AreEqual(1f, vec2.UnitX.x);
+            Assert.AreEqual(0f, vec2.UnitX.y);
+            
+            Assert.AreEqual(0f, vec2.UnitY.x);
+            Assert.AreEqual(1f, vec2.UnitY.y);
+            
+            Assert.AreEqual(float.MaxValue, vec2.MaxValue.x);
+            Assert.AreEqual(float.MaxValue, vec2.MaxValue.y);
+            
+            Assert.AreEqual(float.MinValue, vec2.MinValue.x);
+            Assert.AreEqual(float.MinValue, vec2.MinValue.y);
+            
+            Assert.AreEqual(float.Epsilon, vec2.Epsilon.x);
+            Assert.AreEqual(float.Epsilon, vec2.Epsilon.y);
+            
+            Assert.AreEqual(float.NaN, vec2.NaN.x);
+            Assert.AreEqual(float.NaN, vec2.NaN.y);
+            
+            Assert.AreEqual(float.NegativeInfinity, vec2.NegativeInfinity.x);
+            Assert.AreEqual(float.NegativeInfinity, vec2.NegativeInfinity.y);
+            
+            Assert.AreEqual(float.PositiveInfinity, vec2.PositiveInfinity.x);
+            Assert.AreEqual(float.PositiveInfinity, vec2.PositiveInfinity.y);
+        }
+
     }
 }

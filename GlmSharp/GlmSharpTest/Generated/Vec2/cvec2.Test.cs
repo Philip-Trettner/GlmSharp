@@ -3113,5 +3113,30 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(new Complex(9.5d, 9.5d), v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new cvec2(new Complex(-0.5d, 6.5d), new Complex(4, -0.5d));
+            var vals = v.Values;
+            Assert.AreEqual(new Complex(-0.5d, 6.5d), vals[0]);
+            Assert.AreEqual(new Complex(4, -0.5d), vals[1]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(Complex.Zero, cvec2.Zero.x);
+            Assert.AreEqual(Complex.Zero, cvec2.Zero.y);
+            
+            Assert.AreEqual(Complex.One, cvec2.Ones.x);
+            Assert.AreEqual(Complex.One, cvec2.Ones.y);
+            
+            Assert.AreEqual(Complex.One, cvec2.UnitX.x);
+            Assert.AreEqual(Complex.Zero, cvec2.UnitX.y);
+            
+            Assert.AreEqual(Complex.Zero, cvec2.UnitY.x);
+            Assert.AreEqual(Complex.One, cvec2.UnitY.y);
+        }
+
     }
 }

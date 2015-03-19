@@ -151,5 +151,63 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(9.5f, v[2]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new vec3(8, -6, -4);
+            var vals = v.Values;
+            Assert.AreEqual(8, vals[0]);
+            Assert.AreEqual(-6, vals[1]);
+            Assert.AreEqual(-4, vals[2]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0f, vec3.Zero.x);
+            Assert.AreEqual(0f, vec3.Zero.y);
+            Assert.AreEqual(0f, vec3.Zero.z);
+            
+            Assert.AreEqual(1f, vec3.Ones.x);
+            Assert.AreEqual(1f, vec3.Ones.y);
+            Assert.AreEqual(1f, vec3.Ones.z);
+            
+            Assert.AreEqual(1f, vec3.UnitX.x);
+            Assert.AreEqual(0f, vec3.UnitX.y);
+            Assert.AreEqual(0f, vec3.UnitX.z);
+            
+            Assert.AreEqual(0f, vec3.UnitY.x);
+            Assert.AreEqual(1f, vec3.UnitY.y);
+            Assert.AreEqual(0f, vec3.UnitY.z);
+            
+            Assert.AreEqual(0f, vec3.UnitZ.x);
+            Assert.AreEqual(0f, vec3.UnitZ.y);
+            Assert.AreEqual(1f, vec3.UnitZ.z);
+            
+            Assert.AreEqual(float.MaxValue, vec3.MaxValue.x);
+            Assert.AreEqual(float.MaxValue, vec3.MaxValue.y);
+            Assert.AreEqual(float.MaxValue, vec3.MaxValue.z);
+            
+            Assert.AreEqual(float.MinValue, vec3.MinValue.x);
+            Assert.AreEqual(float.MinValue, vec3.MinValue.y);
+            Assert.AreEqual(float.MinValue, vec3.MinValue.z);
+            
+            Assert.AreEqual(float.Epsilon, vec3.Epsilon.x);
+            Assert.AreEqual(float.Epsilon, vec3.Epsilon.y);
+            Assert.AreEqual(float.Epsilon, vec3.Epsilon.z);
+            
+            Assert.AreEqual(float.NaN, vec3.NaN.x);
+            Assert.AreEqual(float.NaN, vec3.NaN.y);
+            Assert.AreEqual(float.NaN, vec3.NaN.z);
+            
+            Assert.AreEqual(float.NegativeInfinity, vec3.NegativeInfinity.x);
+            Assert.AreEqual(float.NegativeInfinity, vec3.NegativeInfinity.y);
+            Assert.AreEqual(float.NegativeInfinity, vec3.NegativeInfinity.z);
+            
+            Assert.AreEqual(float.PositiveInfinity, vec3.PositiveInfinity.x);
+            Assert.AreEqual(float.PositiveInfinity, vec3.PositiveInfinity.y);
+            Assert.AreEqual(float.PositiveInfinity, vec3.PositiveInfinity.z);
+        }
+
     }
 }

@@ -151,5 +151,51 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(9.5m, v[0]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new decvec3(-7, 7, 0.5m);
+            var vals = v.Values;
+            Assert.AreEqual(-7, vals[0]);
+            Assert.AreEqual(7, vals[1]);
+            Assert.AreEqual(0.5m, vals[2]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0m, decvec3.Zero.x);
+            Assert.AreEqual(0m, decvec3.Zero.y);
+            Assert.AreEqual(0m, decvec3.Zero.z);
+            
+            Assert.AreEqual(1m, decvec3.Ones.x);
+            Assert.AreEqual(1m, decvec3.Ones.y);
+            Assert.AreEqual(1m, decvec3.Ones.z);
+            
+            Assert.AreEqual(1m, decvec3.UnitX.x);
+            Assert.AreEqual(0m, decvec3.UnitX.y);
+            Assert.AreEqual(0m, decvec3.UnitX.z);
+            
+            Assert.AreEqual(0m, decvec3.UnitY.x);
+            Assert.AreEqual(1m, decvec3.UnitY.y);
+            Assert.AreEqual(0m, decvec3.UnitY.z);
+            
+            Assert.AreEqual(0m, decvec3.UnitZ.x);
+            Assert.AreEqual(0m, decvec3.UnitZ.y);
+            Assert.AreEqual(1m, decvec3.UnitZ.z);
+            
+            Assert.AreEqual(decimal.MaxValue, decvec3.MaxValue.x);
+            Assert.AreEqual(decimal.MaxValue, decvec3.MaxValue.y);
+            Assert.AreEqual(decimal.MaxValue, decvec3.MaxValue.z);
+            
+            Assert.AreEqual(decimal.MinValue, decvec3.MinValue.x);
+            Assert.AreEqual(decimal.MinValue, decvec3.MinValue.y);
+            Assert.AreEqual(decimal.MinValue, decvec3.MinValue.z);
+            
+            Assert.AreEqual(decimal.MinusOne, decvec3.MinusOne.x);
+            Assert.AreEqual(decimal.MinusOne, decvec3.MinusOne.y);
+            Assert.AreEqual(decimal.MinusOne, decvec3.MinusOne.z);
+        }
+
     }
 }

@@ -3119,5 +3119,39 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(new Complex(9.5d, 9.5d), v[2]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new cvec3(new Complex(-5.5d, -3.5d), new Complex(-4.5d, -3.5d), new Complex(-2, -3.5d));
+            var vals = v.Values;
+            Assert.AreEqual(new Complex(-5.5d, -3.5d), vals[0]);
+            Assert.AreEqual(new Complex(-4.5d, -3.5d), vals[1]);
+            Assert.AreEqual(new Complex(-2, -3.5d), vals[2]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(Complex.Zero, cvec3.Zero.x);
+            Assert.AreEqual(Complex.Zero, cvec3.Zero.y);
+            Assert.AreEqual(Complex.Zero, cvec3.Zero.z);
+            
+            Assert.AreEqual(Complex.One, cvec3.Ones.x);
+            Assert.AreEqual(Complex.One, cvec3.Ones.y);
+            Assert.AreEqual(Complex.One, cvec3.Ones.z);
+            
+            Assert.AreEqual(Complex.One, cvec3.UnitX.x);
+            Assert.AreEqual(Complex.Zero, cvec3.UnitX.y);
+            Assert.AreEqual(Complex.Zero, cvec3.UnitX.z);
+            
+            Assert.AreEqual(Complex.Zero, cvec3.UnitY.x);
+            Assert.AreEqual(Complex.One, cvec3.UnitY.y);
+            Assert.AreEqual(Complex.Zero, cvec3.UnitY.z);
+            
+            Assert.AreEqual(Complex.Zero, cvec3.UnitZ.x);
+            Assert.AreEqual(Complex.Zero, cvec3.UnitZ.y);
+            Assert.AreEqual(Complex.One, cvec3.UnitZ.z);
+        }
+
     }
 }

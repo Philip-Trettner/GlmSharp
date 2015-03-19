@@ -157,5 +157,80 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(9.5f, v[3]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new vec4(-6, -9.5f, 0f, 5);
+            var vals = v.Values;
+            Assert.AreEqual(-6, vals[0]);
+            Assert.AreEqual(-9.5f, vals[1]);
+            Assert.AreEqual(0f, vals[2]);
+            Assert.AreEqual(5, vals[3]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0f, vec4.Zero.x);
+            Assert.AreEqual(0f, vec4.Zero.y);
+            Assert.AreEqual(0f, vec4.Zero.z);
+            Assert.AreEqual(0f, vec4.Zero.w);
+            
+            Assert.AreEqual(1f, vec4.Ones.x);
+            Assert.AreEqual(1f, vec4.Ones.y);
+            Assert.AreEqual(1f, vec4.Ones.z);
+            Assert.AreEqual(1f, vec4.Ones.w);
+            
+            Assert.AreEqual(1f, vec4.UnitX.x);
+            Assert.AreEqual(0f, vec4.UnitX.y);
+            Assert.AreEqual(0f, vec4.UnitX.z);
+            Assert.AreEqual(0f, vec4.UnitX.w);
+            
+            Assert.AreEqual(0f, vec4.UnitY.x);
+            Assert.AreEqual(1f, vec4.UnitY.y);
+            Assert.AreEqual(0f, vec4.UnitY.z);
+            Assert.AreEqual(0f, vec4.UnitY.w);
+            
+            Assert.AreEqual(0f, vec4.UnitZ.x);
+            Assert.AreEqual(0f, vec4.UnitZ.y);
+            Assert.AreEqual(1f, vec4.UnitZ.z);
+            Assert.AreEqual(0f, vec4.UnitZ.w);
+            
+            Assert.AreEqual(0f, vec4.UnitW.x);
+            Assert.AreEqual(0f, vec4.UnitW.y);
+            Assert.AreEqual(0f, vec4.UnitW.z);
+            Assert.AreEqual(1f, vec4.UnitW.w);
+            
+            Assert.AreEqual(float.MaxValue, vec4.MaxValue.x);
+            Assert.AreEqual(float.MaxValue, vec4.MaxValue.y);
+            Assert.AreEqual(float.MaxValue, vec4.MaxValue.z);
+            Assert.AreEqual(float.MaxValue, vec4.MaxValue.w);
+            
+            Assert.AreEqual(float.MinValue, vec4.MinValue.x);
+            Assert.AreEqual(float.MinValue, vec4.MinValue.y);
+            Assert.AreEqual(float.MinValue, vec4.MinValue.z);
+            Assert.AreEqual(float.MinValue, vec4.MinValue.w);
+            
+            Assert.AreEqual(float.Epsilon, vec4.Epsilon.x);
+            Assert.AreEqual(float.Epsilon, vec4.Epsilon.y);
+            Assert.AreEqual(float.Epsilon, vec4.Epsilon.z);
+            Assert.AreEqual(float.Epsilon, vec4.Epsilon.w);
+            
+            Assert.AreEqual(float.NaN, vec4.NaN.x);
+            Assert.AreEqual(float.NaN, vec4.NaN.y);
+            Assert.AreEqual(float.NaN, vec4.NaN.z);
+            Assert.AreEqual(float.NaN, vec4.NaN.w);
+            
+            Assert.AreEqual(float.NegativeInfinity, vec4.NegativeInfinity.x);
+            Assert.AreEqual(float.NegativeInfinity, vec4.NegativeInfinity.y);
+            Assert.AreEqual(float.NegativeInfinity, vec4.NegativeInfinity.z);
+            Assert.AreEqual(float.NegativeInfinity, vec4.NegativeInfinity.w);
+            
+            Assert.AreEqual(float.PositiveInfinity, vec4.PositiveInfinity.x);
+            Assert.AreEqual(float.PositiveInfinity, vec4.PositiveInfinity.y);
+            Assert.AreEqual(float.PositiveInfinity, vec4.PositiveInfinity.z);
+            Assert.AreEqual(float.PositiveInfinity, vec4.PositiveInfinity.w);
+        }
+
     }
 }

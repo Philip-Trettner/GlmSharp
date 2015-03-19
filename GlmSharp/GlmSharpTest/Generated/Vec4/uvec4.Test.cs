@@ -99,5 +99,60 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(9, v[3]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new uvec4(8, 5, 6, 5);
+            var vals = v.Values;
+            Assert.AreEqual(8, vals[0]);
+            Assert.AreEqual(5, vals[1]);
+            Assert.AreEqual(6, vals[2]);
+            Assert.AreEqual(5, vals[3]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0u, uvec4.Zero.x);
+            Assert.AreEqual(0u, uvec4.Zero.y);
+            Assert.AreEqual(0u, uvec4.Zero.z);
+            Assert.AreEqual(0u, uvec4.Zero.w);
+            
+            Assert.AreEqual(1u, uvec4.Ones.x);
+            Assert.AreEqual(1u, uvec4.Ones.y);
+            Assert.AreEqual(1u, uvec4.Ones.z);
+            Assert.AreEqual(1u, uvec4.Ones.w);
+            
+            Assert.AreEqual(1u, uvec4.UnitX.x);
+            Assert.AreEqual(0u, uvec4.UnitX.y);
+            Assert.AreEqual(0u, uvec4.UnitX.z);
+            Assert.AreEqual(0u, uvec4.UnitX.w);
+            
+            Assert.AreEqual(0u, uvec4.UnitY.x);
+            Assert.AreEqual(1u, uvec4.UnitY.y);
+            Assert.AreEqual(0u, uvec4.UnitY.z);
+            Assert.AreEqual(0u, uvec4.UnitY.w);
+            
+            Assert.AreEqual(0u, uvec4.UnitZ.x);
+            Assert.AreEqual(0u, uvec4.UnitZ.y);
+            Assert.AreEqual(1u, uvec4.UnitZ.z);
+            Assert.AreEqual(0u, uvec4.UnitZ.w);
+            
+            Assert.AreEqual(0u, uvec4.UnitW.x);
+            Assert.AreEqual(0u, uvec4.UnitW.y);
+            Assert.AreEqual(0u, uvec4.UnitW.z);
+            Assert.AreEqual(1u, uvec4.UnitW.w);
+            
+            Assert.AreEqual(uint.MaxValue, uvec4.MaxValue.x);
+            Assert.AreEqual(uint.MaxValue, uvec4.MaxValue.y);
+            Assert.AreEqual(uint.MaxValue, uvec4.MaxValue.z);
+            Assert.AreEqual(uint.MaxValue, uvec4.MaxValue.w);
+            
+            Assert.AreEqual(uint.MinValue, uvec4.MinValue.x);
+            Assert.AreEqual(uint.MinValue, uvec4.MinValue.y);
+            Assert.AreEqual(uint.MinValue, uvec4.MinValue.z);
+            Assert.AreEqual(uint.MinValue, uvec4.MinValue.w);
+        }
+
     }
 }

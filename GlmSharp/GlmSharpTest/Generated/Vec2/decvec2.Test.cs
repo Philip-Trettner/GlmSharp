@@ -145,5 +145,39 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(9.5m, v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new decvec2(-1, -2.5m);
+            var vals = v.Values;
+            Assert.AreEqual(-1, vals[0]);
+            Assert.AreEqual(-2.5m, vals[1]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0m, decvec2.Zero.x);
+            Assert.AreEqual(0m, decvec2.Zero.y);
+            
+            Assert.AreEqual(1m, decvec2.Ones.x);
+            Assert.AreEqual(1m, decvec2.Ones.y);
+            
+            Assert.AreEqual(1m, decvec2.UnitX.x);
+            Assert.AreEqual(0m, decvec2.UnitX.y);
+            
+            Assert.AreEqual(0m, decvec2.UnitY.x);
+            Assert.AreEqual(1m, decvec2.UnitY.y);
+            
+            Assert.AreEqual(decimal.MaxValue, decvec2.MaxValue.x);
+            Assert.AreEqual(decimal.MaxValue, decvec2.MaxValue.y);
+            
+            Assert.AreEqual(decimal.MinValue, decvec2.MinValue.x);
+            Assert.AreEqual(decimal.MinValue, decvec2.MinValue.y);
+            
+            Assert.AreEqual(decimal.MinusOne, decvec2.MinusOne.x);
+            Assert.AreEqual(decimal.MinusOne, decvec2.MinusOne.y);
+        }
+
     }
 }

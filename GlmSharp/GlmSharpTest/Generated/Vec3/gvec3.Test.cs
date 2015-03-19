@@ -95,5 +95,23 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual("((-77)-6)", v[2]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new gvec3<string>("(72)", "-3", "((-22)5)");
+            var vals = v.Values;
+            Assert.AreEqual("(72)", vals[0]);
+            Assert.AreEqual("-3", vals[1]);
+            Assert.AreEqual("((-22)5)", vals[2]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(null, gvec3<string>.Zero.x);
+            Assert.AreEqual(null, gvec3<string>.Zero.y);
+            Assert.AreEqual(null, gvec3<string>.Zero.z);
+        }
+
     }
 }

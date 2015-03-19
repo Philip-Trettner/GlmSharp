@@ -157,5 +157,65 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(9.5m, v[2]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new decvec4(9.5m, -5, 5, 3.5m);
+            var vals = v.Values;
+            Assert.AreEqual(9.5m, vals[0]);
+            Assert.AreEqual(-5, vals[1]);
+            Assert.AreEqual(5, vals[2]);
+            Assert.AreEqual(3.5m, vals[3]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0m, decvec4.Zero.x);
+            Assert.AreEqual(0m, decvec4.Zero.y);
+            Assert.AreEqual(0m, decvec4.Zero.z);
+            Assert.AreEqual(0m, decvec4.Zero.w);
+            
+            Assert.AreEqual(1m, decvec4.Ones.x);
+            Assert.AreEqual(1m, decvec4.Ones.y);
+            Assert.AreEqual(1m, decvec4.Ones.z);
+            Assert.AreEqual(1m, decvec4.Ones.w);
+            
+            Assert.AreEqual(1m, decvec4.UnitX.x);
+            Assert.AreEqual(0m, decvec4.UnitX.y);
+            Assert.AreEqual(0m, decvec4.UnitX.z);
+            Assert.AreEqual(0m, decvec4.UnitX.w);
+            
+            Assert.AreEqual(0m, decvec4.UnitY.x);
+            Assert.AreEqual(1m, decvec4.UnitY.y);
+            Assert.AreEqual(0m, decvec4.UnitY.z);
+            Assert.AreEqual(0m, decvec4.UnitY.w);
+            
+            Assert.AreEqual(0m, decvec4.UnitZ.x);
+            Assert.AreEqual(0m, decvec4.UnitZ.y);
+            Assert.AreEqual(1m, decvec4.UnitZ.z);
+            Assert.AreEqual(0m, decvec4.UnitZ.w);
+            
+            Assert.AreEqual(0m, decvec4.UnitW.x);
+            Assert.AreEqual(0m, decvec4.UnitW.y);
+            Assert.AreEqual(0m, decvec4.UnitW.z);
+            Assert.AreEqual(1m, decvec4.UnitW.w);
+            
+            Assert.AreEqual(decimal.MaxValue, decvec4.MaxValue.x);
+            Assert.AreEqual(decimal.MaxValue, decvec4.MaxValue.y);
+            Assert.AreEqual(decimal.MaxValue, decvec4.MaxValue.z);
+            Assert.AreEqual(decimal.MaxValue, decvec4.MaxValue.w);
+            
+            Assert.AreEqual(decimal.MinValue, decvec4.MinValue.x);
+            Assert.AreEqual(decimal.MinValue, decvec4.MinValue.y);
+            Assert.AreEqual(decimal.MinValue, decvec4.MinValue.z);
+            Assert.AreEqual(decimal.MinValue, decvec4.MinValue.w);
+            
+            Assert.AreEqual(decimal.MinusOne, decvec4.MinusOne.x);
+            Assert.AreEqual(decimal.MinusOne, decvec4.MinusOne.y);
+            Assert.AreEqual(decimal.MinusOne, decvec4.MinusOne.z);
+            Assert.AreEqual(decimal.MinusOne, decvec4.MinusOne.w);
+        }
+
     }
 }

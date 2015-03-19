@@ -101,5 +101,25 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual("((-7-8)8)", v[3]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new gvec4<string>("5", "(-2-9)", "(-5-4)", null);
+            var vals = v.Values;
+            Assert.AreEqual("5", vals[0]);
+            Assert.AreEqual("(-2-9)", vals[1]);
+            Assert.AreEqual("(-5-4)", vals[2]);
+            Assert.AreEqual(null, vals[3]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(null, gvec4<string>.Zero.x);
+            Assert.AreEqual(null, gvec4<string>.Zero.y);
+            Assert.AreEqual(null, gvec4<string>.Zero.z);
+            Assert.AreEqual(null, gvec4<string>.Zero.w);
+        }
+
     }
 }

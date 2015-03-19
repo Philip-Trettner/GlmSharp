@@ -93,5 +93,47 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(9, v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new uvec3(5, 2, 9);
+            var vals = v.Values;
+            Assert.AreEqual(5, vals[0]);
+            Assert.AreEqual(2, vals[1]);
+            Assert.AreEqual(9, vals[2]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0u, uvec3.Zero.x);
+            Assert.AreEqual(0u, uvec3.Zero.y);
+            Assert.AreEqual(0u, uvec3.Zero.z);
+            
+            Assert.AreEqual(1u, uvec3.Ones.x);
+            Assert.AreEqual(1u, uvec3.Ones.y);
+            Assert.AreEqual(1u, uvec3.Ones.z);
+            
+            Assert.AreEqual(1u, uvec3.UnitX.x);
+            Assert.AreEqual(0u, uvec3.UnitX.y);
+            Assert.AreEqual(0u, uvec3.UnitX.z);
+            
+            Assert.AreEqual(0u, uvec3.UnitY.x);
+            Assert.AreEqual(1u, uvec3.UnitY.y);
+            Assert.AreEqual(0u, uvec3.UnitY.z);
+            
+            Assert.AreEqual(0u, uvec3.UnitZ.x);
+            Assert.AreEqual(0u, uvec3.UnitZ.y);
+            Assert.AreEqual(1u, uvec3.UnitZ.z);
+            
+            Assert.AreEqual(uint.MaxValue, uvec3.MaxValue.x);
+            Assert.AreEqual(uint.MaxValue, uvec3.MaxValue.y);
+            Assert.AreEqual(uint.MaxValue, uvec3.MaxValue.z);
+            
+            Assert.AreEqual(uint.MinValue, uvec3.MinValue.x);
+            Assert.AreEqual(uint.MinValue, uvec3.MinValue.y);
+            Assert.AreEqual(uint.MinValue, uvec3.MinValue.z);
+        }
+
     }
 }

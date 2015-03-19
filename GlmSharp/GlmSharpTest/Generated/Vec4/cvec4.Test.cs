@@ -3125,5 +3125,50 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(new Complex(9.5d, 9.5d), v[2]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new cvec4(new Complex(-9, -8), new Complex(4.5d, -5.5d), new Complex(8.5d, -5.5d), new Complex(-1, -3));
+            var vals = v.Values;
+            Assert.AreEqual(new Complex(-9, -8), vals[0]);
+            Assert.AreEqual(new Complex(4.5d, -5.5d), vals[1]);
+            Assert.AreEqual(new Complex(8.5d, -5.5d), vals[2]);
+            Assert.AreEqual(new Complex(-1, -3), vals[3]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(Complex.Zero, cvec4.Zero.x);
+            Assert.AreEqual(Complex.Zero, cvec4.Zero.y);
+            Assert.AreEqual(Complex.Zero, cvec4.Zero.z);
+            Assert.AreEqual(Complex.Zero, cvec4.Zero.w);
+            
+            Assert.AreEqual(Complex.One, cvec4.Ones.x);
+            Assert.AreEqual(Complex.One, cvec4.Ones.y);
+            Assert.AreEqual(Complex.One, cvec4.Ones.z);
+            Assert.AreEqual(Complex.One, cvec4.Ones.w);
+            
+            Assert.AreEqual(Complex.One, cvec4.UnitX.x);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitX.y);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitX.z);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitX.w);
+            
+            Assert.AreEqual(Complex.Zero, cvec4.UnitY.x);
+            Assert.AreEqual(Complex.One, cvec4.UnitY.y);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitY.z);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitY.w);
+            
+            Assert.AreEqual(Complex.Zero, cvec4.UnitZ.x);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitZ.y);
+            Assert.AreEqual(Complex.One, cvec4.UnitZ.z);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitZ.w);
+            
+            Assert.AreEqual(Complex.Zero, cvec4.UnitW.x);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitW.y);
+            Assert.AreEqual(Complex.Zero, cvec4.UnitW.z);
+            Assert.AreEqual(Complex.One, cvec4.UnitW.w);
+        }
+
     }
 }

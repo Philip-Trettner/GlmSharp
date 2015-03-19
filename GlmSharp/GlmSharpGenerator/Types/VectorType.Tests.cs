@@ -42,6 +42,7 @@ namespace GlmSharpGenerator.Types
                 }
             }
         }
+
         private IEnumerable<string> TestIndexer
         {
             get
@@ -69,10 +70,54 @@ namespace GlmSharpGenerator.Types
             }
         }
 
+        private IEnumerable<string> TestPropertyValue
+        {
+            get
+            {
+                var vals = BaseType.RandomSmallVals(Components);
+                yield return string.Format("var v = {0};", Construct(this, vals));
+                yield return "var vals = v.Values;";
+                for (var i = 0; i < vals.Length; ++i)
+                    yield return string.Format("Assert.AreEqual({0}, vals[{1}]);", vals[i], i);
+            }
+        }
+
+        private IEnumerable<string> TestStaticProperties
+        {
+            get
+            {
+                foreach (var f in Fields)
+                    yield return string.Format("Assert.AreEqual({0}, {1}.Zero.{2});", ZeroValue, NameThat, f);
+
+                if (!string.IsNullOrEmpty(OneValue))
+                {
+                    yield return "";
+                    foreach (var f in Fields)
+                        yield return string.Format("Assert.AreEqual({0}, {1}.Ones.{2});", OneValue, NameThat, f);
+
+                    foreach (var uf in Fields)
+                    {
+                        yield return "";
+                        foreach (var f in Fields)
+                            yield return string.Format("Assert.AreEqual({0}, {1}.Unit{2}.{3});", f == uf ? OneValue : ZeroValue, NameThat, uf.ToUpper(), f);
+                    }
+                }
+
+                foreach (var constant in BaseType.TypeConstants)
+                {
+                    yield return "";
+                    foreach (var f in Fields)
+                        yield return string.Format("Assert.AreEqual({0}.{2}, {1}.{2}.{3});", BaseTypeName, NameThat, constant, f);
+                }
+            }
+        }
+
         public override IEnumerable<TestFunc> GenerateTests()
         {
             yield return new TestFunc(this, "Constructors", TestConstructor);
             yield return new TestFunc(this, "Indexer", TestIndexer);
+            yield return new TestFunc(this, "PropertyValues", TestPropertyValue);
+            yield return new TestFunc(this, "StaticProperties", TestStaticProperties);
         }
     }
 }

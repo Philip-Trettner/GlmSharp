@@ -71,5 +71,30 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(true, v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new bvec2(true, false);
+            var vals = v.Values;
+            Assert.AreEqual(true, vals[0]);
+            Assert.AreEqual(false, vals[1]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(false, bvec2.Zero.x);
+            Assert.AreEqual(false, bvec2.Zero.y);
+            
+            Assert.AreEqual(true, bvec2.Ones.x);
+            Assert.AreEqual(true, bvec2.Ones.y);
+            
+            Assert.AreEqual(true, bvec2.UnitX.x);
+            Assert.AreEqual(false, bvec2.UnitX.y);
+            
+            Assert.AreEqual(false, bvec2.UnitY.x);
+            Assert.AreEqual(true, bvec2.UnitY.y);
+        }
+
     }
 }

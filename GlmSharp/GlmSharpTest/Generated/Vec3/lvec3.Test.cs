@@ -111,5 +111,47 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(-9, v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new lvec3(-1, 1, 6);
+            var vals = v.Values;
+            Assert.AreEqual(-1, vals[0]);
+            Assert.AreEqual(1, vals[1]);
+            Assert.AreEqual(6, vals[2]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0, lvec3.Zero.x);
+            Assert.AreEqual(0, lvec3.Zero.y);
+            Assert.AreEqual(0, lvec3.Zero.z);
+            
+            Assert.AreEqual(1, lvec3.Ones.x);
+            Assert.AreEqual(1, lvec3.Ones.y);
+            Assert.AreEqual(1, lvec3.Ones.z);
+            
+            Assert.AreEqual(1, lvec3.UnitX.x);
+            Assert.AreEqual(0, lvec3.UnitX.y);
+            Assert.AreEqual(0, lvec3.UnitX.z);
+            
+            Assert.AreEqual(0, lvec3.UnitY.x);
+            Assert.AreEqual(1, lvec3.UnitY.y);
+            Assert.AreEqual(0, lvec3.UnitY.z);
+            
+            Assert.AreEqual(0, lvec3.UnitZ.x);
+            Assert.AreEqual(0, lvec3.UnitZ.y);
+            Assert.AreEqual(1, lvec3.UnitZ.z);
+            
+            Assert.AreEqual(long.MaxValue, lvec3.MaxValue.x);
+            Assert.AreEqual(long.MaxValue, lvec3.MaxValue.y);
+            Assert.AreEqual(long.MaxValue, lvec3.MaxValue.z);
+            
+            Assert.AreEqual(long.MinValue, lvec3.MinValue.x);
+            Assert.AreEqual(long.MinValue, lvec3.MinValue.y);
+            Assert.AreEqual(long.MinValue, lvec3.MinValue.z);
+        }
+
     }
 }

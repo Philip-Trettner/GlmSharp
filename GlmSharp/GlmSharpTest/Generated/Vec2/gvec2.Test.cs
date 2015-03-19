@@ -89,5 +89,21 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual("((-97)-8)", v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new gvec2<string>("((-18)-7)", "-9");
+            var vals = v.Values;
+            Assert.AreEqual("((-18)-7)", vals[0]);
+            Assert.AreEqual("-9", vals[1]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(null, gvec2<string>.Zero.x);
+            Assert.AreEqual(null, gvec2<string>.Zero.y);
+        }
+
     }
 }

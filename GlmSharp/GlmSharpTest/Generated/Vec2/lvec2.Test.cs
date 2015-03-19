@@ -105,5 +105,36 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(-9, v[1]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new lvec2(9, 9);
+            var vals = v.Values;
+            Assert.AreEqual(9, vals[0]);
+            Assert.AreEqual(9, vals[1]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0, lvec2.Zero.x);
+            Assert.AreEqual(0, lvec2.Zero.y);
+            
+            Assert.AreEqual(1, lvec2.Ones.x);
+            Assert.AreEqual(1, lvec2.Ones.y);
+            
+            Assert.AreEqual(1, lvec2.UnitX.x);
+            Assert.AreEqual(0, lvec2.UnitX.y);
+            
+            Assert.AreEqual(0, lvec2.UnitY.x);
+            Assert.AreEqual(1, lvec2.UnitY.y);
+            
+            Assert.AreEqual(long.MaxValue, lvec2.MaxValue.x);
+            Assert.AreEqual(long.MaxValue, lvec2.MaxValue.y);
+            
+            Assert.AreEqual(long.MinValue, lvec2.MinValue.x);
+            Assert.AreEqual(long.MinValue, lvec2.MinValue.y);
+        }
+
     }
 }

@@ -157,5 +157,80 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(9.5d, v[3]);
         }
 
+        [Test]
+        public void PropertyValues()
+        {
+            var v = new dvec4(6.5d, 8, 1.0, 6);
+            var vals = v.Values;
+            Assert.AreEqual(6.5d, vals[0]);
+            Assert.AreEqual(8, vals[1]);
+            Assert.AreEqual(1.0, vals[2]);
+            Assert.AreEqual(6, vals[3]);
+        }
+
+        [Test]
+        public void StaticProperties()
+        {
+            Assert.AreEqual(0.0, dvec4.Zero.x);
+            Assert.AreEqual(0.0, dvec4.Zero.y);
+            Assert.AreEqual(0.0, dvec4.Zero.z);
+            Assert.AreEqual(0.0, dvec4.Zero.w);
+            
+            Assert.AreEqual(1.0, dvec4.Ones.x);
+            Assert.AreEqual(1.0, dvec4.Ones.y);
+            Assert.AreEqual(1.0, dvec4.Ones.z);
+            Assert.AreEqual(1.0, dvec4.Ones.w);
+            
+            Assert.AreEqual(1.0, dvec4.UnitX.x);
+            Assert.AreEqual(0.0, dvec4.UnitX.y);
+            Assert.AreEqual(0.0, dvec4.UnitX.z);
+            Assert.AreEqual(0.0, dvec4.UnitX.w);
+            
+            Assert.AreEqual(0.0, dvec4.UnitY.x);
+            Assert.AreEqual(1.0, dvec4.UnitY.y);
+            Assert.AreEqual(0.0, dvec4.UnitY.z);
+            Assert.AreEqual(0.0, dvec4.UnitY.w);
+            
+            Assert.AreEqual(0.0, dvec4.UnitZ.x);
+            Assert.AreEqual(0.0, dvec4.UnitZ.y);
+            Assert.AreEqual(1.0, dvec4.UnitZ.z);
+            Assert.AreEqual(0.0, dvec4.UnitZ.w);
+            
+            Assert.AreEqual(0.0, dvec4.UnitW.x);
+            Assert.AreEqual(0.0, dvec4.UnitW.y);
+            Assert.AreEqual(0.0, dvec4.UnitW.z);
+            Assert.AreEqual(1.0, dvec4.UnitW.w);
+            
+            Assert.AreEqual(double.MaxValue, dvec4.MaxValue.x);
+            Assert.AreEqual(double.MaxValue, dvec4.MaxValue.y);
+            Assert.AreEqual(double.MaxValue, dvec4.MaxValue.z);
+            Assert.AreEqual(double.MaxValue, dvec4.MaxValue.w);
+            
+            Assert.AreEqual(double.MinValue, dvec4.MinValue.x);
+            Assert.AreEqual(double.MinValue, dvec4.MinValue.y);
+            Assert.AreEqual(double.MinValue, dvec4.MinValue.z);
+            Assert.AreEqual(double.MinValue, dvec4.MinValue.w);
+            
+            Assert.AreEqual(double.Epsilon, dvec4.Epsilon.x);
+            Assert.AreEqual(double.Epsilon, dvec4.Epsilon.y);
+            Assert.AreEqual(double.Epsilon, dvec4.Epsilon.z);
+            Assert.AreEqual(double.Epsilon, dvec4.Epsilon.w);
+            
+            Assert.AreEqual(double.NaN, dvec4.NaN.x);
+            Assert.AreEqual(double.NaN, dvec4.NaN.y);
+            Assert.AreEqual(double.NaN, dvec4.NaN.z);
+            Assert.AreEqual(double.NaN, dvec4.NaN.w);
+            
+            Assert.AreEqual(double.NegativeInfinity, dvec4.NegativeInfinity.x);
+            Assert.AreEqual(double.NegativeInfinity, dvec4.NegativeInfinity.y);
+            Assert.AreEqual(double.NegativeInfinity, dvec4.NegativeInfinity.z);
+            Assert.AreEqual(double.NegativeInfinity, dvec4.NegativeInfinity.w);
+            
+            Assert.AreEqual(double.PositiveInfinity, dvec4.PositiveInfinity.x);
+            Assert.AreEqual(double.PositiveInfinity, dvec4.PositiveInfinity.y);
+            Assert.AreEqual(double.PositiveInfinity, dvec4.PositiveInfinity.z);
+            Assert.AreEqual(double.PositiveInfinity, dvec4.PositiveInfinity.w);
+        }
+
     }
 }
