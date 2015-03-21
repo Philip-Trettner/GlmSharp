@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type int with 4 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct ivec4 : IReadOnlyList<int>, IEquatable<ivec4>
     {

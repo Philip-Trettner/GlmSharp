@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type bool with 2 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct bvec2 : IReadOnlyList<bool>, IEquatable<bvec2>
     {

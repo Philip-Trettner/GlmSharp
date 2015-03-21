@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type Complex with 2 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct cvec2 : IReadOnlyList<Complex>, IEquatable<cvec2>
     {

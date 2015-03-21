@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type decimal with 4 columns and 3 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct decmat4x3 : IReadOnlyList<decimal>, IEquatable<decmat4x3>
     {

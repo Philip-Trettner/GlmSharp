@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type uint with 3 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct uvec3 : IReadOnlyList<uint>, IEquatable<uvec3>
     {

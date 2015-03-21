@@ -13,6 +13,7 @@ namespace GlmSharpGenerator.Types
         public override string Namespace { get; } = "GlmSharp.Swizzle";
 
         public override string Folder => "Swizzle";
+        public override string DataContractArg { get; } = "(Namespace = \"swizzle\")";
 
         public IEnumerable<string> Fields => "xyzw".Substring(0, Components).Select(c => c.ToString());
 

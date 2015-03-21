@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type decimal with 4 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct decvec4 : IReadOnlyList<decimal>, IEquatable<decvec4>
     {

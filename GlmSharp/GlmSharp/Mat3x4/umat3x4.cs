@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type uint with 3 columns and 4 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct umat3x4 : IReadOnlyList<uint>, IEquatable<umat3x4>
     {

@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type float with 4 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct vec4 : IReadOnlyList<float>, IEquatable<vec4>
     {

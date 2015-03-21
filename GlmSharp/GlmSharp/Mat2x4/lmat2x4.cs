@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type long with 2 columns and 4 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct lmat2x4 : IReadOnlyList<long>, IEquatable<lmat2x4>
     {

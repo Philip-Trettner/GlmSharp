@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type double with 4 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct dvec4 : IReadOnlyList<double>, IEquatable<dvec4>
     {

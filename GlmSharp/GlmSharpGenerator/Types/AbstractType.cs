@@ -65,6 +65,11 @@ namespace GlmSharpGenerator.Types
         public virtual string Namespace { get; } = "GlmSharp";
 
         /// <summary>
+        /// Additional arg for data contracts
+        /// </summary>
+        public virtual string DataContractArg { get; } = "";
+
+        /// <summary>
         /// Folder for this type
         /// </summary>
         public virtual string Folder { get; } = "";
@@ -225,7 +230,7 @@ namespace GlmSharpGenerator.Types
                 foreach (var line in TypeComment.AsComment()) yield return line.Indent();
                 yield return "    [Serializable]";
                 if (Version >= 40)
-                    yield return "    [DataContract]";
+                    yield return string.Format("    [DataContract{0}]", DataContractArg);
                 yield return "    [StructLayout(LayoutKind.Sequential)]";
                 yield return "    public struct " + Name + GenericSuffix + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";

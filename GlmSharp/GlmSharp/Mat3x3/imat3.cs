@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type int with 3 columns and 3 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct imat3 : IReadOnlyList<int>, IEquatable<imat3>
     {

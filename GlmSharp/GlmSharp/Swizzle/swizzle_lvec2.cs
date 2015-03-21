@@ -17,7 +17,7 @@ namespace GlmSharp.Swizzle
     /// Temporary vector of type long with 2 components, used for implementing swizzling for lvec2.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "swizzle")]
     [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_lvec2
     {

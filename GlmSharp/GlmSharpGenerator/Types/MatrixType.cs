@@ -19,6 +19,7 @@ namespace GlmSharpGenerator.Types
         public int Rows { get; set; }
         public int Columns { get; set; }
         public int FieldCount => Rows * Columns;
+        public override string DataContractArg { get; } = "(Namespace = \"mat\")";
 
         public override string Name => BaseName + (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows);
 

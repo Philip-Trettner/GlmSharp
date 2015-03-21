@@ -17,7 +17,7 @@ namespace GlmSharp.Swizzle
     /// Temporary vector of type decimal with 3 components, used for implementing swizzling for decvec3.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "swizzle")]
     [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_decvec3
     {

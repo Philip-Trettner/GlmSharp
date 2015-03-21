@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type float with 4 columns and 2 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct mat4x2 : IReadOnlyList<float>, IEquatable<mat4x2>
     {

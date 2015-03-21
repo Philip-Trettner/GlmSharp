@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type double with 2 columns and 3 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct dmat2x3 : IReadOnlyList<double>, IEquatable<dmat2x3>
     {

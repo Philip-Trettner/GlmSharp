@@ -17,7 +17,7 @@ namespace GlmSharp.Swizzle
     /// Temporary vector of type bool with 2 components, used for implementing swizzling for bvec2.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "swizzle")]
     [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_bvec2
     {

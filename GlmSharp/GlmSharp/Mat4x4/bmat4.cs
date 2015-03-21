@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type bool with 4 columns and 4 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct bmat4 : IReadOnlyList<bool>, IEquatable<bmat4>
     {

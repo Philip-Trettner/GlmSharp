@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type long with 2 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct lvec2 : IReadOnlyList<long>, IEquatable<lvec2>
     {

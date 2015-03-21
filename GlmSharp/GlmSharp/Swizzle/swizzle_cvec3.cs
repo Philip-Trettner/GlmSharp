@@ -17,7 +17,7 @@ namespace GlmSharp.Swizzle
     /// Temporary vector of type Complex with 3 components, used for implementing swizzling for cvec3.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "swizzle")]
     [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_cvec3
     {

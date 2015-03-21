@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A vector of type T with 3 components.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "vec")]
     [StructLayout(LayoutKind.Sequential)]
     public struct gvec3<T> : IReadOnlyList<T>, IEquatable<gvec3<T>>
     {

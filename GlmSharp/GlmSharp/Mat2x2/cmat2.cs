@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type Complex with 2 columns and 2 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct cmat2 : IReadOnlyList<Complex>, IEquatable<cmat2>
     {

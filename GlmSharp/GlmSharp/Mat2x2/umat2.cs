@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type uint with 2 columns and 2 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct umat2 : IReadOnlyList<uint>, IEquatable<umat2>
     {

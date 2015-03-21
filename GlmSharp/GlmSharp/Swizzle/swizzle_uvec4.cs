@@ -17,7 +17,7 @@ namespace GlmSharp.Swizzle
     /// Temporary vector of type uint with 4 components, used for implementing swizzling for uvec4.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "swizzle")]
     [StructLayout(LayoutKind.Sequential)]
     public struct swizzle_uvec4
     {

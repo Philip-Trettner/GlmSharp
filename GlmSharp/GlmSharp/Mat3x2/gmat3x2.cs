@@ -17,7 +17,7 @@ namespace GlmSharp
     /// A matrix of type T with 3 columns and 2 rows.
     /// </summary>
     [Serializable]
-    [DataContract]
+    [DataContract(Namespace = "mat")]
     [StructLayout(LayoutKind.Sequential)]
     public struct gmat3x2<T> : IReadOnlyList<T>, IEquatable<gmat3x2<T>>
     {

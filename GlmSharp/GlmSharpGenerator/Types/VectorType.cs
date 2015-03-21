@@ -22,6 +22,7 @@ namespace GlmSharpGenerator.Types
         public override string Name => BaseName + Components;
 
         public override string Folder => "Vec" + Components;
+        public override string DataContractArg { get; } = "(Namespace = \"vec\")";
 
 
         public string CompString => "xyzw".Substring(0, Components);
