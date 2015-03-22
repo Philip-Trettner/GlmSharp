@@ -78,7 +78,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// from-vector-and-value constructor
         /// </summary>
         public cvec3(cvec2 v, Complex z)
         {
@@ -88,7 +88,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
+        /// from-vector constructor
         /// </summary>
         public cvec3(cvec3 v)
         {
@@ -98,7 +98,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
+        /// from-vector constructor (additional fields are truncated)
         /// </summary>
         public cvec3(cvec4 v)
         {

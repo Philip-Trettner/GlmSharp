@@ -103,20 +103,32 @@ namespace GlmSharpGenerator.Types
 
             for (var comps = 2; comps <= 4; ++comps)
             {
+                var commentAddition = "";
+                if (comps < Components)
+                    commentAddition = " (empty fields are zero/false)";
+                else if (comps > Components)
+                    commentAddition = " (additional fields are truncated)";
+
                 yield return new Constructor(this, Fields)
                 {
                     ParameterString = new VectorType(BaseType, comps).NameThat + " v",
                     Initializers = "v".DotComp(comps),
-                    Comment = "from-vector constructor (empty fields are zero/false)"
+                    Comment = "from-vector constructor" + commentAddition
                 };
 
                 for (var ucomps = comps; ucomps < Components; ++ucomps)
+                {
+                    commentAddition = "";
+                    if (ucomps < Components - 1)
+                        commentAddition = " (empty fields are zero/false)";
+
                     yield return new Constructor(this, Fields)
                     {
                         ParameterString = new VectorType(BaseType, comps).NameThat + " v, " + SubCompParameterString(comps, ucomps),
                         Initializers = "v".DotComp(comps).Concat(SubCompArgs(comps, ucomps)),
-                        Comment = "from-vector-and-value constructor (empty fields are zero/false)"
+                        Comment = "from-vector-and-value constructor" + commentAddition
                     };
+                }
             }
 
             // implicit upcasts

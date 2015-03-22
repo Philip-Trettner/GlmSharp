@@ -91,7 +91,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// from-vector-and-value constructor
         /// </summary>
         public decvec4(decvec2 v, decimal z, decimal w)
         {
@@ -113,7 +113,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// from-vector-and-value constructor
         /// </summary>
         public decvec4(decvec3 v, decimal w)
         {
@@ -124,7 +124,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
+        /// from-vector constructor
         /// </summary>
         public decvec4(decvec4 v)
         {

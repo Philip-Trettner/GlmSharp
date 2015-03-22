@@ -72,7 +72,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// from-vector-and-value constructor
         /// </summary>
         public lvec3(lvec2 v, long z)
         {
@@ -82,7 +82,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
+        /// from-vector constructor
         /// </summary>
         public lvec3(lvec3 v)
         {
@@ -92,7 +92,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
+        /// from-vector constructor (additional fields are truncated)
         /// </summary>
         public lvec3(lvec4 v)
         {

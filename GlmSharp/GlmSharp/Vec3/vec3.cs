@@ -78,7 +78,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector-and-value constructor (empty fields are zero/false)
+        /// from-vector-and-value constructor
         /// </summary>
         public vec3(vec2 v, float z)
         {
@@ -88,7 +88,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
+        /// from-vector constructor
         /// </summary>
         public vec3(vec3 v)
         {
@@ -98,7 +98,7 @@ namespace GlmSharp
         }
         
         /// <summary>
-        /// from-vector constructor (empty fields are zero/false)
+        /// from-vector constructor (additional fields are truncated)
         /// </summary>
         public vec3(vec4 v)
         {
