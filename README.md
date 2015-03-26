@@ -116,3 +116,4 @@ This library is MIT-licensed.
 * noise functions
 * random extensions
 * explicit JSON support
+* serialization tests
