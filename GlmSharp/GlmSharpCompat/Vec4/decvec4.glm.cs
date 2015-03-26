@@ -77,6 +77,11 @@ namespace GlmSharp
         public static int GetHashCode(decvec4 v) => v.GetHashCode();
         
         /// <summary>
+        /// Returns true iff distance between lhs and rhs is less than or equal to epsilon
+        /// </summary>
+        public static bool ApproxEqual(decvec4 lhs, decvec4 rhs, decimal eps = 0.1m) => decvec4.ApproxEqual(lhs, rhs, eps);
+        
+        /// <summary>
         /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(decvec4 lhs, decvec4 rhs) => decvec4.Equal(lhs, rhs);

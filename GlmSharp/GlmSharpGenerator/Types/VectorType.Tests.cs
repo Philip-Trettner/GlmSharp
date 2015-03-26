@@ -237,6 +237,16 @@ namespace GlmSharpGenerator.Types
                     yield return new InvariantTestFunc(this, "InvariantCommutativeNeg", "$V0 - $V1 == -($V1 - $V0)");
                     yield return new InvariantTestFunc(this, "InvariantAssociativeNeg", "$V0 * ($V1 - $V2) == $V0 * $V1 - $V0 * $V2");
                 }
+                yield return new InvariantTestFunc(this, "TriangleInequality",
+                    "$V0.Length + $V1.Length >= ($V0 + $V1).Length",
+                    "$V0.LengthSqr + $V1.LengthSqr >= ($V0 + $V1).LengthSqr",
+                    "$V0.Norm + $V1.Norm >= ($V0 + $V1).Norm",
+                    "$V0.Norm1 + $V1.Norm1 >= ($V0 + $V1).Norm1",
+                    "$V0.Norm2 + $V1.Norm2 >= ($V0 + $V1).Norm2",
+                    "$V0.NormMax + $V1.NormMax >= ($V0 + $V1).NormMax");
+                yield return new InvariantTestFunc(this, "InvariantNorm", "$V0.NormMax <= $V0.Norm");
+                if (Components == 3 && !BaseType.IsComplex)
+                    yield return new InvariantTestFunc(this, "InvariantCrossDot", "glm.Abs(glm.Dot($V0, glm.Cross($V0, $V1))) < 0.1");
             }
         }
     }

@@ -463,6 +463,15 @@ namespace GlmSharpGenerator.Types
                 Comment = "Returns a hash code for this instance."
             };
 
+            if (BaseType.HasArithmetics && !BaseType.IsInteger)
+                yield return new Function(BuiltinType.TypeBool, "ApproxEqual")
+                {
+                    Static = true,
+                    Parameters = this.TypedArgs("lhs", "rhs").Concat(lengthType.TypedArgs("eps = " + lengthType.ConstantSuffixFor("0.1"))),
+                    CodeString = "Distance(lhs, rhs) <= eps",
+                    Comment = "Returns true iff distance between lhs and rhs is less than or equal to epsilon"
+                };
+
             // Component-wise static functions
             yield return new ComponentWiseStaticFunction(Fields, boolVType, "Equal", this, "lhs", this, "rhs", BaseType.EqualFormat);
             yield return new ComponentWiseStaticFunction(Fields, boolVType, "NotEqual", this, "lhs", this, "rhs", BaseType.NotEqualFormat);

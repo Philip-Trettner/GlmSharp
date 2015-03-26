@@ -25,6 +25,7 @@ namespace GlmSharpTest.Manual
             Assert.AreEqual(3, v2.w);
 
             v.y += glm.Smoothstep(0, 1, v.x);
+            
         }
     }
 }

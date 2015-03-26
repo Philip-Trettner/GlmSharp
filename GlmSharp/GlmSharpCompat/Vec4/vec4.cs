@@ -649,6 +649,11 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Returns true iff distance between lhs and rhs is less than or equal to epsilon
+        /// </summary>
+        public static bool ApproxEqual(vec4 lhs, vec4 rhs, float eps = 0.1f) => Distance(lhs, rhs) <= eps;
+        
+        /// <summary>
         /// OuterProduct treats the first parameter c as a column vector (matrix with one column) and the second parameter r as a row vector (matrix with one row) and does a linear algebraic matrix multiply c * r, yielding a matrix whose number of rows is the number of components in c and whose number of columns is the number of components in r.
         /// </summary>
         public static mat4x2 OuterProduct(vec2 c, vec4 r) => new mat4x2(c.x * r.x, c.y * r.x, c.x * r.y, c.y * r.y, c.x * r.z, c.y * r.z, c.x * r.w, c.y * r.w);

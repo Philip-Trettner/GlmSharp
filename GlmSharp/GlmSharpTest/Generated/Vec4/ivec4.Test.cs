@@ -667,5 +667,105 @@ namespace GlmSharpTest.Generated.Vec4
             }
         }
 
+        [Test]
+        public void TriangleInequality()
+        {
+            {
+                var v0 = new ivec4(-4, 7, 2, 7);
+                var v1 = new ivec4(5, 4, 9, 1);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(-2, 0, 1, -2);
+                var v1 = new ivec4(2, -1, 5, -5);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(2, 7, -7, 1);
+                var v1 = new ivec4(-6, -6, 9, -1);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(8, 6, 4, 0);
+                var v1 = new ivec4(0, 8, -8, -5);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(-3, -3, -6, -8);
+                var v1 = new ivec4(2, -2, 1, -5);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(-3, -5, 9, 7);
+                var v1 = new ivec4(-6, 4, -5, 1);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(-3, 0, -3, -1);
+                var v1 = new ivec4(-4, -5, -2, -8);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(-7, -2, -8, -9);
+                var v1 = new ivec4(-9, 9, 0, 2);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(2, 6, -8, 9);
+                var v1 = new ivec4(-5, 7, -3, 9);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new ivec4(5, 2, 8, 1);
+                var v1 = new ivec4(6, 2, -4, 4);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+        }
+
+        [Test]
+        public void InvariantNorm()
+        {
+            {
+                var v0 = new ivec4(4, -1, -2, -1);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(2, 0, -8, -9);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(4, 8, -1, -3);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(-8, 6, 0, 8);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(-1, 7, 9, 2);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(4, 2, -3, 6);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(9, 4, -2, 8);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(-8, 5, -2, -2);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(-5, 1, -5, -9);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new ivec4(-1, -4, -7, -7);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+        }
+
     }
 }

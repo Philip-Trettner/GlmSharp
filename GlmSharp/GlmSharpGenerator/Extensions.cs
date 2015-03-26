@@ -20,7 +20,12 @@ namespace GlmSharpGenerator
             return true;
         }
 
-        public static IEnumerable<string> ArgNames(this IEnumerable<string> paras) => paras.CommaSeparated().Split(',').Select(p => p.Split(' ').Last()).ToArray();
+        public static string ParameterNameExtract(this string s)
+        {
+            return s.Split('=')[0].Trim().Split(' ').Last().Trim();
+        }
+
+        public static IEnumerable<string> ArgNames(this IEnumerable<string> paras) => paras.CommaSeparated().Split(',').Select(p => p.ParameterNameExtract()).ToArray();
         public static IEnumerable<string> ParasRecovered(this IEnumerable<string> paras) => paras.CommaSeparated().Split(',').ToArray();
         //=> paras.Select(p => p.Split(' ').Last());
 

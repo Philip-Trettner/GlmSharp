@@ -648,5 +648,160 @@ namespace GlmSharpTest.Generated.Vec3
             }
         }
 
+        [Test]
+        public void TriangleInequality()
+        {
+            {
+                var v0 = new lvec3(5, 1, 6);
+                var v1 = new lvec3(5, -8, 2);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(1, 3, -5);
+                var v1 = new lvec3(-5, -3, -9);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(-8, -4, -6);
+                var v1 = new lvec3(4, -6, -2);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(-7, -5, 3);
+                var v1 = new lvec3(5, 9, -4);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(-1, 7, 0);
+                var v1 = new lvec3(-5, 1, -6);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(-9, 3, -1);
+                var v1 = new lvec3(1, -8, 8);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(3, -8, -7);
+                var v1 = new lvec3(-9, 4, -4);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(3, -3, -6);
+                var v1 = new lvec3(6, 1, -5);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(4, 0, 2);
+                var v1 = new lvec3(8, -7, -5);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new lvec3(-4, -9, -1);
+                var v1 = new lvec3(-2, -4, -1);
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+        }
+
+        [Test]
+        public void InvariantNorm()
+        {
+            {
+                var v0 = new lvec3(4, 9, -3);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(-5, -5, -8);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(7, 4, -9);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(1, 5, 8);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(4, 7, -8);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(2, 4, 2);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(-8, 4, -6);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(8, 2, 1);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(-6, -1, -9);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new lvec3(-2, -1, -6);
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+        }
+
+        [Test]
+        public void InvariantCrossDot()
+        {
+            {
+                var v0 = new lvec3(-4, 4, 3);
+                var v1 = new lvec3(1, 7, -9);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(6, 9, -1);
+                var v1 = new lvec3(-5, -4, -4);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(-9, -9, 3);
+                var v1 = new lvec3(-7, -8, 2);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(-3, -2, 3);
+                var v1 = new lvec3(-8, 9, 6);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(-3, 2, 0);
+                var v1 = new lvec3(2, 0, 1);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(-5, 9, -2);
+                var v1 = new lvec3(5, -3, -9);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(-2, -4, 2);
+                var v1 = new lvec3(-7, 1, -8);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(4, 2, 0);
+                var v1 = new lvec3(4, 8, 4);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(4, -2, 0);
+                var v1 = new lvec3(7, 3, -2);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+            {
+                var v0 = new lvec3(-1, -5, -5);
+                var v1 = new lvec3(-6, 7, 5);
+                Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
+            }
+        }
+
     }
 }

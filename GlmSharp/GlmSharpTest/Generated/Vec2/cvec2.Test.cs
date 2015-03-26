@@ -3586,5 +3586,105 @@ namespace GlmSharpTest.Generated.Vec2
             }
         }
 
+        [Test]
+        public void TriangleInequality()
+        {
+            {
+                var v0 = new cvec2(new Complex(-3, 2), new Complex(-4.5d, -6));
+                var v1 = new cvec2(new Complex(-0.5d, 1.5d), new Complex(3, -8.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3, 7), new Complex(2, -1));
+                var v1 = new cvec2(new Complex(3, -5), new Complex(9, -6));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(3.5d, -3.5d), new Complex(-4.5d, -4));
+                var v1 = new cvec2(new Complex(1.0, -6), new Complex(-8, 3));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(-7.5d, -6), new Complex(-5, -0.5d));
+                var v1 = new cvec2(new Complex(9, 4), new Complex(-2.5d, 5.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(5.5d, -9), new Complex(8, 0.5d));
+                var v1 = new cvec2(new Complex(7, 4.5d), new Complex(-5.5d, -1));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(5, -5.5d), new Complex(-8, -5.5d));
+                var v1 = new cvec2(new Complex(-1.5d, -6.5d), new Complex(9, -5));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(0.5d, 4.5d), new Complex(7, -8.5d));
+                var v1 = new cvec2(new Complex(4, -2), new Complex(-2, -4));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(-5, 8), new Complex(-4, -2));
+                var v1 = new cvec2(new Complex(-1.5d, -6), new Complex(-5.5d, -0.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(5.5d, -9), new Complex(4.5d, 2.5d));
+                var v1 = new cvec2(new Complex(-8.5d, -9.5d), new Complex(1.5d, -0.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3, 7), new Complex(-2.5d, -4.5d));
+                var v1 = new cvec2(new Complex(-7.5d, 4.5d), new Complex(-1.5d, -5.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+        }
+
+        [Test]
+        public void InvariantNorm()
+        {
+            {
+                var v0 = new cvec2(new Complex(-5, 1.5d), new Complex(6, 0.0));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(-9.5d, 7.5d), new Complex(-1.5d, 5.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(-0.5d, -8.5d), new Complex(1.0, -8.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(0.0, 9.5d), new Complex(-5, 5));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(2, 4.5d), new Complex(7.5d, -1));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(-4.5d, -7.5d), new Complex(-3, 6.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(-9, 8.5d), new Complex(7.5d, -1));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(-7, 9.5d), new Complex(-1, 3));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(-1, 6), new Complex(-7.5d, -7.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec2(new Complex(2, 0.0), new Complex(6.5d, -8));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+        }
+
     }
 }

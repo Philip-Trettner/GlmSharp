@@ -456,25 +456,25 @@ namespace GlmSharpGenerator.Types
         {
             var type = BaseType ?? this;
 
-            if (type == BuiltinType.TypeFloat)
+            if (type.Name == "float")
                 return s + "f";
 
-            if (type == BuiltinType.TypeDouble)
+            if (type.Name == "double")
                 return s + "d";
 
-            if (type == BuiltinType.TypeDecimal)
+            if (type.Name == "decimal")
                 return s + "m";
 
-            if (type == BuiltinType.TypeInt)
+            if (type.Name == "int")
                 return s + "";
 
-            if (type == BuiltinType.TypeUint)
+            if (type.Name == "uint")
                 return s + "u";
 
-            if (type == BuiltinType.TypeLong)
+            if (type.Name == "long")
                 return s + "L";
 
-            throw new InvalidOperationException("unknown type");
+            throw new InvalidOperationException("unknown type " + this);
         }
 
         public IEnumerable<string> SwitchIndex(IEnumerable<string> cases)

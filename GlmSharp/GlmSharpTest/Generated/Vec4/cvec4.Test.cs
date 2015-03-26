@@ -3618,5 +3618,105 @@ namespace GlmSharpTest.Generated.Vec4
             }
         }
 
+        [Test]
+        public void TriangleInequality()
+        {
+            {
+                var v0 = new cvec4(new Complex(5.5d, -3), new Complex(-3.5d, -7.5d), new Complex(5, -3), new Complex(4, 8));
+                var v1 = new cvec4(new Complex(-6, -9), new Complex(-3, 9), new Complex(-1.5d, -1.5d), new Complex(-5, 1.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(2.5d, 6), new Complex(-8, -6.5d), new Complex(-2.5d, -2.5d), new Complex(8, -4));
+                var v1 = new cvec4(new Complex(0.5d, 6), new Complex(9, 0.0), new Complex(-4, 8.5d), new Complex(9.5d, 5.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(-5, 8.5d), new Complex(-6.5d, 8), new Complex(5.5d, 3), new Complex(-6, 6));
+                var v1 = new cvec4(new Complex(5, -8.5d), new Complex(-9.5d, -2), new Complex(3.5d, 4), new Complex(8, -3));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(0.0, 0.0), new Complex(-8.5d, -5.5d), new Complex(8, -7), new Complex(3.5d, 5));
+                var v1 = new cvec4(new Complex(1.5d, 2.5d), new Complex(-5, -9), new Complex(-6, -8.5d), new Complex(-2.5d, -4.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(8.5d, -9.5d), new Complex(-7, -8), new Complex(-6.5d, 2.5d), new Complex(1.5d, -1));
+                var v1 = new cvec4(new Complex(7.5d, -3.5d), new Complex(4, -6), new Complex(5, 5), new Complex(5, 9.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(9.5d, 8), new Complex(-9.5d, -1), new Complex(8, -8), new Complex(-5, 5));
+                var v1 = new cvec4(new Complex(2, -1.5d), new Complex(7.5d, 8.5d), new Complex(6.5d, 6), new Complex(-4.5d, 2));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(1.0, -5.5d), new Complex(7, 3.5d), new Complex(0.0, -0.5d), new Complex(-8.5d, 4.5d));
+                var v1 = new cvec4(new Complex(-7, 2), new Complex(-6, 3), new Complex(4.5d, -7), new Complex(-5, 8.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(3.5d, -7), new Complex(6.5d, 9.5d), new Complex(4, 6), new Complex(4.5d, 4.5d));
+                var v1 = new cvec4(new Complex(3, 1.5d), new Complex(5.5d, -6.5d), new Complex(-6.5d, 8.5d), new Complex(-7, -3.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(2, 0.0), Complex.One, new Complex(9, 3.5d), new Complex(-3, -3.5d));
+                var v1 = new cvec4(new Complex(-3.5d, 7), new Complex(-6.5d, -2.5d), new Complex(2, 6), new Complex(-1, -8.5d));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+            {
+                var v0 = new cvec4(new Complex(-8, 1.0), new Complex(-0.5d, 2), new Complex(-6, 7.5d), new Complex(-3.5d, 9));
+                var v1 = new cvec4(new Complex(-1, 1.5d), new Complex(-8, 7.5d), new Complex(5, -6.5d), new Complex(2, 2));
+                Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
+            }
+        }
+
+        [Test]
+        public void InvariantNorm()
+        {
+            {
+                var v0 = new cvec4(new Complex(-4, 2.5d), new Complex(-1.5d, 7.5d), new Complex(2, -3.5d), new Complex(7, -1.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(-6.5d, 4), new Complex(-9, -7.5d), new Complex(3, 5), new Complex(2.5d, -8));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(3.5d, -1.5d), new Complex(-8, -4.5d), new Complex(-6.5d, -5.5d), new Complex(-1.5d, 7));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(-9.5d, -6.5d), new Complex(7.5d, -8.5d), new Complex(-9, 2.5d), new Complex(8.5d, 1.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(-5.5d, -1), new Complex(3, -8.5d), new Complex(-9, -5.5d), new Complex(-8.5d, -1.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(0.5d, -7.5d), new Complex(8, 5.5d), new Complex(6.5d, -2), new Complex(-5.5d, 8.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(-3.5d, 9), new Complex(-9, 8), new Complex(2.5d, -3), new Complex(-3, -1.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(6, -4), new Complex(-8.5d, 8.5d), new Complex(-0.5d, 0.5d), new Complex(-3, -6));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(-7.5d, 6), new Complex(5.5d, 4), new Complex(6, -1.5d), new Complex(-8.5d, 3.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+            {
+                var v0 = new cvec4(new Complex(1.0, 5), new Complex(-2, -6), new Complex(-1, 1.0), new Complex(-9.5d, -6.5d));
+                Assert.LessOrEqual(v0.NormMax, v0.Norm);
+            }
+        }
+
     }
 }

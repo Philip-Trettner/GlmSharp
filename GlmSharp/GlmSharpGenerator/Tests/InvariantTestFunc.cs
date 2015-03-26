@@ -16,6 +16,7 @@ namespace GlmSharpGenerator.Tests
             foreach (var invariant in invariants)
             {
                 var inv = invariant;
+                inv = inv.Replace("$T", type.NameThat);
 
                 // stats
                 var vectorsThis = 0;
@@ -49,7 +50,38 @@ namespace GlmSharpGenerator.Tests
                         Debug.Assert(parts.Length == 2);
                         code.Add(string.Format("    Assert.AreEqual({0}, {1});", parts[0].Trim(), parts[1].Trim()));
                     }
-                    else throw new NotSupportedException();
+                    else if (inv.Contains(" < "))
+                    {
+                        var parts = inv.Split(new[] { " < " }, StringSplitOptions.None);
+                        Debug.Assert(parts.Length == 2);
+                        code.Add(string.Format("    Assert.Less({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                    }
+                    else if (inv.Contains(" <= "))
+                    {
+                        var parts = inv.Split(new[] { " <= " }, StringSplitOptions.None);
+                        Debug.Assert(parts.Length == 2);
+                        code.Add(string.Format("    Assert.LessOrEqual({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                    }
+                    else if (inv.Contains(" > "))
+                    {
+                        var parts = inv.Split(new[] { " > " }, StringSplitOptions.None);
+                        Debug.Assert(parts.Length == 2);
+                        code.Add(string.Format("    Assert.Greater({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                    }
+                    else if (inv.Contains(" >= "))
+                    {
+                        var parts = inv.Split(new[] { " >= " }, StringSplitOptions.None);
+                        Debug.Assert(parts.Length == 2);
+                        code.Add(string.Format("    Assert.GreaterOrEqual({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                    }
+                    else if (inv.Contains("~"))
+                    {
+                        var parts = inv.Split(new[] { "~" }, StringSplitOptions.None);
+                        Debug.Assert(parts.Length == 2);
+                        code.Add(string.Format("    Assert.That(glm.ApproxEqual({0}, {1}));", parts[0].Trim(), parts[1].Trim()));
+                    }
+                    else 
+                        code.Add(string.Format("    Assert.That({0});", inv));
                     code.Add("}");
                 }
                 Code = code;
