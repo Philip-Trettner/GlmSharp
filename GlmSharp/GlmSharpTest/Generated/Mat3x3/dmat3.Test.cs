@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Numerics;
 using System.Linq;
 using NUnit.Framework;
+using Newtonsoft.Json;
 using GlmSharp;
 
 // ReSharper disable InconsistentNaming

@@ -85,6 +85,54 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
         }
+        
+        /// <summary>
+        /// From-array/list constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public cvec2(IReadOnlyList<Complex> v)
+        {
+            var c = v.Count;
+            this.x = c < 0 ? Complex.Zero : v[0];
+            this.y = c < 1 ? Complex.Zero : v[1];
+        }
+        
+        /// <summary>
+        /// Generic from-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public cvec2(Object[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? Complex.Zero : (Complex)v[0];
+            this.y = c < 1 ? Complex.Zero : (Complex)v[1];
+        }
+        
+        /// <summary>
+        /// From-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public cvec2(Complex[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? Complex.Zero : v[0];
+            this.y = c < 1 ? Complex.Zero : v[1];
+        }
+        
+        /// <summary>
+        /// From-array constructor with base index (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public cvec2(Complex[] v, int startIndex)
+        {
+            var c = v.Length;
+            this.x = c + startIndex < 0 ? Complex.Zero : v[0 + startIndex];
+            this.y = c + startIndex < 1 ? Complex.Zero : v[1 + startIndex];
+        }
+        
+        /// <summary>
+        /// From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public cvec2(IEnumerable<Complex> v)
+            : this(v.ToArray())
+        {
+        }
 
         #endregion
 
@@ -100,6 +148,16 @@ namespace GlmSharp
         /// Explicitly converts this to a cvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator cvec4(cvec2 v) => new cvec4((Complex)v.x, (Complex)v.y, Complex.Zero, Complex.Zero);
+        
+        /// <summary>
+        /// Explicitly converts this to a Complex array.
+        /// </summary>
+        public static explicit operator Complex[](cvec2 v) => new [] { v.x, v.y };
+        
+        /// <summary>
+        /// Explicitly converts this to a generic object array.
+        /// </summary>
+        public static explicit operator Object[](cvec2 v) => new Object[] { v.x, v.y };
 
         #endregion
 

@@ -131,6 +131,51 @@ namespace GlmSharpGenerator.Types
                 }
             }
 
+            // ienumerable ctors
+            if (Version >= 45)
+                yield return new Constructor(this, Fields)
+                {
+                    ParameterString = string.Format("IReadOnlyList<{0}> v", BaseTypeName),
+                    Code = new[] { string.Format("var c = v.Count;") },
+                    Initializers = Components.ForIndexUpTo(i => string.Format("c < {0} ? {1} : v[{0}]", i, ZeroValue)),
+                    Comment = "From-array/list constructor (superfluous values are ignored, missing values are zero-filled)."
+                };
+            yield return new Constructor(this, Fields)
+            {
+                ParameterString = "Object[] v",
+                Code = new[] { string.Format("var c = v.Length;") },
+                Initializers = Components.ForIndexUpTo(i => string.Format("c < {0} ? {1} : ({2})v[{0}]", i, ZeroValue, BaseTypeName)),
+                Comment = "Generic from-array constructor (superfluous values are ignored, missing values are zero-filled)."
+            };
+            yield return new Constructor(this, Fields)
+            {
+                ParameterString = string.Format("{0}[] v", BaseTypeName),
+                Code = new[] { string.Format("var c = v.Length;") },
+                Initializers = Components.ForIndexUpTo(i => string.Format("c < {0} ? {1} : v[{0}]", i, ZeroValue)),
+                Comment = "From-array constructor (superfluous values are ignored, missing values are zero-filled)."
+            };
+            yield return new Constructor(this, Fields)
+            {
+                ParameterString = string.Format("{0}[] v, int startIndex", BaseTypeName),
+                Code = new[] { string.Format("var c = v.Length;") },
+                Initializers = Components.ForIndexUpTo(i => string.Format("c + startIndex < {0} ? {1} : v[{0} + startIndex]", i, ZeroValue)),
+                Comment = "From-array constructor with base index (superfluous values are ignored, missing values are zero-filled)."
+            };
+            if (Version >= 40)
+                yield return new Constructor(this, Fields)
+                {
+                    ParameterString = string.Format("IEnumerable<{0}> v", BaseTypeName),
+                    ConstructorChain = "this(v.ToArray())",
+                    Comment = "From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled)."
+                };
+            else
+                yield return new Constructor(this, Fields)
+                {
+                    ParameterString = string.Format("IEnumerable<{0}> v", BaseTypeName),
+                    ConstructorChain = string.Format("this(new List<{0}>(v).ToArray())", BaseTypeName),
+                    Comment = "From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled)."
+                };
+
             // implicit upcasts
             var implicits = new HashSet<BuiltinType>();
             var upcasts = BuiltinType.Upcasts;
@@ -177,6 +222,18 @@ namespace GlmSharpGenerator.Types
                     };
                 }
             }
+            yield return new ExplicitOperator(new ArrayType(BaseType))
+            {
+                ParameterString = NameThat + " v",
+                CodeString = string.Format("new [] {{ {0} }}", Fields.Select(f => "v." + f).CommaSeparated()),
+                Comment = string.Format("Explicitly converts this to a {0} array.", BaseTypeName)
+            };
+            yield return new ExplicitOperator(new AnyType("Object[]"))
+            {
+                ParameterString = NameThat + " v",
+                CodeString = string.Format("new Object[] {{ {0} }}", Fields.Select(f => "v." + f).CommaSeparated()),
+                Comment = string.Format("Explicitly converts this to a generic object array.")
+            };
 
             // IEnumerable
             yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")

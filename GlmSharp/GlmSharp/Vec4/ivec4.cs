@@ -140,6 +140,62 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+        
+        /// <summary>
+        /// From-array/list constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec4(IReadOnlyList<int> v)
+        {
+            var c = v.Count;
+            this.x = c < 0 ? 0 : v[0];
+            this.y = c < 1 ? 0 : v[1];
+            this.z = c < 2 ? 0 : v[2];
+            this.w = c < 3 ? 0 : v[3];
+        }
+        
+        /// <summary>
+        /// Generic from-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec4(Object[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0 : (int)v[0];
+            this.y = c < 1 ? 0 : (int)v[1];
+            this.z = c < 2 ? 0 : (int)v[2];
+            this.w = c < 3 ? 0 : (int)v[3];
+        }
+        
+        /// <summary>
+        /// From-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec4(int[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0 : v[0];
+            this.y = c < 1 ? 0 : v[1];
+            this.z = c < 2 ? 0 : v[2];
+            this.w = c < 3 ? 0 : v[3];
+        }
+        
+        /// <summary>
+        /// From-array constructor with base index (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec4(int[] v, int startIndex)
+        {
+            var c = v.Length;
+            this.x = c + startIndex < 0 ? 0 : v[0 + startIndex];
+            this.y = c + startIndex < 1 ? 0 : v[1 + startIndex];
+            this.z = c + startIndex < 2 ? 0 : v[2 + startIndex];
+            this.w = c + startIndex < 3 ? 0 : v[3 + startIndex];
+        }
+        
+        /// <summary>
+        /// From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec4(IEnumerable<int> v)
+            : this(v.ToArray())
+        {
+        }
 
         #endregion
 
@@ -265,6 +321,16 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4.
         /// </summary>
         public static explicit operator bvec4(ivec4 v) => new bvec4(v.x != 0, v.y != 0, v.z != 0, v.w != 0);
+        
+        /// <summary>
+        /// Explicitly converts this to a int array.
+        /// </summary>
+        public static explicit operator int[](ivec4 v) => new [] { v.x, v.y, v.z, v.w };
+        
+        /// <summary>
+        /// Explicitly converts this to a generic object array.
+        /// </summary>
+        public static explicit operator Object[](ivec4 v) => new Object[] { v.x, v.y, v.z, v.w };
 
         #endregion
 

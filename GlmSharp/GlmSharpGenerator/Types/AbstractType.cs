@@ -177,6 +177,7 @@ namespace GlmSharpGenerator.Types
                     yield return "using System.Linq;";
                 }
                 yield return "using NUnit.Framework;";
+                yield return "using Newtonsoft.Json;";
                 yield return "using GlmSharp;";
                 yield return "";
                 yield return "// ReSharper disable InconsistentNaming";

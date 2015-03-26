@@ -140,6 +140,62 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+        
+        /// <summary>
+        /// From-array/list constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public bvec4(IReadOnlyList<bool> v)
+        {
+            var c = v.Count;
+            this.x = c < 0 ? false : v[0];
+            this.y = c < 1 ? false : v[1];
+            this.z = c < 2 ? false : v[2];
+            this.w = c < 3 ? false : v[3];
+        }
+        
+        /// <summary>
+        /// Generic from-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public bvec4(Object[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? false : (bool)v[0];
+            this.y = c < 1 ? false : (bool)v[1];
+            this.z = c < 2 ? false : (bool)v[2];
+            this.w = c < 3 ? false : (bool)v[3];
+        }
+        
+        /// <summary>
+        /// From-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public bvec4(bool[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? false : v[0];
+            this.y = c < 1 ? false : v[1];
+            this.z = c < 2 ? false : v[2];
+            this.w = c < 3 ? false : v[3];
+        }
+        
+        /// <summary>
+        /// From-array constructor with base index (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public bvec4(bool[] v, int startIndex)
+        {
+            var c = v.Length;
+            this.x = c + startIndex < 0 ? false : v[0 + startIndex];
+            this.y = c + startIndex < 1 ? false : v[1 + startIndex];
+            this.z = c + startIndex < 2 ? false : v[2 + startIndex];
+            this.w = c + startIndex < 3 ? false : v[3 + startIndex];
+        }
+        
+        /// <summary>
+        /// From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public bvec4(IEnumerable<bool> v)
+            : this(v.ToArray())
+        {
+        }
 
         #endregion
 
@@ -260,6 +316,16 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec3.
         /// </summary>
         public static explicit operator bvec3(bvec4 v) => new bvec3((bool)v.x, (bool)v.y, (bool)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a bool array.
+        /// </summary>
+        public static explicit operator bool[](bvec4 v) => new [] { v.x, v.y, v.z, v.w };
+        
+        /// <summary>
+        /// Explicitly converts this to a generic object array.
+        /// </summary>
+        public static explicit operator Object[](bvec4 v) => new Object[] { v.x, v.y, v.z, v.w };
 
         #endregion
 

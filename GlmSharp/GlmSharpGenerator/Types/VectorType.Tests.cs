@@ -194,8 +194,23 @@ namespace GlmSharpGenerator.Types
                         yield return string.Format("Assert.AreEqual(v, v4);");
                     }
                 }
+            }
+        }
 
-                //0f.ToString("G", CultureInfo.InvariantCulture)
+        private IEnumerable<string> SerializationJson
+        {
+            get
+            {
+                var vals = BaseType.RandomSmallVals(Components);
+                yield return string.Format("var v0 = {0};", Construct(this, vals));
+                yield return string.Format("var s0 = JsonConvert.SerializeObject(v0);");
+                yield return "";
+                yield return string.Format("var v1 = JsonConvert.DeserializeObject<{0}>(s0);", NameThat);
+                yield return string.Format("var s1 = JsonConvert.SerializeObject(v1);");
+                yield return "";
+                yield return string.Format("Assert.AreEqual(v0, v1);");
+                yield return string.Format("Assert.AreEqual(s0, s1);");
+
             }
         }
 
@@ -207,6 +222,8 @@ namespace GlmSharpGenerator.Types
             yield return new TestFunc(this, "StaticProperties", TestStaticProperties);
             yield return new TestFunc(this, "Operators", TestOperators);
             yield return new TestFunc(this, "StringInterop", TestStringInterop);
+            if (!BaseType.IsComplex)
+                yield return new TestFunc(this, "SerializationJson", SerializationJson);
         }
     }
 }

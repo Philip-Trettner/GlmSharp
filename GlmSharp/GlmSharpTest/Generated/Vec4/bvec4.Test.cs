@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Numerics;
 using System.Linq;
 using NUnit.Framework;
+using Newtonsoft.Json;
 using GlmSharp;
 
 // ReSharper disable InconsistentNaming
@@ -176,6 +177,19 @@ namespace GlmSharpTest.Generated.Vec4
             
             var s2 = v.ToString(";", CultureInfo.InvariantCulture);
             Assert.That(s2.Length > 0);
+        }
+
+        [Test]
+        public void SerializationJson()
+        {
+            var v0 = new bvec4(true, true, true, false);
+            var s0 = JsonConvert.SerializeObject(v0);
+            
+            var v1 = JsonConvert.DeserializeObject<bvec4>(s0);
+            var s1 = JsonConvert.SerializeObject(v1);
+            
+            Assert.AreEqual(v0, v1);
+            Assert.AreEqual(s0, s1);
         }
 
     }

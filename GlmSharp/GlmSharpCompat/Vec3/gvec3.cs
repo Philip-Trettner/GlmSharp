@@ -100,6 +100,47 @@ namespace GlmSharp
             this.y = v.y;
             this.z = v.z;
         }
+        
+        /// <summary>
+        /// Generic from-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public gvec3(Object[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? default(T) : (T)v[0];
+            this.y = c < 1 ? default(T) : (T)v[1];
+            this.z = c < 2 ? default(T) : (T)v[2];
+        }
+        
+        /// <summary>
+        /// From-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public gvec3(T[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? default(T) : v[0];
+            this.y = c < 1 ? default(T) : v[1];
+            this.z = c < 2 ? default(T) : v[2];
+        }
+        
+        /// <summary>
+        /// From-array constructor with base index (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public gvec3(T[] v, int startIndex)
+        {
+            var c = v.Length;
+            this.x = c + startIndex < 0 ? default(T) : v[0 + startIndex];
+            this.y = c + startIndex < 1 ? default(T) : v[1 + startIndex];
+            this.z = c + startIndex < 2 ? default(T) : v[2 + startIndex];
+        }
+        
+        /// <summary>
+        /// From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public gvec3(IEnumerable<T> v)
+            : this(new List<T>(v).ToArray())
+        {
+        }
 
         #endregion
 
@@ -115,6 +156,16 @@ namespace GlmSharp
         /// Explicitly converts this to a gvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator gvec4<T>(gvec3<T> v) => new gvec4<T>((T)v.x, (T)v.y, (T)v.z, default(T));
+        
+        /// <summary>
+        /// Explicitly converts this to a T array.
+        /// </summary>
+        public static explicit operator T[](gvec3<T> v) => new [] { v.x, v.y, v.z };
+        
+        /// <summary>
+        /// Explicitly converts this to a generic object array.
+        /// </summary>
+        public static explicit operator Object[](gvec3<T> v) => new Object[] { v.x, v.y, v.z };
 
         #endregion
 

@@ -85,6 +85,54 @@ namespace GlmSharp
             this.x = v.x;
             this.y = v.y;
         }
+        
+        /// <summary>
+        /// From-array/list constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec2(IReadOnlyList<int> v)
+        {
+            var c = v.Count;
+            this.x = c < 0 ? 0 : v[0];
+            this.y = c < 1 ? 0 : v[1];
+        }
+        
+        /// <summary>
+        /// Generic from-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec2(Object[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0 : (int)v[0];
+            this.y = c < 1 ? 0 : (int)v[1];
+        }
+        
+        /// <summary>
+        /// From-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec2(int[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0 : v[0];
+            this.y = c < 1 ? 0 : v[1];
+        }
+        
+        /// <summary>
+        /// From-array constructor with base index (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec2(int[] v, int startIndex)
+        {
+            var c = v.Length;
+            this.x = c + startIndex < 0 ? 0 : v[0 + startIndex];
+            this.y = c + startIndex < 1 ? 0 : v[1 + startIndex];
+        }
+        
+        /// <summary>
+        /// From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public ivec2(IEnumerable<int> v)
+            : this(v.ToArray())
+        {
+        }
 
         #endregion
 
@@ -210,6 +258,16 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(ivec2 v) => new bvec4(v.x != 0, v.y != 0, false, false);
+        
+        /// <summary>
+        /// Explicitly converts this to a int array.
+        /// </summary>
+        public static explicit operator int[](ivec2 v) => new [] { v.x, v.y };
+        
+        /// <summary>
+        /// Explicitly converts this to a generic object array.
+        /// </summary>
+        public static explicit operator Object[](ivec2 v) => new Object[] { v.x, v.y };
 
         #endregion
 

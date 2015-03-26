@@ -7,6 +7,7 @@ using System.Runtime.Serialization;
 using System.Numerics;
 using System.Linq;
 using NUnit.Framework;
+using Newtonsoft.Json;
 using GlmSharp;
 
 // ReSharper disable InconsistentNaming
@@ -135,6 +136,19 @@ namespace GlmSharpTest.Generated.Vec3
             
             var s0 = v.ToString();
             var s1 = v.ToString("#");
+        }
+
+        [Test]
+        public void SerializationJson()
+        {
+            var v0 = new gvec3<string>("((94)9)", "-5", "-5");
+            var s0 = JsonConvert.SerializeObject(v0);
+            
+            var v1 = JsonConvert.DeserializeObject<gvec3<string>>(s0);
+            var s1 = JsonConvert.SerializeObject(v1);
+            
+            Assert.AreEqual(v0, v1);
+            Assert.AreEqual(s0, s1);
         }
 
     }

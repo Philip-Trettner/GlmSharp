@@ -140,6 +140,62 @@ namespace GlmSharp
             this.z = v.z;
             this.w = v.w;
         }
+        
+        /// <summary>
+        /// From-array/list constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public decvec4(IReadOnlyList<decimal> v)
+        {
+            var c = v.Count;
+            this.x = c < 0 ? 0m : v[0];
+            this.y = c < 1 ? 0m : v[1];
+            this.z = c < 2 ? 0m : v[2];
+            this.w = c < 3 ? 0m : v[3];
+        }
+        
+        /// <summary>
+        /// Generic from-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public decvec4(Object[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0m : (decimal)v[0];
+            this.y = c < 1 ? 0m : (decimal)v[1];
+            this.z = c < 2 ? 0m : (decimal)v[2];
+            this.w = c < 3 ? 0m : (decimal)v[3];
+        }
+        
+        /// <summary>
+        /// From-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public decvec4(decimal[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0m : v[0];
+            this.y = c < 1 ? 0m : v[1];
+            this.z = c < 2 ? 0m : v[2];
+            this.w = c < 3 ? 0m : v[3];
+        }
+        
+        /// <summary>
+        /// From-array constructor with base index (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public decvec4(decimal[] v, int startIndex)
+        {
+            var c = v.Length;
+            this.x = c + startIndex < 0 ? 0m : v[0 + startIndex];
+            this.y = c + startIndex < 1 ? 0m : v[1 + startIndex];
+            this.z = c + startIndex < 2 ? 0m : v[2 + startIndex];
+            this.w = c + startIndex < 3 ? 0m : v[3 + startIndex];
+        }
+        
+        /// <summary>
+        /// From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public decvec4(IEnumerable<decimal> v)
+            : this(v.ToArray())
+        {
+        }
 
         #endregion
 
@@ -260,6 +316,16 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4.
         /// </summary>
         public static explicit operator bvec4(decvec4 v) => new bvec4(v.x != 0m, v.y != 0m, v.z != 0m, v.w != 0m);
+        
+        /// <summary>
+        /// Explicitly converts this to a decimal array.
+        /// </summary>
+        public static explicit operator decimal[](decvec4 v) => new [] { v.x, v.y, v.z, v.w };
+        
+        /// <summary>
+        /// Explicitly converts this to a generic object array.
+        /// </summary>
+        public static explicit operator Object[](decvec4 v) => new Object[] { v.x, v.y, v.z, v.w };
 
         #endregion
 

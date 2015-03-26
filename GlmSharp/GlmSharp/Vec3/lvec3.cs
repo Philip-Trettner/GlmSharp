@@ -106,6 +106,58 @@ namespace GlmSharp
             this.y = v.y;
             this.z = v.z;
         }
+        
+        /// <summary>
+        /// From-array/list constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public lvec3(IReadOnlyList<long> v)
+        {
+            var c = v.Count;
+            this.x = c < 0 ? 0 : v[0];
+            this.y = c < 1 ? 0 : v[1];
+            this.z = c < 2 ? 0 : v[2];
+        }
+        
+        /// <summary>
+        /// Generic from-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public lvec3(Object[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0 : (long)v[0];
+            this.y = c < 1 ? 0 : (long)v[1];
+            this.z = c < 2 ? 0 : (long)v[2];
+        }
+        
+        /// <summary>
+        /// From-array constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public lvec3(long[] v)
+        {
+            var c = v.Length;
+            this.x = c < 0 ? 0 : v[0];
+            this.y = c < 1 ? 0 : v[1];
+            this.z = c < 2 ? 0 : v[2];
+        }
+        
+        /// <summary>
+        /// From-array constructor with base index (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public lvec3(long[] v, int startIndex)
+        {
+            var c = v.Length;
+            this.x = c + startIndex < 0 ? 0 : v[0 + startIndex];
+            this.y = c + startIndex < 1 ? 0 : v[1 + startIndex];
+            this.z = c + startIndex < 2 ? 0 : v[2 + startIndex];
+        }
+        
+        /// <summary>
+        /// From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled).
+        /// </summary>
+        public lvec3(IEnumerable<long> v)
+            : this(v.ToArray())
+        {
+        }
 
         #endregion
 
@@ -231,6 +283,16 @@ namespace GlmSharp
         /// Explicitly converts this to a bvec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator bvec4(lvec3 v) => new bvec4(v.x != 0, v.y != 0, v.z != 0, false);
+        
+        /// <summary>
+        /// Explicitly converts this to a long array.
+        /// </summary>
+        public static explicit operator long[](lvec3 v) => new [] { v.x, v.y, v.z };
+        
+        /// <summary>
+        /// Explicitly converts this to a generic object array.
+        /// </summary>
+        public static explicit operator Object[](lvec3 v) => new Object[] { v.x, v.y, v.z };
 
         #endregion
 
