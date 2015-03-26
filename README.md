@@ -4,6 +4,21 @@ Open-source MIT-licensed C#/.NET math library for small vectors and matrices.
 
 The naming and behavior is inspired by the excellent [OpenGL Mathematics](http://glm.g-truc.net/) lib by Christophe Riccio.
 
+## Example
+
+```C#
+vec3 v = new vec3(0, 1, 0);
+vec3 left = vec3.Cross(v, new vec3(2f));
+
+mat4 view = mat4.LookAt(vec3.Ones, vec3.Zero, vec3.UnitY);
+vec4 v4 = view.Inverse * new vec4(v, 0f);
+
+v4 *= glm.Smoothstep(0.2f, 0.4f, v.Length);
+
+string s = v4.ToString();
+vec4 vv = vec4.Parse(s);
+```
+
 ## NuGet
 
 Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
