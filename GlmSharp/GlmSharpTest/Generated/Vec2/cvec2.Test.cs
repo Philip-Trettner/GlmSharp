@@ -3166,5 +3166,425 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.That(s2.Length > 0);
         }
 
+        [Test]
+        public void InvariantId()
+        {
+            {
+                var v0 = new cvec2(new Complex(-2.5d, -8), new Complex(-4, 8));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(6.5d, -1), new Complex(1.5d, 5));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-9, 0.5d), new Complex(2.5d, 1.0));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(8.5d, 9), new Complex(-4.5d, 6));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(6, -3.5d), new Complex(4, 6));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(1.5d, 4), new Complex(9, -3));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(1.0, 1.5d), new Complex(3.5d, 9));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(2, -8), new Complex(4, -1));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3, -7), new Complex(-7, 6.5d));
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3, 7.5d), new Complex(-5, 0.0));
+                Assert.AreEqual(v0, +v0);
+            }
+        }
+
+        [Test]
+        public void InvariantDouble()
+        {
+            {
+                var v0 = new cvec2(new Complex(-7, 0.5d), new Complex(2.5d, -4));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-7.5d, -9), new Complex(-3, -4.5d));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-2.5d, -7.5d), new Complex(9, -5));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3, 7), new Complex(3, 6.5d));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3.5d, -6.5d), new Complex(0.5d, -5.5d));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(0.0, -4.5d), new Complex(-1, 0.5d));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(6, 3), new Complex(2.5d, 5));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-1.5d, 7), new Complex(-9, -2));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(9, 7), new Complex(-2, -1.5d));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(1.0, -5.5d), new Complex(-2.5d, 1.0));
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantTriple()
+        {
+            {
+                var v0 = new cvec2(new Complex(-8, 7.5d), new Complex(-8, 4));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(6.5d, -1), new Complex(-1.5d, 6));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(9, -4.5d), new Complex(-6.5d, -1.5d));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-4.5d, 1.0), new Complex(-1, 2.5d));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(5.5d, 2), new Complex(0.0, 8));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(9.5d, -2), new Complex(1.0, 7.5d));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-1.5d, 4.5d), new Complex(-8.5d, 5.5d));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-5.5d, 8), new Complex(9.5d, 5));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-5, -1), new Complex(3.5d, -6));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-7, -9), new Complex(-4, 9));
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantCommutative()
+        {
+            {
+                var v0 = new cvec2(new Complex(-9, 8.5d), new Complex(-9, 9.5d));
+                var v1 = new cvec2(new Complex(9.5d, 8.5d), new Complex(6.5d, 3));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3, 5.5d), new Complex(2, 7.5d));
+                var v1 = new cvec2(new Complex(-9, 1.5d), new Complex(2.5d, -9));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(0.5d, -2.5d), new Complex(5.5d, 9.5d));
+                var v1 = new cvec2(new Complex(3.5d, 7.5d), new Complex(1.5d, 9));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-7.5d, -1.5d), new Complex(-5.5d, -5));
+                var v1 = new cvec2(new Complex(0.0, 2.5d), new Complex(8, -6));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-9.5d, -1), new Complex(-0.5d, -5.5d));
+                var v1 = new cvec2(new Complex(6.5d, 8.5d), new Complex(2.5d, -1.5d));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-4.5d, 4), new Complex(0.0, 3.5d));
+                var v1 = new cvec2(new Complex(-7, 3.5d), new Complex(-3.5d, -3.5d));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-6.5d, 0.5d), new Complex(-3, -1.5d));
+                var v1 = new cvec2(new Complex(-4.5d, 1.0), new Complex(-1.5d, 7.5d));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(-1, -5), new Complex(9, -7.5d));
+                var v1 = new cvec2(new Complex(4.5d, 1.5d), new Complex(8.5d, 5.5d));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(4.5d, -5.5d), new Complex(-4, 4));
+                var v1 = new cvec2(new Complex(-4.5d, -3), new Complex(-9, -8.5d));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new cvec2(new Complex(7.5d, 0.0), new Complex(-7.5d, 3));
+                var v1 = new cvec2(new Complex(-3.5d, 0.0), new Complex(-6.5d, -3.5d));
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantAssociative()
+        {
+            {
+                var v0 = new cvec2(new Complex(8, -3.5d), new Complex(-9, -9.5d));
+                var v1 = new cvec2(new Complex(-2.5d, -6.5d), new Complex(4, 9.5d));
+                var v2 = new cvec2(new Complex(-5, -1.5d), new Complex(4.5d, -1));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(5.5d, 5), new Complex(3.5d, -2));
+                var v1 = new cvec2(new Complex(-2, -3), new Complex(7, -2.5d));
+                var v2 = new cvec2(new Complex(-5.5d, -7), new Complex(-6.5d, 0.0));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(3, -7), new Complex(0.5d, 4.5d));
+                var v1 = new cvec2(new Complex(-7.5d, 6), new Complex(0.0, 8.5d));
+                var v2 = new cvec2(new Complex(2, 6), new Complex(-4, 6));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(3, 7), new Complex(3, -6.5d));
+                var v1 = new cvec2(new Complex(-8.5d, -6.5d), new Complex(3, 5));
+                var v2 = new cvec2(new Complex(-8, 3), new Complex(5, -8.5d));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(0.5d, 6), new Complex(-7, -5.5d));
+                var v1 = new cvec2(new Complex(-9.5d, -9), new Complex(-8, 2.5d));
+                var v2 = new cvec2(new Complex(6, 9), new Complex(-1.5d, 0.5d));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(5.5d, 9.5d), new Complex(3, -1.5d));
+                var v1 = new cvec2(new Complex(-7.5d, 3), new Complex(7.5d, 4));
+                var v2 = new cvec2(new Complex(-0.5d, -9.5d), new Complex(9, 4));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(2, -9.5d), new Complex(0.0, 8.5d));
+                var v1 = new cvec2(new Complex(-2.5d, -1.5d), new Complex(3.5d, 0.0));
+                var v2 = new cvec2(new Complex(-6.5d, 6.5d), new Complex(-6, -3));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(9, -1), new Complex(-7, -7.5d));
+                var v1 = new cvec2(new Complex(-1, 3), new Complex(-0.5d, 0.5d));
+                var v2 = new cvec2(new Complex(6, 3.5d), new Complex(0.5d, 4));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-8.5d, -2), new Complex(9.5d, -1.5d));
+                var v1 = new cvec2(new Complex(-5, -1.5d), Complex.One);
+                var v2 = new cvec2(new Complex(-2, -3.5d), new Complex(-7, 7));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-1.5d, 1.0), new Complex(5, -9));
+                var v1 = new cvec2(new Complex(1.0, -5), new Complex(-8.5d, 9.5d));
+                var v2 = new cvec2(new Complex(-5, 2.5d), new Complex(8.5d, 4));
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+        }
+
+        [Test]
+        public void InvariantIdNeg()
+        {
+            {
+                var v0 = new cvec2(new Complex(7, -1), new Complex(2.5d, 8));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(1.5d, 2.5d), new Complex(7, 3.5d));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(3, 4), new Complex(4, -8));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-9, 3), new Complex(3, 2.5d));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(3, 2.5d), new Complex(-8, 0.5d));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(0.5d, -8.5d), new Complex(2, -6.5d));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-5, 2), new Complex(3, 5));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(6, 6.5d), new Complex(8, -1.5d));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(6, -2.5d), new Complex(-5, -9.5d));
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-8, -2.5d), new Complex(-6.5d, -5.5d));
+                Assert.AreEqual(v0, -(-v0));
+            }
+        }
+
+        [Test]
+        public void InvariantCommutativeNeg()
+        {
+            {
+                var v0 = new cvec2(new Complex(1.0, -0.5d), new Complex(7, 7.5d));
+                var v1 = new cvec2(new Complex(-6, -5.5d), new Complex(2, -9.5d));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-3.5d, -5), new Complex(1.0, -5.5d));
+                var v1 = new cvec2(new Complex(-5.5d, 0.5d), new Complex(3.5d, 7.5d));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-6, -3), new Complex(4.5d, -7));
+                var v1 = new cvec2(new Complex(3, 4), new Complex(4, -9));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(7.5d, 5), new Complex(7.5d, 4.5d));
+                var v1 = new cvec2(new Complex(-1.5d, 9), new Complex(3.5d, -8));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(7.5d, -9), new Complex(9.5d, -6.5d));
+                var v1 = new cvec2(new Complex(1.0, -8), new Complex(-4, 3.5d));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-1, -4), new Complex(-2, 7));
+                var v1 = new cvec2(new Complex(-5, 8.5d), new Complex(-9, 4.5d));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-5.5d, 7), new Complex(-1, -6));
+                var v1 = new cvec2(new Complex(-1, 1.5d), new Complex(6, 1.0));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(8, 5), new Complex(1.0, 8.5d));
+                var v1 = new cvec2(new Complex(3, -9.5d), new Complex(-7.5d, -6.5d));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(-8, 6), new Complex(8.5d, 4.5d));
+                var v1 = new cvec2(new Complex(4.5d, 8), new Complex(-5.5d, -2.5d));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new cvec2(new Complex(6, 7.5d), new Complex(-5.5d, 8.5d));
+                var v1 = new cvec2(new Complex(-6.5d, 0.0), new Complex(1.0, 6));
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+        }
+
+        [Test]
+        public void InvariantAssociativeNeg()
+        {
+            {
+                var v0 = new cvec2(new Complex(9, 9.5d), new Complex(8, -8));
+                var v1 = new cvec2(new Complex(7, -3.5d), new Complex(9.5d, 2.5d));
+                var v2 = new cvec2(new Complex(5.5d, -1.5d), new Complex(-3.5d, -1));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(2.5d, -6.5d), new Complex(3.5d, -4.5d));
+                var v1 = new cvec2(new Complex(6.5d, 6), new Complex(-8, -4.5d));
+                var v2 = new cvec2(new Complex(-6, 0.5d), new Complex(9, -5));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-6.5d, 7), new Complex(-8, -4.5d));
+                var v1 = new cvec2(new Complex(2, -6.5d), new Complex(0.0, 4));
+                var v2 = new cvec2(new Complex(-8.5d, 9), new Complex(-6, -4));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-7.5d, -9), new Complex(-8.5d, 7.5d));
+                var v1 = new cvec2(new Complex(-2, 9.5d), new Complex(7.5d, -2));
+                var v2 = new cvec2(new Complex(1.0, -7.5d), new Complex(-5, 4));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-4, -1.5d), new Complex(3, -4.5d));
+                var v1 = new cvec2(new Complex(-6.5d, 5.5d), new Complex(-7, 0.0));
+                var v2 = new cvec2(new Complex(-5.5d, -1), new Complex(-8.5d, 4.5d));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-3.5d, -8), new Complex(-7.5d, 1.5d));
+                var v1 = new cvec2(new Complex(3, -2.5d), new Complex(-2.5d, 7));
+                var v2 = new cvec2(new Complex(-1, 5), new Complex(-3.5d, 1.0));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-1, -6.5d), new Complex(-6.5d, -2.5d));
+                var v1 = new cvec2(new Complex(5, 8), new Complex(0.5d, 8));
+                var v2 = new cvec2(new Complex(-1, 3), new Complex(3, -0.5d));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(7.5d, 9.5d), new Complex(8, -6));
+                var v1 = new cvec2(new Complex(-1, 5), new Complex(2.5d, -2.5d));
+                var v2 = new cvec2(new Complex(4, -1.5d), new Complex(-8, -9));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(8, 6), new Complex(0.5d, -3.5d));
+                var v1 = new cvec2(new Complex(1.5d, -2.5d), new Complex(1.0, 4));
+                var v2 = new cvec2(new Complex(-2.5d, 3.5d), new Complex(-8, 4.5d));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(3.5d, 4.5d), new Complex(-3, -1.5d));
+                var v1 = new cvec2(new Complex(6, 4.5d), new Complex(3.5d, -8.5d));
+                var v2 = new cvec2(new Complex(-3.5d, 2), new Complex(2.5d, 0.0));
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+        }
+
     }
 }

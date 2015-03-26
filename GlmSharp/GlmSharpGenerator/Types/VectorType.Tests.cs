@@ -210,7 +210,6 @@ namespace GlmSharpGenerator.Types
                 yield return "";
                 yield return string.Format("Assert.AreEqual(v0, v1);");
                 yield return string.Format("Assert.AreEqual(s0, s1);");
-
             }
         }
 
@@ -224,6 +223,21 @@ namespace GlmSharpGenerator.Types
             yield return new TestFunc(this, "StringInterop", TestStringInterop);
             if (!BaseType.IsComplex)
                 yield return new TestFunc(this, "SerializationJson", SerializationJson);
+
+            if (BaseType.HasArithmetics)
+            {
+                yield return new InvariantTestFunc(this, "InvariantId", "$V0 == +$V0");
+                yield return new InvariantTestFunc(this, "InvariantDouble", "$V0 + $V0 == 2 * $V0");
+                yield return new InvariantTestFunc(this, "InvariantTriple", "$V0 + $V0 + $V0 == 3 * $V0");
+                yield return new InvariantTestFunc(this, "InvariantCommutative", "$V0 + $V1 == $V1 + $V0", "$V0 * $V1 == $V1 * $V0");
+                yield return new InvariantTestFunc(this, "InvariantAssociative", "$V0 * ($V1 + $V2) == $V0 * $V1 + $V0 * $V2");
+                if (BaseType.IsSigned)
+                {
+                    yield return new InvariantTestFunc(this, "InvariantIdNeg", "$V0 == -(-$V0)");
+                    yield return new InvariantTestFunc(this, "InvariantCommutativeNeg", "$V0 - $V1 == -($V1 - $V0)");
+                    yield return new InvariantTestFunc(this, "InvariantAssociativeNeg", "$V0 * ($V1 - $V2) == $V0 * $V1 - $V0 * $V2");
+                }
+            }
         }
     }
 }

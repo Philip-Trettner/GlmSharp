@@ -193,5 +193,260 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(s0, s1);
         }
 
+        [Test]
+        public void InvariantId()
+        {
+            {
+                var v0 = new uvec2(6, 3);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(0u, 5);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(4, 0u);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(1u, 1u);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(5, 5);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(5, 1u);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(5, 8);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(0u, 3);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(3, 8);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new uvec2(1u, 7);
+                Assert.AreEqual(v0, +v0);
+            }
+        }
+
+        [Test]
+        public void InvariantDouble()
+        {
+            {
+                var v0 = new uvec2(1u, 3);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(9, 0u);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(0u, 8);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(1u, 9);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(7, 3);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(3, 7);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(1u, 4);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(4, 4);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(3, 6);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new uvec2(2, 2);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantTriple()
+        {
+            {
+                var v0 = new uvec2(5, 4);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(5, 4);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(6, 8);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(3, 4);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(0u, 8);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(2, 6);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(4, 8);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(4, 6);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(4, 5);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new uvec2(2, 9);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantCommutative()
+        {
+            {
+                var v0 = new uvec2(3, 7);
+                var v1 = new uvec2(3, 9);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(9, 4);
+                var v1 = new uvec2(4, 1u);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(4, 2);
+                var v1 = new uvec2(0u, 5);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(1u, 8);
+                var v1 = new uvec2(6, 1u);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(1u, 5);
+                var v1 = new uvec2(6, 6);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(1u, 3);
+                var v1 = new uvec2(2, 7);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(2, 5);
+                var v1 = new uvec2(7, 1u);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(9, 6);
+                var v1 = new uvec2(8, 8);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(3, 4);
+                var v1 = new uvec2(5, 3);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new uvec2(7, 5);
+                var v1 = new uvec2(7, 6);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantAssociative()
+        {
+            {
+                var v0 = new uvec2(1u, 5);
+                var v1 = new uvec2(0u, 3);
+                var v2 = new uvec2(9, 6);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(1u, 6);
+                var v1 = new uvec2(0u, 3);
+                var v2 = new uvec2(3, 0u);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(3, 4);
+                var v1 = new uvec2(7, 3);
+                var v2 = new uvec2(0u, 6);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(2, 5);
+                var v1 = new uvec2(0u, 3);
+                var v2 = new uvec2(4, 7);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(1u, 8);
+                var v1 = new uvec2(7, 8);
+                var v2 = new uvec2(0u, 8);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(4, 5);
+                var v1 = new uvec2(9, 6);
+                var v2 = new uvec2(8, 9);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(6, 1u);
+                var v1 = new uvec2(0u, 5);
+                var v2 = new uvec2(4, 2);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(3, 7);
+                var v1 = new uvec2(7, 7);
+                var v2 = new uvec2(4, 8);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(4, 7);
+                var v1 = new uvec2(4, 9);
+                var v2 = new uvec2(8, 8);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new uvec2(0u, 7);
+                var v1 = new uvec2(0u, 3);
+                var v2 = new uvec2(2, 0u);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+        }
+
     }
 }

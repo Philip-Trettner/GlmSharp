@@ -247,5 +247,425 @@ namespace GlmSharpTest.Generated.Vec4
             Assert.AreEqual(s0, s1);
         }
 
+        [Test]
+        public void InvariantId()
+        {
+            {
+                var v0 = new ivec4(-1, -4, -9, -2);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(-7, -5, -7, 4);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(6, -2, -3, -2);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(9, 4, -3, 5);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(-2, 4, -5, -2);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(8, -7, -6, -6);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(9, -1, 8, -8);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(5, 0, 5, -6);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(5, 2, -2, -9);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new ivec4(1, 9, -4, -3);
+                Assert.AreEqual(v0, +v0);
+            }
+        }
+
+        [Test]
+        public void InvariantDouble()
+        {
+            {
+                var v0 = new ivec4(-1, 7, 8, 9);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(5, 5, 8, 8);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(9, 5, 2, -8);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(-4, 7, 1, 5);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(-8, 9, -2, 8);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(-7, 5, 1, -2);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(-5, -9, 9, 2);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(-4, 0, 4, -1);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(4, 1, 4, -8);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new ivec4(-5, 1, -8, -6);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantTriple()
+        {
+            {
+                var v0 = new ivec4(3, 7, -8, 0);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(-3, 5, 3, -9);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(3, -5, 3, 1);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(9, 0, 3, 2);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(-7, -1, -1, -6);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(6, -6, -9, -5);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(-4, -9, 4, -4);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(-2, 0, -4, 6);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(-2, 2, 6, -8);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new ivec4(3, 4, -1, 6);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantCommutative()
+        {
+            {
+                var v0 = new ivec4(-2, -3, 4, 2);
+                var v1 = new ivec4(2, 0, 4, 0);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(7, -6, 5, -4);
+                var v1 = new ivec4(-4, -4, -1, -5);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(8, 5, -2, 0);
+                var v1 = new ivec4(2, 2, -1, -3);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(-3, 1, -2, -3);
+                var v1 = new ivec4(-2, 4, -9, -4);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(6, 6, 7, 0);
+                var v1 = new ivec4(-4, -5, 5, -6);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(-8, -4, 8, -1);
+                var v1 = new ivec4(-7, -5, -4, 6);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(-5, -8, -6, 6);
+                var v1 = new ivec4(0, 2, -9, 9);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(1, -2, 9, 1);
+                var v1 = new ivec4(8, -1, 8, 2);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(-7, -2, 6, 6);
+                var v1 = new ivec4(5, -1, 1, -3);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new ivec4(0, -6, 1, 7);
+                var v1 = new ivec4(-3, 0, -5, -7);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantAssociative()
+        {
+            {
+                var v0 = new ivec4(6, 1, -2, 5);
+                var v1 = new ivec4(-9, -7, -9, 3);
+                var v2 = new ivec4(2, -4, -4, 4);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(-3, 6, -9, -6);
+                var v1 = new ivec4(-5, 9, -3, -7);
+                var v2 = new ivec4(-7, -2, -7, -6);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(8, 4, -2, 8);
+                var v1 = new ivec4(0, 5, -3, 0);
+                var v2 = new ivec4(6, -2, 8, 9);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(9, 2, 1, 7);
+                var v1 = new ivec4(7, -1, 9, -8);
+                var v2 = new ivec4(8, -8, -3, -2);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(9, -5, -5, 2);
+                var v1 = new ivec4(-7, -5, 3, -4);
+                var v2 = new ivec4(4, -5, -7, -5);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(5, 9, 3, -6);
+                var v1 = new ivec4(0, -3, -7, 0);
+                var v2 = new ivec4(-8, 8, 6, -2);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(8, 5, 8, 6);
+                var v1 = new ivec4(2, -8, 7, 9);
+                var v2 = new ivec4(-1, 0, -9, 4);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(-1, -1, 3, -2);
+                var v1 = new ivec4(7, -4, 5, -4);
+                var v2 = new ivec4(5, 5, 2, -7);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(6, -4, -7, -5);
+                var v1 = new ivec4(0, -3, -3, 1);
+                var v2 = new ivec4(8, 2, -3, -1);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new ivec4(5, -7, -2, 5);
+                var v1 = new ivec4(7, 6, 3, 5);
+                var v2 = new ivec4(-1, -8, 4, 9);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+        }
+
+        [Test]
+        public void InvariantIdNeg()
+        {
+            {
+                var v0 = new ivec4(6, 7, -4, 7);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-3, 2, -1, 8);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-8, -9, -7, -4);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-8, -3, -2, 0);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-7, -1, 0, 6);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-3, 5, -2, -1);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-4, 3, 7, 2);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-2, -3, 8, 6);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(2, 2, -4, 8);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new ivec4(-6, 4, -8, -6);
+                Assert.AreEqual(v0, -(-v0));
+            }
+        }
+
+        [Test]
+        public void InvariantCommutativeNeg()
+        {
+            {
+                var v0 = new ivec4(3, -6, 6, 4);
+                var v1 = new ivec4(4, 1, -4, 4);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(4, 6, 3, -5);
+                var v1 = new ivec4(9, -1, 1, -3);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(-2, 3, -2, 2);
+                var v1 = new ivec4(-2, -6, -6, 2);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(5, 1, 7, 3);
+                var v1 = new ivec4(1, -3, -7, 9);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(4, -3, -1, -8);
+                var v1 = new ivec4(-2, -4, -8, -2);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(-4, -1, 3, 0);
+                var v1 = new ivec4(-7, -3, -2, 3);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(1, -5, -6, -7);
+                var v1 = new ivec4(9, 4, -1, 6);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(0, 3, -9, 3);
+                var v1 = new ivec4(-4, -1, 2, -2);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(9, -4, -1, -6);
+                var v1 = new ivec4(-9, 3, 0, -8);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new ivec4(4, 0, 7, 0);
+                var v1 = new ivec4(-2, -5, 5, -3);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+        }
+
+        [Test]
+        public void InvariantAssociativeNeg()
+        {
+            {
+                var v0 = new ivec4(7, -2, -3, -4);
+                var v1 = new ivec4(0, 4, 0, 8);
+                var v2 = new ivec4(2, 6, -5, -8);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(-2, 2, -4, 2);
+                var v1 = new ivec4(-5, 0, 8, -2);
+                var v2 = new ivec4(-8, -6, -4, 1);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(-8, 0, 1, 4);
+                var v1 = new ivec4(-8, -6, 4, -6);
+                var v2 = new ivec4(1, 0, 8, 4);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(-7, -3, 4, -7);
+                var v1 = new ivec4(1, 0, -4, 0);
+                var v2 = new ivec4(-5, -4, -4, 6);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(5, -4, -3, 8);
+                var v1 = new ivec4(-1, 5, 8, -1);
+                var v2 = new ivec4(-8, -2, -5, -9);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(2, -6, 9, 5);
+                var v1 = new ivec4(2, -9, -6, -2);
+                var v2 = new ivec4(-3, 8, 4, 1);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(-5, -1, -1, -8);
+                var v1 = new ivec4(1, -3, 5, 3);
+                var v2 = new ivec4(5, -5, -9, 3);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(3, -5, 4, -6);
+                var v1 = new ivec4(-2, -7, 6, 5);
+                var v2 = new ivec4(-7, 5, -4, 5);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(9, 7, -8, -6);
+                var v1 = new ivec4(-8, 2, -3, -6);
+                var v2 = new ivec4(9, -1, -3, -9);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new ivec4(-4, -1, 9, 5);
+                var v1 = new ivec4(5, -1, -3, 7);
+                var v2 = new ivec4(-6, 6, 2, 6);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+        }
+
     }
 }

@@ -272,5 +272,425 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(s0, s1);
         }
 
+        [Test]
+        public void InvariantId()
+        {
+            {
+                var v0 = new decvec3(0m, -1, 3);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(-0.5m, -0.5m, 0.5m);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(4.5m, 2, 4.5m);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(-5, 9, 0m);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(0m, 8.5m, 6);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(-7, -6.5m, 4);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(3, -4, 7.5m);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(-2.5m, 1.5m, -6.5m);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(-5, 6, -9);
+                Assert.AreEqual(v0, +v0);
+            }
+            {
+                var v0 = new decvec3(-6.5m, -5.5m, 3);
+                Assert.AreEqual(v0, +v0);
+            }
+        }
+
+        [Test]
+        public void InvariantDouble()
+        {
+            {
+                var v0 = new decvec3(3, 4.5m, -5);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(-5, -7, -2);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(-6, -2.5m, 8.5m);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(-9.5m, -7.5m, -9.5m);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(7, -3.5m, -6.5m);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(6, 9.5m, -4.5m);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(-2, -2.5m, -5);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(-9, 5, 4.5m);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(5.5m, -5, -9.5m);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+            {
+                var v0 = new decvec3(-8.5m, -7, 7.5m);
+                Assert.AreEqual(v0 + v0, 2 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantTriple()
+        {
+            {
+                var v0 = new decvec3(1.5m, -5, 3);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(-3.5m, -9.5m, -7.5m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(-8.5m, -1.5m, -6.5m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(-1, -8, 3.5m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(-2.5m, -2.5m, -1.5m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(-2, -4.5m, -9.5m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(6, -3, 0m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(7, -2, 0.5m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(0.5m, 7.5m, -4);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+            {
+                var v0 = new decvec3(-9.5m, -3, 3.5m);
+                Assert.AreEqual(v0 + v0 + v0, 3 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantCommutative()
+        {
+            {
+                var v0 = new decvec3(-3.5m, -3, -7);
+                var v1 = new decvec3(5.5m, -9, -3);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(1.5m, -8, -3);
+                var v1 = new decvec3(1m, 7.5m, 2);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(-5, 1.5m, 5);
+                var v1 = new decvec3(-4, 1m, 7);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(-9.5m, -3.5m, -2);
+                var v1 = new decvec3(8.5m, 0.5m, -1);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(4, -3, -9);
+                var v1 = new decvec3(-2, -8, 9.5m);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(-1, 0m, -1.5m);
+                var v1 = new decvec3(8.5m, -9.5m, -4.5m);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(-3, 9, -3);
+                var v1 = new decvec3(8, -7, -7);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(-6, 4.5m, -5);
+                var v1 = new decvec3(-9.5m, 4, -5);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(-2, 0m, 8);
+                var v1 = new decvec3(-1.5m, -3, 1m);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+            {
+                var v0 = new decvec3(9.5m, -2.5m, -7.5m);
+                var v1 = new decvec3(6, 1.5m, 5);
+                Assert.AreEqual(v0 * v1, v1 * v0);
+            }
+        }
+
+        [Test]
+        public void InvariantAssociative()
+        {
+            {
+                var v0 = new decvec3(5.5m, -8.5m, -9.5m);
+                var v1 = new decvec3(6, 4, 5.5m);
+                var v2 = new decvec3(8.5m, -6, -5.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(7.5m, 5, 1.5m);
+                var v1 = new decvec3(4, -4.5m, -7);
+                var v2 = new decvec3(-0.5m, 2.5m, -3.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-3, 4, -6);
+                var v1 = new decvec3(2.5m, 6.5m, 2);
+                var v2 = new decvec3(-6.5m, -4.5m, -6.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(3.5m, -0.5m, 9);
+                var v1 = new decvec3(-8.5m, -4.5m, 6.5m);
+                var v2 = new decvec3(-1.5m, -4.5m, 6.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(3.5m, 4.5m, -9.5m);
+                var v1 = new decvec3(-8.5m, 4, 5);
+                var v2 = new decvec3(3, -8.5m, 2);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-4.5m, 1.5m, 4.5m);
+                var v1 = new decvec3(-6, -5.5m, -3.5m);
+                var v2 = new decvec3(-2, -1.5m, -6.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-4, 3, -4.5m);
+                var v1 = new decvec3(-7, -5.5m, -9.5m);
+                var v2 = new decvec3(-3, 4, -2.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-4, -6, -8.5m);
+                var v1 = new decvec3(4.5m, -7, 9.5m);
+                var v2 = new decvec3(-8.5m, 6.5m, 7.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(5, 2.5m, 9.5m);
+                var v1 = new decvec3(-1, -1.5m, -5);
+                var v2 = new decvec3(0m, 7.5m, 4.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-0.5m, -8, 4);
+                var v1 = new decvec3(-5.5m, 9, 6.5m);
+                var v2 = new decvec3(-3, -4, -7.5m);
+                Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
+            }
+        }
+
+        [Test]
+        public void InvariantIdNeg()
+        {
+            {
+                var v0 = new decvec3(4.5m, 4.5m, -5.5m);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(9, 3.5m, 6);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(-7.5m, -3.5m, -6);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(7, -2, -2);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(-6, 7.5m, 2);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(6.5m, 6.5m, -1.5m);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(-1.5m, -5.5m, 5);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(-9.5m, -3.5m, 1.5m);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(4.5m, -5.5m, -5);
+                Assert.AreEqual(v0, -(-v0));
+            }
+            {
+                var v0 = new decvec3(-8.5m, -3, -5.5m);
+                Assert.AreEqual(v0, -(-v0));
+            }
+        }
+
+        [Test]
+        public void InvariantCommutativeNeg()
+        {
+            {
+                var v0 = new decvec3(-1.5m, -1, 8);
+                var v1 = new decvec3(4, -6, 3);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(-1.5m, -7, -1.5m);
+                var v1 = new decvec3(-5.5m, -5.5m, -4);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(8.5m, 2.5m, -6.5m);
+                var v1 = new decvec3(-8.5m, -2.5m, -3);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(-2, -5, 5);
+                var v1 = new decvec3(0m, 4.5m, -6);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(-7, -9, -4);
+                var v1 = new decvec3(-8.5m, 0.5m, -5.5m);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(-0.5m, 2, 2.5m);
+                var v1 = new decvec3(0.5m, 0.5m, -1);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(7.5m, -8, -6);
+                var v1 = new decvec3(-0.5m, -8, 7);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(2.5m, -3.5m, -9.5m);
+                var v1 = new decvec3(-3, -0.5m, -7);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(9.5m, -7.5m, -0.5m);
+                var v1 = new decvec3(0m, -5, 3);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+            {
+                var v0 = new decvec3(-1.5m, -1.5m, -7);
+                var v1 = new decvec3(2.5m, -1.5m, 7.5m);
+                Assert.AreEqual(v0 - v1, -(v1 - v0));
+            }
+        }
+
+        [Test]
+        public void InvariantAssociativeNeg()
+        {
+            {
+                var v0 = new decvec3(-6.5m, 6, -5);
+                var v1 = new decvec3(8.5m, 5, -5.5m);
+                var v2 = new decvec3(-0.5m, -1, -5.5m);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-1.5m, 5.5m, 0m);
+                var v1 = new decvec3(-8.5m, -6.5m, 6);
+                var v2 = new decvec3(-3, 1.5m, 2);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-2, -8.5m, -8);
+                var v1 = new decvec3(7, -6.5m, -8);
+                var v2 = new decvec3(-8.5m, 5.5m, -9.5m);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(1m, 1m, 9.5m);
+                var v1 = new decvec3(0m, 1m, -1.5m);
+                var v2 = new decvec3(5.5m, -4, 8.5m);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-8.5m, 0.5m, -2);
+                var v1 = new decvec3(2, -0.5m, -4);
+                var v2 = new decvec3(3, 4, -9);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(7.5m, -8.5m, -4);
+                var v1 = new decvec3(-3, 6, -9.5m);
+                var v2 = new decvec3(-0.5m, -2, -2);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(7, -6, -6.5m);
+                var v1 = new decvec3(7.5m, -7, 9);
+                var v2 = new decvec3(3, -1.5m, 8);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(-5.5m, -1.5m, 3.5m);
+                var v1 = new decvec3(-2, -4.5m, 9);
+                var v2 = new decvec3(8, 1.5m, 1m);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(0.5m, 9, 1.5m);
+                var v1 = new decvec3(3, 4, -9);
+                var v2 = new decvec3(8.5m, -5.5m, -5);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+            {
+                var v0 = new decvec3(6, -1.5m, 5.5m);
+                var v1 = new decvec3(-9.5m, -1, 0.5m);
+                var v2 = new decvec3(-7, -1.5m, 8.5m);
+                Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
+            }
+        }
+
     }
 }
