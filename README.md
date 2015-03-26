@@ -23,7 +23,11 @@ vec4 vv = vec4.Parse(s);
 
 Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
 
-> PM> Install-Package GlmSharp
+```
+
+PM> Install-Package GlmSharp
+
+```
 
 Current version: _0.9.7_
 
