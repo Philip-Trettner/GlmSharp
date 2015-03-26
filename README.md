@@ -115,3 +115,4 @@ This library is MIT-licensed.
 * inline-swizzle and swizzle as L-ref?
 * noise functions
 * random extensions
+* explicit JSON support
