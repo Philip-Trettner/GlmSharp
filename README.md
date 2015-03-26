@@ -10,7 +10,7 @@ Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
 
 > PM> Install-Package GlmSharp
 
-Current version: _0.9.5_
+Current version: _0.9.6_
 
 ## Overview
 
@@ -116,4 +116,3 @@ This library is MIT-licensed.
 * noise functions
 * random extensions
 * explicit JSON support
-* serialization tests

@@ -3,7 +3,7 @@
   <metadata>
     <id>GlmSharp</id>
     <title>GlmSharp</title>
-    <version>0.9.5</version>
+    <version>0.9.6</version>
     <authors>Philip Trettner</authors>
     <owners>Philip Trettner</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,7 +12,7 @@
     <description>
 C#/.NET math library for small vectors and matrices.
 
-Supported types: vec2, vec3, vec4, mat2, mat3, mat4, non-quadratic mats.
+Supported types: vec2, vec3, vec4, quat, mat2, mat3, mat4, non-quadratic mats.
 
 Supported base types: int, uint, long, float, double, decimal, complex, long, bool, generic T.
 
