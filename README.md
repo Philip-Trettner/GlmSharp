@@ -10,7 +10,7 @@ Install via [NuGet](https://www.nuget.org/packages/GlmSharp/):
 
 > PM> Install-Package GlmSharp
 
-Current version: _0.9.6_
+Current version: _0.9.7_
 
 ## Overview
 
@@ -75,6 +75,7 @@ Starting with .NET 4.5, `System.Numerics.Complex` and `IReadOnlyList<T>` are sup
 * Marshalling via `[StructLayout(LayoutKind.Sequential)]`
 * Quaternions
 * Support for .NET 2.0 (with new features since .NET 4.5)
+* Aggregated functionality in static `glm` class
 * Generated library
 
 
@@ -107,7 +108,6 @@ This library is MIT-licensed.
 ## TODO-List
 
 * test generation
-* basetype functions (e.g. Smoothstep on floats)
 * ToString, Parse, TryParse for matrices
 * some GLU functions (e.g. PickMatrix)
 * advanced glsl/glm functions

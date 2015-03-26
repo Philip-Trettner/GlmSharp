@@ -3,10 +3,11 @@
   <metadata>
     <id>GlmSharp</id>
     <title>GlmSharp</title>
-    <version>0.9.6</version>
+    <version>0.9.7</version>
     <authors>Philip Trettner</authors>
     <owners>Philip Trettner</owners>
-    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <licenseUrl>https://dl.dropboxusercontent.com/u/443720/GlmSharp/License.txt</licenseUrl>
+    <iconUrl>https://dl.dropboxusercontent.com/u/443720/GlmSharp/Icon.png</iconUrl>
     <projectUrl>https://github.com/Philip-Trettner/GlmSharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>
