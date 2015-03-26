@@ -81,6 +81,7 @@ namespace GlmSharpGenerator.Types
         /// Folder with trailing /
         /// </summary>
         public string PathOf(string basePath) => string.IsNullOrEmpty(Folder) ? Path.Combine(basePath, Name + ".cs") : Path.Combine(basePath, Folder, Name + ".cs");
+        public string GlmPathOf(string basePath) => string.IsNullOrEmpty(Folder) ? Path.Combine(basePath, Name + ".cs") : Path.Combine(basePath, Folder, Name + ".glm.cs");
         public string TestPathOf(string basePath) => string.IsNullOrEmpty(Folder) ? Path.Combine(basePath, Name + ".cs") : Path.Combine(basePath, Folder, Name + ".Test.cs");
 
         /// <summary>
@@ -109,6 +110,7 @@ namespace GlmSharpGenerator.Types
         private Indexer[] indexer;
         private ComponentWiseStaticFunction[] componentWiseStaticFunctions;
         private ComponentWiseOperator[] componentWiseOp;
+        private Member[] glmMembers;
 
         /// <summary>
         /// Generate all members
@@ -125,6 +127,9 @@ namespace GlmSharpGenerator.Types
             if (members.Any(m => string.IsNullOrEmpty(m.Comment)))
                 throw new InvalidOperationException("Missing comment");
 
+            foreach (var member in members)
+                member.OriginalType = this;
+
             fields = members.OfType<Field>().ToArray();
             constructors = members.OfType<Constructor>().ToArray();
             properties = members.Where(m => !m.Static).OfType<Property>().ToArray();
@@ -137,6 +142,8 @@ namespace GlmSharpGenerator.Types
             indexer = members.OfType<Indexer>().ToArray();
             componentWiseStaticFunctions = members.OfType<ComponentWiseStaticFunction>().ToArray();
             componentWiseOp = members.OfType<ComponentWiseOperator>().ToArray();
+
+            glmMembers = members.SelectMany(m => m.GlmMembers()).ToArray();
         }
 
         /// <summary>
@@ -200,6 +207,41 @@ namespace GlmSharpGenerator.Types
                     yield return "}".Indent(2);
                 }
                 TestMode = false;
+                yield return "";
+                yield return "    }";
+                yield return "}";
+            }
+        }
+
+        public IEnumerable<string> GlmSharpFile
+        {
+            get
+            {
+                yield return "using System;";
+                yield return "using System.Collections;";
+                yield return "using System.Collections.Generic;";
+                yield return "using System.Globalization;";
+                yield return "using System.Runtime.InteropServices;";
+                yield return "using System.Runtime.Serialization;";
+                if (Version >= 40)
+                {
+                    yield return "using System.Numerics;";
+                    yield return "using System.Linq;";
+                }
+                yield return "using GlmSharp.Swizzle;";
+                yield return "";
+                yield return "// ReSharper disable InconsistentNaming";
+                yield return "";
+                yield return "namespace " + Namespace;
+                yield return "{";
+                yield return "    /// <summary>";
+                yield return "    /// Static class that contains static glm functions";
+                yield return "    /// </summary>";
+                yield return "    public static partial class glm";
+                yield return "    {";
+                foreach (var member in glmMembers)
+                    foreach (var line in member.Lines)
+                        yield return line.Indent(2);
                 yield return "";
                 yield return "    }";
                 yield return "}";

@@ -20,6 +20,10 @@ namespace GlmSharpGenerator
             return true;
         }
 
+        public static IEnumerable<string> ArgNames(this IEnumerable<string> paras) => paras.CommaSeparated().Split(',').Select(p => p.Split(' ').Last()).ToArray();
+        public static IEnumerable<string> ParasRecovered(this IEnumerable<string> paras) => paras.CommaSeparated().Split(',').ToArray();
+        //=> paras.Select(p => p.Split(' ').Last());
+
         private static string NestedSymmetricFunction(IReadOnlyList<string> fields, string funcFormat, int start, int end)
         {
             if (start == end)

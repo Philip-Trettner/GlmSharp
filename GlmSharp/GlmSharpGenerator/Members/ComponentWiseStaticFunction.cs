@@ -26,7 +26,7 @@ namespace GlmSharpGenerator.Members
         /// If true, parameter 2 could be scalar
         /// </summary>
         public bool CanScalar2 { get; set; } = true;
-        
+
 
         /// <summary>
         /// string.Format-compatible string for each component
@@ -48,7 +48,7 @@ namespace GlmSharpGenerator.Members
         /// Fields
         /// </summary>
         public IEnumerable<string> Fields { get; set; }
-        
+
         private void BuildComment()
         {
             Comment = "Returns a " + ReturnType.Name + " from component-wise application of " + Name + " (" + (!string.IsNullOrEmpty(AdditionalComment) ? AdditionalComment : string.Format(CompString, ParameterNames.OfType<object>().ToArray())) + ").";
@@ -141,6 +141,31 @@ namespace GlmSharpGenerator.Members
                 };
             }
             return info;
+        }
+
+        public override IEnumerable<Member> GlmMembers()
+        {
+            BuildComment();
+            yield return new Function(ReturnType, Name + OriginalType.GenericSuffix)
+            {
+                Static = true,
+                Comment = Comment,
+                Parameters = ParameterNames.Select((p, i) => ParameterTypes[i].NameThat + " " + p),
+                CodeString = string.Format("{0}.{1}({2})", OriginalType.NameThat, Name, ParameterNames.CommaSeparated())
+            };
+
+            // scalar version
+            if (OriginalType is VectorType && ((VectorType)OriginalType).Components == 3 &&
+                CanScalar0 && CanScalar1 && CanScalar2)
+            {
+                yield return new Function(ReturnType.BaseType ?? ReturnType, Name + OriginalType.GenericSuffix)
+                {
+                    Static = true,
+                    Comment = Comment,
+                    Parameters = ParameterNames.Select((p, i) => (ParameterTypes[i].BaseType ?? ParameterTypes[i]).NameThat + " " + p),
+                    CodeString = string.Format(CompString, ParameterNames.OfType<object>().ToArray())
+                };
+            }
         }
 
         public override IEnumerable<string> Lines

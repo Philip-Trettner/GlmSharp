@@ -33,7 +33,7 @@ namespace GlmSharpGenerator.Members
         /// Code as a string
         /// </summary>
         public string CodeString { set { Code = new[] { value }; } }
-        
+
         /// <summary>
         /// True if override property
         /// </summary>
@@ -48,6 +48,51 @@ namespace GlmSharpGenerator.Members
         {
             ReturnType = returnType;
             Name = name;
+        }
+
+        public override IEnumerable<Member> GlmMembers()
+        {
+            if (OriginalType is SwizzleType)
+                yield break; // nothing for swizzling
+            if (Visibility != "public")
+                yield break;
+            if (this is ExplicitOperator)
+                yield break;
+            if (this is ImplicitOperator)
+                yield break;
+            if (this is Operator)
+                yield break;
+
+            if (Static)
+            {
+                var paras = Parameters.ParasRecovered().ToArray();
+                if (paras.Length == 0)
+                    throw new NotSupportedException();
+
+                var ptype = paras[0].Split(' ')[0];
+                if (ptype == OriginalType.NameThat)
+                {
+                    yield return new Function(ReturnType, Name + OriginalType.GenericSuffix)
+                    {
+                        Static = true,
+                        Parameters = Parameters,
+                        Comment = Comment,
+                        CodeString = string.Format("{0}.{1}({2})", OriginalType.NameThat, Name, Parameters.ArgNames().CommaSeparated())
+                    };
+                }
+
+                yield break; // nothing for static props
+            }
+
+            var varname = OriginalType is VectorType ? "v" : OriginalType is QuaternionType ? "q" : "m";
+
+            yield return new Function(ReturnType, Name + OriginalType.GenericSuffix)
+            {
+                Static = true,
+                Comment = Comment,
+                Parameters = OriginalType.TypedArgs(varname).Concat(Parameters),
+                CodeString = string.Format("{0}.{1}({2})", varname, Name, Parameters.ArgNames().CommaSeparated())
+            };
         }
 
         public override IEnumerable<string> Lines

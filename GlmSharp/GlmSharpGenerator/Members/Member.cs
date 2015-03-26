@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GlmSharpGenerator.Types;
 
 namespace GlmSharpGenerator.Members
 {
     abstract class Member
     {
+        /// <summary>
+        /// Original type ref
+        /// </summary>
+        public AbstractType OriginalType { get; set; }
+
         /// <summary>
         /// Name of the member
         /// </summary>
@@ -51,5 +57,10 @@ namespace GlmSharpGenerator.Members
         /// Prefix for members (visibility, static)
         /// </summary>
         public virtual string MemberPrefix => Visibility + (Static ? " static" : "");
+
+        /// <summary>
+        /// Returns an enumeration of members used for the "glm" class
+        /// </summary>
+        public virtual IEnumerable<Member> GlmMembers() { yield break; }
     }
 }

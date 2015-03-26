@@ -53,15 +53,23 @@ namespace GlmSharpGenerator
                 foreach (var type in AbstractType.Types.Values)
                 {
                     // generate lib code
-                    var filename = type.PathOf(path);
-                    new FileInfo(filename).Directory?.Create();
-                    if (type.CSharpFile.WriteToFileIfChanged(filename))
-                        Console.WriteLine("    CHANGED " + filename);
+                    {
+                        var filename = type.PathOf(path);
+                        new FileInfo(filename).Directory?.Create();
+                        if (type.CSharpFile.WriteToFileIfChanged(filename))
+                            Console.WriteLine("    CHANGED " + filename);
+                    }
+                    {
+                        var filename = type.GlmPathOf(path);
+                        new FileInfo(filename).Directory?.Create();
+                        if (type.GlmSharpFile.WriteToFileIfChanged(filename))
+                            Console.WriteLine("    CHANGED " + filename);
+                    }
 
                     // generate test code
                     if (!string.IsNullOrEmpty(testpath))
                     {
-                        filename = type.TestPathOf(Path.Combine(testpath, "Generated"));
+                        var filename = type.TestPathOf(Path.Combine(testpath, "Generated"));
                         new FileInfo(filename).Directory?.Create();
                         if (type.TestFile.WriteToFileIfChanged(filename))
                             Console.WriteLine("    CHANGED " + filename);

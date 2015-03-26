@@ -50,6 +50,23 @@ namespace GlmSharpGenerator.Members
             Type = type;
         }
 
+        public override IEnumerable<Member> GlmMembers()
+        {
+            if (Static)
+                yield break; // nothing for static props
+            if (OriginalType is SwizzleType)
+                yield break; // nothing for swizzling
+            
+            var varname = OriginalType is VectorType ? "v" : OriginalType is QuaternionType ? "q" : "m";
+            yield return new Function(Type, Name + OriginalType.GenericSuffix)
+            {
+                Static = true,
+                Comment = Comment,
+                ParameterString = string.Format("{0} {1}", OriginalType.NameThat, varname),
+                CodeString = string.Format("{0}.{1}", varname, Name)
+            };
+        }
+
         public override IEnumerable<string> Lines
         {
             get
