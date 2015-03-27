@@ -1009,8 +1009,7 @@ namespace GlmSharpGenerator.Types
                     FirstParameter = "Random random",
                     CommentOverride = string.Format("Returns a {0} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.", Name)
                 };
-
-                // TODO: Normal, Gaussian distribution
+                
                 // TODO: Triangular distribution
                 // TODO: Beta distribution
                 // TODO: Chi/Chi-Squared distribution
