@@ -372,9 +372,191 @@ namespace GlmSharp
         #region Properties
         
         /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// Returns an object that can be used for arbitrary swizzling (e.g. swizzle.zy)
         /// </summary>
         public swizzle_lvec4 swizzle => new swizzle_lvec4(x, y, z, w);
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec2 xy
+        {
+            get
+            {
+                return new lvec2(x, y);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec2 xz
+        {
+            get
+            {
+                return new lvec2(x, z);
+            }
+            set
+            {
+                x = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec2 yz
+        {
+            get
+            {
+                return new lvec2(y, z);
+            }
+            set
+            {
+                y = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec3 xyz
+        {
+            get
+            {
+                return new lvec3(x, y, z);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                z = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec2 xw
+        {
+            get
+            {
+                return new lvec2(x, w);
+            }
+            set
+            {
+                x = value.x;
+                w = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec2 yw
+        {
+            get
+            {
+                return new lvec2(y, w);
+            }
+            set
+            {
+                y = value.x;
+                w = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec3 xyw
+        {
+            get
+            {
+                return new lvec3(x, y, w);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                w = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec2 zw
+        {
+            get
+            {
+                return new lvec2(z, w);
+            }
+            set
+            {
+                z = value.x;
+                w = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec3 xzw
+        {
+            get
+            {
+                return new lvec3(x, z, w);
+            }
+            set
+            {
+                x = value.x;
+                z = value.y;
+                w = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec3 yzw
+        {
+            get
+            {
+                return new lvec3(y, z, w);
+            }
+            set
+            {
+                y = value.x;
+                z = value.y;
+                w = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public lvec4 xyzw
+        {
+            get
+            {
+                return new lvec4(x, y, z, w);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                z = value.z;
+                w = value.w;
+            }
+        }
         
         /// <summary>
         /// Returns an array with all values

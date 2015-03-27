@@ -295,9 +295,74 @@ namespace GlmSharp
         #region Properties
         
         /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// Returns an object that can be used for arbitrary swizzling (e.g. swizzle.zy)
         /// </summary>
         public swizzle_decvec3 swizzle => new swizzle_decvec3(x, y, z);
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public decvec2 xy
+        {
+            get
+            {
+                return new decvec2(x, y);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public decvec2 xz
+        {
+            get
+            {
+                return new decvec2(x, z);
+            }
+            set
+            {
+                x = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public decvec2 yz
+        {
+            get
+            {
+                return new decvec2(y, z);
+            }
+            set
+            {
+                y = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public decvec3 xyz
+        {
+            get
+            {
+                return new decvec3(x, y, z);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                z = value.z;
+            }
+        }
         
         /// <summary>
         /// Returns an array with all values

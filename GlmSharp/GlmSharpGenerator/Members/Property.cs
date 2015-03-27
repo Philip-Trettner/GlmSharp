@@ -56,6 +56,8 @@ namespace GlmSharpGenerator.Members
                 yield break; // nothing for static props
             if (OriginalType is SwizzleType)
                 yield break; // nothing for swizzling
+            if (Setter != null)
+                yield break; // nothing for stuff with setters
             
             var varname = OriginalType is VectorType ? "v" : OriginalType is QuaternionType ? "q" : "m";
             yield return new Function(Type, Name + OriginalType.GenericSuffix)
@@ -104,7 +106,19 @@ namespace GlmSharpGenerator.Members
                 }
                 else
                 {
-                    throw new NotSupportedException();
+                    yield return string.Format("{0} {1} {2}", MemberPrefix, Type.NameThat, Name);
+                    yield return "{";
+                    yield return "    get";
+                    yield return "    {";
+                    foreach (var line in getter)
+                        yield return line.Indent(2);
+                    yield return "    }";
+                    yield return "    set";
+                    yield return "    {";
+                    foreach (var line in setter)
+                        yield return line.Indent(2);
+                    yield return "    }";
+                    yield return "}";
                 }
             }
         }

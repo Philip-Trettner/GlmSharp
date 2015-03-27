@@ -26,6 +26,11 @@ namespace GlmSharpTest.Manual
 
             v.y += glm.Smoothstep(0, 1, v.x);
             
+            v2.yw = new vec2(6);
+            Assert.AreEqual(3, v2.x);
+            Assert.AreEqual(6, v2.y);
+            Assert.AreEqual(3, v2.z);
+            Assert.AreEqual(6, v2.w);
         }
     }
 }

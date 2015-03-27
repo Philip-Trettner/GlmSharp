@@ -17,6 +17,8 @@ v4 *= glm.Smoothstep(0.2f, 0.4f, v.Length);
 
 string s = v4.ToString();
 vec4 vv = vec4.Parse(s);
+
+vv.xy = v.swizzle.yy;
 ```
 
 ## NuGet
@@ -57,8 +59,8 @@ Supported base types:
 
 (Currently a total of 144 types in about 40k LOC)
 
-Supports swizzling, e.g. `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
-
+Supports read-only swizzling, e.g. `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
+Supports read-write inline-swizzling, e.g. `v.zw = v.yx`.
 
 ## Syntax, Usage
 
@@ -111,6 +113,8 @@ Therefore, swizzling becomes `v.swizzle.xz`.
 
 Swizzling is generated for `xyzw` and `rgba`.
 
+Since 0.9.8, read-write inline-swizzling is supported. All ordered subsets of components can now be read and set, e.g. `v2.xzw = new vec3(v1.yx, 1f)`.
+
 
 ### Performance consideration
 
@@ -132,7 +136,6 @@ This library is MIT-licensed.
 * some GLU functions (e.g. PickMatrix)
 * advanced glsl/glm functions
 * extensive documentation (parameters, return values, formulas)
-* inline-swizzle and swizzle as L-ref? (e.g. only ordered)
 * noise functions
 * random extensions
 * explicit JSON support

@@ -243,9 +243,191 @@ namespace GlmSharp
         #region Properties
         
         /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// Returns an object that can be used for arbitrary swizzling (e.g. swizzle.zy)
         /// </summary>
         public swizzle_gvec4<T> swizzle => new swizzle_gvec4<T>(x, y, z, w);
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec2<T> xy
+        {
+            get
+            {
+                return new gvec2<T>(x, y);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec2<T> xz
+        {
+            get
+            {
+                return new gvec2<T>(x, z);
+            }
+            set
+            {
+                x = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec2<T> yz
+        {
+            get
+            {
+                return new gvec2<T>(y, z);
+            }
+            set
+            {
+                y = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec3<T> xyz
+        {
+            get
+            {
+                return new gvec3<T>(x, y, z);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                z = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec2<T> xw
+        {
+            get
+            {
+                return new gvec2<T>(x, w);
+            }
+            set
+            {
+                x = value.x;
+                w = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec2<T> yw
+        {
+            get
+            {
+                return new gvec2<T>(y, w);
+            }
+            set
+            {
+                y = value.x;
+                w = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec3<T> xyw
+        {
+            get
+            {
+                return new gvec3<T>(x, y, w);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                w = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec2<T> zw
+        {
+            get
+            {
+                return new gvec2<T>(z, w);
+            }
+            set
+            {
+                z = value.x;
+                w = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec3<T> xzw
+        {
+            get
+            {
+                return new gvec3<T>(x, z, w);
+            }
+            set
+            {
+                x = value.x;
+                z = value.y;
+                w = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec3<T> yzw
+        {
+            get
+            {
+                return new gvec3<T>(y, z, w);
+            }
+            set
+            {
+                y = value.x;
+                z = value.y;
+                w = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public gvec4<T> xyzw
+        {
+            get
+            {
+                return new gvec4<T>(x, y, z, w);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                z = value.z;
+                w = value.w;
+            }
+        }
         
         /// <summary>
         /// Returns an array with all values

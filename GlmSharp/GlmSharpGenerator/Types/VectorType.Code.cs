@@ -9,6 +9,21 @@ namespace GlmSharpGenerator.Types
 {
     partial class VectorType
     {
+        private IEnumerable<string> InlineSwizzle(int nr = 0)
+        {
+            if (nr >= Components)
+            {
+                yield return "";
+                yield break;
+            }
+
+            foreach (var sw in InlineSwizzle(nr+1))
+            {
+                yield return "0" + sw;
+                yield return "1" + sw;
+            }
+        }
+
         public override IEnumerable<Member> GenerateMembers()
         {
             var boolVType = new VectorType(BuiltinType.TypeBool, Components);
@@ -28,8 +43,25 @@ namespace GlmSharpGenerator.Types
             yield return new Property("swizzle", SwizzleType)
             {
                 GetterLine = Construct(SwizzleType, Fields),
-                Comment = "Returns an object that can be used for swizzling (e.g. swizzle.zy)"
+                Comment = "Returns an object that can be used for arbitrary swizzling (e.g. swizzle.zy)"
             };
+
+            // inline-swizzle
+            foreach (var swizzleBits in InlineSwizzle())
+            {
+                if (swizzleBits.Count(c => c == '1') < 2)
+                    continue; // at least two set
+
+                var swizzle = swizzleBits.Select((c, i) => c == '1' ? ArgOfs(i) : "").Aggregate((s1, s2) => s1 + s2);
+                var vecType = new VectorType(BaseType, swizzle.Length);
+
+                yield return new Property(swizzle, vecType)
+                {
+                    GetterLine = string.Format("return {0};", Construct(vecType, swizzle.Select(c => c.ToString()))),
+                    Setter = swizzle.Select((c, i) => string.Format("{0} = value.{1};", c, ArgOf(i))),
+                    Comment = "Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property."
+                };
+            }
 
             // predefs
             yield return new StaticProperty("Zero", this)

@@ -19,7 +19,7 @@ namespace GlmSharp
     {
         
         /// <summary>
-        /// Returns an object that can be used for swizzling (e.g. swizzle.zy)
+        /// Returns an object that can be used for arbitrary swizzling (e.g. swizzle.zy)
         /// </summary>
         public static swizzle_lvec3 swizzle(lvec3 v) => v.swizzle;
         
