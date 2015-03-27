@@ -538,6 +538,11 @@ namespace GlmSharp
             result = ok ? new bvec3(x, y, z) : Zero;
             return ok;
         }
+        
+        /// <summary>
+        /// Returns a bvec3 with independent and identically distributed random true/false values (the probability for 'true' can be configured).
+        /// </summary>
+        public static bvec3 Random(Random random, float trueProbability = 0.5f) => new bvec3(random.NextDouble() < trueProbability, random.NextDouble() < trueProbability, random.NextDouble() < trueProbability);
 
         #endregion
 

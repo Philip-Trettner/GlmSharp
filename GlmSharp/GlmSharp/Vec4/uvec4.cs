@@ -873,6 +873,26 @@ namespace GlmSharp
         /// Returns the squared euclidean distance between the two vectors.
         /// </summary>
         public static float DistanceSqr(uvec4 lhs, uvec4 rhs) => (lhs - rhs).LengthSqr;
+        
+        /// <summary>
+        /// Returns a uvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
+        /// </summary>
+        public static uvec4 Random(Random random) => new uvec4((uint)random.Next(), (uint)random.Next(), (uint)random.Next(), (uint)random.Next());
+        
+        /// <summary>
+        /// Returns a uvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static uvec4 Random(Random random, int maxValue) => new uvec4((uint)random.Next(maxValue), (uint)random.Next(maxValue), (uint)random.Next(maxValue), (uint)random.Next(maxValue));
+        
+        /// <summary>
+        /// Returns a uvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static uvec4 Random(Random random, int minValue, int maxValue) => new uvec4((uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue));
+        
+        /// <summary>
+        /// Returns a uvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static uvec4 RandomUniform(Random random, int minValue, int maxValue) => new uvec4((uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue));
 
         #endregion
 

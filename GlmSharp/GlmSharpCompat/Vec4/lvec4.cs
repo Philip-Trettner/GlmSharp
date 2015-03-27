@@ -860,6 +860,26 @@ namespace GlmSharp
         /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
         /// </summary>
         public static lvec4 FaceForward(lvec4 N, lvec4 I, lvec4 Nref) => Dot(Nref, I) < 0 ? N : -N;
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
+        /// </summary>
+        public static lvec4 Random(Random random) => new lvec4((long)random.Next(), (long)random.Next(), (long)random.Next(), (long)random.Next());
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static lvec4 Random(Random random, int maxValue) => new lvec4((long)random.Next(maxValue), (long)random.Next(maxValue), (long)random.Next(maxValue), (long)random.Next(maxValue));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 Random(Random random, int minValue, int maxValue) => new lvec4((long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 RandomUniform(Random random, int minValue, int maxValue) => new lvec4((long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue));
 
         #endregion
 

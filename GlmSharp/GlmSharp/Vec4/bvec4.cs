@@ -733,6 +733,11 @@ namespace GlmSharp
             result = ok ? new bvec4(x, y, z, w) : Zero;
             return ok;
         }
+        
+        /// <summary>
+        /// Returns a bvec4 with independent and identically distributed random true/false values (the probability for 'true' can be configured).
+        /// </summary>
+        public static bvec4 Random(Random random, float trueProbability = 0.5f) => new bvec4(random.NextDouble() < trueProbability, random.NextDouble() < trueProbability, random.NextDouble() < trueProbability, random.NextDouble() < trueProbability);
 
         #endregion
 

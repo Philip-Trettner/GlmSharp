@@ -633,6 +633,26 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static uint Cross(uvec2 l, uvec2 r) => l.x * r.y - l.y * r.x;
+        
+        /// <summary>
+        /// Returns a uvec2 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
+        /// </summary>
+        public static uvec2 Random(Random random) => new uvec2((uint)random.Next(), (uint)random.Next());
+        
+        /// <summary>
+        /// Returns a uvec2 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static uvec2 Random(Random random, int maxValue) => new uvec2((uint)random.Next(maxValue), (uint)random.Next(maxValue));
+        
+        /// <summary>
+        /// Returns a uvec2 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static uvec2 Random(Random random, int minValue, int maxValue) => new uvec2((uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue));
+        
+        /// <summary>
+        /// Returns a uvec2 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static uvec2 RandomUniform(Random random, int minValue, int maxValue) => new uvec2((uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue));
 
         #endregion
 

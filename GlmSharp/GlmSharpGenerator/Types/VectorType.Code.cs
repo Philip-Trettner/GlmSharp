@@ -17,7 +17,7 @@ namespace GlmSharpGenerator.Types
                 yield break;
             }
 
-            foreach (var sw in InlineSwizzle(nr+1))
+            foreach (var sw in InlineSwizzle(nr + 1))
             {
                 yield return "0" + sw;
                 yield return "1" + sw;
@@ -912,6 +912,75 @@ namespace GlmSharpGenerator.Types
                     }
                 }
             }
+
+            // Random
+            if (BaseType.IsBool)
+                yield return new Function(this, "Random")
+                {
+                    Static = true,
+                    ParameterString = "Random random, float trueProbability = 0.5f",
+                    CodeString = Construct(this, "random.NextDouble() < trueProbability".RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed random true/false values (the probability for 'true' can be configured).", Name)
+                };
+            else if (BaseType.IsInteger)
+            {
+                yield return new Function(this, "Random")
+                {
+                    Static = true,
+                    ParameterString = "Random random",
+                    CodeString = Construct(this, (BaseTypeCast + "random.Next()").RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).", Name)
+                };
+                yield return new Function(this, "Random")
+                {
+                    Static = true,
+                    ParameterString = "Random random, int maxValue",
+                    CodeString = Construct(this, (BaseTypeCast + "random.Next(maxValue)").RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)", Name)
+                };
+                yield return new Function(this, "Random")
+                {
+                    Static = true,
+                    ParameterString = "Random random, int minValue, int maxValue",
+                    CodeString = Construct(this, (BaseTypeCast + "random.Next(minValue, maxValue)").RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
+                };
+                yield return new Function(this, "RandomUniform")
+                {
+                    Static = true,
+                    ParameterString = "Random random, int minValue, int maxValue",
+                    CodeString = Construct(this, (BaseTypeCast + "random.Next(minValue, maxValue)").RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
+                };
+
+                // TODO: http://en.wikipedia.org/wiki/Poisson_distribution (http://www.johndcook.com/blog/csharp_poisson/)
+                // TODO: http://en.wikipedia.org/wiki/Bernoulli_distribution
+                // TODO: http://en.wikipedia.org/wiki/Binomial_distribution
+                // TODO: http://en.wikipedia.org/wiki/Geometric_distribution
+                // TODO: http://en.wikipedia.org/wiki/Negative_binomial_distribution
+                // TODO: Tests
+            }
+            else if (BaseType.IsFloatingPoint)
+            {
+                // TODO: Uniform distribution
+                // TODO: Normal, Gaussian distribution
+                // TODO: Triangular distribution
+                // TODO: Beta distribution
+                // TODO: Chi/Chi-Squared distribution
+                // TODO: Gamma distribution
+                // TODO: Log-normal distribution
+                // TODO: Logistic distribution
+                // TODO: Laplace distribution
+                // TODO: Rayleigh distribution
+                // TODO: Tests
+
+                // Dependent/Geometric
+                // TODO: Circle, Sphere distribution
+                // TODO: multi-dimensional gaussian distribution
+            }
+
+            // TODO: GLM_GTX_random
+            // TODO: compRand, gaussRand, normalizedRand, signedRand, vecRand, ballRand, circularRand, diskRand, linearRand, sphericalRand
         }
 
     }

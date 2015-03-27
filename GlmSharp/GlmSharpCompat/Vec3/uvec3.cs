@@ -683,6 +683,26 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static uvec3 Cross(uvec3 l, uvec3 r) => new uvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+        
+        /// <summary>
+        /// Returns a uvec3 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
+        /// </summary>
+        public static uvec3 Random(Random random) => new uvec3((uint)random.Next(), (uint)random.Next(), (uint)random.Next());
+        
+        /// <summary>
+        /// Returns a uvec3 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static uvec3 Random(Random random, int maxValue) => new uvec3((uint)random.Next(maxValue), (uint)random.Next(maxValue), (uint)random.Next(maxValue));
+        
+        /// <summary>
+        /// Returns a uvec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static uvec3 Random(Random random, int minValue, int maxValue) => new uvec3((uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue));
+        
+        /// <summary>
+        /// Returns a uvec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static uvec3 RandomUniform(Random random, int minValue, int maxValue) => new uvec3((uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue), (uint)random.Next(minValue, maxValue));
 
         #endregion
 

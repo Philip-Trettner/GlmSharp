@@ -860,6 +860,26 @@ namespace GlmSharp
         /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
         /// </summary>
         public static ivec4 FaceForward(ivec4 N, ivec4 I, ivec4 Nref) => Dot(Nref, I) < 0 ? N : -N;
+        
+        /// <summary>
+        /// Returns a ivec4 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
+        /// </summary>
+        public static ivec4 Random(Random random) => new ivec4((int)random.Next(), (int)random.Next(), (int)random.Next(), (int)random.Next());
+        
+        /// <summary>
+        /// Returns a ivec4 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static ivec4 Random(Random random, int maxValue) => new ivec4((int)random.Next(maxValue), (int)random.Next(maxValue), (int)random.Next(maxValue), (int)random.Next(maxValue));
+        
+        /// <summary>
+        /// Returns a ivec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec4 Random(Random random, int minValue, int maxValue) => new ivec4((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
+        
+        /// <summary>
+        /// Returns a ivec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec4 RandomUniform(Random random, int minValue, int maxValue) => new ivec4((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
 
         #endregion
 

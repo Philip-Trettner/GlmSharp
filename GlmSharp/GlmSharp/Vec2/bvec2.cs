@@ -488,6 +488,11 @@ namespace GlmSharp
             result = ok ? new bvec2(x, y) : Zero;
             return ok;
         }
+        
+        /// <summary>
+        /// Returns a bvec2 with independent and identically distributed random true/false values (the probability for 'true' can be configured).
+        /// </summary>
+        public static bvec2 Random(Random random, float trueProbability = 0.5f) => new bvec2(random.NextDouble() < trueProbability, random.NextDouble() < trueProbability);
 
         #endregion
 

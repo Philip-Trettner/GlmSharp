@@ -624,6 +624,26 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static int Cross(ivec2 l, ivec2 r) => l.x * r.y - l.y * r.x;
+        
+        /// <summary>
+        /// Returns a ivec2 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
+        /// </summary>
+        public static ivec2 Random(Random random) => new ivec2((int)random.Next(), (int)random.Next());
+        
+        /// <summary>
+        /// Returns a ivec2 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static ivec2 Random(Random random, int maxValue) => new ivec2((int)random.Next(maxValue), (int)random.Next(maxValue));
+        
+        /// <summary>
+        /// Returns a ivec2 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec2 Random(Random random, int minValue, int maxValue) => new ivec2((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
+        
+        /// <summary>
+        /// Returns a ivec2 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec2 RandomUniform(Random random, int minValue, int maxValue) => new ivec2((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
 
         #endregion
 

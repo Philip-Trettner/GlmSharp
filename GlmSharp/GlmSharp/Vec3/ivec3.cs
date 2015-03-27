@@ -736,6 +736,26 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static ivec3 Cross(ivec3 l, ivec3 r) => new ivec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
+        /// </summary>
+        public static ivec3 Random(Random random) => new ivec3((int)random.Next(), (int)random.Next(), (int)random.Next());
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static ivec3 Random(Random random, int maxValue) => new ivec3((int)random.Next(maxValue), (int)random.Next(maxValue), (int)random.Next(maxValue));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 Random(Random random, int minValue, int maxValue) => new ivec3((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 RandomUniform(Random random, int minValue, int maxValue) => new ivec3((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
 
         #endregion
 
