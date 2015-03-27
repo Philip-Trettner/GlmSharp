@@ -131,7 +131,7 @@ This library is MIT-licensed.
 * some GLU functions (e.g. PickMatrix)
 * advanced glsl/glm functions
 * extensive documentation (parameters, return values, formulas)
-* inline-swizzle and swizzle as L-ref?
+* inline-swizzle and swizzle as L-ref? (e.g. only ordered)
 * noise functions
 * random extensions
 * explicit JSON support
