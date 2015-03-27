@@ -50,7 +50,15 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public IEnumerable<string> Fields { get; set; }
 
+        /// <summary>
+        /// If non-empty, overwrites comment generation
+        /// </summary>
         public string CommentOverride { get; set; }
+
+        /// <summary>
+        /// If true, does not generate glm versions
+        /// </summary>
+        public bool DisableGlmGen { get; set; }
 
         private void BuildComment()
         {
@@ -151,8 +159,8 @@ namespace GlmSharpGenerator.Members
 
         public override IEnumerable<Member> GlmMembers()
         {
-            //if (!string.IsNullOrEmpty(FirstParameter))
-            //    yield break; // not supported for this
+            if (DisableGlmGen)
+                yield break;
 
             var ap = string.IsNullOrEmpty(FirstParameter) ? new string[] { } : new[] { FirstParameter };
             var ap2 = string.IsNullOrEmpty(FirstParameter) ? "" : FirstParameter.Split(' ').Last() + ", ";

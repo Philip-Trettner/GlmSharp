@@ -1619,6 +1619,16 @@ namespace GlmSharp
         /// Returns a uvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
         /// </summary>
         public static uvec4 RandomUniform(Random random, uint minValue, uint maxValue) => new uvec4((uint)random.Next((int)minValue, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a uvec4 with independent and identically distributed integer values according to a poisson distribution with given lambda parameter.
+        /// </summary>
+        public static uvec4 RandomPoisson(Random random, dvec4 lambda) => new uvec4((uint)lambda.x.GetPoisson(random), (uint)lambda.y.GetPoisson(random), (uint)lambda.z.GetPoisson(random), (uint)lambda.w.GetPoisson(random));
+        
+        /// <summary>
+        /// Returns a uvec4 with independent and identically distributed integer values according to a poisson distribution with given lambda parameter.
+        /// </summary>
+        public static uvec4 RandomPoisson(Random random, double lambda) => new uvec4((uint)lambda.GetPoisson(random));
 
         #endregion
 

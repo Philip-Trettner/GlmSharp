@@ -948,7 +948,13 @@ namespace GlmSharpGenerator.Types
                     CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
                 };
 
-                // TODO: http://en.wikipedia.org/wiki/Poisson_distribution (http://www.johndcook.com/blog/csharp_poisson/)
+                yield return new ComponentWiseStaticFunction(Fields, this, "RandomPoisson", doubleVType, "lambda", BaseTypeCast + "{0}.GetPoisson(random)")
+                {
+                    DisableGlmGen = BaseType != BuiltinType.TypeInt,
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed integer values according to a poisson distribution with given lambda parameter.", Name)
+                };
+
                 // TODO: http://en.wikipedia.org/wiki/Bernoulli_distribution
                 // TODO: http://en.wikipedia.org/wiki/Binomial_distribution
                 // TODO: http://en.wikipedia.org/wiki/Geometric_distribution
@@ -983,7 +989,7 @@ namespace GlmSharpGenerator.Types
                     FirstParameter = "Random random",
                     CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform values between 'minValue' and 'maxValue'.", Name)
                 };
-                
+
                 // TODO: Normal, Gaussian distribution
                 // TODO: Triangular distribution
                 // TODO: Beta distribution

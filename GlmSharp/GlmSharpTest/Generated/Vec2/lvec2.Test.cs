@@ -856,5 +856,130 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(variance.y, 0.25, 3.0);
         }
 
+        [Test]
+        public void RandomPoisson0()
+        {
+            var random = new Random(278502557);
+            var sum = new dvec2(0.0);
+            var sumSqr = new dvec2(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = lvec2.RandomPoisson(random, 0.615427033563809);
+                sum += (dvec2)v;
+                sumSqr += glm.Pow2((dvec2)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 0.615427033563809, 1.0);
+            Assert.AreEqual(avg.y, 0.615427033563809, 1.0);
+            
+            Assert.AreEqual(variance.x, 0.615427033563809, 3.0);
+            Assert.AreEqual(variance.y, 0.615427033563809, 3.0);
+        }
+
+        [Test]
+        public void RandomPoisson1()
+        {
+            var random = new Random(997070559);
+            var sum = new dvec2(0.0);
+            var sumSqr = new dvec2(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = lvec2.RandomPoisson(random, 1.14525588399044);
+                sum += (dvec2)v;
+                sumSqr += glm.Pow2((dvec2)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 1.14525588399044, 1.0);
+            Assert.AreEqual(avg.y, 1.14525588399044, 1.0);
+            
+            Assert.AreEqual(variance.x, 1.14525588399044, 3.0);
+            Assert.AreEqual(variance.y, 1.14525588399044, 3.0);
+        }
+
+        [Test]
+        public void RandomPoisson2()
+        {
+            var random = new Random(988850200);
+            var sum = new dvec2(0.0);
+            var sumSqr = new dvec2(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = lvec2.RandomPoisson(random, 2.69768873751056);
+                sum += (dvec2)v;
+                sumSqr += glm.Pow2((dvec2)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 2.69768873751056, 1.0);
+            Assert.AreEqual(avg.y, 2.69768873751056, 1.0);
+            
+            Assert.AreEqual(variance.x, 2.69768873751056, 3.0);
+            Assert.AreEqual(variance.y, 2.69768873751056, 3.0);
+        }
+
+        [Test]
+        public void RandomPoisson3()
+        {
+            var random = new Random(1707418202);
+            var sum = new dvec2(0.0);
+            var sumSqr = new dvec2(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = lvec2.RandomPoisson(random, 1.0403901769502);
+                sum += (dvec2)v;
+                sumSqr += glm.Pow2((dvec2)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 1.0403901769502, 1.0);
+            Assert.AreEqual(avg.y, 1.0403901769502, 1.0);
+            
+            Assert.AreEqual(variance.x, 1.0403901769502, 3.0);
+            Assert.AreEqual(variance.y, 1.0403901769502, 3.0);
+        }
+
+        [Test]
+        public void RandomPoisson4()
+        {
+            var random = new Random(1699197843);
+            var sum = new dvec2(0.0);
+            var sumSqr = new dvec2(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = lvec2.RandomPoisson(random, 2.59282303047032);
+                sum += (dvec2)v;
+                sumSqr += glm.Pow2((dvec2)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 2.59282303047032, 1.0);
+            Assert.AreEqual(avg.y, 2.59282303047032, 1.0);
+            
+            Assert.AreEqual(variance.x, 2.59282303047032, 3.0);
+            Assert.AreEqual(variance.y, 2.59282303047032, 3.0);
+        }
+
     }
 }

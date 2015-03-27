@@ -1516,6 +1516,16 @@ namespace GlmSharp
         /// Returns a lvec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
         /// </summary>
         public static lvec3 RandomUniform(Random random, long minValue, long maxValue) => new lvec3((long)random.Next((int)minValue, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed integer values according to a poisson distribution with given lambda parameter.
+        /// </summary>
+        public static lvec3 RandomPoisson(Random random, dvec3 lambda) => new lvec3((long)lambda.x.GetPoisson(random), (long)lambda.y.GetPoisson(random), (long)lambda.z.GetPoisson(random));
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed integer values according to a poisson distribution with given lambda parameter.
+        /// </summary>
+        public static lvec3 RandomPoisson(Random random, double lambda) => new lvec3((long)lambda.GetPoisson(random));
 
         #endregion
 

@@ -262,6 +262,11 @@ namespace GlmSharpGenerator.Types
                     var range = max - min + 1;
                     yield return new DistributionTestFunc(this, "RandomUniform" + i, "Random" + (i % 2 == 0 ? "" : "Uniform"), min + ", " + (max + 1), (min + max) / 2.0, (range * range - 1) / 12.0);
                 }
+                for (var i = 0; i < 5; ++i)
+                {
+                    var lambda = Random.NextDouble() * 3 + 0.5;
+                    yield return new DistributionTestFunc(this, "RandomPoisson" + i, "RandomPoisson", lambda.ToString(CultureInfo.InvariantCulture), lambda, lambda);
+                }
             }
             else if (BaseType.IsFloatingPoint)
             {
