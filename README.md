@@ -65,6 +65,7 @@ Supports swizzling, e.g. `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
 Instead of introducing a `glm` namespace, GlmSharp puts most functions in the respective type.
 For example, `glm.dot(v1, v2)` for `vec3` is now `vec3.Dot(v1, v2)`.
 
+Since 0.9.7, a `glm` static class also provides most functionality in form of static functions, including operations on base types.
 
 ## Requirements
 
