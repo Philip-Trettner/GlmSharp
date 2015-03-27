@@ -485,6 +485,16 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static float Cross(vec2 l, vec2 r) => vec2.Cross(l, r);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 Random(Random random, vec2 minValue, vec2 maxValue) => vec2.Random(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 RandomUniform(Random random, vec2 minValue, vec2 maxValue) => vec2.RandomUniform(random, minValue, maxValue);
 
     }
 }

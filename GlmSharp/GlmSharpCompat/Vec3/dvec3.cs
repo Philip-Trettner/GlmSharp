@@ -734,6 +734,16 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static dvec3 Cross(dvec3 l, dvec3 r) => new dvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 0.0 and 1.0.
+        /// </summary>
+        public static dvec3 Random(Random random) => new dvec3((double)random.NextDouble(), (double)random.NextDouble(), (double)random.NextDouble());
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between -1.0 and 1.0.
+        /// </summary>
+        public static dvec3 RandomSigned(Random random) => new dvec3((double)(random.NextDouble() * 2.0 - 1.0), (double)(random.NextDouble() * 2.0 - 1.0), (double)(random.NextDouble() * 2.0 - 1.0));
 
         #endregion
 
@@ -1639,6 +1649,46 @@ namespace GlmSharp
         /// Returns a dvec3 from component-wise application of Trunc ((long)(v)).
         /// </summary>
         public static dvec3 Trunc(double v) => new dvec3((long)(v));
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 Random(Random random, dvec3 minValue, dvec3 maxValue) => new dvec3((double)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (double)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (double)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 Random(Random random, dvec3 minValue, double maxValue) => new dvec3((double)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (double)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (double)random.NextDouble() * (maxValue - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 Random(Random random, double minValue, dvec3 maxValue) => new dvec3((double)random.NextDouble() * (maxValue.x - minValue) + minValue, (double)random.NextDouble() * (maxValue.y - minValue) + minValue, (double)random.NextDouble() * (maxValue.z - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 Random(Random random, double minValue, double maxValue) => new dvec3((double)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 RandomUniform(Random random, dvec3 minValue, dvec3 maxValue) => new dvec3((double)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (double)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (double)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 RandomUniform(Random random, dvec3 minValue, double maxValue) => new dvec3((double)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (double)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (double)random.NextDouble() * (maxValue - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 RandomUniform(Random random, double minValue, dvec3 maxValue) => new dvec3((double)random.NextDouble() * (maxValue.x - minValue) + minValue, (double)random.NextDouble() * (maxValue.y - minValue) + minValue, (double)random.NextDouble() * (maxValue.z - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 RandomUniform(Random random, double minValue, double maxValue) => new dvec3((double)random.NextDouble() * (maxValue - minValue) + minValue);
 
         #endregion
 

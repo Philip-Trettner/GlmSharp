@@ -931,26 +931,21 @@ namespace GlmSharpGenerator.Types
                     CodeString = Construct(this, (BaseTypeCast + "random.Next()").RepeatTimes(Components)),
                     Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).", Name)
                 };
-                yield return new Function(this, "Random")
+
+                yield return new ComponentWiseStaticFunction(Fields, this, "Random", this, "maxValue", BaseTypeCast + "random.Next((int){0})")
                 {
-                    Static = true,
-                    ParameterString = "Random random, int maxValue",
-                    CodeString = Construct(this, (BaseTypeCast + "random.Next(maxValue)").RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)", Name)
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)", Name)
                 };
-                yield return new Function(this, "Random")
+                yield return new ComponentWiseStaticFunction(Fields, this, "Random", this, "minValue", this, "maxValue", BaseTypeCast + "random.Next((int){0}, (int){1})")
                 {
-                    Static = true,
-                    ParameterString = "Random random, int minValue, int maxValue",
-                    CodeString = Construct(this, (BaseTypeCast + "random.Next(minValue, maxValue)").RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
                 };
-                yield return new Function(this, "RandomUniform")
+                yield return new ComponentWiseStaticFunction(Fields, this, "RandomUniform", this, "minValue", this, "maxValue", BaseTypeCast + "random.Next((int){0}, (int){1})")
                 {
-                    Static = true,
-                    ParameterString = "Random random, int minValue, int maxValue",
-                    CodeString = Construct(this, (BaseTypeCast + "random.Next(minValue, maxValue)").RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
                 };
 
                 // TODO: http://en.wikipedia.org/wiki/Poisson_distribution (http://www.johndcook.com/blog/csharp_poisson/)
@@ -962,7 +957,33 @@ namespace GlmSharpGenerator.Types
             }
             else if (BaseType.IsFloatingPoint)
             {
-                // TODO: Uniform distribution
+                yield return new Function(this, "Random")
+                {
+                    Static = true,
+                    ParameterString = "Random random",
+                    CodeString = Construct(this, (BaseTypeCast + "random.NextDouble()").RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform values between 0.0 and 1.0.", Name)
+                };
+                yield return new Function(this, "RandomSigned")
+                {
+                    Static = true,
+                    ParameterString = "Random random",
+                    CodeString = Construct(this, (BaseTypeCast + "(random.NextDouble() * 2.0 - 1.0)").RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform values between -1.0 and 1.0.", Name)
+                };
+
+                // uniform
+                yield return new ComponentWiseStaticFunction(Fields, this, "Random", this, "minValue", this, "maxValue", BaseTypeCast + "random.NextDouble() * ({1} - {0}) + {0}")
+                {
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform values between 'minValue' and 'maxValue'.", Name)
+                };
+                yield return new ComponentWiseStaticFunction(Fields, this, "RandomUniform", this, "minValue", this, "maxValue", BaseTypeCast + "random.NextDouble() * ({1} - {0}) + {0}")
+                {
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform values between 'minValue' and 'maxValue'.", Name)
+                };
+                
                 // TODO: Normal, Gaussian distribution
                 // TODO: Triangular distribution
                 // TODO: Beta distribution

@@ -739,6 +739,16 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static vec3 Cross(vec3 l, vec3 r) => new vec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 0.0 and 1.0.
+        /// </summary>
+        public static vec3 Random(Random random) => new vec3((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble());
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between -1.0 and 1.0.
+        /// </summary>
+        public static vec3 RandomSigned(Random random) => new vec3((float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0));
 
         #endregion
 
@@ -1644,6 +1654,46 @@ namespace GlmSharp
         /// Returns a vec3 from component-wise application of Trunc ((long)(v)).
         /// </summary>
         public static vec3 Trunc(float v) => new vec3((long)(v));
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 Random(Random random, vec3 minValue, vec3 maxValue) => new vec3((float)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 Random(Random random, vec3 minValue, float maxValue) => new vec3((float)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 Random(Random random, float minValue, vec3 maxValue) => new vec3((float)random.NextDouble() * (maxValue.x - minValue) + minValue, (float)random.NextDouble() * (maxValue.y - minValue) + minValue, (float)random.NextDouble() * (maxValue.z - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 Random(Random random, float minValue, float maxValue) => new vec3((float)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 RandomUniform(Random random, vec3 minValue, vec3 maxValue) => new vec3((float)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 RandomUniform(Random random, vec3 minValue, float maxValue) => new vec3((float)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 RandomUniform(Random random, float minValue, vec3 maxValue) => new vec3((float)random.NextDouble() * (maxValue.x - minValue) + minValue, (float)random.NextDouble() * (maxValue.y - minValue) + minValue, (float)random.NextDouble() * (maxValue.z - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec3 RandomUniform(Random random, float minValue, float maxValue) => new vec3((float)random.NextDouble() * (maxValue - minValue) + minValue);
 
         #endregion
 

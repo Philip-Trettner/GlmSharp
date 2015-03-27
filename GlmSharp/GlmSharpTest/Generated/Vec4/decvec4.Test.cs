@@ -812,5 +812,150 @@ namespace GlmSharpTest.Generated.Vec4
             }
         }
 
+        [Test]
+        public void RandomUniform0()
+        {
+            var random = new Random(1108112915);
+            var sum = new dvec4(0.0);
+            var sumSqr = new dvec4(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = decvec4.Random(random, -2, 0);
+                sum += (dvec4)v;
+                sumSqr += glm.Pow2((dvec4)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, -1, 1.0);
+            Assert.AreEqual(avg.y, -1, 1.0);
+            Assert.AreEqual(avg.z, -1, 1.0);
+            Assert.AreEqual(avg.w, -1, 1.0);
+            
+            Assert.AreEqual(variance.x, 0.333333333333333, 3.0);
+            Assert.AreEqual(variance.y, 0.333333333333333, 3.0);
+            Assert.AreEqual(variance.z, 0.333333333333333, 3.0);
+            Assert.AreEqual(variance.w, 0.333333333333333, 3.0);
+        }
+
+        [Test]
+        public void RandomUniform1()
+        {
+            var random = new Random(1826680917);
+            var sum = new dvec4(0.0);
+            var sumSqr = new dvec4(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = decvec4.RandomUniform(random, 4, 8);
+                sum += (dvec4)v;
+                sumSqr += glm.Pow2((dvec4)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 6, 1.0);
+            Assert.AreEqual(avg.y, 6, 1.0);
+            Assert.AreEqual(avg.z, 6, 1.0);
+            Assert.AreEqual(avg.w, 6, 1.0);
+            
+            Assert.AreEqual(variance.x, 1.33333333333333, 3.0);
+            Assert.AreEqual(variance.y, 1.33333333333333, 3.0);
+            Assert.AreEqual(variance.z, 1.33333333333333, 3.0);
+            Assert.AreEqual(variance.w, 1.33333333333333, 3.0);
+        }
+
+        [Test]
+        public void RandomUniform2()
+        {
+            var random = new Random(397765272);
+            var sum = new dvec4(0.0);
+            var sumSqr = new dvec4(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = decvec4.Random(random, 0, 4);
+                sum += (dvec4)v;
+                sumSqr += glm.Pow2((dvec4)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 2, 1.0);
+            Assert.AreEqual(avg.y, 2, 1.0);
+            Assert.AreEqual(avg.z, 2, 1.0);
+            Assert.AreEqual(avg.w, 2, 1.0);
+            
+            Assert.AreEqual(variance.x, 1.33333333333333, 3.0);
+            Assert.AreEqual(variance.y, 1.33333333333333, 3.0);
+            Assert.AreEqual(variance.z, 1.33333333333333, 3.0);
+            Assert.AreEqual(variance.w, 1.33333333333333, 3.0);
+        }
+
+        [Test]
+        public void RandomUniform3()
+        {
+            var random = new Random(1116333274);
+            var sum = new dvec4(0.0);
+            var sumSqr = new dvec4(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = decvec4.RandomUniform(random, -5, -4);
+                sum += (dvec4)v;
+                sumSqr += glm.Pow2((dvec4)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, -4.5, 1.0);
+            Assert.AreEqual(avg.y, -4.5, 1.0);
+            Assert.AreEqual(avg.z, -4.5, 1.0);
+            Assert.AreEqual(avg.w, -4.5, 1.0);
+            
+            Assert.AreEqual(variance.x, 0.0833333333333333, 3.0);
+            Assert.AreEqual(variance.y, 0.0833333333333333, 3.0);
+            Assert.AreEqual(variance.z, 0.0833333333333333, 3.0);
+            Assert.AreEqual(variance.w, 0.0833333333333333, 3.0);
+        }
+
+        [Test]
+        public void RandomUniform4()
+        {
+            var random = new Random(381324554);
+            var sum = new dvec4(0.0);
+            var sumSqr = new dvec4(0.0);
+            
+            const int count = 50000;
+            for (var _ = 0; _ < count; ++_)
+            {
+                var v = decvec4.Random(random, 0, 1);
+                sum += (dvec4)v;
+                sumSqr += glm.Pow2((dvec4)v);
+            }
+            
+            var avg = sum / (double)count;
+            var variance =  sumSqr / (double)count - avg * avg;
+            
+            Assert.AreEqual(avg.x, 0.5, 1.0);
+            Assert.AreEqual(avg.y, 0.5, 1.0);
+            Assert.AreEqual(avg.z, 0.5, 1.0);
+            Assert.AreEqual(avg.w, 0.5, 1.0);
+            
+            Assert.AreEqual(variance.x, 0.0833333333333333, 3.0);
+            Assert.AreEqual(variance.y, 0.0833333333333333, 3.0);
+            Assert.AreEqual(variance.z, 0.0833333333333333, 3.0);
+            Assert.AreEqual(variance.w, 0.0833333333333333, 3.0);
+        }
+
     }
 }

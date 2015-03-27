@@ -209,6 +209,7 @@ namespace GlmSharpGenerator.Types
                 yield return string.Format("var s1 = JsonConvert.SerializeObject(v1);");
                 yield return "";
                 yield return string.Format("Assert.AreEqual(v0, v1);");
+
                 yield return string.Format("Assert.AreEqual(s0, s1);");
             }
         }
@@ -247,6 +248,32 @@ namespace GlmSharpGenerator.Types
                 yield return new InvariantTestFunc(this, "InvariantNorm", "$V0.NormMax <= $V0.Norm");
                 if (Components == 3 && !BaseType.IsComplex)
                     yield return new InvariantTestFunc(this, "InvariantCrossDot", "glm.Abs(glm.Dot($V0, glm.Cross($V0, $V1))) < 0.1");
+            }
+
+            // Random
+            if (BaseType.IsInteger)
+            {
+                for (var i = 0; i < 5; ++i)
+                {
+                    var min = Random.Next(-5, 5);
+                    if (!BaseType.IsSigned)
+                        min = Math.Abs(min);
+                    var max = min + Random.Next(1, 5);
+                    var range = max - min + 1;
+                    yield return new DistributionTestFunc(this, "RandomUniform" + i, "Random" + (i % 2 == 0 ? "" : "Uniform"), min + ", " + (max + 1), (min + max) / 2.0, (range * range - 1) / 12.0);
+                }
+            }
+            else if (BaseType.IsFloatingPoint)
+            {
+                for (var i = 0; i < 5; ++i)
+                {
+                    var min = Random.Next(-5, 5);
+                    if (!BaseType.IsSigned)
+                        min = Math.Abs(min);
+                    var max = min + Random.Next(1, 5);
+                    var range = max - min;
+                    yield return new DistributionTestFunc(this, "RandomUniform" + i, "Random" + (i % 2 == 0 ? "" : "Uniform"), min + ", " + max, (min + max) / 2.0, range * range / 12.0);
+                }
             }
         }
     }

@@ -527,6 +527,36 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static lvec3 Cross(lvec3 l, lvec3 r) => lvec3.Cross(l, r);
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static lvec3 Random(Random random, lvec3 maxValue) => lvec3.Random(random, maxValue);
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static long Random(Random random, long maxValue) => (long)random.Next((int)maxValue);
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec3 Random(Random random, lvec3 minValue, lvec3 maxValue) => lvec3.Random(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static long Random(Random random, long minValue, long maxValue) => (long)random.Next((int)minValue, (int)maxValue);
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec3 RandomUniform(Random random, lvec3 minValue, lvec3 maxValue) => lvec3.RandomUniform(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a lvec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static long RandomUniform(Random random, long minValue, long maxValue) => (long)random.Next((int)minValue, (int)maxValue);
 
     }
 }

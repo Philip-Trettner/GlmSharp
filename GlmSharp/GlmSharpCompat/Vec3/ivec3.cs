@@ -709,21 +709,6 @@ namespace GlmSharp
         /// Returns a ivec3 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
         /// </summary>
         public static ivec3 Random(Random random) => new ivec3((int)random.Next(), (int)random.Next(), (int)random.Next());
-        
-        /// <summary>
-        /// Returns a ivec3 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
-        /// </summary>
-        public static ivec3 Random(Random random, int maxValue) => new ivec3((int)random.Next(maxValue), (int)random.Next(maxValue), (int)random.Next(maxValue));
-        
-        /// <summary>
-        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
-        /// </summary>
-        public static ivec3 Random(Random random, int minValue, int maxValue) => new ivec3((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
-        
-        /// <summary>
-        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
-        /// </summary>
-        public static ivec3 RandomUniform(Random random, int minValue, int maxValue) => new ivec3((int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue), (int)random.Next(minValue, maxValue));
 
         #endregion
 
@@ -1449,6 +1434,56 @@ namespace GlmSharp
         /// Returns a ivec3 from component-wise application of RightShift (lhs &gt;&gt; rhs).
         /// </summary>
         public static ivec3 RightShift(int lhs, int rhs) => new ivec3(lhs >> rhs);
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static ivec3 Random(Random random, ivec3 maxValue) => new ivec3((int)random.Next((int)maxValue.x), (int)random.Next((int)maxValue.y), (int)random.Next((int)maxValue.z));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static ivec3 Random(Random random, int maxValue) => new ivec3((int)random.Next((int)maxValue));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 Random(Random random, ivec3 minValue, ivec3 maxValue) => new ivec3((int)random.Next((int)minValue.x, (int)maxValue.x), (int)random.Next((int)minValue.y, (int)maxValue.y), (int)random.Next((int)minValue.z, (int)maxValue.z));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 Random(Random random, ivec3 minValue, int maxValue) => new ivec3((int)random.Next((int)minValue.x, (int)maxValue), (int)random.Next((int)minValue.y, (int)maxValue), (int)random.Next((int)minValue.z, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 Random(Random random, int minValue, ivec3 maxValue) => new ivec3((int)random.Next((int)minValue, (int)maxValue.x), (int)random.Next((int)minValue, (int)maxValue.y), (int)random.Next((int)minValue, (int)maxValue.z));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 Random(Random random, int minValue, int maxValue) => new ivec3((int)random.Next((int)minValue, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 RandomUniform(Random random, ivec3 minValue, ivec3 maxValue) => new ivec3((int)random.Next((int)minValue.x, (int)maxValue.x), (int)random.Next((int)minValue.y, (int)maxValue.y), (int)random.Next((int)minValue.z, (int)maxValue.z));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 RandomUniform(Random random, ivec3 minValue, int maxValue) => new ivec3((int)random.Next((int)minValue.x, (int)maxValue), (int)random.Next((int)minValue.y, (int)maxValue), (int)random.Next((int)minValue.z, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 RandomUniform(Random random, int minValue, ivec3 maxValue) => new ivec3((int)random.Next((int)minValue, (int)maxValue.x), (int)random.Next((int)minValue, (int)maxValue.y), (int)random.Next((int)minValue, (int)maxValue.z));
+        
+        /// <summary>
+        /// Returns a ivec3 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec3 RandomUniform(Random random, int minValue, int maxValue) => new ivec3((int)random.Next((int)minValue, (int)maxValue));
 
         #endregion
 

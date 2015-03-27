@@ -445,6 +445,16 @@ namespace GlmSharp
         /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
         /// </summary>
         public static decvec4 FaceForward(decvec4 N, decvec4 I, decvec4 Nref) => decvec4.FaceForward(N, I, Nref);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 Random(Random random, decvec4 minValue, decvec4 maxValue) => decvec4.Random(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 RandomUniform(Random random, decvec4 minValue, decvec4 maxValue) => decvec4.RandomUniform(random, minValue, maxValue);
 
     }
 }

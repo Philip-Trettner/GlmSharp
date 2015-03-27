@@ -485,6 +485,16 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static double Cross(dvec2 l, dvec2 r) => dvec2.Cross(l, r);
+        
+        /// <summary>
+        /// Returns a dvec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec2 Random(Random random, dvec2 minValue, dvec2 maxValue) => dvec2.Random(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a dvec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec2 RandomUniform(Random random, dvec2 minValue, dvec2 maxValue) => dvec2.RandomUniform(random, minValue, maxValue);
 
     }
 }

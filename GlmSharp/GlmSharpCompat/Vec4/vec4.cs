@@ -895,6 +895,16 @@ namespace GlmSharp
         /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
         /// </summary>
         public static vec4 FaceForward(vec4 N, vec4 I, vec4 Nref) => Dot(Nref, I) < 0 ? N : -N;
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 0.0 and 1.0.
+        /// </summary>
+        public static vec4 Random(Random random) => new vec4((float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble(), (float)random.NextDouble());
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between -1.0 and 1.0.
+        /// </summary>
+        public static vec4 RandomSigned(Random random) => new vec4((float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0));
 
         #endregion
 
@@ -1800,6 +1810,46 @@ namespace GlmSharp
         /// Returns a vec4 from component-wise application of Trunc ((long)(v)).
         /// </summary>
         public static vec4 Trunc(float v) => new vec4((long)(v));
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 Random(Random random, vec4 minValue, vec4 maxValue) => new vec4((float)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z, (float)random.NextDouble() * (maxValue.w - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 Random(Random random, vec4 minValue, float maxValue) => new vec4((float)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue - minValue.z) + minValue.z, (float)random.NextDouble() * (maxValue - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 Random(Random random, float minValue, vec4 maxValue) => new vec4((float)random.NextDouble() * (maxValue.x - minValue) + minValue, (float)random.NextDouble() * (maxValue.y - minValue) + minValue, (float)random.NextDouble() * (maxValue.z - minValue) + minValue, (float)random.NextDouble() * (maxValue.w - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 Random(Random random, float minValue, float maxValue) => new vec4((float)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 RandomUniform(Random random, vec4 minValue, vec4 maxValue) => new vec4((float)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z, (float)random.NextDouble() * (maxValue.w - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 RandomUniform(Random random, vec4 minValue, float maxValue) => new vec4((float)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (float)random.NextDouble() * (maxValue - minValue.z) + minValue.z, (float)random.NextDouble() * (maxValue - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 RandomUniform(Random random, float minValue, vec4 maxValue) => new vec4((float)random.NextDouble() * (maxValue.x - minValue) + minValue, (float)random.NextDouble() * (maxValue.y - minValue) + minValue, (float)random.NextDouble() * (maxValue.z - minValue) + minValue, (float)random.NextDouble() * (maxValue.w - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec4 RandomUniform(Random random, float minValue, float maxValue) => new vec4((float)random.NextDouble() * (maxValue - minValue) + minValue);
 
         #endregion
 

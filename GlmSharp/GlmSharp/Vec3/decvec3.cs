@@ -751,6 +751,16 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static decvec3 Cross(decvec3 l, decvec3 r) => new decvec3(l.y * r.z - l.z * r.y, l.z * r.x - l.x * r.z, l.x * r.y - l.y * r.x);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 0.0 and 1.0.
+        /// </summary>
+        public static decvec3 Random(Random random) => new decvec3((decimal)random.NextDouble(), (decimal)random.NextDouble(), (decimal)random.NextDouble());
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between -1.0 and 1.0.
+        /// </summary>
+        public static decvec3 RandomSigned(Random random) => new decvec3((decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0));
 
         #endregion
 
@@ -1606,6 +1616,46 @@ namespace GlmSharp
         /// Returns a decvec3 from component-wise application of Trunc ((long)(v)).
         /// </summary>
         public static decvec3 Trunc(decimal v) => new decvec3((long)(v));
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 Random(Random random, decvec3 minValue, decvec3 maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 Random(Random random, decvec3 minValue, decimal maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 Random(Random random, decimal minValue, decvec3 maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue.x - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.y - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.z - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 Random(Random random, decimal minValue, decimal maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 RandomUniform(Random random, decvec3 minValue, decvec3 maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 RandomUniform(Random random, decvec3 minValue, decimal maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue - minValue.z) + minValue.z);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 RandomUniform(Random random, decimal minValue, decvec3 maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue.x - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.y - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.z - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec3 RandomUniform(Random random, decimal minValue, decimal maxValue) => new decvec3((decimal)random.NextDouble() * (maxValue - minValue) + minValue);
 
         #endregion
 

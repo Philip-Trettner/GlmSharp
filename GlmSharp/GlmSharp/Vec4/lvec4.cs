@@ -899,21 +899,6 @@ namespace GlmSharp
         /// Returns a lvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).
         /// </summary>
         public static lvec4 Random(Random random) => new lvec4((long)random.Next(), (long)random.Next(), (long)random.Next(), (long)random.Next());
-        
-        /// <summary>
-        /// Returns a lvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
-        /// </summary>
-        public static lvec4 Random(Random random, int maxValue) => new lvec4((long)random.Next(maxValue), (long)random.Next(maxValue), (long)random.Next(maxValue), (long)random.Next(maxValue));
-        
-        /// <summary>
-        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
-        /// </summary>
-        public static lvec4 Random(Random random, int minValue, int maxValue) => new lvec4((long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue));
-        
-        /// <summary>
-        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
-        /// </summary>
-        public static lvec4 RandomUniform(Random random, int minValue, int maxValue) => new lvec4((long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue), (long)random.Next(minValue, maxValue));
 
         #endregion
 
@@ -1639,6 +1624,56 @@ namespace GlmSharp
         /// Returns a lvec4 from component-wise application of RightShift (lhs &gt;&gt; rhs).
         /// </summary>
         public static lvec4 RightShift(long lhs, int rhs) => new lvec4(lhs >> rhs);
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static lvec4 Random(Random random, lvec4 maxValue) => new lvec4((long)random.Next((int)maxValue.x), (long)random.Next((int)maxValue.y), (long)random.Next((int)maxValue.z), (long)random.Next((int)maxValue.w));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static lvec4 Random(Random random, long maxValue) => new lvec4((long)random.Next((int)maxValue));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 Random(Random random, lvec4 minValue, lvec4 maxValue) => new lvec4((long)random.Next((int)minValue.x, (int)maxValue.x), (long)random.Next((int)minValue.y, (int)maxValue.y), (long)random.Next((int)minValue.z, (int)maxValue.z), (long)random.Next((int)minValue.w, (int)maxValue.w));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 Random(Random random, lvec4 minValue, long maxValue) => new lvec4((long)random.Next((int)minValue.x, (int)maxValue), (long)random.Next((int)minValue.y, (int)maxValue), (long)random.Next((int)minValue.z, (int)maxValue), (long)random.Next((int)minValue.w, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 Random(Random random, long minValue, lvec4 maxValue) => new lvec4((long)random.Next((int)minValue, (int)maxValue.x), (long)random.Next((int)minValue, (int)maxValue.y), (long)random.Next((int)minValue, (int)maxValue.z), (long)random.Next((int)minValue, (int)maxValue.w));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 Random(Random random, long minValue, long maxValue) => new lvec4((long)random.Next((int)minValue, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 RandomUniform(Random random, lvec4 minValue, lvec4 maxValue) => new lvec4((long)random.Next((int)minValue.x, (int)maxValue.x), (long)random.Next((int)minValue.y, (int)maxValue.y), (long)random.Next((int)minValue.z, (int)maxValue.z), (long)random.Next((int)minValue.w, (int)maxValue.w));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 RandomUniform(Random random, lvec4 minValue, long maxValue) => new lvec4((long)random.Next((int)minValue.x, (int)maxValue), (long)random.Next((int)minValue.y, (int)maxValue), (long)random.Next((int)minValue.z, (int)maxValue), (long)random.Next((int)minValue.w, (int)maxValue));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 RandomUniform(Random random, long minValue, lvec4 maxValue) => new lvec4((long)random.Next((int)minValue, (int)maxValue.x), (long)random.Next((int)minValue, (int)maxValue.y), (long)random.Next((int)minValue, (int)maxValue.z), (long)random.Next((int)minValue, (int)maxValue.w));
+        
+        /// <summary>
+        /// Returns a lvec4 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static lvec4 RandomUniform(Random random, long minValue, long maxValue) => new lvec4((long)random.Next((int)minValue, (int)maxValue));
 
         #endregion
 

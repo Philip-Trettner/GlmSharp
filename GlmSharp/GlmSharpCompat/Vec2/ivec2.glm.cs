@@ -350,6 +350,21 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static int Cross(ivec2 l, ivec2 r) => ivec2.Cross(l, r);
+        
+        /// <summary>
+        /// Returns a ivec2 with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)
+        /// </summary>
+        public static ivec2 Random(Random random, ivec2 maxValue) => ivec2.Random(random, maxValue);
+        
+        /// <summary>
+        /// Returns a ivec2 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec2 Random(Random random, ivec2 minValue, ivec2 maxValue) => ivec2.Random(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a ivec2 with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)
+        /// </summary>
+        public static ivec2 RandomUniform(Random random, ivec2 minValue, ivec2 maxValue) => ivec2.RandomUniform(random, minValue, maxValue);
 
     }
 }

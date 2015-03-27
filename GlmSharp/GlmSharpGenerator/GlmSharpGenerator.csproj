@@ -56,6 +56,7 @@
     <Compile Include="Members\Operator.cs" />
     <Compile Include="Members\Property.cs" />
     <Compile Include="Members\StaticProperty.cs" />
+    <Compile Include="Tests\DistributionTestFunc.cs" />
     <Compile Include="Tests\InvariantTestFunc.cs" />
     <Compile Include="Tests\TestFunc.cs" />
     <Compile Include="Types\AnyType.cs" />

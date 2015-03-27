@@ -762,6 +762,26 @@ namespace GlmSharp
         /// Returns the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static dvec3 Cross(dvec3 l, dvec3 r) => dvec3.Cross(l, r);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 Random(Random random, dvec3 minValue, dvec3 maxValue) => dvec3.Random(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static double Random(Random random, double minValue, double maxValue) => (double)random.NextDouble() * (maxValue - minValue) + minValue;
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static dvec3 RandomUniform(Random random, dvec3 minValue, dvec3 maxValue) => dvec3.RandomUniform(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static double RandomUniform(Random random, double minValue, double maxValue) => (double)random.NextDouble() * (maxValue - minValue) + minValue;
 
     }
 }

@@ -875,6 +875,16 @@ namespace GlmSharp
         /// Returns a vector pointing in the same direction as another (faceforward orients a vector to point away from a surface as defined by its normal. If dot(Nref, I) is negative faceforward returns N, otherwise it returns -N).
         /// </summary>
         public static decvec4 FaceForward(decvec4 N, decvec4 I, decvec4 Nref) => Dot(Nref, I) < 0 ? N : -N;
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 0.0 and 1.0.
+        /// </summary>
+        public static decvec4 Random(Random random) => new decvec4((decimal)random.NextDouble(), (decimal)random.NextDouble(), (decimal)random.NextDouble(), (decimal)random.NextDouble());
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between -1.0 and 1.0.
+        /// </summary>
+        public static decvec4 RandomSigned(Random random) => new decvec4((decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0));
 
         #endregion
 
@@ -1730,6 +1740,46 @@ namespace GlmSharp
         /// Returns a decvec4 from component-wise application of Trunc ((long)(v)).
         /// </summary>
         public static decvec4 Trunc(decimal v) => new decvec4((long)(v));
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 Random(Random random, decvec4 minValue, decvec4 maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z, (decimal)random.NextDouble() * (maxValue.w - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 Random(Random random, decvec4 minValue, decimal maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue - minValue.z) + minValue.z, (decimal)random.NextDouble() * (maxValue - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 Random(Random random, decimal minValue, decvec4 maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue.x - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.y - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.z - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.w - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 Random(Random random, decimal minValue, decimal maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 RandomUniform(Random random, decvec4 minValue, decvec4 maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue.z - minValue.z) + minValue.z, (decimal)random.NextDouble() * (maxValue.w - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 RandomUniform(Random random, decvec4 minValue, decimal maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (decimal)random.NextDouble() * (maxValue - minValue.y) + minValue.y, (decimal)random.NextDouble() * (maxValue - minValue.z) + minValue.z, (decimal)random.NextDouble() * (maxValue - minValue.w) + minValue.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 RandomUniform(Random random, decimal minValue, decvec4 maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue.x - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.y - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.z - minValue) + minValue, (decimal)random.NextDouble() * (maxValue.w - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static decvec4 RandomUniform(Random random, decimal minValue, decimal maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue - minValue) + minValue);
 
         #endregion
 

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using GlmSharpGenerator.Types;
 
@@ -14,6 +16,9 @@ namespace GlmSharpGenerator
 
         private static void Main(string[] args)
         {
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentUICulture = CultureInfo.InvariantCulture;
+
             if (args.Length != 1)
             {
                 Console.WriteLine("Usage: path/to/sln-folder/ path/to/gen-folder/");

@@ -31,6 +31,8 @@ namespace GlmSharpTest.Manual
             Assert.AreEqual(6, v2.y);
             Assert.AreEqual(3, v2.z);
             Assert.AreEqual(6, v2.w);
+
+            //Assert.AreEqual(1.0, 2.0, 0.1);
         }
     }
 }

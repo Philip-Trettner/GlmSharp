@@ -43,11 +43,14 @@ namespace GlmSharpGenerator.Members
         public string[] ParameterNames { get; set; }
 
         public string AdditionalComment { get; set; }
+        public string FirstParameter { get; set; }
 
         /// <summary>
         /// Fields
         /// </summary>
         public IEnumerable<string> Fields { get; set; }
+
+        public string CommentOverride { get; set; }
 
         private void BuildComment()
         {
@@ -55,6 +58,9 @@ namespace GlmSharpGenerator.Members
             Comment = Comment.Replace("&", "&amp;");
             Comment = Comment.Replace(">", "&gt;");
             Comment = Comment.Replace("<", "&lt;");
+
+            if (!string.IsNullOrEmpty(CommentOverride))
+                Comment = CommentOverride;
         }
 
         public ComponentWiseStaticFunction(IEnumerable<string> fields, AbstractType returnType, string name, AbstractType para0, string paraName0, string compString)
@@ -145,13 +151,19 @@ namespace GlmSharpGenerator.Members
 
         public override IEnumerable<Member> GlmMembers()
         {
+            //if (!string.IsNullOrEmpty(FirstParameter))
+            //    yield break; // not supported for this
+
+            var ap = string.IsNullOrEmpty(FirstParameter) ? new string[] { } : new[] { FirstParameter };
+            var ap2 = string.IsNullOrEmpty(FirstParameter) ? "" : FirstParameter.Split(' ').Last() + ", ";
+
             BuildComment();
             yield return new Function(ReturnType, Name + OriginalType.GenericSuffix)
             {
                 Static = true,
                 Comment = Comment,
-                Parameters = ParameterNames.Select((p, i) => ParameterTypes[i].NameThat + " " + p),
-                CodeString = string.Format("{0}.{1}({2})", OriginalType.NameThat, Name, ParameterNames.CommaSeparated())
+                Parameters = ap.Concat(ParameterNames.Select((p, i) => ParameterTypes[i].NameThat + " " + p)),
+                CodeString = string.Format("{0}.{1}({2})", OriginalType.NameThat, Name, ap2 + ParameterNames.CommaSeparated())
             };
 
             // scalar version
@@ -162,7 +174,7 @@ namespace GlmSharpGenerator.Members
                 {
                     Static = true,
                     Comment = Comment,
-                    Parameters = ParameterNames.Select((p, i) => (ParameterTypes[i].BaseType ?? ParameterTypes[i]).NameThat + " " + p),
+                    Parameters = ap.Concat(ParameterNames.Select((p, i) => (ParameterTypes[i].BaseType ?? ParameterTypes[i]).NameThat + " " + p)),
                     CodeString = string.Format(CompString, ParameterNames.OfType<object>().ToArray())
                 };
             }
@@ -185,9 +197,11 @@ namespace GlmSharpGenerator.Members
                         invok = string.Format(CompString, arginfo.Select(a => (object)a.ParaName).ToArray());
                     else invok = Fields.Select(f => string.Format(CompString, arginfo.Select(a => (object)string.Format(a.ParaInvoke, a.ParaName, f)).ToArray())).CommaSeparated();
 
+                    var ap = string.IsNullOrEmpty(FirstParameter) ? "" : FirstParameter + ", ";
+
                     yield return string.Format("{0} {1} {2}({3}) => new {1}({4});",
                         MemberPrefix, ReturnType.NameThat, Name,
-                        arginfo.Select(a => a.Type.NameThat + " " + a.ParaName).CommaSeparated(),
+                        ap + arginfo.Select(a => a.Type.NameThat + " " + a.ParaName).CommaSeparated(),
                         invok
                         ).Trim();
                 }

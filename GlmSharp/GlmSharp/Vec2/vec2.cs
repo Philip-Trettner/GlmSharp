@@ -704,6 +704,16 @@ namespace GlmSharp
         /// Returns the length of the outer product (cross product, vector product) of the two vectors.
         /// </summary>
         public static float Cross(vec2 l, vec2 r) => l.x * r.y - l.y * r.x;
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 0.0 and 1.0.
+        /// </summary>
+        public static vec2 Random(Random random) => new vec2((float)random.NextDouble(), (float)random.NextDouble());
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between -1.0 and 1.0.
+        /// </summary>
+        public static vec2 RandomSigned(Random random) => new vec2((float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0));
 
         #endregion
 
@@ -1609,6 +1619,46 @@ namespace GlmSharp
         /// Returns a vec2 from component-wise application of Trunc ((long)(v)).
         /// </summary>
         public static vec2 Trunc(float v) => new vec2((long)(v));
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 Random(Random random, vec2 minValue, vec2 maxValue) => new vec2((float)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 Random(Random random, vec2 minValue, float maxValue) => new vec2((float)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue - minValue.y) + minValue.y);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 Random(Random random, float minValue, vec2 maxValue) => new vec2((float)random.NextDouble() * (maxValue.x - minValue) + minValue, (float)random.NextDouble() * (maxValue.y - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 Random(Random random, float minValue, float maxValue) => new vec2((float)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 RandomUniform(Random random, vec2 minValue, vec2 maxValue) => new vec2((float)random.NextDouble() * (maxValue.x - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue.y - minValue.y) + minValue.y);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 RandomUniform(Random random, vec2 minValue, float maxValue) => new vec2((float)random.NextDouble() * (maxValue - minValue.x) + minValue.x, (float)random.NextDouble() * (maxValue - minValue.y) + minValue.y);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 RandomUniform(Random random, float minValue, vec2 maxValue) => new vec2((float)random.NextDouble() * (maxValue.x - minValue) + minValue, (float)random.NextDouble() * (maxValue.y - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
+        /// </summary>
+        public static vec2 RandomUniform(Random random, float minValue, float maxValue) => new vec2((float)random.NextDouble() * (maxValue - minValue) + minValue);
 
         #endregion
 
