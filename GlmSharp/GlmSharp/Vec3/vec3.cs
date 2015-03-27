@@ -781,6 +781,11 @@ namespace GlmSharp
         /// Returns a vec3 with independent and identically distributed uniform values between -1.0 and 1.0.
         /// </summary>
         public static vec3 RandomSigned(Random random) => new vec3((float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0), (float)(random.NextDouble() * 2.0 - 1.0));
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal distribution (zero mean, unit variance).
+        /// </summary>
+        public static vec3 RandomNormal(Random random) => new vec3((float)(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))), (float)(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))), (float)(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))));
 
         #endregion
 
@@ -1726,6 +1731,46 @@ namespace GlmSharp
         /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static vec3 RandomUniform(Random random, float minValue, float maxValue) => new vec3((float)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomNormal(Random random, vec3 mean, vec3 variance) => new vec3((float)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (float)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (float)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomNormal(Random random, vec3 mean, float variance) => new vec3((float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomNormal(Random random, float mean, vec3 variance) => new vec3((float)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (float)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (float)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomNormal(Random random, float mean, float variance) => new vec3((float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomGaussian(Random random, vec3 mean, vec3 variance) => new vec3((float)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (float)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (float)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomGaussian(Random random, vec3 mean, float variance) => new vec3((float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomGaussian(Random random, float mean, vec3 variance) => new vec3((float)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (float)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (float)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomGaussian(Random random, float mean, float variance) => new vec3((float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
 
         #endregion
 

@@ -885,6 +885,11 @@ namespace GlmSharp
         /// Returns a decvec4 with independent and identically distributed uniform values between -1.0 and 1.0.
         /// </summary>
         public static decvec4 RandomSigned(Random random) => new decvec4((decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0), (decimal)(random.NextDouble() * 2.0 - 1.0));
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal distribution (zero mean, unit variance).
+        /// </summary>
+        public static decvec4 RandomNormal(Random random) => new decvec4((decimal)(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))), (decimal)(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))), (decimal)(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))), (decimal)(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))));
 
         #endregion
 
@@ -1780,6 +1785,46 @@ namespace GlmSharp
         /// Returns a decvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static decvec4 RandomUniform(Random random, decimal minValue, decimal maxValue) => new decvec4((decimal)random.NextDouble() * (maxValue - minValue) + minValue);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomNormal(Random random, decvec4 mean, decvec4 variance) => new decvec4((decimal)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (decimal)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (decimal)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z, (decimal)(Math.Sqrt((double)variance.w) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomNormal(Random random, decvec4 mean, decimal variance) => new decvec4((decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z, (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomNormal(Random random, decimal mean, decvec4 variance) => new decvec4((decimal)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (decimal)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (decimal)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (decimal)(Math.Sqrt((double)variance.w) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomNormal(Random random, decimal mean, decimal variance) => new decvec4((decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomGaussian(Random random, decvec4 mean, decvec4 variance) => new decvec4((decimal)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (decimal)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (decimal)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z, (decimal)(Math.Sqrt((double)variance.w) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomGaussian(Random random, decvec4 mean, decimal variance) => new decvec4((decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.x, (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.y, (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.z, (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean.w);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomGaussian(Random random, decimal mean, decvec4 variance) => new decvec4((decimal)(Math.Sqrt((double)variance.x) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (decimal)(Math.Sqrt((double)variance.y) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (decimal)(Math.Sqrt((double)variance.z) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean, (decimal)(Math.Sqrt((double)variance.w) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
+        
+        /// <summary>
+        /// Returns a decvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec4 RandomGaussian(Random random, decimal mean, decimal variance) => new decvec4((decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean);
 
         #endregion
 

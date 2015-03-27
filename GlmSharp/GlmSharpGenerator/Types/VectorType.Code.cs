@@ -959,7 +959,6 @@ namespace GlmSharpGenerator.Types
                 // TODO: http://en.wikipedia.org/wiki/Binomial_distribution
                 // TODO: http://en.wikipedia.org/wiki/Geometric_distribution
                 // TODO: http://en.wikipedia.org/wiki/Negative_binomial_distribution
-                // TODO: Tests
             }
             else if (BaseType.IsFloatingPoint)
             {
@@ -988,6 +987,27 @@ namespace GlmSharpGenerator.Types
                 {
                     FirstParameter = "Random random",
                     CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform values between 'minValue' and 'maxValue'.", Name)
+                };
+
+                // normal, gaussian
+                yield return new Function(this, "RandomNormal")
+                {
+                    Static = true,
+                    ParameterString = "Random random",
+                    CodeString = Construct(this, (BaseTypeCast + "(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble())))").RepeatTimes(Components)),
+                    Comment = string.Format("Returns a {0} with independent and identically distributed values according to a normal distribution (zero mean, unit variance).", Name)
+                };
+                yield return new ComponentWiseStaticFunction(Fields, this, "RandomNormal", this, "mean", this, "variance",
+                    BaseTypeCast + "(Math.Sqrt((double){1}) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + {0}")
+                {
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.", Name)
+                };
+                yield return new ComponentWiseStaticFunction(Fields, this, "RandomGaussian", this, "mean", this, "variance",
+                    BaseTypeCast + "(Math.Sqrt((double){1}) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + {0}")
+                {
+                    FirstParameter = "Random random",
+                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.", Name)
                 };
 
                 // TODO: Normal, Gaussian distribution

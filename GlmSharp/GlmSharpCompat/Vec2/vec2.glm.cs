@@ -495,6 +495,16 @@ namespace GlmSharp
         /// Returns a vec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static vec2 RandomUniform(Random random, vec2 minValue, vec2 maxValue) => vec2.RandomUniform(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec2 RandomNormal(Random random, vec2 mean, vec2 variance) => vec2.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a vec2 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec2 RandomGaussian(Random random, vec2 mean, vec2 variance) => vec2.RandomGaussian(random, mean, variance);
 
     }
 }

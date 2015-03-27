@@ -636,7 +636,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 1.5, 1.0);
             Assert.AreEqual(avg.y, 1.5, 1.0);
@@ -663,7 +663,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 1.5, 1.0);
             Assert.AreEqual(avg.y, 1.5, 1.0);
@@ -690,7 +690,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 4.5, 1.0);
             Assert.AreEqual(avg.y, 4.5, 1.0);
@@ -717,7 +717,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 2, 1.0);
             Assert.AreEqual(avg.y, 2, 1.0);
@@ -744,7 +744,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 7, 1.0);
             Assert.AreEqual(avg.y, 7, 1.0);
@@ -771,7 +771,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 2.61386011825589, 1.0);
             Assert.AreEqual(avg.y, 2.61386011825589, 1.0);
@@ -798,7 +798,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 3.19387298482185, 1.0);
             Assert.AreEqual(avg.y, 3.19387298482185, 1.0);
@@ -825,7 +825,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 1.64144013130173, 1.0);
             Assert.AreEqual(avg.y, 1.64144013130173, 1.0);
@@ -852,7 +852,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 3.29873869186209, 1.0);
             Assert.AreEqual(avg.y, 3.29873869186209, 1.0);
@@ -879,7 +879,7 @@ namespace GlmSharpTest.Generated.Vec3
             }
             
             var avg = sum / (double)count;
-            var variance =  sumSqr / (double)count - avg * avg;
+            var variance = sumSqr / (double)count - avg * avg;
             
             Assert.AreEqual(avg.x, 1.74630583834197, 1.0);
             Assert.AreEqual(avg.y, 1.74630583834197, 1.0);

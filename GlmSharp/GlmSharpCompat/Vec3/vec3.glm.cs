@@ -780,6 +780,26 @@ namespace GlmSharp
         /// Returns a vec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static float RandomUniform(Random random, float minValue, float maxValue) => (float)random.NextDouble() * (maxValue - minValue) + minValue;
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomNormal(Random random, vec3 mean, vec3 variance) => vec3.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static float RandomNormal(Random random, float mean, float variance) => (float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean;
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec3 RandomGaussian(Random random, vec3 mean, vec3 variance) => vec3.RandomGaussian(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a vec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static float RandomGaussian(Random random, float mean, float variance) => (float)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean;
 
     }
 }

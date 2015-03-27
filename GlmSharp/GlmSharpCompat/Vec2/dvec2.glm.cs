@@ -495,6 +495,16 @@ namespace GlmSharp
         /// Returns a dvec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static dvec2 RandomUniform(Random random, dvec2 minValue, dvec2 maxValue) => dvec2.RandomUniform(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a dvec2 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static dvec2 RandomNormal(Random random, dvec2 mean, dvec2 variance) => dvec2.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a dvec2 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static dvec2 RandomGaussian(Random random, dvec2 mean, dvec2 variance) => dvec2.RandomGaussian(random, mean, variance);
 
     }
 }

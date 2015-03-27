@@ -33,7 +33,7 @@ namespace GlmSharpGenerator.Tests
 
             code.Add("");
             code.Add("var avg = sum / (double)count;");
-            code.Add("var variance =  sumSqr / (double)count - avg * avg;");
+            code.Add("var variance = sumSqr / (double)count - avg * avg;");
 
             code.Add("");
             for (var c = 0; c < type.Components; ++c)

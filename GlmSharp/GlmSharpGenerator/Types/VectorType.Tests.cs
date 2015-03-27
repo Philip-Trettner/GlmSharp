@@ -279,6 +279,16 @@ namespace GlmSharpGenerator.Types
                     var range = max - min;
                     yield return new DistributionTestFunc(this, "RandomUniform" + i, "Random" + (i % 2 == 0 ? "" : "Uniform"), min + ", " + max, (min + max) / 2.0, range * range / 12.0);
                 }
+                for (var i = 0; i < 5; ++i)
+                {
+                    var mean = Random.NextDouble() * 4 - 2;
+                    var variance = Random.NextDouble() * 10;
+                    yield return new DistributionTestFunc(this, "RandomGaussian" + i, "Random" + (i % 2 == 0 ? "Normal" : "Gaussian"), ConstantSuffixFor(mean.ToString(CultureInfo.InvariantCulture)) + ", " + ConstantSuffixFor(variance.ToString(CultureInfo.InvariantCulture)), mean, variance);
+                }
+                for (var i = 0; i < 5; ++i)
+                {
+                    yield return new DistributionTestFunc(this, "RandomNormal" + i, "RandomNormal", "", 0.0, 1.0);
+                }
             }
         }
     }

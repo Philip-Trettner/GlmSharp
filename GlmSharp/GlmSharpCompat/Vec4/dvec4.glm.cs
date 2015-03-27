@@ -480,6 +480,16 @@ namespace GlmSharp
         /// Returns a dvec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static dvec4 RandomUniform(Random random, dvec4 minValue, dvec4 maxValue) => dvec4.RandomUniform(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a dvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static dvec4 RandomNormal(Random random, dvec4 mean, dvec4 variance) => dvec4.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a dvec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static dvec4 RandomGaussian(Random random, dvec4 mean, dvec4 variance) => dvec4.RandomGaussian(random, mean, variance);
 
     }
 }

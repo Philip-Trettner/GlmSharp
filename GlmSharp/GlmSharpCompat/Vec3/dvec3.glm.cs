@@ -780,6 +780,26 @@ namespace GlmSharp
         /// Returns a dvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static double RandomUniform(Random random, double minValue, double maxValue) => (double)random.NextDouble() * (maxValue - minValue) + minValue;
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static dvec3 RandomNormal(Random random, dvec3 mean, dvec3 variance) => dvec3.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static double RandomNormal(Random random, double mean, double variance) => (double)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean;
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static dvec3 RandomGaussian(Random random, dvec3 mean, dvec3 variance) => dvec3.RandomGaussian(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a dvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static double RandomGaussian(Random random, double mean, double variance) => (double)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean;
 
     }
 }

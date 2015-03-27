@@ -480,6 +480,16 @@ namespace GlmSharp
         /// Returns a vec4 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static vec4 RandomUniform(Random random, vec4 minValue, vec4 maxValue) => vec4.RandomUniform(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec4 RandomNormal(Random random, vec4 mean, vec4 variance) => vec4.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a vec4 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static vec4 RandomGaussian(Random random, vec4 mean, vec4 variance) => vec4.RandomGaussian(random, mean, variance);
 
     }
 }

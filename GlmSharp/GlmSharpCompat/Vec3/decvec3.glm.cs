@@ -730,6 +730,26 @@ namespace GlmSharp
         /// Returns a decvec3 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static decimal RandomUniform(Random random, decimal minValue, decimal maxValue) => (decimal)random.NextDouble() * (maxValue - minValue) + minValue;
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec3 RandomNormal(Random random, decvec3 mean, decvec3 variance) => decvec3.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decimal RandomNormal(Random random, decimal mean, decimal variance) => (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean;
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec3 RandomGaussian(Random random, decvec3 mean, decvec3 variance) => decvec3.RandomGaussian(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a decvec3 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decimal RandomGaussian(Random random, decimal mean, decimal variance) => (decimal)(Math.Sqrt((double)variance) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + mean;
 
     }
 }

@@ -472,6 +472,16 @@ namespace GlmSharp
         /// Returns a decvec2 with independent and identically distributed uniform values between 'minValue' and 'maxValue'.
         /// </summary>
         public static decvec2 RandomUniform(Random random, decvec2 minValue, decvec2 maxValue) => decvec2.RandomUniform(random, minValue, maxValue);
+        
+        /// <summary>
+        /// Returns a decvec2 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec2 RandomNormal(Random random, decvec2 mean, decvec2 variance) => decvec2.RandomNormal(random, mean, variance);
+        
+        /// <summary>
+        /// Returns a decvec2 with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.
+        /// </summary>
+        public static decvec2 RandomGaussian(Random random, decvec2 mean, decvec2 variance) => decvec2.RandomGaussian(random, mean, variance);
 
     }
 }
