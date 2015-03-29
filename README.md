@@ -139,3 +139,5 @@ This library is MIT-licensed.
 * noise functions
 * random extensions
 * explicit JSON support
+* half type
+* matrix column/row setter
