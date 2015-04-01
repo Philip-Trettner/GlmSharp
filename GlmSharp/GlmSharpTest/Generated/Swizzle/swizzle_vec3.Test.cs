@@ -1810,5 +1810,190 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new vec3(3.5f, 6, -9);
+                var v1 = new vec2(9.5f, -8);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(9.5f, v0.x);
+                Assert.AreEqual(-8, v0.y);
+                Assert.AreEqual(-9, v0.z);
+            
+                Assert.AreEqual(3.5f, v2.x);
+                Assert.AreEqual(6, v2.y);
+            }
+            {
+                var v0 = new vec3(0f, 5.5f, 7);
+                var v1 = new vec2(-8.5f, 8);
+                var v2 = v0.xz;
+                v0.xz = v1;
+                var v3 = v0.xz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-8.5f, v0.x);
+                Assert.AreEqual(5.5f, v0.y);
+                Assert.AreEqual(8, v0.z);
+            
+                Assert.AreEqual(0f, v2.x);
+                Assert.AreEqual(7, v2.y);
+            }
+            {
+                var v0 = new vec3(3, 9.5f, 3.5f);
+                var v1 = new vec2(9, 0.5f);
+                var v2 = v0.yz;
+                v0.yz = v1;
+                var v3 = v0.yz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(9, v0.y);
+                Assert.AreEqual(0.5f, v0.z);
+            
+                Assert.AreEqual(9.5f, v2.x);
+                Assert.AreEqual(3.5f, v2.y);
+            }
+            {
+                var v0 = new vec3(-0.5f, -8.5f, -1);
+                var v1 = new vec3(3, 7, 3);
+                var v2 = v0.xyz;
+                v0.xyz = v1;
+                var v3 = v0.xyz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(7, v0.y);
+                Assert.AreEqual(3, v0.z);
+            
+                Assert.AreEqual(-0.5f, v2.x);
+                Assert.AreEqual(-8.5f, v2.y);
+                Assert.AreEqual(-1, v2.z);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new vec3(-2, 0.5f, -4.5f);
+                var v1 = (float)2;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(2, v0.x);
+                Assert.AreEqual(0.5f, v0.y);
+                Assert.AreEqual(-4.5f, v0.z);
+            
+                Assert.AreEqual(-2, v2);
+            }
+            {
+                var v0 = new vec3(-7.5f, -1.5f, -0.5f);
+                var v1 = (float)7;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-7.5f, v0.x);
+                Assert.AreEqual(7, v0.y);
+                Assert.AreEqual(-0.5f, v0.z);
+            
+                Assert.AreEqual(-1.5f, v2);
+            }
+            {
+                var v0 = new vec3(-8, -7, -7.5f);
+                var v1 = new vec2(-5, 6.5f);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-5, v0.x);
+                Assert.AreEqual(6.5f, v0.y);
+                Assert.AreEqual(-7.5f, v0.z);
+            
+                Assert.AreEqual(-8, v2.x);
+                Assert.AreEqual(-7, v2.y);
+            }
+            {
+                var v0 = new vec3(6.5f, -3.5f, -9);
+                var v1 = (float)-2;
+                var v2 = v0.b;
+                v0.b = v1;
+                var v3 = v0.b;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(6.5f, v0.x);
+                Assert.AreEqual(-3.5f, v0.y);
+                Assert.AreEqual(-2, v0.z);
+            
+                Assert.AreEqual(-9, v2);
+            }
+            {
+                var v0 = new vec3(-7.5f, 8.5f, -6);
+                var v1 = new vec2(7.5f, 0.5f);
+                var v2 = v0.rb;
+                v0.rb = v1;
+                var v3 = v0.rb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(7.5f, v0.x);
+                Assert.AreEqual(8.5f, v0.y);
+                Assert.AreEqual(0.5f, v0.z);
+            
+                Assert.AreEqual(-7.5f, v2.x);
+                Assert.AreEqual(-6, v2.y);
+            }
+            {
+                var v0 = new vec3(-0.5f, -9, 7);
+                var v1 = new vec2(-1.5f, 7.5f);
+                var v2 = v0.gb;
+                v0.gb = v1;
+                var v3 = v0.gb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-0.5f, v0.x);
+                Assert.AreEqual(-1.5f, v0.y);
+                Assert.AreEqual(7.5f, v0.z);
+            
+                Assert.AreEqual(-9, v2.x);
+                Assert.AreEqual(7, v2.y);
+            }
+            {
+                var v0 = new vec3(-6.5f, 5, -7.5f);
+                var v1 = new vec3(-9, -9, 0f);
+                var v2 = v0.rgb;
+                v0.rgb = v1;
+                var v3 = v0.rgb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-9, v0.x);
+                Assert.AreEqual(-9, v0.y);
+                Assert.AreEqual(0f, v0.z);
+            
+                Assert.AreEqual(-6.5f, v2.x);
+                Assert.AreEqual(5, v2.y);
+                Assert.AreEqual(-7.5f, v2.z);
+            }
+        }
+
     }
 }

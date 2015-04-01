@@ -444,5 +444,73 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new vec2(4, 9.5f);
+                var v1 = new vec2(6, 3);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(6, v0.x);
+                Assert.AreEqual(3, v0.y);
+            
+                Assert.AreEqual(4, v2.x);
+                Assert.AreEqual(9.5f, v2.y);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new vec2(6.5f, -3.5f);
+                var v1 = (float)-5.5f;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-5.5f, v0.x);
+                Assert.AreEqual(-3.5f, v0.y);
+            
+                Assert.AreEqual(6.5f, v2);
+            }
+            {
+                var v0 = new vec2(-5, -1);
+                var v1 = (float)7;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-5, v0.x);
+                Assert.AreEqual(7, v0.y);
+            
+                Assert.AreEqual(-1, v2);
+            }
+            {
+                var v0 = new vec2(5.5f, -5);
+                var v1 = new vec2(-0.5f, -7);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-0.5f, v0.x);
+                Assert.AreEqual(-7, v0.y);
+            
+                Assert.AreEqual(5.5f, v2.x);
+                Assert.AreEqual(-5, v2.y);
+            }
+        }
+
     }
 }

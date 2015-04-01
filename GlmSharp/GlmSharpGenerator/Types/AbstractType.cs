@@ -547,5 +547,22 @@ namespace GlmSharpGenerator.Types
 
             return string.Format("({0}){1}", otherType.Name, c);
         }
+
+
+        protected static string ToRgba(string xyzw)
+        {
+            var s = "";
+            foreach (var c in xyzw)
+            {
+                switch (c)
+                {
+                    case 'x': s += 'r'; break;
+                    case 'y': s += 'g'; break;
+                    case 'z': s += 'b'; break;
+                    case 'w': s += 'a'; break;
+                }
+            }
+            return s;
+        }
     }
 }

@@ -291,6 +291,52 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public bvec2 rg
+        {
+            get
+            {
+                return new bvec2(x, y);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified RGBA component. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public bool r
+        {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                x = value;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified RGBA component. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public bool g
+        {
+            get
+            {
+                return y;
+            }
+            set
+            {
+                y = value;
+            }
+        }
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public bool[] Values => new[] { x, y };

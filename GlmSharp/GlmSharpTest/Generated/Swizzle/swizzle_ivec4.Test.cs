@@ -5212,5 +5212,465 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new ivec4(2, -3, -6, 8);
+                var v1 = new ivec2(-3, 4);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-3, v0.x);
+                Assert.AreEqual(4, v0.y);
+                Assert.AreEqual(-6, v0.z);
+                Assert.AreEqual(8, v0.w);
+            
+                Assert.AreEqual(2, v2.x);
+                Assert.AreEqual(-3, v2.y);
+            }
+            {
+                var v0 = new ivec4(3, -4, 7, -8);
+                var v1 = new ivec2(3, -3);
+                var v2 = v0.xz;
+                v0.xz = v1;
+                var v3 = v0.xz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(-4, v0.y);
+                Assert.AreEqual(-3, v0.z);
+                Assert.AreEqual(-8, v0.w);
+            
+                Assert.AreEqual(3, v2.x);
+                Assert.AreEqual(7, v2.y);
+            }
+            {
+                var v0 = new ivec4(-3, -6, 5, 9);
+                var v1 = new ivec2(4, 1);
+                var v2 = v0.yz;
+                v0.yz = v1;
+                var v3 = v0.yz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-3, v0.x);
+                Assert.AreEqual(4, v0.y);
+                Assert.AreEqual(1, v0.z);
+                Assert.AreEqual(9, v0.w);
+            
+                Assert.AreEqual(-6, v2.x);
+                Assert.AreEqual(5, v2.y);
+            }
+            {
+                var v0 = new ivec4(-1, 5, -6, -7);
+                var v1 = new ivec3(6, -2, 9);
+                var v2 = v0.xyz;
+                v0.xyz = v1;
+                var v3 = v0.xyz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(6, v0.x);
+                Assert.AreEqual(-2, v0.y);
+                Assert.AreEqual(9, v0.z);
+                Assert.AreEqual(-7, v0.w);
+            
+                Assert.AreEqual(-1, v2.x);
+                Assert.AreEqual(5, v2.y);
+                Assert.AreEqual(-6, v2.z);
+            }
+            {
+                var v0 = new ivec4(7, -8, -3, -7);
+                var v1 = new ivec2(9, 4);
+                var v2 = v0.xw;
+                v0.xw = v1;
+                var v3 = v0.xw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(9, v0.x);
+                Assert.AreEqual(-8, v0.y);
+                Assert.AreEqual(-3, v0.z);
+                Assert.AreEqual(4, v0.w);
+            
+                Assert.AreEqual(7, v2.x);
+                Assert.AreEqual(-7, v2.y);
+            }
+            {
+                var v0 = new ivec4(-9, 8, 6, 3);
+                var v1 = new ivec2(9, 9);
+                var v2 = v0.yw;
+                v0.yw = v1;
+                var v3 = v0.yw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-9, v0.x);
+                Assert.AreEqual(9, v0.y);
+                Assert.AreEqual(6, v0.z);
+                Assert.AreEqual(9, v0.w);
+            
+                Assert.AreEqual(8, v2.x);
+                Assert.AreEqual(3, v2.y);
+            }
+            {
+                var v0 = new ivec4(2, 1, 5, -8);
+                var v1 = new ivec3(-5, 3, -2);
+                var v2 = v0.xyw;
+                v0.xyw = v1;
+                var v3 = v0.xyw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-5, v0.x);
+                Assert.AreEqual(3, v0.y);
+                Assert.AreEqual(5, v0.z);
+                Assert.AreEqual(-2, v0.w);
+            
+                Assert.AreEqual(2, v2.x);
+                Assert.AreEqual(1, v2.y);
+                Assert.AreEqual(-8, v2.z);
+            }
+            {
+                var v0 = new ivec4(-1, -8, 2, -1);
+                var v1 = new ivec2(2, -2);
+                var v2 = v0.zw;
+                v0.zw = v1;
+                var v3 = v0.zw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-1, v0.x);
+                Assert.AreEqual(-8, v0.y);
+                Assert.AreEqual(2, v0.z);
+                Assert.AreEqual(-2, v0.w);
+            
+                Assert.AreEqual(2, v2.x);
+                Assert.AreEqual(-1, v2.y);
+            }
+            {
+                var v0 = new ivec4(-7, -8, 1, 7);
+                var v1 = new ivec3(3, 5, 6);
+                var v2 = v0.xzw;
+                v0.xzw = v1;
+                var v3 = v0.xzw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(-8, v0.y);
+                Assert.AreEqual(5, v0.z);
+                Assert.AreEqual(6, v0.w);
+            
+                Assert.AreEqual(-7, v2.x);
+                Assert.AreEqual(1, v2.y);
+                Assert.AreEqual(7, v2.z);
+            }
+            {
+                var v0 = new ivec4(3, -9, 5, 5);
+                var v1 = new ivec3(-1, -6, -8);
+                var v2 = v0.yzw;
+                v0.yzw = v1;
+                var v3 = v0.yzw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(-1, v0.y);
+                Assert.AreEqual(-6, v0.z);
+                Assert.AreEqual(-8, v0.w);
+            
+                Assert.AreEqual(-9, v2.x);
+                Assert.AreEqual(5, v2.y);
+                Assert.AreEqual(5, v2.z);
+            }
+            {
+                var v0 = new ivec4(-4, 4, 4, 6);
+                var v1 = new ivec4(-3, -5, 0, 1);
+                var v2 = v0.xyzw;
+                v0.xyzw = v1;
+                var v3 = v0.xyzw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-3, v0.x);
+                Assert.AreEqual(-5, v0.y);
+                Assert.AreEqual(0, v0.z);
+                Assert.AreEqual(1, v0.w);
+            
+                Assert.AreEqual(-4, v2.x);
+                Assert.AreEqual(4, v2.y);
+                Assert.AreEqual(4, v2.z);
+                Assert.AreEqual(6, v2.w);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new ivec4(-7, -9, -9, 0);
+                var v1 = (int)-1;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-1, v0.x);
+                Assert.AreEqual(-9, v0.y);
+                Assert.AreEqual(-9, v0.z);
+                Assert.AreEqual(0, v0.w);
+            
+                Assert.AreEqual(-7, v2);
+            }
+            {
+                var v0 = new ivec4(-8, -3, 3, -7);
+                var v1 = (int)2;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-8, v0.x);
+                Assert.AreEqual(2, v0.y);
+                Assert.AreEqual(3, v0.z);
+                Assert.AreEqual(-7, v0.w);
+            
+                Assert.AreEqual(-3, v2);
+            }
+            {
+                var v0 = new ivec4(7, 8, -7, 9);
+                var v1 = new ivec2(3, 0);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(0, v0.y);
+                Assert.AreEqual(-7, v0.z);
+                Assert.AreEqual(9, v0.w);
+            
+                Assert.AreEqual(7, v2.x);
+                Assert.AreEqual(8, v2.y);
+            }
+            {
+                var v0 = new ivec4(-1, -7, -9, -7);
+                var v1 = (int)4;
+                var v2 = v0.b;
+                v0.b = v1;
+                var v3 = v0.b;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-1, v0.x);
+                Assert.AreEqual(-7, v0.y);
+                Assert.AreEqual(4, v0.z);
+                Assert.AreEqual(-7, v0.w);
+            
+                Assert.AreEqual(-9, v2);
+            }
+            {
+                var v0 = new ivec4(8, 0, 8, 7);
+                var v1 = new ivec2(-3, -6);
+                var v2 = v0.rb;
+                v0.rb = v1;
+                var v3 = v0.rb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-3, v0.x);
+                Assert.AreEqual(0, v0.y);
+                Assert.AreEqual(-6, v0.z);
+                Assert.AreEqual(7, v0.w);
+            
+                Assert.AreEqual(8, v2.x);
+                Assert.AreEqual(8, v2.y);
+            }
+            {
+                var v0 = new ivec4(7, -4, -3, -9);
+                var v1 = new ivec2(9, 3);
+                var v2 = v0.gb;
+                v0.gb = v1;
+                var v3 = v0.gb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(7, v0.x);
+                Assert.AreEqual(9, v0.y);
+                Assert.AreEqual(3, v0.z);
+                Assert.AreEqual(-9, v0.w);
+            
+                Assert.AreEqual(-4, v2.x);
+                Assert.AreEqual(-3, v2.y);
+            }
+            {
+                var v0 = new ivec4(-3, -7, 6, -7);
+                var v1 = new ivec3(-7, -6, 5);
+                var v2 = v0.rgb;
+                v0.rgb = v1;
+                var v3 = v0.rgb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-7, v0.x);
+                Assert.AreEqual(-6, v0.y);
+                Assert.AreEqual(5, v0.z);
+                Assert.AreEqual(-7, v0.w);
+            
+                Assert.AreEqual(-3, v2.x);
+                Assert.AreEqual(-7, v2.y);
+                Assert.AreEqual(6, v2.z);
+            }
+            {
+                var v0 = new ivec4(-2, 3, -4, 4);
+                var v1 = (int)-9;
+                var v2 = v0.a;
+                v0.a = v1;
+                var v3 = v0.a;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-2, v0.x);
+                Assert.AreEqual(3, v0.y);
+                Assert.AreEqual(-4, v0.z);
+                Assert.AreEqual(-9, v0.w);
+            
+                Assert.AreEqual(4, v2);
+            }
+            {
+                var v0 = new ivec4(-7, -4, 2, 7);
+                var v1 = new ivec2(-5, -4);
+                var v2 = v0.ra;
+                v0.ra = v1;
+                var v3 = v0.ra;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-5, v0.x);
+                Assert.AreEqual(-4, v0.y);
+                Assert.AreEqual(2, v0.z);
+                Assert.AreEqual(-4, v0.w);
+            
+                Assert.AreEqual(-7, v2.x);
+                Assert.AreEqual(7, v2.y);
+            }
+            {
+                var v0 = new ivec4(-6, 0, 7, 0);
+                var v1 = new ivec2(8, -8);
+                var v2 = v0.ga;
+                v0.ga = v1;
+                var v3 = v0.ga;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-6, v0.x);
+                Assert.AreEqual(8, v0.y);
+                Assert.AreEqual(7, v0.z);
+                Assert.AreEqual(-8, v0.w);
+            
+                Assert.AreEqual(0, v2.x);
+                Assert.AreEqual(0, v2.y);
+            }
+            {
+                var v0 = new ivec4(-1, -2, -7, 2);
+                var v1 = new ivec3(5, 8, 3);
+                var v2 = v0.rga;
+                v0.rga = v1;
+                var v3 = v0.rga;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(5, v0.x);
+                Assert.AreEqual(8, v0.y);
+                Assert.AreEqual(-7, v0.z);
+                Assert.AreEqual(3, v0.w);
+            
+                Assert.AreEqual(-1, v2.x);
+                Assert.AreEqual(-2, v2.y);
+                Assert.AreEqual(2, v2.z);
+            }
+            {
+                var v0 = new ivec4(3, -7, 4, 3);
+                var v1 = new ivec2(-3, -7);
+                var v2 = v0.ba;
+                v0.ba = v1;
+                var v3 = v0.ba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(-7, v0.y);
+                Assert.AreEqual(-3, v0.z);
+                Assert.AreEqual(-7, v0.w);
+            
+                Assert.AreEqual(4, v2.x);
+                Assert.AreEqual(3, v2.y);
+            }
+            {
+                var v0 = new ivec4(3, -3, 0, -3);
+                var v1 = new ivec3(5, 1, -4);
+                var v2 = v0.rba;
+                v0.rba = v1;
+                var v3 = v0.rba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(5, v0.x);
+                Assert.AreEqual(-3, v0.y);
+                Assert.AreEqual(1, v0.z);
+                Assert.AreEqual(-4, v0.w);
+            
+                Assert.AreEqual(3, v2.x);
+                Assert.AreEqual(0, v2.y);
+                Assert.AreEqual(-3, v2.z);
+            }
+            {
+                var v0 = new ivec4(-5, 8, -1, -9);
+                var v1 = new ivec3(-4, 0, -8);
+                var v2 = v0.gba;
+                v0.gba = v1;
+                var v3 = v0.gba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-5, v0.x);
+                Assert.AreEqual(-4, v0.y);
+                Assert.AreEqual(0, v0.z);
+                Assert.AreEqual(-8, v0.w);
+            
+                Assert.AreEqual(8, v2.x);
+                Assert.AreEqual(-1, v2.y);
+                Assert.AreEqual(-9, v2.z);
+            }
+            {
+                var v0 = new ivec4(-9, 2, 9, -6);
+                var v1 = new ivec4(-3, 8, 7, 5);
+                var v2 = v0.rgba;
+                v0.rgba = v1;
+                var v3 = v0.rgba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-3, v0.x);
+                Assert.AreEqual(8, v0.y);
+                Assert.AreEqual(7, v0.z);
+                Assert.AreEqual(5, v0.w);
+            
+                Assert.AreEqual(-9, v2.x);
+                Assert.AreEqual(2, v2.y);
+                Assert.AreEqual(9, v2.z);
+                Assert.AreEqual(-6, v2.w);
+            }
+        }
+
     }
 }

@@ -444,5 +444,73 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new dvec2(5.5d, 8);
+                var v1 = new dvec2(-4.5d, 5.5d);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-4.5d, v0.x);
+                Assert.AreEqual(5.5d, v0.y);
+            
+                Assert.AreEqual(5.5d, v2.x);
+                Assert.AreEqual(8, v2.y);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new dvec2(-4, 2.5d);
+                var v1 = (double)1.5d;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(1.5d, v0.x);
+                Assert.AreEqual(2.5d, v0.y);
+            
+                Assert.AreEqual(-4, v2);
+            }
+            {
+                var v0 = new dvec2(9.5d, 2.5d);
+                var v1 = (double)9;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(9.5d, v0.x);
+                Assert.AreEqual(9, v0.y);
+            
+                Assert.AreEqual(2.5d, v2);
+            }
+            {
+                var v0 = new dvec2(-7, 3.5d);
+                var v1 = new dvec2(-8.5d, 4.5d);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-8.5d, v0.x);
+                Assert.AreEqual(4.5d, v0.y);
+            
+                Assert.AreEqual(-7, v2.x);
+                Assert.AreEqual(3.5d, v2.y);
+            }
+        }
+
     }
 }

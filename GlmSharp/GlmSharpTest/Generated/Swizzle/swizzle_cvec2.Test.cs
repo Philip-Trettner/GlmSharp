@@ -444,5 +444,73 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new cvec2(new Complex(7.5d, -7), new Complex(-5, -6.5d));
+                var v1 = new cvec2(new Complex(-7.5d, -1), new Complex(3.5d, -5));
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-7.5d, -1), v0.x);
+                Assert.AreEqual(new Complex(3.5d, -5), v0.y);
+            
+                Assert.AreEqual(new Complex(7.5d, -7), v2.x);
+                Assert.AreEqual(new Complex(-5, -6.5d), v2.y);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new cvec2(new Complex(3, -9.5d), new Complex(-1, 1.0));
+                var v1 = (Complex)new Complex(9, 6);
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(9, 6), v0.x);
+                Assert.AreEqual(new Complex(-1, 1.0), v0.y);
+            
+                Assert.AreEqual(new Complex(3, -9.5d), v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(-4.5d, -4), new Complex(5.5d, -9));
+                var v1 = (Complex)new Complex(7, 3.5d);
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-4.5d, -4), v0.x);
+                Assert.AreEqual(new Complex(7, 3.5d), v0.y);
+            
+                Assert.AreEqual(new Complex(5.5d, -9), v2);
+            }
+            {
+                var v0 = new cvec2(new Complex(0.5d, 9.5d), new Complex(-7, -6.5d));
+                var v1 = new cvec2(new Complex(-6, -4.5d), new Complex(-3, 8.5d));
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-6, -4.5d), v0.x);
+                Assert.AreEqual(new Complex(-3, 8.5d), v0.y);
+            
+                Assert.AreEqual(new Complex(0.5d, 9.5d), v2.x);
+                Assert.AreEqual(new Complex(-7, -6.5d), v2.y);
+            }
+        }
+
     }
 }

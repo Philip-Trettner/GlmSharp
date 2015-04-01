@@ -402,6 +402,116 @@ namespace GlmSharp
         }
         
         /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public uvec2 rg
+        {
+            get
+            {
+                return new uvec2(x, y);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public uvec2 rb
+        {
+            get
+            {
+                return new uvec2(x, z);
+            }
+            set
+            {
+                x = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public uvec2 gb
+        {
+            get
+            {
+                return new uvec2(y, z);
+            }
+            set
+            {
+                y = value.x;
+                z = value.y;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public uvec3 rgb
+        {
+            get
+            {
+                return new uvec3(x, y, z);
+            }
+            set
+            {
+                x = value.x;
+                y = value.y;
+                z = value.z;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified RGBA component. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public uint r
+        {
+            get
+            {
+                return x;
+            }
+            set
+            {
+                x = value;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified RGBA component. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public uint g
+        {
+            get
+            {
+                return y;
+            }
+            set
+            {
+                y = value;
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the specified RGBA component. For more advanced (read-only) swizzling, use the .swizzle property.
+        /// </summary>
+        public uint b
+        {
+            get
+            {
+                return z;
+            }
+            set
+            {
+                z = value;
+            }
+        }
+        
+        /// <summary>
         /// Returns an array with all values
         /// </summary>
         public uint[] Values => new[] { x, y, z };

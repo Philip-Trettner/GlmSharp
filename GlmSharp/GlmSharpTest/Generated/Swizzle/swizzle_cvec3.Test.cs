@@ -1810,5 +1810,190 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new cvec3(new Complex(-7.5d, 4.5d), new Complex(-3, 7.5d), new Complex(-0.5d, -9.5d));
+                var v1 = new cvec2(new Complex(6.5d, 8), new Complex(9.5d, -6.5d));
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(6.5d, 8), v0.x);
+                Assert.AreEqual(new Complex(9.5d, -6.5d), v0.y);
+                Assert.AreEqual(new Complex(-0.5d, -9.5d), v0.z);
+            
+                Assert.AreEqual(new Complex(-7.5d, 4.5d), v2.x);
+                Assert.AreEqual(new Complex(-3, 7.5d), v2.y);
+            }
+            {
+                var v0 = new cvec3(new Complex(-0.5d, 4.5d), new Complex(-1, -3), new Complex(-8.5d, -8.5d));
+                var v1 = new cvec2(new Complex(-1.5d, 5), new Complex(-6, 5));
+                var v2 = v0.xz;
+                v0.xz = v1;
+                var v3 = v0.xz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-1.5d, 5), v0.x);
+                Assert.AreEqual(new Complex(-1, -3), v0.y);
+                Assert.AreEqual(new Complex(-6, 5), v0.z);
+            
+                Assert.AreEqual(new Complex(-0.5d, 4.5d), v2.x);
+                Assert.AreEqual(new Complex(-8.5d, -8.5d), v2.y);
+            }
+            {
+                var v0 = new cvec3(new Complex(-8, -1.5d), new Complex(-4.5d, 3.5d), new Complex(-3.5d, 4));
+                var v1 = new cvec2(new Complex(-2, 1.0), new Complex(-8.5d, -2));
+                var v2 = v0.yz;
+                v0.yz = v1;
+                var v3 = v0.yz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-8, -1.5d), v0.x);
+                Assert.AreEqual(new Complex(-2, 1.0), v0.y);
+                Assert.AreEqual(new Complex(-8.5d, -2), v0.z);
+            
+                Assert.AreEqual(new Complex(-4.5d, 3.5d), v2.x);
+                Assert.AreEqual(new Complex(-3.5d, 4), v2.y);
+            }
+            {
+                var v0 = new cvec3(new Complex(-2.5d, 1.0), new Complex(0.0, 0.0), new Complex(-9.5d, 9));
+                var v1 = new cvec3(new Complex(-8, 1.0), new Complex(-7, 5), new Complex(1.5d, -8.5d));
+                var v2 = v0.xyz;
+                v0.xyz = v1;
+                var v3 = v0.xyz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-8, 1.0), v0.x);
+                Assert.AreEqual(new Complex(-7, 5), v0.y);
+                Assert.AreEqual(new Complex(1.5d, -8.5d), v0.z);
+            
+                Assert.AreEqual(new Complex(-2.5d, 1.0), v2.x);
+                Assert.AreEqual(new Complex(0.0, 0.0), v2.y);
+                Assert.AreEqual(new Complex(-9.5d, 9), v2.z);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new cvec3(new Complex(-9, 2), new Complex(-2, -2.5d), new Complex(1.0, 7.5d));
+                var v1 = (Complex)new Complex(-7.5d, -9.5d);
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-7.5d, -9.5d), v0.x);
+                Assert.AreEqual(new Complex(-2, -2.5d), v0.y);
+                Assert.AreEqual(new Complex(1.0, 7.5d), v0.z);
+            
+                Assert.AreEqual(new Complex(-9, 2), v2);
+            }
+            {
+                var v0 = new cvec3(new Complex(8, 9.5d), new Complex(-7, 8.5d), new Complex(-5.5d, 5.5d));
+                var v1 = (Complex)new Complex(-5, 9);
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(8, 9.5d), v0.x);
+                Assert.AreEqual(new Complex(-5, 9), v0.y);
+                Assert.AreEqual(new Complex(-5.5d, 5.5d), v0.z);
+            
+                Assert.AreEqual(new Complex(-7, 8.5d), v2);
+            }
+            {
+                var v0 = new cvec3(new Complex(-6.5d, -4), new Complex(-1.5d, -6), new Complex(5, -9));
+                var v1 = new cvec2(new Complex(-9, -3), new Complex(6.5d, 1.5d));
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-9, -3), v0.x);
+                Assert.AreEqual(new Complex(6.5d, 1.5d), v0.y);
+                Assert.AreEqual(new Complex(5, -9), v0.z);
+            
+                Assert.AreEqual(new Complex(-6.5d, -4), v2.x);
+                Assert.AreEqual(new Complex(-1.5d, -6), v2.y);
+            }
+            {
+                var v0 = new cvec3(new Complex(1.0, 1.0), new Complex(8.5d, 5), new Complex(5.5d, -1.5d));
+                var v1 = (Complex)new Complex(1.5d, -9);
+                var v2 = v0.b;
+                v0.b = v1;
+                var v3 = v0.b;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(1.0, 1.0), v0.x);
+                Assert.AreEqual(new Complex(8.5d, 5), v0.y);
+                Assert.AreEqual(new Complex(1.5d, -9), v0.z);
+            
+                Assert.AreEqual(new Complex(5.5d, -1.5d), v2);
+            }
+            {
+                var v0 = new cvec3(new Complex(-8, -3.5d), new Complex(4, 8), new Complex(1.5d, 3));
+                var v1 = new cvec2(new Complex(-1, 9.5d), new Complex(0.0, 2.5d));
+                var v2 = v0.rb;
+                v0.rb = v1;
+                var v3 = v0.rb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-1, 9.5d), v0.x);
+                Assert.AreEqual(new Complex(4, 8), v0.y);
+                Assert.AreEqual(new Complex(0.0, 2.5d), v0.z);
+            
+                Assert.AreEqual(new Complex(-8, -3.5d), v2.x);
+                Assert.AreEqual(new Complex(1.5d, 3), v2.y);
+            }
+            {
+                var v0 = new cvec3(new Complex(-1.5d, -6.5d), new Complex(-7.5d, -6), new Complex(0.5d, 4));
+                var v1 = new cvec2(new Complex(8.5d, 0.0), new Complex(-7, -3.5d));
+                var v2 = v0.gb;
+                v0.gb = v1;
+                var v3 = v0.gb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(-1.5d, -6.5d), v0.x);
+                Assert.AreEqual(new Complex(8.5d, 0.0), v0.y);
+                Assert.AreEqual(new Complex(-7, -3.5d), v0.z);
+            
+                Assert.AreEqual(new Complex(-7.5d, -6), v2.x);
+                Assert.AreEqual(new Complex(0.5d, 4), v2.y);
+            }
+            {
+                var v0 = new cvec3(new Complex(5.5d, -0.5d), new Complex(-8.5d, 6), new Complex(2, -0.5d));
+                var v1 = new cvec3(new Complex(0.5d, 4), new Complex(7, -8), new Complex(0.0, 7));
+                var v2 = v0.rgb;
+                v0.rgb = v1;
+                var v3 = v0.rgb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(new Complex(0.5d, 4), v0.x);
+                Assert.AreEqual(new Complex(7, -8), v0.y);
+                Assert.AreEqual(new Complex(0.0, 7), v0.z);
+            
+                Assert.AreEqual(new Complex(5.5d, -0.5d), v2.x);
+                Assert.AreEqual(new Complex(-8.5d, 6), v2.y);
+                Assert.AreEqual(new Complex(2, -0.5d), v2.z);
+            }
+        }
+
     }
 }

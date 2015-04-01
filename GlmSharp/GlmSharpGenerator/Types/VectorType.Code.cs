@@ -46,7 +46,7 @@ namespace GlmSharpGenerator.Types
                 Comment = "Returns an object that can be used for arbitrary swizzling (e.g. swizzle.zy)"
             };
 
-            // inline-swizzle
+            // inline-swizzle XYZW
             foreach (var swizzleBits in InlineSwizzle())
             {
                 if (swizzleBits.Count(c => c == '1') < 2)
@@ -60,6 +60,31 @@ namespace GlmSharpGenerator.Types
                     GetterLine = string.Format("return {0};", Construct(vecType, swizzle.Select(c => c.ToString()))),
                     Setter = swizzle.Select((c, i) => string.Format("{0} = value.{1};", c, ArgOf(i))),
                     Comment = "Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property."
+                };
+            }
+            // inline-swizzle RGBA
+            foreach (var swizzleBits in InlineSwizzle())
+            {
+                if (swizzleBits.Count(c => c == '1') < 2)
+                    continue; // at least two set
+
+                var swizzle = swizzleBits.Select((c, i) => c == '1' ? ArgOfs(i) : "").Aggregate((s1, s2) => s1 + s2);
+                var vecType = new VectorType(BaseType, swizzle.Length);
+                
+                yield return new Property(ToRgba(swizzle), vecType)
+                {
+                    GetterLine = string.Format("return {0};", Construct(vecType, swizzle.Select(c => c.ToString()))),
+                    Setter = swizzle.Select((c, i) => string.Format("{0} = value.{1};", c, ArgOf(i))),
+                    Comment = "Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property."
+                };
+            }
+            for (var c = 0; c < Components; ++c)
+            {
+                yield return new Property("rgba"[c].ToString(), BaseType)
+                {
+                    GetterLine = string.Format("return {0};", "xyzw"[c]),
+                    SetterLine = string.Format("{0} = value;", "xyzw"[c]),
+                    Comment = "Gets or sets the specified RGBA component. For more advanced (read-only) swizzling, use the .swizzle property."
                 };
             }
 

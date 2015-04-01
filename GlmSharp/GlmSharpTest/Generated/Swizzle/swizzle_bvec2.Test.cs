@@ -444,5 +444,73 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new bvec2(true, true);
+                var v1 = new bvec2(true, true);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(true, v0.x);
+                Assert.AreEqual(true, v0.y);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(true, v2.y);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new bvec2(false, false);
+                var v1 = (bool)true;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(true, v0.x);
+                Assert.AreEqual(false, v0.y);
+            
+                Assert.AreEqual(false, v2);
+            }
+            {
+                var v0 = new bvec2(false, true);
+                var v1 = (bool)false;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(false, v0.y);
+            
+                Assert.AreEqual(true, v2);
+            }
+            {
+                var v0 = new bvec2(true, true);
+                var v1 = new bvec2(true, false);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(true, v0.x);
+                Assert.AreEqual(false, v0.y);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(true, v2.y);
+            }
+        }
+
     }
 }

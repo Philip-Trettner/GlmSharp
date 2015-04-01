@@ -5212,5 +5212,465 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new dvec4(2, -3, 1.5d, -5.5d);
+                var v1 = new dvec2(8.5d, 9.5d);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(8.5d, v0.x);
+                Assert.AreEqual(9.5d, v0.y);
+                Assert.AreEqual(1.5d, v0.z);
+                Assert.AreEqual(-5.5d, v0.w);
+            
+                Assert.AreEqual(2, v2.x);
+                Assert.AreEqual(-3, v2.y);
+            }
+            {
+                var v0 = new dvec4(-7, -7.5d, -7.5d, 9.5d);
+                var v1 = new dvec2(7, -4.5d);
+                var v2 = v0.xz;
+                v0.xz = v1;
+                var v3 = v0.xz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(7, v0.x);
+                Assert.AreEqual(-7.5d, v0.y);
+                Assert.AreEqual(-4.5d, v0.z);
+                Assert.AreEqual(9.5d, v0.w);
+            
+                Assert.AreEqual(-7, v2.x);
+                Assert.AreEqual(-7.5d, v2.y);
+            }
+            {
+                var v0 = new dvec4(2, 2, 7.5d, 6);
+                var v1 = new dvec2(-9, -7.5d);
+                var v2 = v0.yz;
+                v0.yz = v1;
+                var v3 = v0.yz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(2, v0.x);
+                Assert.AreEqual(-9, v0.y);
+                Assert.AreEqual(-7.5d, v0.z);
+                Assert.AreEqual(6, v0.w);
+            
+                Assert.AreEqual(2, v2.x);
+                Assert.AreEqual(7.5d, v2.y);
+            }
+            {
+                var v0 = new dvec4(5, -6.5d, -5.5d, -7.5d);
+                var v1 = new dvec3(3.5d, -1.5d, -7.5d);
+                var v2 = v0.xyz;
+                v0.xyz = v1;
+                var v3 = v0.xyz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3.5d, v0.x);
+                Assert.AreEqual(-1.5d, v0.y);
+                Assert.AreEqual(-7.5d, v0.z);
+                Assert.AreEqual(-7.5d, v0.w);
+            
+                Assert.AreEqual(5, v2.x);
+                Assert.AreEqual(-6.5d, v2.y);
+                Assert.AreEqual(-5.5d, v2.z);
+            }
+            {
+                var v0 = new dvec4(1.5d, 3, 6.5d, -8);
+                var v1 = new dvec2(9, 3);
+                var v2 = v0.xw;
+                v0.xw = v1;
+                var v3 = v0.xw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(9, v0.x);
+                Assert.AreEqual(3, v0.y);
+                Assert.AreEqual(6.5d, v0.z);
+                Assert.AreEqual(3, v0.w);
+            
+                Assert.AreEqual(1.5d, v2.x);
+                Assert.AreEqual(-8, v2.y);
+            }
+            {
+                var v0 = new dvec4(2, 2.5d, -6.5d, -2.5d);
+                var v1 = new dvec2(1.0, 1.0);
+                var v2 = v0.yw;
+                v0.yw = v1;
+                var v3 = v0.yw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(2, v0.x);
+                Assert.AreEqual(1.0, v0.y);
+                Assert.AreEqual(-6.5d, v0.z);
+                Assert.AreEqual(1.0, v0.w);
+            
+                Assert.AreEqual(2.5d, v2.x);
+                Assert.AreEqual(-2.5d, v2.y);
+            }
+            {
+                var v0 = new dvec4(-4, 9, 0.0, 6.5d);
+                var v1 = new dvec3(8.5d, -0.5d, -7.5d);
+                var v2 = v0.xyw;
+                v0.xyw = v1;
+                var v3 = v0.xyw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(8.5d, v0.x);
+                Assert.AreEqual(-0.5d, v0.y);
+                Assert.AreEqual(0.0, v0.z);
+                Assert.AreEqual(-7.5d, v0.w);
+            
+                Assert.AreEqual(-4, v2.x);
+                Assert.AreEqual(9, v2.y);
+                Assert.AreEqual(6.5d, v2.z);
+            }
+            {
+                var v0 = new dvec4(6, -8, 7.5d, -6.5d);
+                var v1 = new dvec2(-0.5d, 1.0);
+                var v2 = v0.zw;
+                v0.zw = v1;
+                var v3 = v0.zw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(6, v0.x);
+                Assert.AreEqual(-8, v0.y);
+                Assert.AreEqual(-0.5d, v0.z);
+                Assert.AreEqual(1.0, v0.w);
+            
+                Assert.AreEqual(7.5d, v2.x);
+                Assert.AreEqual(-6.5d, v2.y);
+            }
+            {
+                var v0 = new dvec4(9.5d, -3.5d, -1.5d, 4);
+                var v1 = new dvec3(-6.5d, -8.5d, -9.5d);
+                var v2 = v0.xzw;
+                v0.xzw = v1;
+                var v3 = v0.xzw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-6.5d, v0.x);
+                Assert.AreEqual(-3.5d, v0.y);
+                Assert.AreEqual(-8.5d, v0.z);
+                Assert.AreEqual(-9.5d, v0.w);
+            
+                Assert.AreEqual(9.5d, v2.x);
+                Assert.AreEqual(-1.5d, v2.y);
+                Assert.AreEqual(4, v2.z);
+            }
+            {
+                var v0 = new dvec4(2, 2, 7, 6.5d);
+                var v1 = new dvec3(-9.5d, 3, -3);
+                var v2 = v0.yzw;
+                v0.yzw = v1;
+                var v3 = v0.yzw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(2, v0.x);
+                Assert.AreEqual(-9.5d, v0.y);
+                Assert.AreEqual(3, v0.z);
+                Assert.AreEqual(-3, v0.w);
+            
+                Assert.AreEqual(2, v2.x);
+                Assert.AreEqual(7, v2.y);
+                Assert.AreEqual(6.5d, v2.z);
+            }
+            {
+                var v0 = new dvec4(5.5d, 4, 3.5d, -9.5d);
+                var v1 = new dvec4(-6, 6.5d, 4, 4);
+                var v2 = v0.xyzw;
+                v0.xyzw = v1;
+                var v3 = v0.xyzw;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-6, v0.x);
+                Assert.AreEqual(6.5d, v0.y);
+                Assert.AreEqual(4, v0.z);
+                Assert.AreEqual(4, v0.w);
+            
+                Assert.AreEqual(5.5d, v2.x);
+                Assert.AreEqual(4, v2.y);
+                Assert.AreEqual(3.5d, v2.z);
+                Assert.AreEqual(-9.5d, v2.w);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new dvec4(-7.5d, 6.5d, 7.5d, -1.5d);
+                var v1 = (double)2;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(2, v0.x);
+                Assert.AreEqual(6.5d, v0.y);
+                Assert.AreEqual(7.5d, v0.z);
+                Assert.AreEqual(-1.5d, v0.w);
+            
+                Assert.AreEqual(-7.5d, v2);
+            }
+            {
+                var v0 = new dvec4(-2.5d, 9, -7.5d, -9.5d);
+                var v1 = (double)6;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-2.5d, v0.x);
+                Assert.AreEqual(6, v0.y);
+                Assert.AreEqual(-7.5d, v0.z);
+                Assert.AreEqual(-9.5d, v0.w);
+            
+                Assert.AreEqual(9, v2);
+            }
+            {
+                var v0 = new dvec4(-3.5d, 1.0, 5, -0.5d);
+                var v1 = new dvec2(3.5d, 6.5d);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3.5d, v0.x);
+                Assert.AreEqual(6.5d, v0.y);
+                Assert.AreEqual(5, v0.z);
+                Assert.AreEqual(-0.5d, v0.w);
+            
+                Assert.AreEqual(-3.5d, v2.x);
+                Assert.AreEqual(1.0, v2.y);
+            }
+            {
+                var v0 = new dvec4(9, 3.5d, 0.0, 2.5d);
+                var v1 = (double)-7;
+                var v2 = v0.b;
+                v0.b = v1;
+                var v3 = v0.b;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(9, v0.x);
+                Assert.AreEqual(3.5d, v0.y);
+                Assert.AreEqual(-7, v0.z);
+                Assert.AreEqual(2.5d, v0.w);
+            
+                Assert.AreEqual(0.0, v2);
+            }
+            {
+                var v0 = new dvec4(-6, 1.5d, -7, -1);
+                var v1 = new dvec2(2, 6.5d);
+                var v2 = v0.rb;
+                v0.rb = v1;
+                var v3 = v0.rb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(2, v0.x);
+                Assert.AreEqual(1.5d, v0.y);
+                Assert.AreEqual(6.5d, v0.z);
+                Assert.AreEqual(-1, v0.w);
+            
+                Assert.AreEqual(-6, v2.x);
+                Assert.AreEqual(-7, v2.y);
+            }
+            {
+                var v0 = new dvec4(-9.5d, -9.5d, 3.5d, 0.0);
+                var v1 = new dvec2(1.0, -7.5d);
+                var v2 = v0.gb;
+                v0.gb = v1;
+                var v3 = v0.gb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-9.5d, v0.x);
+                Assert.AreEqual(1.0, v0.y);
+                Assert.AreEqual(-7.5d, v0.z);
+                Assert.AreEqual(0.0, v0.w);
+            
+                Assert.AreEqual(-9.5d, v2.x);
+                Assert.AreEqual(3.5d, v2.y);
+            }
+            {
+                var v0 = new dvec4(-6.5d, -4.5d, 3.5d, -6);
+                var v1 = new dvec3(-7, -4, -8);
+                var v2 = v0.rgb;
+                v0.rgb = v1;
+                var v3 = v0.rgb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-7, v0.x);
+                Assert.AreEqual(-4, v0.y);
+                Assert.AreEqual(-8, v0.z);
+                Assert.AreEqual(-6, v0.w);
+            
+                Assert.AreEqual(-6.5d, v2.x);
+                Assert.AreEqual(-4.5d, v2.y);
+                Assert.AreEqual(3.5d, v2.z);
+            }
+            {
+                var v0 = new dvec4(6.5d, 0.0, 8, -8);
+                var v1 = (double)-8.5d;
+                var v2 = v0.a;
+                v0.a = v1;
+                var v3 = v0.a;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(6.5d, v0.x);
+                Assert.AreEqual(0.0, v0.y);
+                Assert.AreEqual(8, v0.z);
+                Assert.AreEqual(-8.5d, v0.w);
+            
+                Assert.AreEqual(-8, v2);
+            }
+            {
+                var v0 = new dvec4(1.0, -7, 5.5d, -0.5d);
+                var v1 = new dvec2(-4, -9.5d);
+                var v2 = v0.ra;
+                v0.ra = v1;
+                var v3 = v0.ra;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-4, v0.x);
+                Assert.AreEqual(-7, v0.y);
+                Assert.AreEqual(5.5d, v0.z);
+                Assert.AreEqual(-9.5d, v0.w);
+            
+                Assert.AreEqual(1.0, v2.x);
+                Assert.AreEqual(-0.5d, v2.y);
+            }
+            {
+                var v0 = new dvec4(-1, -3, -0.5d, 6);
+                var v1 = new dvec2(5, 5);
+                var v2 = v0.ga;
+                v0.ga = v1;
+                var v3 = v0.ga;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-1, v0.x);
+                Assert.AreEqual(5, v0.y);
+                Assert.AreEqual(-0.5d, v0.z);
+                Assert.AreEqual(5, v0.w);
+            
+                Assert.AreEqual(-3, v2.x);
+                Assert.AreEqual(6, v2.y);
+            }
+            {
+                var v0 = new dvec4(-8.5d, -7, 9.5d, 0.5d);
+                var v1 = new dvec3(0.5d, 1.0, -3.5d);
+                var v2 = v0.rga;
+                v0.rga = v1;
+                var v3 = v0.rga;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(0.5d, v0.x);
+                Assert.AreEqual(1.0, v0.y);
+                Assert.AreEqual(9.5d, v0.z);
+                Assert.AreEqual(-3.5d, v0.w);
+            
+                Assert.AreEqual(-8.5d, v2.x);
+                Assert.AreEqual(-7, v2.y);
+                Assert.AreEqual(0.5d, v2.z);
+            }
+            {
+                var v0 = new dvec4(6, -5.5d, -9, -6.5d);
+                var v1 = new dvec2(3, 0.0);
+                var v2 = v0.ba;
+                v0.ba = v1;
+                var v3 = v0.ba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(6, v0.x);
+                Assert.AreEqual(-5.5d, v0.y);
+                Assert.AreEqual(3, v0.z);
+                Assert.AreEqual(0.0, v0.w);
+            
+                Assert.AreEqual(-9, v2.x);
+                Assert.AreEqual(-6.5d, v2.y);
+            }
+            {
+                var v0 = new dvec4(-9.5d, 3.5d, -9.5d, -6.5d);
+                var v1 = new dvec3(5.5d, -6, 7);
+                var v2 = v0.rba;
+                v0.rba = v1;
+                var v3 = v0.rba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(5.5d, v0.x);
+                Assert.AreEqual(3.5d, v0.y);
+                Assert.AreEqual(-6, v0.z);
+                Assert.AreEqual(7, v0.w);
+            
+                Assert.AreEqual(-9.5d, v2.x);
+                Assert.AreEqual(-9.5d, v2.y);
+                Assert.AreEqual(-6.5d, v2.z);
+            }
+            {
+                var v0 = new dvec4(-4, 6.5d, 9, -3.5d);
+                var v1 = new dvec3(1.0, 1.5d, 5);
+                var v2 = v0.gba;
+                v0.gba = v1;
+                var v3 = v0.gba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-4, v0.x);
+                Assert.AreEqual(1.0, v0.y);
+                Assert.AreEqual(1.5d, v0.z);
+                Assert.AreEqual(5, v0.w);
+            
+                Assert.AreEqual(6.5d, v2.x);
+                Assert.AreEqual(9, v2.y);
+                Assert.AreEqual(-3.5d, v2.z);
+            }
+            {
+                var v0 = new dvec4(-4, -0.5d, -1.5d, 2.5d);
+                var v1 = new dvec4(-6, -9, -1.5d, 5.5d);
+                var v2 = v0.rgba;
+                v0.rgba = v1;
+                var v3 = v0.rgba;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-6, v0.x);
+                Assert.AreEqual(-9, v0.y);
+                Assert.AreEqual(-1.5d, v0.z);
+                Assert.AreEqual(5.5d, v0.w);
+            
+                Assert.AreEqual(-4, v2.x);
+                Assert.AreEqual(-0.5d, v2.y);
+                Assert.AreEqual(-1.5d, v2.z);
+                Assert.AreEqual(2.5d, v2.w);
+            }
+        }
+
     }
 }

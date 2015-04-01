@@ -444,5 +444,73 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new ivec2(-7, -5);
+                var v1 = new ivec2(8, 5);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(8, v0.x);
+                Assert.AreEqual(5, v0.y);
+            
+                Assert.AreEqual(-7, v2.x);
+                Assert.AreEqual(-5, v2.y);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new ivec2(2, -7);
+                var v1 = (int)6;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(6, v0.x);
+                Assert.AreEqual(-7, v0.y);
+            
+                Assert.AreEqual(2, v2);
+            }
+            {
+                var v0 = new ivec2(3, -7);
+                var v1 = (int)8;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(3, v0.x);
+                Assert.AreEqual(8, v0.y);
+            
+                Assert.AreEqual(-7, v2);
+            }
+            {
+                var v0 = new ivec2(-9, 5);
+                var v1 = new ivec2(9, 7);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(9, v0.x);
+                Assert.AreEqual(7, v0.y);
+            
+                Assert.AreEqual(-9, v2.x);
+                Assert.AreEqual(5, v2.y);
+            }
+        }
+
     }
 }

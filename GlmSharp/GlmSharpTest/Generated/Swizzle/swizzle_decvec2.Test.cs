@@ -444,5 +444,73 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new decvec2(3, -3.5m);
+                var v1 = new decvec2(-9, 4.5m);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-9, v0.x);
+                Assert.AreEqual(4.5m, v0.y);
+            
+                Assert.AreEqual(3, v2.x);
+                Assert.AreEqual(-3.5m, v2.y);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new decvec2(7.5m, 9.5m);
+                var v1 = (decimal)-2;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-2, v0.x);
+                Assert.AreEqual(9.5m, v0.y);
+            
+                Assert.AreEqual(7.5m, v2);
+            }
+            {
+                var v0 = new decvec2(-5.5m, -1.5m);
+                var v1 = (decimal)4.5m;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-5.5m, v0.x);
+                Assert.AreEqual(4.5m, v0.y);
+            
+                Assert.AreEqual(-1.5m, v2);
+            }
+            {
+                var v0 = new decvec2(-9.5m, -1.5m);
+                var v1 = new decvec2(-6.5m, -3.5m);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(-6.5m, v0.x);
+                Assert.AreEqual(-3.5m, v0.y);
+            
+                Assert.AreEqual(-9.5m, v2.x);
+                Assert.AreEqual(-1.5m, v2.y);
+            }
+        }
+
     }
 }

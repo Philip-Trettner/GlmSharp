@@ -1810,5 +1810,190 @@ namespace GlmSharpTest.Generated.Swizzle
             }
         }
 
+        [Test]
+        public void InlineXYZW()
+        {
+            {
+                var v0 = new bvec3(false, false, false);
+                var v1 = new bvec2(true, true);
+                var v2 = v0.xy;
+                v0.xy = v1;
+                var v3 = v0.xy;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(true, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(false, v2.x);
+                Assert.AreEqual(false, v2.y);
+            }
+            {
+                var v0 = new bvec3(true, false, false);
+                var v1 = new bvec2(false, true);
+                var v2 = v0.xz;
+                v0.xz = v1;
+                var v3 = v0.xz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(false, v0.y);
+                Assert.AreEqual(true, v0.z);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(false, v2.y);
+            }
+            {
+                var v0 = new bvec3(false, true, false);
+                var v1 = new bvec2(true, true);
+                var v2 = v0.yz;
+                v0.yz = v1;
+                var v3 = v0.yz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(true, v0.z);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(false, v2.y);
+            }
+            {
+                var v0 = new bvec3(true, false, true);
+                var v1 = new bvec3(false, false, false);
+                var v2 = v0.xyz;
+                v0.xyz = v1;
+                var v3 = v0.xyz;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(false, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(false, v2.y);
+                Assert.AreEqual(true, v2.z);
+            }
+        }
+
+        [Test]
+        public void InlineRGBA()
+        {
+            {
+                var v0 = new bvec3(true, true, false);
+                var v1 = (bool)false;
+                var v2 = v0.r;
+                v0.r = v1;
+                var v3 = v0.r;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(true, v2);
+            }
+            {
+                var v0 = new bvec3(true, true, false);
+                var v1 = (bool)false;
+                var v2 = v0.g;
+                v0.g = v1;
+                var v3 = v0.g;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(true, v0.x);
+                Assert.AreEqual(false, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(true, v2);
+            }
+            {
+                var v0 = new bvec3(true, true, true);
+                var v1 = new bvec2(true, true);
+                var v2 = v0.rg;
+                v0.rg = v1;
+                var v3 = v0.rg;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(true, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(true, v0.z);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(true, v2.y);
+            }
+            {
+                var v0 = new bvec3(false, true, true);
+                var v1 = (bool)false;
+                var v2 = v0.b;
+                v0.b = v1;
+                var v3 = v0.b;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(true, v2);
+            }
+            {
+                var v0 = new bvec3(false, true, false);
+                var v1 = new bvec2(false, false);
+                var v2 = v0.rb;
+                v0.rb = v1;
+                var v3 = v0.rb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(false, v2.x);
+                Assert.AreEqual(false, v2.y);
+            }
+            {
+                var v0 = new bvec3(false, true, false);
+                var v1 = new bvec2(true, false);
+                var v2 = v0.gb;
+                v0.gb = v1;
+                var v3 = v0.gb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(false, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(false, v2.y);
+            }
+            {
+                var v0 = new bvec3(true, false, true);
+                var v1 = new bvec3(true, true, false);
+                var v2 = v0.rgb;
+                v0.rgb = v1;
+                var v3 = v0.rgb;
+            
+                Assert.AreEqual(v1, v3);
+            
+                Assert.AreEqual(true, v0.x);
+                Assert.AreEqual(true, v0.y);
+                Assert.AreEqual(false, v0.z);
+            
+                Assert.AreEqual(true, v2.x);
+                Assert.AreEqual(false, v2.y);
+                Assert.AreEqual(true, v2.z);
+            }
+        }
+
     }
 }
