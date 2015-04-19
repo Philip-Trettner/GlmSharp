@@ -193,6 +193,21 @@ namespace GlmSharp
         public static explicit operator vec4(decvec3 v) => new vec4((float)v.x, (float)v.y, (float)v.z, 0f);
         
         /// <summary>
+        /// Explicitly converts this to a hvec2.
+        /// </summary>
+        public static explicit operator hvec2(decvec3 v) => new hvec2((Half)v.x, (Half)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec3.
+        /// </summary>
+        public static explicit operator hvec3(decvec3 v) => new hvec3((Half)v.x, (Half)v.y, (Half)v.z);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator hvec4(decvec3 v) => new hvec4((Half)v.x, (Half)v.y, (Half)v.z, Half.Zero);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec2.
         /// </summary>
         public static explicit operator dvec2(decvec3 v) => new dvec2((double)v.x, (double)v.y);
@@ -532,12 +547,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).
         /// </summary>
-        public decvec3 Normalized => this / Length;
+        public decvec3 Normalized => this / (decimal)Length;
         
         /// <summary>
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
-        public decvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
+        public decvec3 NormalizedSafe => this == Zero ? Zero : this / (decimal)Length;
 
         #endregion
 
@@ -866,7 +881,7 @@ namespace GlmSharp
         public static bvec3 Equal(decimal lhs, decvec3 rhs) => new bvec3(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec3 Equal(decimal lhs, decimal rhs) => new bvec3(lhs == rhs);
         
@@ -886,7 +901,7 @@ namespace GlmSharp
         public static bvec3 NotEqual(decimal lhs, decvec3 rhs) => new bvec3(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec3 NotEqual(decimal lhs, decimal rhs) => new bvec3(lhs != rhs);
         
@@ -906,7 +921,7 @@ namespace GlmSharp
         public static bvec3 GreaterThan(decimal lhs, decvec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec3 GreaterThan(decimal lhs, decimal rhs) => new bvec3(lhs > rhs);
         
@@ -926,7 +941,7 @@ namespace GlmSharp
         public static bvec3 GreaterThanEqual(decimal lhs, decvec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec3 GreaterThanEqual(decimal lhs, decimal rhs) => new bvec3(lhs >= rhs);
         
@@ -946,7 +961,7 @@ namespace GlmSharp
         public static bvec3 LesserThan(decimal lhs, decvec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec3 LesserThan(decimal lhs, decimal rhs) => new bvec3(lhs < rhs);
         
@@ -966,7 +981,7 @@ namespace GlmSharp
         public static bvec3 LesserThanEqual(decimal lhs, decvec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec3 LesserThanEqual(decimal lhs, decimal rhs) => new bvec3(lhs <= rhs);
         
@@ -976,7 +991,7 @@ namespace GlmSharp
         public static decvec3 Abs(decvec3 v) => new decvec3(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Abs (Math.Abs(v)).
+        /// Returns a decvec from the application of Abs (Math.Abs(v)).
         /// </summary>
         public static decvec3 Abs(decimal v) => new decvec3(Math.Abs(v));
         
@@ -986,7 +1001,7 @@ namespace GlmSharp
         public static decvec3 HermiteInterpolationOrder3(decvec3 v) => new decvec3((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// Returns a decvec from the application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
         /// </summary>
         public static decvec3 HermiteInterpolationOrder3(decimal v) => new decvec3((3 - 2 * v) * v * v);
         
@@ -996,7 +1011,7 @@ namespace GlmSharp
         public static decvec3 HermiteInterpolationOrder5(decvec3 v) => new decvec3(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// Returns a decvec from the application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
         /// </summary>
         public static decvec3 HermiteInterpolationOrder5(decimal v) => new decvec3(((6 * v - 15) * v + 10) * v * v * v);
         
@@ -1006,7 +1021,7 @@ namespace GlmSharp
         public static decvec3 Sqr(decvec3 v) => new decvec3(v.x * v.x, v.y * v.y, v.z * v.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Sqr (v * v).
+        /// Returns a decvec from the application of Sqr (v * v).
         /// </summary>
         public static decvec3 Sqr(decimal v) => new decvec3(v * v);
         
@@ -1016,7 +1031,7 @@ namespace GlmSharp
         public static decvec3 Pow2(decvec3 v) => new decvec3(v.x * v.x, v.y * v.y, v.z * v.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Pow2 (v * v).
+        /// Returns a decvec from the application of Pow2 (v * v).
         /// </summary>
         public static decvec3 Pow2(decimal v) => new decvec3(v * v);
         
@@ -1026,7 +1041,7 @@ namespace GlmSharp
         public static decvec3 Pow3(decvec3 v) => new decvec3(v.x * v.x * v.x, v.y * v.y * v.y, v.z * v.z * v.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Pow3 (v * v * v).
+        /// Returns a decvec from the application of Pow3 (v * v * v).
         /// </summary>
         public static decvec3 Pow3(decimal v) => new decvec3(v * v * v);
         
@@ -1036,7 +1051,7 @@ namespace GlmSharp
         public static decvec3 Step(decvec3 v) => new decvec3(v.x >= 0m ? 1m : 0m, v.y >= 0m ? 1m : 0m, v.z >= 0m ? 1m : 0m);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Step (v &gt;= 0m ? 1m : 0m).
+        /// Returns a decvec from the application of Step (v &gt;= 0m ? 1m : 0m).
         /// </summary>
         public static decvec3 Step(decimal v) => new decvec3(v >= 0m ? 1m : 0m);
         
@@ -1046,7 +1061,7 @@ namespace GlmSharp
         public static decvec3 Sqrt(decvec3 v) => new decvec3((decimal)Math.Sqrt((double)v.x), (decimal)Math.Sqrt((double)v.y), (decimal)Math.Sqrt((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Sqrt ((decimal)Math.Sqrt((double)v)).
+        /// Returns a decvec from the application of Sqrt ((decimal)Math.Sqrt((double)v)).
         /// </summary>
         public static decvec3 Sqrt(decimal v) => new decvec3((decimal)Math.Sqrt((double)v));
         
@@ -1056,7 +1071,7 @@ namespace GlmSharp
         public static decvec3 InverseSqrt(decvec3 v) => new decvec3((decimal)(1.0 / Math.Sqrt((double)v.x)), (decimal)(1.0 / Math.Sqrt((double)v.y)), (decimal)(1.0 / Math.Sqrt((double)v.z)));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of InverseSqrt ((decimal)(1.0 / Math.Sqrt((double)v))).
+        /// Returns a decvec from the application of InverseSqrt ((decimal)(1.0 / Math.Sqrt((double)v))).
         /// </summary>
         public static decvec3 InverseSqrt(decimal v) => new decvec3((decimal)(1.0 / Math.Sqrt((double)v)));
         
@@ -1066,7 +1081,7 @@ namespace GlmSharp
         public static ivec3 Sign(decvec3 v) => new ivec3(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Sign (Math.Sign(v)).
+        /// Returns a ivec from the application of Sign (Math.Sign(v)).
         /// </summary>
         public static ivec3 Sign(decimal v) => new ivec3(Math.Sign(v));
         
@@ -1086,7 +1101,7 @@ namespace GlmSharp
         public static decvec3 Max(decimal lhs, decvec3 rhs) => new decvec3(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y), Math.Max(lhs, rhs.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// Returns a decvec from the application of Max (Math.Max(lhs, rhs)).
         /// </summary>
         public static decvec3 Max(decimal lhs, decimal rhs) => new decvec3(Math.Max(lhs, rhs));
         
@@ -1106,7 +1121,7 @@ namespace GlmSharp
         public static decvec3 Min(decimal lhs, decvec3 rhs) => new decvec3(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y), Math.Min(lhs, rhs.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// Returns a decvec from the application of Min (Math.Min(lhs, rhs)).
         /// </summary>
         public static decvec3 Min(decimal lhs, decimal rhs) => new decvec3(Math.Min(lhs, rhs));
         
@@ -1126,7 +1141,7 @@ namespace GlmSharp
         public static decvec3 Pow(decimal lhs, decvec3 rhs) => new decvec3((decimal)Math.Pow((double)lhs, (double)rhs.x), (decimal)Math.Pow((double)lhs, (double)rhs.y), (decimal)Math.Pow((double)lhs, (double)rhs.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Pow ((decimal)Math.Pow((double)lhs, (double)rhs)).
+        /// Returns a decvec from the application of Pow ((decimal)Math.Pow((double)lhs, (double)rhs)).
         /// </summary>
         public static decvec3 Pow(decimal lhs, decimal rhs) => new decvec3((decimal)Math.Pow((double)lhs, (double)rhs));
         
@@ -1146,7 +1161,7 @@ namespace GlmSharp
         public static decvec3 Log(decimal lhs, decvec3 rhs) => new decvec3((decimal)Math.Log((double)lhs, (double)rhs.x), (decimal)Math.Log((double)lhs, (double)rhs.y), (decimal)Math.Log((double)lhs, (double)rhs.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Log ((decimal)Math.Log((double)lhs, (double)rhs)).
+        /// Returns a decvec from the application of Log ((decimal)Math.Log((double)lhs, (double)rhs)).
         /// </summary>
         public static decvec3 Log(decimal lhs, decimal rhs) => new decvec3((decimal)Math.Log((double)lhs, (double)rhs));
         
@@ -1186,7 +1201,7 @@ namespace GlmSharp
         public static decvec3 Clamp(decimal v, decimal min, decvec3 max) => new decvec3(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// Returns a decvec from the application of Clamp (Math.Min(Math.Max(v, min), max)).
         /// </summary>
         public static decvec3 Clamp(decimal v, decimal min, decimal max) => new decvec3(Math.Min(Math.Max(v, min), max));
         
@@ -1226,7 +1241,7 @@ namespace GlmSharp
         public static decvec3 Mix(decimal min, decimal max, decvec3 a) => new decvec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// Returns a decvec from the application of Mix (min * (1-a) + max * a).
         /// </summary>
         public static decvec3 Mix(decimal min, decimal max, decimal a) => new decvec3(min * (1-a) + max * a);
         
@@ -1266,7 +1281,7 @@ namespace GlmSharp
         public static decvec3 Lerp(decimal min, decimal max, decvec3 a) => new decvec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a decvec from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static decvec3 Lerp(decimal min, decimal max, decimal a) => new decvec3(min * (1-a) + max * a);
         
@@ -1306,7 +1321,7 @@ namespace GlmSharp
         public static decvec3 Smoothstep(decimal edge0, decimal edge1, decvec3 v) => new decvec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// Returns a decvec from the application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
         /// </summary>
         public static decvec3 Smoothstep(decimal edge0, decimal edge1, decimal v) => new decvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
@@ -1346,7 +1361,7 @@ namespace GlmSharp
         public static decvec3 Smootherstep(decimal edge0, decimal edge1, decvec3 v) => new decvec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// Returns a decvec from the application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
         /// </summary>
         public static decvec3 Smootherstep(decimal edge0, decimal edge1, decimal v) => new decvec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
@@ -1386,7 +1401,7 @@ namespace GlmSharp
         public static decvec3 Fma(decimal a, decimal b, decvec3 c) => new decvec3(a * b + c.x, a * b + c.y, a * b + c.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Fma (a * b + c).
+        /// Returns a decvec from the application of Fma (a * b + c).
         /// </summary>
         public static decvec3 Fma(decimal a, decimal b, decimal c) => new decvec3(a * b + c);
         
@@ -1406,7 +1421,7 @@ namespace GlmSharp
         public static decvec3 Add(decimal lhs, decvec3 rhs) => new decvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Add (lhs + rhs).
+        /// Returns a decvec from the application of Add (lhs + rhs).
         /// </summary>
         public static decvec3 Add(decimal lhs, decimal rhs) => new decvec3(lhs + rhs);
         
@@ -1426,7 +1441,7 @@ namespace GlmSharp
         public static decvec3 Sub(decimal lhs, decvec3 rhs) => new decvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Sub (lhs - rhs).
+        /// Returns a decvec from the application of Sub (lhs - rhs).
         /// </summary>
         public static decvec3 Sub(decimal lhs, decimal rhs) => new decvec3(lhs - rhs);
         
@@ -1446,7 +1461,7 @@ namespace GlmSharp
         public static decvec3 Mul(decimal lhs, decvec3 rhs) => new decvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Mul (lhs * rhs).
+        /// Returns a decvec from the application of Mul (lhs * rhs).
         /// </summary>
         public static decvec3 Mul(decimal lhs, decimal rhs) => new decvec3(lhs * rhs);
         
@@ -1466,7 +1481,7 @@ namespace GlmSharp
         public static decvec3 Div(decimal lhs, decvec3 rhs) => new decvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Div (lhs / rhs).
+        /// Returns a decvec from the application of Div (lhs / rhs).
         /// </summary>
         public static decvec3 Div(decimal lhs, decimal rhs) => new decvec3(lhs / rhs);
         
@@ -1486,29 +1501,29 @@ namespace GlmSharp
         public static decvec3 Modulo(decimal lhs, decvec3 rhs) => new decvec3(lhs % rhs.x, lhs % rhs.y, lhs % rhs.z);
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Modulo (lhs % rhs).
+        /// Returns a decvec from the application of Modulo (lhs % rhs).
         /// </summary>
         public static decvec3 Modulo(decimal lhs, decimal rhs) => new decvec3(lhs % rhs);
         
         /// <summary>
         /// Returns a decvec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
-        public static decvec3 Degrees(decvec3 v) => new decvec3(v.x * 57.295779513082320876798154814105170332405472466564321m, v.y * 57.295779513082320876798154814105170332405472466564321m, v.z * 57.295779513082320876798154814105170332405472466564321m);
+        public static decvec3 Degrees(decvec3 v) => new decvec3((decimal)(v.x * 57.295779513082320876798154814105170332405472466564321m), (decimal)(v.y * 57.295779513082320876798154814105170332405472466564321m), (decimal)(v.z * 57.295779513082320876798154814105170332405472466564321m));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// Returns a decvec from the application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
-        public static decvec3 Degrees(decimal v) => new decvec3(v * 57.295779513082320876798154814105170332405472466564321m);
-        
-        /// <summary>
-        /// Returns a decvec3 from component-wise application of Radians (Degrees-To-Radians Conversion).
-        /// </summary>
-        public static decvec3 Radians(decvec3 v) => new decvec3(v.x * 0.0174532925199432957692369076848861271344287188854172m, v.y * 0.0174532925199432957692369076848861271344287188854172m, v.z * 0.0174532925199432957692369076848861271344287188854172m);
+        public static decvec3 Degrees(decimal v) => new decvec3((decimal)(v * 57.295779513082320876798154814105170332405472466564321m));
         
         /// <summary>
         /// Returns a decvec3 from component-wise application of Radians (Degrees-To-Radians Conversion).
         /// </summary>
-        public static decvec3 Radians(decimal v) => new decvec3(v * 0.0174532925199432957692369076848861271344287188854172m);
+        public static decvec3 Radians(decvec3 v) => new decvec3((decimal)(v.x * 0.0174532925199432957692369076848861271344287188854172m), (decimal)(v.y * 0.0174532925199432957692369076848861271344287188854172m), (decimal)(v.z * 0.0174532925199432957692369076848861271344287188854172m));
+        
+        /// <summary>
+        /// Returns a decvec from the application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static decvec3 Radians(decimal v) => new decvec3((decimal)(v * 0.0174532925199432957692369076848861271344287188854172m));
         
         /// <summary>
         /// Returns a decvec3 from component-wise application of Acos ((decimal)Math.Acos((double)v)).
@@ -1516,7 +1531,7 @@ namespace GlmSharp
         public static decvec3 Acos(decvec3 v) => new decvec3((decimal)Math.Acos((double)v.x), (decimal)Math.Acos((double)v.y), (decimal)Math.Acos((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Acos ((decimal)Math.Acos((double)v)).
+        /// Returns a decvec from the application of Acos ((decimal)Math.Acos((double)v)).
         /// </summary>
         public static decvec3 Acos(decimal v) => new decvec3((decimal)Math.Acos((double)v));
         
@@ -1526,7 +1541,7 @@ namespace GlmSharp
         public static decvec3 Asin(decvec3 v) => new decvec3((decimal)Math.Asin((double)v.x), (decimal)Math.Asin((double)v.y), (decimal)Math.Asin((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Asin ((decimal)Math.Asin((double)v)).
+        /// Returns a decvec from the application of Asin ((decimal)Math.Asin((double)v)).
         /// </summary>
         public static decvec3 Asin(decimal v) => new decvec3((decimal)Math.Asin((double)v));
         
@@ -1536,7 +1551,7 @@ namespace GlmSharp
         public static decvec3 Atan(decvec3 v) => new decvec3((decimal)Math.Atan((double)v.x), (decimal)Math.Atan((double)v.y), (decimal)Math.Atan((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Atan ((decimal)Math.Atan((double)v)).
+        /// Returns a decvec from the application of Atan ((decimal)Math.Atan((double)v)).
         /// </summary>
         public static decvec3 Atan(decimal v) => new decvec3((decimal)Math.Atan((double)v));
         
@@ -1546,7 +1561,7 @@ namespace GlmSharp
         public static decvec3 Cos(decvec3 v) => new decvec3((decimal)Math.Cos((double)v.x), (decimal)Math.Cos((double)v.y), (decimal)Math.Cos((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Cos ((decimal)Math.Cos((double)v)).
+        /// Returns a decvec from the application of Cos ((decimal)Math.Cos((double)v)).
         /// </summary>
         public static decvec3 Cos(decimal v) => new decvec3((decimal)Math.Cos((double)v));
         
@@ -1556,7 +1571,7 @@ namespace GlmSharp
         public static decvec3 Cosh(decvec3 v) => new decvec3((decimal)Math.Cosh((double)v.x), (decimal)Math.Cosh((double)v.y), (decimal)Math.Cosh((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Cosh ((decimal)Math.Cosh((double)v)).
+        /// Returns a decvec from the application of Cosh ((decimal)Math.Cosh((double)v)).
         /// </summary>
         public static decvec3 Cosh(decimal v) => new decvec3((decimal)Math.Cosh((double)v));
         
@@ -1566,7 +1581,7 @@ namespace GlmSharp
         public static decvec3 Exp(decvec3 v) => new decvec3((decimal)Math.Exp((double)v.x), (decimal)Math.Exp((double)v.y), (decimal)Math.Exp((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Exp ((decimal)Math.Exp((double)v)).
+        /// Returns a decvec from the application of Exp ((decimal)Math.Exp((double)v)).
         /// </summary>
         public static decvec3 Exp(decimal v) => new decvec3((decimal)Math.Exp((double)v));
         
@@ -1576,7 +1591,7 @@ namespace GlmSharp
         public static decvec3 Log(decvec3 v) => new decvec3((decimal)Math.Log((double)v.x), (decimal)Math.Log((double)v.y), (decimal)Math.Log((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Log ((decimal)Math.Log((double)v)).
+        /// Returns a decvec from the application of Log ((decimal)Math.Log((double)v)).
         /// </summary>
         public static decvec3 Log(decimal v) => new decvec3((decimal)Math.Log((double)v));
         
@@ -1586,7 +1601,7 @@ namespace GlmSharp
         public static decvec3 Log2(decvec3 v) => new decvec3((decimal)Math.Log((double)v.x, 2), (decimal)Math.Log((double)v.y, 2), (decimal)Math.Log((double)v.z, 2));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Log2 ((decimal)Math.Log((double)v, 2)).
+        /// Returns a decvec from the application of Log2 ((decimal)Math.Log((double)v, 2)).
         /// </summary>
         public static decvec3 Log2(decimal v) => new decvec3((decimal)Math.Log((double)v, 2));
         
@@ -1596,7 +1611,7 @@ namespace GlmSharp
         public static decvec3 Log10(decvec3 v) => new decvec3((decimal)Math.Log10((double)v.x), (decimal)Math.Log10((double)v.y), (decimal)Math.Log10((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Log10 ((decimal)Math.Log10((double)v)).
+        /// Returns a decvec from the application of Log10 ((decimal)Math.Log10((double)v)).
         /// </summary>
         public static decvec3 Log10(decimal v) => new decvec3((decimal)Math.Log10((double)v));
         
@@ -1606,7 +1621,7 @@ namespace GlmSharp
         public static decvec3 Floor(decvec3 v) => new decvec3((decimal)Math.Floor(v.x), (decimal)Math.Floor(v.y), (decimal)Math.Floor(v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Floor ((decimal)Math.Floor(v)).
+        /// Returns a decvec from the application of Floor ((decimal)Math.Floor(v)).
         /// </summary>
         public static decvec3 Floor(decimal v) => new decvec3((decimal)Math.Floor(v));
         
@@ -1616,7 +1631,7 @@ namespace GlmSharp
         public static decvec3 Ceiling(decvec3 v) => new decvec3((decimal)Math.Ceiling(v.x), (decimal)Math.Ceiling(v.y), (decimal)Math.Ceiling(v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Ceiling ((decimal)Math.Ceiling(v)).
+        /// Returns a decvec from the application of Ceiling ((decimal)Math.Ceiling(v)).
         /// </summary>
         public static decvec3 Ceiling(decimal v) => new decvec3((decimal)Math.Ceiling(v));
         
@@ -1626,7 +1641,7 @@ namespace GlmSharp
         public static decvec3 Round(decvec3 v) => new decvec3((decimal)Math.Round(v.x), (decimal)Math.Round(v.y), (decimal)Math.Round(v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Round ((decimal)Math.Round(v)).
+        /// Returns a decvec from the application of Round ((decimal)Math.Round(v)).
         /// </summary>
         public static decvec3 Round(decimal v) => new decvec3((decimal)Math.Round(v));
         
@@ -1636,7 +1651,7 @@ namespace GlmSharp
         public static decvec3 Sin(decvec3 v) => new decvec3((decimal)Math.Sin((double)v.x), (decimal)Math.Sin((double)v.y), (decimal)Math.Sin((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Sin ((decimal)Math.Sin((double)v)).
+        /// Returns a decvec from the application of Sin ((decimal)Math.Sin((double)v)).
         /// </summary>
         public static decvec3 Sin(decimal v) => new decvec3((decimal)Math.Sin((double)v));
         
@@ -1646,7 +1661,7 @@ namespace GlmSharp
         public static decvec3 Sinh(decvec3 v) => new decvec3((decimal)Math.Sinh((double)v.x), (decimal)Math.Sinh((double)v.y), (decimal)Math.Sinh((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Sinh ((decimal)Math.Sinh((double)v)).
+        /// Returns a decvec from the application of Sinh ((decimal)Math.Sinh((double)v)).
         /// </summary>
         public static decvec3 Sinh(decimal v) => new decvec3((decimal)Math.Sinh((double)v));
         
@@ -1656,7 +1671,7 @@ namespace GlmSharp
         public static decvec3 Tan(decvec3 v) => new decvec3((decimal)Math.Tan((double)v.x), (decimal)Math.Tan((double)v.y), (decimal)Math.Tan((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Tan ((decimal)Math.Tan((double)v)).
+        /// Returns a decvec from the application of Tan ((decimal)Math.Tan((double)v)).
         /// </summary>
         public static decvec3 Tan(decimal v) => new decvec3((decimal)Math.Tan((double)v));
         
@@ -1666,7 +1681,7 @@ namespace GlmSharp
         public static decvec3 Tanh(decvec3 v) => new decvec3((decimal)Math.Tanh((double)v.x), (decimal)Math.Tanh((double)v.y), (decimal)Math.Tanh((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Tanh ((decimal)Math.Tanh((double)v)).
+        /// Returns a decvec from the application of Tanh ((decimal)Math.Tanh((double)v)).
         /// </summary>
         public static decvec3 Tanh(decimal v) => new decvec3((decimal)Math.Tanh((double)v));
         
@@ -1676,7 +1691,7 @@ namespace GlmSharp
         public static decvec3 Truncate(decvec3 v) => new decvec3((decimal)Math.Truncate((double)v.x), (decimal)Math.Truncate((double)v.y), (decimal)Math.Truncate((double)v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Truncate ((decimal)Math.Truncate((double)v)).
+        /// Returns a decvec from the application of Truncate ((decimal)Math.Truncate((double)v)).
         /// </summary>
         public static decvec3 Truncate(decimal v) => new decvec3((decimal)Math.Truncate((double)v));
         
@@ -1686,7 +1701,7 @@ namespace GlmSharp
         public static decvec3 Fract(decvec3 v) => new decvec3((decimal)(v.x - Math.Floor(v.x)), (decimal)(v.y - Math.Floor(v.y)), (decimal)(v.z - Math.Floor(v.z)));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Fract ((decimal)(v - Math.Floor(v))).
+        /// Returns a decvec from the application of Fract ((decimal)(v - Math.Floor(v))).
         /// </summary>
         public static decvec3 Fract(decimal v) => new decvec3((decimal)(v - Math.Floor(v)));
         
@@ -1696,7 +1711,7 @@ namespace GlmSharp
         public static decvec3 Trunc(decvec3 v) => new decvec3((long)(v.x), (long)(v.y), (long)(v.z));
         
         /// <summary>
-        /// Returns a decvec3 from component-wise application of Trunc ((long)(v)).
+        /// Returns a decvec from the application of Trunc ((long)(v)).
         /// </summary>
         public static decvec3 Trunc(decimal v) => new decvec3((long)(v));
         

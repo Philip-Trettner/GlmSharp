@@ -464,7 +464,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a dvec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
-        public static double Degrees(double v) => v * 57.295779513082320876798154814105170332405472466564321d;
+        public static double Degrees(double v) => (double)(v * 57.295779513082320876798154814105170332405472466564321d);
         
         /// <summary>
         /// Returns a dvec3 from component-wise application of Radians (Degrees-To-Radians Conversion).
@@ -474,7 +474,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a dvec3 from component-wise application of Radians (Degrees-To-Radians Conversion).
         /// </summary>
-        public static double Radians(double v) => v * 0.0174532925199432957692369076848861271344287188854172d;
+        public static double Radians(double v) => (double)(v * 0.0174532925199432957692369076848861271344287188854172d);
         
         /// <summary>
         /// Returns a dvec3 from component-wise application of Acos ((double)Math.Acos((double)v)).

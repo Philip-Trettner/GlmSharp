@@ -111,7 +111,7 @@ namespace GlmSharpGenerator.Types
 
                     yield return "{";
                     yield return string.Format("var v0 = {0};", Construct(VectorType, vals)).Indent();
-                    yield return string.Format("var v1 = {0};", swizzle.Length == 1 ? (BaseType.Generic ? "" : BaseTypeCast) + subvals[0] : Construct(vecType, subvals)).Indent();
+                    yield return string.Format("var v1 = {0};", swizzle.Length == 1 ? (BaseType.Generic ? subvals[0] : ConstantStringFor(subvals[0])) : Construct(vecType, subvals)).Indent();
                     yield return string.Format("var v2 = v0.{0};", ToRgba(swizzle)).Indent();
                     yield return string.Format("v0.{0} = v1;", ToRgba(swizzle)).Indent();
                     yield return string.Format("var v3 = v0.{0};", ToRgba(swizzle)).Indent();

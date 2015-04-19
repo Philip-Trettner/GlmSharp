@@ -169,12 +169,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a copy of this quaternion with length one (undefined if this has zero length).
         /// </summary>
-        public cquat Normalized => this / Length;
+        public cquat Normalized => this / (Complex)Length;
         
         /// <summary>
         /// Returns a copy of this quaternion with length one (returns zero if length is zero).
         /// </summary>
-        public cquat NormalizedSafe => this == Zero ? Identity : this / Length;
+        public cquat NormalizedSafe => this == Zero ? Identity : this / (Complex)Length;
         
         /// <summary>
         /// Returns the conjugated quaternion
@@ -404,7 +404,7 @@ namespace GlmSharp
         public static bvec4 Equal(Complex lhs, cquat rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(Complex lhs, Complex rhs) => new bvec4(lhs == rhs);
         
@@ -424,7 +424,7 @@ namespace GlmSharp
         public static bvec4 NotEqual(Complex lhs, cquat rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(Complex lhs, Complex rhs) => new bvec4(lhs != rhs);
         
@@ -464,7 +464,7 @@ namespace GlmSharp
         public static cquat Lerp(Complex min, Complex max, cquat a) => new cquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
         
         /// <summary>
-        /// Returns a cquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a cquat from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static cquat Lerp(Complex min, Complex max, Complex a) => new cquat(min * (1-a) + max * a);
 

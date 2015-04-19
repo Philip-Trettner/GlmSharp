@@ -371,7 +371,7 @@ namespace GlmSharp
         public static bvec2 Equal(T lhs, gvec2<T> rhs) => new bvec2(EqualityComparer<T>.Default.Equals(lhs, rhs.x), EqualityComparer<T>.Default.Equals(lhs, rhs.y));
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// Returns a bvec from the application of Equal (EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
         /// </summary>
         public static bvec2 Equal(T lhs, T rhs) => new bvec2(EqualityComparer<T>.Default.Equals(lhs, rhs));
         
@@ -391,7 +391,7 @@ namespace GlmSharp
         public static bvec2 NotEqual(T lhs, gvec2<T> rhs) => new bvec2(!EqualityComparer<T>.Default.Equals(lhs, rhs.x), !EqualityComparer<T>.Default.Equals(lhs, rhs.y));
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
+        /// Returns a bvec from the application of NotEqual (!EqualityComparer&lt;T&gt;.Default.Equals(lhs, rhs)).
         /// </summary>
         public static bvec2 NotEqual(T lhs, T rhs) => new bvec2(!EqualityComparer<T>.Default.Equals(lhs, rhs));
 

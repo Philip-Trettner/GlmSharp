@@ -1885,7 +1885,7 @@ namespace GlmSharpTest.Generated.Swizzle
         {
             {
                 var v0 = new bvec3(true, true, false);
-                var v1 = (bool)false;
+                var v1 = false;
                 var v2 = v0.r;
                 v0.r = v1;
                 var v3 = v0.r;
@@ -1900,7 +1900,7 @@ namespace GlmSharpTest.Generated.Swizzle
             }
             {
                 var v0 = new bvec3(true, true, false);
-                var v1 = (bool)false;
+                var v1 = false;
                 var v2 = v0.g;
                 v0.g = v1;
                 var v3 = v0.g;
@@ -1931,7 +1931,7 @@ namespace GlmSharpTest.Generated.Swizzle
             }
             {
                 var v0 = new bvec3(false, true, true);
-                var v1 = (bool)false;
+                var v1 = false;
                 var v2 = v0.b;
                 v0.b = v1;
                 var v3 = v0.b;

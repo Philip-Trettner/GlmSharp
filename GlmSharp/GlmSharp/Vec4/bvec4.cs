@@ -248,6 +248,21 @@ namespace GlmSharp
         public static explicit operator vec4(bvec4 v) => new vec4(v.x ? 1f : 0f, v.y ? 1f : 0f, v.z ? 1f : 0f, v.w ? 1f : 0f);
         
         /// <summary>
+        /// Explicitly converts this to a hvec2.
+        /// </summary>
+        public static explicit operator hvec2(bvec4 v) => new hvec2(v.x ? Half.One : Half.Zero, v.y ? Half.One : Half.Zero);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec3.
+        /// </summary>
+        public static explicit operator hvec3(bvec4 v) => new hvec3(v.x ? Half.One : Half.Zero, v.y ? Half.One : Half.Zero, v.z ? Half.One : Half.Zero);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec4.
+        /// </summary>
+        public static explicit operator hvec4(bvec4 v) => new hvec4(v.x ? Half.One : Half.Zero, v.y ? Half.One : Half.Zero, v.z ? Half.One : Half.Zero, v.w ? Half.One : Half.Zero);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec2.
         /// </summary>
         public static explicit operator dvec2(bvec4 v) => new dvec2(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0);
@@ -1002,7 +1017,7 @@ namespace GlmSharp
         public static bvec4 Equal(bool lhs, bvec4 rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(bool lhs, bool rhs) => new bvec4(lhs == rhs);
         
@@ -1022,7 +1037,7 @@ namespace GlmSharp
         public static bvec4 NotEqual(bool lhs, bvec4 rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(bool lhs, bool rhs) => new bvec4(lhs != rhs);
         
@@ -1032,7 +1047,7 @@ namespace GlmSharp
         public static bvec4 Not(bvec4 v) => new bvec4(!v.x, !v.y, !v.z, !v.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Not (!v).
+        /// Returns a bvec from the application of Not (!v).
         /// </summary>
         public static bvec4 Not(bool v) => new bvec4(!v);
         
@@ -1052,7 +1067,7 @@ namespace GlmSharp
         public static bvec4 And(bool lhs, bvec4 rhs) => new bvec4(lhs && rhs.x, lhs && rhs.y, lhs && rhs.z, lhs && rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of And (lhs &amp;&amp; rhs).
+        /// Returns a bvec from the application of And (lhs &amp;&amp; rhs).
         /// </summary>
         public static bvec4 And(bool lhs, bool rhs) => new bvec4(lhs && rhs);
         
@@ -1072,7 +1087,7 @@ namespace GlmSharp
         public static bvec4 Nand(bool lhs, bvec4 rhs) => new bvec4(!(lhs && rhs.x), !(lhs && rhs.y), !(lhs && rhs.z), !(lhs && rhs.w));
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// Returns a bvec from the application of Nand (!(lhs &amp;&amp; rhs)).
         /// </summary>
         public static bvec4 Nand(bool lhs, bool rhs) => new bvec4(!(lhs && rhs));
         
@@ -1092,7 +1107,7 @@ namespace GlmSharp
         public static bvec4 Or(bool lhs, bvec4 rhs) => new bvec4(lhs || rhs.x, lhs || rhs.y, lhs || rhs.z, lhs || rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Or (lhs || rhs).
+        /// Returns a bvec from the application of Or (lhs || rhs).
         /// </summary>
         public static bvec4 Or(bool lhs, bool rhs) => new bvec4(lhs || rhs);
         
@@ -1112,7 +1127,7 @@ namespace GlmSharp
         public static bvec4 Nor(bool lhs, bvec4 rhs) => new bvec4(!(lhs || rhs.x), !(lhs || rhs.y), !(lhs || rhs.z), !(lhs || rhs.w));
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Nor (!(lhs || rhs)).
+        /// Returns a bvec from the application of Nor (!(lhs || rhs)).
         /// </summary>
         public static bvec4 Nor(bool lhs, bool rhs) => new bvec4(!(lhs || rhs));
         
@@ -1132,7 +1147,7 @@ namespace GlmSharp
         public static bvec4 Xor(bool lhs, bvec4 rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Xor (lhs != rhs).
+        /// Returns a bvec from the application of Xor (lhs != rhs).
         /// </summary>
         public static bvec4 Xor(bool lhs, bool rhs) => new bvec4(lhs != rhs);
         
@@ -1152,7 +1167,7 @@ namespace GlmSharp
         public static bvec4 Xnor(bool lhs, bvec4 rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Xnor (lhs == rhs).
+        /// Returns a bvec from the application of Xnor (lhs == rhs).
         /// </summary>
         public static bvec4 Xnor(bool lhs, bool rhs) => new bvec4(lhs == rhs);
 

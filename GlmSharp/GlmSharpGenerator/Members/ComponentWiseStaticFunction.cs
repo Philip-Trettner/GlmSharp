@@ -60,9 +60,9 @@ namespace GlmSharpGenerator.Members
         /// </summary>
         public bool DisableGlmGen { get; set; }
 
-        private void BuildComment()
+        private void BuildComment(bool allScalar)
         {
-            Comment = "Returns a " + ReturnType.Name + " from component-wise application of " + Name + " (" + (!string.IsNullOrEmpty(AdditionalComment) ? AdditionalComment : string.Format(CompString, ParameterNames.OfType<object>().ToArray())) + ").";
+            Comment = string.Format("Returns a {0} from {3} application of {1} ({2}).", (allScalar ? ReturnType.BaseName : ReturnType.Name), Name, (!string.IsNullOrEmpty(AdditionalComment) ? AdditionalComment : string.Format(CompString, ParameterNames.OfType<object>().ToArray())), allScalar ? "the" : "component-wise");
             Comment = Comment.Replace("&", "&amp;");
             Comment = Comment.Replace(">", "&gt;");
             Comment = Comment.Replace("<", "&lt;");
@@ -165,7 +165,7 @@ namespace GlmSharpGenerator.Members
             var ap = string.IsNullOrEmpty(FirstParameter) ? new string[] { } : new[] { FirstParameter };
             var ap2 = string.IsNullOrEmpty(FirstParameter) ? "" : FirstParameter.Split(' ').Last() + ", ";
 
-            BuildComment();
+            BuildComment(false);
             yield return new Function(ReturnType, Name + OriginalType.GenericSuffix)
             {
                 Static = true,
@@ -196,7 +196,7 @@ namespace GlmSharpGenerator.Members
                 {
                     var arginfo = ParaInfos(pis);
 
-                    BuildComment();
+                    BuildComment(arginfo.All(a => a.Scalar));
                     foreach (var line in base.Lines)
                         yield return line;
 

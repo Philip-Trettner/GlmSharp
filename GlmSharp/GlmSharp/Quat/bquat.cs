@@ -133,6 +133,16 @@ namespace GlmSharp
         public static explicit operator quat(bquat v) => new quat(v.x ? 1f : 0f, v.y ? 1f : 0f, v.z ? 1f : 0f, v.w ? 1f : 0f);
         
         /// <summary>
+        /// Explicitly converts this to a hvec4.
+        /// </summary>
+        public static explicit operator hvec4(bquat v) => new hvec4(v.x ? Half.One : Half.Zero, v.y ? Half.One : Half.Zero, v.z ? Half.One : Half.Zero, v.w ? Half.One : Half.Zero);
+        
+        /// <summary>
+        /// Explicitly converts this to a hquat.
+        /// </summary>
+        public static explicit operator hquat(bquat v) => new hquat(v.x ? Half.One : Half.Zero, v.y ? Half.One : Half.Zero, v.z ? Half.One : Half.Zero, v.w ? Half.One : Half.Zero);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec4.
         /// </summary>
         public static explicit operator dvec4(bquat v) => new dvec4(v.x ? 1.0 : 0.0, v.y ? 1.0 : 0.0, v.z ? 1.0 : 0.0, v.w ? 1.0 : 0.0);
@@ -423,7 +433,7 @@ namespace GlmSharp
         public static bvec4 Equal(bool lhs, bquat rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(bool lhs, bool rhs) => new bvec4(lhs == rhs);
         
@@ -443,7 +453,7 @@ namespace GlmSharp
         public static bvec4 NotEqual(bool lhs, bquat rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(bool lhs, bool rhs) => new bvec4(lhs != rhs);
         
@@ -453,7 +463,7 @@ namespace GlmSharp
         public static bvec4 Not(bquat v) => new bvec4(!v.x, !v.y, !v.z, !v.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Not (!v).
+        /// Returns a bvec from the application of Not (!v).
         /// </summary>
         public static bvec4 Not(bool v) => new bvec4(!v);
         
@@ -473,7 +483,7 @@ namespace GlmSharp
         public static bquat And(bool lhs, bquat rhs) => new bquat(lhs && rhs.x, lhs && rhs.y, lhs && rhs.z, lhs && rhs.w);
         
         /// <summary>
-        /// Returns a bquat from component-wise application of And (lhs &amp;&amp; rhs).
+        /// Returns a bquat from the application of And (lhs &amp;&amp; rhs).
         /// </summary>
         public static bquat And(bool lhs, bool rhs) => new bquat(lhs && rhs);
         
@@ -493,7 +503,7 @@ namespace GlmSharp
         public static bquat Nand(bool lhs, bquat rhs) => new bquat(!(lhs && rhs.x), !(lhs && rhs.y), !(lhs && rhs.z), !(lhs && rhs.w));
         
         /// <summary>
-        /// Returns a bquat from component-wise application of Nand (!(lhs &amp;&amp; rhs)).
+        /// Returns a bquat from the application of Nand (!(lhs &amp;&amp; rhs)).
         /// </summary>
         public static bquat Nand(bool lhs, bool rhs) => new bquat(!(lhs && rhs));
         
@@ -513,7 +523,7 @@ namespace GlmSharp
         public static bquat Or(bool lhs, bquat rhs) => new bquat(lhs || rhs.x, lhs || rhs.y, lhs || rhs.z, lhs || rhs.w);
         
         /// <summary>
-        /// Returns a bquat from component-wise application of Or (lhs || rhs).
+        /// Returns a bquat from the application of Or (lhs || rhs).
         /// </summary>
         public static bquat Or(bool lhs, bool rhs) => new bquat(lhs || rhs);
         
@@ -533,7 +543,7 @@ namespace GlmSharp
         public static bquat Nor(bool lhs, bquat rhs) => new bquat(!(lhs || rhs.x), !(lhs || rhs.y), !(lhs || rhs.z), !(lhs || rhs.w));
         
         /// <summary>
-        /// Returns a bquat from component-wise application of Nor (!(lhs || rhs)).
+        /// Returns a bquat from the application of Nor (!(lhs || rhs)).
         /// </summary>
         public static bquat Nor(bool lhs, bool rhs) => new bquat(!(lhs || rhs));
         
@@ -553,7 +563,7 @@ namespace GlmSharp
         public static bquat Xor(bool lhs, bquat rhs) => new bquat(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bquat from component-wise application of Xor (lhs != rhs).
+        /// Returns a bquat from the application of Xor (lhs != rhs).
         /// </summary>
         public static bquat Xor(bool lhs, bool rhs) => new bquat(lhs != rhs);
         
@@ -573,7 +583,7 @@ namespace GlmSharp
         public static bquat Xnor(bool lhs, bquat rhs) => new bquat(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bquat from component-wise application of Xnor (lhs == rhs).
+        /// Returns a bquat from the application of Xnor (lhs == rhs).
         /// </summary>
         public static bquat Xnor(bool lhs, bool rhs) => new bquat(lhs == rhs);
 

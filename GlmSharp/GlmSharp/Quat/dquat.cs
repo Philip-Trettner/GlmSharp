@@ -186,6 +186,16 @@ namespace GlmSharp
         public static explicit operator quat(dquat v) => new quat((float)v.x, (float)v.y, (float)v.z, (float)v.w);
         
         /// <summary>
+        /// Explicitly converts this to a hvec4.
+        /// </summary>
+        public static explicit operator hvec4(dquat v) => new hvec4((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a hquat.
+        /// </summary>
+        public static explicit operator hquat(dquat v) => new hquat((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec4.
         /// </summary>
         public static explicit operator dvec4(dquat v) => new dvec4((double)v.x, (double)v.y, (double)v.z, (double)v.w);
@@ -297,12 +307,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a copy of this quaternion with length one (undefined if this has zero length).
         /// </summary>
-        public dquat Normalized => this / Length;
+        public dquat Normalized => this / (double)Length;
         
         /// <summary>
         /// Returns a copy of this quaternion with length one (returns zero if length is zero).
         /// </summary>
-        public dquat NormalizedSafe => this == Zero ? Identity : this / Length;
+        public dquat NormalizedSafe => this == Zero ? Identity : this / (double)Length;
         
         /// <summary>
         /// Returns the represented angle of this quaternion.
@@ -750,7 +760,7 @@ namespace GlmSharp
         public static bvec4 IsInfinity(dquat v) => new bvec4(double.IsInfinity(v.x), double.IsInfinity(v.y), double.IsInfinity(v.z), double.IsInfinity(v.w));
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of IsInfinity (double.IsInfinity(v)).
+        /// Returns a bvec from the application of IsInfinity (double.IsInfinity(v)).
         /// </summary>
         public static bvec4 IsInfinity(double v) => new bvec4(double.IsInfinity(v));
         
@@ -760,7 +770,7 @@ namespace GlmSharp
         public static bvec4 IsFinite(dquat v) => new bvec4(!double.IsNaN(v.x) && !double.IsInfinity(v.x), !double.IsNaN(v.y) && !double.IsInfinity(v.y), !double.IsNaN(v.z) && !double.IsInfinity(v.z), !double.IsNaN(v.w) && !double.IsInfinity(v.w));
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of IsFinite (!double.IsNaN(v) &amp;&amp; !double.IsInfinity(v)).
+        /// Returns a bvec from the application of IsFinite (!double.IsNaN(v) &amp;&amp; !double.IsInfinity(v)).
         /// </summary>
         public static bvec4 IsFinite(double v) => new bvec4(!double.IsNaN(v) && !double.IsInfinity(v));
         
@@ -770,7 +780,7 @@ namespace GlmSharp
         public static bvec4 IsNaN(dquat v) => new bvec4(double.IsNaN(v.x), double.IsNaN(v.y), double.IsNaN(v.z), double.IsNaN(v.w));
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of IsNaN (double.IsNaN(v)).
+        /// Returns a bvec from the application of IsNaN (double.IsNaN(v)).
         /// </summary>
         public static bvec4 IsNaN(double v) => new bvec4(double.IsNaN(v));
         
@@ -780,7 +790,7 @@ namespace GlmSharp
         public static bvec4 IsNegativeInfinity(dquat v) => new bvec4(double.IsNegativeInfinity(v.x), double.IsNegativeInfinity(v.y), double.IsNegativeInfinity(v.z), double.IsNegativeInfinity(v.w));
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of IsNegativeInfinity (double.IsNegativeInfinity(v)).
+        /// Returns a bvec from the application of IsNegativeInfinity (double.IsNegativeInfinity(v)).
         /// </summary>
         public static bvec4 IsNegativeInfinity(double v) => new bvec4(double.IsNegativeInfinity(v));
         
@@ -790,7 +800,7 @@ namespace GlmSharp
         public static bvec4 IsPositiveInfinity(dquat v) => new bvec4(double.IsPositiveInfinity(v.x), double.IsPositiveInfinity(v.y), double.IsPositiveInfinity(v.z), double.IsPositiveInfinity(v.w));
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of IsPositiveInfinity (double.IsPositiveInfinity(v)).
+        /// Returns a bvec from the application of IsPositiveInfinity (double.IsPositiveInfinity(v)).
         /// </summary>
         public static bvec4 IsPositiveInfinity(double v) => new bvec4(double.IsPositiveInfinity(v));
         
@@ -810,7 +820,7 @@ namespace GlmSharp
         public static bvec4 Equal(double lhs, dquat rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(double lhs, double rhs) => new bvec4(lhs == rhs);
         
@@ -830,7 +840,7 @@ namespace GlmSharp
         public static bvec4 NotEqual(double lhs, dquat rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(double lhs, double rhs) => new bvec4(lhs != rhs);
         
@@ -850,7 +860,7 @@ namespace GlmSharp
         public static bvec4 GreaterThan(double lhs, dquat rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec4 GreaterThan(double lhs, double rhs) => new bvec4(lhs > rhs);
         
@@ -870,7 +880,7 @@ namespace GlmSharp
         public static bvec4 GreaterThanEqual(double lhs, dquat rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec4 GreaterThanEqual(double lhs, double rhs) => new bvec4(lhs >= rhs);
         
@@ -890,7 +900,7 @@ namespace GlmSharp
         public static bvec4 LesserThan(double lhs, dquat rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec4 LesserThan(double lhs, double rhs) => new bvec4(lhs < rhs);
         
@@ -910,7 +920,7 @@ namespace GlmSharp
         public static bvec4 LesserThanEqual(double lhs, dquat rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(double lhs, double rhs) => new bvec4(lhs <= rhs);
         
@@ -950,7 +960,7 @@ namespace GlmSharp
         public static dquat Lerp(double min, double max, dquat a) => new dquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
         
         /// <summary>
-        /// Returns a dquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a dquat from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static dquat Lerp(double min, double max, double a) => new dquat(min * (1-a) + max * a);
 

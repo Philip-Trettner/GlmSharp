@@ -35,7 +35,7 @@ Current version: _0.9.7_
 
 ## Overview
 
-Supported types: 
+Supported types:
 * `vec2`
 * `vec3`
 * `vec4`
@@ -55,9 +55,10 @@ Supported base types:
 * `System.Numerics.Complex` (`cvec`, only in .NET 4.5 and higher)
 * `long` (`lvec`)
 * `bool` (`bvec`)
+* `Half` (`hvec`, using [C# Half](http://sourceforge.net/projects/csharp-half/))
 * generic `T` (`gvec<T>`)
 
-(Currently a total of 144 types in about 40k LOC)
+(Currently a total of 160 types in about 50k LOC)
 
 Supports read-only swizzling, e.g. `v.swizzle.bgr` (or equivalently `v.swizzle.zyx`).
 Supports read-write inline-swizzling, e.g. `v.zw = v.yx`.
@@ -98,6 +99,7 @@ Starting with .NET 4.5, `System.Numerics.Complex` and `IReadOnlyList<T>` are sup
 * Quaternions
 * Support for .NET 2.0 (with new features since .NET 4.5)
 * Aggregated functionality in static `glm` class
+* Support for 16-bit floating points (using [C# Half](http://sourceforge.net/projects/csharp-half/))
 * Generated library
 
 
@@ -139,5 +141,6 @@ This library is MIT-licensed.
 * noise functions
 * random extensions
 * explicit JSON support
-* half type
 * matrix column/row setter
+* C# string interpolation
+* base type glm classes

@@ -26,6 +26,11 @@ namespace GlmSharpGenerator.Types
         public static readonly Dictionary<string, AbstractType> Types = new Dictionary<string, AbstractType>();
 
         /// <summary>
+        /// Math class prefix
+        /// </summary>
+        public virtual string MathClass => BaseType?.MathClass;
+
+        /// <summary>
         /// Currently active version
         /// </summary>
         public static int Version { get; set; }
@@ -449,8 +454,8 @@ namespace GlmSharpGenerator.Types
 
         public string DotFormatString => BaseType.IsComplex ? "lhs.{0} * Complex.Conjugate(rhs.{0})" : "lhs.{0} * rhs.{0}";
 
-        public string AbsString(string s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s;
-        public string AbsString(char s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : string.Format("Math.Abs({0})", s)) : s.ToString();
+        public string AbsString(string s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : MathClass + string.Format(".Abs({0})", s)) : s;
+        public string AbsString(char s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : MathClass + string.Format(".Abs({0})", s)) : s.ToString();
 
         public string ConstantSuffixFor(string s)
         {
@@ -458,6 +463,15 @@ namespace GlmSharpGenerator.Types
 
             if (type.Name == "float")
                 return s + "f";
+
+            if (type.Name == "bool")
+                return s;
+
+            if (type.Name == "Complex")
+                return s;
+
+            if (type.Name == "Half")
+                return $"new Half({s})";
 
             if (type.Name == "double")
                 return s + "d";
@@ -474,7 +488,17 @@ namespace GlmSharpGenerator.Types
             if (type.Name == "long")
                 return s + "L";
 
-            throw new InvalidOperationException("unknown type " + this);
+            throw new InvalidOperationException("unknown type " + this + ", " + type.Name);
+        }
+
+        public string ConstantStringFor(string s)
+        {
+            var type = BaseType ?? this;
+
+            if (type.Name == "Half")
+                return $"new Half({s})";
+
+            return s;
         }
 
         public IEnumerable<string> SwitchIndex(IEnumerable<string> cases)

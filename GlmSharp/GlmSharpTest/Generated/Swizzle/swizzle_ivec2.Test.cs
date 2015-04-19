@@ -469,7 +469,7 @@ namespace GlmSharpTest.Generated.Swizzle
         {
             {
                 var v0 = new ivec2(2, -7);
-                var v1 = (int)6;
+                var v1 = 6;
                 var v2 = v0.r;
                 v0.r = v1;
                 var v3 = v0.r;
@@ -483,7 +483,7 @@ namespace GlmSharpTest.Generated.Swizzle
             }
             {
                 var v0 = new ivec2(3, -7);
-                var v1 = (int)8;
+                var v1 = 8;
                 var v2 = v0.g;
                 v0.g = v1;
                 var v3 = v0.g;

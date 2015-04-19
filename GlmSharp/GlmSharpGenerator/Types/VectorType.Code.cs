@@ -70,7 +70,7 @@ namespace GlmSharpGenerator.Types
 
                 var swizzle = swizzleBits.Select((c, i) => c == '1' ? ArgOfs(i) : "").Aggregate((s1, s2) => s1 + s2);
                 var vecType = new VectorType(BaseType, swizzle.Length);
-                
+
                 yield return new Property(ToRgba(swizzle), vecType)
                 {
                     GetterLine = string.Format("return {0};", Construct(vecType, swizzle.Select(c => c.ToString()))),
@@ -609,13 +609,13 @@ namespace GlmSharpGenerator.Types
                     yield return new ComponentWiseStaticFunction(Fields, this, "InverseSqrt", this, "v", string.Format("({0})(1.0 / Math.Sqrt((double){{0}}))", BaseTypeName));
                     yield return new ComponentWiseStaticFunction(Fields, integerVType, "Sign", this, "v", "Math.Sign({0})");
 
-                    yield return new ComponentWiseStaticFunction(Fields, this, "Max", this, "lhs", this, "rhs", "Math.Max({0}, {1})");
-                    yield return new ComponentWiseStaticFunction(Fields, this, "Min", this, "lhs", this, "rhs", "Math.Min({0}, {1})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Max", this, "lhs", this, "rhs", MathClass + ".Max({0}, {1})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Min", this, "lhs", this, "rhs", MathClass + ".Min({0}, {1})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Pow", this, "lhs", this, "rhs", BaseTypeCast + "Math.Pow((double){0}, (double){1})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Log", this, "lhs", this, "rhs", BaseTypeCast + "Math.Log((double){0}, (double){1})");
 
                     // TODO: Check if v > max ? max : v < min ? min : v is faster
-                    yield return new ComponentWiseStaticFunction(Fields, this, "Clamp", this, "v", this, "min", this, "max", "Math.Min(Math.Max({0}, {1}), {2})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Clamp", this, "v", this, "min", this, "max", MathClass + ".Min(" + MathClass + ".Max({0}, {1}), {2})");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Mix", this, "min", this, "max", this, "a", "{0} * (1-{2}) + {1} * {2}");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Lerp", this, "min", this, "max", this, "a", "{0} * (1-{2}) + {1} * {2}");
                     yield return new ComponentWiseStaticFunction(Fields, this, "Smoothstep", this, "edge0", this, "edge1", this, "v", "(({2} - {0}) / ({1} - {0})).Clamp().HermiteInterpolationOrder3()");
@@ -689,8 +689,8 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseStaticFunction(Fields, this, "Modulo", this, "lhs", this, "rhs", "{0} % {1}");
                 yield return new ComponentWiseOperator(Fields, this, "%", this, "lhs", this, "rhs", "{0} % {1}");
 
-                yield return new ComponentWiseStaticFunction(Fields, this, "Degrees", this, "v", "{0} * " + ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321")) { AdditionalComment = "Radians-To-Degrees Conversion" };
-                yield return new ComponentWiseStaticFunction(Fields, this, "Radians", this, "v", "{0} * " + ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172")) { AdditionalComment = "Degrees-To-Radians Conversion" };
+                yield return new ComponentWiseStaticFunction(Fields, this, "Degrees", this, "v", BaseTypeCast + "({0} * " + ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321") + ")") { AdditionalComment = "Radians-To-Degrees Conversion" };
+                yield return new ComponentWiseStaticFunction(Fields, this, "Radians", this, "v", BaseTypeCast + "({0} * " + ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172") + ")") { AdditionalComment = "Degrees-To-Radians Conversion" };
 
                 yield return new ComponentWiseStaticFunction(Fields, this, "Acos", this, "v", string.Format("({0})Math.Acos((double){{0}})", BaseTypeName));
                 yield return new ComponentWiseStaticFunction(Fields, this, "Asin", this, "v", string.Format("({0})Math.Asin((double){{0}})", BaseTypeName));
@@ -730,12 +730,12 @@ namespace GlmSharpGenerator.Types
                 {
                     yield return new Property("MinElement", BaseType)
                     {
-                        GetterLine = NestedSymmetricFunction(Fields, "Math.Min({0}, {1})"),
+                        GetterLine = NestedSymmetricFunction(Fields, MathClass + ".Min({0}, {1})"),
                         Comment = "Returns the minimal component of this vector."
                     };
                     yield return new Property("MaxElement", BaseType)
                     {
-                        GetterLine = NestedSymmetricFunction(Fields, "Math.Max({0}, {1})"),
+                        GetterLine = NestedSymmetricFunction(Fields, MathClass + ".Max({0}, {1})"),
                         Comment = "Returns the maximal component of this vector."
                     };
                 }
@@ -766,7 +766,7 @@ namespace GlmSharpGenerator.Types
                 };
                 yield return new Property("NormMax", lengthType)
                 {
-                    GetterLine = NestedSymmetricFunction(Fields.Select(AbsString), "Math.Max({0}, {1})"),
+                    GetterLine = NestedSymmetricFunction(Fields.Select(AbsString), MathClass + ".Max({0}, {1})"),
                     Comment = "Returns the max-norm of this vector."
                 };
                 yield return new Function(new AnyType("double"), "NormP")
@@ -781,12 +781,12 @@ namespace GlmSharpGenerator.Types
                 {
                     yield return new Property("Normalized", this)
                     {
-                        GetterLine = "this / Length",
+                        GetterLine = $"this / {BaseTypeCast}Length",
                         Comment = "Returns a copy of this vector with length one (undefined if this has zero length)."
                     };
                     yield return new Property("NormalizedSafe", this)
                     {
-                        GetterLine = "this == Zero ? Zero : this / Length",
+                        GetterLine = $"this == Zero ? Zero : this / {BaseTypeCast}Length",
                         Comment = "Returns a copy of this vector with length one (returns zero if length is zero)."
                     };
                 }
@@ -1034,7 +1034,7 @@ namespace GlmSharpGenerator.Types
                     FirstParameter = "Random random",
                     CommentOverride = string.Format("Returns a {0} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.", Name)
                 };
-                
+
                 // TODO: Triangular distribution
                 // TODO: Beta distribution
                 // TODO: Chi/Chi-Squared distribution

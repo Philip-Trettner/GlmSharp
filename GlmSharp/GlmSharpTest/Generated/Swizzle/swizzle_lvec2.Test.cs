@@ -22,212 +22,212 @@ namespace GlmSharpTest.Generated.Swizzle
         public void XYZW()
         {
             {
-                var ov = new lvec2(-1, 3);
+                var ov = new lvec2(-1L, 3L);
                 var v = ov.swizzle.xx;
-                Assert.AreEqual(-1, v.x);
-                Assert.AreEqual(-1, v.y);
+                Assert.AreEqual(-1L, v.x);
+                Assert.AreEqual(-1L, v.y);
             }
             {
-                var ov = new lvec2(-9, -3);
+                var ov = new lvec2(-9L, -3L);
                 var v = ov.swizzle.xxx;
-                Assert.AreEqual(-9, v.x);
-                Assert.AreEqual(-9, v.y);
-                Assert.AreEqual(-9, v.z);
+                Assert.AreEqual(-9L, v.x);
+                Assert.AreEqual(-9L, v.y);
+                Assert.AreEqual(-9L, v.z);
             }
             {
-                var ov = new lvec2(-6, 3);
+                var ov = new lvec2(-6L, 3L);
                 var v = ov.swizzle.xxxx;
-                Assert.AreEqual(-6, v.x);
-                Assert.AreEqual(-6, v.y);
-                Assert.AreEqual(-6, v.z);
-                Assert.AreEqual(-6, v.w);
+                Assert.AreEqual(-6L, v.x);
+                Assert.AreEqual(-6L, v.y);
+                Assert.AreEqual(-6L, v.z);
+                Assert.AreEqual(-6L, v.w);
             }
             {
-                var ov = new lvec2(3, 8);
+                var ov = new lvec2(3L, 8L);
                 var v = ov.swizzle.xxxy;
-                Assert.AreEqual(3, v.x);
-                Assert.AreEqual(3, v.y);
-                Assert.AreEqual(3, v.z);
-                Assert.AreEqual(8, v.w);
+                Assert.AreEqual(3L, v.x);
+                Assert.AreEqual(3L, v.y);
+                Assert.AreEqual(3L, v.z);
+                Assert.AreEqual(8L, v.w);
             }
             {
-                var ov = new lvec2(7, -4);
+                var ov = new lvec2(7L, -4L);
                 var v = ov.swizzle.xxy;
-                Assert.AreEqual(7, v.x);
-                Assert.AreEqual(7, v.y);
-                Assert.AreEqual(-4, v.z);
+                Assert.AreEqual(7L, v.x);
+                Assert.AreEqual(7L, v.y);
+                Assert.AreEqual(-4L, v.z);
             }
             {
-                var ov = new lvec2(-5, -2);
+                var ov = new lvec2(-5L, -2L);
                 var v = ov.swizzle.xxyx;
-                Assert.AreEqual(-5, v.x);
-                Assert.AreEqual(-5, v.y);
-                Assert.AreEqual(-2, v.z);
-                Assert.AreEqual(-5, v.w);
+                Assert.AreEqual(-5L, v.x);
+                Assert.AreEqual(-5L, v.y);
+                Assert.AreEqual(-2L, v.z);
+                Assert.AreEqual(-5L, v.w);
             }
             {
-                var ov = new lvec2(5, -7);
+                var ov = new lvec2(5L, -7L);
                 var v = ov.swizzle.xxyy;
-                Assert.AreEqual(5, v.x);
-                Assert.AreEqual(5, v.y);
-                Assert.AreEqual(-7, v.z);
-                Assert.AreEqual(-7, v.w);
+                Assert.AreEqual(5L, v.x);
+                Assert.AreEqual(5L, v.y);
+                Assert.AreEqual(-7L, v.z);
+                Assert.AreEqual(-7L, v.w);
             }
             {
-                var ov = new lvec2(-8, -6);
+                var ov = new lvec2(-8L, -6L);
                 var v = ov.swizzle.xy;
-                Assert.AreEqual(-8, v.x);
-                Assert.AreEqual(-6, v.y);
+                Assert.AreEqual(-8L, v.x);
+                Assert.AreEqual(-6L, v.y);
             }
             {
-                var ov = new lvec2(5, -8);
+                var ov = new lvec2(5L, -8L);
                 var v = ov.swizzle.xyx;
-                Assert.AreEqual(5, v.x);
-                Assert.AreEqual(-8, v.y);
-                Assert.AreEqual(5, v.z);
+                Assert.AreEqual(5L, v.x);
+                Assert.AreEqual(-8L, v.y);
+                Assert.AreEqual(5L, v.z);
             }
             {
-                var ov = new lvec2(-6, 9);
+                var ov = new lvec2(-6L, 9L);
                 var v = ov.swizzle.xyxx;
-                Assert.AreEqual(-6, v.x);
-                Assert.AreEqual(9, v.y);
-                Assert.AreEqual(-6, v.z);
-                Assert.AreEqual(-6, v.w);
+                Assert.AreEqual(-6L, v.x);
+                Assert.AreEqual(9L, v.y);
+                Assert.AreEqual(-6L, v.z);
+                Assert.AreEqual(-6L, v.w);
             }
             {
-                var ov = new lvec2(-5, 0);
+                var ov = new lvec2(-5L, 0);
                 var v = ov.swizzle.xyxy;
-                Assert.AreEqual(-5, v.x);
+                Assert.AreEqual(-5L, v.x);
                 Assert.AreEqual(0, v.y);
-                Assert.AreEqual(-5, v.z);
+                Assert.AreEqual(-5L, v.z);
                 Assert.AreEqual(0, v.w);
             }
             {
-                var ov = new lvec2(-5, 3);
+                var ov = new lvec2(-5L, 3L);
                 var v = ov.swizzle.xyy;
-                Assert.AreEqual(-5, v.x);
-                Assert.AreEqual(3, v.y);
-                Assert.AreEqual(3, v.z);
+                Assert.AreEqual(-5L, v.x);
+                Assert.AreEqual(3L, v.y);
+                Assert.AreEqual(3L, v.z);
             }
             {
-                var ov = new lvec2(-2, -1);
+                var ov = new lvec2(-2L, -1L);
                 var v = ov.swizzle.xyyx;
-                Assert.AreEqual(-2, v.x);
-                Assert.AreEqual(-1, v.y);
-                Assert.AreEqual(-1, v.z);
-                Assert.AreEqual(-2, v.w);
+                Assert.AreEqual(-2L, v.x);
+                Assert.AreEqual(-1L, v.y);
+                Assert.AreEqual(-1L, v.z);
+                Assert.AreEqual(-2L, v.w);
             }
             {
-                var ov = new lvec2(-7, 3);
+                var ov = new lvec2(-7L, 3L);
                 var v = ov.swizzle.xyyy;
-                Assert.AreEqual(-7, v.x);
-                Assert.AreEqual(3, v.y);
-                Assert.AreEqual(3, v.z);
-                Assert.AreEqual(3, v.w);
+                Assert.AreEqual(-7L, v.x);
+                Assert.AreEqual(3L, v.y);
+                Assert.AreEqual(3L, v.z);
+                Assert.AreEqual(3L, v.w);
             }
             {
-                var ov = new lvec2(2, -6);
+                var ov = new lvec2(2L, -6L);
                 var v = ov.swizzle.yx;
-                Assert.AreEqual(-6, v.x);
-                Assert.AreEqual(2, v.y);
+                Assert.AreEqual(-6L, v.x);
+                Assert.AreEqual(2L, v.y);
             }
             {
-                var ov = new lvec2(6, -6);
+                var ov = new lvec2(6L, -6L);
                 var v = ov.swizzle.yxx;
-                Assert.AreEqual(-6, v.x);
-                Assert.AreEqual(6, v.y);
-                Assert.AreEqual(6, v.z);
+                Assert.AreEqual(-6L, v.x);
+                Assert.AreEqual(6L, v.y);
+                Assert.AreEqual(6L, v.z);
             }
             {
-                var ov = new lvec2(6, -2);
+                var ov = new lvec2(6L, -2L);
                 var v = ov.swizzle.yxxx;
-                Assert.AreEqual(-2, v.x);
-                Assert.AreEqual(6, v.y);
-                Assert.AreEqual(6, v.z);
-                Assert.AreEqual(6, v.w);
+                Assert.AreEqual(-2L, v.x);
+                Assert.AreEqual(6L, v.y);
+                Assert.AreEqual(6L, v.z);
+                Assert.AreEqual(6L, v.w);
             }
             {
-                var ov = new lvec2(-1, -2);
+                var ov = new lvec2(-1L, -2L);
                 var v = ov.swizzle.yxxy;
-                Assert.AreEqual(-2, v.x);
-                Assert.AreEqual(-1, v.y);
-                Assert.AreEqual(-1, v.z);
-                Assert.AreEqual(-2, v.w);
+                Assert.AreEqual(-2L, v.x);
+                Assert.AreEqual(-1L, v.y);
+                Assert.AreEqual(-1L, v.z);
+                Assert.AreEqual(-2L, v.w);
             }
             {
-                var ov = new lvec2(-1, 8);
+                var ov = new lvec2(-1L, 8L);
                 var v = ov.swizzle.yxy;
-                Assert.AreEqual(8, v.x);
-                Assert.AreEqual(-1, v.y);
-                Assert.AreEqual(8, v.z);
+                Assert.AreEqual(8L, v.x);
+                Assert.AreEqual(-1L, v.y);
+                Assert.AreEqual(8L, v.z);
             }
             {
-                var ov = new lvec2(1, -1);
+                var ov = new lvec2(1, -1L);
                 var v = ov.swizzle.yxyx;
-                Assert.AreEqual(-1, v.x);
+                Assert.AreEqual(-1L, v.x);
                 Assert.AreEqual(1, v.y);
-                Assert.AreEqual(-1, v.z);
+                Assert.AreEqual(-1L, v.z);
                 Assert.AreEqual(1, v.w);
             }
             {
-                var ov = new lvec2(0, 8);
+                var ov = new lvec2(0, 8L);
                 var v = ov.swizzle.yxyy;
-                Assert.AreEqual(8, v.x);
+                Assert.AreEqual(8L, v.x);
                 Assert.AreEqual(0, v.y);
-                Assert.AreEqual(8, v.z);
-                Assert.AreEqual(8, v.w);
+                Assert.AreEqual(8L, v.z);
+                Assert.AreEqual(8L, v.w);
             }
             {
-                var ov = new lvec2(-2, -8);
+                var ov = new lvec2(-2L, -8L);
                 var v = ov.swizzle.yy;
-                Assert.AreEqual(-8, v.x);
-                Assert.AreEqual(-8, v.y);
+                Assert.AreEqual(-8L, v.x);
+                Assert.AreEqual(-8L, v.y);
             }
             {
-                var ov = new lvec2(-2, -7);
+                var ov = new lvec2(-2L, -7L);
                 var v = ov.swizzle.yyx;
-                Assert.AreEqual(-7, v.x);
-                Assert.AreEqual(-7, v.y);
-                Assert.AreEqual(-2, v.z);
+                Assert.AreEqual(-7L, v.x);
+                Assert.AreEqual(-7L, v.y);
+                Assert.AreEqual(-2L, v.z);
             }
             {
-                var ov = new lvec2(9, -4);
+                var ov = new lvec2(9L, -4L);
                 var v = ov.swizzle.yyxx;
-                Assert.AreEqual(-4, v.x);
-                Assert.AreEqual(-4, v.y);
-                Assert.AreEqual(9, v.z);
-                Assert.AreEqual(9, v.w);
+                Assert.AreEqual(-4L, v.x);
+                Assert.AreEqual(-4L, v.y);
+                Assert.AreEqual(9L, v.z);
+                Assert.AreEqual(9L, v.w);
             }
             {
-                var ov = new lvec2(8, 8);
+                var ov = new lvec2(8L, 8L);
                 var v = ov.swizzle.yyxy;
-                Assert.AreEqual(8, v.x);
-                Assert.AreEqual(8, v.y);
-                Assert.AreEqual(8, v.z);
-                Assert.AreEqual(8, v.w);
+                Assert.AreEqual(8L, v.x);
+                Assert.AreEqual(8L, v.y);
+                Assert.AreEqual(8L, v.z);
+                Assert.AreEqual(8L, v.w);
             }
             {
-                var ov = new lvec2(-9, 8);
+                var ov = new lvec2(-9L, 8L);
                 var v = ov.swizzle.yyy;
-                Assert.AreEqual(8, v.x);
-                Assert.AreEqual(8, v.y);
-                Assert.AreEqual(8, v.z);
+                Assert.AreEqual(8L, v.x);
+                Assert.AreEqual(8L, v.y);
+                Assert.AreEqual(8L, v.z);
             }
             {
-                var ov = new lvec2(-1, 6);
+                var ov = new lvec2(-1L, 6L);
                 var v = ov.swizzle.yyyx;
-                Assert.AreEqual(6, v.x);
-                Assert.AreEqual(6, v.y);
-                Assert.AreEqual(6, v.z);
-                Assert.AreEqual(-1, v.w);
+                Assert.AreEqual(6L, v.x);
+                Assert.AreEqual(6L, v.y);
+                Assert.AreEqual(6L, v.z);
+                Assert.AreEqual(-1L, v.w);
             }
             {
-                var ov = new lvec2(-1, -1);
+                var ov = new lvec2(-1L, -1L);
                 var v = ov.swizzle.yyyy;
-                Assert.AreEqual(-1, v.x);
-                Assert.AreEqual(-1, v.y);
-                Assert.AreEqual(-1, v.z);
-                Assert.AreEqual(-1, v.w);
+                Assert.AreEqual(-1L, v.x);
+                Assert.AreEqual(-1L, v.y);
+                Assert.AreEqual(-1L, v.z);
+                Assert.AreEqual(-1L, v.w);
             }
         }
 
@@ -235,48 +235,48 @@ namespace GlmSharpTest.Generated.Swizzle
         public void RGBA()
         {
             {
-                var ov = new lvec2(5, -4);
+                var ov = new lvec2(5L, -4L);
                 var v = ov.swizzle.rr;
-                Assert.AreEqual(5, v.x);
-                Assert.AreEqual(5, v.y);
+                Assert.AreEqual(5L, v.x);
+                Assert.AreEqual(5L, v.y);
             }
             {
-                var ov = new lvec2(-7, -6);
+                var ov = new lvec2(-7L, -6L);
                 var v = ov.swizzle.rrr;
-                Assert.AreEqual(-7, v.x);
-                Assert.AreEqual(-7, v.y);
-                Assert.AreEqual(-7, v.z);
+                Assert.AreEqual(-7L, v.x);
+                Assert.AreEqual(-7L, v.y);
+                Assert.AreEqual(-7L, v.z);
             }
             {
-                var ov = new lvec2(-9, 5);
+                var ov = new lvec2(-9L, 5L);
                 var v = ov.swizzle.rrrr;
-                Assert.AreEqual(-9, v.x);
-                Assert.AreEqual(-9, v.y);
-                Assert.AreEqual(-9, v.z);
-                Assert.AreEqual(-9, v.w);
+                Assert.AreEqual(-9L, v.x);
+                Assert.AreEqual(-9L, v.y);
+                Assert.AreEqual(-9L, v.z);
+                Assert.AreEqual(-9L, v.w);
             }
             {
-                var ov = new lvec2(1, -3);
+                var ov = new lvec2(1, -3L);
                 var v = ov.swizzle.rrrg;
                 Assert.AreEqual(1, v.x);
                 Assert.AreEqual(1, v.y);
                 Assert.AreEqual(1, v.z);
-                Assert.AreEqual(-3, v.w);
+                Assert.AreEqual(-3L, v.w);
             }
             {
-                var ov = new lvec2(-6, 4);
+                var ov = new lvec2(-6L, 4L);
                 var v = ov.swizzle.rrg;
-                Assert.AreEqual(-6, v.x);
-                Assert.AreEqual(-6, v.y);
-                Assert.AreEqual(4, v.z);
+                Assert.AreEqual(-6L, v.x);
+                Assert.AreEqual(-6L, v.y);
+                Assert.AreEqual(4L, v.z);
             }
             {
-                var ov = new lvec2(8, 8);
+                var ov = new lvec2(8L, 8L);
                 var v = ov.swizzle.rrgr;
-                Assert.AreEqual(8, v.x);
-                Assert.AreEqual(8, v.y);
-                Assert.AreEqual(8, v.z);
-                Assert.AreEqual(8, v.w);
+                Assert.AreEqual(8L, v.x);
+                Assert.AreEqual(8L, v.y);
+                Assert.AreEqual(8L, v.z);
+                Assert.AreEqual(8L, v.w);
             }
             {
                 var ov = new lvec2(0, 0);
@@ -287,160 +287,160 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(0, v.w);
             }
             {
-                var ov = new lvec2(-4, -9);
+                var ov = new lvec2(-4L, -9L);
                 var v = ov.swizzle.rg;
-                Assert.AreEqual(-4, v.x);
-                Assert.AreEqual(-9, v.y);
+                Assert.AreEqual(-4L, v.x);
+                Assert.AreEqual(-9L, v.y);
             }
             {
-                var ov = new lvec2(-9, 0);
+                var ov = new lvec2(-9L, 0);
                 var v = ov.swizzle.rgr;
-                Assert.AreEqual(-9, v.x);
+                Assert.AreEqual(-9L, v.x);
                 Assert.AreEqual(0, v.y);
-                Assert.AreEqual(-9, v.z);
+                Assert.AreEqual(-9L, v.z);
             }
             {
-                var ov = new lvec2(-4, -8);
+                var ov = new lvec2(-4L, -8L);
                 var v = ov.swizzle.rgrr;
-                Assert.AreEqual(-4, v.x);
-                Assert.AreEqual(-8, v.y);
-                Assert.AreEqual(-4, v.z);
-                Assert.AreEqual(-4, v.w);
+                Assert.AreEqual(-4L, v.x);
+                Assert.AreEqual(-8L, v.y);
+                Assert.AreEqual(-4L, v.z);
+                Assert.AreEqual(-4L, v.w);
             }
             {
-                var ov = new lvec2(2, -1);
+                var ov = new lvec2(2L, -1L);
                 var v = ov.swizzle.rgrg;
-                Assert.AreEqual(2, v.x);
-                Assert.AreEqual(-1, v.y);
-                Assert.AreEqual(2, v.z);
-                Assert.AreEqual(-1, v.w);
+                Assert.AreEqual(2L, v.x);
+                Assert.AreEqual(-1L, v.y);
+                Assert.AreEqual(2L, v.z);
+                Assert.AreEqual(-1L, v.w);
             }
             {
-                var ov = new lvec2(-4, 9);
+                var ov = new lvec2(-4L, 9L);
                 var v = ov.swizzle.rgg;
-                Assert.AreEqual(-4, v.x);
-                Assert.AreEqual(9, v.y);
-                Assert.AreEqual(9, v.z);
+                Assert.AreEqual(-4L, v.x);
+                Assert.AreEqual(9L, v.y);
+                Assert.AreEqual(9L, v.z);
             }
             {
-                var ov = new lvec2(3, -3);
+                var ov = new lvec2(3L, -3L);
                 var v = ov.swizzle.rggr;
-                Assert.AreEqual(3, v.x);
-                Assert.AreEqual(-3, v.y);
-                Assert.AreEqual(-3, v.z);
-                Assert.AreEqual(3, v.w);
+                Assert.AreEqual(3L, v.x);
+                Assert.AreEqual(-3L, v.y);
+                Assert.AreEqual(-3L, v.z);
+                Assert.AreEqual(3L, v.w);
             }
             {
-                var ov = new lvec2(-2, 6);
+                var ov = new lvec2(-2L, 6L);
                 var v = ov.swizzle.rggg;
-                Assert.AreEqual(-2, v.x);
-                Assert.AreEqual(6, v.y);
-                Assert.AreEqual(6, v.z);
-                Assert.AreEqual(6, v.w);
+                Assert.AreEqual(-2L, v.x);
+                Assert.AreEqual(6L, v.y);
+                Assert.AreEqual(6L, v.z);
+                Assert.AreEqual(6L, v.w);
             }
             {
-                var ov = new lvec2(-9, -6);
+                var ov = new lvec2(-9L, -6L);
                 var v = ov.swizzle.gr;
-                Assert.AreEqual(-6, v.x);
-                Assert.AreEqual(-9, v.y);
+                Assert.AreEqual(-6L, v.x);
+                Assert.AreEqual(-9L, v.y);
             }
             {
-                var ov = new lvec2(-2, -5);
+                var ov = new lvec2(-2L, -5L);
                 var v = ov.swizzle.grr;
-                Assert.AreEqual(-5, v.x);
-                Assert.AreEqual(-2, v.y);
-                Assert.AreEqual(-2, v.z);
+                Assert.AreEqual(-5L, v.x);
+                Assert.AreEqual(-2L, v.y);
+                Assert.AreEqual(-2L, v.z);
             }
             {
-                var ov = new lvec2(4, -3);
+                var ov = new lvec2(4L, -3L);
                 var v = ov.swizzle.grrr;
-                Assert.AreEqual(-3, v.x);
-                Assert.AreEqual(4, v.y);
-                Assert.AreEqual(4, v.z);
-                Assert.AreEqual(4, v.w);
+                Assert.AreEqual(-3L, v.x);
+                Assert.AreEqual(4L, v.y);
+                Assert.AreEqual(4L, v.z);
+                Assert.AreEqual(4L, v.w);
             }
             {
-                var ov = new lvec2(-8, 1);
+                var ov = new lvec2(-8L, 1);
                 var v = ov.swizzle.grrg;
                 Assert.AreEqual(1, v.x);
-                Assert.AreEqual(-8, v.y);
-                Assert.AreEqual(-8, v.z);
+                Assert.AreEqual(-8L, v.y);
+                Assert.AreEqual(-8L, v.z);
                 Assert.AreEqual(1, v.w);
             }
             {
-                var ov = new lvec2(-9, 2);
+                var ov = new lvec2(-9L, 2L);
                 var v = ov.swizzle.grg;
-                Assert.AreEqual(2, v.x);
-                Assert.AreEqual(-9, v.y);
-                Assert.AreEqual(2, v.z);
+                Assert.AreEqual(2L, v.x);
+                Assert.AreEqual(-9L, v.y);
+                Assert.AreEqual(2L, v.z);
             }
             {
-                var ov = new lvec2(-7, 8);
+                var ov = new lvec2(-7L, 8L);
                 var v = ov.swizzle.grgr;
-                Assert.AreEqual(8, v.x);
-                Assert.AreEqual(-7, v.y);
-                Assert.AreEqual(8, v.z);
-                Assert.AreEqual(-7, v.w);
+                Assert.AreEqual(8L, v.x);
+                Assert.AreEqual(-7L, v.y);
+                Assert.AreEqual(8L, v.z);
+                Assert.AreEqual(-7L, v.w);
             }
             {
-                var ov = new lvec2(-9, -8);
+                var ov = new lvec2(-9L, -8L);
                 var v = ov.swizzle.grgg;
-                Assert.AreEqual(-8, v.x);
-                Assert.AreEqual(-9, v.y);
-                Assert.AreEqual(-8, v.z);
-                Assert.AreEqual(-8, v.w);
+                Assert.AreEqual(-8L, v.x);
+                Assert.AreEqual(-9L, v.y);
+                Assert.AreEqual(-8L, v.z);
+                Assert.AreEqual(-8L, v.w);
             }
             {
-                var ov = new lvec2(9, 7);
+                var ov = new lvec2(9L, 7L);
                 var v = ov.swizzle.gg;
-                Assert.AreEqual(7, v.x);
-                Assert.AreEqual(7, v.y);
+                Assert.AreEqual(7L, v.x);
+                Assert.AreEqual(7L, v.y);
             }
             {
-                var ov = new lvec2(7, -4);
+                var ov = new lvec2(7L, -4L);
                 var v = ov.swizzle.ggr;
-                Assert.AreEqual(-4, v.x);
-                Assert.AreEqual(-4, v.y);
-                Assert.AreEqual(7, v.z);
+                Assert.AreEqual(-4L, v.x);
+                Assert.AreEqual(-4L, v.y);
+                Assert.AreEqual(7L, v.z);
             }
             {
-                var ov = new lvec2(1, -5);
+                var ov = new lvec2(1, -5L);
                 var v = ov.swizzle.ggrr;
-                Assert.AreEqual(-5, v.x);
-                Assert.AreEqual(-5, v.y);
+                Assert.AreEqual(-5L, v.x);
+                Assert.AreEqual(-5L, v.y);
                 Assert.AreEqual(1, v.z);
                 Assert.AreEqual(1, v.w);
             }
             {
-                var ov = new lvec2(1, -8);
+                var ov = new lvec2(1, -8L);
                 var v = ov.swizzle.ggrg;
-                Assert.AreEqual(-8, v.x);
-                Assert.AreEqual(-8, v.y);
+                Assert.AreEqual(-8L, v.x);
+                Assert.AreEqual(-8L, v.y);
                 Assert.AreEqual(1, v.z);
-                Assert.AreEqual(-8, v.w);
+                Assert.AreEqual(-8L, v.w);
             }
             {
-                var ov = new lvec2(-2, 6);
+                var ov = new lvec2(-2L, 6L);
                 var v = ov.swizzle.ggg;
-                Assert.AreEqual(6, v.x);
-                Assert.AreEqual(6, v.y);
-                Assert.AreEqual(6, v.z);
+                Assert.AreEqual(6L, v.x);
+                Assert.AreEqual(6L, v.y);
+                Assert.AreEqual(6L, v.z);
             }
             {
-                var ov = new lvec2(-1, -3);
+                var ov = new lvec2(-1L, -3L);
                 var v = ov.swizzle.gggr;
-                Assert.AreEqual(-3, v.x);
-                Assert.AreEqual(-3, v.y);
-                Assert.AreEqual(-3, v.z);
-                Assert.AreEqual(-1, v.w);
+                Assert.AreEqual(-3L, v.x);
+                Assert.AreEqual(-3L, v.y);
+                Assert.AreEqual(-3L, v.z);
+                Assert.AreEqual(-1L, v.w);
             }
             {
-                var ov = new lvec2(-9, -5);
+                var ov = new lvec2(-9L, -5L);
                 var v = ov.swizzle.gggg;
-                Assert.AreEqual(-5, v.x);
-                Assert.AreEqual(-5, v.y);
-                Assert.AreEqual(-5, v.z);
-                Assert.AreEqual(-5, v.w);
+                Assert.AreEqual(-5L, v.x);
+                Assert.AreEqual(-5L, v.y);
+                Assert.AreEqual(-5L, v.z);
+                Assert.AreEqual(-5L, v.w);
             }
         }
 
@@ -448,19 +448,19 @@ namespace GlmSharpTest.Generated.Swizzle
         public void InlineXYZW()
         {
             {
-                var v0 = new lvec2(4, 8);
-                var v1 = new lvec2(-2, -9);
+                var v0 = new lvec2(4L, 8L);
+                var v1 = new lvec2(-2L, -9L);
                 var v2 = v0.xy;
                 v0.xy = v1;
                 var v3 = v0.xy;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(-2, v0.x);
-                Assert.AreEqual(-9, v0.y);
+                Assert.AreEqual(-2L, v0.x);
+                Assert.AreEqual(-9L, v0.y);
             
-                Assert.AreEqual(4, v2.x);
-                Assert.AreEqual(8, v2.y);
+                Assert.AreEqual(4L, v2.x);
+                Assert.AreEqual(8L, v2.y);
             }
         }
 
@@ -468,47 +468,47 @@ namespace GlmSharpTest.Generated.Swizzle
         public void InlineRGBA()
         {
             {
-                var v0 = new lvec2(-5, -7);
-                var v1 = (long)8;
+                var v0 = new lvec2(-5L, -7L);
+                var v1 = 8L;
                 var v2 = v0.r;
                 v0.r = v1;
                 var v3 = v0.r;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(8, v0.x);
-                Assert.AreEqual(-7, v0.y);
+                Assert.AreEqual(8L, v0.x);
+                Assert.AreEqual(-7L, v0.y);
             
-                Assert.AreEqual(-5, v2);
+                Assert.AreEqual(-5L, v2);
             }
             {
-                var v0 = new lvec2(-8, -4);
-                var v1 = (long)1;
+                var v0 = new lvec2(-8L, -4L);
+                var v1 = 1;
                 var v2 = v0.g;
                 v0.g = v1;
                 var v3 = v0.g;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(-8, v0.x);
+                Assert.AreEqual(-8L, v0.x);
                 Assert.AreEqual(1, v0.y);
             
-                Assert.AreEqual(-4, v2);
+                Assert.AreEqual(-4L, v2);
             }
             {
-                var v0 = new lvec2(-4, 5);
-                var v1 = new lvec2(-3, -5);
+                var v0 = new lvec2(-4L, 5L);
+                var v1 = new lvec2(-3L, -5L);
                 var v2 = v0.rg;
                 v0.rg = v1;
                 var v3 = v0.rg;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(-3, v0.x);
-                Assert.AreEqual(-5, v0.y);
+                Assert.AreEqual(-3L, v0.x);
+                Assert.AreEqual(-5L, v0.y);
             
-                Assert.AreEqual(-4, v2.x);
-                Assert.AreEqual(5, v2.y);
+                Assert.AreEqual(-4L, v2.x);
+                Assert.AreEqual(5L, v2.y);
             }
         }
 

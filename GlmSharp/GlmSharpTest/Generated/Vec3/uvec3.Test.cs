@@ -22,42 +22,42 @@ namespace GlmSharpTest.Generated.Vec3
         public void Constructors()
         {
             {
-                var v = new uvec3(9);
-                Assert.AreEqual(9, v.x);
-                Assert.AreEqual(9, v.y);
-                Assert.AreEqual(9, v.z);
+                var v = new uvec3(9u);
+                Assert.AreEqual(9u, v.x);
+                Assert.AreEqual(9u, v.y);
+                Assert.AreEqual(9u, v.z);
             }
             {
-                var v = new uvec3(6, 5, 2);
-                Assert.AreEqual(6, v.x);
-                Assert.AreEqual(5, v.y);
-                Assert.AreEqual(2, v.z);
+                var v = new uvec3(6u, 5u, 2u);
+                Assert.AreEqual(6u, v.x);
+                Assert.AreEqual(5u, v.y);
+                Assert.AreEqual(2u, v.z);
             }
             {
-                var v = new uvec3(new uvec2(8, 9));
-                Assert.AreEqual(8, v.x);
-                Assert.AreEqual(9, v.y);
+                var v = new uvec3(new uvec2(8u, 9u));
+                Assert.AreEqual(8u, v.x);
+                Assert.AreEqual(9u, v.y);
                 Assert.AreEqual(0u, v.z);
             }
             {
-                var v = new uvec3(new uvec3(6, 3, 2));
-                Assert.AreEqual(6, v.x);
-                Assert.AreEqual(3, v.y);
-                Assert.AreEqual(2, v.z);
+                var v = new uvec3(new uvec3(6u, 3u, 2u));
+                Assert.AreEqual(6u, v.x);
+                Assert.AreEqual(3u, v.y);
+                Assert.AreEqual(2u, v.z);
             }
             {
-                var v = new uvec3(new uvec4(8, 5, 6, 4));
-                Assert.AreEqual(8, v.x);
-                Assert.AreEqual(5, v.y);
-                Assert.AreEqual(6, v.z);
+                var v = new uvec3(new uvec4(8u, 5u, 6u, 4u));
+                Assert.AreEqual(8u, v.x);
+                Assert.AreEqual(5u, v.y);
+                Assert.AreEqual(6u, v.z);
             }
         }
 
         [Test]
         public void Indexer()
         {
-            var v = new uvec3(9, 1u, 1u);
-            Assert.AreEqual(9, v[0]);
+            var v = new uvec3(9u, 1u, 1u);
+            Assert.AreEqual(9u, v[0]);
             Assert.AreEqual(1u, v[1]);
             Assert.AreEqual(1u, v[2]);
             
@@ -76,32 +76,32 @@ namespace GlmSharpTest.Generated.Vec3
             Assert.AreEqual(0u, v[1]);
             v[0] = 1u;
             Assert.AreEqual(1u, v[0]);
-            v[1] = 2;
-            Assert.AreEqual(2, v[1]);
-            v[2] = 3;
-            Assert.AreEqual(3, v[2]);
-            v[0] = 4;
-            Assert.AreEqual(4, v[0]);
-            v[2] = 5;
-            Assert.AreEqual(5, v[2]);
-            v[0] = 6;
-            Assert.AreEqual(6, v[0]);
-            v[2] = 7;
-            Assert.AreEqual(7, v[2]);
-            v[2] = 8;
-            Assert.AreEqual(8, v[2]);
-            v[1] = 9;
-            Assert.AreEqual(9, v[1]);
+            v[1] = 2u;
+            Assert.AreEqual(2u, v[1]);
+            v[2] = 3u;
+            Assert.AreEqual(3u, v[2]);
+            v[0] = 4u;
+            Assert.AreEqual(4u, v[0]);
+            v[2] = 5u;
+            Assert.AreEqual(5u, v[2]);
+            v[0] = 6u;
+            Assert.AreEqual(6u, v[0]);
+            v[2] = 7u;
+            Assert.AreEqual(7u, v[2]);
+            v[2] = 8u;
+            Assert.AreEqual(8u, v[2]);
+            v[1] = 9u;
+            Assert.AreEqual(9u, v[1]);
         }
 
         [Test]
         public void PropertyValues()
         {
-            var v = new uvec3(5, 2, 9);
+            var v = new uvec3(5u, 2u, 9u);
             var vals = v.Values;
-            Assert.AreEqual(5, vals[0]);
-            Assert.AreEqual(2, vals[1]);
-            Assert.AreEqual(9, vals[2]);
+            Assert.AreEqual(5u, vals[0]);
+            Assert.AreEqual(2u, vals[1]);
+            Assert.AreEqual(9u, vals[2]);
             Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
@@ -140,9 +140,9 @@ namespace GlmSharpTest.Generated.Vec3
         [Test]
         public void Operators()
         {
-            var v1 = new uvec3(3, 5, 6);
-            var v2 = new uvec3(3, 5, 6);
-            var v3 = new uvec3(6, 5, 3);
+            var v1 = new uvec3(3u, 5u, 6u);
+            var v2 = new uvec3(3u, 5u, 6u);
+            var v3 = new uvec3(6u, 5u, 3u);
             Assert.That(v1 == new uvec3(v1));
             Assert.That(v2 == new uvec3(v2));
             Assert.That(v3 == new uvec3(v3));
@@ -154,7 +154,7 @@ namespace GlmSharpTest.Generated.Vec3
         [Test]
         public void StringInterop()
         {
-            var v = new uvec3(4, 3, 3);
+            var v = new uvec3(4u, 3u, 3u);
             
             var s0 = v.ToString();
             var s1 = v.ToString("#");
@@ -200,7 +200,7 @@ namespace GlmSharpTest.Generated.Vec3
         [Test]
         public void SerializationJson()
         {
-            var v0 = new uvec3(5, 4, 3);
+            var v0 = new uvec3(5u, 4u, 3u);
             var s0 = JsonConvert.SerializeObject(v0);
             
             var v1 = JsonConvert.DeserializeObject<uvec3>(s0);
@@ -214,43 +214,43 @@ namespace GlmSharpTest.Generated.Vec3
         public void InvariantId()
         {
             {
-                var v0 = new uvec3(9, 1u, 7);
+                var v0 = new uvec3(9u, 1u, 7u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(6, 9, 0u);
+                var v0 = new uvec3(6u, 9u, 0u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(2, 4, 5);
+                var v0 = new uvec3(2u, 4u, 5u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(9, 8, 2);
+                var v0 = new uvec3(9u, 8u, 2u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(7, 1u, 8);
+                var v0 = new uvec3(7u, 1u, 8u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(0u, 3, 0u);
+                var v0 = new uvec3(0u, 3u, 0u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(4, 4, 2);
+                var v0 = new uvec3(4u, 4u, 2u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(6, 3, 5);
+                var v0 = new uvec3(6u, 3u, 5u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(1u, 4, 4);
+                var v0 = new uvec3(1u, 4u, 4u);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new uvec3(6, 0u, 1u);
+                var v0 = new uvec3(6u, 0u, 1u);
                 Assert.AreEqual(v0, +v0);
             }
         }
@@ -259,43 +259,43 @@ namespace GlmSharpTest.Generated.Vec3
         public void InvariantDouble()
         {
             {
-                var v0 = new uvec3(8, 5, 2);
+                var v0 = new uvec3(8u, 5u, 2u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(9, 5, 8);
+                var v0 = new uvec3(9u, 5u, 8u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(0u, 5, 7);
+                var v0 = new uvec3(0u, 5u, 7u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(9, 0u, 6);
+                var v0 = new uvec3(9u, 0u, 6u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(9, 1u, 7);
+                var v0 = new uvec3(9u, 1u, 7u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(7, 4, 4);
+                var v0 = new uvec3(7u, 4u, 4u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(9, 5, 9);
+                var v0 = new uvec3(9u, 5u, 9u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(1u, 9, 8);
+                var v0 = new uvec3(1u, 9u, 8u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(6, 4, 0u);
+                var v0 = new uvec3(6u, 4u, 0u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new uvec3(2, 6, 7);
+                var v0 = new uvec3(2u, 6u, 7u);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
         }
@@ -304,43 +304,43 @@ namespace GlmSharpTest.Generated.Vec3
         public void InvariantTriple()
         {
             {
-                var v0 = new uvec3(2, 5, 8);
+                var v0 = new uvec3(2u, 5u, 8u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(3, 1u, 8);
+                var v0 = new uvec3(3u, 1u, 8u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(2, 0u, 0u);
+                var v0 = new uvec3(2u, 0u, 0u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(4, 9, 5);
+                var v0 = new uvec3(4u, 9u, 5u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(1u, 4, 6);
+                var v0 = new uvec3(1u, 4u, 6u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(9, 4, 3);
+                var v0 = new uvec3(9u, 4u, 3u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(0u, 1u, 4);
+                var v0 = new uvec3(0u, 1u, 4u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(5, 1u, 6);
+                var v0 = new uvec3(5u, 1u, 6u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(6, 4, 3);
+                var v0 = new uvec3(6u, 4u, 3u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new uvec3(6, 7, 7);
+                var v0 = new uvec3(6u, 7u, 7u);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
         }
@@ -349,53 +349,53 @@ namespace GlmSharpTest.Generated.Vec3
         public void InvariantCommutative()
         {
             {
-                var v0 = new uvec3(2, 5, 4);
-                var v1 = new uvec3(3, 0u, 3);
+                var v0 = new uvec3(2u, 5u, 4u);
+                var v1 = new uvec3(3u, 0u, 3u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(0u, 8, 8);
-                var v1 = new uvec3(9, 6, 4);
+                var v0 = new uvec3(0u, 8u, 8u);
+                var v1 = new uvec3(9u, 6u, 4u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
                 var v0 = new uvec3(0u, 0u, 1u);
-                var v1 = new uvec3(0u, 7, 4);
+                var v1 = new uvec3(0u, 7u, 4u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(1u, 3, 6);
-                var v1 = new uvec3(9, 6, 3);
+                var v0 = new uvec3(1u, 3u, 6u);
+                var v1 = new uvec3(9u, 6u, 3u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(2, 6, 5);
-                var v1 = new uvec3(5, 2, 2);
+                var v0 = new uvec3(2u, 6u, 5u);
+                var v1 = new uvec3(5u, 2u, 2u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(4, 1u, 7);
-                var v1 = new uvec3(6, 2, 9);
+                var v0 = new uvec3(4u, 1u, 7u);
+                var v1 = new uvec3(6u, 2u, 9u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(5, 0u, 6);
-                var v1 = new uvec3(5, 1u, 8);
+                var v0 = new uvec3(5u, 0u, 6u);
+                var v1 = new uvec3(5u, 1u, 8u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(3, 9, 0u);
-                var v1 = new uvec3(8, 3, 1u);
+                var v0 = new uvec3(3u, 9u, 0u);
+                var v1 = new uvec3(8u, 3u, 1u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(0u, 3, 6);
-                var v1 = new uvec3(8, 6, 8);
+                var v0 = new uvec3(0u, 3u, 6u);
+                var v1 = new uvec3(8u, 6u, 8u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new uvec3(2, 2, 9);
-                var v1 = new uvec3(1u, 1u, 3);
+                var v0 = new uvec3(2u, 2u, 9u);
+                var v1 = new uvec3(1u, 1u, 3u);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
         }
@@ -404,63 +404,63 @@ namespace GlmSharpTest.Generated.Vec3
         public void InvariantAssociative()
         {
             {
-                var v0 = new uvec3(0u, 8, 1u);
-                var v1 = new uvec3(1u, 8, 2);
-                var v2 = new uvec3(4, 8, 1u);
+                var v0 = new uvec3(0u, 8u, 1u);
+                var v1 = new uvec3(1u, 8u, 2u);
+                var v2 = new uvec3(4u, 8u, 1u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(5, 4, 3);
-                var v1 = new uvec3(0u, 1u, 9);
-                var v2 = new uvec3(2, 5, 3);
+                var v0 = new uvec3(5u, 4u, 3u);
+                var v1 = new uvec3(0u, 1u, 9u);
+                var v2 = new uvec3(2u, 5u, 3u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(9, 1u, 9);
-                var v1 = new uvec3(7, 2, 6);
-                var v2 = new uvec3(9, 1u, 9);
+                var v0 = new uvec3(9u, 1u, 9u);
+                var v1 = new uvec3(7u, 2u, 6u);
+                var v2 = new uvec3(9u, 1u, 9u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(9, 3, 4);
-                var v1 = new uvec3(0u, 3, 6);
-                var v2 = new uvec3(8, 6, 2);
+                var v0 = new uvec3(9u, 3u, 4u);
+                var v1 = new uvec3(0u, 3u, 6u);
+                var v2 = new uvec3(8u, 6u, 2u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(1u, 6, 3);
-                var v1 = new uvec3(7, 9, 5);
-                var v2 = new uvec3(0u, 2, 1u);
+                var v0 = new uvec3(1u, 6u, 3u);
+                var v1 = new uvec3(7u, 9u, 5u);
+                var v2 = new uvec3(0u, 2u, 1u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(8, 6, 0u);
-                var v1 = new uvec3(6, 5, 3);
-                var v2 = new uvec3(6, 8, 2);
+                var v0 = new uvec3(8u, 6u, 0u);
+                var v1 = new uvec3(6u, 5u, 3u);
+                var v2 = new uvec3(6u, 8u, 2u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(0u, 2, 6);
-                var v1 = new uvec3(5, 1u, 6);
-                var v2 = new uvec3(2, 5, 4);
+                var v0 = new uvec3(0u, 2u, 6u);
+                var v1 = new uvec3(5u, 1u, 6u);
+                var v2 = new uvec3(2u, 5u, 4u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(6, 4, 1u);
-                var v1 = new uvec3(7, 1u, 4);
-                var v2 = new uvec3(6, 0u, 9);
+                var v0 = new uvec3(6u, 4u, 1u);
+                var v1 = new uvec3(7u, 1u, 4u);
+                var v2 = new uvec3(6u, 0u, 9u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(9, 1u, 2);
-                var v1 = new uvec3(4, 7, 9);
-                var v2 = new uvec3(4, 0u, 5);
+                var v0 = new uvec3(9u, 1u, 2u);
+                var v1 = new uvec3(4u, 7u, 9u);
+                var v2 = new uvec3(4u, 0u, 5u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new uvec3(9, 3, 8);
-                var v1 = new uvec3(1u, 4, 4);
-                var v2 = new uvec3(4, 7, 3);
+                var v0 = new uvec3(9u, 3u, 8u);
+                var v1 = new uvec3(1u, 4u, 4u);
+                var v2 = new uvec3(4u, 7u, 3u);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
         }
@@ -470,52 +470,52 @@ namespace GlmSharpTest.Generated.Vec3
         {
             {
                 var v0 = new uvec3(0u, 1u, 1u);
-                var v1 = new uvec3(9, 3, 5);
+                var v1 = new uvec3(9u, 3u, 5u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(8, 2, 2);
-                var v1 = new uvec3(3, 9, 9);
+                var v0 = new uvec3(8u, 2u, 2u);
+                var v1 = new uvec3(3u, 9u, 9u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(2, 6, 6);
-                var v1 = new uvec3(8, 3, 3);
+                var v0 = new uvec3(2u, 6u, 6u);
+                var v1 = new uvec3(8u, 3u, 3u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(3, 4, 4);
-                var v1 = new uvec3(2, 2, 1u);
+                var v0 = new uvec3(3u, 4u, 4u);
+                var v1 = new uvec3(2u, 2u, 1u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(5, 5, 5);
-                var v1 = new uvec3(0u, 5, 7);
+                var v0 = new uvec3(5u, 5u, 5u);
+                var v1 = new uvec3(0u, 5u, 7u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(1u, 0u, 4);
-                var v1 = new uvec3(2, 2, 7);
+                var v0 = new uvec3(1u, 0u, 4u);
+                var v1 = new uvec3(2u, 2u, 7u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(0u, 3, 6);
-                var v1 = new uvec3(5, 4, 1u);
+                var v0 = new uvec3(0u, 3u, 6u);
+                var v1 = new uvec3(5u, 4u, 1u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(4, 9, 1u);
-                var v1 = new uvec3(0u, 6, 2);
+                var v0 = new uvec3(4u, 9u, 1u);
+                var v1 = new uvec3(0u, 6u, 2u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(9, 3, 7);
-                var v1 = new uvec3(8, 3, 7);
+                var v0 = new uvec3(9u, 3u, 7u);
+                var v1 = new uvec3(8u, 3u, 7u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new uvec3(0u, 8, 8);
-                var v1 = new uvec3(9, 4, 7);
+                var v0 = new uvec3(0u, 8u, 8u);
+                var v1 = new uvec3(9u, 4u, 7u);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
         }
@@ -524,43 +524,43 @@ namespace GlmSharpTest.Generated.Vec3
         public void InvariantNorm()
         {
             {
-                var v0 = new uvec3(2, 3, 1u);
+                var v0 = new uvec3(2u, 3u, 1u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(7, 7, 8);
+                var v0 = new uvec3(7u, 7u, 8u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(1u, 7, 6);
+                var v0 = new uvec3(1u, 7u, 6u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(1u, 9, 1u);
+                var v0 = new uvec3(1u, 9u, 1u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(3, 0u, 4);
+                var v0 = new uvec3(3u, 0u, 4u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(8, 3, 9);
+                var v0 = new uvec3(8u, 3u, 9u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(7, 8, 4);
+                var v0 = new uvec3(7u, 8u, 4u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(3, 5, 0u);
+                var v0 = new uvec3(3u, 5u, 0u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(0u, 7, 2);
+                var v0 = new uvec3(0u, 7u, 2u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new uvec3(1u, 4, 8);
+                var v0 = new uvec3(1u, 4u, 8u);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
         }
@@ -569,53 +569,53 @@ namespace GlmSharpTest.Generated.Vec3
         public void InvariantCrossDot()
         {
             {
-                var v0 = new uvec3(7, 0u, 6);
-                var v1 = new uvec3(9, 3, 8);
+                var v0 = new uvec3(7u, 0u, 6u);
+                var v1 = new uvec3(9u, 3u, 8u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(1u, 9, 2);
-                var v1 = new uvec3(9, 3, 4);
+                var v0 = new uvec3(1u, 9u, 2u);
+                var v1 = new uvec3(9u, 3u, 4u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(0u, 6, 7);
-                var v1 = new uvec3(6, 0u, 9);
+                var v0 = new uvec3(0u, 6u, 7u);
+                var v1 = new uvec3(6u, 0u, 9u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(4, 2, 7);
-                var v1 = new uvec3(8, 9, 3);
+                var v0 = new uvec3(4u, 2u, 7u);
+                var v1 = new uvec3(8u, 9u, 3u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(9, 2, 3);
-                var v1 = new uvec3(6, 9, 1u);
+                var v0 = new uvec3(9u, 2u, 3u);
+                var v1 = new uvec3(6u, 9u, 1u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(9, 7, 1u);
-                var v1 = new uvec3(8, 9, 8);
+                var v0 = new uvec3(9u, 7u, 1u);
+                var v1 = new uvec3(8u, 9u, 8u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(2, 1u, 4);
-                var v1 = new uvec3(4, 7, 3);
+                var v0 = new uvec3(2u, 1u, 4u);
+                var v1 = new uvec3(4u, 7u, 3u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(3, 5, 5);
-                var v1 = new uvec3(2, 9, 8);
+                var v0 = new uvec3(3u, 5u, 5u);
+                var v1 = new uvec3(2u, 9u, 8u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(0u, 1u, 4);
-                var v1 = new uvec3(7, 7, 6);
+                var v0 = new uvec3(0u, 1u, 4u);
+                var v1 = new uvec3(7u, 7u, 6u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
             {
-                var v0 = new uvec3(8, 8, 1u);
-                var v1 = new uvec3(3, 0u, 0u);
+                var v0 = new uvec3(8u, 8u, 1u);
+                var v1 = new uvec3(3u, 0u, 0u);
                 Assert.Less(glm.Abs(glm.Dot(v0, glm.Cross(v0, v1))), 0.1);
             }
         }

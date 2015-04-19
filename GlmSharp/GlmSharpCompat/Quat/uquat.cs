@@ -106,6 +106,11 @@ namespace GlmSharp
         public static implicit operator quat(uquat v) => new quat((float)v.x, (float)v.y, (float)v.z, (float)v.w);
         
         /// <summary>
+        /// Implicitly converts this to a hquat.
+        /// </summary>
+        public static implicit operator hquat(uquat v) => new hquat((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
+        
+        /// <summary>
         /// Implicitly converts this to a dquat.
         /// </summary>
         public static implicit operator dquat(uquat v) => new dquat((double)v.x, (double)v.y, (double)v.z, (double)v.w);
@@ -139,6 +144,11 @@ namespace GlmSharp
         /// Explicitly converts this to a vec4.
         /// </summary>
         public static explicit operator vec4(uquat v) => new vec4((float)v.x, (float)v.y, (float)v.z, (float)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec4.
+        /// </summary>
+        public static explicit operator hvec4(uquat v) => new hvec4((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
         
         /// <summary>
         /// Explicitly converts this to a dvec4.
@@ -497,7 +507,7 @@ namespace GlmSharp
         public static bvec4 Equal(uint lhs, uquat rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(uint lhs, uint rhs) => new bvec4(lhs == rhs);
         
@@ -517,7 +527,7 @@ namespace GlmSharp
         public static bvec4 NotEqual(uint lhs, uquat rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(uint lhs, uint rhs) => new bvec4(lhs != rhs);
         
@@ -537,7 +547,7 @@ namespace GlmSharp
         public static bvec4 GreaterThan(uint lhs, uquat rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec4 GreaterThan(uint lhs, uint rhs) => new bvec4(lhs > rhs);
         
@@ -557,7 +567,7 @@ namespace GlmSharp
         public static bvec4 GreaterThanEqual(uint lhs, uquat rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec4 GreaterThanEqual(uint lhs, uint rhs) => new bvec4(lhs >= rhs);
         
@@ -577,7 +587,7 @@ namespace GlmSharp
         public static bvec4 LesserThan(uint lhs, uquat rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec4 LesserThan(uint lhs, uint rhs) => new bvec4(lhs < rhs);
         
@@ -597,7 +607,7 @@ namespace GlmSharp
         public static bvec4 LesserThanEqual(uint lhs, uquat rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(uint lhs, uint rhs) => new bvec4(lhs <= rhs);
         
@@ -637,7 +647,7 @@ namespace GlmSharp
         public static uquat Lerp(uint min, uint max, uquat a) => new uquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
         
         /// <summary>
-        /// Returns a uquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a uquat from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static uquat Lerp(uint min, uint max, uint a) => new uquat(min * (1-a) + max * a);
 

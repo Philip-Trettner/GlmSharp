@@ -22,38 +22,38 @@ namespace GlmSharpTest.Generated.Vec2
         public void Constructors()
         {
             {
-                var v = new lvec2(2);
-                Assert.AreEqual(2, v.x);
-                Assert.AreEqual(2, v.y);
+                var v = new lvec2(2L);
+                Assert.AreEqual(2L, v.x);
+                Assert.AreEqual(2L, v.y);
             }
             {
-                var v = new lvec2(1, 9);
+                var v = new lvec2(1, 9L);
                 Assert.AreEqual(1, v.x);
-                Assert.AreEqual(9, v.y);
+                Assert.AreEqual(9L, v.y);
             }
             {
-                var v = new lvec2(new lvec2(3, -2));
-                Assert.AreEqual(3, v.x);
-                Assert.AreEqual(-2, v.y);
+                var v = new lvec2(new lvec2(3L, -2L));
+                Assert.AreEqual(3L, v.x);
+                Assert.AreEqual(-2L, v.y);
             }
             {
-                var v = new lvec2(new lvec3(-8, 1, -9));
-                Assert.AreEqual(-8, v.x);
+                var v = new lvec2(new lvec3(-8L, 1, -9L));
+                Assert.AreEqual(-8L, v.x);
                 Assert.AreEqual(1, v.y);
             }
             {
-                var v = new lvec2(new lvec4(6, 6, -9, -4));
-                Assert.AreEqual(6, v.x);
-                Assert.AreEqual(6, v.y);
+                var v = new lvec2(new lvec4(6L, 6L, -9L, -4L));
+                Assert.AreEqual(6L, v.x);
+                Assert.AreEqual(6L, v.y);
             }
         }
 
         [Test]
         public void Indexer()
         {
-            var v = new lvec2(2, -2);
-            Assert.AreEqual(2, v[0]);
-            Assert.AreEqual(-2, v[1]);
+            var v = new lvec2(2L, -2L);
+            Assert.AreEqual(2L, v[0]);
+            Assert.AreEqual(-2L, v[1]);
             
             Assert.Throws<ArgumentOutOfRangeException>(() => { var s = v[-2147483648]; } );
             Assert.Throws<ArgumentOutOfRangeException>(() => { v[-2147483648] = 0; } );
@@ -70,49 +70,49 @@ namespace GlmSharpTest.Generated.Vec2
             Assert.AreEqual(0, v[1]);
             v[0] = 1;
             Assert.AreEqual(1, v[0]);
-            v[0] = 2;
-            Assert.AreEqual(2, v[0]);
-            v[0] = 3;
-            Assert.AreEqual(3, v[0]);
-            v[1] = 4;
-            Assert.AreEqual(4, v[1]);
-            v[0] = 5;
-            Assert.AreEqual(5, v[0]);
-            v[1] = 6;
-            Assert.AreEqual(6, v[1]);
-            v[0] = 7;
-            Assert.AreEqual(7, v[0]);
-            v[1] = 8;
-            Assert.AreEqual(8, v[1]);
-            v[0] = 9;
-            Assert.AreEqual(9, v[0]);
-            v[0] = -1;
-            Assert.AreEqual(-1, v[0]);
-            v[0] = -2;
-            Assert.AreEqual(-2, v[0]);
-            v[1] = -3;
-            Assert.AreEqual(-3, v[1]);
-            v[1] = -4;
-            Assert.AreEqual(-4, v[1]);
-            v[1] = -5;
-            Assert.AreEqual(-5, v[1]);
-            v[0] = -6;
-            Assert.AreEqual(-6, v[0]);
-            v[0] = -7;
-            Assert.AreEqual(-7, v[0]);
-            v[1] = -8;
-            Assert.AreEqual(-8, v[1]);
-            v[1] = -9;
-            Assert.AreEqual(-9, v[1]);
+            v[0] = 2L;
+            Assert.AreEqual(2L, v[0]);
+            v[0] = 3L;
+            Assert.AreEqual(3L, v[0]);
+            v[1] = 4L;
+            Assert.AreEqual(4L, v[1]);
+            v[0] = 5L;
+            Assert.AreEqual(5L, v[0]);
+            v[1] = 6L;
+            Assert.AreEqual(6L, v[1]);
+            v[0] = 7L;
+            Assert.AreEqual(7L, v[0]);
+            v[1] = 8L;
+            Assert.AreEqual(8L, v[1]);
+            v[0] = 9L;
+            Assert.AreEqual(9L, v[0]);
+            v[0] = -1L;
+            Assert.AreEqual(-1L, v[0]);
+            v[0] = -2L;
+            Assert.AreEqual(-2L, v[0]);
+            v[1] = -3L;
+            Assert.AreEqual(-3L, v[1]);
+            v[1] = -4L;
+            Assert.AreEqual(-4L, v[1]);
+            v[1] = -5L;
+            Assert.AreEqual(-5L, v[1]);
+            v[0] = -6L;
+            Assert.AreEqual(-6L, v[0]);
+            v[0] = -7L;
+            Assert.AreEqual(-7L, v[0]);
+            v[1] = -8L;
+            Assert.AreEqual(-8L, v[1]);
+            v[1] = -9L;
+            Assert.AreEqual(-9L, v[1]);
         }
 
         [Test]
         public void PropertyValues()
         {
-            var v = new lvec2(9, 9);
+            var v = new lvec2(9L, 9L);
             var vals = v.Values;
-            Assert.AreEqual(9, vals[0]);
-            Assert.AreEqual(9, vals[1]);
+            Assert.AreEqual(9L, vals[0]);
+            Assert.AreEqual(9L, vals[1]);
             Assert.That(vals.SequenceEqual(v.ToArray()));
         }
 
@@ -141,9 +141,9 @@ namespace GlmSharpTest.Generated.Vec2
         [Test]
         public void Operators()
         {
-            var v1 = new lvec2(9, -1);
-            var v2 = new lvec2(9, -1);
-            var v3 = new lvec2(-1, 9);
+            var v1 = new lvec2(9L, -1L);
+            var v2 = new lvec2(9L, -1L);
+            var v3 = new lvec2(-1L, 9L);
             Assert.That(v1 == new lvec2(v1));
             Assert.That(v2 == new lvec2(v2));
             Assert.That(v3 == new lvec2(v3));
@@ -155,7 +155,7 @@ namespace GlmSharpTest.Generated.Vec2
         [Test]
         public void StringInterop()
         {
-            var v = new lvec2(-2, 6);
+            var v = new lvec2(-2L, 6L);
             
             var s0 = v.ToString();
             var s1 = v.ToString("#");
@@ -201,7 +201,7 @@ namespace GlmSharpTest.Generated.Vec2
         [Test]
         public void SerializationJson()
         {
-            var v0 = new lvec2(9, 6);
+            var v0 = new lvec2(9L, 6L);
             var s0 = JsonConvert.SerializeObject(v0);
             
             var v1 = JsonConvert.DeserializeObject<lvec2>(s0);
@@ -215,43 +215,43 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantId()
         {
             {
-                var v0 = new lvec2(-8, -9);
+                var v0 = new lvec2(-8L, -9L);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(-4, -1);
+                var v0 = new lvec2(-4L, -1L);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(6, -9);
+                var v0 = new lvec2(6L, -9L);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(-2, 0);
+                var v0 = new lvec2(-2L, 0);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(-9, -2);
+                var v0 = new lvec2(-9L, -2L);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(5, -7);
+                var v0 = new lvec2(5L, -7L);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(8, 7);
+                var v0 = new lvec2(8L, 7L);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(-3, 0);
+                var v0 = new lvec2(-3L, 0);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(-5, 2);
+                var v0 = new lvec2(-5L, 2L);
                 Assert.AreEqual(v0, +v0);
             }
             {
-                var v0 = new lvec2(-7, 2);
+                var v0 = new lvec2(-7L, 2L);
                 Assert.AreEqual(v0, +v0);
             }
         }
@@ -260,43 +260,43 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantDouble()
         {
             {
-                var v0 = new lvec2(3, 3);
+                var v0 = new lvec2(3L, 3L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(-5, -1);
+                var v0 = new lvec2(-5L, -1L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(-7, 0);
+                var v0 = new lvec2(-7L, 0);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(-4, -4);
+                var v0 = new lvec2(-4L, -4L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(-7, 4);
+                var v0 = new lvec2(-7L, 4L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(9, -3);
+                var v0 = new lvec2(9L, -3L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(-5, 4);
+                var v0 = new lvec2(-5L, 4L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(1, -1);
+                var v0 = new lvec2(1, -1L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(-6, -2);
+                var v0 = new lvec2(-6L, -2L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
             {
-                var v0 = new lvec2(9, -7);
+                var v0 = new lvec2(9L, -7L);
                 Assert.AreEqual(v0 + v0, 2 * v0);
             }
         }
@@ -305,43 +305,43 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantTriple()
         {
             {
-                var v0 = new lvec2(-6, 2);
+                var v0 = new lvec2(-6L, 2L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(4, 1);
+                var v0 = new lvec2(4L, 1);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(4, 1);
+                var v0 = new lvec2(4L, 1);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(8, 4);
+                var v0 = new lvec2(8L, 4L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(-1, -5);
+                var v0 = new lvec2(-1L, -5L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(-1, -6);
+                var v0 = new lvec2(-1L, -6L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(9, -7);
+                var v0 = new lvec2(9L, -7L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(3, 8);
+                var v0 = new lvec2(3L, 8L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(-5, -4);
+                var v0 = new lvec2(-5L, -4L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
             {
-                var v0 = new lvec2(8, 5);
+                var v0 = new lvec2(8L, 5L);
                 Assert.AreEqual(v0 + v0 + v0, 3 * v0);
             }
         }
@@ -350,53 +350,53 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantCommutative()
         {
             {
-                var v0 = new lvec2(-2, 6);
-                var v1 = new lvec2(-6, 8);
+                var v0 = new lvec2(-2L, 6L);
+                var v1 = new lvec2(-6L, 8L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(-4, -9);
-                var v1 = new lvec2(9, 0);
+                var v0 = new lvec2(-4L, -9L);
+                var v1 = new lvec2(9L, 0);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(6, 6);
-                var v1 = new lvec2(-3, -2);
+                var v0 = new lvec2(6L, 6L);
+                var v1 = new lvec2(-3L, -2L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(4, -6);
-                var v1 = new lvec2(1, -9);
+                var v0 = new lvec2(4L, -6L);
+                var v1 = new lvec2(1, -9L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(-2, 3);
-                var v1 = new lvec2(1, -7);
+                var v0 = new lvec2(-2L, 3L);
+                var v1 = new lvec2(1, -7L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(-9, 0);
-                var v1 = new lvec2(6, -4);
+                var v0 = new lvec2(-9L, 0);
+                var v1 = new lvec2(6L, -4L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(0, -5);
-                var v1 = new lvec2(-8, 2);
+                var v0 = new lvec2(0, -5L);
+                var v1 = new lvec2(-8L, 2L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(0, 6);
-                var v1 = new lvec2(7, -2);
+                var v0 = new lvec2(0, 6L);
+                var v1 = new lvec2(7L, -2L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(5, -5);
-                var v1 = new lvec2(4, 9);
+                var v0 = new lvec2(5L, -5L);
+                var v1 = new lvec2(4L, 9L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
             {
-                var v0 = new lvec2(-2, -1);
-                var v1 = new lvec2(-3, 5);
+                var v0 = new lvec2(-2L, -1L);
+                var v1 = new lvec2(-3L, 5L);
                 Assert.AreEqual(v0 * v1, v1 * v0);
             }
         }
@@ -405,63 +405,63 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantAssociative()
         {
             {
-                var v0 = new lvec2(-9, -7);
-                var v1 = new lvec2(-7, 6);
-                var v2 = new lvec2(-1, -3);
+                var v0 = new lvec2(-9L, -7L);
+                var v1 = new lvec2(-7L, 6L);
+                var v2 = new lvec2(-1L, -3L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(4, 8);
-                var v1 = new lvec2(9, -3);
-                var v2 = new lvec2(1, -8);
+                var v0 = new lvec2(4L, 8L);
+                var v1 = new lvec2(9L, -3L);
+                var v2 = new lvec2(1, -8L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(-4, 4);
-                var v1 = new lvec2(-8, 2);
-                var v2 = new lvec2(-2, -3);
+                var v0 = new lvec2(-4L, 4L);
+                var v1 = new lvec2(-8L, 2L);
+                var v2 = new lvec2(-2L, -3L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(-1, 6);
-                var v1 = new lvec2(-3, -2);
-                var v2 = new lvec2(-8, -5);
+                var v0 = new lvec2(-1L, 6L);
+                var v1 = new lvec2(-3L, -2L);
+                var v2 = new lvec2(-8L, -5L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(2, -3);
-                var v1 = new lvec2(-3, -7);
-                var v2 = new lvec2(-4, -9);
+                var v0 = new lvec2(2L, -3L);
+                var v1 = new lvec2(-3L, -7L);
+                var v2 = new lvec2(-4L, -9L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(-6, 0);
-                var v1 = new lvec2(4, -8);
-                var v2 = new lvec2(-9, -4);
+                var v0 = new lvec2(-6L, 0);
+                var v1 = new lvec2(4L, -8L);
+                var v2 = new lvec2(-9L, -4L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(-4, 4);
-                var v1 = new lvec2(8, -5);
-                var v2 = new lvec2(8, -1);
+                var v0 = new lvec2(-4L, 4L);
+                var v1 = new lvec2(8L, -5L);
+                var v2 = new lvec2(8L, -1L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(8, -7);
-                var v1 = new lvec2(-7, -6);
-                var v2 = new lvec2(2, 9);
+                var v0 = new lvec2(8L, -7L);
+                var v1 = new lvec2(-7L, -6L);
+                var v2 = new lvec2(2L, 9L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(-9, -1);
-                var v1 = new lvec2(-2, 3);
-                var v2 = new lvec2(-2, 3);
+                var v0 = new lvec2(-9L, -1L);
+                var v1 = new lvec2(-2L, 3L);
+                var v2 = new lvec2(-2L, 3L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
             {
-                var v0 = new lvec2(-3, 7);
-                var v1 = new lvec2(-8, 1);
-                var v2 = new lvec2(4, -8);
+                var v0 = new lvec2(-3L, 7L);
+                var v1 = new lvec2(-8L, 1);
+                var v2 = new lvec2(4L, -8L);
                 Assert.AreEqual(v0 * (v1 + v2), v0 * v1 + v0 * v2);
             }
         }
@@ -470,43 +470,43 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantIdNeg()
         {
             {
-                var v0 = new lvec2(-9, 3);
+                var v0 = new lvec2(-9L, 3L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(-9, 7);
+                var v0 = new lvec2(-9L, 7L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(4, -8);
+                var v0 = new lvec2(4L, -8L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(-6, -4);
+                var v0 = new lvec2(-6L, -4L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(5, -8);
+                var v0 = new lvec2(5L, -8L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(4, 8);
+                var v0 = new lvec2(4L, 8L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(-9, -1);
+                var v0 = new lvec2(-9L, -1L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(-1, 6);
+                var v0 = new lvec2(-1L, 6L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(-5, -4);
+                var v0 = new lvec2(-5L, -4L);
                 Assert.AreEqual(v0, -(-v0));
             }
             {
-                var v0 = new lvec2(-8, -6);
+                var v0 = new lvec2(-8L, -6L);
                 Assert.AreEqual(v0, -(-v0));
             }
         }
@@ -515,53 +515,53 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantCommutativeNeg()
         {
             {
-                var v0 = new lvec2(-6, -2);
-                var v1 = new lvec2(-2, 5);
+                var v0 = new lvec2(-6L, -2L);
+                var v1 = new lvec2(-2L, 5L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(-6, -7);
-                var v1 = new lvec2(-9, 8);
+                var v0 = new lvec2(-6L, -7L);
+                var v1 = new lvec2(-9L, 8L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(-2, 6);
-                var v1 = new lvec2(-1, 9);
+                var v0 = new lvec2(-2L, 6L);
+                var v1 = new lvec2(-1L, 9L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(-1, 7);
-                var v1 = new lvec2(1, -8);
+                var v0 = new lvec2(-1L, 7L);
+                var v1 = new lvec2(1, -8L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(9, 6);
-                var v1 = new lvec2(9, -2);
+                var v0 = new lvec2(9L, 6L);
+                var v1 = new lvec2(9L, -2L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(7, -6);
-                var v1 = new lvec2(-7, 2);
+                var v0 = new lvec2(7L, -6L);
+                var v1 = new lvec2(-7L, 2L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(-9, 9);
-                var v1 = new lvec2(7, -1);
+                var v0 = new lvec2(-9L, 9L);
+                var v1 = new lvec2(7L, -1L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(-5, 5);
-                var v1 = new lvec2(0, 9);
+                var v0 = new lvec2(-5L, 5L);
+                var v1 = new lvec2(0, 9L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(2, -9);
+                var v0 = new lvec2(2L, -9L);
                 var v1 = new lvec2(1, 1);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
             {
-                var v0 = new lvec2(-6, -6);
-                var v1 = new lvec2(6, -9);
+                var v0 = new lvec2(-6L, -6L);
+                var v1 = new lvec2(6L, -9L);
                 Assert.AreEqual(v0 - v1, -(v1 - v0));
             }
         }
@@ -570,63 +570,63 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantAssociativeNeg()
         {
             {
-                var v0 = new lvec2(9, -7);
-                var v1 = new lvec2(0, -5);
-                var v2 = new lvec2(-4, -7);
+                var v0 = new lvec2(9L, -7L);
+                var v1 = new lvec2(0, -5L);
+                var v2 = new lvec2(-4L, -7L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(8, 4);
-                var v1 = new lvec2(-4, -9);
-                var v2 = new lvec2(-8, -7);
+                var v0 = new lvec2(8L, 4L);
+                var v1 = new lvec2(-4L, -9L);
+                var v2 = new lvec2(-8L, -7L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(-9, 0);
-                var v1 = new lvec2(-3, -8);
-                var v2 = new lvec2(-9, 1);
+                var v0 = new lvec2(-9L, 0);
+                var v1 = new lvec2(-3L, -8L);
+                var v2 = new lvec2(-9L, 1);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(1, 5);
-                var v1 = new lvec2(3, 7);
-                var v2 = new lvec2(-1, -4);
+                var v0 = new lvec2(1, 5L);
+                var v1 = new lvec2(3L, 7L);
+                var v2 = new lvec2(-1L, -4L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(-9, -7);
-                var v1 = new lvec2(8, 0);
-                var v2 = new lvec2(1, 5);
+                var v0 = new lvec2(-9L, -7L);
+                var v1 = new lvec2(8L, 0);
+                var v2 = new lvec2(1, 5L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(-4, -3);
-                var v1 = new lvec2(8, -3);
-                var v2 = new lvec2(0, 3);
+                var v0 = new lvec2(-4L, -3L);
+                var v1 = new lvec2(8L, -3L);
+                var v2 = new lvec2(0, 3L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(-2, 7);
-                var v1 = new lvec2(7, -6);
-                var v2 = new lvec2(7, -8);
+                var v0 = new lvec2(-2L, 7L);
+                var v1 = new lvec2(7L, -6L);
+                var v2 = new lvec2(7L, -8L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(-5, -5);
-                var v1 = new lvec2(-2, -4);
-                var v2 = new lvec2(2, -3);
+                var v0 = new lvec2(-5L, -5L);
+                var v1 = new lvec2(-2L, -4L);
+                var v2 = new lvec2(2L, -3L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(-5, 3);
-                var v1 = new lvec2(-1, -7);
-                var v2 = new lvec2(6, -3);
+                var v0 = new lvec2(-5L, 3L);
+                var v1 = new lvec2(-1L, -7L);
+                var v2 = new lvec2(6L, -3L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
             {
-                var v0 = new lvec2(-8, 1);
-                var v1 = new lvec2(5, 5);
-                var v2 = new lvec2(-6, -7);
+                var v0 = new lvec2(-8L, 1);
+                var v1 = new lvec2(5L, 5L);
+                var v2 = new lvec2(-6L, -7L);
                 Assert.AreEqual(v0 * (v1 - v2), v0 * v1 - v0 * v2);
             }
         }
@@ -635,53 +635,53 @@ namespace GlmSharpTest.Generated.Vec2
         public void TriangleInequality()
         {
             {
-                var v0 = new lvec2(8, -4);
-                var v1 = new lvec2(-2, -6);
+                var v0 = new lvec2(8L, -4L);
+                var v1 = new lvec2(-2L, -6L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(-6, -6);
-                var v1 = new lvec2(7, -4);
+                var v0 = new lvec2(-6L, -6L);
+                var v1 = new lvec2(7L, -4L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(7, -3);
-                var v1 = new lvec2(-7, 2);
+                var v0 = new lvec2(7L, -3L);
+                var v1 = new lvec2(-7L, 2L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(-1, -7);
-                var v1 = new lvec2(6, -9);
+                var v0 = new lvec2(-1L, -7L);
+                var v1 = new lvec2(6L, -9L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(-3, 1);
-                var v1 = new lvec2(-8, 8);
+                var v0 = new lvec2(-3L, 1);
+                var v1 = new lvec2(-8L, 8L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(0, -3);
-                var v1 = new lvec2(-7, -8);
+                var v0 = new lvec2(0, -3L);
+                var v1 = new lvec2(-7L, -8L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(0, 5);
-                var v1 = new lvec2(-5, 2);
+                var v0 = new lvec2(0, 5L);
+                var v1 = new lvec2(-5L, 2L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(-8, -8);
-                var v1 = new lvec2(-7, -5);
+                var v0 = new lvec2(-8L, -8L);
+                var v1 = new lvec2(-7L, -5L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(7, -5);
-                var v1 = new lvec2(-5, -7);
+                var v0 = new lvec2(7L, -5L);
+                var v1 = new lvec2(-5L, -7L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
             {
-                var v0 = new lvec2(5, 6);
-                var v1 = new lvec2(-4, 6);
+                var v0 = new lvec2(5L, 6L);
+                var v1 = new lvec2(-4L, 6L);
                 Assert.GreaterOrEqual(v0.NormMax + v1.NormMax, (v0 + v1).NormMax);
             }
         }
@@ -690,43 +690,43 @@ namespace GlmSharpTest.Generated.Vec2
         public void InvariantNorm()
         {
             {
-                var v0 = new lvec2(-2, -5);
+                var v0 = new lvec2(-2L, -5L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(6, 9);
+                var v0 = new lvec2(6L, 9L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(-1, 4);
+                var v0 = new lvec2(-1L, 4L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(-3, -5);
+                var v0 = new lvec2(-3L, -5L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(-7, 8);
+                var v0 = new lvec2(-7L, 8L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(2, -9);
+                var v0 = new lvec2(2L, -9L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(-7, 9);
+                var v0 = new lvec2(-7L, 9L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(0, 3);
+                var v0 = new lvec2(0, 3L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(-4, 4);
+                var v0 = new lvec2(-4L, 4L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
             {
-                var v0 = new lvec2(-1, -4);
+                var v0 = new lvec2(-1L, -4L);
                 Assert.LessOrEqual(v0.NormMax, v0.Norm);
             }
         }

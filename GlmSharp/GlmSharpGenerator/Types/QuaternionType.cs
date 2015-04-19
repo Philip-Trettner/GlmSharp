@@ -636,12 +636,12 @@ namespace GlmSharpGenerator.Types
                 {
                     yield return new Property("Normalized", this)
                     {
-                        GetterLine = "this / Length",
+                        GetterLine = $"this / {BaseTypeCast}Length",
                         Comment = "Returns a copy of this quaternion with length one (undefined if this has zero length)."
                     };
                     yield return new Property("NormalizedSafe", this)
                     {
-                        GetterLine = "this == Zero ? Identity : this / Length",
+                        GetterLine = $"this == Zero ? Identity : this / {BaseTypeCast}Length",
                         Comment = "Returns a copy of this quaternion with length one (returns zero if length is zero)."
                     };
                 }

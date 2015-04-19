@@ -180,6 +180,21 @@ namespace GlmSharp
         public static explicit operator vec4(lvec2 v) => new vec4((float)v.x, (float)v.y, 0f, 0f);
         
         /// <summary>
+        /// Explicitly converts this to a hvec2.
+        /// </summary>
+        public static explicit operator hvec2(lvec2 v) => new hvec2((Half)v.x, (Half)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator hvec3(lvec2 v) => new hvec3((Half)v.x, (Half)v.y, Half.Zero);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator hvec4(lvec2 v) => new hvec4((Half)v.x, (Half)v.y, Half.Zero, Half.Zero);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec2.
         /// </summary>
         public static explicit operator dvec2(lvec2 v) => new dvec2((double)v.x, (double)v.y);
@@ -697,7 +712,7 @@ namespace GlmSharp
         public static bvec2 Equal(long lhs, lvec2 rhs) => new bvec2(lhs == rhs.x, lhs == rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec2 Equal(long lhs, long rhs) => new bvec2(lhs == rhs);
         
@@ -717,7 +732,7 @@ namespace GlmSharp
         public static bvec2 NotEqual(long lhs, lvec2 rhs) => new bvec2(lhs != rhs.x, lhs != rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec2 NotEqual(long lhs, long rhs) => new bvec2(lhs != rhs);
         
@@ -737,7 +752,7 @@ namespace GlmSharp
         public static bvec2 GreaterThan(long lhs, lvec2 rhs) => new bvec2(lhs > rhs.x, lhs > rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec2 GreaterThan(long lhs, long rhs) => new bvec2(lhs > rhs);
         
@@ -757,7 +772,7 @@ namespace GlmSharp
         public static bvec2 GreaterThanEqual(long lhs, lvec2 rhs) => new bvec2(lhs >= rhs.x, lhs >= rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec2 GreaterThanEqual(long lhs, long rhs) => new bvec2(lhs >= rhs);
         
@@ -777,7 +792,7 @@ namespace GlmSharp
         public static bvec2 LesserThan(long lhs, lvec2 rhs) => new bvec2(lhs < rhs.x, lhs < rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec2 LesserThan(long lhs, long rhs) => new bvec2(lhs < rhs);
         
@@ -797,7 +812,7 @@ namespace GlmSharp
         public static bvec2 LesserThanEqual(long lhs, lvec2 rhs) => new bvec2(lhs <= rhs.x, lhs <= rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec2 LesserThanEqual(long lhs, long rhs) => new bvec2(lhs <= rhs);
         
@@ -807,7 +822,7 @@ namespace GlmSharp
         public static lvec2 Abs(lvec2 v) => new lvec2(Math.Abs(v.x), Math.Abs(v.y));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Abs (Math.Abs(v)).
+        /// Returns a lvec from the application of Abs (Math.Abs(v)).
         /// </summary>
         public static lvec2 Abs(long v) => new lvec2(Math.Abs(v));
         
@@ -817,7 +832,7 @@ namespace GlmSharp
         public static lvec2 HermiteInterpolationOrder3(lvec2 v) => new lvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// Returns a lvec from the application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
         /// </summary>
         public static lvec2 HermiteInterpolationOrder3(long v) => new lvec2((3 - 2 * v) * v * v);
         
@@ -827,7 +842,7 @@ namespace GlmSharp
         public static lvec2 HermiteInterpolationOrder5(lvec2 v) => new lvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// Returns a lvec from the application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
         /// </summary>
         public static lvec2 HermiteInterpolationOrder5(long v) => new lvec2(((6 * v - 15) * v + 10) * v * v * v);
         
@@ -837,7 +852,7 @@ namespace GlmSharp
         public static lvec2 Sqr(lvec2 v) => new lvec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Sqr (v * v).
+        /// Returns a lvec from the application of Sqr (v * v).
         /// </summary>
         public static lvec2 Sqr(long v) => new lvec2(v * v);
         
@@ -847,7 +862,7 @@ namespace GlmSharp
         public static lvec2 Pow2(lvec2 v) => new lvec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Pow2 (v * v).
+        /// Returns a lvec from the application of Pow2 (v * v).
         /// </summary>
         public static lvec2 Pow2(long v) => new lvec2(v * v);
         
@@ -857,7 +872,7 @@ namespace GlmSharp
         public static lvec2 Pow3(lvec2 v) => new lvec2(v.x * v.x * v.x, v.y * v.y * v.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Pow3 (v * v * v).
+        /// Returns a lvec from the application of Pow3 (v * v * v).
         /// </summary>
         public static lvec2 Pow3(long v) => new lvec2(v * v * v);
         
@@ -867,7 +882,7 @@ namespace GlmSharp
         public static lvec2 Step(lvec2 v) => new lvec2(v.x >= 0 ? 1 : 0, v.y >= 0 ? 1 : 0);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Step (v &gt;= 0 ? 1 : 0).
+        /// Returns a lvec from the application of Step (v &gt;= 0 ? 1 : 0).
         /// </summary>
         public static lvec2 Step(long v) => new lvec2(v >= 0 ? 1 : 0);
         
@@ -877,7 +892,7 @@ namespace GlmSharp
         public static lvec2 Sqrt(lvec2 v) => new lvec2((long)Math.Sqrt((double)v.x), (long)Math.Sqrt((double)v.y));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Sqrt ((long)Math.Sqrt((double)v)).
+        /// Returns a lvec from the application of Sqrt ((long)Math.Sqrt((double)v)).
         /// </summary>
         public static lvec2 Sqrt(long v) => new lvec2((long)Math.Sqrt((double)v));
         
@@ -887,7 +902,7 @@ namespace GlmSharp
         public static lvec2 InverseSqrt(lvec2 v) => new lvec2((long)(1.0 / Math.Sqrt((double)v.x)), (long)(1.0 / Math.Sqrt((double)v.y)));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of InverseSqrt ((long)(1.0 / Math.Sqrt((double)v))).
+        /// Returns a lvec from the application of InverseSqrt ((long)(1.0 / Math.Sqrt((double)v))).
         /// </summary>
         public static lvec2 InverseSqrt(long v) => new lvec2((long)(1.0 / Math.Sqrt((double)v)));
         
@@ -897,7 +912,7 @@ namespace GlmSharp
         public static ivec2 Sign(lvec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
         
         /// <summary>
-        /// Returns a ivec2 from component-wise application of Sign (Math.Sign(v)).
+        /// Returns a ivec from the application of Sign (Math.Sign(v)).
         /// </summary>
         public static ivec2 Sign(long v) => new ivec2(Math.Sign(v));
         
@@ -917,7 +932,7 @@ namespace GlmSharp
         public static lvec2 Max(long lhs, lvec2 rhs) => new lvec2(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// Returns a lvec from the application of Max (Math.Max(lhs, rhs)).
         /// </summary>
         public static lvec2 Max(long lhs, long rhs) => new lvec2(Math.Max(lhs, rhs));
         
@@ -937,7 +952,7 @@ namespace GlmSharp
         public static lvec2 Min(long lhs, lvec2 rhs) => new lvec2(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// Returns a lvec from the application of Min (Math.Min(lhs, rhs)).
         /// </summary>
         public static lvec2 Min(long lhs, long rhs) => new lvec2(Math.Min(lhs, rhs));
         
@@ -957,7 +972,7 @@ namespace GlmSharp
         public static lvec2 Pow(long lhs, lvec2 rhs) => new lvec2((long)Math.Pow((double)lhs, (double)rhs.x), (long)Math.Pow((double)lhs, (double)rhs.y));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Pow ((long)Math.Pow((double)lhs, (double)rhs)).
+        /// Returns a lvec from the application of Pow ((long)Math.Pow((double)lhs, (double)rhs)).
         /// </summary>
         public static lvec2 Pow(long lhs, long rhs) => new lvec2((long)Math.Pow((double)lhs, (double)rhs));
         
@@ -977,7 +992,7 @@ namespace GlmSharp
         public static lvec2 Log(long lhs, lvec2 rhs) => new lvec2((long)Math.Log((double)lhs, (double)rhs.x), (long)Math.Log((double)lhs, (double)rhs.y));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Log ((long)Math.Log((double)lhs, (double)rhs)).
+        /// Returns a lvec from the application of Log ((long)Math.Log((double)lhs, (double)rhs)).
         /// </summary>
         public static lvec2 Log(long lhs, long rhs) => new lvec2((long)Math.Log((double)lhs, (double)rhs));
         
@@ -1017,7 +1032,7 @@ namespace GlmSharp
         public static lvec2 Clamp(long v, long min, lvec2 max) => new lvec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// Returns a lvec from the application of Clamp (Math.Min(Math.Max(v, min), max)).
         /// </summary>
         public static lvec2 Clamp(long v, long min, long max) => new lvec2(Math.Min(Math.Max(v, min), max));
         
@@ -1057,7 +1072,7 @@ namespace GlmSharp
         public static lvec2 Mix(long min, long max, lvec2 a) => new lvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// Returns a lvec from the application of Mix (min * (1-a) + max * a).
         /// </summary>
         public static lvec2 Mix(long min, long max, long a) => new lvec2(min * (1-a) + max * a);
         
@@ -1097,7 +1112,7 @@ namespace GlmSharp
         public static lvec2 Lerp(long min, long max, lvec2 a) => new lvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a lvec from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static lvec2 Lerp(long min, long max, long a) => new lvec2(min * (1-a) + max * a);
         
@@ -1137,7 +1152,7 @@ namespace GlmSharp
         public static lvec2 Smoothstep(long edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// Returns a lvec from the application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
         /// </summary>
         public static lvec2 Smoothstep(long edge0, long edge1, long v) => new lvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
@@ -1177,7 +1192,7 @@ namespace GlmSharp
         public static lvec2 Smootherstep(long edge0, long edge1, lvec2 v) => new lvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// Returns a lvec from the application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
         /// </summary>
         public static lvec2 Smootherstep(long edge0, long edge1, long v) => new lvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
@@ -1217,7 +1232,7 @@ namespace GlmSharp
         public static lvec2 Fma(long a, long b, lvec2 c) => new lvec2(a * b + c.x, a * b + c.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Fma (a * b + c).
+        /// Returns a lvec from the application of Fma (a * b + c).
         /// </summary>
         public static lvec2 Fma(long a, long b, long c) => new lvec2(a * b + c);
         
@@ -1237,7 +1252,7 @@ namespace GlmSharp
         public static lvec2 Add(long lhs, lvec2 rhs) => new lvec2(lhs + rhs.x, lhs + rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Add (lhs + rhs).
+        /// Returns a lvec from the application of Add (lhs + rhs).
         /// </summary>
         public static lvec2 Add(long lhs, long rhs) => new lvec2(lhs + rhs);
         
@@ -1257,7 +1272,7 @@ namespace GlmSharp
         public static lvec2 Sub(long lhs, lvec2 rhs) => new lvec2(lhs - rhs.x, lhs - rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Sub (lhs - rhs).
+        /// Returns a lvec from the application of Sub (lhs - rhs).
         /// </summary>
         public static lvec2 Sub(long lhs, long rhs) => new lvec2(lhs - rhs);
         
@@ -1277,7 +1292,7 @@ namespace GlmSharp
         public static lvec2 Mul(long lhs, lvec2 rhs) => new lvec2(lhs * rhs.x, lhs * rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Mul (lhs * rhs).
+        /// Returns a lvec from the application of Mul (lhs * rhs).
         /// </summary>
         public static lvec2 Mul(long lhs, long rhs) => new lvec2(lhs * rhs);
         
@@ -1297,7 +1312,7 @@ namespace GlmSharp
         public static lvec2 Div(long lhs, lvec2 rhs) => new lvec2(lhs / rhs.x, lhs / rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Div (lhs / rhs).
+        /// Returns a lvec from the application of Div (lhs / rhs).
         /// </summary>
         public static lvec2 Div(long lhs, long rhs) => new lvec2(lhs / rhs);
         
@@ -1317,7 +1332,7 @@ namespace GlmSharp
         public static lvec2 Xor(long lhs, lvec2 rhs) => new lvec2(lhs ^ rhs.x, lhs ^ rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of Xor (lhs ^ rhs).
+        /// Returns a lvec from the application of Xor (lhs ^ rhs).
         /// </summary>
         public static lvec2 Xor(long lhs, long rhs) => new lvec2(lhs ^ rhs);
         
@@ -1337,7 +1352,7 @@ namespace GlmSharp
         public static lvec2 BitwiseOr(long lhs, lvec2 rhs) => new lvec2(lhs | rhs.x, lhs | rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of BitwiseOr (lhs | rhs).
+        /// Returns a lvec from the application of BitwiseOr (lhs | rhs).
         /// </summary>
         public static lvec2 BitwiseOr(long lhs, long rhs) => new lvec2(lhs | rhs);
         
@@ -1357,7 +1372,7 @@ namespace GlmSharp
         public static lvec2 BitwiseAnd(long lhs, lvec2 rhs) => new lvec2(lhs & rhs.x, lhs & rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of BitwiseAnd (lhs &amp; rhs).
+        /// Returns a lvec from the application of BitwiseAnd (lhs &amp; rhs).
         /// </summary>
         public static lvec2 BitwiseAnd(long lhs, long rhs) => new lvec2(lhs & rhs);
         
@@ -1377,7 +1392,7 @@ namespace GlmSharp
         public static lvec2 LeftShift(long lhs, ivec2 rhs) => new lvec2(lhs << rhs.x, lhs << rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of LeftShift (lhs &lt;&lt; rhs).
+        /// Returns a lvec from the application of LeftShift (lhs &lt;&lt; rhs).
         /// </summary>
         public static lvec2 LeftShift(long lhs, int rhs) => new lvec2(lhs << rhs);
         
@@ -1397,7 +1412,7 @@ namespace GlmSharp
         public static lvec2 RightShift(long lhs, ivec2 rhs) => new lvec2(lhs >> rhs.x, lhs >> rhs.y);
         
         /// <summary>
-        /// Returns a lvec2 from component-wise application of RightShift (lhs &gt;&gt; rhs).
+        /// Returns a lvec from the application of RightShift (lhs &gt;&gt; rhs).
         /// </summary>
         public static lvec2 RightShift(long lhs, int rhs) => new lvec2(lhs >> rhs);
         

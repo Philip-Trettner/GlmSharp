@@ -175,6 +175,11 @@ namespace GlmSharp
         public static implicit operator vec3(ivec3 v) => new vec3((float)v.x, (float)v.y, (float)v.z);
         
         /// <summary>
+        /// Implicitly converts this to a hvec3.
+        /// </summary>
+        public static implicit operator hvec3(ivec3 v) => new hvec3((Half)v.x, (Half)v.y, (Half)v.z);
+        
+        /// <summary>
         /// Implicitly converts this to a dvec3.
         /// </summary>
         public static implicit operator dvec3(ivec3 v) => new dvec3((double)v.x, (double)v.y, (double)v.z);
@@ -228,6 +233,16 @@ namespace GlmSharp
         /// Explicitly converts this to a vec4. (Higher components are zeroed)
         /// </summary>
         public static explicit operator vec4(ivec3 v) => new vec4((float)v.x, (float)v.y, (float)v.z, 0f);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec2.
+        /// </summary>
+        public static explicit operator hvec2(ivec3 v) => new hvec2((Half)v.x, (Half)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator hvec4(ivec3 v) => new hvec4((Half)v.x, (Half)v.y, (Half)v.z, Half.Zero);
         
         /// <summary>
         /// Explicitly converts this to a dvec2.
@@ -873,7 +888,7 @@ namespace GlmSharp
         public static bvec3 Equal(int lhs, ivec3 rhs) => new bvec3(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec3 Equal(int lhs, int rhs) => new bvec3(lhs == rhs);
         
@@ -893,7 +908,7 @@ namespace GlmSharp
         public static bvec3 NotEqual(int lhs, ivec3 rhs) => new bvec3(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec3 NotEqual(int lhs, int rhs) => new bvec3(lhs != rhs);
         
@@ -913,7 +928,7 @@ namespace GlmSharp
         public static bvec3 GreaterThan(int lhs, ivec3 rhs) => new bvec3(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec3 GreaterThan(int lhs, int rhs) => new bvec3(lhs > rhs);
         
@@ -933,7 +948,7 @@ namespace GlmSharp
         public static bvec3 GreaterThanEqual(int lhs, ivec3 rhs) => new bvec3(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec3 GreaterThanEqual(int lhs, int rhs) => new bvec3(lhs >= rhs);
         
@@ -953,7 +968,7 @@ namespace GlmSharp
         public static bvec3 LesserThan(int lhs, ivec3 rhs) => new bvec3(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec3 LesserThan(int lhs, int rhs) => new bvec3(lhs < rhs);
         
@@ -973,7 +988,7 @@ namespace GlmSharp
         public static bvec3 LesserThanEqual(int lhs, ivec3 rhs) => new bvec3(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec3 LesserThanEqual(int lhs, int rhs) => new bvec3(lhs <= rhs);
         
@@ -983,7 +998,7 @@ namespace GlmSharp
         public static ivec3 Abs(ivec3 v) => new ivec3(Math.Abs(v.x), Math.Abs(v.y), Math.Abs(v.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Abs (Math.Abs(v)).
+        /// Returns a ivec from the application of Abs (Math.Abs(v)).
         /// </summary>
         public static ivec3 Abs(int v) => new ivec3(Math.Abs(v));
         
@@ -993,7 +1008,7 @@ namespace GlmSharp
         public static ivec3 HermiteInterpolationOrder3(ivec3 v) => new ivec3((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// Returns a ivec from the application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
         /// </summary>
         public static ivec3 HermiteInterpolationOrder3(int v) => new ivec3((3 - 2 * v) * v * v);
         
@@ -1003,7 +1018,7 @@ namespace GlmSharp
         public static ivec3 HermiteInterpolationOrder5(ivec3 v) => new ivec3(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// Returns a ivec from the application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
         /// </summary>
         public static ivec3 HermiteInterpolationOrder5(int v) => new ivec3(((6 * v - 15) * v + 10) * v * v * v);
         
@@ -1013,7 +1028,7 @@ namespace GlmSharp
         public static ivec3 Sqr(ivec3 v) => new ivec3(v.x * v.x, v.y * v.y, v.z * v.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Sqr (v * v).
+        /// Returns a ivec from the application of Sqr (v * v).
         /// </summary>
         public static ivec3 Sqr(int v) => new ivec3(v * v);
         
@@ -1023,7 +1038,7 @@ namespace GlmSharp
         public static ivec3 Pow2(ivec3 v) => new ivec3(v.x * v.x, v.y * v.y, v.z * v.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Pow2 (v * v).
+        /// Returns a ivec from the application of Pow2 (v * v).
         /// </summary>
         public static ivec3 Pow2(int v) => new ivec3(v * v);
         
@@ -1033,7 +1048,7 @@ namespace GlmSharp
         public static ivec3 Pow3(ivec3 v) => new ivec3(v.x * v.x * v.x, v.y * v.y * v.y, v.z * v.z * v.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Pow3 (v * v * v).
+        /// Returns a ivec from the application of Pow3 (v * v * v).
         /// </summary>
         public static ivec3 Pow3(int v) => new ivec3(v * v * v);
         
@@ -1043,7 +1058,7 @@ namespace GlmSharp
         public static ivec3 Step(ivec3 v) => new ivec3(v.x >= 0 ? 1 : 0, v.y >= 0 ? 1 : 0, v.z >= 0 ? 1 : 0);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Step (v &gt;= 0 ? 1 : 0).
+        /// Returns a ivec from the application of Step (v &gt;= 0 ? 1 : 0).
         /// </summary>
         public static ivec3 Step(int v) => new ivec3(v >= 0 ? 1 : 0);
         
@@ -1053,7 +1068,7 @@ namespace GlmSharp
         public static ivec3 Sqrt(ivec3 v) => new ivec3((int)Math.Sqrt((double)v.x), (int)Math.Sqrt((double)v.y), (int)Math.Sqrt((double)v.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Sqrt ((int)Math.Sqrt((double)v)).
+        /// Returns a ivec from the application of Sqrt ((int)Math.Sqrt((double)v)).
         /// </summary>
         public static ivec3 Sqrt(int v) => new ivec3((int)Math.Sqrt((double)v));
         
@@ -1063,7 +1078,7 @@ namespace GlmSharp
         public static ivec3 InverseSqrt(ivec3 v) => new ivec3((int)(1.0 / Math.Sqrt((double)v.x)), (int)(1.0 / Math.Sqrt((double)v.y)), (int)(1.0 / Math.Sqrt((double)v.z)));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of InverseSqrt ((int)(1.0 / Math.Sqrt((double)v))).
+        /// Returns a ivec from the application of InverseSqrt ((int)(1.0 / Math.Sqrt((double)v))).
         /// </summary>
         public static ivec3 InverseSqrt(int v) => new ivec3((int)(1.0 / Math.Sqrt((double)v)));
         
@@ -1073,7 +1088,7 @@ namespace GlmSharp
         public static ivec3 Sign(ivec3 v) => new ivec3(Math.Sign(v.x), Math.Sign(v.y), Math.Sign(v.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Sign (Math.Sign(v)).
+        /// Returns a ivec from the application of Sign (Math.Sign(v)).
         /// </summary>
         public static ivec3 Sign(int v) => new ivec3(Math.Sign(v));
         
@@ -1093,7 +1108,7 @@ namespace GlmSharp
         public static ivec3 Max(int lhs, ivec3 rhs) => new ivec3(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y), Math.Max(lhs, rhs.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// Returns a ivec from the application of Max (Math.Max(lhs, rhs)).
         /// </summary>
         public static ivec3 Max(int lhs, int rhs) => new ivec3(Math.Max(lhs, rhs));
         
@@ -1113,7 +1128,7 @@ namespace GlmSharp
         public static ivec3 Min(int lhs, ivec3 rhs) => new ivec3(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y), Math.Min(lhs, rhs.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// Returns a ivec from the application of Min (Math.Min(lhs, rhs)).
         /// </summary>
         public static ivec3 Min(int lhs, int rhs) => new ivec3(Math.Min(lhs, rhs));
         
@@ -1133,7 +1148,7 @@ namespace GlmSharp
         public static ivec3 Pow(int lhs, ivec3 rhs) => new ivec3((int)Math.Pow((double)lhs, (double)rhs.x), (int)Math.Pow((double)lhs, (double)rhs.y), (int)Math.Pow((double)lhs, (double)rhs.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Pow ((int)Math.Pow((double)lhs, (double)rhs)).
+        /// Returns a ivec from the application of Pow ((int)Math.Pow((double)lhs, (double)rhs)).
         /// </summary>
         public static ivec3 Pow(int lhs, int rhs) => new ivec3((int)Math.Pow((double)lhs, (double)rhs));
         
@@ -1153,7 +1168,7 @@ namespace GlmSharp
         public static ivec3 Log(int lhs, ivec3 rhs) => new ivec3((int)Math.Log((double)lhs, (double)rhs.x), (int)Math.Log((double)lhs, (double)rhs.y), (int)Math.Log((double)lhs, (double)rhs.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Log ((int)Math.Log((double)lhs, (double)rhs)).
+        /// Returns a ivec from the application of Log ((int)Math.Log((double)lhs, (double)rhs)).
         /// </summary>
         public static ivec3 Log(int lhs, int rhs) => new ivec3((int)Math.Log((double)lhs, (double)rhs));
         
@@ -1193,7 +1208,7 @@ namespace GlmSharp
         public static ivec3 Clamp(int v, int min, ivec3 max) => new ivec3(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y), Math.Min(Math.Max(v, min), max.z));
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// Returns a ivec from the application of Clamp (Math.Min(Math.Max(v, min), max)).
         /// </summary>
         public static ivec3 Clamp(int v, int min, int max) => new ivec3(Math.Min(Math.Max(v, min), max));
         
@@ -1233,7 +1248,7 @@ namespace GlmSharp
         public static ivec3 Mix(int min, int max, ivec3 a) => new ivec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Mix (min * (1-a) + max * a).
+        /// Returns a ivec from the application of Mix (min * (1-a) + max * a).
         /// </summary>
         public static ivec3 Mix(int min, int max, int a) => new ivec3(min * (1-a) + max * a);
         
@@ -1273,7 +1288,7 @@ namespace GlmSharp
         public static ivec3 Lerp(int min, int max, ivec3 a) => new ivec3(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a ivec from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static ivec3 Lerp(int min, int max, int a) => new ivec3(min * (1-a) + max * a);
         
@@ -1313,7 +1328,7 @@ namespace GlmSharp
         public static ivec3 Smoothstep(int edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// Returns a ivec from the application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
         /// </summary>
         public static ivec3 Smoothstep(int edge0, int edge1, int v) => new ivec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
@@ -1353,7 +1368,7 @@ namespace GlmSharp
         public static ivec3 Smootherstep(int edge0, int edge1, ivec3 v) => new ivec3(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.z - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// Returns a ivec from the application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
         /// </summary>
         public static ivec3 Smootherstep(int edge0, int edge1, int v) => new ivec3(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
@@ -1393,7 +1408,7 @@ namespace GlmSharp
         public static ivec3 Fma(int a, int b, ivec3 c) => new ivec3(a * b + c.x, a * b + c.y, a * b + c.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Fma (a * b + c).
+        /// Returns a ivec from the application of Fma (a * b + c).
         /// </summary>
         public static ivec3 Fma(int a, int b, int c) => new ivec3(a * b + c);
         
@@ -1413,7 +1428,7 @@ namespace GlmSharp
         public static ivec3 Add(int lhs, ivec3 rhs) => new ivec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Add (lhs + rhs).
+        /// Returns a ivec from the application of Add (lhs + rhs).
         /// </summary>
         public static ivec3 Add(int lhs, int rhs) => new ivec3(lhs + rhs);
         
@@ -1433,7 +1448,7 @@ namespace GlmSharp
         public static ivec3 Sub(int lhs, ivec3 rhs) => new ivec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Sub (lhs - rhs).
+        /// Returns a ivec from the application of Sub (lhs - rhs).
         /// </summary>
         public static ivec3 Sub(int lhs, int rhs) => new ivec3(lhs - rhs);
         
@@ -1453,7 +1468,7 @@ namespace GlmSharp
         public static ivec3 Mul(int lhs, ivec3 rhs) => new ivec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Mul (lhs * rhs).
+        /// Returns a ivec from the application of Mul (lhs * rhs).
         /// </summary>
         public static ivec3 Mul(int lhs, int rhs) => new ivec3(lhs * rhs);
         
@@ -1473,7 +1488,7 @@ namespace GlmSharp
         public static ivec3 Div(int lhs, ivec3 rhs) => new ivec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Div (lhs / rhs).
+        /// Returns a ivec from the application of Div (lhs / rhs).
         /// </summary>
         public static ivec3 Div(int lhs, int rhs) => new ivec3(lhs / rhs);
         
@@ -1493,7 +1508,7 @@ namespace GlmSharp
         public static ivec3 Xor(int lhs, ivec3 rhs) => new ivec3(lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of Xor (lhs ^ rhs).
+        /// Returns a ivec from the application of Xor (lhs ^ rhs).
         /// </summary>
         public static ivec3 Xor(int lhs, int rhs) => new ivec3(lhs ^ rhs);
         
@@ -1513,7 +1528,7 @@ namespace GlmSharp
         public static ivec3 BitwiseOr(int lhs, ivec3 rhs) => new ivec3(lhs | rhs.x, lhs | rhs.y, lhs | rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of BitwiseOr (lhs | rhs).
+        /// Returns a ivec from the application of BitwiseOr (lhs | rhs).
         /// </summary>
         public static ivec3 BitwiseOr(int lhs, int rhs) => new ivec3(lhs | rhs);
         
@@ -1533,7 +1548,7 @@ namespace GlmSharp
         public static ivec3 BitwiseAnd(int lhs, ivec3 rhs) => new ivec3(lhs & rhs.x, lhs & rhs.y, lhs & rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of BitwiseAnd (lhs &amp; rhs).
+        /// Returns a ivec from the application of BitwiseAnd (lhs &amp; rhs).
         /// </summary>
         public static ivec3 BitwiseAnd(int lhs, int rhs) => new ivec3(lhs & rhs);
         
@@ -1553,7 +1568,7 @@ namespace GlmSharp
         public static ivec3 LeftShift(int lhs, ivec3 rhs) => new ivec3(lhs << rhs.x, lhs << rhs.y, lhs << rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of LeftShift (lhs &lt;&lt; rhs).
+        /// Returns a ivec from the application of LeftShift (lhs &lt;&lt; rhs).
         /// </summary>
         public static ivec3 LeftShift(int lhs, int rhs) => new ivec3(lhs << rhs);
         
@@ -1573,7 +1588,7 @@ namespace GlmSharp
         public static ivec3 RightShift(int lhs, ivec3 rhs) => new ivec3(lhs >> rhs.x, lhs >> rhs.y, lhs >> rhs.z);
         
         /// <summary>
-        /// Returns a ivec3 from component-wise application of RightShift (lhs &gt;&gt; rhs).
+        /// Returns a ivec from the application of RightShift (lhs &gt;&gt; rhs).
         /// </summary>
         public static ivec3 RightShift(int lhs, int rhs) => new ivec3(lhs >> rhs);
         

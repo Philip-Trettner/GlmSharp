@@ -170,6 +170,21 @@ namespace GlmSharp
         public static explicit operator vec4(dvec2 v) => new vec4((float)v.x, (float)v.y, 0f, 0f);
         
         /// <summary>
+        /// Explicitly converts this to a hvec2.
+        /// </summary>
+        public static explicit operator hvec2(dvec2 v) => new hvec2((Half)v.x, (Half)v.y);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec3. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator hvec3(dvec2 v) => new hvec3((Half)v.x, (Half)v.y, Half.Zero);
+        
+        /// <summary>
+        /// Explicitly converts this to a hvec4. (Higher components are zeroed)
+        /// </summary>
+        public static explicit operator hvec4(dvec2 v) => new hvec4((Half)v.x, (Half)v.y, Half.Zero, Half.Zero);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec3. (Higher components are zeroed)
         /// </summary>
         public static explicit operator dvec3(dvec2 v) => new dvec3((double)v.x, (double)v.y, 0.0);
@@ -394,12 +409,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).
         /// </summary>
-        public dvec2 Normalized => this / Length;
+        public dvec2 Normalized => this / (double)Length;
         
         /// <summary>
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
-        public dvec2 NormalizedSafe => this == Zero ? Zero : this / Length;
+        public dvec2 NormalizedSafe => this == Zero ? Zero : this / (double)Length;
         
         /// <summary>
         /// Returns the vector angle (atan2(y, x)) in radians.
@@ -752,7 +767,7 @@ namespace GlmSharp
         public static bvec2 Equal(double lhs, dvec2 rhs) => new bvec2(lhs == rhs.x, lhs == rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec2 Equal(double lhs, double rhs) => new bvec2(lhs == rhs);
         
@@ -772,7 +787,7 @@ namespace GlmSharp
         public static bvec2 NotEqual(double lhs, dvec2 rhs) => new bvec2(lhs != rhs.x, lhs != rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec2 NotEqual(double lhs, double rhs) => new bvec2(lhs != rhs);
         
@@ -792,7 +807,7 @@ namespace GlmSharp
         public static bvec2 GreaterThan(double lhs, dvec2 rhs) => new bvec2(lhs > rhs.x, lhs > rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec2 GreaterThan(double lhs, double rhs) => new bvec2(lhs > rhs);
         
@@ -812,7 +827,7 @@ namespace GlmSharp
         public static bvec2 GreaterThanEqual(double lhs, dvec2 rhs) => new bvec2(lhs >= rhs.x, lhs >= rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec2 GreaterThanEqual(double lhs, double rhs) => new bvec2(lhs >= rhs);
         
@@ -832,7 +847,7 @@ namespace GlmSharp
         public static bvec2 LesserThan(double lhs, dvec2 rhs) => new bvec2(lhs < rhs.x, lhs < rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec2 LesserThan(double lhs, double rhs) => new bvec2(lhs < rhs);
         
@@ -852,7 +867,7 @@ namespace GlmSharp
         public static bvec2 LesserThanEqual(double lhs, dvec2 rhs) => new bvec2(lhs <= rhs.x, lhs <= rhs.y);
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec2 LesserThanEqual(double lhs, double rhs) => new bvec2(lhs <= rhs);
         
@@ -862,7 +877,7 @@ namespace GlmSharp
         public static bvec2 IsInfinity(dvec2 v) => new bvec2(double.IsInfinity(v.x), double.IsInfinity(v.y));
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of IsInfinity (double.IsInfinity(v)).
+        /// Returns a bvec from the application of IsInfinity (double.IsInfinity(v)).
         /// </summary>
         public static bvec2 IsInfinity(double v) => new bvec2(double.IsInfinity(v));
         
@@ -872,7 +887,7 @@ namespace GlmSharp
         public static bvec2 IsFinite(dvec2 v) => new bvec2(!double.IsNaN(v.x) && !double.IsInfinity(v.x), !double.IsNaN(v.y) && !double.IsInfinity(v.y));
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of IsFinite (!double.IsNaN(v) &amp;&amp; !double.IsInfinity(v)).
+        /// Returns a bvec from the application of IsFinite (!double.IsNaN(v) &amp;&amp; !double.IsInfinity(v)).
         /// </summary>
         public static bvec2 IsFinite(double v) => new bvec2(!double.IsNaN(v) && !double.IsInfinity(v));
         
@@ -882,7 +897,7 @@ namespace GlmSharp
         public static bvec2 IsNaN(dvec2 v) => new bvec2(double.IsNaN(v.x), double.IsNaN(v.y));
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of IsNaN (double.IsNaN(v)).
+        /// Returns a bvec from the application of IsNaN (double.IsNaN(v)).
         /// </summary>
         public static bvec2 IsNaN(double v) => new bvec2(double.IsNaN(v));
         
@@ -892,7 +907,7 @@ namespace GlmSharp
         public static bvec2 IsNegativeInfinity(dvec2 v) => new bvec2(double.IsNegativeInfinity(v.x), double.IsNegativeInfinity(v.y));
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of IsNegativeInfinity (double.IsNegativeInfinity(v)).
+        /// Returns a bvec from the application of IsNegativeInfinity (double.IsNegativeInfinity(v)).
         /// </summary>
         public static bvec2 IsNegativeInfinity(double v) => new bvec2(double.IsNegativeInfinity(v));
         
@@ -902,7 +917,7 @@ namespace GlmSharp
         public static bvec2 IsPositiveInfinity(dvec2 v) => new bvec2(double.IsPositiveInfinity(v.x), double.IsPositiveInfinity(v.y));
         
         /// <summary>
-        /// Returns a bvec2 from component-wise application of IsPositiveInfinity (double.IsPositiveInfinity(v)).
+        /// Returns a bvec from the application of IsPositiveInfinity (double.IsPositiveInfinity(v)).
         /// </summary>
         public static bvec2 IsPositiveInfinity(double v) => new bvec2(double.IsPositiveInfinity(v));
         
@@ -912,7 +927,7 @@ namespace GlmSharp
         public static dvec2 Abs(dvec2 v) => new dvec2(Math.Abs(v.x), Math.Abs(v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Abs (Math.Abs(v)).
+        /// Returns a dvec from the application of Abs (Math.Abs(v)).
         /// </summary>
         public static dvec2 Abs(double v) => new dvec2(Math.Abs(v));
         
@@ -922,7 +937,7 @@ namespace GlmSharp
         public static dvec2 HermiteInterpolationOrder3(dvec2 v) => new dvec2((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// Returns a dvec from the application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
         /// </summary>
         public static dvec2 HermiteInterpolationOrder3(double v) => new dvec2((3 - 2 * v) * v * v);
         
@@ -932,7 +947,7 @@ namespace GlmSharp
         public static dvec2 HermiteInterpolationOrder5(dvec2 v) => new dvec2(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// Returns a dvec from the application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
         /// </summary>
         public static dvec2 HermiteInterpolationOrder5(double v) => new dvec2(((6 * v - 15) * v + 10) * v * v * v);
         
@@ -942,7 +957,7 @@ namespace GlmSharp
         public static dvec2 Sqr(dvec2 v) => new dvec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Sqr (v * v).
+        /// Returns a dvec from the application of Sqr (v * v).
         /// </summary>
         public static dvec2 Sqr(double v) => new dvec2(v * v);
         
@@ -952,7 +967,7 @@ namespace GlmSharp
         public static dvec2 Pow2(dvec2 v) => new dvec2(v.x * v.x, v.y * v.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Pow2 (v * v).
+        /// Returns a dvec from the application of Pow2 (v * v).
         /// </summary>
         public static dvec2 Pow2(double v) => new dvec2(v * v);
         
@@ -962,7 +977,7 @@ namespace GlmSharp
         public static dvec2 Pow3(dvec2 v) => new dvec2(v.x * v.x * v.x, v.y * v.y * v.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Pow3 (v * v * v).
+        /// Returns a dvec from the application of Pow3 (v * v * v).
         /// </summary>
         public static dvec2 Pow3(double v) => new dvec2(v * v * v);
         
@@ -972,7 +987,7 @@ namespace GlmSharp
         public static dvec2 Step(dvec2 v) => new dvec2(v.x >= 0.0 ? 1.0 : 0.0, v.y >= 0.0 ? 1.0 : 0.0);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Step (v &gt;= 0.0 ? 1.0 : 0.0).
+        /// Returns a dvec from the application of Step (v &gt;= 0.0 ? 1.0 : 0.0).
         /// </summary>
         public static dvec2 Step(double v) => new dvec2(v >= 0.0 ? 1.0 : 0.0);
         
@@ -982,7 +997,7 @@ namespace GlmSharp
         public static dvec2 Sqrt(dvec2 v) => new dvec2((double)Math.Sqrt((double)v.x), (double)Math.Sqrt((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Sqrt ((double)Math.Sqrt((double)v)).
+        /// Returns a dvec from the application of Sqrt ((double)Math.Sqrt((double)v)).
         /// </summary>
         public static dvec2 Sqrt(double v) => new dvec2((double)Math.Sqrt((double)v));
         
@@ -992,7 +1007,7 @@ namespace GlmSharp
         public static dvec2 InverseSqrt(dvec2 v) => new dvec2((double)(1.0 / Math.Sqrt((double)v.x)), (double)(1.0 / Math.Sqrt((double)v.y)));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of InverseSqrt ((double)(1.0 / Math.Sqrt((double)v))).
+        /// Returns a dvec from the application of InverseSqrt ((double)(1.0 / Math.Sqrt((double)v))).
         /// </summary>
         public static dvec2 InverseSqrt(double v) => new dvec2((double)(1.0 / Math.Sqrt((double)v)));
         
@@ -1002,7 +1017,7 @@ namespace GlmSharp
         public static ivec2 Sign(dvec2 v) => new ivec2(Math.Sign(v.x), Math.Sign(v.y));
         
         /// <summary>
-        /// Returns a ivec2 from component-wise application of Sign (Math.Sign(v)).
+        /// Returns a ivec from the application of Sign (Math.Sign(v)).
         /// </summary>
         public static ivec2 Sign(double v) => new ivec2(Math.Sign(v));
         
@@ -1022,7 +1037,7 @@ namespace GlmSharp
         public static dvec2 Max(double lhs, dvec2 rhs) => new dvec2(Math.Max(lhs, rhs.x), Math.Max(lhs, rhs.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Max (Math.Max(lhs, rhs)).
+        /// Returns a dvec from the application of Max (Math.Max(lhs, rhs)).
         /// </summary>
         public static dvec2 Max(double lhs, double rhs) => new dvec2(Math.Max(lhs, rhs));
         
@@ -1042,7 +1057,7 @@ namespace GlmSharp
         public static dvec2 Min(double lhs, dvec2 rhs) => new dvec2(Math.Min(lhs, rhs.x), Math.Min(lhs, rhs.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Min (Math.Min(lhs, rhs)).
+        /// Returns a dvec from the application of Min (Math.Min(lhs, rhs)).
         /// </summary>
         public static dvec2 Min(double lhs, double rhs) => new dvec2(Math.Min(lhs, rhs));
         
@@ -1062,7 +1077,7 @@ namespace GlmSharp
         public static dvec2 Pow(double lhs, dvec2 rhs) => new dvec2((double)Math.Pow((double)lhs, (double)rhs.x), (double)Math.Pow((double)lhs, (double)rhs.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Pow ((double)Math.Pow((double)lhs, (double)rhs)).
+        /// Returns a dvec from the application of Pow ((double)Math.Pow((double)lhs, (double)rhs)).
         /// </summary>
         public static dvec2 Pow(double lhs, double rhs) => new dvec2((double)Math.Pow((double)lhs, (double)rhs));
         
@@ -1082,7 +1097,7 @@ namespace GlmSharp
         public static dvec2 Log(double lhs, dvec2 rhs) => new dvec2((double)Math.Log((double)lhs, (double)rhs.x), (double)Math.Log((double)lhs, (double)rhs.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)lhs, (double)rhs)).
+        /// Returns a dvec from the application of Log ((double)Math.Log((double)lhs, (double)rhs)).
         /// </summary>
         public static dvec2 Log(double lhs, double rhs) => new dvec2((double)Math.Log((double)lhs, (double)rhs));
         
@@ -1122,7 +1137,7 @@ namespace GlmSharp
         public static dvec2 Clamp(double v, double min, dvec2 max) => new dvec2(Math.Min(Math.Max(v, min), max.x), Math.Min(Math.Max(v, min), max.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Clamp (Math.Min(Math.Max(v, min), max)).
+        /// Returns a dvec from the application of Clamp (Math.Min(Math.Max(v, min), max)).
         /// </summary>
         public static dvec2 Clamp(double v, double min, double max) => new dvec2(Math.Min(Math.Max(v, min), max));
         
@@ -1162,7 +1177,7 @@ namespace GlmSharp
         public static dvec2 Mix(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Mix (min * (1-a) + max * a).
+        /// Returns a dvec from the application of Mix (min * (1-a) + max * a).
         /// </summary>
         public static dvec2 Mix(double min, double max, double a) => new dvec2(min * (1-a) + max * a);
         
@@ -1202,7 +1217,7 @@ namespace GlmSharp
         public static dvec2 Lerp(double min, double max, dvec2 a) => new dvec2(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a dvec from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static dvec2 Lerp(double min, double max, double a) => new dvec2(min * (1-a) + max * a);
         
@@ -1242,7 +1257,7 @@ namespace GlmSharp
         public static dvec2 Smoothstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
+        /// Returns a dvec from the application of Smoothstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3()).
         /// </summary>
         public static dvec2 Smoothstep(double edge0, double edge1, double v) => new dvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder3());
         
@@ -1282,7 +1297,7 @@ namespace GlmSharp
         public static dvec2 Smootherstep(double edge0, double edge1, dvec2 v) => new dvec2(((v.x - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5(), ((v.y - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
+        /// Returns a dvec from the application of Smootherstep (((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5()).
         /// </summary>
         public static dvec2 Smootherstep(double edge0, double edge1, double v) => new dvec2(((v - edge0) / (edge1 - edge0)).Clamp().HermiteInterpolationOrder5());
         
@@ -1322,7 +1337,7 @@ namespace GlmSharp
         public static dvec2 Fma(double a, double b, dvec2 c) => new dvec2(a * b + c.x, a * b + c.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Fma (a * b + c).
+        /// Returns a dvec from the application of Fma (a * b + c).
         /// </summary>
         public static dvec2 Fma(double a, double b, double c) => new dvec2(a * b + c);
         
@@ -1342,7 +1357,7 @@ namespace GlmSharp
         public static dvec2 Add(double lhs, dvec2 rhs) => new dvec2(lhs + rhs.x, lhs + rhs.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Add (lhs + rhs).
+        /// Returns a dvec from the application of Add (lhs + rhs).
         /// </summary>
         public static dvec2 Add(double lhs, double rhs) => new dvec2(lhs + rhs);
         
@@ -1362,7 +1377,7 @@ namespace GlmSharp
         public static dvec2 Sub(double lhs, dvec2 rhs) => new dvec2(lhs - rhs.x, lhs - rhs.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Sub (lhs - rhs).
+        /// Returns a dvec from the application of Sub (lhs - rhs).
         /// </summary>
         public static dvec2 Sub(double lhs, double rhs) => new dvec2(lhs - rhs);
         
@@ -1382,7 +1397,7 @@ namespace GlmSharp
         public static dvec2 Mul(double lhs, dvec2 rhs) => new dvec2(lhs * rhs.x, lhs * rhs.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Mul (lhs * rhs).
+        /// Returns a dvec from the application of Mul (lhs * rhs).
         /// </summary>
         public static dvec2 Mul(double lhs, double rhs) => new dvec2(lhs * rhs);
         
@@ -1402,7 +1417,7 @@ namespace GlmSharp
         public static dvec2 Div(double lhs, dvec2 rhs) => new dvec2(lhs / rhs.x, lhs / rhs.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Div (lhs / rhs).
+        /// Returns a dvec from the application of Div (lhs / rhs).
         /// </summary>
         public static dvec2 Div(double lhs, double rhs) => new dvec2(lhs / rhs);
         
@@ -1422,29 +1437,29 @@ namespace GlmSharp
         public static dvec2 Modulo(double lhs, dvec2 rhs) => new dvec2(lhs % rhs.x, lhs % rhs.y);
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Modulo (lhs % rhs).
+        /// Returns a dvec from the application of Modulo (lhs % rhs).
         /// </summary>
         public static dvec2 Modulo(double lhs, double rhs) => new dvec2(lhs % rhs);
         
         /// <summary>
         /// Returns a dvec2 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
-        public static dvec2 Degrees(dvec2 v) => new dvec2(v.x * 57.295779513082320876798154814105170332405472466564321d, v.y * 57.295779513082320876798154814105170332405472466564321d);
+        public static dvec2 Degrees(dvec2 v) => new dvec2((double)(v.x * 57.295779513082320876798154814105170332405472466564321d), (double)(v.y * 57.295779513082320876798154814105170332405472466564321d));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Degrees (Radians-To-Degrees Conversion).
+        /// Returns a dvec from the application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
-        public static dvec2 Degrees(double v) => new dvec2(v * 57.295779513082320876798154814105170332405472466564321d);
-        
-        /// <summary>
-        /// Returns a dvec2 from component-wise application of Radians (Degrees-To-Radians Conversion).
-        /// </summary>
-        public static dvec2 Radians(dvec2 v) => new dvec2(v.x * 0.0174532925199432957692369076848861271344287188854172d, v.y * 0.0174532925199432957692369076848861271344287188854172d);
+        public static dvec2 Degrees(double v) => new dvec2((double)(v * 57.295779513082320876798154814105170332405472466564321d));
         
         /// <summary>
         /// Returns a dvec2 from component-wise application of Radians (Degrees-To-Radians Conversion).
         /// </summary>
-        public static dvec2 Radians(double v) => new dvec2(v * 0.0174532925199432957692369076848861271344287188854172d);
+        public static dvec2 Radians(dvec2 v) => new dvec2((double)(v.x * 0.0174532925199432957692369076848861271344287188854172d), (double)(v.y * 0.0174532925199432957692369076848861271344287188854172d));
+        
+        /// <summary>
+        /// Returns a dvec from the application of Radians (Degrees-To-Radians Conversion).
+        /// </summary>
+        public static dvec2 Radians(double v) => new dvec2((double)(v * 0.0174532925199432957692369076848861271344287188854172d));
         
         /// <summary>
         /// Returns a dvec2 from component-wise application of Acos ((double)Math.Acos((double)v)).
@@ -1452,7 +1467,7 @@ namespace GlmSharp
         public static dvec2 Acos(dvec2 v) => new dvec2((double)Math.Acos((double)v.x), (double)Math.Acos((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Acos ((double)Math.Acos((double)v)).
+        /// Returns a dvec from the application of Acos ((double)Math.Acos((double)v)).
         /// </summary>
         public static dvec2 Acos(double v) => new dvec2((double)Math.Acos((double)v));
         
@@ -1462,7 +1477,7 @@ namespace GlmSharp
         public static dvec2 Asin(dvec2 v) => new dvec2((double)Math.Asin((double)v.x), (double)Math.Asin((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Asin ((double)Math.Asin((double)v)).
+        /// Returns a dvec from the application of Asin ((double)Math.Asin((double)v)).
         /// </summary>
         public static dvec2 Asin(double v) => new dvec2((double)Math.Asin((double)v));
         
@@ -1472,7 +1487,7 @@ namespace GlmSharp
         public static dvec2 Atan(dvec2 v) => new dvec2((double)Math.Atan((double)v.x), (double)Math.Atan((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Atan ((double)Math.Atan((double)v)).
+        /// Returns a dvec from the application of Atan ((double)Math.Atan((double)v)).
         /// </summary>
         public static dvec2 Atan(double v) => new dvec2((double)Math.Atan((double)v));
         
@@ -1482,7 +1497,7 @@ namespace GlmSharp
         public static dvec2 Cos(dvec2 v) => new dvec2((double)Math.Cos((double)v.x), (double)Math.Cos((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Cos ((double)Math.Cos((double)v)).
+        /// Returns a dvec from the application of Cos ((double)Math.Cos((double)v)).
         /// </summary>
         public static dvec2 Cos(double v) => new dvec2((double)Math.Cos((double)v));
         
@@ -1492,7 +1507,7 @@ namespace GlmSharp
         public static dvec2 Cosh(dvec2 v) => new dvec2((double)Math.Cosh((double)v.x), (double)Math.Cosh((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Cosh ((double)Math.Cosh((double)v)).
+        /// Returns a dvec from the application of Cosh ((double)Math.Cosh((double)v)).
         /// </summary>
         public static dvec2 Cosh(double v) => new dvec2((double)Math.Cosh((double)v));
         
@@ -1502,7 +1517,7 @@ namespace GlmSharp
         public static dvec2 Exp(dvec2 v) => new dvec2((double)Math.Exp((double)v.x), (double)Math.Exp((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Exp ((double)Math.Exp((double)v)).
+        /// Returns a dvec from the application of Exp ((double)Math.Exp((double)v)).
         /// </summary>
         public static dvec2 Exp(double v) => new dvec2((double)Math.Exp((double)v));
         
@@ -1512,7 +1527,7 @@ namespace GlmSharp
         public static dvec2 Log(dvec2 v) => new dvec2((double)Math.Log((double)v.x), (double)Math.Log((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Log ((double)Math.Log((double)v)).
+        /// Returns a dvec from the application of Log ((double)Math.Log((double)v)).
         /// </summary>
         public static dvec2 Log(double v) => new dvec2((double)Math.Log((double)v));
         
@@ -1522,7 +1537,7 @@ namespace GlmSharp
         public static dvec2 Log2(dvec2 v) => new dvec2((double)Math.Log((double)v.x, 2), (double)Math.Log((double)v.y, 2));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Log2 ((double)Math.Log((double)v, 2)).
+        /// Returns a dvec from the application of Log2 ((double)Math.Log((double)v, 2)).
         /// </summary>
         public static dvec2 Log2(double v) => new dvec2((double)Math.Log((double)v, 2));
         
@@ -1532,7 +1547,7 @@ namespace GlmSharp
         public static dvec2 Log10(dvec2 v) => new dvec2((double)Math.Log10((double)v.x), (double)Math.Log10((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Log10 ((double)Math.Log10((double)v)).
+        /// Returns a dvec from the application of Log10 ((double)Math.Log10((double)v)).
         /// </summary>
         public static dvec2 Log10(double v) => new dvec2((double)Math.Log10((double)v));
         
@@ -1542,7 +1557,7 @@ namespace GlmSharp
         public static dvec2 Floor(dvec2 v) => new dvec2((double)Math.Floor(v.x), (double)Math.Floor(v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Floor ((double)Math.Floor(v)).
+        /// Returns a dvec from the application of Floor ((double)Math.Floor(v)).
         /// </summary>
         public static dvec2 Floor(double v) => new dvec2((double)Math.Floor(v));
         
@@ -1552,7 +1567,7 @@ namespace GlmSharp
         public static dvec2 Ceiling(dvec2 v) => new dvec2((double)Math.Ceiling(v.x), (double)Math.Ceiling(v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Ceiling ((double)Math.Ceiling(v)).
+        /// Returns a dvec from the application of Ceiling ((double)Math.Ceiling(v)).
         /// </summary>
         public static dvec2 Ceiling(double v) => new dvec2((double)Math.Ceiling(v));
         
@@ -1562,7 +1577,7 @@ namespace GlmSharp
         public static dvec2 Round(dvec2 v) => new dvec2((double)Math.Round(v.x), (double)Math.Round(v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Round ((double)Math.Round(v)).
+        /// Returns a dvec from the application of Round ((double)Math.Round(v)).
         /// </summary>
         public static dvec2 Round(double v) => new dvec2((double)Math.Round(v));
         
@@ -1572,7 +1587,7 @@ namespace GlmSharp
         public static dvec2 Sin(dvec2 v) => new dvec2((double)Math.Sin((double)v.x), (double)Math.Sin((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Sin ((double)Math.Sin((double)v)).
+        /// Returns a dvec from the application of Sin ((double)Math.Sin((double)v)).
         /// </summary>
         public static dvec2 Sin(double v) => new dvec2((double)Math.Sin((double)v));
         
@@ -1582,7 +1597,7 @@ namespace GlmSharp
         public static dvec2 Sinh(dvec2 v) => new dvec2((double)Math.Sinh((double)v.x), (double)Math.Sinh((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Sinh ((double)Math.Sinh((double)v)).
+        /// Returns a dvec from the application of Sinh ((double)Math.Sinh((double)v)).
         /// </summary>
         public static dvec2 Sinh(double v) => new dvec2((double)Math.Sinh((double)v));
         
@@ -1592,7 +1607,7 @@ namespace GlmSharp
         public static dvec2 Tan(dvec2 v) => new dvec2((double)Math.Tan((double)v.x), (double)Math.Tan((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Tan ((double)Math.Tan((double)v)).
+        /// Returns a dvec from the application of Tan ((double)Math.Tan((double)v)).
         /// </summary>
         public static dvec2 Tan(double v) => new dvec2((double)Math.Tan((double)v));
         
@@ -1602,7 +1617,7 @@ namespace GlmSharp
         public static dvec2 Tanh(dvec2 v) => new dvec2((double)Math.Tanh((double)v.x), (double)Math.Tanh((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Tanh ((double)Math.Tanh((double)v)).
+        /// Returns a dvec from the application of Tanh ((double)Math.Tanh((double)v)).
         /// </summary>
         public static dvec2 Tanh(double v) => new dvec2((double)Math.Tanh((double)v));
         
@@ -1612,7 +1627,7 @@ namespace GlmSharp
         public static dvec2 Truncate(dvec2 v) => new dvec2((double)Math.Truncate((double)v.x), (double)Math.Truncate((double)v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Truncate ((double)Math.Truncate((double)v)).
+        /// Returns a dvec from the application of Truncate ((double)Math.Truncate((double)v)).
         /// </summary>
         public static dvec2 Truncate(double v) => new dvec2((double)Math.Truncate((double)v));
         
@@ -1622,7 +1637,7 @@ namespace GlmSharp
         public static dvec2 Fract(dvec2 v) => new dvec2((double)(v.x - Math.Floor(v.x)), (double)(v.y - Math.Floor(v.y)));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Fract ((double)(v - Math.Floor(v))).
+        /// Returns a dvec from the application of Fract ((double)(v - Math.Floor(v))).
         /// </summary>
         public static dvec2 Fract(double v) => new dvec2((double)(v - Math.Floor(v)));
         
@@ -1632,7 +1647,7 @@ namespace GlmSharp
         public static dvec2 Trunc(dvec2 v) => new dvec2((long)(v.x), (long)(v.y));
         
         /// <summary>
-        /// Returns a dvec2 from component-wise application of Trunc ((long)(v)).
+        /// Returns a dvec from the application of Trunc ((long)(v)).
         /// </summary>
         public static dvec2 Trunc(double v) => new dvec2((long)(v));
         

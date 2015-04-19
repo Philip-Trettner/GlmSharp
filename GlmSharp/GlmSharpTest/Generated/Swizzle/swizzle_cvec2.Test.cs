@@ -28,14 +28,14 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(new Complex(5.5d, 6.5d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(1.5d, 6.5d), new Complex(-5, 9));
+                var ov = new cvec2(new Complex(1.5d, 6.5d), new Complex(-5d, 9d));
                 var v = ov.swizzle.xxx;
                 Assert.AreEqual(new Complex(1.5d, 6.5d), v.x);
                 Assert.AreEqual(new Complex(1.5d, 6.5d), v.y);
                 Assert.AreEqual(new Complex(1.5d, 6.5d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(8.5d, 9.5d), new Complex(-3, -9.5d));
+                var ov = new cvec2(new Complex(8.5d, 9.5d), new Complex(-3d, -9.5d));
                 var v = ov.swizzle.xxxx;
                 Assert.AreEqual(new Complex(8.5d, 9.5d), v.x);
                 Assert.AreEqual(new Complex(8.5d, 9.5d), v.y);
@@ -43,27 +43,27 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(new Complex(8.5d, 9.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-1, -6), new Complex(-6.5d, 3.5d));
+                var ov = new cvec2(new Complex(-1d, -6d), new Complex(-6.5d, 3.5d));
                 var v = ov.swizzle.xxxy;
-                Assert.AreEqual(new Complex(-1, -6), v.x);
-                Assert.AreEqual(new Complex(-1, -6), v.y);
-                Assert.AreEqual(new Complex(-1, -6), v.z);
+                Assert.AreEqual(new Complex(-1d, -6d), v.x);
+                Assert.AreEqual(new Complex(-1d, -6d), v.y);
+                Assert.AreEqual(new Complex(-1d, -6d), v.z);
                 Assert.AreEqual(new Complex(-6.5d, 3.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(5, 6.5d), new Complex(-2, -6));
+                var ov = new cvec2(new Complex(5d, 6.5d), new Complex(-2d, -6d));
                 var v = ov.swizzle.xxy;
-                Assert.AreEqual(new Complex(5, 6.5d), v.x);
-                Assert.AreEqual(new Complex(5, 6.5d), v.y);
-                Assert.AreEqual(new Complex(-2, -6), v.z);
+                Assert.AreEqual(new Complex(5d, 6.5d), v.x);
+                Assert.AreEqual(new Complex(5d, 6.5d), v.y);
+                Assert.AreEqual(new Complex(-2d, -6d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(2, -3.5d), new Complex(-7.5d, 9.5d));
+                var ov = new cvec2(new Complex(2d, -3.5d), new Complex(-7.5d, 9.5d));
                 var v = ov.swizzle.xxyx;
-                Assert.AreEqual(new Complex(2, -3.5d), v.x);
-                Assert.AreEqual(new Complex(2, -3.5d), v.y);
+                Assert.AreEqual(new Complex(2d, -3.5d), v.x);
+                Assert.AreEqual(new Complex(2d, -3.5d), v.y);
                 Assert.AreEqual(new Complex(-7.5d, 9.5d), v.z);
-                Assert.AreEqual(new Complex(2, -3.5d), v.w);
+                Assert.AreEqual(new Complex(2d, -3.5d), v.w);
             }
             {
                 var ov = new cvec2(new Complex(7.5d, -4.5d), new Complex(-4.5d, -2.5d));
@@ -74,160 +74,160 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(new Complex(-4.5d, -2.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-1.5d, 1.0), new Complex(6, -5.5d));
+                var ov = new cvec2(new Complex(-1.5d, 1.0), new Complex(6d, -5.5d));
                 var v = ov.swizzle.xy;
                 Assert.AreEqual(new Complex(-1.5d, 1.0), v.x);
-                Assert.AreEqual(new Complex(6, -5.5d), v.y);
+                Assert.AreEqual(new Complex(6d, -5.5d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(1.5d, -6), new Complex(-1.5d, -8.5d));
+                var ov = new cvec2(new Complex(1.5d, -6d), new Complex(-1.5d, -8.5d));
                 var v = ov.swizzle.xyx;
-                Assert.AreEqual(new Complex(1.5d, -6), v.x);
+                Assert.AreEqual(new Complex(1.5d, -6d), v.x);
                 Assert.AreEqual(new Complex(-1.5d, -8.5d), v.y);
-                Assert.AreEqual(new Complex(1.5d, -6), v.z);
+                Assert.AreEqual(new Complex(1.5d, -6d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(6.5d, -4), new Complex(-8.5d, 5.5d));
+                var ov = new cvec2(new Complex(6.5d, -4d), new Complex(-8.5d, 5.5d));
                 var v = ov.swizzle.xyxx;
-                Assert.AreEqual(new Complex(6.5d, -4), v.x);
+                Assert.AreEqual(new Complex(6.5d, -4d), v.x);
                 Assert.AreEqual(new Complex(-8.5d, 5.5d), v.y);
-                Assert.AreEqual(new Complex(6.5d, -4), v.z);
-                Assert.AreEqual(new Complex(6.5d, -4), v.w);
+                Assert.AreEqual(new Complex(6.5d, -4d), v.z);
+                Assert.AreEqual(new Complex(6.5d, -4d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-3, 2.5d), new Complex(-7.5d, 9.5d));
+                var ov = new cvec2(new Complex(-3d, 2.5d), new Complex(-7.5d, 9.5d));
                 var v = ov.swizzle.xyxy;
-                Assert.AreEqual(new Complex(-3, 2.5d), v.x);
+                Assert.AreEqual(new Complex(-3d, 2.5d), v.x);
                 Assert.AreEqual(new Complex(-7.5d, 9.5d), v.y);
-                Assert.AreEqual(new Complex(-3, 2.5d), v.z);
+                Assert.AreEqual(new Complex(-3d, 2.5d), v.z);
                 Assert.AreEqual(new Complex(-7.5d, 9.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(7, -0.5d), new Complex(0.0, -2));
+                var ov = new cvec2(new Complex(7d, -0.5d), new Complex(0.0, -2d));
                 var v = ov.swizzle.xyy;
-                Assert.AreEqual(new Complex(7, -0.5d), v.x);
-                Assert.AreEqual(new Complex(0.0, -2), v.y);
-                Assert.AreEqual(new Complex(0.0, -2), v.z);
+                Assert.AreEqual(new Complex(7d, -0.5d), v.x);
+                Assert.AreEqual(new Complex(0.0, -2d), v.y);
+                Assert.AreEqual(new Complex(0.0, -2d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(-2.5d, -5), new Complex(-7, 1.0));
+                var ov = new cvec2(new Complex(-2.5d, -5d), new Complex(-7d, 1.0));
                 var v = ov.swizzle.xyyx;
-                Assert.AreEqual(new Complex(-2.5d, -5), v.x);
-                Assert.AreEqual(new Complex(-7, 1.0), v.y);
-                Assert.AreEqual(new Complex(-7, 1.0), v.z);
-                Assert.AreEqual(new Complex(-2.5d, -5), v.w);
+                Assert.AreEqual(new Complex(-2.5d, -5d), v.x);
+                Assert.AreEqual(new Complex(-7d, 1.0), v.y);
+                Assert.AreEqual(new Complex(-7d, 1.0), v.z);
+                Assert.AreEqual(new Complex(-2.5d, -5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(6.5d, -8), new Complex(6.5d, -0.5d));
+                var ov = new cvec2(new Complex(6.5d, -8d), new Complex(6.5d, -0.5d));
                 var v = ov.swizzle.xyyy;
-                Assert.AreEqual(new Complex(6.5d, -8), v.x);
+                Assert.AreEqual(new Complex(6.5d, -8d), v.x);
                 Assert.AreEqual(new Complex(6.5d, -0.5d), v.y);
                 Assert.AreEqual(new Complex(6.5d, -0.5d), v.z);
                 Assert.AreEqual(new Complex(6.5d, -0.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-2.5d, -9), new Complex(-6.5d, 6));
+                var ov = new cvec2(new Complex(-2.5d, -9d), new Complex(-6.5d, 6d));
                 var v = ov.swizzle.yx;
-                Assert.AreEqual(new Complex(-6.5d, 6), v.x);
-                Assert.AreEqual(new Complex(-2.5d, -9), v.y);
+                Assert.AreEqual(new Complex(-6.5d, 6d), v.x);
+                Assert.AreEqual(new Complex(-2.5d, -9d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(0.5d, 2.5d), new Complex(4, -1));
+                var ov = new cvec2(new Complex(0.5d, 2.5d), new Complex(4d, -1d));
                 var v = ov.swizzle.yxx;
-                Assert.AreEqual(new Complex(4, -1), v.x);
+                Assert.AreEqual(new Complex(4d, -1d), v.x);
                 Assert.AreEqual(new Complex(0.5d, 2.5d), v.y);
                 Assert.AreEqual(new Complex(0.5d, 2.5d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(4.5d, 3), new Complex(-9, 6.5d));
+                var ov = new cvec2(new Complex(4.5d, 3d), new Complex(-9d, 6.5d));
                 var v = ov.swizzle.yxxx;
-                Assert.AreEqual(new Complex(-9, 6.5d), v.x);
-                Assert.AreEqual(new Complex(4.5d, 3), v.y);
-                Assert.AreEqual(new Complex(4.5d, 3), v.z);
-                Assert.AreEqual(new Complex(4.5d, 3), v.w);
+                Assert.AreEqual(new Complex(-9d, 6.5d), v.x);
+                Assert.AreEqual(new Complex(4.5d, 3d), v.y);
+                Assert.AreEqual(new Complex(4.5d, 3d), v.z);
+                Assert.AreEqual(new Complex(4.5d, 3d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-3, 8), new Complex(4, 0.0));
+                var ov = new cvec2(new Complex(-3d, 8d), new Complex(4d, 0.0));
                 var v = ov.swizzle.yxxy;
-                Assert.AreEqual(new Complex(4, 0.0), v.x);
-                Assert.AreEqual(new Complex(-3, 8), v.y);
-                Assert.AreEqual(new Complex(-3, 8), v.z);
-                Assert.AreEqual(new Complex(4, 0.0), v.w);
+                Assert.AreEqual(new Complex(4d, 0.0), v.x);
+                Assert.AreEqual(new Complex(-3d, 8d), v.y);
+                Assert.AreEqual(new Complex(-3d, 8d), v.z);
+                Assert.AreEqual(new Complex(4d, 0.0), v.w);
             }
             {
-                var ov = new cvec2(new Complex(5, -2), new Complex(5, 9));
+                var ov = new cvec2(new Complex(5d, -2d), new Complex(5d, 9d));
                 var v = ov.swizzle.yxy;
-                Assert.AreEqual(new Complex(5, 9), v.x);
-                Assert.AreEqual(new Complex(5, -2), v.y);
-                Assert.AreEqual(new Complex(5, 9), v.z);
+                Assert.AreEqual(new Complex(5d, 9d), v.x);
+                Assert.AreEqual(new Complex(5d, -2d), v.y);
+                Assert.AreEqual(new Complex(5d, 9d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(9.5d, -9), new Complex(5, -4.5d));
+                var ov = new cvec2(new Complex(9.5d, -9d), new Complex(5d, -4.5d));
                 var v = ov.swizzle.yxyx;
-                Assert.AreEqual(new Complex(5, -4.5d), v.x);
-                Assert.AreEqual(new Complex(9.5d, -9), v.y);
-                Assert.AreEqual(new Complex(5, -4.5d), v.z);
-                Assert.AreEqual(new Complex(9.5d, -9), v.w);
+                Assert.AreEqual(new Complex(5d, -4.5d), v.x);
+                Assert.AreEqual(new Complex(9.5d, -9d), v.y);
+                Assert.AreEqual(new Complex(5d, -4.5d), v.z);
+                Assert.AreEqual(new Complex(9.5d, -9d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(2.5d, -1), new Complex(-6.5d, -3.5d));
+                var ov = new cvec2(new Complex(2.5d, -1d), new Complex(-6.5d, -3.5d));
                 var v = ov.swizzle.yxyy;
                 Assert.AreEqual(new Complex(-6.5d, -3.5d), v.x);
-                Assert.AreEqual(new Complex(2.5d, -1), v.y);
+                Assert.AreEqual(new Complex(2.5d, -1d), v.y);
                 Assert.AreEqual(new Complex(-6.5d, -3.5d), v.z);
                 Assert.AreEqual(new Complex(-6.5d, -3.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(7, -9), new Complex(-3.5d, 7));
+                var ov = new cvec2(new Complex(7d, -9d), new Complex(-3.5d, 7d));
                 var v = ov.swizzle.yy;
-                Assert.AreEqual(new Complex(-3.5d, 7), v.x);
-                Assert.AreEqual(new Complex(-3.5d, 7), v.y);
+                Assert.AreEqual(new Complex(-3.5d, 7d), v.x);
+                Assert.AreEqual(new Complex(-3.5d, 7d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(-2.5d, 3), new Complex(-4.5d, 0.5d));
+                var ov = new cvec2(new Complex(-2.5d, 3d), new Complex(-4.5d, 0.5d));
                 var v = ov.swizzle.yyx;
                 Assert.AreEqual(new Complex(-4.5d, 0.5d), v.x);
                 Assert.AreEqual(new Complex(-4.5d, 0.5d), v.y);
-                Assert.AreEqual(new Complex(-2.5d, 3), v.z);
+                Assert.AreEqual(new Complex(-2.5d, 3d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(2, 2), new Complex(-7, 2));
+                var ov = new cvec2(new Complex(2d, 2d), new Complex(-7d, 2d));
                 var v = ov.swizzle.yyxx;
-                Assert.AreEqual(new Complex(-7, 2), v.x);
-                Assert.AreEqual(new Complex(-7, 2), v.y);
-                Assert.AreEqual(new Complex(2, 2), v.z);
-                Assert.AreEqual(new Complex(2, 2), v.w);
+                Assert.AreEqual(new Complex(-7d, 2d), v.x);
+                Assert.AreEqual(new Complex(-7d, 2d), v.y);
+                Assert.AreEqual(new Complex(2d, 2d), v.z);
+                Assert.AreEqual(new Complex(2d, 2d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(0.0, -5), new Complex(-7.5d, -9));
+                var ov = new cvec2(new Complex(0.0, -5d), new Complex(-7.5d, -9d));
                 var v = ov.swizzle.yyxy;
-                Assert.AreEqual(new Complex(-7.5d, -9), v.x);
-                Assert.AreEqual(new Complex(-7.5d, -9), v.y);
-                Assert.AreEqual(new Complex(0.0, -5), v.z);
-                Assert.AreEqual(new Complex(-7.5d, -9), v.w);
+                Assert.AreEqual(new Complex(-7.5d, -9d), v.x);
+                Assert.AreEqual(new Complex(-7.5d, -9d), v.y);
+                Assert.AreEqual(new Complex(0.0, -5d), v.z);
+                Assert.AreEqual(new Complex(-7.5d, -9d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(2.5d, 7), new Complex(-1, -1));
+                var ov = new cvec2(new Complex(2.5d, 7d), new Complex(-1d, -1d));
                 var v = ov.swizzle.yyy;
-                Assert.AreEqual(new Complex(-1, -1), v.x);
-                Assert.AreEqual(new Complex(-1, -1), v.y);
-                Assert.AreEqual(new Complex(-1, -1), v.z);
+                Assert.AreEqual(new Complex(-1d, -1d), v.x);
+                Assert.AreEqual(new Complex(-1d, -1d), v.y);
+                Assert.AreEqual(new Complex(-1d, -1d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(-7, 2.5d), new Complex(-2.5d, -8.5d));
+                var ov = new cvec2(new Complex(-7d, 2.5d), new Complex(-2.5d, -8.5d));
                 var v = ov.swizzle.yyyx;
                 Assert.AreEqual(new Complex(-2.5d, -8.5d), v.x);
                 Assert.AreEqual(new Complex(-2.5d, -8.5d), v.y);
                 Assert.AreEqual(new Complex(-2.5d, -8.5d), v.z);
-                Assert.AreEqual(new Complex(-7, 2.5d), v.w);
+                Assert.AreEqual(new Complex(-7d, 2.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(8, 1.5d), new Complex(-3, 5.5d));
+                var ov = new cvec2(new Complex(8d, 1.5d), new Complex(-3d, 5.5d));
                 var v = ov.swizzle.yyyy;
-                Assert.AreEqual(new Complex(-3, 5.5d), v.x);
-                Assert.AreEqual(new Complex(-3, 5.5d), v.y);
-                Assert.AreEqual(new Complex(-3, 5.5d), v.z);
-                Assert.AreEqual(new Complex(-3, 5.5d), v.w);
+                Assert.AreEqual(new Complex(-3d, 5.5d), v.x);
+                Assert.AreEqual(new Complex(-3d, 5.5d), v.y);
+                Assert.AreEqual(new Complex(-3d, 5.5d), v.z);
+                Assert.AreEqual(new Complex(-3d, 5.5d), v.w);
             }
         }
 
@@ -235,20 +235,20 @@ namespace GlmSharpTest.Generated.Swizzle
         public void RGBA()
         {
             {
-                var ov = new cvec2(new Complex(-9.5d, -5.5d), new Complex(-4, -2));
+                var ov = new cvec2(new Complex(-9.5d, -5.5d), new Complex(-4d, -2d));
                 var v = ov.swizzle.rr;
                 Assert.AreEqual(new Complex(-9.5d, -5.5d), v.x);
                 Assert.AreEqual(new Complex(-9.5d, -5.5d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(-9.5d, 4), new Complex(9.5d, -3.5d));
+                var ov = new cvec2(new Complex(-9.5d, 4d), new Complex(9.5d, -3.5d));
                 var v = ov.swizzle.rrr;
-                Assert.AreEqual(new Complex(-9.5d, 4), v.x);
-                Assert.AreEqual(new Complex(-9.5d, 4), v.y);
-                Assert.AreEqual(new Complex(-9.5d, 4), v.z);
+                Assert.AreEqual(new Complex(-9.5d, 4d), v.x);
+                Assert.AreEqual(new Complex(-9.5d, 4d), v.y);
+                Assert.AreEqual(new Complex(-9.5d, 4d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(-5.5d, -0.5d), new Complex(9.5d, 8));
+                var ov = new cvec2(new Complex(-5.5d, -0.5d), new Complex(9.5d, 8d));
                 var v = ov.swizzle.rrrr;
                 Assert.AreEqual(new Complex(-5.5d, -0.5d), v.x);
                 Assert.AreEqual(new Complex(-5.5d, -0.5d), v.y);
@@ -256,12 +256,12 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(new Complex(-5.5d, -0.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(3.5d, 8), new Complex(-5, 7));
+                var ov = new cvec2(new Complex(3.5d, 8d), new Complex(-5d, 7d));
                 var v = ov.swizzle.rrrg;
-                Assert.AreEqual(new Complex(3.5d, 8), v.x);
-                Assert.AreEqual(new Complex(3.5d, 8), v.y);
-                Assert.AreEqual(new Complex(3.5d, 8), v.z);
-                Assert.AreEqual(new Complex(-5, 7), v.w);
+                Assert.AreEqual(new Complex(3.5d, 8d), v.x);
+                Assert.AreEqual(new Complex(3.5d, 8d), v.y);
+                Assert.AreEqual(new Complex(3.5d, 8d), v.z);
+                Assert.AreEqual(new Complex(-5d, 7d), v.w);
             }
             {
                 var ov = new cvec2(new Complex(5.5d, -4.5d), new Complex(5.5d, 1.5d));
@@ -271,33 +271,33 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(new Complex(5.5d, 1.5d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(-6, 0.5d), new Complex(-9, -6));
+                var ov = new cvec2(new Complex(-6d, 0.5d), new Complex(-9d, -6d));
                 var v = ov.swizzle.rrgr;
-                Assert.AreEqual(new Complex(-6, 0.5d), v.x);
-                Assert.AreEqual(new Complex(-6, 0.5d), v.y);
-                Assert.AreEqual(new Complex(-9, -6), v.z);
-                Assert.AreEqual(new Complex(-6, 0.5d), v.w);
+                Assert.AreEqual(new Complex(-6d, 0.5d), v.x);
+                Assert.AreEqual(new Complex(-6d, 0.5d), v.y);
+                Assert.AreEqual(new Complex(-9d, -6d), v.z);
+                Assert.AreEqual(new Complex(-6d, 0.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(5.5d, -6), new Complex(-2.5d, 0.5d));
+                var ov = new cvec2(new Complex(5.5d, -6d), new Complex(-2.5d, 0.5d));
                 var v = ov.swizzle.rrgg;
-                Assert.AreEqual(new Complex(5.5d, -6), v.x);
-                Assert.AreEqual(new Complex(5.5d, -6), v.y);
+                Assert.AreEqual(new Complex(5.5d, -6d), v.x);
+                Assert.AreEqual(new Complex(5.5d, -6d), v.y);
                 Assert.AreEqual(new Complex(-2.5d, 0.5d), v.z);
                 Assert.AreEqual(new Complex(-2.5d, 0.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(1.0, -5), new Complex(-8, -7.5d));
+                var ov = new cvec2(new Complex(1.0, -5d), new Complex(-8d, -7.5d));
                 var v = ov.swizzle.rg;
-                Assert.AreEqual(new Complex(1.0, -5), v.x);
-                Assert.AreEqual(new Complex(-8, -7.5d), v.y);
+                Assert.AreEqual(new Complex(1.0, -5d), v.x);
+                Assert.AreEqual(new Complex(-8d, -7.5d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(8, -0.5d), new Complex(-0.5d, 0.0));
+                var ov = new cvec2(new Complex(8d, -0.5d), new Complex(-0.5d, 0.0));
                 var v = ov.swizzle.rgr;
-                Assert.AreEqual(new Complex(8, -0.5d), v.x);
+                Assert.AreEqual(new Complex(8d, -0.5d), v.x);
                 Assert.AreEqual(new Complex(-0.5d, 0.0), v.y);
-                Assert.AreEqual(new Complex(8, -0.5d), v.z);
+                Assert.AreEqual(new Complex(8d, -0.5d), v.z);
             }
             {
                 var ov = new cvec2(new Complex(-0.5d, 2.5d), new Complex(0.5d, 1.5d));
@@ -308,71 +308,71 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(new Complex(-0.5d, 2.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(3, 2), new Complex(-1.5d, -6.5d));
+                var ov = new cvec2(new Complex(3d, 2d), new Complex(-1.5d, -6.5d));
                 var v = ov.swizzle.rgrg;
-                Assert.AreEqual(new Complex(3, 2), v.x);
+                Assert.AreEqual(new Complex(3d, 2d), v.x);
                 Assert.AreEqual(new Complex(-1.5d, -6.5d), v.y);
-                Assert.AreEqual(new Complex(3, 2), v.z);
+                Assert.AreEqual(new Complex(3d, 2d), v.z);
                 Assert.AreEqual(new Complex(-1.5d, -6.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-2.5d, -7), new Complex(-6, -8.5d));
+                var ov = new cvec2(new Complex(-2.5d, -7d), new Complex(-6d, -8.5d));
                 var v = ov.swizzle.rgg;
-                Assert.AreEqual(new Complex(-2.5d, -7), v.x);
-                Assert.AreEqual(new Complex(-6, -8.5d), v.y);
-                Assert.AreEqual(new Complex(-6, -8.5d), v.z);
+                Assert.AreEqual(new Complex(-2.5d, -7d), v.x);
+                Assert.AreEqual(new Complex(-6d, -8.5d), v.y);
+                Assert.AreEqual(new Complex(-6d, -8.5d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(-1, 2.5d), new Complex(-1, 0.5d));
+                var ov = new cvec2(new Complex(-1d, 2.5d), new Complex(-1d, 0.5d));
                 var v = ov.swizzle.rggr;
-                Assert.AreEqual(new Complex(-1, 2.5d), v.x);
-                Assert.AreEqual(new Complex(-1, 0.5d), v.y);
-                Assert.AreEqual(new Complex(-1, 0.5d), v.z);
-                Assert.AreEqual(new Complex(-1, 2.5d), v.w);
+                Assert.AreEqual(new Complex(-1d, 2.5d), v.x);
+                Assert.AreEqual(new Complex(-1d, 0.5d), v.y);
+                Assert.AreEqual(new Complex(-1d, 0.5d), v.z);
+                Assert.AreEqual(new Complex(-1d, 2.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-4, 3), new Complex(-0.5d, 7.5d));
+                var ov = new cvec2(new Complex(-4d, 3d), new Complex(-0.5d, 7.5d));
                 var v = ov.swizzle.rggg;
-                Assert.AreEqual(new Complex(-4, 3), v.x);
+                Assert.AreEqual(new Complex(-4d, 3d), v.x);
                 Assert.AreEqual(new Complex(-0.5d, 7.5d), v.y);
                 Assert.AreEqual(new Complex(-0.5d, 7.5d), v.z);
                 Assert.AreEqual(new Complex(-0.5d, 7.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-2.5d, 6), new Complex(4, 5));
+                var ov = new cvec2(new Complex(-2.5d, 6d), new Complex(4d, 5d));
                 var v = ov.swizzle.gr;
-                Assert.AreEqual(new Complex(4, 5), v.x);
-                Assert.AreEqual(new Complex(-2.5d, 6), v.y);
+                Assert.AreEqual(new Complex(4d, 5d), v.x);
+                Assert.AreEqual(new Complex(-2.5d, 6d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(7, -1.5d), new Complex(-8, -3.5d));
+                var ov = new cvec2(new Complex(7d, -1.5d), new Complex(-8d, -3.5d));
                 var v = ov.swizzle.grr;
-                Assert.AreEqual(new Complex(-8, -3.5d), v.x);
-                Assert.AreEqual(new Complex(7, -1.5d), v.y);
-                Assert.AreEqual(new Complex(7, -1.5d), v.z);
+                Assert.AreEqual(new Complex(-8d, -3.5d), v.x);
+                Assert.AreEqual(new Complex(7d, -1.5d), v.y);
+                Assert.AreEqual(new Complex(7d, -1.5d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(5.5d, -4.5d), new Complex(7, -2));
+                var ov = new cvec2(new Complex(5.5d, -4.5d), new Complex(7d, -2d));
                 var v = ov.swizzle.grrr;
-                Assert.AreEqual(new Complex(7, -2), v.x);
+                Assert.AreEqual(new Complex(7d, -2d), v.x);
                 Assert.AreEqual(new Complex(5.5d, -4.5d), v.y);
                 Assert.AreEqual(new Complex(5.5d, -4.5d), v.z);
                 Assert.AreEqual(new Complex(5.5d, -4.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(5, 0.5d), new Complex(7.5d, -2.5d));
+                var ov = new cvec2(new Complex(5d, 0.5d), new Complex(7.5d, -2.5d));
                 var v = ov.swizzle.grrg;
                 Assert.AreEqual(new Complex(7.5d, -2.5d), v.x);
-                Assert.AreEqual(new Complex(5, 0.5d), v.y);
-                Assert.AreEqual(new Complex(5, 0.5d), v.z);
+                Assert.AreEqual(new Complex(5d, 0.5d), v.y);
+                Assert.AreEqual(new Complex(5d, 0.5d), v.z);
                 Assert.AreEqual(new Complex(7.5d, -2.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-1.5d, -0.5d), new Complex(-3, -4.5d));
+                var ov = new cvec2(new Complex(-1.5d, -0.5d), new Complex(-3d, -4.5d));
                 var v = ov.swizzle.grg;
-                Assert.AreEqual(new Complex(-3, -4.5d), v.x);
+                Assert.AreEqual(new Complex(-3d, -4.5d), v.x);
                 Assert.AreEqual(new Complex(-1.5d, -0.5d), v.y);
-                Assert.AreEqual(new Complex(-3, -4.5d), v.z);
+                Assert.AreEqual(new Complex(-3d, -4.5d), v.z);
             }
             {
                 var ov = new cvec2(new Complex(-0.5d, -7.5d), new Complex(1.0, -7.5d));
@@ -383,59 +383,59 @@ namespace GlmSharpTest.Generated.Swizzle
                 Assert.AreEqual(new Complex(-0.5d, -7.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(3.5d, 6), new Complex(-3.5d, 2));
+                var ov = new cvec2(new Complex(3.5d, 6d), new Complex(-3.5d, 2d));
                 var v = ov.swizzle.grgg;
-                Assert.AreEqual(new Complex(-3.5d, 2), v.x);
-                Assert.AreEqual(new Complex(3.5d, 6), v.y);
-                Assert.AreEqual(new Complex(-3.5d, 2), v.z);
-                Assert.AreEqual(new Complex(-3.5d, 2), v.w);
+                Assert.AreEqual(new Complex(-3.5d, 2d), v.x);
+                Assert.AreEqual(new Complex(3.5d, 6d), v.y);
+                Assert.AreEqual(new Complex(-3.5d, 2d), v.z);
+                Assert.AreEqual(new Complex(-3.5d, 2d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(-4, 3), new Complex(5.5d, 8));
+                var ov = new cvec2(new Complex(-4d, 3d), new Complex(5.5d, 8d));
                 var v = ov.swizzle.gg;
-                Assert.AreEqual(new Complex(5.5d, 8), v.x);
-                Assert.AreEqual(new Complex(5.5d, 8), v.y);
+                Assert.AreEqual(new Complex(5.5d, 8d), v.x);
+                Assert.AreEqual(new Complex(5.5d, 8d), v.y);
             }
             {
-                var ov = new cvec2(new Complex(-9.5d, -7), new Complex(-5.5d, 8.5d));
+                var ov = new cvec2(new Complex(-9.5d, -7d), new Complex(-5.5d, 8.5d));
                 var v = ov.swizzle.ggr;
                 Assert.AreEqual(new Complex(-5.5d, 8.5d), v.x);
                 Assert.AreEqual(new Complex(-5.5d, 8.5d), v.y);
-                Assert.AreEqual(new Complex(-9.5d, -7), v.z);
+                Assert.AreEqual(new Complex(-9.5d, -7d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(4, 1.0), new Complex(4.5d, 0.5d));
+                var ov = new cvec2(new Complex(4d, 1.0), new Complex(4.5d, 0.5d));
                 var v = ov.swizzle.ggrr;
                 Assert.AreEqual(new Complex(4.5d, 0.5d), v.x);
                 Assert.AreEqual(new Complex(4.5d, 0.5d), v.y);
-                Assert.AreEqual(new Complex(4, 1.0), v.z);
-                Assert.AreEqual(new Complex(4, 1.0), v.w);
+                Assert.AreEqual(new Complex(4d, 1.0), v.z);
+                Assert.AreEqual(new Complex(4d, 1.0), v.w);
             }
             {
-                var ov = new cvec2(new Complex(0.5d, -6), new Complex(-5.5d, 3));
+                var ov = new cvec2(new Complex(0.5d, -6d), new Complex(-5.5d, 3d));
                 var v = ov.swizzle.ggrg;
-                Assert.AreEqual(new Complex(-5.5d, 3), v.x);
-                Assert.AreEqual(new Complex(-5.5d, 3), v.y);
-                Assert.AreEqual(new Complex(0.5d, -6), v.z);
-                Assert.AreEqual(new Complex(-5.5d, 3), v.w);
+                Assert.AreEqual(new Complex(-5.5d, 3d), v.x);
+                Assert.AreEqual(new Complex(-5.5d, 3d), v.y);
+                Assert.AreEqual(new Complex(0.5d, -6d), v.z);
+                Assert.AreEqual(new Complex(-5.5d, 3d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(1.0, 8.5d), new Complex(7.5d, 6));
+                var ov = new cvec2(new Complex(1.0, 8.5d), new Complex(7.5d, 6d));
                 var v = ov.swizzle.ggg;
-                Assert.AreEqual(new Complex(7.5d, 6), v.x);
-                Assert.AreEqual(new Complex(7.5d, 6), v.y);
-                Assert.AreEqual(new Complex(7.5d, 6), v.z);
+                Assert.AreEqual(new Complex(7.5d, 6d), v.x);
+                Assert.AreEqual(new Complex(7.5d, 6d), v.y);
+                Assert.AreEqual(new Complex(7.5d, 6d), v.z);
             }
             {
-                var ov = new cvec2(new Complex(-6.5d, 7.5d), new Complex(-4.5d, 9));
+                var ov = new cvec2(new Complex(-6.5d, 7.5d), new Complex(-4.5d, 9d));
                 var v = ov.swizzle.gggr;
-                Assert.AreEqual(new Complex(-4.5d, 9), v.x);
-                Assert.AreEqual(new Complex(-4.5d, 9), v.y);
-                Assert.AreEqual(new Complex(-4.5d, 9), v.z);
+                Assert.AreEqual(new Complex(-4.5d, 9d), v.x);
+                Assert.AreEqual(new Complex(-4.5d, 9d), v.y);
+                Assert.AreEqual(new Complex(-4.5d, 9d), v.z);
                 Assert.AreEqual(new Complex(-6.5d, 7.5d), v.w);
             }
             {
-                var ov = new cvec2(new Complex(4, 0.5d), new Complex(2.5d, 0.0));
+                var ov = new cvec2(new Complex(4d, 0.5d), new Complex(2.5d, 0.0));
                 var v = ov.swizzle.gggg;
                 Assert.AreEqual(new Complex(2.5d, 0.0), v.x);
                 Assert.AreEqual(new Complex(2.5d, 0.0), v.y);
@@ -448,19 +448,19 @@ namespace GlmSharpTest.Generated.Swizzle
         public void InlineXYZW()
         {
             {
-                var v0 = new cvec2(new Complex(7.5d, -7), new Complex(-5, -6.5d));
-                var v1 = new cvec2(new Complex(-7.5d, -1), new Complex(3.5d, -5));
+                var v0 = new cvec2(new Complex(7.5d, -7d), new Complex(-5d, -6.5d));
+                var v1 = new cvec2(new Complex(-7.5d, -1d), new Complex(3.5d, -5d));
                 var v2 = v0.xy;
                 v0.xy = v1;
                 var v3 = v0.xy;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(new Complex(-7.5d, -1), v0.x);
-                Assert.AreEqual(new Complex(3.5d, -5), v0.y);
+                Assert.AreEqual(new Complex(-7.5d, -1d), v0.x);
+                Assert.AreEqual(new Complex(3.5d, -5d), v0.y);
             
-                Assert.AreEqual(new Complex(7.5d, -7), v2.x);
-                Assert.AreEqual(new Complex(-5, -6.5d), v2.y);
+                Assert.AreEqual(new Complex(7.5d, -7d), v2.x);
+                Assert.AreEqual(new Complex(-5d, -6.5d), v2.y);
             }
         }
 
@@ -468,47 +468,47 @@ namespace GlmSharpTest.Generated.Swizzle
         public void InlineRGBA()
         {
             {
-                var v0 = new cvec2(new Complex(3, -9.5d), new Complex(-1, 1.0));
-                var v1 = (Complex)new Complex(9, 6);
+                var v0 = new cvec2(new Complex(3d, -9.5d), new Complex(-1d, 1.0));
+                var v1 = new Complex(9d, 6d);
                 var v2 = v0.r;
                 v0.r = v1;
                 var v3 = v0.r;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(new Complex(9, 6), v0.x);
-                Assert.AreEqual(new Complex(-1, 1.0), v0.y);
+                Assert.AreEqual(new Complex(9d, 6d), v0.x);
+                Assert.AreEqual(new Complex(-1d, 1.0), v0.y);
             
-                Assert.AreEqual(new Complex(3, -9.5d), v2);
+                Assert.AreEqual(new Complex(3d, -9.5d), v2);
             }
             {
-                var v0 = new cvec2(new Complex(-4.5d, -4), new Complex(5.5d, -9));
-                var v1 = (Complex)new Complex(7, 3.5d);
+                var v0 = new cvec2(new Complex(-4.5d, -4d), new Complex(5.5d, -9d));
+                var v1 = new Complex(7d, 3.5d);
                 var v2 = v0.g;
                 v0.g = v1;
                 var v3 = v0.g;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(new Complex(-4.5d, -4), v0.x);
-                Assert.AreEqual(new Complex(7, 3.5d), v0.y);
+                Assert.AreEqual(new Complex(-4.5d, -4d), v0.x);
+                Assert.AreEqual(new Complex(7d, 3.5d), v0.y);
             
-                Assert.AreEqual(new Complex(5.5d, -9), v2);
+                Assert.AreEqual(new Complex(5.5d, -9d), v2);
             }
             {
-                var v0 = new cvec2(new Complex(0.5d, 9.5d), new Complex(-7, -6.5d));
-                var v1 = new cvec2(new Complex(-6, -4.5d), new Complex(-3, 8.5d));
+                var v0 = new cvec2(new Complex(0.5d, 9.5d), new Complex(-7d, -6.5d));
+                var v1 = new cvec2(new Complex(-6d, -4.5d), new Complex(-3d, 8.5d));
                 var v2 = v0.rg;
                 v0.rg = v1;
                 var v3 = v0.rg;
             
                 Assert.AreEqual(v1, v3);
             
-                Assert.AreEqual(new Complex(-6, -4.5d), v0.x);
-                Assert.AreEqual(new Complex(-3, 8.5d), v0.y);
+                Assert.AreEqual(new Complex(-6d, -4.5d), v0.x);
+                Assert.AreEqual(new Complex(-3d, 8.5d), v0.y);
             
                 Assert.AreEqual(new Complex(0.5d, 9.5d), v2.x);
-                Assert.AreEqual(new Complex(-7, -6.5d), v2.y);
+                Assert.AreEqual(new Complex(-7d, -6.5d), v2.y);
             }
         }
 

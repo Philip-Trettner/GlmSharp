@@ -15,6 +15,7 @@ namespace GlmSharpGenerator.Types
                 yield return TypeInt;
                 yield return TypeUint;
                 yield return TypeFloat;
+                yield return TypeHalf;
                 yield return TypeDouble;
                 yield return TypeDecimal;
                 if (Version >= 30)
@@ -34,13 +35,18 @@ namespace GlmSharpGenerator.Types
                 {
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeLong),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeFloat),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeHalf),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeDouble),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeDecimal),
 
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeLong),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeFloat),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeHalf),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeDouble),
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeDecimal),
+
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeHalf, TypeFloat),
+                    new KeyValuePair<BuiltinType, BuiltinType>(TypeHalf, TypeDouble),
 
                     new KeyValuePair<BuiltinType, BuiltinType>(TypeFloat, TypeDouble),
 
@@ -50,6 +56,7 @@ namespace GlmSharpGenerator.Types
                 {
                     dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeInt, TypeComplex));
                     dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeUint, TypeComplex));
+                    dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeHalf, TypeComplex));
                     dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeFloat, TypeComplex));
                     dic.Add(new KeyValuePair<BuiltinType, BuiltinType>(TypeDouble, TypeComplex));
                 }
@@ -73,6 +80,24 @@ namespace GlmSharpGenerator.Types
             IsSigned = false,
             IsInteger = true,
             TypeConstants = new[] { "MaxValue", "MinValue" }
+        };
+        public static readonly BuiltinType TypeHalf = new BuiltinType
+        {
+            TypeName = "Half",
+            Prefix = "h",
+            OneValueConstant = "Half.One",
+            ZeroValueConstant = "Half.Zero",
+            HasOwnFunctions = true,
+            IsFloatingPoint = true,
+            TypeConstants = new[] { "MaxValue", "MinValue", "Epsilon", "NaN", "NegativeInfinity", "PositiveInfinity" },
+            TypeTestFuncs = new Dictionary<string, string>
+            {
+                { "IsInfinity", "Half.IsInfinity({0})" },
+                { "IsFinite", "!Half.IsNaN({0}) && !Half.IsInfinity({0})" },
+                { "IsNaN", "Half.IsNaN({0})" },
+                { "IsNegativeInfinity", "Half.IsNegativeInfinity({0})" },
+                { "IsPositiveInfinity", "Half.IsPositiveInfinity({0})" }
+            }
         };
         public static readonly BuiltinType TypeFloat = new BuiltinType
         {
@@ -178,6 +203,7 @@ namespace GlmSharpGenerator.Types
         public bool IsSigned { get; set; } = true;
         public bool IsInteger { get; set; } = false;
         public bool IsFloatingPoint { get; set; }
+        public bool HasOwnFunctions { get; set; }
 
         public string EpsilonFormat { get; set; } = "{0}.Epsilon";
 
@@ -191,6 +217,8 @@ namespace GlmSharpGenerator.Types
 
         public string OneValueConstant { get; set; } = "1";
         public string ZeroValueConstant { get; set; } = "0";
+
+        public override string MathClass => HasOwnFunctions ? Name : "Math";
 
         public override string OneValue => OneValueConstant;
         public override string ZeroValue => TestMode && Generic ? "null" : ZeroValueConstant;
@@ -265,11 +293,11 @@ namespace GlmSharpGenerator.Types
                     yield break;
 
                 for (var i = 2; i < 10; ++i)
-                    yield return i.ToString();
+                    yield return ConstantSuffixFor(i.ToString());
 
                 if (IsSigned)
                     for (var i = 1; i < 10; ++i)
-                        yield return (-i).ToString();
+                        yield return ConstantSuffixFor((-i).ToString());
 
                 if (IsFloatingPoint)
                     for (var i = -10; i < 10; ++i)

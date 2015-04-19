@@ -449,12 +449,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a copy of this vector with length one (undefined if this has zero length).
         /// </summary>
-        public cvec3 Normalized => this / Length;
+        public cvec3 Normalized => this / (Complex)Length;
         
         /// <summary>
         /// Returns a copy of this vector with length one (returns zero if length is zero).
         /// </summary>
-        public cvec3 NormalizedSafe => this == Zero ? Zero : this / Length;
+        public cvec3 NormalizedSafe => this == Zero ? Zero : this / (Complex)Length;
         
         /// <summary>
         /// Returns a vector containing component-wise magnitudes.
@@ -697,7 +697,7 @@ namespace GlmSharp
         public static bvec3 Equal(Complex lhs, cvec3 rhs) => new bvec3(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec3 Equal(Complex lhs, Complex rhs) => new bvec3(lhs == rhs);
         
@@ -717,7 +717,7 @@ namespace GlmSharp
         public static bvec3 NotEqual(Complex lhs, cvec3 rhs) => new bvec3(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z);
         
         /// <summary>
-        /// Returns a bvec3 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec3 NotEqual(Complex lhs, Complex rhs) => new bvec3(lhs != rhs);
         
@@ -727,7 +727,7 @@ namespace GlmSharp
         public static dvec3 Abs(cvec3 v) => new dvec3(v.x.Magnitude, v.y.Magnitude, v.z.Magnitude);
         
         /// <summary>
-        /// Returns a dvec3 from component-wise application of Abs (v.Magnitude).
+        /// Returns a dvec from the application of Abs (v.Magnitude).
         /// </summary>
         public static dvec3 Abs(Complex v) => new dvec3(v.Magnitude);
         
@@ -737,7 +737,7 @@ namespace GlmSharp
         public static cvec3 HermiteInterpolationOrder3(cvec3 v) => new cvec3((3 - 2 * v.x) * v.x * v.x, (3 - 2 * v.y) * v.y * v.y, (3 - 2 * v.z) * v.z * v.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
+        /// Returns a cvec from the application of HermiteInterpolationOrder3 ((3 - 2 * v) * v * v).
         /// </summary>
         public static cvec3 HermiteInterpolationOrder3(Complex v) => new cvec3((3 - 2 * v) * v * v);
         
@@ -747,7 +747,7 @@ namespace GlmSharp
         public static cvec3 HermiteInterpolationOrder5(cvec3 v) => new cvec3(((6 * v.x - 15) * v.x + 10) * v.x * v.x * v.x, ((6 * v.y - 15) * v.y + 10) * v.y * v.y * v.y, ((6 * v.z - 15) * v.z + 10) * v.z * v.z * v.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
+        /// Returns a cvec from the application of HermiteInterpolationOrder5 (((6 * v - 15) * v + 10) * v * v * v).
         /// </summary>
         public static cvec3 HermiteInterpolationOrder5(Complex v) => new cvec3(((6 * v - 15) * v + 10) * v * v * v);
         
@@ -757,7 +757,7 @@ namespace GlmSharp
         public static cvec3 Sqr(cvec3 v) => new cvec3(v.x * v.x, v.y * v.y, v.z * v.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Sqr (v * v).
+        /// Returns a cvec from the application of Sqr (v * v).
         /// </summary>
         public static cvec3 Sqr(Complex v) => new cvec3(v * v);
         
@@ -767,7 +767,7 @@ namespace GlmSharp
         public static cvec3 Pow2(cvec3 v) => new cvec3(v.x * v.x, v.y * v.y, v.z * v.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Pow2 (v * v).
+        /// Returns a cvec from the application of Pow2 (v * v).
         /// </summary>
         public static cvec3 Pow2(Complex v) => new cvec3(v * v);
         
@@ -777,7 +777,7 @@ namespace GlmSharp
         public static cvec3 Pow3(cvec3 v) => new cvec3(v.x * v.x * v.x, v.y * v.y * v.y, v.z * v.z * v.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Pow3 (v * v * v).
+        /// Returns a cvec from the application of Pow3 (v * v * v).
         /// </summary>
         public static cvec3 Pow3(Complex v) => new cvec3(v * v * v);
         
@@ -787,7 +787,7 @@ namespace GlmSharp
         public static cvec3 Acos(cvec3 v) => new cvec3(Complex.Acos(v.x), Complex.Acos(v.y), Complex.Acos(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Acos (Complex.Acos(v)).
+        /// Returns a cvec from the application of Acos (Complex.Acos(v)).
         /// </summary>
         public static cvec3 Acos(Complex v) => new cvec3(Complex.Acos(v));
         
@@ -797,7 +797,7 @@ namespace GlmSharp
         public static cvec3 Asin(cvec3 v) => new cvec3(Complex.Asin(v.x), Complex.Asin(v.y), Complex.Asin(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Asin (Complex.Asin(v)).
+        /// Returns a cvec from the application of Asin (Complex.Asin(v)).
         /// </summary>
         public static cvec3 Asin(Complex v) => new cvec3(Complex.Asin(v));
         
@@ -807,7 +807,7 @@ namespace GlmSharp
         public static cvec3 Atan(cvec3 v) => new cvec3(Complex.Atan(v.x), Complex.Atan(v.y), Complex.Atan(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Atan (Complex.Atan(v)).
+        /// Returns a cvec from the application of Atan (Complex.Atan(v)).
         /// </summary>
         public static cvec3 Atan(Complex v) => new cvec3(Complex.Atan(v));
         
@@ -817,7 +817,7 @@ namespace GlmSharp
         public static cvec3 Cos(cvec3 v) => new cvec3(Complex.Cos(v.x), Complex.Cos(v.y), Complex.Cos(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Cos (Complex.Cos(v)).
+        /// Returns a cvec from the application of Cos (Complex.Cos(v)).
         /// </summary>
         public static cvec3 Cos(Complex v) => new cvec3(Complex.Cos(v));
         
@@ -827,7 +827,7 @@ namespace GlmSharp
         public static cvec3 Cosh(cvec3 v) => new cvec3(Complex.Cosh(v.x), Complex.Cosh(v.y), Complex.Cosh(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Cosh (Complex.Cosh(v)).
+        /// Returns a cvec from the application of Cosh (Complex.Cosh(v)).
         /// </summary>
         public static cvec3 Cosh(Complex v) => new cvec3(Complex.Cosh(v));
         
@@ -837,7 +837,7 @@ namespace GlmSharp
         public static cvec3 Exp(cvec3 v) => new cvec3(Complex.Exp(v.x), Complex.Exp(v.y), Complex.Exp(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Exp (Complex.Exp(v)).
+        /// Returns a cvec from the application of Exp (Complex.Exp(v)).
         /// </summary>
         public static cvec3 Exp(Complex v) => new cvec3(Complex.Exp(v));
         
@@ -847,7 +847,7 @@ namespace GlmSharp
         public static cvec3 Log(cvec3 v) => new cvec3(Complex.Log(v.x), Complex.Log(v.y), Complex.Log(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Log (Complex.Log(v)).
+        /// Returns a cvec from the application of Log (Complex.Log(v)).
         /// </summary>
         public static cvec3 Log(Complex v) => new cvec3(Complex.Log(v));
         
@@ -857,7 +857,7 @@ namespace GlmSharp
         public static cvec3 Log2(cvec3 v) => new cvec3(Complex.Log(v.x, 2.0), Complex.Log(v.y, 2.0), Complex.Log(v.z, 2.0));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Log2 (Complex.Log(v, 2.0)).
+        /// Returns a cvec from the application of Log2 (Complex.Log(v, 2.0)).
         /// </summary>
         public static cvec3 Log2(Complex v) => new cvec3(Complex.Log(v, 2.0));
         
@@ -867,7 +867,7 @@ namespace GlmSharp
         public static cvec3 Log10(cvec3 v) => new cvec3(Complex.Log10(v.x), Complex.Log10(v.y), Complex.Log10(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Log10 (Complex.Log10(v)).
+        /// Returns a cvec from the application of Log10 (Complex.Log10(v)).
         /// </summary>
         public static cvec3 Log10(Complex v) => new cvec3(Complex.Log10(v));
         
@@ -877,7 +877,7 @@ namespace GlmSharp
         public static cvec3 Reciprocal(cvec3 v) => new cvec3(Complex.Reciprocal(v.x), Complex.Reciprocal(v.y), Complex.Reciprocal(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Reciprocal (Complex.Reciprocal(v)).
+        /// Returns a cvec from the application of Reciprocal (Complex.Reciprocal(v)).
         /// </summary>
         public static cvec3 Reciprocal(Complex v) => new cvec3(Complex.Reciprocal(v));
         
@@ -887,7 +887,7 @@ namespace GlmSharp
         public static cvec3 Sin(cvec3 v) => new cvec3(Complex.Sin(v.x), Complex.Sin(v.y), Complex.Sin(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Sin (Complex.Sin(v)).
+        /// Returns a cvec from the application of Sin (Complex.Sin(v)).
         /// </summary>
         public static cvec3 Sin(Complex v) => new cvec3(Complex.Sin(v));
         
@@ -897,7 +897,7 @@ namespace GlmSharp
         public static cvec3 Sinh(cvec3 v) => new cvec3(Complex.Sinh(v.x), Complex.Sinh(v.y), Complex.Sinh(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Sinh (Complex.Sinh(v)).
+        /// Returns a cvec from the application of Sinh (Complex.Sinh(v)).
         /// </summary>
         public static cvec3 Sinh(Complex v) => new cvec3(Complex.Sinh(v));
         
@@ -907,7 +907,7 @@ namespace GlmSharp
         public static cvec3 Sqrt(cvec3 v) => new cvec3(Complex.Sqrt(v.x), Complex.Sqrt(v.y), Complex.Sqrt(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Sqrt (Complex.Sqrt(v)).
+        /// Returns a cvec from the application of Sqrt (Complex.Sqrt(v)).
         /// </summary>
         public static cvec3 Sqrt(Complex v) => new cvec3(Complex.Sqrt(v));
         
@@ -917,7 +917,7 @@ namespace GlmSharp
         public static cvec3 InverseSqrt(cvec3 v) => new cvec3(Complex.One / Complex.Sqrt(v.x), Complex.One / Complex.Sqrt(v.y), Complex.One / Complex.Sqrt(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of InverseSqrt (Complex.One / Complex.Sqrt(v)).
+        /// Returns a cvec from the application of InverseSqrt (Complex.One / Complex.Sqrt(v)).
         /// </summary>
         public static cvec3 InverseSqrt(Complex v) => new cvec3(Complex.One / Complex.Sqrt(v));
         
@@ -927,7 +927,7 @@ namespace GlmSharp
         public static cvec3 Tan(cvec3 v) => new cvec3(Complex.Tan(v.x), Complex.Tan(v.y), Complex.Tan(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Tan (Complex.Tan(v)).
+        /// Returns a cvec from the application of Tan (Complex.Tan(v)).
         /// </summary>
         public static cvec3 Tan(Complex v) => new cvec3(Complex.Tan(v));
         
@@ -937,7 +937,7 @@ namespace GlmSharp
         public static cvec3 Tanh(cvec3 v) => new cvec3(Complex.Tanh(v.x), Complex.Tanh(v.y), Complex.Tanh(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Tanh (Complex.Tanh(v)).
+        /// Returns a cvec from the application of Tanh (Complex.Tanh(v)).
         /// </summary>
         public static cvec3 Tanh(Complex v) => new cvec3(Complex.Tanh(v));
         
@@ -947,7 +947,7 @@ namespace GlmSharp
         public static cvec3 Conjugate(cvec3 v) => new cvec3(Complex.Conjugate(v.x), Complex.Conjugate(v.y), Complex.Conjugate(v.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Conjugate (Complex.Conjugate(v)).
+        /// Returns a cvec from the application of Conjugate (Complex.Conjugate(v)).
         /// </summary>
         public static cvec3 Conjugate(Complex v) => new cvec3(Complex.Conjugate(v));
         
@@ -967,7 +967,7 @@ namespace GlmSharp
         public static cvec3 Pow(Complex lhs, cvec3 rhs) => new cvec3(Complex.Pow(lhs, rhs.x), Complex.Pow(lhs, rhs.y), Complex.Pow(lhs, rhs.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Pow (Complex.Pow(lhs, rhs)).
+        /// Returns a cvec from the application of Pow (Complex.Pow(lhs, rhs)).
         /// </summary>
         public static cvec3 Pow(Complex lhs, Complex rhs) => new cvec3(Complex.Pow(lhs, rhs));
         
@@ -987,7 +987,7 @@ namespace GlmSharp
         public static cvec3 Log(Complex lhs, dvec3 rhs) => new cvec3(Complex.Log(lhs, rhs.x), Complex.Log(lhs, rhs.y), Complex.Log(lhs, rhs.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Log (Complex.Log(lhs, rhs)).
+        /// Returns a cvec from the application of Log (Complex.Log(lhs, rhs)).
         /// </summary>
         public static cvec3 Log(Complex lhs, double rhs) => new cvec3(Complex.Log(lhs, rhs));
         
@@ -1007,7 +1007,7 @@ namespace GlmSharp
         public static cvec3 FromPolarCoordinates(double magnitude, dvec3 phase) => new cvec3(Complex.FromPolarCoordinates(magnitude, phase.x), Complex.FromPolarCoordinates(magnitude, phase.y), Complex.FromPolarCoordinates(magnitude, phase.z));
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of FromPolarCoordinates (Complex.FromPolarCoordinates(magnitude, phase)).
+        /// Returns a cvec from the application of FromPolarCoordinates (Complex.FromPolarCoordinates(magnitude, phase)).
         /// </summary>
         public static cvec3 FromPolarCoordinates(double magnitude, double phase) => new cvec3(Complex.FromPolarCoordinates(magnitude, phase));
         
@@ -1047,7 +1047,7 @@ namespace GlmSharp
         public static cvec3 Fma(Complex a, Complex b, cvec3 c) => new cvec3(a * b + c.x, a * b + c.y, a * b + c.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Fma (a * b + c).
+        /// Returns a cvec from the application of Fma (a * b + c).
         /// </summary>
         public static cvec3 Fma(Complex a, Complex b, Complex c) => new cvec3(a * b + c);
         
@@ -1067,7 +1067,7 @@ namespace GlmSharp
         public static cvec3 Add(Complex lhs, cvec3 rhs) => new cvec3(lhs + rhs.x, lhs + rhs.y, lhs + rhs.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Add (lhs + rhs).
+        /// Returns a cvec from the application of Add (lhs + rhs).
         /// </summary>
         public static cvec3 Add(Complex lhs, Complex rhs) => new cvec3(lhs + rhs);
         
@@ -1087,7 +1087,7 @@ namespace GlmSharp
         public static cvec3 Sub(Complex lhs, cvec3 rhs) => new cvec3(lhs - rhs.x, lhs - rhs.y, lhs - rhs.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Sub (lhs - rhs).
+        /// Returns a cvec from the application of Sub (lhs - rhs).
         /// </summary>
         public static cvec3 Sub(Complex lhs, Complex rhs) => new cvec3(lhs - rhs);
         
@@ -1107,7 +1107,7 @@ namespace GlmSharp
         public static cvec3 Mul(Complex lhs, cvec3 rhs) => new cvec3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Mul (lhs * rhs).
+        /// Returns a cvec from the application of Mul (lhs * rhs).
         /// </summary>
         public static cvec3 Mul(Complex lhs, Complex rhs) => new cvec3(lhs * rhs);
         
@@ -1127,7 +1127,7 @@ namespace GlmSharp
         public static cvec3 Div(Complex lhs, cvec3 rhs) => new cvec3(lhs / rhs.x, lhs / rhs.y, lhs / rhs.z);
         
         /// <summary>
-        /// Returns a cvec3 from component-wise application of Div (lhs / rhs).
+        /// Returns a cvec from the application of Div (lhs / rhs).
         /// </summary>
         public static cvec3 Div(Complex lhs, Complex rhs) => new cvec3(lhs / rhs);
 

@@ -38,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions.cs" />
+    <Compile Include="Half.cs" />
+    <Compile Include="HalfHelper.cs" />
     <Compile Include="Mat2x2\bmat2.cs" />
     <Compile Include="Mat2x2\bmat2.glm.cs" />
     <Compile Include="Mat2x2\decmat2.cs" />
@@ -46,6 +48,8 @@
     <Compile Include="Mat2x2\dmat2.glm.cs" />
     <Compile Include="Mat2x2\gmat2.cs" />
     <Compile Include="Mat2x2\gmat2.glm.cs" />
+    <Compile Include="Mat2x2\hmat2.cs" />
+    <Compile Include="Mat2x2\hmat2.glm.cs" />
     <Compile Include="Mat2x2\imat2.cs" />
     <Compile Include="Mat2x2\imat2.glm.cs" />
     <Compile Include="Mat2x2\lmat2.cs" />
@@ -62,6 +66,8 @@
     <Compile Include="Mat2x3\dmat2x3.glm.cs" />
     <Compile Include="Mat2x3\gmat2x3.cs" />
     <Compile Include="Mat2x3\gmat2x3.glm.cs" />
+    <Compile Include="Mat2x3\hmat2x3.cs" />
+    <Compile Include="Mat2x3\hmat2x3.glm.cs" />
     <Compile Include="Mat2x3\imat2x3.cs" />
     <Compile Include="Mat2x3\imat2x3.glm.cs" />
     <Compile Include="Mat2x3\lmat2x3.cs" />
@@ -78,6 +84,8 @@
     <Compile Include="Mat2x4\dmat2x4.glm.cs" />
     <Compile Include="Mat2x4\gmat2x4.cs" />
     <Compile Include="Mat2x4\gmat2x4.glm.cs" />
+    <Compile Include="Mat2x4\hmat2x4.cs" />
+    <Compile Include="Mat2x4\hmat2x4.glm.cs" />
     <Compile Include="Mat2x4\imat2x4.cs" />
     <Compile Include="Mat2x4\imat2x4.glm.cs" />
     <Compile Include="Mat2x4\lmat2x4.cs" />
@@ -94,6 +102,8 @@
     <Compile Include="Mat3x2\dmat3x2.glm.cs" />
     <Compile Include="Mat3x2\gmat3x2.cs" />
     <Compile Include="Mat3x2\gmat3x2.glm.cs" />
+    <Compile Include="Mat3x2\hmat3x2.cs" />
+    <Compile Include="Mat3x2\hmat3x2.glm.cs" />
     <Compile Include="Mat3x2\imat3x2.cs" />
     <Compile Include="Mat3x2\imat3x2.glm.cs" />
     <Compile Include="Mat3x2\lmat3x2.cs" />
@@ -110,6 +120,8 @@
     <Compile Include="Mat3x3\dmat3.glm.cs" />
     <Compile Include="Mat3x3\gmat3.cs" />
     <Compile Include="Mat3x3\gmat3.glm.cs" />
+    <Compile Include="Mat3x3\hmat3.cs" />
+    <Compile Include="Mat3x3\hmat3.glm.cs" />
     <Compile Include="Mat3x3\imat3.cs" />
     <Compile Include="Mat3x3\imat3.glm.cs" />
     <Compile Include="Mat3x3\lmat3.cs" />
@@ -126,6 +138,8 @@
     <Compile Include="Mat3x4\dmat3x4.glm.cs" />
     <Compile Include="Mat3x4\gmat3x4.cs" />
     <Compile Include="Mat3x4\gmat3x4.glm.cs" />
+    <Compile Include="Mat3x4\hmat3x4.cs" />
+    <Compile Include="Mat3x4\hmat3x4.glm.cs" />
     <Compile Include="Mat3x4\imat3x4.cs" />
     <Compile Include="Mat3x4\imat3x4.glm.cs" />
     <Compile Include="Mat3x4\lmat3x4.cs" />
@@ -142,6 +156,8 @@
     <Compile Include="Mat4x2\dmat4x2.glm.cs" />
     <Compile Include="Mat4x2\gmat4x2.cs" />
     <Compile Include="Mat4x2\gmat4x2.glm.cs" />
+    <Compile Include="Mat4x2\hmat4x2.cs" />
+    <Compile Include="Mat4x2\hmat4x2.glm.cs" />
     <Compile Include="Mat4x2\imat4x2.cs" />
     <Compile Include="Mat4x2\imat4x2.glm.cs" />
     <Compile Include="Mat4x2\lmat4x2.cs" />
@@ -158,6 +174,8 @@
     <Compile Include="Mat4x3\dmat4x3.glm.cs" />
     <Compile Include="Mat4x3\gmat4x3.cs" />
     <Compile Include="Mat4x3\gmat4x3.glm.cs" />
+    <Compile Include="Mat4x3\hmat4x3.cs" />
+    <Compile Include="Mat4x3\hmat4x3.glm.cs" />
     <Compile Include="Mat4x3\imat4x3.cs" />
     <Compile Include="Mat4x3\imat4x3.glm.cs" />
     <Compile Include="Mat4x3\lmat4x3.cs" />
@@ -174,6 +192,8 @@
     <Compile Include="Mat4x4\dmat4.glm.cs" />
     <Compile Include="Mat4x4\gmat4.cs" />
     <Compile Include="Mat4x4\gmat4.glm.cs" />
+    <Compile Include="Mat4x4\hmat4.cs" />
+    <Compile Include="Mat4x4\hmat4.glm.cs" />
     <Compile Include="Mat4x4\imat4.cs" />
     <Compile Include="Mat4x4\imat4.glm.cs" />
     <Compile Include="Mat4x4\lmat4.cs" />
@@ -191,6 +211,8 @@
     <Compile Include="Quat\dquat.glm.cs" />
     <Compile Include="Quat\gquat.cs" />
     <Compile Include="Quat\gquat.glm.cs" />
+    <Compile Include="Quat\hquat.cs" />
+    <Compile Include="Quat\hquat.glm.cs" />
     <Compile Include="Quat\iquat.cs" />
     <Compile Include="Quat\iquat.glm.cs" />
     <Compile Include="Quat\lquat.cs" />
@@ -223,6 +245,12 @@
     <Compile Include="Swizzle\swizzle_gvec3.glm.cs" />
     <Compile Include="Swizzle\swizzle_gvec4.cs" />
     <Compile Include="Swizzle\swizzle_gvec4.glm.cs" />
+    <Compile Include="Swizzle\swizzle_hvec2.cs" />
+    <Compile Include="Swizzle\swizzle_hvec2.glm.cs" />
+    <Compile Include="Swizzle\swizzle_hvec3.cs" />
+    <Compile Include="Swizzle\swizzle_hvec3.glm.cs" />
+    <Compile Include="Swizzle\swizzle_hvec4.cs" />
+    <Compile Include="Swizzle\swizzle_hvec4.glm.cs" />
     <Compile Include="Swizzle\swizzle_ivec2.cs" />
     <Compile Include="Swizzle\swizzle_ivec2.glm.cs" />
     <Compile Include="Swizzle\swizzle_ivec3.cs" />
@@ -255,6 +283,8 @@
     <Compile Include="Vec2\dvec2.glm.cs" />
     <Compile Include="Vec2\gvec2.cs" />
     <Compile Include="Vec2\gvec2.glm.cs" />
+    <Compile Include="Vec2\hvec2.cs" />
+    <Compile Include="Vec2\hvec2.glm.cs" />
     <Compile Include="Vec2\ivec2.cs" />
     <Compile Include="Vec2\ivec2.glm.cs" />
     <Compile Include="Vec2\lvec2.cs" />
@@ -271,6 +301,8 @@
     <Compile Include="Vec3\dvec3.glm.cs" />
     <Compile Include="Vec3\gvec3.cs" />
     <Compile Include="Vec3\gvec3.glm.cs" />
+    <Compile Include="Vec3\hvec3.cs" />
+    <Compile Include="Vec3\hvec3.glm.cs" />
     <Compile Include="Vec3\ivec3.cs" />
     <Compile Include="Vec3\ivec3.glm.cs" />
     <Compile Include="Vec3\lvec3.cs" />
@@ -287,6 +319,8 @@
     <Compile Include="Vec4\dvec4.glm.cs" />
     <Compile Include="Vec4\gvec4.cs" />
     <Compile Include="Vec4\gvec4.glm.cs" />
+    <Compile Include="Vec4\hvec4.cs" />
+    <Compile Include="Vec4\hvec4.glm.cs" />
     <Compile Include="Vec4\ivec4.cs" />
     <Compile Include="Vec4\ivec4.glm.cs" />
     <Compile Include="Vec4\lvec4.cs" />

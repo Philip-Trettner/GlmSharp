@@ -169,6 +169,16 @@ namespace GlmSharp
         public static explicit operator quat(decquat v) => new quat((float)v.x, (float)v.y, (float)v.z, (float)v.w);
         
         /// <summary>
+        /// Explicitly converts this to a hvec4.
+        /// </summary>
+        public static explicit operator hvec4(decquat v) => new hvec4((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a hquat.
+        /// </summary>
+        public static explicit operator hquat(decquat v) => new hquat((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec4.
         /// </summary>
         public static explicit operator dvec4(decquat v) => new dvec4((double)v.x, (double)v.y, (double)v.z, (double)v.w);
@@ -275,12 +285,12 @@ namespace GlmSharp
         /// <summary>
         /// Returns a copy of this quaternion with length one (undefined if this has zero length).
         /// </summary>
-        public decquat Normalized => this / Length;
+        public decquat Normalized => this / (decimal)Length;
         
         /// <summary>
         /// Returns a copy of this quaternion with length one (returns zero if length is zero).
         /// </summary>
-        public decquat NormalizedSafe => this == Zero ? Identity : this / Length;
+        public decquat NormalizedSafe => this == Zero ? Identity : this / (decimal)Length;
         
         /// <summary>
         /// Returns the represented angle of this quaternion.
@@ -723,7 +733,7 @@ namespace GlmSharp
         public static bvec4 Equal(decimal lhs, decquat rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(decimal lhs, decimal rhs) => new bvec4(lhs == rhs);
         
@@ -743,7 +753,7 @@ namespace GlmSharp
         public static bvec4 NotEqual(decimal lhs, decquat rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(decimal lhs, decimal rhs) => new bvec4(lhs != rhs);
         
@@ -763,7 +773,7 @@ namespace GlmSharp
         public static bvec4 GreaterThan(decimal lhs, decquat rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec4 GreaterThan(decimal lhs, decimal rhs) => new bvec4(lhs > rhs);
         
@@ -783,7 +793,7 @@ namespace GlmSharp
         public static bvec4 GreaterThanEqual(decimal lhs, decquat rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec4 GreaterThanEqual(decimal lhs, decimal rhs) => new bvec4(lhs >= rhs);
         
@@ -803,7 +813,7 @@ namespace GlmSharp
         public static bvec4 LesserThan(decimal lhs, decquat rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec4 LesserThan(decimal lhs, decimal rhs) => new bvec4(lhs < rhs);
         
@@ -823,7 +833,7 @@ namespace GlmSharp
         public static bvec4 LesserThanEqual(decimal lhs, decquat rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(decimal lhs, decimal rhs) => new bvec4(lhs <= rhs);
         
@@ -863,7 +873,7 @@ namespace GlmSharp
         public static decquat Lerp(decimal min, decimal max, decquat a) => new decquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
         
         /// <summary>
-        /// Returns a decquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a decquat from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static decquat Lerp(decimal min, decimal max, decimal a) => new decquat(min * (1-a) + max * a);
 

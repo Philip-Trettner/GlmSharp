@@ -464,7 +464,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a vec3 from component-wise application of Degrees (Radians-To-Degrees Conversion).
         /// </summary>
-        public static float Degrees(float v) => v * 57.295779513082320876798154814105170332405472466564321f;
+        public static float Degrees(float v) => (float)(v * 57.295779513082320876798154814105170332405472466564321f);
         
         /// <summary>
         /// Returns a vec3 from component-wise application of Radians (Degrees-To-Radians Conversion).
@@ -474,7 +474,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a vec3 from component-wise application of Radians (Degrees-To-Radians Conversion).
         /// </summary>
-        public static float Radians(float v) => v * 0.0174532925199432957692369076848861271344287188854172f;
+        public static float Radians(float v) => (float)(v * 0.0174532925199432957692369076848861271344287188854172f);
         
         /// <summary>
         /// Returns a vec3 from component-wise application of Acos ((float)Math.Acos((double)v)).

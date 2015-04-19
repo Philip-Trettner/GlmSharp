@@ -462,10 +462,10 @@ namespace GlmSharpGenerator.Types
                     if (!BaseType.IsComplex)
                     {
                         foreach (var line in "Returns the minimal component of this matrix.".AsComment()) yield return line;
-                        yield return string.Format("public {0} MinElement => {1};", BaseTypeName, NestedBiFuncFor("Math.Min({0}, {1})", FieldCount - 1, FieldFor));
+                        yield return string.Format("public {0} MinElement => {1};", BaseTypeName, NestedBiFuncFor(MathClass + ".Min({0}, {1})", FieldCount - 1, FieldFor));
 
                         foreach (var line in "Returns the maximal component of this matrix.".AsComment()) yield return line;
-                        yield return string.Format("public {0} MaxElement => {1};", BaseTypeName, NestedBiFuncFor("Math.Max({0}, {1})", FieldCount - 1, FieldFor));
+                        yield return string.Format("public {0} MaxElement => {1};", BaseTypeName, NestedBiFuncFor(MathClass + ".Max({0}, {1})", FieldCount - 1, FieldFor));
                     }
 
                     foreach (var line in "Returns the euclidean length of this matrix.".AsComment()) yield return line;
@@ -487,7 +487,7 @@ namespace GlmSharpGenerator.Types
                     yield return string.Format("public {0} Norm2 => ({0}){1};", lengthType, SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")));
 
                     foreach (var line in "Returns the max-norm of this matrix.".AsComment()) yield return line;
-                    yield return string.Format("public {0} NormMax => {1};", BaseTypeName, NestedBiFuncFor("Math.Max({0}, {1})", FieldCount - 1, c => AbsString(FieldFor(c))));
+                    yield return string.Format("public {0} NormMax => {1};", BaseTypeName, NestedBiFuncFor(MathClass + ".Max({0}, {1})", FieldCount - 1, c => AbsString(FieldFor(c))));
 
                     foreach (var line in "Returns the p-norm of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", Fields.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));

@@ -143,6 +143,16 @@ namespace GlmSharp
         public static explicit operator quat(lquat v) => new quat((float)v.x, (float)v.y, (float)v.z, (float)v.w);
         
         /// <summary>
+        /// Explicitly converts this to a hvec4.
+        /// </summary>
+        public static explicit operator hvec4(lquat v) => new hvec4((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
+        
+        /// <summary>
+        /// Explicitly converts this to a hquat.
+        /// </summary>
+        public static explicit operator hquat(lquat v) => new hquat((Half)v.x, (Half)v.y, (Half)v.z, (Half)v.w);
+        
+        /// <summary>
         /// Explicitly converts this to a dvec4.
         /// </summary>
         public static explicit operator dvec4(lquat v) => new dvec4((double)v.x, (double)v.y, (double)v.z, (double)v.w);
@@ -534,7 +544,7 @@ namespace GlmSharp
         public static bvec4 Equal(long lhs, lquat rhs) => new bvec4(lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of Equal (lhs == rhs).
+        /// Returns a bvec from the application of Equal (lhs == rhs).
         /// </summary>
         public static bvec4 Equal(long lhs, long rhs) => new bvec4(lhs == rhs);
         
@@ -554,7 +564,7 @@ namespace GlmSharp
         public static bvec4 NotEqual(long lhs, lquat rhs) => new bvec4(lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of NotEqual (lhs != rhs).
+        /// Returns a bvec from the application of NotEqual (lhs != rhs).
         /// </summary>
         public static bvec4 NotEqual(long lhs, long rhs) => new bvec4(lhs != rhs);
         
@@ -574,7 +584,7 @@ namespace GlmSharp
         public static bvec4 GreaterThan(long lhs, lquat rhs) => new bvec4(lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThan (lhs &gt; rhs).
+        /// Returns a bvec from the application of GreaterThan (lhs &gt; rhs).
         /// </summary>
         public static bvec4 GreaterThan(long lhs, long rhs) => new bvec4(lhs > rhs);
         
@@ -594,7 +604,7 @@ namespace GlmSharp
         public static bvec4 GreaterThanEqual(long lhs, lquat rhs) => new bvec4(lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of GreaterThanEqual (lhs &gt;= rhs).
+        /// Returns a bvec from the application of GreaterThanEqual (lhs &gt;= rhs).
         /// </summary>
         public static bvec4 GreaterThanEqual(long lhs, long rhs) => new bvec4(lhs >= rhs);
         
@@ -614,7 +624,7 @@ namespace GlmSharp
         public static bvec4 LesserThan(long lhs, lquat rhs) => new bvec4(lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThan (lhs &lt; rhs).
+        /// Returns a bvec from the application of LesserThan (lhs &lt; rhs).
         /// </summary>
         public static bvec4 LesserThan(long lhs, long rhs) => new bvec4(lhs < rhs);
         
@@ -634,7 +644,7 @@ namespace GlmSharp
         public static bvec4 LesserThanEqual(long lhs, lquat rhs) => new bvec4(lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w);
         
         /// <summary>
-        /// Returns a bvec4 from component-wise application of LesserThanEqual (lhs &lt;= rhs).
+        /// Returns a bvec from the application of LesserThanEqual (lhs &lt;= rhs).
         /// </summary>
         public static bvec4 LesserThanEqual(long lhs, long rhs) => new bvec4(lhs <= rhs);
         
@@ -674,7 +684,7 @@ namespace GlmSharp
         public static lquat Lerp(long min, long max, lquat a) => new lquat(min * (1-a.x) + max * a.x, min * (1-a.y) + max * a.y, min * (1-a.z) + max * a.z, min * (1-a.w) + max * a.w);
         
         /// <summary>
-        /// Returns a lquat from component-wise application of Lerp (min * (1-a) + max * a).
+        /// Returns a lquat from the application of Lerp (min * (1-a) + max * a).
         /// </summary>
         public static lquat Lerp(long min, long max, long a) => new lquat(min * (1-a) + max * a);
 
