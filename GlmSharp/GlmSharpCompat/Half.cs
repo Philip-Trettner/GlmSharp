@@ -547,7 +547,10 @@ namespace System
         /// <returns>A half-precision floating point number formed by its binary representation.</returns>
         public static Half ToHalf(ushort bits)
         {
-            return new Half { value = bits };
+            const ushort NegZero = (ushort)32768u;
+            const ushort Zero = (ushort)0u;
+
+            return new Half { value = bits == NegZero ? Zero : bits };
         }
 
         /// <summary>
