@@ -171,7 +171,7 @@ namespace GlmSharpGenerator.Members
                 Static = true,
                 Comment = Comment,
                 Parameters = ap.Concat(ParameterNames.Select((p, i) => ParameterTypes[i].NameThat + " " + p)),
-                CodeString = string.Format("{0}.{1}({2})", OriginalType.NameThat, Name, ap2 + ParameterNames.CommaSeparated())
+                CodeString = $"{OriginalType.NameThat}.{Name}({ap2 + ParameterNames.CommaSeparated()})"
             };
 
             // scalar version

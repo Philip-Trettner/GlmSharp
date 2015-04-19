@@ -33,10 +33,10 @@ namespace GlmSharpGenerator.Types
                     var vals = BaseType.RandomSmallVals(Components);
 
                     yield return "{";
-                    yield return string.Format("var ov = {0};", Construct(VectorType, vals)).Indent();
-                    yield return string.Format("var v = ov.swizzle.{0};", swizzle).Indent();
+                    yield return $"var ov = {Construct(VectorType, vals)};".Indent();
+                    yield return $"var v = ov.swizzle.{swizzle};".Indent();
                     for (var i = 0; i < swizzle.Length; ++i)
-                        yield return string.Format("Assert.AreEqual({0}, v.{1});", vals["xyzw".IndexOf(swizzle[i])], "xyzw"[i]).Indent();
+                        yield return $"Assert.AreEqual({vals["xyzw".IndexOf(swizzle[i])]}, v.{"xyzw"[i]});".Indent();
                     yield return "}";
                 }
             }
@@ -51,10 +51,10 @@ namespace GlmSharpGenerator.Types
                     var vals = BaseType.RandomSmallVals(Components);
 
                     yield return "{";
-                    yield return string.Format("var ov = {0};", Construct(VectorType, vals)).Indent();
-                    yield return string.Format("var v = ov.swizzle.{0};", ToRgba(swizzle)).Indent();
+                    yield return $"var ov = {Construct(VectorType, vals)};".Indent();
+                    yield return $"var v = ov.swizzle.{ToRgba(swizzle)};".Indent();
                     for (var i = 0; i < swizzle.Length; ++i)
-                        yield return string.Format("Assert.AreEqual({0}, v.{1});", vals["xyzw".IndexOf(swizzle[i])], "xyzw"[i]).Indent();
+                        yield return $"Assert.AreEqual({vals["xyzw".IndexOf(swizzle[i])]}, v.{"xyzw"[i]});".Indent();
                     yield return "}";
                 }
             }
@@ -76,19 +76,19 @@ namespace GlmSharpGenerator.Types
                     var subvals = BaseType.RandomSmallVals(swizzle.Length);
 
                     yield return "{";
-                    yield return string.Format("var v0 = {0};", Construct(VectorType, vals)).Indent();
-                    yield return string.Format("var v1 = {0};", Construct(vecType, subvals)).Indent();
-                    yield return string.Format("var v2 = v0.{0};", swizzle).Indent();
-                    yield return string.Format("v0.{0} = v1;", swizzle).Indent();
-                    yield return string.Format("var v3 = v0.{0};", swizzle).Indent();
+                    yield return $"var v0 = {Construct(VectorType, vals)};".Indent();
+                    yield return $"var v1 = {Construct(vecType, subvals)};".Indent();
+                    yield return $"var v2 = v0.{swizzle};".Indent();
+                    yield return $"v0.{swizzle} = v1;".Indent();
+                    yield return $"var v3 = v0.{swizzle};".Indent();
                     yield return "";
                     yield return "Assert.AreEqual(v1, v3);".Indent();
                     yield return "";
                     for (var i = 0; i < Components; ++i)
-                        yield return string.Format("Assert.AreEqual({0}, v0.{1});", swizzleBits[i] == '1' ? subvals[swizzleBits.Substring(0, i).Count(c => c == '1')] : vals[i], "xyzw"[i]).Indent();
+                        yield return $"Assert.AreEqual({(swizzleBits[i] == '1' ? subvals[swizzleBits.Substring(0, i).Count(c => c == '1')] : vals[i])}, v0.{"xyzw"[i]});".Indent();
                     yield return "";
                     for (var i = 0; i < swizzle.Length; ++i)
-                        yield return string.Format("Assert.AreEqual({0}, v2.{1});", vals["xyzw".IndexOf(swizzle[i])], "xyzw"[i]).Indent();
+                        yield return $"Assert.AreEqual({vals["xyzw".IndexOf(swizzle[i])]}, v2.{"xyzw"[i]});".Indent();
                     yield return "}";
                 }
             }
@@ -110,22 +110,22 @@ namespace GlmSharpGenerator.Types
                     var subvals = BaseType.RandomSmallVals(swizzle.Length);
 
                     yield return "{";
-                    yield return string.Format("var v0 = {0};", Construct(VectorType, vals)).Indent();
-                    yield return string.Format("var v1 = {0};", swizzle.Length == 1 ? (BaseType.Generic ? subvals[0] : ConstantStringFor(subvals[0])) : Construct(vecType, subvals)).Indent();
-                    yield return string.Format("var v2 = v0.{0};", ToRgba(swizzle)).Indent();
-                    yield return string.Format("v0.{0} = v1;", ToRgba(swizzle)).Indent();
-                    yield return string.Format("var v3 = v0.{0};", ToRgba(swizzle)).Indent();
+                    yield return $"var v0 = {Construct(VectorType, vals)};".Indent();
+                    yield return $"var v1 = {(swizzle.Length == 1 ? (BaseType.Generic ? subvals[0] : ConstantStringFor(subvals[0])) : Construct(vecType, subvals))};".Indent();
+                    yield return $"var v2 = v0.{ToRgba(swizzle)};".Indent();
+                    yield return $"v0.{ToRgba(swizzle)} = v1;".Indent();
+                    yield return $"var v3 = v0.{ToRgba(swizzle)};".Indent();
                     yield return "";
                     yield return "Assert.AreEqual(v1, v3);".Indent();
                     yield return "";
                     for (var i = 0; i < Components; ++i)
-                        yield return string.Format("Assert.AreEqual({0}, v0.{1});", swizzleBits[i] == '1' ? subvals[swizzleBits.Substring(0, i).Count(c => c == '1')] : vals[i], "xyzw"[i]).Indent();
+                        yield return $"Assert.AreEqual({(swizzleBits[i] == '1' ? subvals[swizzleBits.Substring(0, i).Count(c => c == '1')] : vals[i])}, v0.{"xyzw"[i]});".Indent();
                     yield return "";
                     if (swizzle.Length == 1)
-                        yield return string.Format("Assert.AreEqual({0}, v2);", vals["xyzw".IndexOf(swizzle[0])]).Indent();
+                        yield return $"Assert.AreEqual({vals["xyzw".IndexOf(swizzle[0])]}, v2);".Indent();
                     else
                         for (var i = 0; i < swizzle.Length; ++i)
-                            yield return string.Format("Assert.AreEqual({0}, v2.{1});", vals["xyzw".IndexOf(swizzle[i])], "xyzw"[i]).Indent();
+                            yield return $"Assert.AreEqual({vals["xyzw".IndexOf(swizzle[i])]}, v2.{"xyzw"[i]});".Indent();
                     yield return "}";
                 }
             }

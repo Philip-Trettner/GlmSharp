@@ -25,7 +25,7 @@ namespace GlmSharpGenerator.Types
 
         public override string Folder => "Mat" + Columns + "x" + Rows;
 
-        public override string TypeComment => string.Format("A matrix of type {0} with {1} columns and {2} rows.", BaseTypeName, Columns, Rows);
+        public override string TypeComment => $"A matrix of type {BaseTypeName} with {Columns} columns and {Rows} rows.";
 
         public bool HasField(string f) => ColOf(f) < Columns && RowOf(f) < Rows;
 
@@ -34,10 +34,10 @@ namespace GlmSharpGenerator.Types
             get
             {
                 if (Version >= 45)
-                    yield return string.Format("IReadOnlyList<{0}>", BaseTypeName);
+                    yield return $"IReadOnlyList<{BaseTypeName}>";
                 else
-                    yield return string.Format("IEnumerable<{0}>", BaseTypeName);
-                yield return string.Format("IEquatable<{0}>", NameThat);
+                    yield return $"IEnumerable<{BaseTypeName}>";
+                yield return $"IEquatable<{NameThat}>";
             }
         }
 
@@ -109,7 +109,7 @@ namespace GlmSharpGenerator.Types
                 yield return "m" + x + row;
         }
 
-        public string FieldFor(int f) => string.Format("m{0}{1}", f / Rows, f % Rows);
+        public string FieldFor(int f) => $"m{f/Rows}{f%Rows}";
 
         public string ArgOf(int c) => "xyzw"[c].ToString();
 
@@ -125,15 +125,15 @@ namespace GlmSharpGenerator.Types
         {
             foreach (var line in comment.AsComment())
                 yield return line;
-            yield return string.Format("public {0}({1})", Name, args);
+            yield return $"public {Name}({args})";
             yield return "{";
             var it = assignments.GetEnumerator();
             foreach (var c in Fields)
-                yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : (c[1] == c[2] ? BaseType.OneValue : BaseType.ZeroValue)).Indent();
+                yield return $"this.{c} = {(it.MoveNext() ? it.Current : (c[1] == c[2] ? BaseType.OneValue : BaseType.ZeroValue))};".Indent();
             yield return "}";
         }
 
-        public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseType.HashCodeMultiplier)) + HashCodeOf(FieldFor(c));
+        public string HashCodeFor(int c) => (c == 0 ? "" : $"(({HashCodeFor(c - 1)}) * {BaseType.HashCodeMultiplier}) ^ ") + HashCodeOf(FieldFor(c));
 
 
         public string ComponentWiseOperator(string op)
@@ -146,7 +146,7 @@ namespace GlmSharpGenerator.Types
 
         public string ComponentWiseOperatorScalar(string op, string scalarType)
             => string.Format("public static {0} operator{2}({0} lhs, {3} rhs) => new {0}({1});", NameThat,
-                    Fields.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, scalarType);
+                    Fields.Select(c => $"lhs.{c} {op} rhs").CommaSeparated(), op, scalarType);
 
         public string ComponentWiseOperatorScalarL(string op, string scalarType)
             => string.Format("public static {0} operator{2}({3} lhs, {0} rhs) => new {0}({1});", NameThat,
@@ -161,7 +161,7 @@ namespace GlmSharpGenerator.Types
 
         public string ComponentWiseOperatorForeignScalar(string op, string scalarType, string returnType)
             => string.Format("public static {4} operator{2}({0} lhs, {3} rhs) => new {4}({1});", NameThat,
-                    Fields.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, scalarType, returnType);
+                    Fields.Select(c => $"lhs.{c} {op} rhs").CommaSeparated(), op, scalarType, returnType);
 
         public string ComponentWiseOperatorForeignScalarL(string op, string scalarType, string returnType)
             => string.Format("public static {4} operator{2}({3} lhs, {0} rhs) => new {4}({1});", NameThat,
@@ -173,7 +173,7 @@ namespace GlmSharpGenerator.Types
 
         public string ComparisonOperatorScalar(string op, string scalarType)
             => string.Format("public static bmat{3} operator{2}({0} lhs, {4} rhs) => new bmat{3}({1});", NameThat,
-                    Fields.Select(c => string.Format("lhs.{0} {1} rhs", c, op)).CommaSeparated(), op, (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows), scalarType);
+                    Fields.Select(c => $"lhs.{c} {op} rhs").CommaSeparated(), op, (Rows == Columns ? Columns.ToString() : Columns + "x" + Rows), scalarType);
 
         public string ComparisonOperatorScalarL(string op, string scalarType)
             => string.Format("public static bmat{3} operator{2}({4} lhs, {0} rhs) => new bmat{3}({1});", NameThat,
@@ -199,18 +199,18 @@ namespace GlmSharpGenerator.Types
             foreach (var f in Fields)
                 yield return new Field(f, BaseType)
                 {
-                    Comment = string.Format("Column {0}, Rows {1}", ColOf(f), RowOf(f))
+                    Comment = $"Column {ColOf(f)}, Rows {RowOf(f)}"
                 };
 
             // Values
             yield return new Property("Values", new ArrayType(BaseType, "[,]"))
             {
-                GetterLine = string.Format("new[,] {{ {0} }}", Columns.ForIndexUpTo(col => "{ " + Column(col).CommaSeparated() + " }").CommaSeparated()),
+                GetterLine = $"new[,] {{ {Columns.ForIndexUpTo(col => "{ " + Column(col).CommaSeparated() + " }").CommaSeparated()} }}",
                 Comment = "Creates a 2D array with all values (address: Values[x, y])"
             };
             yield return new Property("Values1D", new ArrayType(BaseType))
             {
-                GetterLine = string.Format("new[] {{ {0} }}", Fields.CommaSeparated()),
+                GetterLine = $"new[] {{ {Fields.CommaSeparated()} }}",
                 Comment = "Creates a 1D array with all values (internal order)"
             };
 
@@ -219,13 +219,13 @@ namespace GlmSharpGenerator.Types
                 yield return new Property("Column" + col, colVecType)
                 {
                     GetterLine = Construct(colVecType, Column(col)),
-                    Comment = string.Format("Returns the column nr {0}", col)
+                    Comment = $"Returns the column nr {col}"
                 };
             for (var row = 0; row < Rows; ++row)
                 yield return new Property("Row" + row, rowVecType)
                 {
                     GetterLine = Construct(rowVecType, Row(row)),
-                    Comment = string.Format("Returns the row nr {0}", row)
+                    Comment = $"Returns the row nr {row}"
                 };
 
             // Constructors
@@ -244,7 +244,7 @@ namespace GlmSharpGenerator.Types
                     {
                         Parameters = matType.TypedArgs("m"),
                         Initializers = Fields.Select(f => matType.HasField(f) ? "m." + f : IsDiagonal(f) && !string.IsNullOrEmpty(OneValue) ? OneValue : ZeroValue),
-                        Comment = string.Format("Constructs this matrix from a {0}. Non-overwritten fields are from an Identity matrix.", matType.Name)
+                        Comment = $"Constructs this matrix from a {matType.Name}. Non-overwritten fields are from an Identity matrix."
                     };
                 }
             // by-column-vector-ctors
@@ -266,15 +266,15 @@ namespace GlmSharpGenerator.Types
                 yield return new Constructor(this, Fields)
                 {
                     Parameters = quatType.TypedArgs(" q"),
-                    ConstructorChain = string.Format("this(q.ToMat{0})", Rows),
-                    Comment = string.Format("Creates a rotation matrix from a {0}.", quatType.Name)
+                    ConstructorChain = $"this(q.ToMat{Rows})",
+                    Comment = $"Creates a rotation matrix from a {quatType.Name}."
                 };
 
                 yield return new ExplicitOperator(this)
                 {
                     Parameters = quatType.TypedArgs(" q"),
-                    CodeString = string.Format("q.ToMat{0}", Rows),
-                    Comment = string.Format("Creates a rotation matrix from a {0}.", quatType.Name)
+                    CodeString = $"q.ToMat{Rows}",
+                    Comment = $"Creates a rotation matrix from a {quatType.Name}."
                 };
 
                 yield return new Property("ToQuaternion", quatType)
@@ -326,22 +326,22 @@ namespace GlmSharpGenerator.Types
             {
                 yield return new StaticProperty("All" + constant, this)
                 {
-                    Value = Construct(this, string.Format("{0}.{1}", BaseTypeName, constant).RepeatTimes(FieldCount)),
-                    Comment = string.Format("Predefined all-{0} matrix", constant)
+                    Value = Construct(this, $"{BaseTypeName}.{constant}".RepeatTimes(FieldCount)),
+                    Comment = $"Predefined all-{constant} matrix"
                 };
 
                 yield return new StaticProperty("Diagonal" + constant, this)
                 {
-                    Value = Construct(this, Fields.Select(f => IsDiagonal(f) ? string.Format("{0}.{1}", BaseTypeName, constant) : ZeroValue)),
-                    Comment = string.Format("Predefined diagonal-{0} matrix", constant)
+                    Value = Construct(this, Fields.Select(f => IsDiagonal(f) ? $"{BaseTypeName}.{constant}" : ZeroValue)),
+                    Comment = $"Predefined diagonal-{constant} matrix"
                 };
             }
 
 
             // IEnumerable
-            yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")
+            yield return new Function(new AnyType($"IEnumerator<{BaseTypeName}>"), "GetEnumerator")
             {
-                Code = Fields.Select(f => string.Format("yield return {0};", f)),
+                Code = Fields.Select(f => $"yield return {f};"),
                 Comment = "Returns an enumerator that iterates through all fields."
             };
 
@@ -359,18 +359,18 @@ namespace GlmSharpGenerator.Types
             {
 
                 // Indexer
-                foreach (var line in string.Format("Returns the number of Fields ({0} x {1} = {2}).", Columns, Rows, FieldCount).AsComment()) yield return line;
-                yield return string.Format("public int Count => {0};", FieldCount);
+                foreach (var line in $"Returns the number of Fields ({Columns} x {Rows} = {FieldCount}).".AsComment()) yield return line;
+                yield return $"public int Count => {FieldCount};";
 
                 foreach (var line in "Gets/Sets a specific indexed component (a bit slower than direct access).".AsComment()) yield return line;
-                yield return string.Format("public {0} this[int fieldIndex]", BaseTypeName);
+                yield return $"public {BaseTypeName} this[int fieldIndex]";
                 yield return "{";
                 yield return "    get";
                 yield return "    {";
                 yield return "        switch (fieldIndex)";
                 yield return "        {";
                 for (var c = 0; c < FieldCount; ++c)
-                    yield return string.Format("            case {0}: return {1};", c, FieldFor(c));
+                    yield return $"            case {c}: return {FieldFor(c)};";
                 yield return "            default: throw new ArgumentOutOfRangeException(\"fieldIndex\");";
                 yield return "        }";
                 yield return "    }";
@@ -379,29 +379,29 @@ namespace GlmSharpGenerator.Types
                 yield return "        switch (fieldIndex)";
                 yield return "        {";
                 for (var c = 0; c < FieldCount; ++c)
-                    yield return string.Format("            case {0}: this.{1} = value; break;", c, FieldFor(c));
+                    yield return $"            case {c}: this.{FieldFor(c)} = value; break;";
                 yield return "            default: throw new ArgumentOutOfRangeException(\"fieldIndex\");";
                 yield return "        }";
                 yield return "    }";
                 yield return "}";
 
                 foreach (var line in "Gets/Sets a specific 2D-indexed component (a bit slower than direct access).".AsComment()) yield return line;
-                yield return string.Format("public {0} this[int col, int row]", BaseTypeName);
+                yield return $"public {BaseTypeName} this[int col, int row]";
                 yield return "{";
                 yield return "    get";
                 yield return "    {";
-                yield return string.Format("        return this[col * {0} + row];", Rows);
+                yield return $"        return this[col * {Rows} + row];";
                 yield return "    }";
                 yield return "    set";
                 yield return "    {";
-                yield return string.Format("        this[col * {0} + row] = value;", Rows);
+                yield return $"        this[col * {Rows} + row] = value;";
                 yield return "    }";
                 yield return "}";
 
 
                 // Equality comparisons
                 foreach (var line in "Returns true iff this equals rhs component-wise.".AsComment()) yield return line;
-                yield return string.Format("public bool Equals({0} rhs) => {1};", NameThat, Fields.Select(c => Comparer(c.ToString())).Aggregated(" && "));
+                yield return $"public bool Equals({NameThat} rhs) => {Fields.Select(c => Comparer(c.ToString())).Aggregated(" && ")};";
 
                 foreach (var line in "Returns true iff this equals rhs type- and component-wise.".AsComment()) yield return line;
                 yield return "public override bool Equals(object obj)";
@@ -435,16 +435,16 @@ namespace GlmSharpGenerator.Types
                 if (BaseType.IsBool)
                 {
                     foreach (var line in "Returns the minimal component of this matrix.".AsComment()) yield return line;
-                    yield return string.Format("public {0} MinElement => {1};", BaseTypeName, Fields.Aggregated(" && "));
+                    yield return $"public {BaseTypeName} MinElement => {Fields.Aggregated(" && ")};";
 
                     foreach (var line in "Returns the maximal component of this matrix.".AsComment()) yield return line;
-                    yield return string.Format("public {0} MaxElement => {1};", BaseTypeName, Fields.Aggregated(" || "));
+                    yield return $"public {BaseTypeName} MaxElement => {Fields.Aggregated(" || ")};";
 
                     foreach (var line in "Returns true if all component are true.".AsComment()) yield return line;
-                    yield return string.Format("public {0} All => {1};", BaseTypeName, Fields.Aggregated(" && "));
+                    yield return $"public {BaseTypeName} All => {Fields.Aggregated(" && ")};";
 
                     foreach (var line in "Returns true if any component is true.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Any => {1};", BaseTypeName, Fields.Aggregated(" || "));
+                    yield return $"public {BaseTypeName} Any => {Fields.Aggregated(" || ")};";
 
                     foreach (var line in "Executes a component-wise &amp;&amp;. (sorry for different overload but &amp;&amp; cannot be overloaded directly)".AsComment()) yield return line;
                     yield return ComponentWiseOperator("&", "&&");
@@ -462,41 +462,41 @@ namespace GlmSharpGenerator.Types
                     if (!BaseType.IsComplex)
                     {
                         foreach (var line in "Returns the minimal component of this matrix.".AsComment()) yield return line;
-                        yield return string.Format("public {0} MinElement => {1};", BaseTypeName, NestedBiFuncFor(MathClass + ".Min({0}, {1})", FieldCount - 1, FieldFor));
+                        yield return $"public {BaseTypeName} MinElement => {NestedBiFuncFor(MathClass + ".Min({0}, {1})", FieldCount - 1, FieldFor)};";
 
                         foreach (var line in "Returns the maximal component of this matrix.".AsComment()) yield return line;
-                        yield return string.Format("public {0} MaxElement => {1};", BaseTypeName, NestedBiFuncFor(MathClass + ".Max({0}, {1})", FieldCount - 1, FieldFor));
+                        yield return $"public {BaseTypeName} MaxElement => {NestedBiFuncFor(MathClass + ".Max({0}, {1})", FieldCount - 1, FieldFor)};";
                     }
 
                     foreach (var line in "Returns the euclidean length of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public {0} Length => ({0}){1};", lengthType, SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")));
 
                     foreach (var line in "Returns the squared euclidean length of this matrix.".AsComment()) yield return line;
-                    yield return string.Format("public {0} LengthSqr => {1};", lengthType, Fields.Select(SqrOf).Aggregated(" + "));
+                    yield return $"public {lengthType} LengthSqr => {Fields.Select(SqrOf).Aggregated(" + ")};";
 
                     foreach (var line in "Returns the sum of all fields.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Sum => {1};", BaseTypeName, Fields.Aggregated(" + "));
+                    yield return $"public {BaseTypeName} Sum => {Fields.Aggregated(" + ")};";
 
                     foreach (var line in "Returns the euclidean norm of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public {0} Norm => ({0}){1};", lengthType, SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")));
 
                     foreach (var line in "Returns the one-norm of this matrix.".AsComment()) yield return line;
-                    yield return string.Format("public {0} Norm1 => {1};", lengthType, Fields.Select(AbsString).Aggregated(" + "));
+                    yield return $"public {lengthType} Norm1 => {Fields.Select(AbsString).Aggregated(" + ")};";
 
                     foreach (var line in "Returns the two-norm of this matrix.".AsComment()) yield return line;
                     yield return string.Format("public {0} Norm2 => ({0}){1};", lengthType, SqrtOf(Fields.Select(SqrOf).Aggregated(" + ")));
 
                     foreach (var line in "Returns the max-norm of this matrix.".AsComment()) yield return line;
-                    yield return string.Format("public {0} NormMax => {1};", BaseTypeName, NestedBiFuncFor(MathClass + ".Max({0}, {1})", FieldCount - 1, c => AbsString(FieldFor(c))));
+                    yield return $"public {BaseTypeName} NormMax => {NestedBiFuncFor(MathClass + ".Max({0}, {1})", FieldCount - 1, c => AbsString(FieldFor(c)))};";
 
                     foreach (var line in "Returns the p-norm of this matrix.".AsComment()) yield return line;
-                    yield return string.Format("public double NormP(double p) => Math.Pow({0}, 1 / p);", Fields.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + "));
+                    yield return $"public double NormP(double p) => Math.Pow({Fields.Select(c => $"Math.Pow((double){AbsString(c)}, p)").Aggregated(" + ")}, 1 / p);";
 
                     // determinant
                     if (Rows == Columns)
                     {
                         foreach (var line in "Returns determinant of this matrix.".AsComment()) yield return line;
-                        yield return string.Format("public {0} Determinant => {1};", BaseTypeName, HelperDet(HelperFieldsOf(Rows)));
+                        yield return $"public {BaseTypeName} Determinant => {HelperDet(HelperFieldsOf(Rows))};";
 
                         if (BaseType.IsSigned)
                         {
@@ -504,7 +504,7 @@ namespace GlmSharpGenerator.Types
                             yield return string.Format("public {0} Adjugate => new {0}({1});", NameThat, FieldsTransposed.Select(f => HelperDet(HelperSubmatrix(HelperFieldsOf(Rows), ColOf(f), RowOf(f)), ColOf(f) + RowOf(f))).CommaSeparated());
 
                             foreach (var line in "Returns the inverse of this matrix (use with caution).".AsComment()) yield return line;
-                            yield return string.Format("public {0} Inverse => Adjugate / Determinant;", NameThat);
+                            yield return $"public {NameThat} Inverse => Adjugate / Determinant;";
                         }
                     }
 
@@ -517,7 +517,7 @@ namespace GlmSharpGenerator.Types
                         var rhsColumns = rcols;
                         var rhsType = BaseName + (rhsRows == rhsColumns ? rhsColumns.ToString() : rhsColumns + "x" + rhsRows) + GenericSuffix;
                         var resultType = BaseName + (lhsRows == rhsColumns ? rhsColumns.ToString() : rhsColumns + "x" + lhsRows) + GenericSuffix;
-                        foreach (var line in string.Format("Executes a matrix-matrix-multiplication {0} * {1} -> {2}.", NameThat, rhsType, resultType).AsComment()) yield return line;
+                        foreach (var line in $"Executes a matrix-matrix-multiplication {NameThat} * {rhsType} -> {resultType}.".AsComment()) yield return line;
                         yield return string.Format("public static {0} operator*({1} lhs, {2} rhs) => new {0}({3});",
                             resultType, NameThat, rhsType,
                             FieldsHelper(lhsRows, rhsColumns).Select(f => lhsCols.ForIndexUpTo(i => string.Format("lhs.m{1}{0} * rhs.m{2}{1}", f[1], i, f[2])).Aggregated(" + ")).CommaSeparated());
@@ -564,12 +564,12 @@ namespace GlmSharpGenerator.Types
 
                         if (!onlyScalar)
                         {
-                            foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
+                            foreach (var line in $"Executes a component-wise {opComment}.".AsComment()) yield return line;
                             yield return ComponentWiseOperator(op);
                         }
-                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                        foreach (var line in $"Executes a component-wise {opComment} with a scalar.".AsComment()) yield return line;
                         yield return ComponentWiseOperatorScalar(op, BaseTypeName);
-                        foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                        foreach (var line in $"Executes a component-wise {opComment} with a scalar.".AsComment()) yield return line;
                         yield return ComponentWiseOperatorScalarL(op, BaseTypeName);
                     }
 
@@ -587,11 +587,11 @@ namespace GlmSharpGenerator.Types
                             var op = kvp.Key;
                             var opComment = kvp.Value;
 
-                            foreach (var line in string.Format("Executes a component-wise {0}.", opComment).AsComment()) yield return line;
+                            foreach (var line in $"Executes a component-wise {opComment}.".AsComment()) yield return line;
                             yield return ComponentWiseOperator(op);
-                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                            foreach (var line in $"Executes a component-wise {opComment} with a scalar.".AsComment()) yield return line;
                             yield return ComponentWiseOperatorScalar(op, BaseTypeName);
-                            foreach (var line in string.Format("Executes a component-wise {0} with a scalar.", opComment).AsComment()) yield return line;
+                            foreach (var line in $"Executes a component-wise {opComment} with a scalar.".AsComment()) yield return line;
                             yield return ComponentWiseOperatorScalarL(op, BaseTypeName);
                         }
 
@@ -616,11 +616,11 @@ namespace GlmSharpGenerator.Types
                             var op = kvp.Key;
                             var opComment = kvp.Value;
 
-                            foreach (var line in string.Format("Executes a component-wise {0} comparison.", opComment).AsComment()) yield return line;
+                            foreach (var line in $"Executes a component-wise {opComment} comparison.".AsComment()) yield return line;
                             yield return ComparisonOperator(op);
-                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
+                            foreach (var line in $"Executes a component-wise {opComment} comparison with a scalar.".AsComment()) yield return line;
                             yield return ComparisonOperatorScalar(op, BaseTypeName);
-                            foreach (var line in string.Format("Executes a component-wise {0} comparison with a scalar.", opComment).AsComment()) yield return line;
+                            foreach (var line in $"Executes a component-wise {opComment} comparison with a scalar.".AsComment()) yield return line;
                             yield return ComparisonOperatorScalarL(op, BaseTypeName);
                         }
                     }
@@ -653,11 +653,11 @@ namespace GlmSharpGenerator.Types
                         yield return "    var b = -range;";
                         yield return "    var t = range;";
                         yield return "    var m = Identity;";
-                        yield return string.Format("    m.m00 = ({0})( ((2.0)*(double)zNear)/(r - l) );", BaseTypeName);
-                        yield return string.Format("    m.m11 = ({0})( ((2.0)*(double)zNear)/(t - b) );", BaseTypeName);
-                        yield return string.Format("    m.m22 = ({0})( - (1.0) );", BaseTypeName);
-                        yield return string.Format("    m.m23 = ({0})( - (1.0) );", BaseTypeName);
-                        yield return string.Format("    m.m32 = ({0})( - (2.0)*(double)zNear );", BaseTypeName);
+                        yield return $"    m.m00 = ({BaseTypeName})( ((2.0)*(double)zNear)/(r - l) );";
+                        yield return $"    m.m11 = ({BaseTypeName})( ((2.0)*(double)zNear)/(t - b) );";
+                        yield return $"    m.m22 = ({BaseTypeName})( - (1.0) );";
+                        yield return $"    m.m23 = ({BaseTypeName})( - (1.0) );";
+                        yield return $"    m.m32 = ({BaseTypeName})( - (2.0)*(double)zNear );";
                         yield return "    return m;";
                         yield return "}";
 
@@ -666,8 +666,8 @@ namespace GlmSharpGenerator.Types
                         yield return string.Format("public static {0} LookAt({1} eye, {1} center, {1} up)", NameThat, BaseType.Prefix + "vec3");
                         yield return "{";
                         yield return "    var f = (center - eye).Normalized;";
-                        yield return string.Format("    var s = {0}.Cross(f, up).Normalized;", BaseType.Prefix + "vec3");
-                        yield return string.Format("    var u = {0}.Cross(s, f);", BaseType.Prefix + "vec3");
+                        yield return $"    var s = {BaseType.Prefix + "vec3"}.Cross(f, up).Normalized;";
+                        yield return $"    var u = {BaseType.Prefix + "vec3"}.Cross(s, f);";
                         yield return "    var m = Identity;";
                         yield return "    m.m00 = s.x;";
                         yield return "    m.m10 = s.y;";
@@ -678,9 +678,9 @@ namespace GlmSharpGenerator.Types
                         yield return "    m.m02 = -f.x;";
                         yield return "    m.m12 = -f.y;";
                         yield return "    m.m22 = -f.z;";
-                        yield return string.Format("    m.m30 = -{0}.Dot(s, eye);", BaseType.Prefix + "vec3");
-                        yield return string.Format("    m.m31 = -{0}.Dot(u, eye);", BaseType.Prefix + "vec3");
-                        yield return string.Format("    m.m32 = {0}.Dot(f, eye);", BaseType.Prefix + "vec3");
+                        yield return $"    m.m30 = -{BaseType.Prefix + "vec3"}.Dot(s, eye);";
+                        yield return $"    m.m31 = -{BaseType.Prefix + "vec3"}.Dot(u, eye);";
+                        yield return $"    m.m32 = {BaseType.Prefix + "vec3"}.Dot(f, eye);";
                         yield return "    return m;";
                         yield return "}";
 
@@ -716,11 +716,11 @@ namespace GlmSharpGenerator.Types
                         yield return "{";
                         yield return "    var tanHalfFovy = Math.Tan((double)fovy / 2.0);";
                         yield return "    var m = Identity;";
-                        yield return string.Format("    m.m00 = ({0})( 1 / ((double)aspect * tanHalfFovy) );", BaseTypeName);
-                        yield return string.Format("    m.m11 = ({0})( 1 / (tanHalfFovy) );", BaseTypeName);
-                        yield return string.Format("    m.m22 = ({0})( -(zFar + zNear) / (zFar - zNear) );", BaseTypeName);
-                        yield return string.Format("    m.m23 = ({0})( -1 );", BaseTypeName);
-                        yield return string.Format("    m.m32 = ({0})( -(2 * zFar * zNear) / (zFar - zNear) );", BaseTypeName);
+                        yield return $"    m.m00 = ({BaseTypeName})( 1 / ((double)aspect * tanHalfFovy) );";
+                        yield return $"    m.m11 = ({BaseTypeName})( 1 / (tanHalfFovy) );";
+                        yield return $"    m.m22 = ({BaseTypeName})( -(zFar + zNear) / (zFar - zNear) );";
+                        yield return $"    m.m23 = ({BaseTypeName})( -1 );";
+                        yield return $"    m.m32 = ({BaseTypeName})( -(2 * zFar * zNear) / (zFar - zNear) );";
                         yield return "    return m;";
                         yield return "}";
 
@@ -734,8 +734,8 @@ namespace GlmSharpGenerator.Types
                         yield return "    var h = Math.Cos((double)fov / 2.0) / Math.Sin((double)fov / 2.0);";
                         yield return "    var w = h * (double)(height / width);";
                         yield return "    var m = Zero;";
-                        yield return string.Format("    m.m00 = ({0})w;", BaseTypeName);
-                        yield return string.Format("    m.m11 = ({0})h;", BaseTypeName);
+                        yield return $"    m.m00 = ({BaseTypeName})w;";
+                        yield return $"    m.m11 = ({BaseTypeName})h;";
                         yield return "    m.m22 = - (zFar + zNear)/(zFar - zNear);";
                         yield return "    m.m23 = - 1;";
                         yield return "    m.m32 = - (2*zFar*zNear)/(zFar - zNear);";
@@ -748,7 +748,7 @@ namespace GlmSharpGenerator.Types
                         foreach (var line in "Map the specified object coordinates (obj.x, obj.y, obj.z) into window coordinates.".AsComment()) yield return line;
                         yield return string.Format("public static {1} Project({1} obj, {0} model, {0} proj, {2} viewport)", NameThat, BaseType.Prefix + "vec3", BaseType.Prefix + "vec4");
                         yield return "{";
-                        yield return string.Format("    var tmp = proj * (model * new {0}vec4(obj, 1));", BaseType.Prefix);
+                        yield return $"    var tmp = proj * (model * new {BaseType.Prefix}vec4(obj, 1));";
                         yield return "    tmp /= tmp.w;";
                         yield return string.Format("    tmp = tmp * {0} + {0};", ConstantSuffixFor("0.5"));
                         yield return "    tmp.x = tmp.x * viewport.z + viewport.x;";
@@ -760,7 +760,7 @@ namespace GlmSharpGenerator.Types
                         foreach (var line in "Map the specified window coordinates (win.x, win.y, win.z) into object coordinates.".AsComment()) yield return line;
                         yield return string.Format("public static {1} UnProject({1} win, {0} model, {0} proj, {2} viewport)", NameThat, BaseType.Prefix + "vec3", BaseType.Prefix + "vec4");
                         yield return "{";
-                        yield return string.Format("    var tmp = new {0}(win, 1);", BaseType.Prefix + "vec4");
+                        yield return $"    var tmp = new {BaseType.Prefix + "vec4"}(win, 1);";
                         yield return "    tmp.x = (tmp.x - viewport.x) / viewport.z;";
                         yield return "    tmp.y = (tmp.y - viewport.y) / viewport.w;";
                         yield return "    tmp = tmp * 2 - 1;";
@@ -768,27 +768,27 @@ namespace GlmSharpGenerator.Types
                         yield return "    var unp = proj.Inverse * tmp;";
                         yield return "    unp /= unp.w;";
                         yield return "    var obj = model.Inverse * unp;";
-                        yield return string.Format("    return ({0})obj / obj.w;", BaseType.Prefix + "vec3");
+                        yield return $"    return ({BaseType.Prefix + "vec3"})obj / obj.w;";
                         yield return "}";
 
                         foreach (var line in "Map the specified window coordinates (win.x, win.y, win.z) into object coordinates (faster but less precise).".AsComment()) yield return line;
                         yield return string.Format("public static {1} UnProjectFaster({1} win, {0} model, {0} proj, {2} viewport)", NameThat, BaseType.Prefix + "vec3", BaseType.Prefix + "vec4");
                         yield return "{";
-                        yield return string.Format("    var tmp = new {0}(win, 1);", BaseType.Prefix + "vec4");
+                        yield return $"    var tmp = new {BaseType.Prefix + "vec4"}(win, 1);";
                         yield return "    tmp.x = (tmp.x - viewport.x) / viewport.z;";
                         yield return "    tmp.y = (tmp.y - viewport.y) / viewport.w;";
                         yield return "    tmp = tmp * 2 - 1;";
                         yield return "";
                         yield return "    var obj = (proj * model).Inverse * tmp;";
-                        yield return string.Format("    return ({0})obj / obj.w;", BaseType.Prefix + "vec3");
+                        yield return $"    return ({BaseType.Prefix + "vec3"})obj / obj.w;";
                         yield return "}";
 
                         // rotate
                         foreach (var line in "Builds a rotation 4 * 4 matrix created from an axis vector and an angle in radians.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Rotate({1} angle, {2} v)", NameThat, BaseTypeName, BaseType.Prefix + "vec3");
+                        yield return $"public static {NameThat} Rotate({BaseTypeName} angle, {BaseType.Prefix + "vec3"} v)";
                         yield return "{";
-                        yield return string.Format("    var c = ({0})Math.Cos((double)angle);", BaseTypeName);
-                        yield return string.Format("    var s = ({0})Math.Sin((double)angle);", BaseTypeName);
+                        yield return $"    var c = ({BaseTypeName})Math.Cos((double)angle);";
+                        yield return $"    var s = ({BaseTypeName})Math.Sin((double)angle);";
                         yield return "";
                         yield return "    var axis = v.Normalized;";
                         yield return "    var temp = (1 - c) * axis;";
@@ -810,11 +810,11 @@ namespace GlmSharpGenerator.Types
 
                         for (var axis = 0; axis < 3; ++axis)
                         {
-                            foreach (var line in string.Format("Builds a rotation matrix around Unit{0} and an angle in radians.", "XYZ"[axis]).AsComment()) yield return line;
-                            yield return string.Format("public static {0} Rotate{1}({2} angle)", NameThat, "XYZ"[axis], BaseTypeName);
+                            foreach (var line in $"Builds a rotation matrix around Unit{"XYZ"[axis]} and an angle in radians.".AsComment()) yield return line;
+                            yield return $"public static {NameThat} Rotate{"XYZ"[axis]}({BaseTypeName} angle)";
                             yield return "{";
                             // TODO: more performant
-                            yield return string.Format("    return Rotate(angle, {0}.Unit{1});", BaseType.Prefix + "vec3", "XYZ"[axis]);
+                            yield return $"    return Rotate(angle, {BaseType.Prefix + "vec3"}.Unit{"XYZ"[axis]});";
                             yield return "}";
                         }
 
@@ -830,9 +830,9 @@ namespace GlmSharpGenerator.Types
                         yield return "}";
 
                         foreach (var line in "Builds a scale matrix by vector v.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Scale({1} v) => Scale(v.x, v.y, v.z);", NameThat, BaseType.Prefix + "vec3");
+                        yield return $"public static {NameThat} Scale({BaseType.Prefix + "vec3"} v) => Scale(v.x, v.y, v.z);";
                         foreach (var line in "Builds a scale matrix by uniform scaling s.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Scale({1} s) => Scale(s, s, s);", NameThat, BaseTypeName);
+                        yield return $"public static {NameThat} Scale({BaseTypeName} s) => Scale(s, s, s);";
 
                         // translation
                         foreach (var line in "Builds a translation matrix by components x, y, z.".AsComment()) yield return line;
@@ -846,7 +846,7 @@ namespace GlmSharpGenerator.Types
                         yield return "}";
 
                         foreach (var line in "Builds a translation matrix by vector v.".AsComment()) yield return line;
-                        yield return string.Format("public static {0} Translate({1} v) => Translate(v.x, v.y, v.z);", NameThat, BaseType.Prefix + "vec3");
+                        yield return $"public static {NameThat} Translate({BaseType.Prefix + "vec3"} v) => Translate(v.x, v.y, v.z);";
                     }
                 }
             }

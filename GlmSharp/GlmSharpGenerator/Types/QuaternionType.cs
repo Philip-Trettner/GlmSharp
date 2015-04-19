@@ -19,7 +19,7 @@ namespace GlmSharpGenerator.Types
 
         public override string Name => BaseName;
 
-        public override string TypeComment => string.Format("A quaternion of type {0}.", BaseTypeName);
+        public override string TypeComment => $"A quaternion of type {BaseTypeName}.";
 
 
         public IEnumerable<string> Fields => "xyzw".Substring(0, Components).Select(c => c.ToString());
@@ -35,10 +35,10 @@ namespace GlmSharpGenerator.Types
             get
             {
                 if (Version >= 45)
-                    yield return string.Format("IReadOnlyList<{0}>", BaseTypeName);
+                    yield return $"IReadOnlyList<{BaseTypeName}>";
                 else
-                    yield return string.Format("IEnumerable<{0}>", BaseTypeName);
-                yield return string.Format("IEquatable<{0}>", NameThat);
+                    yield return $"IEnumerable<{BaseTypeName}>";
+                yield return $"IEquatable<{NameThat}>";
             }
         }
 
@@ -53,7 +53,7 @@ namespace GlmSharpGenerator.Types
         public string SubCompParameterString(int start, int end) => SubCompParameters(start, end).CommaSeparated();
         public IEnumerable<string> SubCompArgs(int start, int end) => "xyzw".Substring(start, end - start + 1).Select(c => c.ToString());
 
-        public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseType.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
+        public string HashCodeFor(int c) => (c == 0 ? "" : $"(({HashCodeFor(c - 1)}) * {BaseType.HashCodeMultiplier}) ^ ") + HashCodeOf(ArgOf(c).ToString());
 
 
         public override IEnumerable<Member> GenerateMembers()
@@ -71,7 +71,7 @@ namespace GlmSharpGenerator.Types
             foreach (var f in Fields)
                 yield return new Field(f, BaseType)
                 {
-                    Comment = string.Format("{0}-component", f)
+                    Comment = $"{f}-component"
                 };
 
 
@@ -100,7 +100,7 @@ namespace GlmSharpGenerator.Types
                     yield return new StaticProperty("Unit" + ArgOfUpper(c), this)
                     {
                         Value = Construct(this, c.ImpulseString(BaseType.OneValue, ZeroValue, Components)),
-                        Comment = string.Format("Predefined unit-{0} quaternion", ArgOfUpper(c))
+                        Comment = $"Predefined unit-{ArgOfUpper(c)} quaternion"
                     };
             }
 
@@ -116,7 +116,7 @@ namespace GlmSharpGenerator.Types
                     yield return new StaticProperty("ImaginaryUnit" + ArgOfUpper(c), this)
                     {
                         Value = Construct(this, c.ImpulseString("Complex.ImaginaryOne", ZeroValue, Components)),
-                        Comment = string.Format("Predefined unit-imaginary-{0} quaternion", ArgOfUpper(c))
+                        Comment = $"Predefined unit-imaginary-{ArgOfUpper(c)} quaternion"
                     };
             }
 
@@ -125,15 +125,15 @@ namespace GlmSharpGenerator.Types
             {
                 yield return new StaticProperty(constant, this)
                 {
-                    Value = Construct(this, string.Format("{0}.{1}", BaseTypeName, constant).RepeatTimes(Components)),
-                    Comment = string.Format("Predefined all-{0} quaternion", constant)
+                    Value = Construct(this, $"{BaseTypeName}.{constant}".RepeatTimes(Components)),
+                    Comment = $"Predefined all-{constant} quaternion"
                 };
             }
 
             // values
             yield return new Property("Values", new ArrayType(BaseType))
             {
-                GetterLine = string.Format("new[] {{ {0} }}", CompArgString),
+                GetterLine = $"new[] {{ {CompArgString} }}",
                 Comment = "Returns an array with all values"
             };
 
@@ -170,9 +170,9 @@ namespace GlmSharpGenerator.Types
                     Parameters = vec3Type.TypedArgs("u", "v"),
                     Code = new[]
                     {
-                        string.Format("var localW = {0}.Cross(u, v);", vec3Type.NameThat),
-                        string.Format("var dot = {0}.Dot(u, v);", vec3Type.NameThat),
-                        string.Format("var q = new {0}(localW.x, localW.y, localW.z, {1} + dot).Normalized;", NameThat, OneValue)
+                        $"var localW = {vec3Type.NameThat}.Cross(u, v);",
+                        $"var dot = {vec3Type.NameThat}.Dot(u, v);",
+                        $"var q = new {NameThat}(localW.x, localW.y, localW.z, {OneValue} + dot).Normalized;"
                     },
                     Initializers = new[] { "q.x", "q.y", "q.z", "q.w" },
                     Comment = "Create a quaternion from two normalized axis (http://lolengine.net/blog/2013/09/18/beautiful-maths-quaternion-from-vectors)"
@@ -184,8 +184,8 @@ namespace GlmSharpGenerator.Types
                     Parameters = vec3Type.TypedArgs("eulerAngle"),
                     Code = new[]
                     {
-                        string.Format("var c = {0}.Cos(eulerAngle / 2);", vec3Type.NameThat),
-                        string.Format("var s = {0}.Sin(eulerAngle / 2);", vec3Type.NameThat),
+                        $"var c = {vec3Type.NameThat}.Cos(eulerAngle / 2);",
+                        $"var s = {vec3Type.NameThat}.Sin(eulerAngle / 2);",
                     },
                     Initializers = new[]
                     {
@@ -202,13 +202,13 @@ namespace GlmSharpGenerator.Types
                 {
                     ParameterString = mat3Type.Name + " m",
                     ConstructorChain = "this(FromMat3(m))",
-                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat3Type.Name)
+                    Comment = $"Creates a quaternion from the rotational part of a {mat3Type.Name}."
                 };
                 yield return new Constructor(this, Fields)
                 {
                     ParameterString = mat4Type.Name + " m",
                     ConstructorChain = "this(FromMat4(m))",
-                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat4Type.Name)
+                    Comment = $"Creates a quaternion from the rotational part of a {mat4Type.Name}."
                 };
             }
 
@@ -226,7 +226,7 @@ namespace GlmSharpGenerator.Types
                 {
                     ParameterString = NameThat + " v",
                     CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(Components, otherType.ZeroValue)),
-                    Comment = string.Format("Implicitly converts this to a {0}.", targetType.Name),
+                    Comment = $"Implicitly converts this to a {targetType.Name}.",
                 };
             }
 
@@ -246,7 +246,7 @@ namespace GlmSharpGenerator.Types
                         {
                             ParameterString = NameThat + " v",
                             CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c))),
-                            Comment = string.Format("Explicitly converts this to a {0}.", targetType.Name)
+                            Comment = $"Explicitly converts this to a {targetType.Name}."
                         };
                     }
 
@@ -262,7 +262,7 @@ namespace GlmSharpGenerator.Types
                         {
                             ParameterString = NameThat + " v",
                             CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c))),
-                            Comment = string.Format("Explicitly converts this to a {0}.", targetType.Name)
+                            Comment = $"Explicitly converts this to a {targetType.Name}."
                         };
                     }
                 }
@@ -274,21 +274,21 @@ namespace GlmSharpGenerator.Types
                 {
                     ParameterString = mat3Type.Name + " m",
                     CodeString = "FromMat3(m)",
-                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat3Type.Name)
+                    Comment = $"Creates a quaternion from the rotational part of a {mat3Type.Name}."
                 };
                 yield return new ExplicitOperator(this)
                 {
                     ParameterString = mat4Type.Name + " m",
                     CodeString = "FromMat4(m)",
-                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat4Type.Name)
+                    Comment = $"Creates a quaternion from the rotational part of a {mat4Type.Name}."
                 };
             }
 
 
             // IEnumerable
-            yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")
+            yield return new Function(new AnyType($"IEnumerator<{BaseTypeName}>"), "GetEnumerator")
             {
-                Code = Fields.Select(f => string.Format("yield return {0};", f)),
+                Code = Fields.Select(f => $"yield return {f};"),
                 Comment = "Returns an enumerator that iterates through all components."
             };
 
@@ -358,7 +358,7 @@ namespace GlmSharpGenerator.Types
                     {
                         "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                         string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                        string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim())", BaseTypeName, i)).CommaSeparated())
+                        $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim())").CommaSeparated()});"
                     },
                     Comment = "Converts the string representation of the quaternion into a quaternion representation (using a designated separator)."
                 };
@@ -373,7 +373,7 @@ namespace GlmSharpGenerator.Types
                         {
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                             string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), provider)", BaseTypeName, i)).CommaSeparated())
+                            $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim(), provider)").CommaSeparated()});"
                         },
                         Comment = "Converts the string representation of the quaternion into a quaternion representation (using a designated separator and a type provider)."
                     };
@@ -385,7 +385,7 @@ namespace GlmSharpGenerator.Types
                         {
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                             string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style)", BaseTypeName, i)).CommaSeparated())
+                            $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim(), style)").CommaSeparated()});"
                         },
                         Comment = "Converts the string representation of the quaternion into a quaternion representation (using a designated separator and a number style)."
                     };
@@ -397,7 +397,7 @@ namespace GlmSharpGenerator.Types
                         {
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                             string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style, provider)", BaseTypeName, i)).CommaSeparated())
+                            $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim(), style, provider)").CommaSeparated()});"
                         },
                         Comment = "Converts the string representation of the quaternion into a quaternion representation (using a designated separator and a number style and a format provider)."
                     };
@@ -407,7 +407,7 @@ namespace GlmSharpGenerator.Types
                 yield return new Function(BuiltinType.TypeBool, "TryParse")
                 {
                     Static = true,
-                    ParameterString = string.Format("string s, out {0} result", NameThat),
+                    ParameterString = $"string s, out {NameThat} result",
                     CodeString = "TryParse(s, \", \", out result)",
                     Comment = "Tries to convert the string representation of the quaternion into a quaternion representation (using ', ' as a separator), returns false if string was invalid."
                 };
@@ -415,16 +415,16 @@ namespace GlmSharpGenerator.Types
                 yield return new Function(BuiltinType.TypeBool, "TryParse")
                 {
                     Static = true,
-                    ParameterString = string.Format("string s, string sep, out {0} result", NameThat),
+                    ParameterString = $"string s, string sep, out {NameThat} result",
                     Code = new[]
                     {
                         "result = Zero;",
                         "if (string.IsNullOrEmpty(s)) return false;",
                         "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
-                        string.Format("if (kvp.Length != {0}) return false;", Components),
-                        string.Format("{0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()),
-                        string.Format("var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && ")),
-                        string.Format("result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString),
+                        $"if (kvp.Length != {Components}) return false;",
+                        $"{BaseTypeName} {CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()};",
+                        $"var ok = {Components.ForIndexUpTo(i => $"{BaseTypeName}.TryParse(kvp[{i}].Trim(), out {ArgOf(i)})").Aggregated(" && ")};",
+                        $"result = ok ? new {NameThat}({CompArgString}) : Zero;",
                         "return ok;"
                     },
                     Comment = "Tries to convert the string representation of the quaternion into a quaternion representation (using a designated separator), returns false if string was invalid."
@@ -435,16 +435,16 @@ namespace GlmSharpGenerator.Types
                     yield return new Function(BuiltinType.TypeBool, "TryParse")
                     {
                         Static = true,
-                        ParameterString = string.Format("string s, string sep, NumberStyles style, IFormatProvider provider, out {0} result", NameThat),
+                        ParameterString = $"string s, string sep, NumberStyles style, IFormatProvider provider, out {NameThat} result",
                         Code = new[]
                         {
                             "result = Zero;",
                             "if (string.IsNullOrEmpty(s)) return false;",
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
-                            string.Format("if (kvp.Length != {0}) return false;", Components),
-                            string.Format("{0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()),
-                            string.Format("var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), style, provider, out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && ")),
-                            string.Format("result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString),
+                            $"if (kvp.Length != {Components}) return false;",
+                            $"{BaseTypeName} {CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()};",
+                            $"var ok = {Components.ForIndexUpTo(i => $"{BaseTypeName}.TryParse(kvp[{i}].Trim(), style, provider, out {ArgOf(i)})").Aggregated(" && ")};",
+                            $"result = ok ? new {NameThat}({CompArgString}) : Zero;",
                             "return ok;"
                         },
                         Comment = "Tries to convert the string representation of the quaternion into a quaternion representation (using a designated separator and a number style and a format provider), returns false if string was invalid."
@@ -456,14 +456,14 @@ namespace GlmSharpGenerator.Types
             yield return new Property("Count", BuiltinType.TypeInt)
             {
                 GetterLine = Components.ToString(),
-                Comment = string.Format("Returns the number of components ({0}).", Components)
+                Comment = $"Returns the number of components ({Components})."
             };
 
             yield return new Indexer(BaseType)
             {
                 ParameterString = "int index",
-                Getter = SwitchIndex(Components.ForIndexUpTo(i => string.Format("case {0}: return {1};", i, ArgOf(i)))),
-                Setter = SwitchIndex(Components.ForIndexUpTo(i => string.Format("case {0}: {1} = value; break;", i, ArgOf(i)))),
+                Getter = SwitchIndex(Components.ForIndexUpTo(i => $"case {i}: return {ArgOf(i)};")),
+                Setter = SwitchIndex(Components.ForIndexUpTo(i => $"case {i}: {ArgOf(i)} = value; break;")),
                 Comment = "Gets/Sets a specific indexed component (a bit slower than direct access)."
             };
 
@@ -508,7 +508,7 @@ namespace GlmSharpGenerator.Types
                 {
                     "unchecked",
                     "{",
-                    string.Format("    return {0};", HashCodeFor(Components - 1)),
+                    $"    return {HashCodeFor(Components - 1)};",
                     "}"
                 },
                 Comment = "Returns a hash code for this instance."
@@ -581,9 +581,9 @@ namespace GlmSharpGenerator.Types
                     Parameters = this.TypedArgs("q").Concat(vec3Type.TypedArgs("v")),
                     Code = new[]
                     {
-                        string.Format("var qv = {0};", Construct(vec3Type, "q.x", "q.y", "q.z")),
-                        string.Format("var uv = {0}.Cross(qv, v);", vec3Type.Name),
-                        string.Format("var uuv = {0}.Cross(qv, uv);", vec3Type.Name),
+                        $"var qv = {Construct(vec3Type, "q.x", "q.y", "q.z")};",
+                        $"var uv = {vec3Type.Name}.Cross(qv, v);",
+                        $"var uuv = {vec3Type.Name}.Cross(qv, uv);",
                         "return v + ((uv * q.w) + uuv) * 2;"
                     },
                     Comment = "Returns a vector rotated by the quaternion."
@@ -671,9 +671,9 @@ namespace GlmSharpGenerator.Types
                     Getter = new[]
                     {
                         "var s1 = 1 - w * w;",
-                        string.Format("if (s1 < 0) return {0}.UnitZ;", vec3Type.Name),
-                        string.Format("var s2 = 1 / {0};", SqrtOf("s1")),
-                        string.Format("return {0};", Construct(vec3Type, BaseTypeCast + "(x * s2)", BaseTypeCast + "(y * s2)", BaseTypeCast + "(z * s2)"))
+                        $"if (s1 < 0) return {vec3Type.Name}.UnitZ;",
+                        $"var s2 = 1 / {SqrtOf("s1")};",
+                        $"return {Construct(vec3Type, BaseTypeCast + "(x * s2)", BaseTypeCast + "(y * s2)", BaseTypeCast + "(z * s2)")};"
                     },
                     Comment = "Returns the represented axis of this quaternion."
                 };
@@ -710,7 +710,7 @@ namespace GlmSharpGenerator.Types
                     {
                         "var s = Math.Sin((double)angle * 0.5);",
                         "var c = Math.Cos((double)angle * 0.5);",
-                        string.Format("return {0};", Construct(this, BaseTypeCast + "((double)v.x * s)", BaseTypeCast + "((double)v.y * s)", BaseTypeCast + "((double)v.z * s)", BaseTypeCast + "c"))
+                        $"return {Construct(this, BaseTypeCast + "((double)v.x * s)", BaseTypeCast + "((double)v.y * s)", BaseTypeCast + "((double)v.z * s)", BaseTypeCast + "c")};"
                     },
                     Comment = "Creates a quaternion from an axis and an angle (in radians)."
                 };
@@ -741,13 +741,13 @@ namespace GlmSharpGenerator.Types
                         "2 * (y*z - w*x)",
                         "1 - 2 * (x*x + y*y)"
                         ),
-                    Comment = string.Format("Creates a {0} that realizes the rotation of this quaternion", mat3Type.Name)
+                    Comment = $"Creates a {mat3Type.Name} that realizes the rotation of this quaternion"
                 };
 
                 yield return new Property("ToMat4", mat4Type)
                 {
                     GetterLine = Construct(mat4Type, "ToMat3"),
-                    Comment = string.Format("Creates a {0} that realizes the rotation of this quaternion", mat4Type.Name)
+                    Comment = $"Creates a {mat4Type.Name} that realizes the rotation of this quaternion"
                 };
 
                 yield return new Function(this, "FromMat3")
@@ -781,21 +781,21 @@ namespace GlmSharpGenerator.Types
                         "var mult = 0.25 / biggestVal;",
                         "switch(biggestIndex)",
                         "{",
-                        string.Format("    case 0: return {0};", Construct(this, BaseTypeCast + "((double)(m.m12 - m.m21) * mult)", BaseTypeCast + "((double)(m.m20 - m.m02) * mult)", BaseTypeCast + "((double)(m.m01 - m.m10) * mult)", BaseTypeCast + "(biggestVal)")),
-                        string.Format("    case 1: return {0};", Construct(this, BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m01 + m.m10) * mult)", BaseTypeCast + "((double)(m.m20 + m.m02) * mult)", BaseTypeCast + "((double)(m.m12 - m.m21) * mult)")),
-                        string.Format("    case 2: return {0};", Construct(this, BaseTypeCast + "((double)(m.m01 + m.m10) * mult)", BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m12 + m.m21) * mult)", BaseTypeCast + "((double)(m.m20 - m.m02) * mult)")),
-                        string.Format("    default: return {0};", Construct(this, BaseTypeCast + "((double)(m.m20 + m.m02) * mult)", BaseTypeCast + "((double)(m.m12 + m.m21) * mult)", BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m01 - m.m10) * mult)")),
+                        $"    case 0: return {Construct(this, BaseTypeCast + "((double)(m.m12 - m.m21) * mult)", BaseTypeCast + "((double)(m.m20 - m.m02) * mult)", BaseTypeCast + "((double)(m.m01 - m.m10) * mult)", BaseTypeCast + "(biggestVal)")};",
+                        $"    case 1: return {Construct(this, BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m01 + m.m10) * mult)", BaseTypeCast + "((double)(m.m20 + m.m02) * mult)", BaseTypeCast + "((double)(m.m12 - m.m21) * mult)")};",
+                        $"    case 2: return {Construct(this, BaseTypeCast + "((double)(m.m01 + m.m10) * mult)", BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m12 + m.m21) * mult)", BaseTypeCast + "((double)(m.m20 - m.m02) * mult)")};",
+                        $"    default: return {Construct(this, BaseTypeCast + "((double)(m.m20 + m.m02) * mult)", BaseTypeCast + "((double)(m.m12 + m.m21) * mult)", BaseTypeCast + "(biggestVal)", BaseTypeCast + "((double)(m.m01 - m.m10) * mult)")};",
                         "}"
                     },
-                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat4Type.Name)
+                    Comment = $"Creates a quaternion from the rotational part of a {mat4Type.Name}."
                 };
 
                 yield return new Function(this, "FromMat4")
                 {
                     Static = true,
                     Parameters = mat4Type.TypedArgs("m"),
-                    CodeString = string.Format("FromMat3({0})", Construct(mat3Type, "m")),
-                    Comment = string.Format("Creates a quaternion from the rotational part of a {0}.", mat3Type.Name)
+                    CodeString = $"FromMat3({Construct(mat3Type, "m")})",
+                    Comment = $"Creates a quaternion from the rotational part of a {mat3Type.Name}."
                 };
             }
 

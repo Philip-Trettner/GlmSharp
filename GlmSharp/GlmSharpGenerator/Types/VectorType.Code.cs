@@ -36,7 +36,7 @@ namespace GlmSharpGenerator.Types
             foreach (var f in Fields)
                 yield return new Field(f, BaseType)
                 {
-                    Comment = string.Format("{0}-component", f)
+                    Comment = $"{f}-component"
                 };
 
             // swizzle
@@ -57,8 +57,8 @@ namespace GlmSharpGenerator.Types
 
                 yield return new Property(swizzle, vecType)
                 {
-                    GetterLine = string.Format("return {0};", Construct(vecType, swizzle.Select(c => c.ToString()))),
-                    Setter = swizzle.Select((c, i) => string.Format("{0} = value.{1};", c, ArgOf(i))),
+                    GetterLine = $"return {Construct(vecType, swizzle.Select(c => c.ToString()))};",
+                    Setter = swizzle.Select((c, i) => $"{c} = value.{ArgOf(i)};"),
                     Comment = "Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property."
                 };
             }
@@ -73,8 +73,8 @@ namespace GlmSharpGenerator.Types
 
                 yield return new Property(ToRgba(swizzle), vecType)
                 {
-                    GetterLine = string.Format("return {0};", Construct(vecType, swizzle.Select(c => c.ToString()))),
-                    Setter = swizzle.Select((c, i) => string.Format("{0} = value.{1};", c, ArgOf(i))),
+                    GetterLine = $"return {Construct(vecType, swizzle.Select(c => c.ToString()))};",
+                    Setter = swizzle.Select((c, i) => $"{c} = value.{ArgOf(i)};"),
                     Comment = "Gets or sets the specified subset of components. For more advanced (read-only) swizzling, use the .swizzle property."
                 };
             }
@@ -82,8 +82,8 @@ namespace GlmSharpGenerator.Types
             {
                 yield return new Property("rgba"[c].ToString(), BaseType)
                 {
-                    GetterLine = string.Format("return {0};", "xyzw"[c]),
-                    SetterLine = string.Format("{0} = value;", "xyzw"[c]),
+                    GetterLine = $"return {"xyzw"[c]};",
+                    SetterLine = $"{"xyzw"[c]} = value;",
                     Comment = "Gets or sets the specified RGBA component. For more advanced (read-only) swizzling, use the .swizzle property."
                 };
             }
@@ -107,7 +107,7 @@ namespace GlmSharpGenerator.Types
                     yield return new StaticProperty("Unit" + ArgOfUpper(c), this)
                     {
                         Value = Construct(this, c.ImpulseString(BaseType.OneValue, ZeroValue, Components)),
-                        Comment = string.Format("Predefined unit-{0} vector", ArgOfUpper(c))
+                        Comment = $"Predefined unit-{ArgOfUpper(c)} vector"
                     };
             }
 
@@ -123,7 +123,7 @@ namespace GlmSharpGenerator.Types
                     yield return new StaticProperty("ImaginaryUnit" + ArgOfUpper(c), this)
                     {
                         Value = Construct(this, c.ImpulseString("Complex.ImaginaryOne", ZeroValue, Components)),
-                        Comment = string.Format("Predefined unit-imaginary-{0} vector", ArgOfUpper(c))
+                        Comment = $"Predefined unit-imaginary-{ArgOfUpper(c)} vector"
                     };
             }
 
@@ -132,15 +132,15 @@ namespace GlmSharpGenerator.Types
             {
                 yield return new StaticProperty(constant, this)
                 {
-                    Value = Construct(this, string.Format("{0}.{1}", BaseTypeName, constant).RepeatTimes(Components)),
-                    Comment = string.Format("Predefined all-{0} vector", constant)
+                    Value = Construct(this, $"{BaseTypeName}.{constant}".RepeatTimes(Components)),
+                    Comment = $"Predefined all-{constant} vector"
                 };
             }
 
             // values
             yield return new Property("Values", new ArrayType(BaseType))
             {
-                GetterLine = string.Format("new[] {{ {0} }}", CompArgString),
+                GetterLine = $"new[] {{ {CompArgString} }}",
                 Comment = "Returns an array with all values"
             };
 
@@ -192,7 +192,7 @@ namespace GlmSharpGenerator.Types
             if (Version >= 45)
                 yield return new Constructor(this, Fields)
                 {
-                    ParameterString = string.Format("IReadOnlyList<{0}> v", BaseTypeName),
+                    ParameterString = $"IReadOnlyList<{BaseTypeName}> v",
                     Code = new[] { string.Format("var c = v.Count;") },
                     Initializers = Components.ForIndexUpTo(i => string.Format("c < {0} ? {1} : v[{0}]", i, ZeroValue)),
                     Comment = "From-array/list constructor (superfluous values are ignored, missing values are zero-filled)."
@@ -206,14 +206,14 @@ namespace GlmSharpGenerator.Types
             };
             yield return new Constructor(this, Fields)
             {
-                ParameterString = string.Format("{0}[] v", BaseTypeName),
+                ParameterString = $"{BaseTypeName}[] v",
                 Code = new[] { string.Format("var c = v.Length;") },
                 Initializers = Components.ForIndexUpTo(i => string.Format("c < {0} ? {1} : v[{0}]", i, ZeroValue)),
                 Comment = "From-array constructor (superfluous values are ignored, missing values are zero-filled)."
             };
             yield return new Constructor(this, Fields)
             {
-                ParameterString = string.Format("{0}[] v, int startIndex", BaseTypeName),
+                ParameterString = $"{BaseTypeName}[] v, int startIndex",
                 Code = new[] { string.Format("var c = v.Length;") },
                 Initializers = Components.ForIndexUpTo(i => string.Format("c + startIndex < {0} ? {1} : v[{0} + startIndex]", i, ZeroValue)),
                 Comment = "From-array constructor with base index (superfluous values are ignored, missing values are zero-filled)."
@@ -221,15 +221,15 @@ namespace GlmSharpGenerator.Types
             if (Version >= 40)
                 yield return new Constructor(this, Fields)
                 {
-                    ParameterString = string.Format("IEnumerable<{0}> v", BaseTypeName),
+                    ParameterString = $"IEnumerable<{BaseTypeName}> v",
                     ConstructorChain = "this(v.ToArray())",
                     Comment = "From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled)."
                 };
             else
                 yield return new Constructor(this, Fields)
                 {
-                    ParameterString = string.Format("IEnumerable<{0}> v", BaseTypeName),
-                    ConstructorChain = string.Format("this(new List<{0}>(v).ToArray())", BaseTypeName),
+                    ParameterString = $"IEnumerable<{BaseTypeName}> v",
+                    ConstructorChain = $"this(new List<{BaseTypeName}>(v).ToArray())",
                     Comment = "From-IEnumerable constructor (superfluous values are ignored, missing values are zero-filled)."
                 };
 
@@ -246,7 +246,7 @@ namespace GlmSharpGenerator.Types
                 {
                     ParameterString = NameThat + " v",
                     CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(Components, otherType.ZeroValue)),
-                    Comment = string.Format("Implicitly converts this to a {0}.", targetType.Name),
+                    Comment = $"Implicitly converts this to a {targetType.Name}.",
                 };
             }
 
@@ -275,27 +275,27 @@ namespace GlmSharpGenerator.Types
                     {
                         ParameterString = NameThat + " v",
                         CodeString = Construct(targetType, CompString.Select(c => TypeCast(otherType, "v." + c)).ExactlyN(comps, otherType.ZeroValue)),
-                        Comment = string.Format("Explicitly converts this to a {0}.{1}", targetType.Name, commentAppendix)
+                        Comment = $"Explicitly converts this to a {targetType.Name}.{commentAppendix}"
                     };
                 }
             }
             yield return new ExplicitOperator(new ArrayType(BaseType))
             {
                 ParameterString = NameThat + " v",
-                CodeString = string.Format("new [] {{ {0} }}", Fields.Select(f => "v." + f).CommaSeparated()),
-                Comment = string.Format("Explicitly converts this to a {0} array.", BaseTypeName)
+                CodeString = $"new [] {{ {Fields.Select(f => "v." + f).CommaSeparated()} }}",
+                Comment = $"Explicitly converts this to a {BaseTypeName} array."
             };
             yield return new ExplicitOperator(new AnyType("Object[]"))
             {
                 ParameterString = NameThat + " v",
-                CodeString = string.Format("new Object[] {{ {0} }}", Fields.Select(f => "v." + f).CommaSeparated()),
+                CodeString = $"new Object[] {{ {Fields.Select(f => "v." + f).CommaSeparated()} }}",
                 Comment = string.Format("Explicitly converts this to a generic object array.")
             };
 
             // IEnumerable
-            yield return new Function(new AnyType(string.Format("IEnumerator<{0}>", BaseTypeName)), "GetEnumerator")
+            yield return new Function(new AnyType($"IEnumerator<{BaseTypeName}>"), "GetEnumerator")
             {
-                Code = Fields.Select(f => string.Format("yield return {0};", f)),
+                Code = Fields.Select(f => $"yield return {f};"),
                 Comment = "Returns an enumerator that iterates through all components."
             };
 
@@ -364,7 +364,7 @@ namespace GlmSharpGenerator.Types
                     {
                         "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                         string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                        string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim())", BaseTypeName, i)).CommaSeparated())
+                        $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim())").CommaSeparated()});"
                     },
                     Comment = "Converts the string representation of the vector into a vector representation (using a designated separator)."
                 };
@@ -379,7 +379,7 @@ namespace GlmSharpGenerator.Types
                         {
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                             string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), provider)", BaseTypeName, i)).CommaSeparated())
+                            $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim(), provider)").CommaSeparated()});"
                         },
                         Comment = "Converts the string representation of the vector into a vector representation (using a designated separator and a type provider)."
                     };
@@ -391,7 +391,7 @@ namespace GlmSharpGenerator.Types
                         {
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                             string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style)", BaseTypeName, i)).CommaSeparated())
+                            $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim(), style)").CommaSeparated()});"
                         },
                         Comment = "Converts the string representation of the vector into a vector representation (using a designated separator and a number style)."
                     };
@@ -403,7 +403,7 @@ namespace GlmSharpGenerator.Types
                         {
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
                             string.Format("if (kvp.Length != {0}) throw new FormatException(\"input has not exactly {0} parts\");", Components),
-                            string.Format("return new {0}({1});", NameThat, Components.ForIndexUpTo(i => string.Format("{0}.Parse(kvp[{1}].Trim(), style, provider)", BaseTypeName, i)).CommaSeparated())
+                            $"return new {NameThat}({Components.ForIndexUpTo(i => $"{BaseTypeName}.Parse(kvp[{i}].Trim(), style, provider)").CommaSeparated()});"
                         },
                         Comment = "Converts the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider)."
                     };
@@ -413,7 +413,7 @@ namespace GlmSharpGenerator.Types
                 yield return new Function(BuiltinType.TypeBool, "TryParse")
                 {
                     Static = true,
-                    ParameterString = string.Format("string s, out {0} result", NameThat),
+                    ParameterString = $"string s, out {NameThat} result",
                     CodeString = "TryParse(s, \", \", out result)",
                     Comment = "Tries to convert the string representation of the vector into a vector representation (using ', ' as a separator), returns false if string was invalid."
                 };
@@ -421,16 +421,16 @@ namespace GlmSharpGenerator.Types
                 yield return new Function(BuiltinType.TypeBool, "TryParse")
                 {
                     Static = true,
-                    ParameterString = string.Format("string s, string sep, out {0} result", NameThat),
+                    ParameterString = $"string s, string sep, out {NameThat} result",
                     Code = new[]
                     {
                         "result = Zero;",
                         "if (string.IsNullOrEmpty(s)) return false;",
                         "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
-                        string.Format("if (kvp.Length != {0}) return false;", Components),
-                        string.Format("{0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()),
-                        string.Format("var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && ")),
-                        string.Format("result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString),
+                        $"if (kvp.Length != {Components}) return false;",
+                        $"{BaseTypeName} {CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()};",
+                        $"var ok = {Components.ForIndexUpTo(i => $"{BaseTypeName}.TryParse(kvp[{i}].Trim(), out {ArgOf(i)})").Aggregated(" && ")};",
+                        $"result = ok ? new {NameThat}({CompArgString}) : Zero;",
                         "return ok;"
                     },
                     Comment = "Tries to convert the string representation of the vector into a vector representation (using a designated separator), returns false if string was invalid."
@@ -441,16 +441,16 @@ namespace GlmSharpGenerator.Types
                     yield return new Function(BuiltinType.TypeBool, "TryParse")
                     {
                         Static = true,
-                        ParameterString = string.Format("string s, string sep, NumberStyles style, IFormatProvider provider, out {0} result", NameThat),
+                        ParameterString = $"string s, string sep, NumberStyles style, IFormatProvider provider, out {NameThat} result",
                         Code = new[]
                         {
                             "result = Zero;",
                             "if (string.IsNullOrEmpty(s)) return false;",
                             "var kvp = s.Split(new[] { sep }, StringSplitOptions.None);",
-                            string.Format("if (kvp.Length != {0}) return false;", Components),
-                            string.Format("{0} {1};", BaseTypeName, CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()),
-                            string.Format("var ok = {0};", Components.ForIndexUpTo(i => string.Format("{0}.TryParse(kvp[{1}].Trim(), style, provider, out {2})", BaseTypeName, i, ArgOf(i))).Aggregated(" && ")),
-                            string.Format("result = ok ? new {0}({1}) : Zero;", NameThat, CompArgString),
+                            $"if (kvp.Length != {Components}) return false;",
+                            $"{BaseTypeName} {CompString.Select(c => c + " = " + ZeroValue).CommaSeparated()};",
+                            $"var ok = {Components.ForIndexUpTo(i => $"{BaseTypeName}.TryParse(kvp[{i}].Trim(), style, provider, out {ArgOf(i)})").Aggregated(" && ")};",
+                            $"result = ok ? new {NameThat}({CompArgString}) : Zero;",
                             "return ok;"
                         },
                         Comment = "Tries to convert the string representation of the vector into a vector representation (using a designated separator and a number style and a format provider), returns false if string was invalid."
@@ -462,14 +462,14 @@ namespace GlmSharpGenerator.Types
             yield return new Property("Count", BuiltinType.TypeInt)
             {
                 GetterLine = Components.ToString(),
-                Comment = string.Format("Returns the number of components ({0}).", Components)
+                Comment = $"Returns the number of components ({Components})."
             };
 
             yield return new Indexer(BaseType)
             {
                 ParameterString = "int index",
-                Getter = SwitchIndex(Components.ForIndexUpTo(i => string.Format("case {0}: return {1};", i, ArgOf(i)))),
-                Setter = SwitchIndex(Components.ForIndexUpTo(i => string.Format("case {0}: {1} = value; break;", i, ArgOf(i)))),
+                Getter = SwitchIndex(Components.ForIndexUpTo(i => $"case {i}: return {ArgOf(i)};")),
+                Setter = SwitchIndex(Components.ForIndexUpTo(i => $"case {i}: {ArgOf(i)} = value; break;")),
                 Comment = "Gets/Sets a specific indexed component (a bit slower than direct access)."
             };
 
@@ -514,7 +514,7 @@ namespace GlmSharpGenerator.Types
                 {
                     "unchecked",
                     "{",
-                    string.Format("    return {0};", HashCodeFor(Components - 1)),
+                    $"    return {HashCodeFor(Components - 1)};",
                     "}"
                 },
                 Comment = "Returns a hash code for this instance."
@@ -605,8 +605,8 @@ namespace GlmSharpGenerator.Types
                     // TODO: Acosh, Asinh, Atanh
 
                     yield return new ComponentWiseStaticFunction(Fields, this, "Step", this, "v", string.Format("{{0}} >= {0} ? {1} : {0}", ZeroValue, OneValue));
-                    yield return new ComponentWiseStaticFunction(Fields, this, "Sqrt", this, "v", string.Format("({0})Math.Sqrt((double){{0}})", BaseTypeName));
-                    yield return new ComponentWiseStaticFunction(Fields, this, "InverseSqrt", this, "v", string.Format("({0})(1.0 / Math.Sqrt((double){{0}}))", BaseTypeName));
+                    yield return new ComponentWiseStaticFunction(Fields, this, "Sqrt", this, "v", $"({BaseTypeName})Math.Sqrt((double){{0}})");
+                    yield return new ComponentWiseStaticFunction(Fields, this, "InverseSqrt", this, "v", $"({BaseTypeName})(1.0 / Math.Sqrt((double){{0}}))");
                     yield return new ComponentWiseStaticFunction(Fields, integerVType, "Sign", this, "v", "Math.Sign({0})");
 
                     yield return new ComponentWiseStaticFunction(Fields, this, "Max", this, "lhs", this, "rhs", MathClass + ".Max({0}, {1})");
@@ -692,24 +692,24 @@ namespace GlmSharpGenerator.Types
                 yield return new ComponentWiseStaticFunction(Fields, this, "Degrees", this, "v", BaseTypeCast + "({0} * " + ConstantSuffixFor("57.295779513082320876798154814105170332405472466564321") + ")") { AdditionalComment = "Radians-To-Degrees Conversion" };
                 yield return new ComponentWiseStaticFunction(Fields, this, "Radians", this, "v", BaseTypeCast + "({0} * " + ConstantSuffixFor("0.0174532925199432957692369076848861271344287188854172") + ")") { AdditionalComment = "Degrees-To-Radians Conversion" };
 
-                yield return new ComponentWiseStaticFunction(Fields, this, "Acos", this, "v", string.Format("({0})Math.Acos((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Asin", this, "v", string.Format("({0})Math.Asin((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Atan", this, "v", string.Format("({0})Math.Atan((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Cos", this, "v", string.Format("({0})Math.Cos((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Cosh", this, "v", string.Format("({0})Math.Cosh((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Exp", this, "v", string.Format("({0})Math.Exp((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Log", this, "v", string.Format("({0})Math.Log((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Log2", this, "v", string.Format("({0})Math.Log((double){{0}}, 2)", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Log10", this, "v", string.Format("({0})Math.Log10((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Floor", this, "v", string.Format("({0})Math.Floor({{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Ceiling", this, "v", string.Format("({0})Math.Ceiling({{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Round", this, "v", string.Format("({0})Math.Round({{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Sin", this, "v", string.Format("({0})Math.Sin((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Sinh", this, "v", string.Format("({0})Math.Sinh((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Tan", this, "v", string.Format("({0})Math.Tan((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Tanh", this, "v", string.Format("({0})Math.Tanh((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Truncate", this, "v", string.Format("({0})Math.Truncate((double){{0}})", BaseTypeName));
-                yield return new ComponentWiseStaticFunction(Fields, this, "Fract", this, "v", string.Format("({0})({{0}} - Math.Floor({{0}}))", BaseTypeName));
+                yield return new ComponentWiseStaticFunction(Fields, this, "Acos", this, "v", $"({BaseTypeName})Math.Acos((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Asin", this, "v", $"({BaseTypeName})Math.Asin((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Atan", this, "v", $"({BaseTypeName})Math.Atan((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Cos", this, "v", $"({BaseTypeName})Math.Cos((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Cosh", this, "v", $"({BaseTypeName})Math.Cosh((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Exp", this, "v", $"({BaseTypeName})Math.Exp((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Log", this, "v", $"({BaseTypeName})Math.Log((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Log2", this, "v", $"({BaseTypeName})Math.Log((double){{0}}, 2)");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Log10", this, "v", $"({BaseTypeName})Math.Log10((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Floor", this, "v", $"({BaseTypeName})Math.Floor({{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Ceiling", this, "v", $"({BaseTypeName})Math.Ceiling({{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Round", this, "v", $"({BaseTypeName})Math.Round({{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Sin", this, "v", $"({BaseTypeName})Math.Sin((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Sinh", this, "v", $"({BaseTypeName})Math.Sinh((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Tan", this, "v", $"({BaseTypeName})Math.Tan((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Tanh", this, "v", $"({BaseTypeName})Math.Tanh((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Truncate", this, "v", $"({BaseTypeName})Math.Truncate((double){{0}})");
+                yield return new ComponentWiseStaticFunction(Fields, this, "Fract", this, "v", $"({BaseTypeName})({{0}} - Math.Floor({{0}}))");
                 yield return new ComponentWiseStaticFunction(Fields, this, "Trunc", this, "v", "(long)({0})");
             }
 
@@ -772,7 +772,7 @@ namespace GlmSharpGenerator.Types
                 yield return new Function(new AnyType("double"), "NormP")
                 {
                     ParameterString = "double p",
-                    CodeString = string.Format("Math.Pow({0}, 1 / p)", Fields.Select(c => string.Format("Math.Pow((double){0}, p)", AbsString(c))).Aggregated(" + ")),
+                    CodeString = $"Math.Pow({Fields.Select(c => $"Math.Pow((double){AbsString(c)}, p)").Aggregated(" + ")}, 1 / p)",
                     Comment = "Returns the p-norm of this vector."
                 };
 
@@ -945,7 +945,7 @@ namespace GlmSharpGenerator.Types
                     Static = true,
                     ParameterString = "Random random, float trueProbability = 0.5f",
                     CodeString = Construct(this, "random.NextDouble() < trueProbability".RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed random true/false values (the probability for 'true' can be configured).", Name)
+                    Comment = $"Returns a {Name} with independent and identically distributed random true/false values (the probability for 'true' can be configured)."
                 };
             else if (BaseType.IsInteger)
             {
@@ -954,30 +954,30 @@ namespace GlmSharpGenerator.Types
                     Static = true,
                     ParameterString = "Random random",
                     CodeString = Construct(this, (BaseTypeCast + "random.Next()").RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive).", Name)
+                    Comment = $"Returns a {Name} with independent and identically distributed uniform integer values between 0 (inclusive) and int.MaxValue (exclusive)."
                 };
 
                 yield return new ComponentWiseStaticFunction(Fields, this, "Random", this, "maxValue", BaseTypeCast + "random.Next((int){0})")
                 {
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed uniform integer values between 0 (inclusive) and maxValue (exclusive). (A maxValue of 0 is allowed and returns 0.)"
                 };
                 yield return new ComponentWiseStaticFunction(Fields, this, "Random", this, "minValue", this, "maxValue", BaseTypeCast + "random.Next((int){0}, (int){1})")
                 {
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)"
                 };
                 yield return new ComponentWiseStaticFunction(Fields, this, "RandomUniform", this, "minValue", this, "maxValue", BaseTypeCast + "random.Next((int){0}, (int){1})")
                 {
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed uniform integer values between minValue (inclusive) and maxValue (exclusive). (minValue == maxValue is allowed and returns minValue. Negative values are allowed.)"
                 };
 
                 yield return new ComponentWiseStaticFunction(Fields, this, "RandomPoisson", doubleVType, "lambda", BaseTypeCast + "{0}.GetPoisson(random)")
                 {
                     DisableGlmGen = BaseType != BuiltinType.TypeInt,
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed integer values according to a poisson distribution with given lambda parameter.", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed integer values according to a poisson distribution with given lambda parameter."
                 };
 
                 // TODO: http://en.wikipedia.org/wiki/Bernoulli_distribution
@@ -992,26 +992,26 @@ namespace GlmSharpGenerator.Types
                     Static = true,
                     ParameterString = "Random random",
                     CodeString = Construct(this, (BaseTypeCast + "random.NextDouble()").RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform values between 0.0 and 1.0.", Name)
+                    Comment = $"Returns a {Name} with independent and identically distributed uniform values between 0.0 and 1.0."
                 };
                 yield return new Function(this, "RandomSigned")
                 {
                     Static = true,
                     ParameterString = "Random random",
                     CodeString = Construct(this, (BaseTypeCast + "(random.NextDouble() * 2.0 - 1.0)").RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed uniform values between -1.0 and 1.0.", Name)
+                    Comment = $"Returns a {Name} with independent and identically distributed uniform values between -1.0 and 1.0."
                 };
 
                 // uniform
                 yield return new ComponentWiseStaticFunction(Fields, this, "Random", this, "minValue", this, "maxValue", BaseTypeCast + "random.NextDouble() * ({1} - {0}) + {0}")
                 {
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform values between 'minValue' and 'maxValue'.", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed uniform values between 'minValue' and 'maxValue'."
                 };
                 yield return new ComponentWiseStaticFunction(Fields, this, "RandomUniform", this, "minValue", this, "maxValue", BaseTypeCast + "random.NextDouble() * ({1} - {0}) + {0}")
                 {
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed uniform values between 'minValue' and 'maxValue'.", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed uniform values between 'minValue' and 'maxValue'."
                 };
 
                 // normal, gaussian
@@ -1020,19 +1020,19 @@ namespace GlmSharpGenerator.Types
                     Static = true,
                     ParameterString = "Random random",
                     CodeString = Construct(this, (BaseTypeCast + "(Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble())))").RepeatTimes(Components)),
-                    Comment = string.Format("Returns a {0} with independent and identically distributed values according to a normal distribution (zero mean, unit variance).", Name)
+                    Comment = $"Returns a {Name} with independent and identically distributed values according to a normal distribution (zero mean, unit variance)."
                 };
                 yield return new ComponentWiseStaticFunction(Fields, this, "RandomNormal", this, "mean", this, "variance",
                     BaseTypeCast + "(Math.Sqrt((double){1}) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + {0}")
                 {
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance."
                 };
                 yield return new ComponentWiseStaticFunction(Fields, this, "RandomGaussian", this, "mean", this, "variance",
                     BaseTypeCast + "(Math.Sqrt((double){1}) * Math.Cos(2 * Math.PI * random.NextDouble()) * Math.Sqrt(-2.0 * Math.Log(random.NextDouble()))) + {0}")
                 {
                     FirstParameter = "Random random",
-                    CommentOverride = string.Format("Returns a {0} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance.", Name)
+                    CommentOverride = $"Returns a {Name} with independent and identically distributed values according to a normal/Gaussian distribution with specified mean and variance."
                 };
 
                 // TODO: Triangular distribution

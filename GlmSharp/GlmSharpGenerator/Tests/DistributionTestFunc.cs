@@ -18,17 +18,17 @@ namespace GlmSharpGenerator.Tests
 
             var code = new List<string>();
 
-            code.Add(string.Format("var random = new Random({0});", AbstractType.Random.Next()));
-            code.Add(string.Format("var sum = {0};", dtype.Construct(dtype, dtype.ZeroValue)));
-            code.Add(string.Format("var sumSqr = {0};", dtype.Construct(dtype, dtype.ZeroValue)));
+            code.Add($"var random = new Random({AbstractType.Random.Next()});");
+            code.Add($"var sum = {dtype.Construct(dtype, dtype.ZeroValue)};");
+            code.Add($"var sumSqr = {dtype.Construct(dtype, dtype.ZeroValue)};");
 
             code.Add("");
             code.Add("const int count = 50000;");
             code.Add("for (var _ = 0; _ < count; ++_)");
             code.Add("{");
-            code.Add(string.Format("    var v = {0}.{1}(random{2});", type.Name, randomFuncName, string.IsNullOrEmpty(funcArgs) ? "" : ", " + funcArgs));
-            code.Add(string.Format("    sum += ({0})v;", dtype.Name));
-            code.Add(string.Format("    sumSqr += glm.Pow2(({0})v);", dtype.Name));
+            code.Add($"    var v = {type.Name}.{randomFuncName}(random{(string.IsNullOrEmpty(funcArgs) ? "" : ", " + funcArgs)});");
+            code.Add($"    sum += ({dtype.Name})v;");
+            code.Add($"    sumSqr += glm.Pow2(({dtype.Name})v);");
             code.Add("}");
 
             code.Add("");
@@ -37,11 +37,11 @@ namespace GlmSharpGenerator.Tests
 
             code.Add("");
             for (var c = 0; c < type.Components; ++c)
-                code.Add(string.Format("Assert.AreEqual(avg.{0}, {1}, 1.0);", type.ArgOf(c), avg));
+                code.Add($"Assert.AreEqual(avg.{type.ArgOf(c)}, {avg}, 1.0);");
 
             code.Add("");
             for (var c = 0; c < type.Components; ++c)
-                code.Add(string.Format("Assert.AreEqual(variance.{0}, {1}, 3.0);", type.ArgOf(c), variance));
+                code.Add($"Assert.AreEqual(variance.{type.ArgOf(c)}, {variance}, 3.0);");
 
             Code = code;
         }

@@ -27,17 +27,17 @@ namespace GlmSharpGenerator.Types
 
         public string CompString => "xyzw".Substring(0, Components);
 
-        public override string TypeComment => string.Format("A vector of type {0} with {1} components.", BaseTypeName, Components);
+        public override string TypeComment => $"A vector of type {BaseTypeName} with {Components} components.";
 
         public override IEnumerable<string> BaseClasses
         {
             get
             {
                 if (Version >= 45)
-                    yield return string.Format("IReadOnlyList<{0}>", BaseTypeName);
+                    yield return $"IReadOnlyList<{BaseTypeName}>";
                 else
-                    yield return string.Format("IEnumerable<{0}>", BaseTypeName);
-                yield return string.Format("IEquatable<{0}>", NameThat);
+                    yield return $"IEnumerable<{BaseTypeName}>";
+                yield return $"IEquatable<{NameThat}>";
             }
         }
 
@@ -56,7 +56,7 @@ namespace GlmSharpGenerator.Types
 
 
 
-        public string HashCodeFor(int c) => (c == 0 ? "" : string.Format("(({0}) * {1}) ^ ", HashCodeFor(c - 1), BaseType.HashCodeMultiplier)) + HashCodeOf(ArgOf(c).ToString());
+        public string HashCodeFor(int c) => (c == 0 ? "" : $"(({HashCodeFor(c - 1)}) * {BaseType.HashCodeMultiplier}) ^ ") + HashCodeOf(ArgOf(c).ToString());
 
         public string NestedBiFuncFor(string format, int c, Func<int, string> argOf) => c == 0 ? argOf(c) : string.Format(format, NestedBiFuncFor(format, c - 1, argOf), argOf(c));
 

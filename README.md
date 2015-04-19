@@ -142,5 +142,4 @@ This library is MIT-licensed.
 * random extensions
 * explicit JSON support
 * matrix column/row setter
-* C# string interpolation
 * base type glm classes

@@ -28,7 +28,7 @@ namespace GlmSharpGenerator.Members
                 foreach (var line in base.Lines)
                     yield return line;
 
-                yield return string.Format("{0} {1} {2};", MemberPrefix, Type.NameThat, Name);
+                yield return $"{MemberPrefix} {Type.NameThat} {Name};";
             }
         }
 

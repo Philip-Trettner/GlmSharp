@@ -77,7 +77,7 @@ namespace GlmSharpGenerator.Members
                         Static = true,
                         Parameters = Parameters,
                         Comment = Comment,
-                        CodeString = string.Format("{0}.{1}({2})", OriginalType.NameThat, Name, Parameters.ArgNames().CommaSeparated())
+                        CodeString = $"{OriginalType.NameThat}.{Name}({Parameters.ArgNames().CommaSeparated()})"
                     };
                 }
 
@@ -91,7 +91,7 @@ namespace GlmSharpGenerator.Members
                 Static = true,
                 Comment = Comment,
                 Parameters = OriginalType.TypedArgs(varname).Concat(Parameters),
-                CodeString = string.Format("{0}.{1}({2})", varname, Name, Parameters.ArgNames().CommaSeparated())
+                CodeString = $"{varname}.{Name}({Parameters.ArgNames().CommaSeparated()})"
             };
         }
 
@@ -106,11 +106,11 @@ namespace GlmSharpGenerator.Members
 
                 if (code.Length == 1)
                 {
-                    yield return string.Format("{0} {1} {2}({3}) => {4};", MemberPrefix, ReturnName, FunctionName, Parameters.CommaSeparated(), code[0]).Trim();
+                    yield return $"{MemberPrefix} {ReturnName} {FunctionName}({Parameters.CommaSeparated()}) => {code[0]};".Trim();
                 }
                 else
                 {
-                    yield return string.Format("{0} {1} {2}({3})", MemberPrefix, ReturnName, FunctionName, Parameters.CommaSeparated()).Trim();
+                    yield return $"{MemberPrefix} {ReturnName} {FunctionName}({Parameters.CommaSeparated()})".Trim();
                     yield return "{";
                     foreach (var line in code)
                         yield return line.Indent();

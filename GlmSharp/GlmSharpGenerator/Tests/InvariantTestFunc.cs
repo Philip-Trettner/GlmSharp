@@ -42,46 +42,46 @@ namespace GlmSharpGenerator.Tests
                     for (var i = 0; i < vectorsThis; ++i)
                     {
                         var vals = type.BaseType.RandomSmallVals(comps);
-                        code.Add(string.Format("    var v{0} = {1};", i, type.Construct(type, vals)));
+                        code.Add($"    var v{i} = {type.Construct(type, vals)};");
                     }
                     if (inv.Contains("=="))
                     {
                         var parts = inv.Split(new[] { "==" }, StringSplitOptions.None);
                         Debug.Assert(parts.Length == 2);
-                        code.Add(string.Format("    Assert.AreEqual({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                        code.Add($"    Assert.AreEqual({parts[0].Trim()}, {parts[1].Trim()});");
                     }
                     else if (inv.Contains(" < "))
                     {
                         var parts = inv.Split(new[] { " < " }, StringSplitOptions.None);
                         Debug.Assert(parts.Length == 2);
-                        code.Add(string.Format("    Assert.Less({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                        code.Add($"    Assert.Less({parts[0].Trim()}, {parts[1].Trim()});");
                     }
                     else if (inv.Contains(" <= "))
                     {
                         var parts = inv.Split(new[] { " <= " }, StringSplitOptions.None);
                         Debug.Assert(parts.Length == 2);
-                        code.Add(string.Format("    Assert.LessOrEqual({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                        code.Add($"    Assert.LessOrEqual({parts[0].Trim()}, {parts[1].Trim()});");
                     }
                     else if (inv.Contains(" > "))
                     {
                         var parts = inv.Split(new[] { " > " }, StringSplitOptions.None);
                         Debug.Assert(parts.Length == 2);
-                        code.Add(string.Format("    Assert.Greater({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                        code.Add($"    Assert.Greater({parts[0].Trim()}, {parts[1].Trim()});");
                     }
                     else if (inv.Contains(" >= "))
                     {
                         var parts = inv.Split(new[] { " >= " }, StringSplitOptions.None);
                         Debug.Assert(parts.Length == 2);
-                        code.Add(string.Format("    Assert.GreaterOrEqual({0}, {1});", parts[0].Trim(), parts[1].Trim()));
+                        code.Add($"    Assert.GreaterOrEqual({parts[0].Trim()}, {parts[1].Trim()});");
                     }
                     else if (inv.Contains("~"))
                     {
                         var parts = inv.Split(new[] { "~" }, StringSplitOptions.None);
                         Debug.Assert(parts.Length == 2);
-                        code.Add(string.Format("    Assert.That(glm.ApproxEqual({0}, {1}));", parts[0].Trim(), parts[1].Trim()));
+                        code.Add($"    Assert.That(glm.ApproxEqual({parts[0].Trim()}, {parts[1].Trim()}));");
                     }
                     else 
-                        code.Add(string.Format("    Assert.That({0});", inv));
+                        code.Add($"    Assert.That({inv});");
                     code.Add("}");
                 }
                 Code = code;

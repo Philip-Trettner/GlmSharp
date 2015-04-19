@@ -71,10 +71,10 @@ namespace GlmSharpGenerator.Members
                 if (setter == null) // getter-only
                 {
                     if (getter.Length == 1)
-                        yield return string.Format("{0} {1} this[{2}] => {3};", MemberPrefix, Type.NameThat, Parameters.CommaSeparated(), getter[0]);
+                        yield return $"{MemberPrefix} {Type.NameThat} this[{Parameters.CommaSeparated()}] => {getter[0]};";
                     else
                     {
-                        yield return string.Format("{0} {1} this[{2}]", MemberPrefix, Type.NameThat, Parameters.CommaSeparated());
+                        yield return $"{MemberPrefix} {Type.NameThat} this[{Parameters.CommaSeparated()}]";
                         yield return "{";
                         yield return "    get";
                         yield return "    {";
@@ -86,7 +86,7 @@ namespace GlmSharpGenerator.Members
                 }
                 else
                 {
-                    yield return string.Format("{0} {1} this[{2}]", MemberPrefix, Type.NameThat, Parameters.CommaSeparated());
+                    yield return $"{MemberPrefix} {Type.NameThat} this[{Parameters.CommaSeparated()}]";
                     yield return "{";
                     yield return "    get";
                     yield return "    {";

@@ -48,7 +48,7 @@ namespace GlmSharpGenerator.Members
                 foreach (var line in base.Lines)
                     yield return line;
 
-                yield return string.Format("{0} {1}({2})", MemberPrefix, Type.Name, Parameters.CommaSeparated());
+                yield return $"{MemberPrefix} {Type.Name}({Parameters.CommaSeparated()})";
                 if (!string.IsNullOrEmpty(ConstructorChain))
                     yield return (": " + ConstructorChain).Indent();
                 yield return "{";
@@ -59,7 +59,7 @@ namespace GlmSharpGenerator.Members
                 {
                     var it = Initializers.GetEnumerator();
                     foreach (var c in Fields)
-                        yield return string.Format("this.{0} = {1};", c, it.MoveNext() ? it.Current : Type.ZeroValue).Indent();
+                        yield return $"this.{c} = {(it.MoveNext() ? it.Current : Type.ZeroValue)};".Indent();
                 }
                 yield return "}";
             }

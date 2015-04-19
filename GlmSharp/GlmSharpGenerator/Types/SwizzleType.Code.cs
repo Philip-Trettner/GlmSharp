@@ -17,7 +17,7 @@ namespace GlmSharpGenerator.Types
                 {
                     Readonly = true,
                     Visibility = "internal",
-                    Comment = string.Format("{0}-component", f)
+                    Comment = $"{f}-component"
                 };
 
             // ctor
@@ -26,7 +26,7 @@ namespace GlmSharpGenerator.Types
                 Visibility = "internal",
                 Parameters = Fields.TypedArgs(BaseType),
                 Initializers = Fields,
-                Comment = string.Format("Constructor for {0}.", Name)
+                Comment = $"Constructor for {Name}."
             };
 
             // properties
@@ -38,7 +38,7 @@ namespace GlmSharpGenerator.Types
                 yield return new Property(swizzle, type)
                 {
                     GetterLine = Construct(type, swizzle.CommaSeparated()),
-                    Comment = string.Format("Returns {0}.{1} swizzling.", VectorType.Name, swizzle)
+                    Comment = $"Returns {VectorType.Name}.{swizzle} swizzling."
                 };
 
                 // rgba

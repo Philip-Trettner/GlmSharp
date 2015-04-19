@@ -276,7 +276,7 @@ namespace GlmSharpGenerator.Types
                 {
                     foreach (var r in TypeDouble.ValuesSmallVals)
                         foreach (var i in TypeDouble.ValuesSmallVals)
-                            yield return string.Format("new Complex({0}, {1})", r, i);
+                            yield return $"new Complex({r}, {i})";
                     yield break;
                 }
 
@@ -285,7 +285,7 @@ namespace GlmSharpGenerator.Types
                     yield return "\"\"";
                     for (int i = 1; i <= 3; ++i)
                         for (int l = 1; l <= 3; ++l)
-                            yield return string.Format("\"{0}\"", TypeInt.RandomSmallVals(l).Aggregated(""));
+                            yield return $"\"{TypeInt.RandomSmallVals(l).Aggregated("")}\"";
                     yield break;
                 }
 

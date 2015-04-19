@@ -64,8 +64,8 @@ namespace GlmSharpGenerator.Members
             {
                 Static = true,
                 Comment = Comment,
-                ParameterString = string.Format("{0} {1}", OriginalType.NameThat, varname),
-                CodeString = string.Format("{0}.{1}", varname, Name)
+                ParameterString = $"{OriginalType.NameThat} {varname}",
+                CodeString = $"{varname}.{Name}"
             };
         }
 
@@ -78,7 +78,7 @@ namespace GlmSharpGenerator.Members
 
                 if (!string.IsNullOrEmpty(Value))
                 {
-                    yield return string.Format("{0} {1} {2} {{ get; }} = {3};", MemberPrefix, Type.NameThat, Name, Value);
+                    yield return $"{MemberPrefix} {Type.NameThat} {Name} {{ get; }} = {Value};";
                     yield break;
                 }
 
@@ -91,10 +91,10 @@ namespace GlmSharpGenerator.Members
                 if (setter == null) // getter-only
                 {
                     if (getter.Length == 1)
-                        yield return string.Format("{0} {1} {2} => {3};", MemberPrefix, Type.NameThat, Name, getter[0]);
+                        yield return $"{MemberPrefix} {Type.NameThat} {Name} => {getter[0]};";
                     else
                     {
-                        yield return string.Format("{0} {1} {2}", MemberPrefix, Type.NameThat, Name);
+                        yield return $"{MemberPrefix} {Type.NameThat} {Name}";
                         yield return "{";
                         yield return "    get";
                         yield return "    {";
@@ -106,7 +106,7 @@ namespace GlmSharpGenerator.Members
                 }
                 else
                 {
-                    yield return string.Format("{0} {1} {2}", MemberPrefix, Type.NameThat, Name);
+                    yield return $"{MemberPrefix} {Type.NameThat} {Name}";
                     yield return "{";
                     yield return "    get";
                     yield return "    {";

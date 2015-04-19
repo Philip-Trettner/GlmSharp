@@ -154,11 +154,11 @@ namespace GlmSharpGenerator.Types
         /// <summary>
         /// Constructs an object of a given type
         /// </summary>
-        public string Construct(AbstractType type, IEnumerable<string> args) => string.Format("new {0}({1})", type.NameThat, args.CommaSeparated());
+        public string Construct(AbstractType type, IEnumerable<string> args) => $"new {type.NameThat}({args.CommaSeparated()})";
         /// <summary>
         /// Constructs an object of a given type
         /// </summary>
-        public string Construct(AbstractType type, params string[] args) => string.Format("new {0}({1})", type.NameThat, args.CommaSeparated());
+        public string Construct(AbstractType type, params string[] args) => $"new {type.NameThat}({args.CommaSeparated()})";
 
         /// <summary>
         /// Generate tests for this class
@@ -205,7 +205,7 @@ namespace GlmSharpGenerator.Types
                 {
                     yield return "";
                     yield return "[Test]".Indent(2);
-                    yield return string.Format("public void {0}()", test.Name).Indent(2);
+                    yield return $"public void {test.Name}()".Indent(2);
                     yield return "{".Indent(2);
                     foreach (var line in test.Code)
                         yield return line.Indent(3);
@@ -278,7 +278,7 @@ namespace GlmSharpGenerator.Types
                 foreach (var line in TypeComment.AsComment()) yield return line.Indent();
                 yield return "    [Serializable]";
                 if (Version >= 40)
-                    yield return string.Format("    [DataContract{0}]", DataContractArg);
+                    yield return $"    [DataContract{DataContractArg}]";
                 yield return "    [StructLayout(LayoutKind.Sequential)]";
                 yield return "    public struct " + Name + GenericSuffix + (baseclasses.Length == 0 ? "" : " : " + baseclasses.CommaSeparated());
                 yield return "    {";
@@ -443,19 +443,19 @@ namespace GlmSharpGenerator.Types
         public virtual string ZeroValue => BaseType.ZeroValue;
         public virtual string OneValue => BaseType.OneValue;
 
-        public string HashCodeOf(string val) => BaseType.Generic ? string.Format("EqualityComparer<T>.Default.GetHashCode({0})", val) : string.Format("{0}.GetHashCode()", val);
+        public string HashCodeOf(string val) => BaseType.Generic ? $"EqualityComparer<T>.Default.GetHashCode({val})" : $"{val}.GetHashCode()";
 
 
         public string SqrOf(string s) => BaseType.IsComplex ? s + ".LengthSqr()" : s + "*" + s;
         public string SqrOf(char s) => SqrOf(s.ToString());
 
-        public string SqrtOf(string s) => BaseType.Decimal ? "(" + s + ").Sqrt()" : string.Format("Math.Sqrt({0})", s);
+        public string SqrtOf(string s) => BaseType.Decimal ? "(" + s + ").Sqrt()" : $"Math.Sqrt({s})";
         public string SqrtOf(char s) => SqrOf(s.ToString());
 
         public string DotFormatString => BaseType.IsComplex ? "lhs.{0} * Complex.Conjugate(rhs.{0})" : "lhs.{0} * rhs.{0}";
 
-        public string AbsString(string s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : MathClass + string.Format(".Abs({0})", s)) : s;
-        public string AbsString(char s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : MathClass + string.Format(".Abs({0})", s)) : s.ToString();
+        public string AbsString(string s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : MathClass + $".Abs({s})") : s;
+        public string AbsString(char s) => BaseType.IsSigned ? (BaseType.IsComplex ? s + ".Magnitude" : MathClass + $".Abs({s})") : s.ToString();
 
         public string ConstantSuffixFor(string s)
         {
@@ -564,12 +564,12 @@ namespace GlmSharpGenerator.Types
         public string TypeCast(BuiltinType otherType, string c)
         {
             if (otherType.HasArithmetics && BaseType.IsBool)
-                return string.Format("{0} ? {1} : {2}", c, otherType.OneValue, otherType.ZeroValue);
+                return $"{c} ? {otherType.OneValue} : {otherType.ZeroValue}";
 
             if (otherType.IsBool && BaseType.HasArithmetics)
-                return string.Format("{0} != {1}", c, BaseType.ZeroValue);
+                return $"{c} != {BaseType.ZeroValue}";
 
-            return string.Format("({0}){1}", otherType.Name, c);
+            return $"({otherType.Name}){c}";
         }
 
 

@@ -17,7 +17,7 @@ namespace GlmSharpGenerator.Types
 
         public IEnumerable<string> Fields => "xyzw".Substring(0, Components).Select(c => c.ToString());
 
-        public override string TypeComment => string.Format("Temporary vector of type {0} with {1} components, used for implementing swizzling for {2}.", BaseTypeName, Components, VectorType.Name);
+        public override string TypeComment => $"Temporary vector of type {BaseTypeName} with {Components} components, used for implementing swizzling for {VectorType.Name}.";
 
         /// <summary>
         /// Class name for tests

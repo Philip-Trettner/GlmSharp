@@ -49,7 +49,7 @@ namespace GlmSharpGenerator.Members
                 foreach (var line in Comment.AsComment())
                     yield return line;
                 foreach (var attribute in Attributes)
-                    yield return string.Format("[{0}]", attribute);
+                    yield return $"[{attribute}]";
             }
         }
 

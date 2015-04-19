@@ -17,7 +17,7 @@ namespace GlmSharpGenerator.Types
                 {
                     yield return "{";
                     var vals = BaseType.RandomSmallVals(1);
-                    yield return string.Format("var v = {0};", Construct(this, vals)).Indent();
+                    yield return $"var v = {Construct(this, vals)};".Indent();
                     foreach (var field in Fields)
                         yield return string.Format("Assert.AreEqual({1}, v.{0});", field, vals[0]).Indent();
                     yield return "}";
@@ -25,7 +25,7 @@ namespace GlmSharpGenerator.Types
                 {
                     yield return "{";
                     var vals = BaseType.RandomSmallVals(Components);
-                    yield return string.Format("var v = {0};", Construct(this, vals)).Indent();
+                    yield return $"var v = {Construct(this, vals)};".Indent();
                     var it = vals.GetEnumerator();
                     foreach (var field in Fields)
                         yield return string.Format("Assert.AreEqual({1}, v.{0});", field, it.MoveNext() ? it.Current : ZeroValue).Indent();
@@ -35,7 +35,7 @@ namespace GlmSharpGenerator.Types
                 {
                     yield return "{";
                     var vals = BaseType.RandomSmallVals(comps);
-                    yield return string.Format("var v = {0};", Construct(this, Construct(new VectorType(BaseType, comps), vals))).Indent();
+                    yield return $"var v = {Construct(this, Construct(new VectorType(BaseType, comps), vals))};".Indent();
                     var it = vals.GetEnumerator();
                     foreach (var field in Fields)
                         yield return string.Format("Assert.AreEqual({1}, v.{0});", field, it.MoveNext() ? it.Current : ZeroValue).Indent();
@@ -49,24 +49,24 @@ namespace GlmSharpGenerator.Types
             get
             {
                 var vals = BaseType.RandomSmallVals(Components);
-                yield return string.Format("var v = {0};", Construct(this, vals));
+                yield return $"var v = {Construct(this, vals)};";
 
                 for (var i = 0; i < vals.Length; ++i)
-                    yield return string.Format("Assert.AreEqual({0}, v[{1}]);", vals[i], i);
+                    yield return $"Assert.AreEqual({vals[i]}, v[{i}]);";
 
                 yield return "";
                 foreach (var index in new[] { int.MinValue, -1, Components, int.MaxValue, 5 })
                 {
-                    yield return string.Format("Assert.Throws<ArgumentOutOfRangeException>(() => {{ var s = v[{0}]; }} );", index);
-                    yield return string.Format("Assert.Throws<ArgumentOutOfRangeException>(() => {{ v[{0}] = {1}; }} );", index, ZeroValue);
+                    yield return $"Assert.Throws<ArgumentOutOfRangeException>(() => {{ var s = v[{index}]; }} );";
+                    yield return $"Assert.Throws<ArgumentOutOfRangeException>(() => {{ v[{index}] = {ZeroValue}; }} );";
                 }
 
                 yield return "";
                 foreach (var val in BaseType.ValuesSmallVals)
                 {
                     var i = Random.Next(Components);
-                    yield return string.Format("v[{0}] = {1};", i, val);
-                    yield return string.Format("Assert.AreEqual({0}, v[{1}]);", val, i);
+                    yield return $"v[{i}] = {val};";
+                    yield return $"Assert.AreEqual({val}, v[{i}]);";
                 }
             }
         }
@@ -76,10 +76,10 @@ namespace GlmSharpGenerator.Types
             get
             {
                 var vals = BaseType.RandomSmallVals(Components);
-                yield return string.Format("var v = {0};", Construct(this, vals));
+                yield return $"var v = {Construct(this, vals)};";
                 yield return "var vals = v.Values;";
                 for (var i = 0; i < vals.Length; ++i)
-                    yield return string.Format("Assert.AreEqual({0}, vals[{1}]);", vals[i], i);
+                    yield return $"Assert.AreEqual({vals[i]}, vals[{i}]);";
 
                 yield return string.Format("Assert.That(vals.SequenceEqual(v.ToArray()));");
             }
@@ -90,19 +90,19 @@ namespace GlmSharpGenerator.Types
             get
             {
                 foreach (var f in Fields)
-                    yield return string.Format("Assert.AreEqual({0}, {1}.Zero.{2});", ZeroValue, NameThat, f);
+                    yield return $"Assert.AreEqual({ZeroValue}, {NameThat}.Zero.{f});";
 
                 if (!string.IsNullOrEmpty(OneValue))
                 {
                     yield return "";
                     foreach (var f in Fields)
-                        yield return string.Format("Assert.AreEqual({0}, {1}.Ones.{2});", OneValue, NameThat, f);
+                        yield return $"Assert.AreEqual({OneValue}, {NameThat}.Ones.{f});";
 
                     foreach (var uf in Fields)
                     {
                         yield return "";
                         foreach (var f in Fields)
-                            yield return string.Format("Assert.AreEqual({0}, {1}.Unit{2}.{3});", f == uf ? OneValue : ZeroValue, NameThat, uf.ToUpper(), f);
+                            yield return $"Assert.AreEqual({(f == uf ? OneValue : ZeroValue)}, {NameThat}.Unit{uf.ToUpper()}.{f});";
                     }
                 }
 
@@ -123,12 +123,12 @@ namespace GlmSharpGenerator.Types
                 while (vals.All(v => v == vals[0]))
                     vals = BaseType.RandomSmallVals(Components);
 
-                yield return string.Format("var v1 = {0};", Construct(this, vals));
-                yield return string.Format("var v2 = {0};", Construct(this, vals));
-                yield return string.Format("var v3 = {0};", Construct(this, vals.Reverse()));
-                yield return string.Format("Assert.That(v1 == {0});", Construct(this, "v1"));
-                yield return string.Format("Assert.That(v2 == {0});", Construct(this, "v2"));
-                yield return string.Format("Assert.That(v3 == {0});", Construct(this, "v3"));
+                yield return $"var v1 = {Construct(this, vals)};";
+                yield return $"var v2 = {Construct(this, vals)};";
+                yield return $"var v3 = {Construct(this, vals.Reverse())};";
+                yield return $"Assert.That(v1 == {Construct(this, "v1")});";
+                yield return $"Assert.That(v2 == {Construct(this, "v2")});";
+                yield return $"Assert.That(v3 == {Construct(this, "v3")});";
                 yield return string.Format("Assert.That(v1 == v2);");
                 yield return string.Format("Assert.That(v1 != v3);");
                 yield return string.Format("Assert.That(v2 != v3);");
@@ -140,7 +140,7 @@ namespace GlmSharpGenerator.Types
             get
             {
                 var vals = BaseType.RandomSmallVals(Components);
-                yield return string.Format("var v = {0};", Construct(this, vals));
+                yield return $"var v = {Construct(this, vals)};";
 
                 yield return "";
                 yield return string.Format("var s0 = v.ToString();");
@@ -149,28 +149,28 @@ namespace GlmSharpGenerator.Types
                 if (!BaseType.IsComplex && !BaseType.Generic)
                 {
                     yield return "";
-                    yield return string.Format("var v0 = {0}.Parse(s0);", Name);
-                    yield return string.Format("var v1 = {0}.Parse(s1, \"#\");", Name);
+                    yield return $"var v0 = {Name}.Parse(s0);";
+                    yield return $"var v1 = {Name}.Parse(s1, \"#\");";
                     yield return string.Format("Assert.AreEqual(v, v0);");
                     yield return string.Format("Assert.AreEqual(v, v1);");
                     yield return "";
-                    yield return string.Format("var b0 = {0}.TryParse(s0, out v0);", Name);
-                    yield return string.Format("var b1 = {0}.TryParse(s1, \"#\", out v1);", Name);
+                    yield return $"var b0 = {Name}.TryParse(s0, out v0);";
+                    yield return $"var b1 = {Name}.TryParse(s1, \"#\", out v1);";
                     yield return string.Format("Assert.That(b0);");
                     yield return string.Format("Assert.That(b1);");
                     yield return string.Format("Assert.AreEqual(v, v0);");
                     yield return string.Format("Assert.AreEqual(v, v1);");
                     yield return "";
-                    yield return string.Format("b0 = {0}.TryParse(null, out v0);", Name);
+                    yield return $"b0 = {Name}.TryParse(null, out v0);";
                     yield return string.Format("Assert.False(b0);");
-                    yield return string.Format("b0 = {0}.TryParse(\"\", out v0);", Name);
+                    yield return $"b0 = {Name}.TryParse(\"\", out v0);";
                     yield return string.Format("Assert.False(b0);");
-                    yield return string.Format("b0 = {0}.TryParse(s0 + \", 0\", out v0);", Name);
+                    yield return $"b0 = {Name}.TryParse(s0 + \", 0\", out v0);";
                     yield return string.Format("Assert.False(b0);");
                     yield return "";
-                    yield return string.Format("Assert.Throws<NullReferenceException>(() => {{ {0}.Parse(null); }});", Name);
-                    yield return string.Format("Assert.Throws<FormatException>(() => {{ {0}.Parse(\"\"); }});", Name);
-                    yield return string.Format("Assert.Throws<FormatException>(() => {{ {0}.Parse(s0 + \", 0\"); }});", Name);
+                    yield return $"Assert.Throws<NullReferenceException>(() => {{ {Name}.Parse(null); }});";
+                    yield return $"Assert.Throws<FormatException>(() => {{ {Name}.Parse(\"\"); }});";
+                    yield return $"Assert.Throws<FormatException>(() => {{ {Name}.Parse(s0 + \", 0\"); }});";
                 }
 
                 if (!BaseType.Generic)
@@ -184,12 +184,12 @@ namespace GlmSharpGenerator.Types
                         yield return "";
                         yield return string.Format("var s3 = v.ToString(\"; \", \"G\");");
                         yield return string.Format("var s4 = v.ToString(\"; \", \"G\", CultureInfo.InvariantCulture);");
-                        yield return string.Format("var v3 = {0}.Parse(s3, \"; \", NumberStyles.Number);", Name);
-                        yield return string.Format("var v4 = {0}.Parse(s4, \"; \", NumberStyles.Number, CultureInfo.InvariantCulture);", Name);
+                        yield return $"var v3 = {Name}.Parse(s3, \"; \", NumberStyles.Number);";
+                        yield return $"var v4 = {Name}.Parse(s4, \"; \", NumberStyles.Number, CultureInfo.InvariantCulture);";
                         yield return string.Format("Assert.AreEqual(v, v3);");
                         yield return string.Format("Assert.AreEqual(v, v4);");
                         yield return "";
-                        yield return string.Format("var b4 = {0}.TryParse(s4, \"; \", NumberStyles.Number, CultureInfo.InvariantCulture, out v4);", Name);
+                        yield return $"var b4 = {Name}.TryParse(s4, \"; \", NumberStyles.Number, CultureInfo.InvariantCulture, out v4);";
                         yield return string.Format("Assert.That(b4);");
                         yield return string.Format("Assert.AreEqual(v, v4);");
                     }
@@ -202,10 +202,10 @@ namespace GlmSharpGenerator.Types
             get
             {
                 var vals = BaseType.RandomSmallVals(Components);
-                yield return string.Format("var v0 = {0};", Construct(this, vals));
+                yield return $"var v0 = {Construct(this, vals)};";
                 yield return string.Format("var s0 = JsonConvert.SerializeObject(v0);");
                 yield return "";
-                yield return string.Format("var v1 = JsonConvert.DeserializeObject<{0}>(s0);", NameThat);
+                yield return $"var v1 = JsonConvert.DeserializeObject<{NameThat}>(s0);";
                 yield return string.Format("var s1 = JsonConvert.SerializeObject(v1);");
                 yield return "";
                 yield return string.Format("Assert.AreEqual(v0, v1);");

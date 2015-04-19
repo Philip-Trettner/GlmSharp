@@ -171,11 +171,7 @@ namespace GlmSharpGenerator.Members
 
                     if (!string.IsNullOrEmpty(ReturnOverride))
                     {
-                        yield return string.Format("{0} {1} {2}({3}) => {4};",
-                            MemberPrefix, ReturnType.NameThat, Name,
-                            arginfo.Select(a => a.Type.NameThat + " " + a.ParaName).CommaSeparated(),
-                            ReturnOverride
-                            ).Trim();
+                        yield return $"{MemberPrefix} {ReturnType.NameThat} {Name}({arginfo.Select(a => a.Type.NameThat + " " + a.ParaName).CommaSeparated()}) => {ReturnOverride};".Trim();
                     }
                     else
                     {
