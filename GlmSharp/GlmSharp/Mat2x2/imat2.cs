@@ -190,24 +190,68 @@ namespace GlmSharp
         public int[] Values1D => new[] { m00, m01, m10, m11 };
         
         /// <summary>
-        /// Returns the column nr 0
+        /// Gets or sets the column nr 0
         /// </summary>
-        public ivec2 Column0 => new ivec2(m00, m01);
+        public ivec2 Column0
+        {
+            get
+            {
+                return new ivec2(m00, m01);
+            }
+            set
+            {
+                m00 = value.x;
+                m01 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 1
+        /// Gets or sets the column nr 1
         /// </summary>
-        public ivec2 Column1 => new ivec2(m10, m11);
+        public ivec2 Column1
+        {
+            get
+            {
+                return new ivec2(m10, m11);
+            }
+            set
+            {
+                m10 = value.x;
+                m11 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 0
+        /// Gets or sets the row nr 0
         /// </summary>
-        public ivec2 Row0 => new ivec2(m00, m10);
+        public ivec2 Row0
+        {
+            get
+            {
+                return new ivec2(m00, m10);
+            }
+            set
+            {
+                m00 = value.x;
+                m10 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 1
+        /// Gets or sets the row nr 1
         /// </summary>
-        public ivec2 Row1 => new ivec2(m01, m11);
+        public ivec2 Row1
+        {
+            get
+            {
+                return new ivec2(m01, m11);
+            }
+            set
+            {
+                m01 = value.x;
+                m11 = value.y;
+            }
+        }
 
         #endregion
 

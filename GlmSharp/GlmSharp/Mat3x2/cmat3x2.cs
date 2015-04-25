@@ -237,29 +237,86 @@ namespace GlmSharp
         public Complex[] Values1D => new[] { m00, m01, m10, m11, m20, m21 };
         
         /// <summary>
-        /// Returns the column nr 0
+        /// Gets or sets the column nr 0
         /// </summary>
-        public cvec2 Column0 => new cvec2(m00, m01);
+        public cvec2 Column0
+        {
+            get
+            {
+                return new cvec2(m00, m01);
+            }
+            set
+            {
+                m00 = value.x;
+                m01 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 1
+        /// Gets or sets the column nr 1
         /// </summary>
-        public cvec2 Column1 => new cvec2(m10, m11);
+        public cvec2 Column1
+        {
+            get
+            {
+                return new cvec2(m10, m11);
+            }
+            set
+            {
+                m10 = value.x;
+                m11 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 2
+        /// Gets or sets the column nr 2
         /// </summary>
-        public cvec2 Column2 => new cvec2(m20, m21);
+        public cvec2 Column2
+        {
+            get
+            {
+                return new cvec2(m20, m21);
+            }
+            set
+            {
+                m20 = value.x;
+                m21 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 0
+        /// Gets or sets the row nr 0
         /// </summary>
-        public cvec3 Row0 => new cvec3(m00, m10, m20);
+        public cvec3 Row0
+        {
+            get
+            {
+                return new cvec3(m00, m10, m20);
+            }
+            set
+            {
+                m00 = value.x;
+                m10 = value.y;
+                m20 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 1
+        /// Gets or sets the row nr 1
         /// </summary>
-        public cvec3 Row1 => new cvec3(m01, m11, m21);
+        public cvec3 Row1
+        {
+            get
+            {
+                return new cvec3(m01, m11, m21);
+            }
+            set
+            {
+                m01 = value.x;
+                m11 = value.y;
+                m21 = value.z;
+            }
+        }
 
         #endregion
 

@@ -29,36 +29,6 @@ namespace GlmSharp
         public static Half[] Values1D(hmat2x4 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static hvec4 Column0(hmat2x4 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static hvec4 Column1(hmat2x4 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static hvec2 Row0(hmat2x4 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static hvec2 Row1(hmat2x4 m) => m.Row1;
-        
-        /// <summary>
-        /// Returns the row nr 2
-        /// </summary>
-        public static hvec2 Row2(hmat2x4 m) => m.Row2;
-        
-        /// <summary>
-        /// Returns the row nr 3
-        /// </summary>
-        public static hvec2 Row3(hmat2x4 m) => m.Row3;
-        
-        /// <summary>
         /// Returns an enumerator that iterates through all fields.
         /// </summary>
         public static IEnumerator<Half> GetEnumerator(hmat2x4 m) => m.GetEnumerator();

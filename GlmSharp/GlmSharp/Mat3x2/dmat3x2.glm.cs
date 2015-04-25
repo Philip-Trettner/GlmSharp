@@ -29,31 +29,6 @@ namespace GlmSharp
         public static double[] Values1D(dmat3x2 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static dvec2 Column0(dmat3x2 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static dvec2 Column1(dmat3x2 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the column nr 2
-        /// </summary>
-        public static dvec2 Column2(dmat3x2 m) => m.Column2;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static dvec3 Row0(dmat3x2 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static dvec3 Row1(dmat3x2 m) => m.Row1;
-        
-        /// <summary>
         /// Returns an enumerator that iterates through all fields.
         /// </summary>
         public static IEnumerator<double> GetEnumerator(dmat3x2 m) => m.GetEnumerator();

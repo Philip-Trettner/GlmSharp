@@ -29,36 +29,6 @@ namespace GlmSharp
         public static decimal[] Values1D(decmat3 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static decvec3 Column0(decmat3 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static decvec3 Column1(decmat3 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the column nr 2
-        /// </summary>
-        public static decvec3 Column2(decmat3 m) => m.Column2;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static decvec3 Row0(decmat3 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static decvec3 Row1(decmat3 m) => m.Row1;
-        
-        /// <summary>
-        /// Returns the row nr 2
-        /// </summary>
-        public static decvec3 Row2(decmat3 m) => m.Row2;
-        
-        /// <summary>
         /// Creates a quaternion from the rotational part of this matrix.
         /// </summary>
         public static decquat ToQuaternion(decmat3 m) => m.ToQuaternion;

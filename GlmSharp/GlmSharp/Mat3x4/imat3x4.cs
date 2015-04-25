@@ -421,39 +421,126 @@ namespace GlmSharp
         public int[] Values1D => new[] { m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23 };
         
         /// <summary>
-        /// Returns the column nr 0
+        /// Gets or sets the column nr 0
         /// </summary>
-        public ivec4 Column0 => new ivec4(m00, m01, m02, m03);
+        public ivec4 Column0
+        {
+            get
+            {
+                return new ivec4(m00, m01, m02, m03);
+            }
+            set
+            {
+                m00 = value.x;
+                m01 = value.y;
+                m02 = value.z;
+                m03 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 1
+        /// Gets or sets the column nr 1
         /// </summary>
-        public ivec4 Column1 => new ivec4(m10, m11, m12, m13);
+        public ivec4 Column1
+        {
+            get
+            {
+                return new ivec4(m10, m11, m12, m13);
+            }
+            set
+            {
+                m10 = value.x;
+                m11 = value.y;
+                m12 = value.z;
+                m13 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 2
+        /// Gets or sets the column nr 2
         /// </summary>
-        public ivec4 Column2 => new ivec4(m20, m21, m22, m23);
+        public ivec4 Column2
+        {
+            get
+            {
+                return new ivec4(m20, m21, m22, m23);
+            }
+            set
+            {
+                m20 = value.x;
+                m21 = value.y;
+                m22 = value.z;
+                m23 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 0
+        /// Gets or sets the row nr 0
         /// </summary>
-        public ivec3 Row0 => new ivec3(m00, m10, m20);
+        public ivec3 Row0
+        {
+            get
+            {
+                return new ivec3(m00, m10, m20);
+            }
+            set
+            {
+                m00 = value.x;
+                m10 = value.y;
+                m20 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 1
+        /// Gets or sets the row nr 1
         /// </summary>
-        public ivec3 Row1 => new ivec3(m01, m11, m21);
+        public ivec3 Row1
+        {
+            get
+            {
+                return new ivec3(m01, m11, m21);
+            }
+            set
+            {
+                m01 = value.x;
+                m11 = value.y;
+                m21 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 2
+        /// Gets or sets the row nr 2
         /// </summary>
-        public ivec3 Row2 => new ivec3(m02, m12, m22);
+        public ivec3 Row2
+        {
+            get
+            {
+                return new ivec3(m02, m12, m22);
+            }
+            set
+            {
+                m02 = value.x;
+                m12 = value.y;
+                m22 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 3
+        /// Gets or sets the row nr 3
         /// </summary>
-        public ivec3 Row3 => new ivec3(m03, m13, m23);
+        public ivec3 Row3
+        {
+            get
+            {
+                return new ivec3(m03, m13, m23);
+            }
+            set
+            {
+                m03 = value.x;
+                m13 = value.y;
+                m23 = value.z;
+            }
+        }
 
         #endregion
 

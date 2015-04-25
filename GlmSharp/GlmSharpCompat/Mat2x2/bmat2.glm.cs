@@ -27,26 +27,6 @@ namespace GlmSharp
         public static bool[] Values1D(bmat2 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static bvec2 Column0(bmat2 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static bvec2 Column1(bmat2 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static bvec2 Row0(bmat2 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static bvec2 Row1(bmat2 m) => m.Row1;
-        
-        /// <summary>
         /// Returns an enumerator that iterates through all fields.
         /// </summary>
         public static IEnumerator<bool> GetEnumerator(bmat2 m) => m.GetEnumerator();

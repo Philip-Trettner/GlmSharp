@@ -288,34 +288,104 @@ namespace GlmSharp
         public double[] Values1D => new[] { m00, m01, m02, m03, m10, m11, m12, m13 };
         
         /// <summary>
-        /// Returns the column nr 0
+        /// Gets or sets the column nr 0
         /// </summary>
-        public dvec4 Column0 => new dvec4(m00, m01, m02, m03);
+        public dvec4 Column0
+        {
+            get
+            {
+                return new dvec4(m00, m01, m02, m03);
+            }
+            set
+            {
+                m00 = value.x;
+                m01 = value.y;
+                m02 = value.z;
+                m03 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 1
+        /// Gets or sets the column nr 1
         /// </summary>
-        public dvec4 Column1 => new dvec4(m10, m11, m12, m13);
+        public dvec4 Column1
+        {
+            get
+            {
+                return new dvec4(m10, m11, m12, m13);
+            }
+            set
+            {
+                m10 = value.x;
+                m11 = value.y;
+                m12 = value.z;
+                m13 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 0
+        /// Gets or sets the row nr 0
         /// </summary>
-        public dvec2 Row0 => new dvec2(m00, m10);
+        public dvec2 Row0
+        {
+            get
+            {
+                return new dvec2(m00, m10);
+            }
+            set
+            {
+                m00 = value.x;
+                m10 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 1
+        /// Gets or sets the row nr 1
         /// </summary>
-        public dvec2 Row1 => new dvec2(m01, m11);
+        public dvec2 Row1
+        {
+            get
+            {
+                return new dvec2(m01, m11);
+            }
+            set
+            {
+                m01 = value.x;
+                m11 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 2
+        /// Gets or sets the row nr 2
         /// </summary>
-        public dvec2 Row2 => new dvec2(m02, m12);
+        public dvec2 Row2
+        {
+            get
+            {
+                return new dvec2(m02, m12);
+            }
+            set
+            {
+                m02 = value.x;
+                m12 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 3
+        /// Gets or sets the row nr 3
         /// </summary>
-        public dvec2 Row3 => new dvec2(m03, m13);
+        public dvec2 Row3
+        {
+            get
+            {
+                return new dvec2(m03, m13);
+            }
+            set
+            {
+                m03 = value.x;
+                m13 = value.y;
+            }
+        }
 
         #endregion
 

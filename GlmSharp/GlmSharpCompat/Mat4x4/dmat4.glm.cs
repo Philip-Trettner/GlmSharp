@@ -27,46 +27,6 @@ namespace GlmSharp
         public static double[] Values1D(dmat4 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static dvec4 Column0(dmat4 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static dvec4 Column1(dmat4 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the column nr 2
-        /// </summary>
-        public static dvec4 Column2(dmat4 m) => m.Column2;
-        
-        /// <summary>
-        /// Returns the column nr 3
-        /// </summary>
-        public static dvec4 Column3(dmat4 m) => m.Column3;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static dvec4 Row0(dmat4 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static dvec4 Row1(dmat4 m) => m.Row1;
-        
-        /// <summary>
-        /// Returns the row nr 2
-        /// </summary>
-        public static dvec4 Row2(dmat4 m) => m.Row2;
-        
-        /// <summary>
-        /// Returns the row nr 3
-        /// </summary>
-        public static dvec4 Row3(dmat4 m) => m.Row3;
-        
-        /// <summary>
         /// Creates a quaternion from the rotational part of this matrix.
         /// </summary>
         public static dquat ToQuaternion(dmat4 m) => m.ToQuaternion;

@@ -228,29 +228,86 @@ namespace GlmSharp
         public decimal[] Values1D => new[] { m00, m01, m02, m10, m11, m12 };
         
         /// <summary>
-        /// Returns the column nr 0
+        /// Gets or sets the column nr 0
         /// </summary>
-        public decvec3 Column0 => new decvec3(m00, m01, m02);
+        public decvec3 Column0
+        {
+            get
+            {
+                return new decvec3(m00, m01, m02);
+            }
+            set
+            {
+                m00 = value.x;
+                m01 = value.y;
+                m02 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 1
+        /// Gets or sets the column nr 1
         /// </summary>
-        public decvec3 Column1 => new decvec3(m10, m11, m12);
+        public decvec3 Column1
+        {
+            get
+            {
+                return new decvec3(m10, m11, m12);
+            }
+            set
+            {
+                m10 = value.x;
+                m11 = value.y;
+                m12 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 0
+        /// Gets or sets the row nr 0
         /// </summary>
-        public decvec2 Row0 => new decvec2(m00, m10);
+        public decvec2 Row0
+        {
+            get
+            {
+                return new decvec2(m00, m10);
+            }
+            set
+            {
+                m00 = value.x;
+                m10 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 1
+        /// Gets or sets the row nr 1
         /// </summary>
-        public decvec2 Row1 => new decvec2(m01, m11);
+        public decvec2 Row1
+        {
+            get
+            {
+                return new decvec2(m01, m11);
+            }
+            set
+            {
+                m01 = value.x;
+                m11 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 2
+        /// Gets or sets the row nr 2
         /// </summary>
-        public decvec2 Row2 => new decvec2(m02, m12);
+        public decvec2 Row2
+        {
+            get
+            {
+                return new decvec2(m02, m12);
+            }
+            set
+            {
+                m02 = value.x;
+                m12 = value.y;
+            }
+        }
 
         #endregion
 

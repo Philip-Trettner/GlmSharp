@@ -218,14 +218,17 @@ namespace GlmSharpGenerator.Types
             for (var col = 0; col < Columns; ++col)
                 yield return new Property("Column" + col, colVecType)
                 {
-                    GetterLine = Construct(colVecType, Column(col)),
-                    Comment = $"Returns the column nr {col}"
+                    GetterLine = $"return {Construct(colVecType, Column(col))};",
+                    Setter = Column(col).Select((f,i) => $"{f} = value.{ArgOf(i)};"),
+                    Comment = $"Gets or sets the column nr {col}"
                 };
+            // Rows
             for (var row = 0; row < Rows; ++row)
                 yield return new Property("Row" + row, rowVecType)
                 {
-                    GetterLine = Construct(rowVecType, Row(row)),
-                    Comment = $"Returns the row nr {row}"
+                    GetterLine = $"return {Construct(rowVecType, Row(row))};",
+                    Setter = Row(row).Select((f,i) => $"{f} = value.{ArgOf(i)};"),
+                    Comment = $"Gets or sets the row nr {row}"
                 };
 
             // Constructors

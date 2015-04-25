@@ -29,36 +29,6 @@ namespace GlmSharp
         public static T[] Values1D<T>(gmat4x2<T> m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static gvec2<T> Column0<T>(gmat4x2<T> m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static gvec2<T> Column1<T>(gmat4x2<T> m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the column nr 2
-        /// </summary>
-        public static gvec2<T> Column2<T>(gmat4x2<T> m) => m.Column2;
-        
-        /// <summary>
-        /// Returns the column nr 3
-        /// </summary>
-        public static gvec2<T> Column3<T>(gmat4x2<T> m) => m.Column3;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static gvec4<T> Row0<T>(gmat4x2<T> m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static gvec4<T> Row1<T>(gmat4x2<T> m) => m.Row1;
-        
-        /// <summary>
         /// Returns an enumerator that iterates through all fields.
         /// </summary>
         public static IEnumerator<T> GetEnumerator<T>(gmat4x2<T> m) => m.GetEnumerator();

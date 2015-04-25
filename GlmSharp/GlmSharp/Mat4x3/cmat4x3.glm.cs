@@ -29,41 +29,6 @@ namespace GlmSharp
         public static Complex[] Values1D(cmat4x3 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static cvec3 Column0(cmat4x3 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static cvec3 Column1(cmat4x3 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the column nr 2
-        /// </summary>
-        public static cvec3 Column2(cmat4x3 m) => m.Column2;
-        
-        /// <summary>
-        /// Returns the column nr 3
-        /// </summary>
-        public static cvec3 Column3(cmat4x3 m) => m.Column3;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static cvec4 Row0(cmat4x3 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static cvec4 Row1(cmat4x3 m) => m.Row1;
-        
-        /// <summary>
-        /// Returns the row nr 2
-        /// </summary>
-        public static cvec4 Row2(cmat4x3 m) => m.Row2;
-        
-        /// <summary>
         /// Returns an enumerator that iterates through all fields.
         /// </summary>
         public static IEnumerator<Complex> GetEnumerator(cmat4x3 m) => m.GetEnumerator();

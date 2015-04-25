@@ -29,36 +29,6 @@ namespace GlmSharp
         public static Half[] Values1D(hmat3 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static hvec3 Column0(hmat3 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static hvec3 Column1(hmat3 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the column nr 2
-        /// </summary>
-        public static hvec3 Column2(hmat3 m) => m.Column2;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static hvec3 Row0(hmat3 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static hvec3 Row1(hmat3 m) => m.Row1;
-        
-        /// <summary>
-        /// Returns the row nr 2
-        /// </summary>
-        public static hvec3 Row2(hmat3 m) => m.Row2;
-        
-        /// <summary>
         /// Creates a quaternion from the rotational part of this matrix.
         /// </summary>
         public static hquat ToQuaternion(hmat3 m) => m.ToQuaternion;

@@ -277,34 +277,104 @@ namespace GlmSharp
         public Half[] Values1D => new[] { m00, m01, m10, m11, m20, m21, m30, m31 };
         
         /// <summary>
-        /// Returns the column nr 0
+        /// Gets or sets the column nr 0
         /// </summary>
-        public hvec2 Column0 => new hvec2(m00, m01);
+        public hvec2 Column0
+        {
+            get
+            {
+                return new hvec2(m00, m01);
+            }
+            set
+            {
+                m00 = value.x;
+                m01 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 1
+        /// Gets or sets the column nr 1
         /// </summary>
-        public hvec2 Column1 => new hvec2(m10, m11);
+        public hvec2 Column1
+        {
+            get
+            {
+                return new hvec2(m10, m11);
+            }
+            set
+            {
+                m10 = value.x;
+                m11 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 2
+        /// Gets or sets the column nr 2
         /// </summary>
-        public hvec2 Column2 => new hvec2(m20, m21);
+        public hvec2 Column2
+        {
+            get
+            {
+                return new hvec2(m20, m21);
+            }
+            set
+            {
+                m20 = value.x;
+                m21 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 3
+        /// Gets or sets the column nr 3
         /// </summary>
-        public hvec2 Column3 => new hvec2(m30, m31);
+        public hvec2 Column3
+        {
+            get
+            {
+                return new hvec2(m30, m31);
+            }
+            set
+            {
+                m30 = value.x;
+                m31 = value.y;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 0
+        /// Gets or sets the row nr 0
         /// </summary>
-        public hvec4 Row0 => new hvec4(m00, m10, m20, m30);
+        public hvec4 Row0
+        {
+            get
+            {
+                return new hvec4(m00, m10, m20, m30);
+            }
+            set
+            {
+                m00 = value.x;
+                m10 = value.y;
+                m20 = value.z;
+                m30 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 1
+        /// Gets or sets the row nr 1
         /// </summary>
-        public hvec4 Row1 => new hvec4(m01, m11, m21, m31);
+        public hvec4 Row1
+        {
+            get
+            {
+                return new hvec4(m01, m11, m21, m31);
+            }
+            set
+            {
+                m01 = value.x;
+                m11 = value.y;
+                m21 = value.z;
+                m31 = value.w;
+            }
+        }
 
         #endregion
 

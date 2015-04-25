@@ -29,46 +29,6 @@ namespace GlmSharp
         public static float[] Values1D(mat4 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static vec4 Column0(mat4 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static vec4 Column1(mat4 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the column nr 2
-        /// </summary>
-        public static vec4 Column2(mat4 m) => m.Column2;
-        
-        /// <summary>
-        /// Returns the column nr 3
-        /// </summary>
-        public static vec4 Column3(mat4 m) => m.Column3;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static vec4 Row0(mat4 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static vec4 Row1(mat4 m) => m.Row1;
-        
-        /// <summary>
-        /// Returns the row nr 2
-        /// </summary>
-        public static vec4 Row2(mat4 m) => m.Row2;
-        
-        /// <summary>
-        /// Returns the row nr 3
-        /// </summary>
-        public static vec4 Row3(mat4 m) => m.Row3;
-        
-        /// <summary>
         /// Creates a quaternion from the rotational part of this matrix.
         /// </summary>
         public static quat ToQuaternion(mat4 m) => m.ToQuaternion;

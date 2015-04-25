@@ -27,26 +27,6 @@ namespace GlmSharp
         public static decimal[] Values1D(decmat2 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static decvec2 Column0(decmat2 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static decvec2 Column1(decmat2 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static decvec2 Row0(decmat2 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static decvec2 Row1(decmat2 m) => m.Row1;
-        
-        /// <summary>
         /// Returns an enumerator that iterates through all fields.
         /// </summary>
         public static IEnumerator<decimal> GetEnumerator(decmat2 m) => m.GetEnumerator();

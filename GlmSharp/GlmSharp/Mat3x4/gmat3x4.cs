@@ -421,39 +421,126 @@ namespace GlmSharp
         public T[] Values1D => new[] { m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23 };
         
         /// <summary>
-        /// Returns the column nr 0
+        /// Gets or sets the column nr 0
         /// </summary>
-        public gvec4<T> Column0 => new gvec4<T>(m00, m01, m02, m03);
+        public gvec4<T> Column0
+        {
+            get
+            {
+                return new gvec4<T>(m00, m01, m02, m03);
+            }
+            set
+            {
+                m00 = value.x;
+                m01 = value.y;
+                m02 = value.z;
+                m03 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 1
+        /// Gets or sets the column nr 1
         /// </summary>
-        public gvec4<T> Column1 => new gvec4<T>(m10, m11, m12, m13);
+        public gvec4<T> Column1
+        {
+            get
+            {
+                return new gvec4<T>(m10, m11, m12, m13);
+            }
+            set
+            {
+                m10 = value.x;
+                m11 = value.y;
+                m12 = value.z;
+                m13 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the column nr 2
+        /// Gets or sets the column nr 2
         /// </summary>
-        public gvec4<T> Column2 => new gvec4<T>(m20, m21, m22, m23);
+        public gvec4<T> Column2
+        {
+            get
+            {
+                return new gvec4<T>(m20, m21, m22, m23);
+            }
+            set
+            {
+                m20 = value.x;
+                m21 = value.y;
+                m22 = value.z;
+                m23 = value.w;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 0
+        /// Gets or sets the row nr 0
         /// </summary>
-        public gvec3<T> Row0 => new gvec3<T>(m00, m10, m20);
+        public gvec3<T> Row0
+        {
+            get
+            {
+                return new gvec3<T>(m00, m10, m20);
+            }
+            set
+            {
+                m00 = value.x;
+                m10 = value.y;
+                m20 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 1
+        /// Gets or sets the row nr 1
         /// </summary>
-        public gvec3<T> Row1 => new gvec3<T>(m01, m11, m21);
+        public gvec3<T> Row1
+        {
+            get
+            {
+                return new gvec3<T>(m01, m11, m21);
+            }
+            set
+            {
+                m01 = value.x;
+                m11 = value.y;
+                m21 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 2
+        /// Gets or sets the row nr 2
         /// </summary>
-        public gvec3<T> Row2 => new gvec3<T>(m02, m12, m22);
+        public gvec3<T> Row2
+        {
+            get
+            {
+                return new gvec3<T>(m02, m12, m22);
+            }
+            set
+            {
+                m02 = value.x;
+                m12 = value.y;
+                m22 = value.z;
+            }
+        }
         
         /// <summary>
-        /// Returns the row nr 3
+        /// Gets or sets the row nr 3
         /// </summary>
-        public gvec3<T> Row3 => new gvec3<T>(m03, m13, m23);
+        public gvec3<T> Row3
+        {
+            get
+            {
+                return new gvec3<T>(m03, m13, m23);
+            }
+            set
+            {
+                m03 = value.x;
+                m13 = value.y;
+                m23 = value.z;
+            }
+        }
 
         #endregion
 

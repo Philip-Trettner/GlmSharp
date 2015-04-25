@@ -27,31 +27,6 @@ namespace GlmSharp
         public static int[] Values1D(imat2x3 m) => m.Values1D;
         
         /// <summary>
-        /// Returns the column nr 0
-        /// </summary>
-        public static ivec3 Column0(imat2x3 m) => m.Column0;
-        
-        /// <summary>
-        /// Returns the column nr 1
-        /// </summary>
-        public static ivec3 Column1(imat2x3 m) => m.Column1;
-        
-        /// <summary>
-        /// Returns the row nr 0
-        /// </summary>
-        public static ivec2 Row0(imat2x3 m) => m.Row0;
-        
-        /// <summary>
-        /// Returns the row nr 1
-        /// </summary>
-        public static ivec2 Row1(imat2x3 m) => m.Row1;
-        
-        /// <summary>
-        /// Returns the row nr 2
-        /// </summary>
-        public static ivec2 Row2(imat2x3 m) => m.Row2;
-        
-        /// <summary>
         /// Returns an enumerator that iterates through all fields.
         /// </summary>
         public static IEnumerator<int> GetEnumerator(imat2x3 m) => m.GetEnumerator();
