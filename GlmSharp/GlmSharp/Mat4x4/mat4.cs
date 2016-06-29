@@ -1287,7 +1287,7 @@ namespace GlmSharp
         public static mat4 Perspective(float fovy, float aspect, float zNear, float zFar)
         {
             var tanHalfFovy = Math.Tan((double)fovy / 2.0);
-            var m = Identity;
+            var m = Zero;
             m.m00 = (float)( 1 / ((double)aspect * tanHalfFovy) );
             m.m11 = (float)( 1 / (tanHalfFovy) );
             m.m22 = (float)( -(zFar + zNear) / (zFar - zNear) );

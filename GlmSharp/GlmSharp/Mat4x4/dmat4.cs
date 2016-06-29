@@ -1287,7 +1287,7 @@ namespace GlmSharp
         public static dmat4 Perspective(double fovy, double aspect, double zNear, double zFar)
         {
             var tanHalfFovy = Math.Tan((double)fovy / 2.0);
-            var m = Identity;
+            var m = Zero;
             m.m00 = (double)( 1 / ((double)aspect * tanHalfFovy) );
             m.m11 = (double)( 1 / (tanHalfFovy) );
             m.m22 = (double)( -(zFar + zNear) / (zFar - zNear) );

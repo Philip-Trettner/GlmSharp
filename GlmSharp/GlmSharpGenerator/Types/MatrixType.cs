@@ -718,7 +718,7 @@ namespace GlmSharpGenerator.Types
                         yield return string.Format("public static {0} Perspective({1} fovy, {1} aspect, {1} zNear, {1} zFar)", NameThat, BaseTypeName);
                         yield return "{";
                         yield return "    var tanHalfFovy = Math.Tan((double)fovy / 2.0);";
-                        yield return "    var m = Identity;";
+                        yield return "    var m = Zero;";
                         yield return $"    m.m00 = ({BaseTypeName})( 1 / ((double)aspect * tanHalfFovy) );";
                         yield return $"    m.m11 = ({BaseTypeName})( 1 / (tanHalfFovy) );";
                         yield return $"    m.m22 = ({BaseTypeName})( -(zFar + zNear) / (zFar - zNear) );";
