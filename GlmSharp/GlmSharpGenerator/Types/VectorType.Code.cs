@@ -813,7 +813,7 @@ namespace GlmSharpGenerator.Types
                 yield return new Function(this, "Rotated")
                 {
                     ParameterString = "double angleInRad",
-                    CodeString = "(" + Name + ")(dvec2.FromAngle(Angle) * (double)Length)",
+                    CodeString = "(" + Name + ")(dvec2.FromAngle(Angle + angleInRad) * (double)Length)",
                     Comment = "Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated)."
                 };
             }

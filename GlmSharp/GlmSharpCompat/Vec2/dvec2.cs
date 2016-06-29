@@ -568,7 +568,7 @@ namespace GlmSharp
         /// <summary>
         /// Returns a 2D vector that was rotated by a given angle in radians (CAUTION: result is casted and may be truncated).
         /// </summary>
-        public dvec2 Rotated(double angleInRad) => (dvec2)(dvec2.FromAngle(Angle) * (double)Length);
+        public dvec2 Rotated(double angleInRad) => (dvec2)(dvec2.FromAngle(Angle + angleInRad) * (double)Length);
 
         #endregion
 
