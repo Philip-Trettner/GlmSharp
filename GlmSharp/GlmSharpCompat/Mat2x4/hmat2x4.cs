@@ -634,17 +634,17 @@ namespace GlmSharp
         /// <summary>
         /// Executes a matrix-matrix-multiplication hmat2x4 * hmat2 -> hmat2x4.
         /// </summary>
-        public static hmat2x4 operator*(hmat2x4 lhs, hmat2 rhs) => new hmat2x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11));
+        public static hmat2x4 operator*(hmat2x4 lhs, hmat2 rhs) => new hmat2x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication hmat2x4 * hmat3x2 -> hmat3x4.
         /// </summary>
-        public static hmat3x4 operator*(hmat2x4 lhs, hmat3x2 rhs) => new hmat3x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21));
+        public static hmat3x4 operator*(hmat2x4 lhs, hmat3x2 rhs) => new hmat3x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication hmat2x4 * hmat4x2 -> hmat4.
         /// </summary>
-        public static hmat4 operator*(hmat2x4 lhs, hmat4x2 rhs) => new hmat4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21), (lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31));
+        public static hmat4 operator*(hmat2x4 lhs, hmat4x2 rhs) => new hmat4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21), (lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31), (lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31), (lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31), (lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31));
         
         /// <summary>
         /// Executes a matrix-vector-multiplication.

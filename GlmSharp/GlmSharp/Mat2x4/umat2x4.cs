@@ -605,17 +605,17 @@ namespace GlmSharp
         /// <summary>
         /// Executes a matrix-matrix-multiplication umat2x4 * umat2 -> umat2x4.
         /// </summary>
-        public static umat2x4 operator*(umat2x4 lhs, umat2 rhs) => new umat2x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11));
+        public static umat2x4 operator*(umat2x4 lhs, umat2 rhs) => new umat2x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication umat2x4 * umat3x2 -> umat3x4.
         /// </summary>
-        public static umat3x4 operator*(umat2x4 lhs, umat3x2 rhs) => new umat3x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21));
+        public static umat3x4 operator*(umat2x4 lhs, umat3x2 rhs) => new umat3x4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21));
         
         /// <summary>
         /// Executes a matrix-matrix-multiplication umat2x4 * umat4x2 -> umat4.
         /// </summary>
-        public static umat4 operator*(umat2x4 lhs, umat4x2 rhs) => new umat4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21), (lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31));
+        public static umat4 operator*(umat2x4 lhs, umat4x2 rhs) => new umat4((lhs.m00 * rhs.m00 + lhs.m10 * rhs.m01), (lhs.m01 * rhs.m00 + lhs.m11 * rhs.m01), (lhs.m02 * rhs.m00 + lhs.m12 * rhs.m01), (lhs.m03 * rhs.m00 + lhs.m13 * rhs.m01), (lhs.m00 * rhs.m10 + lhs.m10 * rhs.m11), (lhs.m01 * rhs.m10 + lhs.m11 * rhs.m11), (lhs.m02 * rhs.m10 + lhs.m12 * rhs.m11), (lhs.m03 * rhs.m10 + lhs.m13 * rhs.m11), (lhs.m00 * rhs.m20 + lhs.m10 * rhs.m21), (lhs.m01 * rhs.m20 + lhs.m11 * rhs.m21), (lhs.m02 * rhs.m20 + lhs.m12 * rhs.m21), (lhs.m03 * rhs.m20 + lhs.m13 * rhs.m21), (lhs.m00 * rhs.m30 + lhs.m10 * rhs.m31), (lhs.m01 * rhs.m30 + lhs.m11 * rhs.m31), (lhs.m02 * rhs.m30 + lhs.m12 * rhs.m31), (lhs.m03 * rhs.m30 + lhs.m13 * rhs.m31));
         
         /// <summary>
         /// Executes a matrix-vector-multiplication.

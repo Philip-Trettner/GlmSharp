@@ -213,6 +213,7 @@
     <Compile Include="Generated\Vec4\uvec4.Test.cs" />
     <Compile Include="Generated\Vec4\vec4.Test.cs" />
     <Compile Include="Manual\ManualTestTest.cs" />
+    <Compile Include="Manual\MatrixMultTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

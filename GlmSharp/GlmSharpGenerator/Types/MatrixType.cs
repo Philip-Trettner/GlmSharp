@@ -523,7 +523,7 @@ namespace GlmSharpGenerator.Types
                         foreach (var line in $"Executes a matrix-matrix-multiplication {NameThat} * {rhsType} -> {resultType}.".AsComment()) yield return line;
                         yield return string.Format("public static {0} operator*({1} lhs, {2} rhs) => new {0}({3});",
                             resultType, NameThat, rhsType,
-                            FieldsHelper(lhsRows, rhsColumns).Select(f => lhsCols.ForIndexUpTo(i => string.Format("lhs.m{1}{0} * rhs.m{2}{1}", f[1], i, f[2])).Aggregated(" + ")).CommaSeparated());
+                            FieldsHelper(rhsColumns, lhsRows).Select(f => lhsCols.ForIndexUpTo(i => string.Format("lhs.m{1}{2} * rhs.m{0}{1}", f[1], i, f[2])).Aggregated(" + ")).CommaSeparated());
                     }
 
                     // matrix-vector-multiplication
